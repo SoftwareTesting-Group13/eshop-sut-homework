@@ -150,7 +150,7 @@ HTTP 401 · pre-state login_attempts=0 · post-state login_attempts=2 locked_unt
 - **Status:** `FAIL`
 - **Artifact:** `evidence/ev-DT-02.log`
 - **Bug liên quan:** BUG-FR02-01.
-- **Screenshot / Issue:** `screenshots/BUG-FR02-01.png`; Issue [#23](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/23) (đã xác nhận).
+- **Screenshot / Issue:** `screenshots/BUG-FR02-01.png`; Issue [#25](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/25) (đã xác nhận).
 
 ---
 
@@ -188,7 +188,7 @@ HTTP 401 · post-state login_attempts=2
 - **Status:** `FAIL`
 - **Artifact:** `evidence/ev-DT-02-rerun.log`
 - **Bug liên quan:** BUG-FR02-01 (tái hiện 2/2).
-- **Screenshot / Issue:** `screenshots/BUG-FR02-01.png`; Issue [#23](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/23) (đã xác nhận).
+- **Screenshot / Issue:** `screenshots/BUG-FR02-01.png`; Issue [#25](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/25) (đã xác nhận).
 
 ---
 
@@ -456,7 +456,7 @@ locked_until − now = 2026-10-19T17:28:59.028Z − 2026-10-19T17:25:59.014Z ≈
 - **Status:** `FAIL`
 - **Artifact:** `evidence/ev-BVA-02.log`
 - **Bug liên quan:** BUG-FR02-01 (khóa sau 2 lần sai), BUG-FR02-02 (180 s).
-- **Screenshot / Issue:** `screenshots/BUG-FR02-01.png` (Issue [#23](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/23)), `screenshots/BUG-FR02-02.png` (Issue [#24](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/24)) — đã xác nhận.
+- **Screenshot / Issue:** `screenshots/BUG-FR02-01.png` (Issue [#25](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/25)), `screenshots/BUG-FR02-02.png` (Issue [#26](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/26)) — đã xác nhận.
 
 ---
 
@@ -613,7 +613,7 @@ thử lúc t0+31.3 s → HTTP 403 · post-state login_attempts=4 locked_until=20
 - **Status:** `FAIL`
 - **Artifact:** `evidence/ev-BVA-05-06.log`
 - **Bug liên quan:** BUG-FR02-02.
-- **Screenshot / Issue:** `screenshots/BUG-FR02-02.png`; Issue [#24](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/24) (đã xác nhận).
+- **Screenshot / Issue:** `screenshots/BUG-FR02-02.png`; Issue [#26](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/26) (đã xác nhận).
 
 ---
 

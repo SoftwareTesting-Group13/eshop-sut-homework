@@ -8,7 +8,7 @@
 
 | Nhóm | Feature | Trạng thái |
 | --- | --- | --- |
-| A | FR-02 — Login and account lockout | Đã kiểm thử — 15 ca (11 PASS, 3 FAIL, 1 Quan sát); 2 bug đã xác nhận, Issue [#23](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/23) & [#24](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/24) kèm screenshot |
+| A | FR-02 — Login and account lockout | Đã kiểm thử — 15 ca (11 PASS, 3 FAIL, 1 Quan sát); 2 bug đã xác nhận, Issue [#25](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/25) & [#26](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/26) kèm screenshot |
 | B | FR-10 — Order state machine | Chờ làm lại |
 | C | FR-17 — Coupon management (CRUD) | Chưa thực hiện |
 | D | FR-06 — Product detail view (Mobile) | Chưa thực hiện |

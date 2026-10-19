@@ -45,8 +45,8 @@ FR-10, FR-17 và FR-06 chưa có kết quả; không gán số 0 cho các featur
 
 | Bug ID | Feature | Tóm tắt | Severity | Test case | Trạng thái | Chi tiết |
 | --- | --- | --- | --- | --- | --- | --- |
-| BUG-FR02-01 | FR02 | Bộ đếm đăng nhập sai tăng 2 thay vì 1 → khóa sau 2 lần sai | High | DT-02, BVA-02, BVA-03 | Đã xác nhận; Issue [#23](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/23) (kèm screenshot) | [`test-results.md`](../features/FR02/test-results.md) |
-| BUG-FR02-02 | FR02 | Thời lượng khóa 180 giây thay vì 30 giây | Medium | BVA-02, BVA-06 | Đã xác nhận; Issue [#24](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/24) (kèm screenshot) | [`test-results.md`](../features/FR02/test-results.md) |
+| BUG-FR02-01 | FR02 | Bộ đếm đăng nhập sai tăng 2 thay vì 1 → khóa sau 2 lần sai | High | DT-02, BVA-02, BVA-03 | Đã xác nhận; Issue [#25](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/25) (kèm screenshot) | [`test-results.md`](../features/FR02/test-results.md) |
+| BUG-FR02-02 | FR02 | Thời lượng khóa 180 giây thay vì 30 giây | Medium | BVA-02, BVA-06 | Đã xác nhận; Issue [#26](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/26) (kèm screenshot) | [`test-results.md`](../features/FR02/test-results.md) |
 
 **Thống kê severity FR02:** Critical 0 · High 1 · Medium 1 · Low 0 · **Tổng 2**.
 
@@ -55,7 +55,7 @@ Cả hai bug đã được người kiểm thử xác nhận; screenshot (`scree
 ## 4. Tài liệu kèm theo
 
 - Domain/BVA/evidence của FR02: [`features/FR02/`](../features/FR02/); evidence log: [`FR02-evidence.md`](../features/FR02/evidence/FR02-evidence.md).
-- Bug + screenshot + GitHub Issue: [#23](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/23), [#24](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/24); nội dung issue: [`features/FR02/issues/`](../features/FR02/issues/).
+- Bug + screenshot + GitHub Issue: [#25](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/25), [#26](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/26); nội dung issue: [`features/FR02/issues/`](../features/FR02/issues/).
 - Quan sát ngoài EP/BVA: [`supporting-materials/fr02-observations.md`](../supporting-materials/fr02-observations.md) (không cộng vào coverage).
 - AI Audit Report: [`ai-audit.md`](ai-audit.md).
 - AI Critique: [`ai-critique.md`](ai-critique.md) — sinh viên tự viết.
