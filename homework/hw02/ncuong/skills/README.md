@@ -72,6 +72,7 @@ Template đi kèm:
 - Bốn mẫu trong [`feature-testing-report-writer/assets/`](feature-testing-report-writer/assets/): `domain-analysis-template.md`, `boundary-analysis-template.md`, `test-cases-template.md`, `test-results-template.md`. Các file cùng dùng một catalog `T-ID` và evidence `EV-ID`.
 - [`evidence-log-template.md`](feature-testing-report-writer/assets/evidence-log-template.md): nhật ký những lần thử thực thi, gồm lệnh/thao tác, kết quả thô, Actual, verdict và tài nguyên đã cleanup.
 - [`master-report-template.md`](testing-report-assembler/assets/master-report-template.md): bố cục báo cáo tổng cho nhiều feature.
+- [`github-issue-template.md`](test-findings-report-writer/assets/github-issue-template.md): mẫu Issue độc lập với phần chuẩn bị, lệnh kích hoạt/đo kết quả, Expected/Actual và bằng chứng; không lấy nguyên khối “Reproduce nhanh” trong báo cáo làm toàn bộ Issue.
 
 Hai template phân tích đặt thông tin cần review ngay trong nội dung chính: lớp EP có điều kiện, giá trị đại diện, Expected, rule và `T-ID`; mỗi biên BVA có ngưỡng, setup, giá trị từng điểm, Expected và `T-ID`. Chọn bảng hoặc đoạn ngắn theo tính chất feature; không bắt buộc mục “Đọc nhanh”, không dùng khuôn bug report cho mọi phần, và không tạo bảng ánh xạ lặp. ON/IN/OUT chỉ dùng khi đã nói rõ phía nào là IN. Chỉ chú thích rule khó, setup, điểm không khả thi hoặc đặc tả chưa rõ. Actual và bug chi tiết ở `test-results.md`.
 
@@ -80,6 +81,8 @@ Skill báo cáo không mặc định có quyền chạy SUT. Nếu yêu cầu **
 ### 5. Bug và minh bạch khi dùng AI
 
 **[`test-findings-report-writer`](test-findings-report-writer/SKILL.md)** viết bug report từ lỗi có bằng chứng để sinh viên xác nhận trước khi mở Issue. Một test FAIL chưa tự động là bug: cần kiểm tra oracle, dữ liệu setup và khả năng tái hiện. Mỗi bug có ID theo feature (`BUG-<FEATURE_CODE>-NN`), các bước tái hiện thủ công với giá trị cụ thể, Expected theo đặc tả, Actual và evidence. Phần **AI Gap Analysis** là phần sinh viên/người kiểm thử tự đánh giá; skill chỉ để khung trống và giữ nội dung họ cung cấp. Với bug, agent chuẩn bị evidence và bước tái hiện để sinh viên review; sau khi xác nhận, sinh viên chụp screenshot và mở GitHub Issue. Cả Issue và ảnh gắn kèm đều bắt buộc khi nộp HW02, nhưng trước bước review phải ghi `Chờ người kiểm thử xác nhận`, không coi là bị quên.
+
+Issue cần tự đủ thông tin để người khác chạy lại mà không phải đọc báo cáo trước: mô tả fixture và trạng thái DB, cách kích hoạt, lệnh quan sát, mốc thời gian nếu có, Expected/Actual tại từng bước quyết định, ảnh/log và ảnh hưởng của bug. Báo cáo feature có thể giữ phần tái hiện ngắn hơn; mẫu Issue riêng nằm trong `test-findings-report-writer/assets/`.
 
 Quan sát phát sinh ngoài các ca EP/BVA được lưu ở `supporting-materials/` và dẫn link từ báo cáo tổng, không cộng vào coverage hoặc số ca của hai kỹ thuật. Nếu sinh viên xác nhận đó là bug, vẫn phải báo cáo và mở GitHub Issue kèm screenshot theo §6 của đề.
 

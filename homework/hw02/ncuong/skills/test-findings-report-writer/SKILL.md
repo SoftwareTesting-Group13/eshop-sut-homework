@@ -1,6 +1,6 @@
 ---
 name: test-findings-report-writer
-description: Prepare Vietnamese bug findings for student review and a human-owned AI Gap Analysis section. Use when documenting reproducible findings before GitHub Issue publication.
+description: Prepare Vietnamese bug findings, standalone GitHub Issue drafts, and a human-owned AI Gap Analysis section. Use when documenting reproducible findings before or after student review.
 ---
 
 # Test findings report writer
@@ -28,6 +28,12 @@ If exploratory work produced findings outside the EP/BVA case catalog, preserve 
 - **Screenshots:** prepare reproducible bug evidence first. For HW02, screenshots attached to GitHub Issues are required for final submission. The student reviews each candidate bug, then captures its screenshot and opens the Issue. Mark both artifacts `Chờ người kiểm thử xác nhận` until that review happens.
 
 Suggested summary table: `Bug ID | Test case/requirement | Tóm tắt | Severity | Bằng chứng | GitHub Issue | Trạng thái`. Put the full manual reproduction block below the summary. If no finding was reproduced, state that no bug was reproduced within the executed scope; do not state that the feature has no bugs.
+
+## GitHub Issue draft
+
+Use [assets/github-issue-template.md](assets/github-issue-template.md) when preparing an Issue body. An Issue must stand on its own: a reviewer who has not read the feature report can prepare the fixture, trigger the defect, inspect the result, and understand why it violates the requirement. Expand the report's short reproduction into complete, ordered instructions; do not paste `Reproduce nhanh` as the whole procedure. Give concrete input values, initial database/state, setup and reset commands when needed, a complete trigger, observation commands, and the expected versus observed result at each decisive point. For time boundaries, state what starts the clock, how the timestamp or duration was measured, when the retry happened, and the expected behavior at that moment. Commands should use the database actually connected to the server in that reproduction, with any variable set in the same copyable block; never silently mix a temporary test DB and the repository DB.
+
+Keep the Issue focused on the one defect. Link its requirement, relevant test cases, evidence logs and screenshot, and explain user impact and the severity/priority choice. Root cause is optional. When verified from source, cite the exact file and line at the tested commit, quote a short verbatim code block around the offending statement, and explain how that code produces the observed result; distinguish an unconfirmed hypothesis from a demonstrated cause. Keep this separate from observed behavior. Use only verified results and existing links; leave unknown values clearly pending. The feature report can stay compact and link to the Issue for full reproduction.
 
 ## Publication boundary
 
