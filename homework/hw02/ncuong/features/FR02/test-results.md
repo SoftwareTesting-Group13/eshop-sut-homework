@@ -45,8 +45,8 @@
 
 | Bug ID | Feature | Title | Severity | Priority | Related TC | Status | Evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| BUG-FR02-01 | FR02 | Bộ đếm đăng nhập sai tăng 2 thay vì 1 → khóa tài khoản sau 2 lần sai | High | High | DT-02, BVA-02, BVA-03 | Đã tái hiện (2/2); chờ SV xác nhận | `ev-DT-02.log`, `ev-DT-02-rerun.log`, `ev-BVA-02.log` |
-| BUG-FR02-02 | FR02 | Thời lượng khóa tài khoản là 180 giây thay vì 30 giây | Medium | High | BVA-02, BVA-06 | Đã tái hiện (2/2); chờ SV xác nhận | `ev-BVA-02.log`, `ev-BVA-05-06.log` |
+| BUG-FR02-01 | FR02 | Bộ đếm đăng nhập sai tăng 2 thay vì 1 → khóa tài khoản sau 2 lần sai | High | High | DT-02, BVA-02, BVA-03 | Đã tái hiện (2/2); SV đã xác nhận — Issue [#23](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/23) | `ev-DT-02.log`, `ev-DT-02-rerun.log`, `ev-BVA-02.log`, `screenshots/BUG-FR02-01.png` |
+| BUG-FR02-02 | FR02 | Thời lượng khóa tài khoản là 180 giây thay vì 30 giây | Medium | High | BVA-02, BVA-06 | Đã tái hiện (2/2); SV đã xác nhận — Issue [#24](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/24) | `ev-BVA-02.log`, `ev-BVA-05-06.log`, `screenshots/BUG-FR02-02.png` |
 
 ### Thống kê severity
 
@@ -67,7 +67,7 @@ Priority là mức ưu tiên xử lý, đánh giá riêng theo mức ảnh hư�
 
 ### Chi tiết (manual reproduction)
 
-> **Môi trường chung:** commit `f3162660…`; backend Node/Express + SQLite chạy cách ly; base URL `http://localhost:3000`. **Sau khi SV xác nhận bug, người kiểm thử chụp screenshot và gắn vào GitHub Issue theo yêu cầu HW02.**
+> **Môi trường chung:** commit `f3162660…`; backend Node/Express + SQLite chạy cách ly; base URL `http://localhost:3000`. **Cả hai bug đã được người kiểm thử xác nhận; screenshot đã đính và GitHub Issue đã mở:** BUG-FR02-01 → [#23](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/23), BUG-FR02-02 → [#24](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/24). Nội dung issue đầy đủ lưu tại `issues/BUG-FR02-01.md`, `issues/BUG-FR02-02.md`.
 
 #### BUG-FR02-01 — Bộ đếm đăng nhập sai tăng 2 thay vì 1 → khóa tài khoản sau 2 lần sai
 
@@ -77,8 +77,10 @@ Priority là mức ưu tiên xử lý, đánh giá riêng theo mức ảnh hư�
 | Test case liên quan | DT-02 (đồng thời BVA-01), BVA-02 |
 | Requirement | README §2 FR-02 (R2, R3) |
 | Severity / Priority | High / High |
-| Trạng thái | Đã tái hiện 2/2; chờ người kiểm thử xác nhận |
+| Trạng thái | Đã tái hiện 2/2; **người kiểm thử đã xác nhận**; đã mở GitHub Issue |
 | Evidence | `evidence/ev-DT-02.log`, `evidence/ev-DT-02-rerun.log`, `evidence/ev-BVA-02.log` |
+| Screenshot | `screenshots/BUG-FR02-01.png` (đã đính vào Issue #23) |
+| GitHub Issue | [#23](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/23) |
 
 **Tiền điều kiện:** tài khoản `fr02.wrong@eshop.com` / `Passw0rd!` tồn tại, DB test có `login_attempts = 0`, `locked_until = NULL`.
 
@@ -101,7 +103,8 @@ curl -s -X POST http://localhost:3000/api/login \
   --data-raw '{"email":"fr02.wrong@eshop.com","password":"WrongPass1!"}'
 sqlite3 backend/database.sqlite "SELECT login_attempts,locked_until FROM users WHERE email='fr02.wrong@eshop.com';"
 ```
-**GitHub Issue:** Chờ người kiểm thử xác nhận bug trước khi mở. **Screenshot:** Chờ người kiểm thử xác nhận rồi chụp và gắn vào Issue.
+**Screenshot xác nhận:** `screenshots/BUG-FR02-01.png` — ![BUG-FR02-01](screenshots/BUG-FR02-01.png)
+**GitHub Issue:** [#23](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/23) (đã mở, kèm screenshot).
 
 ---
 
@@ -113,8 +116,10 @@ sqlite3 backend/database.sqlite "SELECT login_attempts,locked_until FROM users W
 | Test case liên quan | BVA-02 (đo `locked_until`), BVA-06 |
 | Requirement | README §2 FR-02 (R3) |
 | Severity / Priority | Medium / High |
-| Trạng thái | Đã tái hiện 2/2; chờ người kiểm thử xác nhận |
+| Trạng thái | Đã tái hiện 2/2; **người kiểm thử đã xác nhận**; đã mở GitHub Issue |
 | Evidence | `evidence/ev-BVA-02.log`, `evidence/ev-BVA-05-06.log` |
+| Screenshot | `screenshots/BUG-FR02-02.png` (đã đính vào Issue #24) |
+| GitHub Issue | [#24](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/24) |
 
 **Tiền điều kiện:** tài khoản chưa khóa; kích hoạt khóa bằng lần sai đưa bộ đếm qua ngưỡng; ghi lại thời điểm khóa `t0`.
 
@@ -137,7 +142,8 @@ curl -s -X POST http://localhost:3000/api/login \
   -H 'Content-Type: application/json' \
   --data-raw '{"email":"fr02.thr@eshop.com","password":"Passw0rd!"}'
 ```
-**GitHub Issue:** Chờ người kiểm thử xác nhận bug trước khi mở. **Screenshot:** Chờ người kiểm thử xác nhận rồi chụp và gắn vào Issue.
+**Screenshot xác nhận:** `screenshots/BUG-FR02-02.png` — ![BUG-FR02-02](screenshots/BUG-FR02-02.png)
+**GitHub Issue:** [#24](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/24) (đã mở, kèm screenshot).
 
 ---
 
@@ -169,6 +175,6 @@ curl -s -X POST http://localhost:3000/api/login \
 
 ## Việc còn lại
 
-1. Người kiểm thử review **BUG-FR02-01** và **BUG-FR02-02**; sau khi xác nhận thì chụp screenshot và mở GitHub Issue kèm ảnh.
+1. ~~Người kiểm thử review và xác nhận 2 bug; chụp screenshot và mở GitHub Issue kèm ảnh.~~ **Đã xong:** xác nhận + screenshot + Issue [#23](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/23), [#24](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/24).
 2. Viết AI Gap Analysis cho FR02 và AI Critique (phần của sinh viên).
-3. Bổ sung bằng chứng screenshot/Issue vào báo cáo sau khi có.
+3. Hoàn tất bàn giao HW02: PDF `main-report`, `ai-audit`, `ai-critique`; `git-commit-log.txt`; video demo.

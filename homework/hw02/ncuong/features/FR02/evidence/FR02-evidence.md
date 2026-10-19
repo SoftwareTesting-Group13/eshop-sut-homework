@@ -150,7 +150,7 @@ HTTP 401 · pre-state login_attempts=0 · post-state login_attempts=2 locked_unt
 - **Status:** `FAIL`
 - **Artifact:** `evidence/ev-DT-02.log`
 - **Bug liên quan:** BUG-FR02-01.
-- **Screenshot / Issue:** Chờ người kiểm thử xác nhận.
+- **Screenshot / Issue:** `screenshots/BUG-FR02-01.png`; Issue [#23](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/23) (đã xác nhận).
 
 ---
 
@@ -188,7 +188,7 @@ HTTP 401 · post-state login_attempts=2
 - **Status:** `FAIL`
 - **Artifact:** `evidence/ev-DT-02-rerun.log`
 - **Bug liên quan:** BUG-FR02-01 (tái hiện 2/2).
-- **Screenshot / Issue:** Chờ người kiểm thử xác nhận.
+- **Screenshot / Issue:** `screenshots/BUG-FR02-01.png`; Issue [#23](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/23) (đã xác nhận).
 
 ---
 
@@ -456,7 +456,7 @@ locked_until − now = 2026-10-19T17:28:59.028Z − 2026-10-19T17:25:59.014Z ≈
 - **Status:** `FAIL`
 - **Artifact:** `evidence/ev-BVA-02.log`
 - **Bug liên quan:** BUG-FR02-01 (khóa sau 2 lần sai), BUG-FR02-02 (180 s).
-- **Screenshot / Issue:** Chờ người kiểm thử xác nhận.
+- **Screenshot / Issue:** `screenshots/BUG-FR02-01.png` (Issue [#23](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/23)), `screenshots/BUG-FR02-02.png` (Issue [#24](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/24)) — đã xác nhận.
 
 ---
 
@@ -613,7 +613,7 @@ thử lúc t0+31.3 s → HTTP 403 · post-state login_attempts=4 locked_until=20
 - **Status:** `FAIL`
 - **Artifact:** `evidence/ev-BVA-05-06.log`
 - **Bug liên quan:** BUG-FR02-02.
-- **Screenshot / Issue:** Chờ người kiểm thử xác nhận.
+- **Screenshot / Issue:** `screenshots/BUG-FR02-02.png`; Issue [#24](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/24) (đã xác nhận).
 
 ---
 
@@ -699,7 +699,7 @@ pre-state login_attempts=3 locked_until=2026-10-19T16:26:46.054Z
 | Quan sát / Inconclusive | 1 |
 | BLOCKED (nêu lý do) | 0 |
 
-- **Artifact thô:** `fixture-register.log`, `ev-DT-01.log`, `ev-DT-01-token-check.log`, `ev-DT-02.log`, `ev-DT-02-rerun.log`, `ev-DT-03.log`, `ev-DT-04-05.log`, `ev-DT-06.log`, `ev-DT-07-08.log`, `ev-BVA-02.log`, `ev-BVA-03-04.log`, `ev-BVA-05-06.log`, `ev-BVA-07.log`, `ev-BVA-08.log`, `final-db-state.log`.
+- **Artifact thô:** `fixture-register.log`, `ev-DT-01.log`, `ev-DT-01-token-check.log`, `ev-DT-02.log`, `ev-DT-02-rerun.log`, `ev-DT-03.log`, `ev-DT-04-05.log`, `ev-DT-06.log`, `ev-DT-07-08.log`, `ev-BVA-02.log`, `ev-BVA-03-04.log`, `ev-BVA-05-06.log`, `ev-BVA-07.log`, `ev-BVA-08.log`, `final-db-state.log`, `../screenshots/BUG-FR02-01.png`, `../screenshots/BUG-FR02-02.png`.
 - **Đối chiếu catalog:** mọi T-ID được tính đã chạy đều có ít nhất một EV-ID của run; DT-01 và DT-02 có thêm EV rerun/xác nhận token; không có EV-ID mồ côi.
 
 ## Xác nhận cleanup sau khi hoàn tất

@@ -14,7 +14,7 @@
 
 | Nhóm | Feature | Tình trạng | Báo cáo chi tiết |
 | --- | --- | --- | --- |
-| A | FR-02 — Login and account lockout | **Đã kiểm thử** (15 ca; 2 bug chờ SV xác nhận) | [`features/FR02/`](../features/FR02/) |
+| A | FR-02 — Login and account lockout | **Đã kiểm thử** (15 ca; 2 bug đã xác nhận và mở Issue #23, #24) | [`features/FR02/`](../features/FR02/) |
 | B | FR-10 — Order state machine | Chờ làm lại | — |
 | C | FR-17 — Coupon management (CRUD) | Chưa thực hiện | — |
 | D | FR-06 — Product detail view (Mobile) | Chưa thực hiện | — |
@@ -45,16 +45,17 @@ FR-10, FR-17 và FR-06 chưa có kết quả; không gán số 0 cho các featur
 
 | Bug ID | Feature | Tóm tắt | Severity | Test case | Trạng thái | Chi tiết |
 | --- | --- | --- | --- | --- | --- | --- |
-| BUG-FR02-01 | FR02 | Bộ đếm đăng nhập sai tăng 2 thay vì 1 → khóa sau 2 lần sai | High | DT-02, BVA-02, BVA-03 | Đã tái hiện 2/2; chờ SV xác nhận | [`test-results.md`](../features/FR02/test-results.md) |
-| BUG-FR02-02 | FR02 | Thời lượng khóa 180 giây thay vì 30 giây | Medium | BVA-02, BVA-06 | Đã tái hiện 2/2; chờ SV xác nhận | [`test-results.md`](../features/FR02/test-results.md) |
+| BUG-FR02-01 | FR02 | Bộ đếm đăng nhập sai tăng 2 thay vì 1 → khóa sau 2 lần sai | High | DT-02, BVA-02, BVA-03 | Đã xác nhận; Issue [#23](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/23) (kèm screenshot) | [`test-results.md`](../features/FR02/test-results.md) |
+| BUG-FR02-02 | FR02 | Thời lượng khóa 180 giây thay vì 30 giây | Medium | BVA-02, BVA-06 | Đã xác nhận; Issue [#24](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/24) (kèm screenshot) | [`test-results.md`](../features/FR02/test-results.md) |
 
 **Thống kê severity FR02:** Critical 0 · High 1 · Medium 1 · Low 0 · **Tổng 2**.
 
-Sinh viên review từng bug trước; sau khi xác nhận, sinh viên chụp screenshot và mở GitHub Issue kèm ảnh. Hiện tại cả hai bug đang ở trạng thái **Chờ người kiểm thử xác nhận**, chưa có Issue/screenshot.
+Cả hai bug đã được người kiểm thử xác nhận; screenshot (`screenshots/BUG-FR02-01.png`, `screenshots/BUG-FR02-02.png`) đã được đính kèm trong GitHub Issue tương ứng.
 
 ## 4. Tài liệu kèm theo
 
 - Domain/BVA/evidence của FR02: [`features/FR02/`](../features/FR02/); evidence log: [`FR02-evidence.md`](../features/FR02/evidence/FR02-evidence.md).
+- Bug + screenshot + GitHub Issue: [#23](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/23), [#24](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/24); nội dung issue: [`features/FR02/issues/`](../features/FR02/issues/).
 - Quan sát ngoài EP/BVA: [`supporting-materials/fr02-observations.md`](../supporting-materials/fr02-observations.md) (không cộng vào coverage).
 - AI Audit Report: [`ai-audit.md`](ai-audit.md).
 - AI Critique: [`ai-critique.md`](ai-critique.md) — sinh viên tự viết.

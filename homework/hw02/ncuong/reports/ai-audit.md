@@ -5,13 +5,14 @@ I use AI tools for the following tasks,
 - Đọc đặc tả FR-02 và bộ skill Domain/EP + BVA, lập mô hình miền, thiết kế test case.
 - Thiết lập instance SUT cách ly, thực thi các ca qua API, ghi evidence và đánh giá coverage.
 - Soạn báo cáo feature FR02 (domain, boundary, catalog, results) và cập nhật master report/README.
+- Tạo GitHub Issue cho 2 bug đã được sinh viên xác nhận, đính screenshot vào báo cáo và issue.
 - Soạn AI Audit Report này.
 
 > **Phạm vi lập báo cáo (capture notes):**
-> - Bằng chứng khả dụng: phiên hội thoại hiện tại (prompt của người dùng + các artifact do agent tạo trong repo); không có file export transcript riêng.
-> - Số interaction đã ghi: **1** (một prompt chính của người dùng; các tool call nội bộ không phải prompt của người dùng nên không liệt kê).
+> - Bằng chứng khả dụng: phiên hội thoại hiện tại (prompt của người dùng + các artifact do agent tạo trong repo); không có file export transcript riêng. Hai screenshot (`features/FR02/screenshots/BUG-FR02-01.png`, `BUG-FR02-02.png`) do **người dùng** cung cấp, không phải AI tạo.
+> - Số interaction đã ghi: **2** (hai prompt của người dùng; các tool call nội bộ không phải prompt của người dùng nên không liệt kê).
 > - Công cụ AI đã dùng (theo bằng chứng): OpenCode agent, model `DeepSeek V4.1 Flash Free` (provider `opencode`).
-> - Trường còn thiếu: timestamp chính xác của prompt không có trong nguồn hội thoại; ngày phiên và giờ chạy lệnh lấy từ môi trường/terminal (xem bên dưới).
+> - Trường còn thiếu: AI-002 không có timestamp cho prompt trong nguồn hội thoại; AI-001 dùng timestamp do người dùng cung cấp (2026-10-20 00:25 +0700). Ngày phiên và giờ chạy lệnh lấy từ môi trường/terminal.
 > - Công cụ/phiên được nhắc tới nhưng không kiểm tra được: không.
 
 ---
@@ -60,10 +61,37 @@ Tóm tắt kết quả agent đã tạo (số liệu nằm trong các file trên
 
 ---
 
+## Interaction AI-002
+
+- **AI tool:** OpenCode agent — model `DeepSeek V4.1 Flash Free` (provider `opencode`).
+- **Date and time:** Time not available in source (ngày phiên: 2026-10-20, theo môi trường).
+- **Source:** Phiên hội thoại hiện tại; screenshot người dùng cung cấp tại `homework/hw02/ncuong/features/FR02/screenshots/`.
+- **Task:** Cập nhật báo cáo với 2 screenshot đã được sinh viên xác nhận và tạo GitHub Issue (kèm ảnh) cho từng bug theo `features/FR02/test-results.md`; ghi lại kết quả vào file và cập nhật AI Audit.
+
+### Your prompt
+
+```text
+T vừa thêm 2 bức ảnh screenshot xác nhận 2 bug mà m đã phát hiện. Và t xác nhận 2 bug này. Thêm vào báo cáo 2 bức ảnh đó và tạo issue cho mỗi bug dựa trên @homework/hw02/ncuong/features/FR02/test-results.md. Sau đó ghi lại vào file nhé (Issue phải đầy đủ tương tự test-result, có đủ thông tin report bug kèm ảnh đã đính). Xong nhớ ai audit log @homework/hw02/ncuong/skills/ai-audit-logger/SKILL.md
+```
+
+### The AI output
+
+Agent đã (nội dung kiểm tra được trong repo và trên GitHub):
+
+- Push screenshot do người dùng cung cấp lên nhánh `ncuong` (commit `test(FR02): add bug confirmation screenshots for BUG-FR02-01/02`).
+- Tạo 2 GitHub Issue kèm ảnh nhúng:
+    - [#23 [BUG-FR02-01] Bộ đếm đăng nhập sai tăng 2 thay vì 1 → khóa tài khoản sau 2 lần sai](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/23)
+    - [#24 [BUG-FR02-02] Thời lượng khóa tài khoản là 180 giây thay vì 30 giây](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/24)
+- Lưu toàn văn nội dung issue tại `homework/hw02/ncuong/features/FR02/issues/BUG-FR02-01.md` và `BUG-FR02-02.md`.
+- Cập nhật trạng thái bug/Issue và ảnh vào `features/FR02/test-results.md`, `features/FR02/evidence/FR02-evidence.md`, `reports/main-report.md`, `README.md`.
+
+---
+
 ## Optional audit table (theo mẫu `[AI-02]` — bổ sung, không thay thế 4 trường bắt buộc)
 
 | (1) Prompt + Công cụ | (2) Output AI | (3) Verdict | (4) Lý do | (5) Bản SV sửa |
 | --- | --- | --- | --- | --- |
 | OpenCode · DeepSeek V4.1 Flash Free · Time not available in source · “Tiến hành đọc @homework/hw02/ncuong/prompt.txt để triển khai test domain tesing cho feature 02: Login and account lockout nhé.” | Bộ artifact FR02 tại `features/FR02/` + cập nhật `reports/main-report.md`, `README.md` | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
+| OpenCode · DeepSeek V4.1 Flash Free · Time not available in source · “T vừa thêm 2 bức ảnh screenshot xác nhận 2 bug … Xong nhớ ai audit log …” | Issue #23, #24 kèm screenshot; cập nhật `test-results.md`, `FR02-evidence.md`, `main-report.md`, `README.md`; lưu issue tại `features/FR02/issues/` | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 
 > Cột (3)–(5) do **sinh viên** tự đánh giá/điền; báo cáo không tự suy diễn verdict hay bản sửa của sinh viên.
