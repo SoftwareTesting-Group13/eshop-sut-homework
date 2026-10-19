@@ -1,0 +1,15 @@
+=== DT-07 (rerun) locked account + CORRECT password; locked_until=2026-10-19T17:35:42.298Z ===
+--- pre-state ---
+5|fr02.lock@eshop.com|3|2026-10-19T17:35:42.298Z
+--- server now (node) ---
+2026-10-19T17:25:42.425Z
+{"error":"Tài khoản đã bị khóa. Vui lòng thử lại sau."}
+HTTP_STATUS:403
+--- post-state ---
+3|2026-10-19T17:35:42.298Z
+
+=== DT-08 (rerun) locked account + WRONG password ===
+{"error":"Tài khoản đã bị khóa. Vui lòng thử lại sau."}
+HTTP_STATUS:403
+--- post-state ---
+3|2026-10-19T17:35:42.298Z

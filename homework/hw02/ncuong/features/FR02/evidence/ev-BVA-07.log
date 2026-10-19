@@ -1,0 +1,11 @@
+=== BVA-07: reset of failure counter after successful login (fr02.reset) ===
+--- 1 wrong login ---
+{"error":"Invalid email or password"}
+HTTP_STATUS:401
+post-failure state:
+2|
+--- correct login ---
+{"message":"Login successful","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6InVzZXIiLCJpYXQiOjE3OTI0MzA4MDV9.DNaRmHBHQ8-6g513YCNyNzp2OL4aqtlqB-L6niGylZE","user":{"id":6,"name":"FR02 reset","email":"fr02.reset@eshop.com","password":"Passw0rd!","role":"user","login_attempts":2,"locked_until":null,"reset_token":null,"shipping_address":null,"phone":null}}
+HTTP_STATUS:200
+post-success state:
+0|

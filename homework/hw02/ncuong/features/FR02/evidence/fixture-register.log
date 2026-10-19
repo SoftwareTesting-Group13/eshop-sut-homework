@@ -1,0 +1,11 @@
+=== register fr02.base@eshop.com ===
+{"message":"User registered successfully","id":3}
+=== register fr02.wrong@eshop.com ===
+{"message":"User registered successfully","id":4}
+=== register fr02.lock@eshop.com ===
+{"message":"User registered successfully","id":5}
+=== register fr02.reset@eshop.com ===
+{"message":"User registered successfully","id":6}
+=== register fr02.expired@eshop.com ===
+{"message":"User registered successfully","id":7}
+{"message":"User registered successfully","id":8}{"message":"User registered successfully","id":9}

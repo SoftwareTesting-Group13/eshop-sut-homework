@@ -1,0 +1,15 @@
+=== BVA-05/BVA-06: lockout duration 30s (fr02.thr) ===
+t0 trigger (3rd failure) at 2026-10-19T17:26:10.181Z
+{"error":"Invalid email or password"}
+HTTP_STATUS:401
+locked_until: 2026-10-19T17:29:10.196Z
+--- BVA-05: wait 29s then correct password (expect still locked, within 30s window) ---
+attempt at 2026-10-19T17:26:39.350Z
+{"error":"Tài khoản đã bị khóa. Vui lòng thử lại sau."}
+HTTP_STATUS:403
+--- BVA-06: wait 2s more (>31s) then correct password (expect unlocked+token) ---
+attempt at 2026-10-19T17:26:41.500Z
+{"error":"Tài khoản đã bị khóa. Vui lòng thử lại sau."}
+HTTP_STATUS:403
+post-state:
+4|2026-10-19T17:29:10.196Z

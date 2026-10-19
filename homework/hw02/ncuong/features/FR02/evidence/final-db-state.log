@@ -1,0 +1,12 @@
+=== final state of isolated test DB ===
+id          email           login_attempts        locked_until
+--  ----------------------  --------------  ------------------------
+ 1  admin@eshop.com                      0
+ 2  test@eshop.com                       0
+ 3  fr02.base@eshop.com                  0
+ 4  fr02.wrong@eshop.com                 4  2026-10-19T17:28:59.028Z
+ 5  fr02.lock@eshop.com                  3  2026-10-19T17:35:42.298Z
+ 6  fr02.reset@eshop.com                 0
+ 7  fr02.expired@eshop.com               0
+ 8  fr02.thr@eshop.com                   4  2026-10-19T17:29:10.196Z
+ 9  fr02.rerun@eshop.com                 2

@@ -1,0 +1,4 @@
+=== DT-01 token validity check via /api/users/me ===
+token length: 133
+{"id":3,"name":"FR02 base","email":"fr02.base@eshop.com","password":"Passw0rd!","role":"user","login_attempts":0,"locked_until":null,"reset_token":null,"shipping_address":null,"phone":null}
+HTTP_STATUS:200

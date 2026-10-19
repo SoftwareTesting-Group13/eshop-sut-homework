@@ -1,0 +1,8 @@
+=== DT-02/BVA-01 wrong password #1 (fr02.wrong) ===
+--- pre-state ---
+4|fr02.wrong@eshop.com|0|
+--- request ---
+{"error":"Invalid email or password"}
+HTTP_STATUS:401
+--- post-state ---
+4|fr02.wrong@eshop.com|2|

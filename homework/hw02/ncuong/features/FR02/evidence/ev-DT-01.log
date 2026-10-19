@@ -1,0 +1,5 @@
+=== DT-01 baseline success (fr02.base) ===
+{"message":"Login successful","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sZSI6InVzZXIiLCJpYXQiOjE3OTI0MzA3MTd9.1RzdTwhrjyJpSKXEziIftZv4DaHSqG3mQcRsFQBwrKU","user":{"id":3,"name":"FR02 base","email":"fr02.base@eshop.com","password":"Passw0rd!","role":"user","login_attempts":0,"locked_until":null,"reset_token":null,"shipping_address":null,"phone":null}}
+HTTP_STATUS:200
+--- post-state ---
+3|fr02.base@eshop.com|0|

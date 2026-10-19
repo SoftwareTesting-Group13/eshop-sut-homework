@@ -14,22 +14,47 @@
 
 | Nhóm | Feature | Tình trạng | Báo cáo chi tiết |
 | --- | --- | --- | --- |
-| A | FR-02 — Login and account lockout | Chờ làm lại | — |
+| A | FR-02 — Login and account lockout | **Đã kiểm thử** (15 ca; 2 bug chờ SV xác nhận) | [`features/FR02/`](../features/FR02/) |
 | B | FR-10 — Order state machine | Chờ làm lại | — |
 | C | FR-17 — Coupon management (CRUD) | Chưa thực hiện | — |
 | D | FR-06 — Product detail view (Mobile) | Chưa thực hiện | — |
 
-Mỗi feature sẽ có `domain-analysis.md`, `boundary-analysis.md`, `test-cases.md`, `test-results.md` và `evidence/` trong `../features/<FEATURE_CODE>/`. Chỉ thêm liên kết khi file đã được tạo.
+Mỗi feature có `domain-analysis.md`, `boundary-analysis.md`, `test-cases.md`, `test-results.md` và `evidence/` trong `../features/<FEATURE_CODE>/`.
 
 ## 2. Tổng hợp test case và kết quả
 
-Chưa có kết quả từ lần làm lại FR02 và FR10. Khi thực hiện, tổng hợp các case Domain/EP và BVA theo `T-ID` duy nhất, nêu run được chọn, số PASS, FAIL, Quan sát, BLOCKED và Chưa chạy cho từng feature.
+**Run được chọn:** `run-20261020-fr02`; SUT commit `f3162660d5c4f9005cbb15910290adb4b58ef2c7`.
+
+### FR-02 — Login and account lockout
+
+| Chỉ số | Giá trị |
+| --- | ---: |
+| Test case thiết kế (T-ID duy nhất) | 15 |
+| Đã chạy | 15 |
+| PASS | 11 |
+| FAIL | 3 |
+| Quan sát / INCONCLUSIVE | 1 |
+| BLOCKED | 0 |
+| Chưa chạy | 0 |
+
+Coverage theo nghĩa vụ: EP 9 lớp — thiết kế 9/9, đã chạy 9/9, đạt oracle 7/9; BVA 8 điểm biên — thiết kế 8/8, đã chạy 8/8, đạt oracle 5/8. Chi tiết: [`domain-analysis.md`](../features/FR02/domain-analysis.md), [`boundary-analysis.md`](../features/FR02/boundary-analysis.md), [`test-cases.md`](../features/FR02/test-cases.md), [`test-results.md`](../features/FR02/test-results.md).
+
+FR-10, FR-17 và FR-06 chưa có kết quả; không gán số 0 cho các feature chưa thực hiện.
 
 ## 3. Tổng hợp bug
 
-Chưa có bug từ lần làm lại. Chỉ thêm phát hiện sau khi kiểm tra oracle và tái hiện với evidence; sinh viên review trước khi chụp screenshot và mở GitHub Issue kèm ảnh theo yêu cầu HW02.
+| Bug ID | Feature | Tóm tắt | Severity | Test case | Trạng thái | Chi tiết |
+| --- | --- | --- | --- | --- | --- | --- |
+| BUG-FR02-01 | FR02 | Bộ đếm đăng nhập sai tăng 2 thay vì 1 → khóa sau 2 lần sai | High | DT-02, BVA-02, BVA-03 | Đã tái hiện 2/2; chờ SV xác nhận | [`test-results.md`](../features/FR02/test-results.md) |
+| BUG-FR02-02 | FR02 | Thời lượng khóa 180 giây thay vì 30 giây | Medium | BVA-02, BVA-06 | Đã tái hiện 2/2; chờ SV xác nhận | [`test-results.md`](../features/FR02/test-results.md) |
+
+**Thống kê severity FR02:** Critical 0 · High 1 · Medium 1 · Low 0 · **Tổng 2**.
+
+Sinh viên review từng bug trước; sau khi xác nhận, sinh viên chụp screenshot và mở GitHub Issue kèm ảnh. Hiện tại cả hai bug đang ở trạng thái **Chờ người kiểm thử xác nhận**, chưa có Issue/screenshot.
 
 ## 4. Tài liệu kèm theo
 
-- AI Audit Report: sẽ viết lại từ các tương tác của lần làm mới.
+- Domain/BVA/evidence của FR02: [`features/FR02/`](../features/FR02/); evidence log: [`FR02-evidence.md`](../features/FR02/evidence/FR02-evidence.md).
+- Quan sát ngoài EP/BVA: [`supporting-materials/fr02-observations.md`](../supporting-materials/fr02-observations.md) (không cộng vào coverage).
+- AI Audit Report: [`ai-audit.md`](ai-audit.md).
 - AI Critique: [`ai-critique.md`](ai-critique.md) — sinh viên tự viết.

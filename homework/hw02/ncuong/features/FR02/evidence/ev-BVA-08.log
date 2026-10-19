@@ -1,0 +1,9 @@
+=== BVA-08: expired lock (2026-10-19T16:26:46.054Z) allows login (fr02.expired) ===
+pre-state:
+3|2026-10-19T16:26:46.054Z
+now:
+2026-10-19T17:26:46.184Z
+{"message":"Login successful","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Nywicm9sZSI6InVzZXIiLCJpYXQiOjE3OTI0MzA4MDZ9.497T_Ti7mFcOl8ldTEjhc8kwRtCemLWVwDH7O9H0NKg","user":{"id":7,"name":"FR02 expired","email":"fr02.expired@eshop.com","password":"Passw0rd!","role":"user","login_attempts":3,"locked_until":"2026-10-19T16:26:46.054Z","reset_token":null,"shipping_address":null,"phone":null}}
+HTTP_STATUS:200
+post-state:
+0|

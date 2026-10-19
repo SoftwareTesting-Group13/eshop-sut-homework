@@ -1,0 +1,17 @@
+=== BVA-03: at threshold - 3rd consecutive failure must lock (fr02.thr prepared attempts=2) ===
+pre-state:
+2|
+now:
+2026-10-19T17:26:02.188Z
+{"error":"Invalid email or password"}
+HTTP_STATUS:401
+post-state:
+4|2026-10-19T17:29:02.202Z
+
+=== BVA-04: attempt above threshold while locked (fr02.wrong) ===
+pre-state:
+4|2026-10-19T17:28:59.028Z
+{"error":"Tài khoản đã bị khóa. Vui lòng thử lại sau."}
+HTTP_STATUS:403
+post-state:
+4|2026-10-19T17:28:59.028Z
