@@ -1,0 +1,75 @@
+# Prompt kiểm thử Domain/EP + BVA cho một feature HW02
+
+## Cấu hình duy nhất cần đổi
+
+TARGET_FEATURE_ID: FR02
+
+Đổi giá trị TARGET_FEATURE_ID khi chuyển feature. Tự tìm tên, rule, interface, test data và đường dẫn artifact từ repository; không sao chép kết quả của feature khác. Nếu ID không tồn tại hoặc trùng nhiều định nghĩa, ghi rõ vấn đề và dừng phần phụ thuộc vào việc xác định feature.
+
+## Nhiệm vụ
+
+Bạn là agent kiểm thử phần mềm. Thực hiện trọn quy trình Domain Testing bằng Equivalence Partitioning (EP) và Boundary Value Analysis (BVA) cho feature mục tiêu: đọc yêu cầu, thiết kế ca, chạy các ca khả thi trên SUT an toàn, lưu evidence, đánh giá coverage, báo cáo phát hiện và lập AI Audit Report. Không sửa source code gốc để làm test pass.
+
+Yêu cầu HW02 ở homework/hw02/docs/2026.HW02.Domain Testing_En.md có thẩm quyền về phạm vi và đầu ra. Tìm đặc tả feature trong repository, đối chiếu api_specification.md khi feature dùng API; không mặc định mọi feature đều có API. Expected phải đến từ đặc tả hoặc giả định được ghi rõ, không lấy hành vi SUT làm yêu cầu.
+
+## Áp dụng skills
+
+1. Đọc homework/hw02/ncuong/skills/README.md và domain-testing-workflow/SKILL.md trước.
+2. Đọc các skill chuyên biệt cần cho công việc đang làm: phân miền, EP, BVA, oracle, catalog, coverage, báo cáo feature, findings, AI audit và master report. Chỉ đọc decision-table-builder hoặc state-transition-test-designer khi rule thật sự cần mô hình đó.
+3. Đọc template của artifact trước khi viết artifact ấy. Ưu tiên hướng dẫn skill hiện tại nếu prompt này thiếu chi tiết; nếu có xung đột với đề HW02, theo đề và ghi rõ xung đột.
+4. Không sửa skills, templates, đặc tả, artifact của feature khác hay source code ứng dụng trong nhiệm vụ này.
+
+Decision table và state model chỉ hỗ trợ hiểu rule/setup khi cần. Bộ ca và coverage chính của HW02 vẫn là EP và BVA; không tự mở thêm bộ ca UI Validation hay coverage kỹ thuật thứ ba.
+
+## Xác định phạm vi feature
+
+- Chuẩn hóa TARGET_FEATURE_ID về mã requirement trong đặc tả (ví dụ FR02 tương ứng FR-02); giữ tên feature đúng nguồn.
+- Xác định pool, actor, input, trạng thái trước, side effect, giao diện có thể thực thi và dependencies tối thiểu cho setup.
+- Chỉ kiểm thử rule của feature mục tiêu. Dùng feature khác để tạo fixture hoặc đăng nhập khi cần, nhưng không biến dependency thành bộ test mới.
+- Phân loại rule CONFIRMED, ASSUMED hoặc UNRESOLVED. Ghi câu hỏi còn mở và các oracle bị ảnh hưởng. Không tự đặt threshold, status code, thông báo lỗi hay thứ tự ưu tiên rule.
+- Giữ ID của artifact hiện có thuộc feature mục tiêu nếu đang tiếp tục một lần làm hợp lệ; khi bắt đầu lại từ đầu, không lấy số liệu hoặc evidence của run cũ làm kết quả mới.
+
+## Thiết kế Domain/EP và BVA
+
+1. Dùng input-domain-partitioner để xác định kiểu, miền, constraint, trạng thái và tổ hợp khả thi.
+2. Dùng equivalence-partitioning-generator để tạo các lớp hành vi khác nhau; chọn giá trị đại diện cụ thể, giữ các chiều không liên quan ở baseline hợp lệ.
+3. Dùng boundary-value-generator cho các ngưỡng, khoảng, độ dài, thời điểm hoặc quan hệ có ý nghĩa. Ghi dấu bằng thuộc phía nào, đơn vị, bước/độ chính xác và Expected tại từng điểm. Dùng ON/IN/OUT khi nhãn đó rõ ràng; với ngưỡng đổi hành vi, có thể ghi ngay dưới / tại biên / ngay trên. Không ép ±1 cho miền liên tục hoặc tạo điểm không thể biểu diễn.
+4. Dùng test-oracle-writer để xác định Expected quan sát được từ đặc tả. Điểm thiếu oracle là Quan sát/INCONCLUSIVE, không tự chấm PASS/FAIL.
+5. Dùng test-case-catalog cho một danh sách T-ID duy nhất. Một ca phục vụ cả EP và BVA chỉ xuất hiện một lần, giữ đủ liên kết P-ID/B-ID. Không tạo case chỉ để tăng số lượng.
+6. Dùng coverage-goal-planner: nêu mẫu số là các lớp EP và điểm BVA đủ điều kiện; tách designed, executed, passed, blocked và unresolved. Nếu không có biên có ý nghĩa, ghi lý do BVA không áp dụng.
+
+## Thực thi và evidence
+
+Chạy mọi ca khả thi trong phạm vi khi có SUT và môi trường test phù hợp. Chọn cách thực thi theo interface thật của feature: API, browser hoặc mobile. Browser chỉ là phương tiện chạy ca EP/BVA cần qua giao diện; không suy ra bộ kiểm tra layout, DOM hay UI Validation riêng. Không bắt buộc tạo automated test file hoặc dùng test framework nếu request trực tiếp và evidence log đã tái lập được phép kiểm thử.
+
+Trước khi chạy, xác định build/commit, môi trường, database và side effect. Ưu tiên instance và database cách ly; seed fixture xác định được, reset state giữa các ca khi cần. Không ghi đè database làm việc, không xóa dữ liệu người dùng và không tự dùng git restore. Nếu không thể thực thi an toàn, ghi BLOCKED với lý do cụ thể và tiếp tục phần thiết kế độc lập.
+
+Với mỗi lần thử, ghi Run ID, T-ID, EV-ID, setup, thao tác/request thật, Actual, verdict và raw evidence. PASS/FAIL phải dựa trên chạy thật; đọc source code chỉ phục vụ thiết kế hoặc điều tra root cause. Giữ rerun như EV-ID mới và nêu run được dùng để tổng hợp. Khi xong, dừng dịch vụ và xóa chỉ tài nguyên test do phiên này tạo; kiểm tra và ghi tình trạng cleanup.
+
+## Artifact và cách viết báo cáo
+
+Lưu trong homework/hw02/ncuong/features/<FEATURE_CODE>/, theo quy ước thư mục hiện có nếu feature được đặt alias (ví dụ Mobile). Tạo bốn file cùng evidence/:
+- domain-analysis.md: rule, miền input/trạng thái, lớp EP, giá trị đại diện, Expected, rule nguồn, T-ID và coverage.
+- boundary-analysis.md: từng biên, setup, giá trị/trạng thái ở các điểm có ý nghĩa, Expected, T-ID, tính khả thi và coverage.
+- test-cases.md: định nghĩa ca duy nhất với setup, input/thao tác và Expected.
+- test-results.md: kết quả theo run, Actual, EV-ID, verdict, coverage, bug và khoảng trống.
+
+Viết Domain/BVA để sinh viên review trực tiếp từ phần chính: đặt điều kiện, giá trị test, Expected và case cạnh nhau; chọn bảng hoặc đoạn ngắn theo context. Không thêm mục Đọc nhanh, lời dẫn hoặc bảng ánh xạ lặp chỉ để giải thích phần trình bày khó hiểu. Chỉ chú thích setup, precision, rule mơ hồ hoặc điểm không thể thử khi thật sự cần. Để log thô và chi tiết Actual/bug ở test-results.md và evidence/.
+
+Cập nhật reports/main-report.md bằng số liệu và link của feature mục tiêu, giữ nguyên các feature khác. Cập nhật README.md theo tình trạng thật. Không cộng trùng case EP/BVA hoặc gán số 0 cho feature chưa làm. Quan sát ngoài EP/BVA, nếu có, lưu riêng trong supporting-materials/ và không cộng vào coverage kỹ thuật.
+
+## Bug, phần sinh viên review và AI Audit
+
+Điều tra một ca FAIL trước khi gọi là bug: kiểm tra oracle, fixture, tính lặp lại và evidence. Với phát hiện đã tái hiện, viết bug report có rule/T-ID, tiền điều kiện, thao tác và giá trị chính xác, Expected, Actual, severity, evidence và cách tái hiện thủ công. Phân biệt bug đã tái hiện với ứng viên còn thiếu oracle.
+
+Sinh viên review từng bug trước. Sau khi sinh viên xác nhận, sinh viên chụp screenshot và mở GitHub Issue kèm ảnh. Đây là yêu cầu bắt buộc cho bản nộp HW02; trước bước review, ghi trạng thái Chờ người kiểm thử xác nhận, không tuyên bố đã có Issue hoặc ảnh. AI Gap Analysis và AI Critique là phần sinh viên tự đánh giá/viết; để rõ trạng thái chờ thay vì tự điền thay.
+
+AI Audit Report là bắt buộc. Dùng ai-audit-logger/SKILL.md và template để tạo hoặc cập nhật reports/ai-audit.md từ hội thoại/transcript có thể kiểm chứng. Với mỗi tương tác, giữ tên công cụ AI, ngày giờ theo nguồn, prompt nguyên văn và output người dùng thấy; ghi thiếu dữ liệu nếu không có, không tự tạo timestamp hoặc tóm tắt thay output. Nếu file audit đã có tương tác khác, giữ lại và chỉ thêm/cập nhật phần có nguồn cho lần này.
+
+## Kiểm tra và bàn giao
+
+Trước khi kết thúc, kiểm tra chuỗi rule → P-ID/B-ID → T-ID → Expected → EV-ID/Actual → verdict → bug, số đếm và link. Xác nhận source/database gốc không bị sửa, hoặc nêu chính xác phần chưa xác minh. Báo cáo số ca thiết kế, đã chạy, PASS/FAIL/INCONCLUSIVE/BLOCKED/Chưa chạy, coverage theo nghĩa vụ, bug đã tái hiện, câu hỏi còn mở và trạng thái AI Audit.
+
+Bản nộp cuối của toàn HW02 còn cần PDF cho main report, AI Audit, AI Critique; Git commit log, README có tự đánh giá và video demo; screenshot trong GitHub Issue của bug đã xác nhận. Theo dõi chúng là việc còn lại nếu chưa có, không tạo file giả hoặc nhận bài hoàn tất khi thiếu. Khi tạo commit theo yêu cầu môn học, chỉ đưa vào thay đổi thuộc bước và feature này, không gom thay đổi có sẵn của người khác.
+
+Bắt đầu từ cấu hình TARGET_FEATURE_ID, đọc đặc tả và skills liên quan, rồi thực hiện đến hết các phần an toàn và khả thi.
