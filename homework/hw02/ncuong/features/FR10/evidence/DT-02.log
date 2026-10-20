@@ -1,0 +1,29 @@
+# DT-02 — raw evidence
+
+| Trường | Giá trị |
+| --- | --- |
+| T-ID | DT-02 |
+| Kỹ thuật / obligation | EP; P2 |
+| Run ID | run-20261020-fr10 |
+| Thời điểm (UTC) | 2026-10-19T19:56:44.082Z |
+| Actor | admin |
+| Order id | 2 |
+| Tiền điều kiện (status trước) | confirmed |
+
+**Request:**
+```text
+PUT http://localhost:3000/api/admin/orders/2/status
+Body: {"status":"shipping"}
+```
+
+**Response thô:**
+```text
+HTTP 200
+{"message":"Order status updated"}
+```
+
+| | |
+| --- | --- |
+| Expected (đặc tả) | Thành công (2xx) và status = "shipping" |
+| Actual | HTTP 200; status sau = shipping |
+| Verdict | PASS |

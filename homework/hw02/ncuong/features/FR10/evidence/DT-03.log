@@ -1,0 +1,29 @@
+# DT-03 — raw evidence
+
+| Trường | Giá trị |
+| --- | --- |
+| T-ID | DT-03 |
+| Kỹ thuật / obligation | EP + BVA; P3, B2 tiến vào terminal |
+| Run ID | run-20261020-fr10 |
+| Thời điểm (UTC) | 2026-10-19T19:56:44.090Z |
+| Actor | admin |
+| Order id | 3 |
+| Tiền điều kiện (status trước) | shipping |
+
+**Request:**
+```text
+PUT http://localhost:3000/api/admin/orders/3/status
+Body: {"status":"delivered"}
+```
+
+**Response thô:**
+```text
+HTTP 200
+{"message":"Order status updated"}
+```
+
+| | |
+| --- | --- |
+| Expected (đặc tả) | Thành công (2xx) và status = "delivered" |
+| Actual | HTTP 200; status sau = delivered |
+| Verdict | PASS |

@@ -1,0 +1,19 @@
+{
+  "id": "DT-19-variants",
+  "run": "run-20261020-fr10",
+  "time": "2026-10-19T19:56:44.177Z",
+  "variants": [
+    {
+      "name": "user cancel non-existent 999999",
+      "httpStatus": 404,
+      "body": "{\"error\":\"Order not found\"}"
+    },
+    {
+      "name": "user cancel non-owned order (admin token)",
+      "orderId": 22,
+      "httpStatus": 404,
+      "body": "{\"error\":\"Order not found\"}",
+      "statusAfter": "pending"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+# DT-16-rerun — raw evidence
+
+| Trường | Giá trị |
+| --- | --- |
+| T-ID | DT-16-rerun |
+| Kỹ thuật / obligation | EP; P16 rerun |
+| Run ID | run-20261020-fr10 |
+| Thời điểm (UTC) | 2026-10-19T19:56:44.174Z |
+| Actor | user |
+| Order id | 21 |
+| Tiền điều kiện (status trước) | shipping |
+
+**Request:**
+```text
+PUT http://localhost:3000/api/orders/21/cancel
+```
+
+**Response thô:**
+```text
+HTTP 200
+{"message":"Order canceled successfully"}
+```
+
+| | |
+| --- | --- |
+| Expected (đặc tả) | Lỗi (không 2xx), status giữ nguyên "shipping" |
+| Actual | HTTP 200; status sau = canceled |
+| Verdict | FAIL |
+| Ghi chú | Rerun độ lặp lại BUG-FR10-02 |

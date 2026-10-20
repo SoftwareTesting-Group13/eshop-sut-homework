@@ -1,0 +1,29 @@
+# DT-08 — raw evidence
+
+| Trường | Giá trị |
+| --- | --- |
+| T-ID | DT-08 |
+| Kỹ thuật / obligation | EP; P8 (skip pending→shipping) |
+| Run ID | run-20261020-fr10 |
+| Thời điểm (UTC) | 2026-10-19T19:56:44.109Z |
+| Actor | admin |
+| Order id | 8 |
+| Tiền điều kiện (status trước) | pending |
+
+**Request:**
+```text
+PUT http://localhost:3000/api/admin/orders/8/status
+Body: {"status":"shipping"}
+```
+
+**Response thô:**
+```text
+HTTP 400
+{"error":"Invalid state transition from pending to shipping"}
+```
+
+| | |
+| --- | --- |
+| Expected (đặc tả) | Lỗi (không 2xx), status giữ nguyên "pending" |
+| Actual | HTTP 400; status sau = pending |
+| Verdict | PASS |

@@ -1,0 +1,29 @@
+# DT-15 — raw evidence
+
+| Trường | Giá trị |
+| --- | --- |
+| T-ID | DT-15 |
+| Kỹ thuật / obligation | EP; P15 (status đích không hợp lệ) |
+| Run ID | run-20261020-fr10 |
+| Thời điểm (UTC) | 2026-10-19T19:56:44.143Z |
+| Actor | admin |
+| Order id | 15 |
+| Tiền điều kiện (status trước) | pending |
+
+**Request:**
+```text
+PUT http://localhost:3000/api/admin/orders/15/status
+Body: {"status":"shipped"}
+```
+
+**Response thô:**
+```text
+HTTP 400
+{"error":"Invalid state transition from pending to shipped"}
+```
+
+| | |
+| --- | --- |
+| Expected (đặc tả) | Lỗi (không 2xx), status giữ nguyên "pending" |
+| Actual | HTTP 400; status sau = pending |
+| Verdict | PASS |

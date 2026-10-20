@@ -1,0 +1,29 @@
+# DT-09 — raw evidence
+
+| Trường | Giá trị |
+| --- | --- |
+| T-ID | DT-09 |
+| Kỹ thuật / obligation | EP; P9 (skip confirmed→delivered) |
+| Run ID | run-20261020-fr10 |
+| Thời điểm (UTC) | 2026-10-19T19:56:44.113Z |
+| Actor | admin |
+| Order id | 9 |
+| Tiền điều kiện (status trước) | confirmed |
+
+**Request:**
+```text
+PUT http://localhost:3000/api/admin/orders/9/status
+Body: {"status":"delivered"}
+```
+
+**Response thô:**
+```text
+HTTP 400
+{"error":"Invalid state transition from confirmed to delivered"}
+```
+
+| | |
+| --- | --- |
+| Expected (đặc tả) | Lỗi (không 2xx), status giữ nguyên "confirmed" |
+| Actual | HTTP 400; status sau = confirmed |
+| Verdict | PASS |

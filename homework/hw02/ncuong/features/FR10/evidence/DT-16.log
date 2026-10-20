@@ -1,0 +1,29 @@
+# DT-16 — raw evidence
+
+| Trường | Giá trị |
+| --- | --- |
+| T-ID | DT-16 |
+| Kỹ thuật / obligation | EP + BVA; P16, B1 ngay trên biên (shipping) |
+| Run ID | run-20261020-fr10 |
+| Thời điểm (UTC) | 2026-10-19T19:56:44.149Z |
+| Actor | user |
+| Order id | 16 |
+| Tiền điều kiện (status trước) | shipping |
+
+**Request:**
+```text
+PUT http://localhost:3000/api/orders/16/cancel
+```
+
+**Response thô:**
+```text
+HTTP 200
+{"message":"Order canceled successfully"}
+```
+
+| | |
+| --- | --- |
+| Expected (đặc tả) | Lỗi (không 2xx), status giữ nguyên "shipping" |
+| Actual | HTTP 200; status sau = canceled |
+| Verdict | FAIL |
+| Ghi chú | Bug ứng viên BUG-FR10-02 (User tự hủy khi shipping) |

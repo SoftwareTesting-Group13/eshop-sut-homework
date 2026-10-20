@@ -1,0 +1,28 @@
+# DT-17 — raw evidence
+
+| Trường | Giá trị |
+| --- | --- |
+| T-ID | DT-17 |
+| Kỹ thuật / obligation | EP + BVA; P17, B1 xa trên biên (delivered) |
+| Run ID | run-20261020-fr10 |
+| Thời điểm (UTC) | 2026-10-19T19:56:44.156Z |
+| Actor | user |
+| Order id | 17 |
+| Tiền điều kiện (status trước) | delivered |
+
+**Request:**
+```text
+PUT http://localhost:3000/api/orders/17/cancel
+```
+
+**Response thô:**
+```text
+HTTP 400
+{"error":"Cannot cancel this order."}
+```
+
+| | |
+| --- | --- |
+| Expected (đặc tả) | Lỗi (không 2xx), status giữ nguyên "delivered" |
+| Actual | HTTP 400; status sau = delivered |
+| Verdict | PASS |

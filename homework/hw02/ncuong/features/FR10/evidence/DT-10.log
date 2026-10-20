@@ -1,0 +1,29 @@
+# DT-10 — raw evidence
+
+| Trường | Giá trị |
+| --- | --- |
+| T-ID | DT-10 |
+| Kỹ thuật / obligation | EP; P10 (lùi confirmed→pending) |
+| Run ID | run-20261020-fr10 |
+| Thời điểm (UTC) | 2026-10-19T19:56:44.118Z |
+| Actor | admin |
+| Order id | 10 |
+| Tiền điều kiện (status trước) | confirmed |
+
+**Request:**
+```text
+PUT http://localhost:3000/api/admin/orders/10/status
+Body: {"status":"pending"}
+```
+
+**Response thô:**
+```text
+HTTP 400
+{"error":"Invalid state transition from confirmed to pending"}
+```
+
+| | |
+| --- | --- |
+| Expected (đặc tả) | Lỗi (không 2xx), status giữ nguyên "confirmed" |
+| Actual | HTTP 400; status sau = confirmed |
+| Verdict | PASS |

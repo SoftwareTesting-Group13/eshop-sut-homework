@@ -1,0 +1,30 @@
+# DT-20 — raw evidence
+
+| Trường | Giá trị |
+| --- | --- |
+| T-ID | DT-20 |
+| Kỹ thuật / obligation | EP; P20 (shipping→canceled, biên nhập nhằng) |
+| Run ID | run-20261020-fr10 |
+| Thời điểm (UTC) | 2026-10-19T19:56:44.164Z |
+| Actor | admin |
+| Order id | 19 |
+| Tiền điều kiện (status trước) | shipping |
+
+**Request:**
+```text
+PUT http://localhost:3000/api/admin/orders/19/status
+Body: {"status":"canceled"}
+```
+
+**Response thô:**
+```text
+HTTP 400
+{"error":"Invalid state transition from shipping to canceled"}
+```
+
+| | |
+| --- | --- |
+| Expected (đặc tả) | Lỗi (không 2xx), status giữ nguyên "shipping" |
+| Actual | HTTP 400; status sau = shipping |
+| Verdict | PASS |
+| Ghi chú | ASSUMED theo sơ đồ FR-10 (không có cung shipping→canceled) |

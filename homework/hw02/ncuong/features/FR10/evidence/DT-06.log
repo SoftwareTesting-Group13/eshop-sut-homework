@@ -1,0 +1,28 @@
+# DT-06 — raw evidence
+
+| Trường | Giá trị |
+| --- | --- |
+| T-ID | DT-06 |
+| Kỹ thuật / obligation | EP + BVA; P6, B1 ngay dưới biên |
+| Run ID | run-20261020-fr10 |
+| Thời điểm (UTC) | 2026-10-19T19:56:44.102Z |
+| Actor | user |
+| Order id | 6 |
+| Tiền điều kiện (status trước) | pending |
+
+**Request:**
+```text
+PUT http://localhost:3000/api/orders/6/cancel
+```
+
+**Response thô:**
+```text
+HTTP 200
+{"message":"Order canceled successfully"}
+```
+
+| | |
+| --- | --- |
+| Expected (đặc tả) | Thành công (2xx) và status = "canceled" |
+| Actual | HTTP 200; status sau = canceled |
+| Verdict | PASS |

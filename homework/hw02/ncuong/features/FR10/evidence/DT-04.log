@@ -1,0 +1,29 @@
+# DT-04 — raw evidence
+
+| Trường | Giá trị |
+| --- | --- |
+| T-ID | DT-04 |
+| Kỹ thuật / obligation | EP + BVA; P4, B3 tiến vào terminal |
+| Run ID | run-20261020-fr10 |
+| Thời điểm (UTC) | 2026-10-19T19:56:44.093Z |
+| Actor | admin |
+| Order id | 4 |
+| Tiền điều kiện (status trước) | pending |
+
+**Request:**
+```text
+PUT http://localhost:3000/api/admin/orders/4/status
+Body: {"status":"canceled"}
+```
+
+**Response thô:**
+```text
+HTTP 200
+{"message":"Order status updated"}
+```
+
+| | |
+| --- | --- |
+| Expected (đặc tả) | Thành công (2xx) và status = "canceled" |
+| Actual | HTTP 200; status sau = canceled |
+| Verdict | PASS |

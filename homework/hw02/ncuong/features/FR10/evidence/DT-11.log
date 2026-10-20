@@ -1,0 +1,29 @@
+# DT-11 — raw evidence
+
+| Trường | Giá trị |
+| --- | --- |
+| T-ID | DT-11 |
+| Kỹ thuật / obligation | EP; P11 (lùi shipping→confirmed) |
+| Run ID | run-20261020-fr10 |
+| Thời điểm (UTC) | 2026-10-19T19:56:44.122Z |
+| Actor | admin |
+| Order id | 11 |
+| Tiền điều kiện (status trước) | shipping |
+
+**Request:**
+```text
+PUT http://localhost:3000/api/admin/orders/11/status
+Body: {"status":"confirmed"}
+```
+
+**Response thô:**
+```text
+HTTP 400
+{"error":"Invalid state transition from shipping to confirmed"}
+```
+
+| | |
+| --- | --- |
+| Expected (đặc tả) | Lỗi (không 2xx), status giữ nguyên "shipping" |
+| Actual | HTTP 400; status sau = shipping |
+| Verdict | PASS |

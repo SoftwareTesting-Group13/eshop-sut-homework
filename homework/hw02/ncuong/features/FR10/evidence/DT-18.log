@@ -1,0 +1,28 @@
+# DT-18 — raw evidence
+
+| Trường | Giá trị |
+| --- | --- |
+| T-ID | DT-18 |
+| Kỹ thuật / obligation | EP; P18 (hủy khi đã canceled) |
+| Run ID | run-20261020-fr10 |
+| Thời điểm (UTC) | 2026-10-19T19:56:44.159Z |
+| Actor | user |
+| Order id | 18 |
+| Tiền điều kiện (status trước) | canceled |
+
+**Request:**
+```text
+PUT http://localhost:3000/api/orders/18/cancel
+```
+
+**Response thô:**
+```text
+HTTP 400
+{"error":"Cannot cancel this order."}
+```
+
+| | |
+| --- | --- |
+| Expected (đặc tả) | Lỗi (không 2xx), status giữ nguyên "canceled" |
+| Actual | HTTP 400; status sau = canceled |
+| Verdict | PASS |

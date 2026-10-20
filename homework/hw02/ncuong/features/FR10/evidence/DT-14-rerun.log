@@ -1,0 +1,30 @@
+# DT-14-rerun — raw evidence
+
+| Trường | Giá trị |
+| --- | --- |
+| T-ID | DT-14-rerun |
+| Kỹ thuật / obligation | EP; P14 rerun |
+| Run ID | run-20261020-fr10 |
+| Thời điểm (UTC) | 2026-10-19T19:56:44.168Z |
+| Actor | admin |
+| Order id | 20 |
+| Tiền điều kiện (status trước) | canceled |
+
+**Request:**
+```text
+PUT http://localhost:3000/api/admin/orders/20/status
+Body: {"status":"delivered"}
+```
+
+**Response thô:**
+```text
+HTTP 200
+{"message":"Order status updated"}
+```
+
+| | |
+| --- | --- |
+| Expected (đặc tả) | Lỗi (không 2xx), status giữ nguyên "canceled" |
+| Actual | HTTP 200; status sau = delivered |
+| Verdict | FAIL |
+| Ghi chú | Rerun độ lặp lại BUG-FR10-01 |

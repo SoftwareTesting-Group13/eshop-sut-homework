@@ -1,0 +1,30 @@
+# DT-19 — raw evidence
+
+| Trường | Giá trị |
+| --- | --- |
+| T-ID | DT-19 |
+| Kỹ thuật / obligation | EP; P19 (đơn không tồn tại / không sở hữu) |
+| Run ID | run-20261020-fr10 |
+| Thời điểm (UTC) | 2026-10-19T19:56:44.160Z |
+| Actor | admin-missing |
+| Order id | 999999 |
+| Tiền điều kiện (status trước) | N/A (không tồn tại) |
+
+**Request:**
+```text
+PUT http://localhost:3000/api/admin/orders/999999/status
+Body: {"status":"confirmed"}
+```
+
+**Response thô:**
+```text
+HTTP 404
+{"error":"Order not found"}
+```
+
+| | |
+| --- | --- |
+| Expected (đặc tả) | Lỗi (không 2xx), status giữ nguyên "N/A (không tồn tại)" |
+| Actual | HTTP 404; status sau = N/A |
+| Verdict | PASS |
+| Ghi chú | Đơn id 999999 không tồn tại (admin) |

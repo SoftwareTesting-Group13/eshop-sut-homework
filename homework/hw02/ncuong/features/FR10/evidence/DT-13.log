@@ -1,0 +1,29 @@
+# DT-13 — raw evidence
+
+| Trường | Giá trị |
+| --- | --- |
+| T-ID | DT-13 |
+| Kỹ thuật / obligation | EP + BVA; P13, B2 rời terminal delivered |
+| Run ID | run-20261020-fr10 |
+| Thời điểm (UTC) | 2026-10-19T19:56:44.136Z |
+| Actor | admin |
+| Order id | 13 |
+| Tiền điều kiện (status trước) | delivered |
+
+**Request:**
+```text
+PUT http://localhost:3000/api/admin/orders/13/status
+Body: {"status":"shipping"}
+```
+
+**Response thô:**
+```text
+HTTP 400
+{"error":"Invalid state transition from delivered to shipping"}
+```
+
+| | |
+| --- | --- |
+| Expected (đặc tả) | Lỗi (không 2xx), status giữ nguyên "delivered" |
+| Actual | HTTP 400; status sau = delivered |
+| Verdict | PASS |
