@@ -17,12 +17,13 @@ I use AI tools for the following tasks,
 - Sửa cấu hình API endpoint cho Expo mobile theo Android emulator/iOS Simulator/thiết bị thật và kiểm tra bản export Android.
 - Cài tạm Expo Go và dependency, chạy FR-06 trên Android emulator/backend cách ly, chụp screenshot, phân tích bug, cập nhật báo cáo và dọn tài nguyên do lượt test tạo.
 - Rà báo cáo FR-06, commit/push artifact và ảnh, tạo GitHub Issue #55/#56 kèm ảnh UI, cập nhật liên kết vào báo cáo.
+- Biên tập lại main report HW02 thành bản tổng hợp nhất quán cho bốn feature, giữ số liệu gốc và bổ sung tái hiện ngắn cho từng bug.
 - Soạn AI Audit Report này.
 
 > **Phạm vi lập báo cáo (capture notes):**
 > - Bằng chứng khả dụng: phiên hội thoại hiện tại (prompt của người dùng + các artifact do agent tạo trong repo); không có file export transcript riêng. Hai screenshot (`features/FR02/screenshots/BUG-FR02-01.png`, `BUG-FR02-02.png`) và 39 ảnh Postman + 1 ảnh UI FR17 trong `features/FR17/screenshots/` do **người dùng** cung cấp. 24 screenshot FR-06 trong `features/FR06/screenshots/` do agent chụp trực tiếp từ Android emulator trong AI-016.
-> - Số interaction đã ghi: **17** (AI-001…AI-017; các prompt của người dùng; các tool call nội bộ không phải prompt của người dùng nên không liệt kê).
-> - Công cụ AI đã dùng (theo bằng chứng): OpenCode agent, model `DeepSeek V4.1 Flash Free` (provider `opencode`); Codex (OpenAI, GPT-6) cho AI-014…AI-017.
+> - Số interaction đã ghi: **18** (AI-001…AI-018; các prompt của người dùng; các tool call nội bộ không phải prompt của người dùng nên không liệt kê).
+> - Công cụ AI đã dùng (theo bằng chứng): OpenCode agent, model `DeepSeek V4.1 Flash Free` (provider `opencode`); Codex (OpenAI, GPT-6) cho AI-014…AI-018.
 > - Công cụ/phiên được nhắc tới nhưng không kiểm tra được: không.
 
 ---
@@ -575,6 +576,25 @@ Rà lại 16 ca FR-06 (3 PASS, 9 FAIL, 4 INCONCLUSIVE), 24 screenshot, link và 
 
 ---
 
+## Interaction AI-018
+
+- **AI tool:** Codex (OpenAI, GPT-6).
+- **Date and time:** Time not available in source (client context date 2026-10-21, không có giờ gửi prompt).
+- **Source:** Prompt người dùng trong phiên này; thay đổi tại `reports/main-report.md`.
+- **Task:** Biên tập lại master report để bỏ lặp, đối chiếu số liệu/link và giữ mỗi bug một đường tái hiện ngắn.
+
+### Your prompt
+
+```text
+Clean lại dùm t cái main report đi m
+```
+
+### The AI output
+
+Đã viết lại `reports/main-report.md` thành bản tổng hợp cho FR-02/FR-10/FR-17/FR-06: một bảng 83 T-ID (43 PASS, 34 FAIL, 6 Quan sát), bảng coverage EP/BVA, 14 bug và severity tổng 5 High/9 Medium, cùng 14 mục tái hiện ngắn theo đúng bug ID. Giữ kết quả và trạng thái Issue #25/#26, #33/#34, #47…#56; liên kết tới báo cáo/evidence từng feature. Đã kiểm tra 14 hàng bug khớp 14 mục chi tiết, không có link nội bộ hỏng và `git diff --check` không báo lỗi.
+
+---
+
 ## Optional audit table (theo mẫu `[AI-02]` — bổ sung, không thay thế 4 trường bắt buộc)
 
 | (1) Prompt + Công cụ | (2) Output AI | (3) Verdict | (4) Lý do | (5) Bản SV sửa |
@@ -596,5 +616,6 @@ Rà lại 16 ca FR-06 (3 PASS, 9 FAIL, 4 INCONCLUSIVE), 24 screenshot, link và 
 | Codex · GPT-6 · Time not available in source · “Ủa mobile dc build dưới dạng react native…” | Sửa endpoint Expo mobile trong `frontend-mobile/App.js`, cập nhật `setup_guide.md`, xác nhận Android bundle; AI-015 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 | Codex · GPT-6 · Time not available in source · “cài xong tự test, tự tìm và phân tích bug lại từ đầu nhé…” | Run FR-06 Android 16 ca (3 PASS, 9 FAIL, 4 INCONCLUSIVE), 2 bug, 24 screenshot, 2 draft Issue; cập nhật report/evidence/AI Audit; cleanup tài nguyên cài tạm; AI-016 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 | Codex · GPT-6 · Time not available in source · “OK chốt hết nhé, check report + commit + tạo issue cho 2 bug dùm t.” | Commit/push artifact FR-06 + 24 ảnh; Issue #55/#56 có 10 ảnh UI nhúng; cập nhật report/evidence/README/AI Audit và commit link; AI-017 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
+| Codex · GPT-6 · Time not available in source · “Clean lại dùm t cái main report đi m” | Biên tập lại `reports/main-report.md`: 83 case, 14 bug có 14 mục tái hiện ngắn, severity 5 High/9 Medium, link hợp lệ; AI-018 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 
 > Cột (3)–(5) do **sinh viên** tự đánh giá/điền; báo cáo không tự suy diễn verdict hay bản sửa của sinh viên.
