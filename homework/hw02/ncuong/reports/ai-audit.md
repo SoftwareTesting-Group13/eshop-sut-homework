@@ -13,12 +13,15 @@ I use AI tools for the following tasks,
 - Tạo 6 GitHub Issue FR-17 (#47…#52) kèm ảnh Postman, commit/push artifact FR-17 và cập nhật link Issue trong báo cáo; không dùng ảnh UI.
 - Bổ sung 5 ảnh Postman cho `BUG-FR17-07/08`, publish Issue #53/#54, cập nhật báo cáo và ghi AI Audit.
 - Bổ sung 1 ảnh UI áp dụng coupon `150%` cho `BUG-FR17-08`, cập nhật Issue #54 và báo cáo; ảnh UI chỉ minh họa hệ quả, không thay bằng chứng API.
+- Đọc rule FR-06 và API spec, thiết kế Domain/EP + BVA cho Product detail view trên mobile, chạy API cách ly, ghi giới hạn môi trường mobile và cập nhật báo cáo.
+- Sửa cấu hình API endpoint cho Expo mobile theo Android emulator/iOS Simulator/thiết bị thật và kiểm tra bản export Android.
+- Cài tạm Expo Go và dependency, chạy FR-06 trên Android emulator/backend cách ly, chụp screenshot, phân tích bug, cập nhật báo cáo và dọn tài nguyên do lượt test tạo.
 - Soạn AI Audit Report này.
 
 > **Phạm vi lập báo cáo (capture notes):**
-> - Bằng chứng khả dụng: phiên hội thoại hiện tại (prompt của người dùng + các artifact do agent tạo trong repo); không có file export transcript riêng. Hai screenshot (`features/FR02/screenshots/BUG-FR02-01.png`, `BUG-FR02-02.png`) và 39 ảnh Postman + 1 ảnh UI FR17 trong `features/FR17/screenshots/` do **người dùng** cung cấp, không phải AI tạo.
-> - Số interaction đã ghi: **13** (AI-001…AI-013; các prompt của người dùng; các tool call nội bộ không phải prompt của người dùng nên không liệt kê).
-> - Công cụ AI đã dùng (theo bằng chứng): OpenCode agent, model `DeepSeek V4.1 Flash Free` (provider `opencode`).
+> - Bằng chứng khả dụng: phiên hội thoại hiện tại (prompt của người dùng + các artifact do agent tạo trong repo); không có file export transcript riêng. Hai screenshot (`features/FR02/screenshots/BUG-FR02-01.png`, `BUG-FR02-02.png`) và 39 ảnh Postman + 1 ảnh UI FR17 trong `features/FR17/screenshots/` do **người dùng** cung cấp. 24 screenshot FR-06 trong `features/FR06/screenshots/` do agent chụp trực tiếp từ Android emulator trong AI-016.
+> - Số interaction đã ghi: **16** (AI-001…AI-016; các prompt của người dùng; các tool call nội bộ không phải prompt của người dùng nên không liệt kê).
+> - Công cụ AI đã dùng (theo bằng chứng): OpenCode agent, model `DeepSeek V4.1 Flash Free` (provider `opencode`); Codex (OpenAI, GPT-6) cho AI-014…AI-016.
 > - Công cụ/phiên được nhắc tới nhưng không kiểm tra được: không.
 
 ---
@@ -491,6 +494,67 @@ Output của agent là các thay đổi trong repo và Issue #54 đã cập nh�
 
 ---
 
+## Interaction AI-014
+
+- **AI tool:** Codex (OpenAI, GPT-6).
+- **Date and time:** Time not available in source.
+- **Source:** Yêu cầu của người dùng trong phiên hội thoại này; ngày client context 2026-10-21, không có giờ gửi.
+- **Task:** Domain/EP + BVA cho FR-06 Mobile và cập nhật AI Audit.
+
+### Your prompt
+
+```text
+Tiến hành thực hiện test domain testing cho FR-06 — Product detail view (Mobile). Đọc kỹ [prompt.txt](homework/hw02/ncuong/prompt.txt) , requirement và api spec.&#x20;
+
+Tham khảo các folder khác cách tổ chức và làm việc, kết hợp với [skills](homework/hw02/ncuong/skills/) . Test kỹ lưỡng domain testing, ko để sót.
+
+Sau khi làm xong, nhớ AI Audit Log lại [ai-audit-report-template.md](homework/hw02/ncuong/skills/ai-audit-logger/assets/ai-audit-report-template.md) 
+```
+
+### The AI output
+
+Đã thiết kế 16 ca FR-06 Mobile (EP và BVA), chạy 7 ca API trên backend/DB cách ly và lưu evidence tại [FR06](/Users/cuong/Documents/Code/eshop-sut-homework/homework/hw02/ncuong/features/FR06/test-results.md). Kết quả: 7 INCONCLUSIVE, 9 BLOCKED vì chưa có môi trường chạy mobile; chưa có bug được xác nhận. Đã cập nhật [báo cáo tổng hợp](/Users/cuong/Documents/Code/eshop-sut-homework/homework/hw02/ncuong/reports/main-report.md), [README](/Users/cuong/Documents/Code/eshop-sut-homework/homework/hw02/ncuong/README.md) và AI Audit. Cần chạy các bước manual trên thiết bị để xác nhận hiển thị, số lượng và phản hồi thêm giỏ.
+
+---
+
+## Interaction AI-015
+
+- **AI tool:** Codex (OpenAI, GPT-6).
+- **Date and time:** Time not available in source (client context date 2026-10-21, không có giờ gửi prompt).
+- **Source:** Prompt người dùng trong phiên này; thay đổi local `frontend-mobile/App.js`, `setup_guide.md`.
+- **Task:** Làm rõ React Native/Expo mobile và sửa endpoint API để Android emulator/iOS Simulator/thiết bị thật truy cập được backend.
+
+### Your prompt
+
+```text
+Ủa mobile dc build dưới dạng react native mà sao lại truy cập không dc nhỉ, với sửa api endpoint cho mobile để chạy đúng đi
+```
+
+### The AI output
+
+Output là thay đổi có thể kiểm tra tại `frontend-mobile/App.js` (Android emulator mặc định `http://10.0.2.2:3000/api`, iOS Simulator `http://localhost:3000/api`, cho phép override `EXPO_PUBLIC_API_URL`, bỏ dấu `/` cuối) và `setup_guide.md` (hướng dẫn `.env.local` cho thiết bị thật, `npm ci`). Đã xuất bundle Android bằng Expo và xác nhận bundle có endpoint `10.0.2.2:3000/api`; sau đó chạy app thật trong AI-016. Không sửa logic FR-06 ở interaction này.
+
+---
+
+## Interaction AI-016
+
+- **AI tool:** Codex (OpenAI, GPT-6).
+- **Date and time:** Time not available in source (client context date 2026-10-21, không có giờ gửi prompt).
+- **Source:** Prompt người dùng trong phiên này; run `run-20261021-fr06-mobile`, 24 ảnh tại `features/FR06/screenshots/`, report/evidence/issue draft trong repo.
+- **Task:** Cài tạm môi trường cần thiết, tự chạy lại Domain/EP+BVA FR-06 trên mobile, tìm/phân tích bug, chụp ảnh, cập nhật AI Audit và dọn tài nguyên cài tạm.
+
+### Your prompt
+
+```text
+cài xong tự test, tự tìm và phân tích bug lại từ đầu nhé. Xong tự cap màn hình đính dô luôn. Nhớ AI Audit log và xóa những thứ m đã cài (ko xóa nhầm nhé)
+```
+
+### The AI output
+
+Output là bộ artifact FR-06 tại `features/FR06/`: 16 T-ID đã chạy (3 PASS, 9 FAIL, 4 INCONCLUSIVE), 2 bug xác nhận trên Android emulator, 24 screenshot gắn EV-ID/ca và 2 nháp Issue có ảnh. Cập nhật `domain-analysis.md`, `boundary-analysis.md`, `test-cases.md`, `test-results.md`, `evidence/FR06-evidence.md`, `reports/main-report.md`, `README.md`, `supporting-materials/fr06-observations.md` và AI Audit này. Đã dừng backend/Metro/emulator do phiên mở, gỡ Expo Go APK cài tạm và xóa dependency/build/temp do phiên tạo; giữ nguyên SDK/AVD và `backend/database.sqlite` (SHA-256 trước/sau giống nhau). Hai nháp Issue chờ sinh viên review theo `prompt.txt`, chưa publish.
+
+---
+
 ## Optional audit table (theo mẫu `[AI-02]` — bổ sung, không thay thế 4 trường bắt buộc)
 
 | (1) Prompt + Công cụ | (2) Output AI | (3) Verdict | (4) Lý do | (5) Bản SV sửa |
@@ -508,5 +572,8 @@ Output của agent là các thay đổi trong repo và Issue #54 đã cập nh�
 | OpenCode · DeepSeek V4.1 Flash Free · 2026-10-21 · Time not available in source · “OBS-FR17-03 … OBS-FR17-04 … T xác nhận đây là 2 bug … Thêm 2 bug này vào fr17 hiện tại … Ghi xong nhớ AI Audit log …” | Chuyển DT-07/DT-32 sang FAIL; thêm `BUG-FR17-07`/`BUG-FR17-08`; cập nhật domain/BVA/test-cases/test-results/evidence/observations/master report/README; counts FR-17 `11/20/1`, tổng `40/25/2`; tạo 2 Issue draft chờ ảnh Postman; thêm AI-011 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 | OpenCode · DeepSeek V4.1 Flash Free · 2026-10-21 · Time not available in source · “T vừa thêm các ảnh cho 2 issue mới, bổ sung vào báo cáo và tạo issue dùm t nhé. Nhớ AI Audit” | Thêm 5 ảnh Postman cho BUG-FR17-07/08; cập nhật 39 ảnh/19-of-20 FAIL/8 Issue; publish Issue #53/#54; commit/push `80abf1a`; cập nhật draft, test-results, evidence, main-report, README, observations; thêm AI-012 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 | OpenCode · DeepSeek V4.1 Flash Free · 2026-10-21 · Time not available in source · “T mới thêm 1 ảnh applied coupon 150% ấy, sửa issue tí cho cái ảnh t mới thêm nha m” | Thêm ảnh UI `BUG-FR17-08-AppliedDiscount150.png` vào BUG-FR17-08/Issue #54; cập nhật draft, test-results, evidence, main-report, README, observations; commit/push `2a8c77c`; thêm AI-013 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
+| Codex · GPT-6 · Time not available in source · “Tiến hành thực hiện test domain testing cho FR-06 — Product detail view (Mobile)…” | 16 ca EP/BVA, 7 ca API INCONCLUSIVE, 9 ca BLOCKED mobile; artifact FR06, master report, README, AI-014 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
+| Codex · GPT-6 · Time not available in source · “Ủa mobile dc build dưới dạng react native…” | Sửa endpoint Expo mobile trong `frontend-mobile/App.js`, cập nhật `setup_guide.md`, xác nhận Android bundle; AI-015 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
+| Codex · GPT-6 · Time not available in source · “cài xong tự test, tự tìm và phân tích bug lại từ đầu nhé…” | Run FR-06 Android 16 ca (3 PASS, 9 FAIL, 4 INCONCLUSIVE), 2 bug, 24 screenshot, 2 draft Issue; cập nhật report/evidence/AI Audit; cleanup tài nguyên cài tạm; AI-016 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 
 > Cột (3)–(5) do **sinh viên** tự đánh giá/điền; báo cáo không tự suy diễn verdict hay bản sửa của sinh viên.

@@ -67,17 +67,22 @@ Frontend Mobile cung cấp giao diện App trên điện thoại. (Lưu ý: Back
    ```
 3. Cài đặt các thư viện:
    ```bash
-   npm install
+   npm ci
    ```
-4. Khởi chạy Metro Bundler của Expo:
+4. Chọn địa chỉ API:
+   - Android Emulator dùng mặc định `http://10.0.2.2:3000/api` (trỏ về máy chạy backend).
+   - iOS Simulator dùng mặc định `http://localhost:3000/api`.
+   - Thiết bị thật: tạo `frontend-mobile/.env.local` với `EXPO_PUBLIC_API_URL=http://<IP-LAN-của-máy-chạy-backend>:3000/api`. Kiểm tra trên trình duyệt điện thoại rằng `http://<IP-LAN>:3000/api/products` trả JSON. Điện thoại và máy tính phải cùng mạng; `.env.local` đã được gitignore.
+   - Nếu backend test chạy ở cổng khác, đặt URL đầy đủ tương ứng trong `.env.local`.
+5. Khởi chạy Metro Bundler của Expo:
    ```bash
    npx expo start
    ```
-5. **Cách chạy App:**
+6. **Cách chạy App:**
    - Một mã QR Code sẽ hiện ra trên Terminal.
    - Sử dụng điện thoại tải app **Expo Go** (từ App Store hoặc Google Play).
    - Mở Expo Go và chọn quét mã QR (Scan QR Code) để mở ứng dụng.
-   - *Lưu ý: Điện thoại và Máy tính phải dùng chung một mạng Wi-Fi.*
+   - Sau khi đổi `.env.local`, reload app trong Expo Go để nhận URL mới. Backend phải đang chạy và cho phép thiết bị truy cập cổng 3000.
    
    *(Đối với máy ảo/Emulator, bạn có thể bấm phím `a` để mở trên Android Emulator hoặc `i` để mở trên iOS Simulator nếu đã cài đặt).*
 

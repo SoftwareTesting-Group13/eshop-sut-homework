@@ -17,7 +17,7 @@
 | A | FR-02 — Login and account lockout | **Đã kiểm thử** (15 ca; 2 bug đã xác nhận, Issue [#25](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/25) & [#26](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/26)) | [`features/FR02/`](../features/FR02/) |
 | B | FR-10 — Order state machine | **Đã kiểm thử** (20 ca; 18 PASS, 2 FAIL; 2 bug `BUG-FR10-01/02` đã xác nhận qua UI và mở Issue kèm screenshot) | [`features/FR10/`](../features/FR10/) |
 | C | FR-17 — Coupon management (CRUD) | **Đã kiểm thử** (32 ca; 11 PASS, 20 FAIL, 1 Quan sát; 8 bug đã xác nhận qua API; 39 ảnh Postman + 1 ảnh UI bổ sung cho BUG-08 phủ 19/20 FAIL; 8 Issue #47…#54; bằng chứng chính là API) | [`features/FR17/`](../features/FR17/) |
-| D | FR-06 — Product detail view (Mobile) | Chưa thực hiện | — |
+| D | FR-06 — Product detail view (Mobile) | Đã chạy 16 ca: 3 PASS, 9 FAIL, 4 INCONCLUSIVE; 2 bug xác nhận qua UI Android với 24 screenshot và 2 nháp Issue chờ sinh viên review | [`features/FR06/`](../features/FR06/) |
 
 Mỗi feature có `domain-analysis.md`, `boundary-analysis.md`, `test-cases.md`, `test-results.md` và `evidence/` trong `../features/<FEATURE_CODE>/`.
 
@@ -67,7 +67,9 @@ Coverage theo nghĩa vụ: EP 20 lớp — thiết kế 20/20, đã chạy 20/20
 
 Coverage theo nghĩa vụ: EP 32 lớp — thiết kế 32/32, đã chạy 32/32, có oracle 31/32 (11 PASS, 20 FAIL), 1 lớp UNRESOLVED/Quan sát (P31); BVA 9 điểm biên (B1 3, B2 3, B3 3) — thiết kế 9/9, đã chạy 9/9, đạt oracle 5/9, dùng lại 9 T-ID EP (0 T-ID BVA-only). Interface: API admin `POST/GET/DELETE` coupon; UI admin mới có hướng dẫn manual; **bằng chứng chính là Postman/API; 1 ảnh UI bổ sung hệ quả `BUG-FR17-08`**. Chi tiết: [`domain-analysis.md`](../features/FR17/domain-analysis.md), [`boundary-analysis.md`](../features/FR17/boundary-analysis.md), [`test-cases.md`](../features/FR17/test-cases.md), [`test-results.md`](../features/FR17/test-results.md).
 
-FR-06 chưa có kết quả. Không gán số 0 cho feature chưa thực hiện.
+### FR-06 — Product detail view (Mobile)
+
+16 T-ID từ 16 lớp EP đã chạy: **3 PASS, 9 FAIL, 4 INCONCLUSIVE, 0 BLOCKED**. 12 ca có Actual UI trên Android emulator/Expo Go; 4 ca ID không chọn được qua UI chỉ có API Actual và thiếu oracle status/body. Hai bug UI đã xác nhận: thiếu tên danh mục ở ba sản phẩm (BUG-FR06-01), và nhận quantity invalid rồi âm thầm đổi thành `1`/lấy tiền tố (BUG-FR06-02). 24 screenshot gồm màn chi tiết, input, alert và giỏ; hai [nháp Issue](../features/FR06/issues/) chờ sinh viên review trước khi publish. EP designed/executed 16/16, đạt oracle 3/16; BVA designed/executed 6/6 nghĩa vụ điểm, 4 PASS/2 FAIL, dùng lại T08/T09. App được sửa cấu hình endpoint để Android emulator truy cập backend bản sao ở `10.0.2.2:3000/api`; logic FR-06 không sửa. [Domain](../features/FR06/domain-analysis.md) · [BVA](../features/FR06/boundary-analysis.md) · [Catalog](../features/FR06/test-cases.md) · [Results](../features/FR06/test-results.md) · [Evidence](../features/FR06/evidence/FR06-evidence.md) · [Screenshots](../features/FR06/screenshots/).
 
 ### Tổng hợp case đã thực hiện
 
@@ -76,7 +78,8 @@ FR-06 chưa có kết quả. Không gán số 0 cho feature chưa thực hiện.
 | FR-02 | 15 | 15 | 11 | 3 | 1 | 0 | 0 |
 | FR-10 | 20 | 20 | 18 | 2 | 0 | 0 | 0 |
 | FR-17 | 32 | 32 | 11 | 20 | 1 | 0 | 0 |
-| **Tổng (T-ID duy nhất)** | **67** | **67** | **40** | **25** | **2** | **0** | **0** |
+| FR-06 | 16 | 16 | 3 | 9 | 4 | 0 | 0 |
+| **Tổng (T-ID duy nhất)** | **83** | **83** | **43** | **34** | **6** | **0** | **0** |
 
 Đã chạy = PASS + FAIL + Quan sát; chỉ cộng T-ID duy nhất của từng feature, không cộng chéo EP/BVA.
 
@@ -96,6 +99,8 @@ FR-06 chưa có kết quả. Không gán số 0 cho feature chưa thực hiện.
 | BUG-FR17-06 | FR17 | Backend nhận `max_uses_per_user < 1` hoặc thiếu; number `0` thành `1` | Medium | DT-26, DT-27, DT-28 | Đã xác nhận API; Issue [#52](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52); ảnh Postman | [`test-results.md`](../features/FR17/test-results.md) |
 | BUG-FR17-07 | FR17 | Tạo được `save10` bên cạnh `SAVE10` do uniqueness phân biệt hoa/thường | Medium | DT-07 | Đã xác nhận API bằng ảnh Postman (3 ảnh); Issue [#53](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/53) | [`test-results.md`](../features/FR17/test-results.md) |
 | BUG-FR17-08 | FR17 | Tạo được coupon `percent` với `discount_value=150` (vượt 100%) | High | DT-32 | Đã xác nhận API bằng ảnh Postman (2 ảnh) + 1 ảnh UI bổ sung hệ quả; Issue [#54](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/54) | [`test-results.md`](../features/FR17/test-results.md) |
+| BUG-FR06-01 | FR06 | Màn chi tiết thiếu tên danh mục của ID 1/2/5 | Medium | T01–T03 | Đã xác nhận UI Android, có 3 ảnh; [nháp Issue](../features/FR06/issues/BUG-FR06-01.md) chờ review | [`test-results.md`](../features/FR06/test-results.md) |
+| BUG-FR06-02 | FR06 | Quantity invalid vẫn được thêm vào giỏ với giá trị đã đổi | Medium | T10–T14, T16 | Đã xác nhận UI Android, có ảnh input/alert/giỏ; [nháp Issue](../features/FR06/issues/BUG-FR06-02.md) chờ review | [`test-results.md`](../features/FR06/test-results.md) |
 
 **Thống kê severity FR02:** Critical 0 · High 1 · Medium 1 · Low 0 · **Tổng 2**.
 

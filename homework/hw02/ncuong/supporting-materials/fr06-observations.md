@@ -1,0 +1,3 @@
+# Quan sát ngoài EP/BVA FR-06 — Android status bar che navbar
+
+Trong run `run-20261021-fr06-mobile` trên emulator Pixel_10_Pro, phần header “EShop Mobile / Đăng nhập / Giỏ” được vẽ dưới Android status bar (giờ, tín hiệu, pin), thấy trong [ảnh chi tiết](../features/FR06/screenshots/T01-detail-ID1.png) và [ảnh giỏ](../features/FR06/screenshots/T15-cart-2.png). Tap vào vị trí chữ “Giỏ” không chuyển màn; focus accessibility node “Giỏ (1)” bằng Tab rồi Enter thì chuyển màn. Đây là quan sát điều hướng Android nằm ngoài rule FR-06, không tính vào 16 T-ID hoặc hai BUG-FR06. Cần kiểm tra riêng trên build/thiết bị đích trước khi lập Issue giao diện.

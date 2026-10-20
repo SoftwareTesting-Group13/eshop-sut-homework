@@ -10,10 +10,19 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  Platform,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
-const API_URL = "http://192.168.10.13:3000/api"; // IP LAN để chạy được trên iOS/Android và thiết bị thật
+// Expo inlines EXPO_PUBLIC_* at bundle time. Use the host's loopback from
+// simulators; a physical phone needs the host computer's LAN address.
+const DEFAULT_API_URL =
+  Platform.OS === "android"
+    ? "http://10.0.2.2:3000/api"
+    : "http://localhost:3000/api";
+const API_URL = (
+  process.env.EXPO_PUBLIC_API_URL || DEFAULT_API_URL
+).replace(/\/+$/, "");
 
 const formatMoney = (value) => `${Number(value).toLocaleString()} ₫`;
 
