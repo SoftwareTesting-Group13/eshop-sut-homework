@@ -16,6 +16,18 @@ Prioritize specification correctness, meaningful coverage, execution safety, and
 
 Follow the user's course methodology, terminology, and deliverable requirements when provided.
 
+## 0. Required HW02 entry sequence
+
+Before opening specialized skills or inspecting SUT implementation, read these three files from the repository root, in order:
+
+1. `README.md` — authoritative business rules and expected behavior.
+2. `api_specification.md` — project API contract; read it even if the selected feature is exercised through a UI or mobile app.
+3. `homework/hw02/docs/2026.HW02.Domain Testing_En.md` — HW02 scope, EP/BVA method, and deliverables.
+
+Then scan the repository at a structural level (for example with `rg --files`) to locate applications, the target feature, interfaces, test setup, and existing artifacts. Do not inspect implementation in depth or run the SUT during this scan. Only after these steps, open the other skills and targeted source files. If this orchestrator skill was opened before the three documents, complete this entry sequence immediately before continuing.
+
+Use the root README for business-rule oracles, the API specification for endpoint contracts, and the assignment for submission scope. Record discrepancies as `UNRESOLVED` with affected cases/oracles; do not silently choose the SUT's current behavior. If a required document is unavailable, identify it and hold work that depends on it rather than inventing requirements.
+
 ## 1. Terminology and completeness
 
 For HW02, derive the submitted test suite with the two techniques required by the assignment:

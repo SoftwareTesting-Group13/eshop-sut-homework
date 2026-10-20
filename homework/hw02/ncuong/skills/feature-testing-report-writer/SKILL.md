@@ -75,12 +75,14 @@ HW02 final submission requires PDF exports of all three shared reports beside th
 
 Write every bug so that a reader can reproduce it **by hand** without reading code — the way a manual tester did before automation. State the feature code, the related test case, and the exact numbers/values/sequence. One reproduced finding = one entry, and the same entry appears (condensed) in the master report with its student-review status.
 
+Use the verified user journey as the main reproduction path when the bug can be triggered and observed in the UI: write numbered actions in the user's voice (“Người dùng mở trang…”, “Nhập…”, “Bấm…”, “Quan sát…”) with the actual values and visible result. Put API/DB checks after those steps only if they establish a hidden state or make the evidence clearer. If the bug was observed only through API, write numbered request and inspection actions (“Gửi `POST…`”, “Đọc HTTP/DB…”) as the primary path; API defects are valid findings in their own right. Mark any suggested UI path as unverified until someone runs it in a browser. Reproducing an EP/BVA defect through UI does not create a separate UI Validation test suite.
+
 - **Bug ID is feature-scoped:** `BUG-<FEATURE_CODE>-NN` (e.g. `BUG-XX-01`) so a master aggregating several features can be searched and traced. Never reuse or renumber an ID for a different defect.
 - **Preconditions** must be concrete: exact account/email, prior state (`login_attempts`, `locked_until`), how it was prepared.
 - **Steps** are numbered and use exact values, not placeholders like "some value".
 - **Expected** comes from the spec (cite the rule); **Actual** is the observed result.
 - **Evidence** points to a log/artifact; do **not** take screenshots on your own — record `Screenshot/Issue: Chờ người kiểm thử xác nhận`; after review, the student captures the screenshot and opens the Issue. For HW02, a screenshot attached to each GitHub Issue is required for final submission; mark it pending until the student reviews the bug and captures it.
-- Add a ready-to-run API snippet only when it helps reproduce (not a substitute for the manual steps).
+- Add a ready-to-run API snippet only when it helps reproduce or verify hidden state; do not let it replace a verified UI path.
 
 ```markdown
 #### BUG-<FEATURE>-NN — <title>
@@ -108,8 +110,7 @@ Write every bug so that a reader can reproduce it **by hand** without reading co
 **Actual:** <kết quả quan sát>
 **Độ lặp lại:** <1/1 hoặc n/m>
 **Root cause:** <chỉ khi có bằng chứng code, kèm file:dòng>
-**Reproduce nhanh (API):** <tùy chọn>
-    curl -s -X POST ... 
+**Đối chiếu API/DB:** <tùy chọn; chỉ khi cần quan sát trạng thái không thấy trên UI>
 **GitHub Issue:** Chờ người kiểm thử xác nhận bug trước khi mở
 **Screenshot:** Chờ người kiểm thử xác nhận rồi chụp và gắn vào Issue
 

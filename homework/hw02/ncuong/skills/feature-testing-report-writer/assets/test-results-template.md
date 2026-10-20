@@ -48,7 +48,7 @@ Priority là mức ưu tiên xử lý, đánh giá riêng theo mức ảnh hư�
 
 ### Chi tiết (manual reproduction)
 
-> **Môi trường chung:** `<...>`. **Cách tái hiện:** dùng thao tác thực tế tại interface đã kiểm thử. **Sau khi xác nhận bug, người kiểm thử chụp screenshot và gắn vào GitHub Issue theo yêu cầu HW02.**
+> **Môi trường chung:** `<...>`. **Cách tái hiện:** ưu tiên các bước người dùng thực hiện trên UI khi bug đã được xác nhận qua UI; nếu chỉ chạy API thì ghi bước API và chưa nhận là đã tái hiện trên UI. API/DB có thể bổ sung để xác nhận trạng thái ẩn. **Sau khi xác nhận bug, người kiểm thử chụp screenshot và gắn vào GitHub Issue theo yêu cầu HW02.**
 
 #### BUG-<FEATURE>-01 — <title>
 
@@ -64,8 +64,8 @@ Priority là mức ưu tiên xử lý, đánh giá riêng theo mức ảnh hư�
 **Tiền điều kiện:** `<tài khoản cụ thể + state cụ thể>`
 
 **Các bước tái hiện:**
-1. `<bước với giá trị cụ thể>`
-2. `<...>`
+1. `<UI đã kiểm chứng: Người dùng mở trang ... / API đã kiểm chứng: Người kiểm thử gửi request ...>`
+2. `<Người dùng nhập/bấm/chờ và thấy gì; hoặc người kiểm thử đọc response/DB. Giữ giá trị cụ thể.>`
 
 | Bước | Input / hành động | Quan sát |
 | --- | --- | --- |
@@ -73,10 +73,7 @@ Priority là mức ưu tiên xử lý, đánh giá riêng theo mức ảnh hư�
 
 **Expected:** `<theo đặc tả + rule>`. **Actual:** `<kết quả quan sát>`.
 **Độ lặp lại:** `<1/1 hoặc n/m>`. **Root cause:** `<file:dòng, chỉ khi có bằng chứng>`.
-**Reproduce nhanh (API):**
-```bash
-curl -s -X POST <endpoint> -H 'Content-Type: application/json' -d '<body>'
-```
+**Đối chiếu API/DB (nếu cần):** `<lệnh quan sát trạng thái ẩn; bỏ mục này nếu UI đã đủ bằng chứng>`.
 **GitHub Issue:** Chờ người kiểm thử xác nhận bug. **Screenshot:** Chờ xác nhận rồi chụp và gắn vào Issue.
 
 ---

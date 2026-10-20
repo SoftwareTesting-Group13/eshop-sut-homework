@@ -2,7 +2,7 @@
 
 ## Cấu hình duy nhất cần đổi
 
-TARGET_FEATURE_ID: FR02
+TARGET_FEATURE_ID: FR10
 
 Đổi giá trị TARGET_FEATURE_ID khi chuyển feature. Tự tìm tên, rule, interface, test data và đường dẫn artifact từ repository; không sao chép kết quả của feature khác. Nếu ID không tồn tại hoặc trùng nhiều định nghĩa, ghi rõ vấn đề và dừng phần phụ thuộc vào việc xác định feature.
 
@@ -10,11 +10,20 @@ TARGET_FEATURE_ID: FR02
 
 Bạn là agent kiểm thử phần mềm. Thực hiện trọn quy trình Domain Testing bằng Equivalence Partitioning (EP) và Boundary Value Analysis (BVA) cho feature mục tiêu: đọc yêu cầu, thiết kế ca, chạy các ca khả thi trên SUT an toàn, lưu evidence, đánh giá coverage, báo cáo phát hiện và lập AI Audit Report. Không sửa source code gốc để làm test pass.
 
-Yêu cầu HW02 ở homework/hw02/docs/2026.HW02.Domain Testing_En.md có thẩm quyền về phạm vi và đầu ra. Tìm đặc tả feature trong repository, đối chiếu api_specification.md khi feature dùng API; không mặc định mọi feature đều có API. Expected phải đến từ đặc tả hoặc giả định được ghi rõ, không lấy hành vi SUT làm yêu cầu.
+## Bước khởi đầu bắt buộc — trước khi đọc skills hoặc source code
+
+Thực hiện đúng thứ tự sau từ thư mục gốc repository, cho mọi TARGET_FEATURE_ID:
+
+1. Đọc đủ cả ba file: `README.md` ở gốc repo (rule nghiệp vụ và Expected), `api_specification.md` ở gốc repo (hợp đồng API), rồi `homework/hw02/docs/2026.HW02.Domain Testing_En.md` (phạm vi, phương pháp và đầu ra HW02). Đọc API spec ngay cả khi feature sau đó được thực thi qua UI hoặc mobile.
+2. Quét cấu trúc repo ở mức tổng quan (ví dụ `rg --files`): nhận diện thư mục ứng dụng, tài liệu, feature mục tiêu, interface, test setup và artifact hiện có. Ở bước này chưa đi sâu vào implementation/source code hay chạy SUT.
+3. Từ ba tài liệu và bản đồ repo, xác định mục/rule liên quan đến feature, nguồn Expected và chỗ thiếu hoặc mâu thuẫn. `README.md` gốc là nguồn rule nghiệp vụ; `api_specification.md` mô tả hợp đồng API; đề HW02 quyết định phạm vi và đầu ra. Nếu hai nguồn mâu thuẫn, ghi `UNRESOLVED` và tác động đến oracle, không tự chọn theo hành vi code.
+4. Sau đó mới đọc README và các SKILL.md trong bộ skills, rồi kiểm tra source liên quan để chuẩn bị thực thi hoặc điều tra nguyên nhân. Không lấy hành vi SUT làm yêu cầu.
+
+Nếu thiếu hoặc không đọc được một trong ba file bắt buộc, báo rõ file và dừng phần phụ thuộc vào tài liệu đó; không bịa rule hay Expected.
 
 ## Áp dụng skills
 
-1. Đọc homework/hw02/ncuong/skills/README.md và domain-testing-workflow/SKILL.md trước.
+1. Sau bước khởi đầu ở trên, đọc `homework/hw02/ncuong/skills/README.md` và `domain-testing-workflow/SKILL.md` trước các skill chuyên biệt.
 2. Đọc các skill chuyên biệt cần cho công việc đang làm: phân miền, EP, BVA, oracle, catalog, coverage, báo cáo feature, findings, AI audit và master report. Chỉ đọc decision-table-builder hoặc state-transition-test-designer khi rule thật sự cần mô hình đó.
 3. Đọc template của artifact trước khi viết artifact ấy. Ưu tiên hướng dẫn skill hiện tại nếu prompt này thiếu chi tiết; nếu có xung đột với đề HW02, theo đề và ghi rõ xung đột.
 4. Không sửa skills, templates, đặc tả, artifact của feature khác hay source code ứng dụng trong nhiệm vụ này.
@@ -62,7 +71,7 @@ Cập nhật reports/main-report.md bằng số liệu và link của feature m�
 
 Điều tra một ca FAIL trước khi gọi là bug: kiểm tra oracle, fixture, tính lặp lại và evidence. Với phát hiện đã tái hiện, viết bug report có rule/T-ID, tiền điều kiện, thao tác và giá trị chính xác, Expected, Actual, severity, evidence và cách tái hiện thủ công. Phân biệt bug đã tái hiện với ứng viên còn thiếu oracle.
 
-Sinh viên review từng bug trước. Chuẩn bị nội dung GitHub Issue theo `skills/test-findings-report-writer/assets/github-issue-template.md`: Issue phải đứng độc lập, có fixture/trạng thái ban đầu, lệnh setup và tái hiện đầy đủ, Expected/Actual, evidence và lý do đánh giá mức độ; không chép riêng khối “Reproduce nhanh” từ báo cáo. Sau khi sinh viên xác nhận, sinh viên chụp screenshot và mở GitHub Issue kèm ảnh. Đây là yêu cầu bắt buộc cho bản nộp HW02; trước bước review, ghi trạng thái Chờ người kiểm thử xác nhận, không tuyên bố đã có Issue hoặc ảnh. AI Gap Analysis và AI Critique là phần sinh viên tự đánh giá/viết; để rõ trạng thái chờ thay vì tự điền thay.
+Sinh viên review từng bug trước. Chuẩn bị nội dung GitHub Issue theo `skills/test-findings-report-writer/assets/github-issue-template.md`: Issue phải đứng độc lập, có fixture/trạng thái ban đầu, đường tái hiện đầy đủ đã kiểm chứng, Expected/Actual, evidence và lý do đánh giá mức độ. Nếu bug đã tái hiện qua UI, ưu tiên các bước người dùng thao tác và thấy lỗi trên giao diện; API/DB chỉ bổ sung khi cần chuẩn bị hoặc đối chiếu trạng thái ẩn. Nếu mới có evidence API, ghi đường API là đã xác nhận và đánh dấu bước UI là chưa kiểm chứng; không chép riêng khối “Reproduce nhanh” từ báo cáo. Sau khi sinh viên xác nhận, sinh viên chụp screenshot và mở GitHub Issue kèm ảnh. Đây là yêu cầu bắt buộc cho bản nộp HW02; trước bước review, ghi trạng thái Chờ người kiểm thử xác nhận, không tuyên bố đã có Issue hoặc ảnh. AI Gap Analysis và AI Critique là phần sinh viên tự đánh giá/viết; để rõ trạng thái chờ thay vì tự điền thay.
 
 AI Audit Report là bắt buộc. Dùng ai-audit-logger/SKILL.md và template để tạo hoặc cập nhật reports/ai-audit.md từ hội thoại/transcript có thể kiểm chứng. Với mỗi tương tác, giữ tên công cụ AI, ngày giờ theo nguồn, prompt nguyên văn và output người dùng thấy; ghi thiếu dữ liệu nếu không có, không tự tạo timestamp hoặc tóm tắt thay output. Nếu file audit đã có tương tác khác, giữ lại và chỉ thêm/cập nhật phần có nguồn cho lần này.
 
@@ -72,4 +81,4 @@ Trước khi kết thúc, kiểm tra chuỗi rule → P-ID/B-ID → T-ID → Exp
 
 Bản nộp cuối của toàn HW02 còn cần PDF cho main report, AI Audit, AI Critique; Git commit log, README có tự đánh giá và video demo; screenshot trong GitHub Issue của bug đã xác nhận. Theo dõi chúng là việc còn lại nếu chưa có, không tạo file giả hoặc nhận bài hoàn tất khi thiếu. Khi tạo commit theo yêu cầu môn học, chỉ đưa vào thay đổi thuộc bước và feature này, không gom thay đổi có sẵn của người khác.
 
-Bắt đầu từ cấu hình TARGET_FEATURE_ID, đọc đặc tả và skills liên quan, rồi thực hiện đến hết các phần an toàn và khả thi.
+Bắt đầu từ cấu hình TARGET_FEATURE_ID, đọc ba tài liệu bắt buộc và quét repo theo đúng thứ tự khởi đầu, rồi áp dụng skills liên quan và thực hiện đến hết các phần an toàn và khả thi.
