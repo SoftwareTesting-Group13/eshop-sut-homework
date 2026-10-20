@@ -71,10 +71,10 @@ HTTP 200
 }
 ```
 
-- **Expected (oracle ref):** Chưa xác định — FR-17 chỉ nói discount_value dương, không đặt upper bound cho percent. Đây là quan sát, không chấm PASS/FAIL; ảnh hưởng cách FR-09 tính giảm giá nếu >100%.
+- **Expected (oracle ref):** Từ chối (non-2xx) và không tạo coupon mới; với `type = percent`, `discount_value` không được vượt quá `100`, nên `150` không hợp lệ (người kiểm thử xác nhận 2026-10-21). Nguồn: R4.
 - **Actual:** HTTP 200; new_rows=1; body={"message":"Coupon created","id":34}; new_rows_data=[{"id":34,"code":"FR17-DT-32","type":"percent","discount_value":150,"min_order_amount":100000,"expired_at":"2099-12-31","max_uses_per_user":1,"is_active":1}]
-- **Status:** `INCONCLUSIVE`
+- **Status:** `FAIL`
 - **Artifact:** `evidence/DT-32.log`
 - **Cleanup:** DELETE /api/admin/coupons/34 -> HTTP 200
-- **Bug liên quan:** không
-- **Ghi chú:** UI không có max nên người dùng nhập được 150. Quan sát giá trị lưu và ghi nhận khoảng trống đặc tả.
+- **Bug liên quan:** BUG-FR17-08
+- **Ghi chú:** UI không có max nên người dùng nhập được 150; finding mới xác nhận qua API. Upper bound 100 do người kiểm thử xác nhận ngày 2026-10-21.

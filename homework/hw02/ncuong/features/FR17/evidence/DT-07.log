@@ -71,10 +71,10 @@ HTTP 200
 }
 ```
 
-- **Expected (oracle ref):** Chưa xác định — đặc tả chỉ nói code duy nhất, không nói uniqueness phân biệt hoa/thường. Đây là quan sát, không chấm PASS/FAIL.
+- **Expected (oracle ref):** Từ chối (non-2xx) và không tạo coupon mới; uniqueness của `code` không phân biệt hoa/thường, nên `save10` trùng với seed `SAVE10` (người kiểm thử xác nhận 2026-10-21). Nguồn: R2.
 - **Actual:** HTTP 200; new_rows=1; body={"message":"Coupon created","id":10}; new_rows_data=[{"id":10,"code":"save10","type":"percent","discount_value":10,"min_order_amount":100000,"expired_at":"2099-12-31","max_uses_per_user":1,"is_active":1}]
-- **Status:** `INCONCLUSIVE`
+- **Status:** `FAIL`
 - **Artifact:** `evidence/DT-07.log`
 - **Cleanup:** DELETE /api/admin/coupons/10 -> HTTP 200
-- **Bug liên quan:** không
-- **Ghi chú:** UI tự uppercase code nên không gửi được save10 qua form thông thường; ca này API-only. Nếu tạo được, ghi nhận hai mã cùng nghĩa khác hoa/thường.
+- **Bug liên quan:** BUG-FR17-07
+- **Ghi chú:** UI tự uppercase code nên không gửi được save10 qua form thông thường; ca này API-only. Quy tắc uniqueness không phân biệt hoa/thường do người kiểm thử xác nhận ngày 2026-10-21.

@@ -11,7 +11,7 @@
 | SUT / build | `eshop-sut-homework` commit `f389502cdb308b133fe9044e34505f19202dd887` |
 | Môi trường | macOS; Node v26.9.0; backend Node/Express + SQLite; instance cách ly (bản sao `server.js`/`database.js`, `database.sqlite` riêng, `node_modules` symlink) |
 | Thời điểm chạy | 2026-10-20T15:38:26.710Z (2026-10-20 22:38:26 +0700) → 2026-10-20T15:38:27.016Z (2026-10-20 22:38:27 +0700) |
-| Người/agent thực thi | AI agent (theo skill `domain-testing-workflow`); screenshot API: người kiểm thử cung cấp 34 ảnh Postman; chỉ dùng bằng chứng Postman/API, không dùng ảnh UI |
+| Người/agent thực thi | AI agent (theo skill `domain-testing-workflow`); screenshot API: người kiểm thử cung cấp 39 ảnh Postman; chỉ dùng bằng chứng Postman/API, không dùng ảnh UI |
 | GitHub Issue | [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47), [#48](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/48), [#49](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/49), [#50](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/50), [#51](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/51), [#52](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52) |
 | Thư mục evidence | `evidence/` |
 | Database làm việc | `backend/database.sqlite`, SHA-256 trước/sau: `c63f00544180ba1fbb1427a9b9dd3f1784842698809972f33ce90482e7420ba6` / `c63f00544180ba1fbb1427a9b9dd3f1784842698809972f33ce90482e7420ba6` |
@@ -28,14 +28,16 @@
 | T-ID thiết kế | 32 |
 | Đã chạy | 32 |
 | PASS | 11 |
-| FAIL | 18 |
-| Quan sát / INCONCLUSIVE | 3 |
+| FAIL | 20 |
+| Quan sát / INCONCLUSIVE | 1 |
 | BLOCKED | 0 |
 | Chưa chạy | 0 |
 
+> DT-07/DT-32 được người kiểm thử xác nhận là bug ngày 2026-10-21; log giữ nguyên Actual của lần chạy `run-20261020-fr17`, chỉ cập nhật Expected/oracle/status/Bug ID. Hai ca này dùng lại T-ID cũ, không tăng tổng thiết kế.
+
 ## Ảnh xác nhận API (người kiểm thử cung cấp)
 
-> 34 ảnh Postman xác nhận request/response API, **không dùng ảnh UI**. 17/18 FAIL có ảnh; `DT-06` chưa có ảnh. File nằm trong `../screenshots/`.
+> 39 ảnh Postman xác nhận request/response API, **không dùng ảnh UI**. 19/20 FAIL có ảnh; chỉ còn `DT-06` chưa có ảnh. File nằm trong `../screenshots/`.
 
 | Bug | Test case | Ảnh request | Ảnh GET |
 | --- | --- | --- | --- |
@@ -57,6 +59,9 @@
 | BUG-FR17-06 | DT-26 | [MaxUsesPerUser0](../screenshots/BUG-FR17-06-MaxUsesPerUser0.png) | [MaxUsesPerUser0Up1](../screenshots/BUG-FR17-06-MaxUsesPerUser0Up1.png) |
 | BUG-FR17-06 | DT-27 | [MaxUsesPerUserNegative](../screenshots/BUG-FR17-06-MaxUsesPerUserNegative.png) | [GetMaxUsesPerUserNegative](../screenshots/BUG-FR17-06-GetMaxUsesPerUserNegative.png) |
 | BUG-FR17-06 | DT-28 | [MissingMaxUses](../screenshots/BUG-FR17-06-MissingMaxUses.png) | [GetMissingMaxUses](../screenshots/BUG-FR17-06-GetMissingMaxUses.png) |
+| BUG-FR17-07 | DT-07 (seed) | [CouponUppercase](../screenshots/BUG-FR17-07-CouponUppercase.png) | — |
+| BUG-FR17-07 | DT-07 | [CreateCouponLowercase](../screenshots/BUG-FR17-07-CreateCouponLowercase.png) | [GetCouponLowercase](../screenshots/BUG-FR17-07-GetCouponLowercase.png) |
+| BUG-FR17-08 | DT-32 | [Discount150](../screenshots/BUG-FR17-08-Discount150.png) | [GetDiscount150](../screenshots/BUG-FR17-08-GetDiscount150.png) |
 
 ## Evidence items
 
@@ -653,13 +658,14 @@ HTTP 200
 }
 ```
 
-- **Expected (oracle ref):** Chưa xác định — đặc tả chỉ nói code duy nhất, không nói uniqueness phân biệt hoa/thường. Đây là quan sát, không chấm PASS/FAIL.
+- **Expected (oracle ref):** Từ chối (non-2xx) và không tạo coupon mới; uniqueness của `code` không phân biệt hoa/thường, nên `save10` trùng với seed `SAVE10` (người kiểm thử xác nhận 2026-10-21). Nguồn: R2.
 - **Actual:** HTTP 200; new_rows=1; body={"message":"Coupon created","id":10}; new_rows_data=[{"id":10,"code":"save10","type":"percent","discount_value":10,"min_order_amount":100000,"expired_at":"2099-12-31","max_uses_per_user":1,"is_active":1}]
-- **Status:** `INCONCLUSIVE`
+- **Status:** `FAIL`
 - **Artifact:** `evidence/DT-07.log`
 - **Cleanup:** DELETE /api/admin/coupons/10 -> HTTP 200
-- **Bug liên quan:** không
-- **Ghi chú:** UI tự uppercase code nên không gửi được save10 qua form thông thường; ca này API-only. Nếu tạo được, ghi nhận hai mã cùng nghĩa khác hoa/thường.
+- **Bug liên quan:** BUG-FR17-07
+- **Screenshot:** [seed SAVE10](../screenshots/BUG-FR17-07-CouponUppercase.png), [POST save10](../screenshots/BUG-FR17-07-CreateCouponLowercase.png), [GET save10](../screenshots/BUG-FR17-07-GetCouponLowercase.png); ảnh chụp lần chạy lại có row `id=5` thay vì `id=10` trong log, cùng request/response.
+- **Ghi chú:** UI tự uppercase code nên không gửi được save10 qua form thông thường; ca này API-only. Quy tắc uniqueness không phân biệt hoa/thường do người kiểm thử xác nhận ngày 2026-10-21.
 
 ### EV-FR17-008 — DT-08 (API POST /api/admin/coupons)
 
@@ -2899,10 +2905,11 @@ HTTP 200
 }
 ```
 
-- **Expected (oracle ref):** Chưa xác định — FR-17 chỉ nói discount_value dương, không đặt upper bound cho percent. Đây là quan sát, không chấm PASS/FAIL; ảnh hưởng cách FR-09 tính giảm giá nếu >100%.
+- **Expected (oracle ref):** Từ chối (non-2xx) và không tạo coupon mới; với `type = percent`, `discount_value` không được vượt quá `100`, nên `150` không hợp lệ (người kiểm thử xác nhận 2026-10-21). Nguồn: R4.
 - **Actual:** HTTP 200; new_rows=1; body={"message":"Coupon created","id":34}; new_rows_data=[{"id":34,"code":"FR17-DT-32","type":"percent","discount_value":150,"min_order_amount":100000,"expired_at":"2099-12-31","max_uses_per_user":1,"is_active":1}]
-- **Status:** `INCONCLUSIVE`
+- **Status:** `FAIL`
 - **Artifact:** `evidence/DT-32.log`
 - **Cleanup:** DELETE /api/admin/coupons/34 -> HTTP 200
-- **Bug liên quan:** không
-- **Ghi chú:** UI không có max nên người dùng nhập được 150. Quan sát giá trị lưu và ghi nhận khoảng trống đặc tả.
+- **Bug liên quan:** BUG-FR17-08
+- **Screenshot:** [POST discount 150](../screenshots/BUG-FR17-08-Discount150.png), [GET discount 150](../screenshots/BUG-FR17-08-GetDiscount150.png); ảnh chụp lần chạy lại có row `id=6` thay vì `id=34` trong log, cùng request/response.
+- **Ghi chú:** UI không có max nên người dùng nhập được 150; finding mới xác nhận qua API. Upper bound 100 do người kiểm thử xác nhận ngày 2026-10-21.

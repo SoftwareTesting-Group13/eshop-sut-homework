@@ -375,14 +375,14 @@ const createCases = [
     id: "DT-07",
     technique: "EP",
     obligations: ["P7", "R2"],
-    expected: "observation",
+    expected: "rejected",
     body: withCode("save10"),
     oracle:
-      "Chưa xác định — đặc tả chỉ nói code duy nhất, không nói uniqueness phân biệt hoa/thường. Đây là quan sát, không chấm PASS/FAIL.",
+      "Bị từ chối (non-2xx) và không tạo coupon mới; uniqueness của code không phân biệt hoa/thường, nên save10 trùng với seed SAVE10 (người kiểm thử xác nhận 2026-10-21). Nguồn: R2.",
     setup:
       "DB test có seed SAVE10; đăng nhập admin; gửi code viết thường save10.",
     notes:
-      "UI tự uppercase code nên không gửi được save10 qua form thông thường; ca này API-only. Nếu tạo được, ghi nhận hai mã cùng nghĩa khác hoa/thường.",
+      "UI tự uppercase code nên không gửi được save10 qua form thông thường; ca này API-only. Quy tắc uniqueness không phân biệt hoa/thường do người kiểm thử xác nhận ngày 2026-10-21.",
   },
   {
     id: "DT-08",
@@ -690,18 +690,18 @@ const createCases = [
   },
 ];
 
-const observationPercentAbove100 = {
+const percentAbove100Case = {
   id: "DT-32",
   technique: "EP",
   obligations: ["P32", "R4"],
-  expected: "observation",
+  expected: "rejected",
   body: withCode("FR17-DT-32", { discount_value: 150 }),
   oracle:
-    "Chưa xác định — FR-17 chỉ nói discount_value dương, không đặt upper bound cho percent. Đây là quan sát, không chấm PASS/FAIL; ảnh hưởng cách FR-09 tính giảm giá nếu >100%.",
+    "Bị từ chối (non-2xx) và không tạo coupon mới; với type=percent, discount_value không được vượt quá 100, nên 150 không hợp lệ (người kiểm thử xác nhận 2026-10-21). Nguồn: R4.",
   setup:
     "Đăng nhập admin; type=percent, discount_value=150; các trường còn lại hợp lệ.",
   notes:
-    "UI không có max nên người dùng nhập được 150. Quan sát giá trị lưu và ghi nhận khoảng trống đặc tả.",
+    "UI không có max nên người dùng nhập được 150; finding mới xác nhận qua API. Upper bound 100 do người kiểm thử xác nhận ngày 2026-10-21.",
 };
 
 async function runCreateCase(testCase, token) {
@@ -1258,7 +1258,7 @@ async function main() {
   await runListCase(admin.token);
   await runDeleteExistingCase(admin.token);
   await runDeleteMissingCase(admin.token);
-  await runCreateCase(observationPercentAbove100, admin.token);
+  await runCreateCase(percentAbove100Case, admin.token);
   await runOutOfScopeAuthObservation(admin.token);
 
   finishAt = localTime();

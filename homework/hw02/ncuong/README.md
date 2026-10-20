@@ -16,7 +16,7 @@ Sau đó quét cấu trúc repo để tìm ứng dụng, feature, interface và 
 | --- | --- | --- |
 | A | FR-02 — Login and account lockout | Đã kiểm thử — 15 ca (11 PASS, 3 FAIL, 1 Quan sát); 2 bug đã xác nhận, Issue [#25](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/25) & [#26](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/26) kèm screenshot |
 | B | FR-10 — Order state machine | Đã kiểm thử — 20 ca (18 PASS, 2 FAIL); 2 bug đã xác nhận qua UI, Issue [#33](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/33) & [#34](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/34) kèm screenshot |
-| C | FR-17 — Coupon management (CRUD) | Đã kiểm thử — 32 ca (11 PASS, 18 FAIL, 3 Quan sát); 6 bug đã xác nhận API (ảnh Postman), Issue #47…#52; UI không dùng làm bằng chứng |
+| C | FR-17 — Coupon management (CRUD) | Đã kiểm thử — 32 ca (11 PASS, 20 FAIL, 1 Quan sát); 8 bug đã xác nhận API (6 bug cũ có Issue #47…#52; 2 bug mới đã có ảnh Postman, Issue đang tạo); UI không dùng làm bằng chứng |
 | D | FR-06 — Product detail view (Mobile) | Chưa thực hiện |
 
 ## Tổng hợp test summary hiện hành
@@ -25,10 +25,10 @@ Sau đó quét cấu trúc repo để tìm ứng dụng, feature, interface và 
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | FR-02 | 15 | 15 | 11 | 3 | 1 | 0 | 0 |
 | FR-10 | 20 | 20 | 18 | 2 | 0 | 0 | 0 |
-| FR-17 | 32 | 32 | 11 | 18 | 3 | 0 | 0 |
-| **Tổng** | **67** | **67** | **40** | **23** | **4** | **0** | **0** |
+| FR-17 | 32 | 32 | 11 | 20 | 1 | 0 | 0 |
+| **Tổng** | **67** | **67** | **40** | **25** | **2** | **0** | **0** |
 
-- Bug hiện hành: FR-02 và FR-10 đều có 2 bug đã xác nhận qua UI và mở Issue kèm ảnh (FR-02: #25, #26; FR-10: #33, #34). FR-17 có 6 bug đã xác nhận API (2 High, 4 Medium) với 34 ảnh Postman tại [`features/FR17/screenshots/`](features/FR17/screenshots/); đã mở Issue [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47)…#[52](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52). Chỉ dùng ảnh Postman, không dùng ảnh UI.
+- Bug hiện hành: FR-02 và FR-10 đều có 2 bug đã xác nhận qua UI và mở Issue kèm ảnh (FR-02: #25, #26; FR-10: #33, #34). FR-17 có 8 bug đã xác nhận API (3 High, 5 Medium); 39 ảnh Postman tại [`features/FR17/screenshots/`](features/FR17/screenshots/) phủ 19/20 FAIL (chỉ còn `DT-06` chưa có ảnh). 6 bug cũ đã mở Issue [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47)…#[52](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52); 2 bug mới `BUG-FR17-07/08` đã có ảnh Postman và Issue đang được tạo ([BUG-FR17-07](features/FR17/issues/BUG-FR17-07.md), [BUG-FR17-08](features/FR17/issues/BUG-FR17-08.md)). Chỉ dùng ảnh Postman, không dùng ảnh UI.
 - Feature đã có kết quả hiện hành: 3/4 (Pool A FR-02, Pool B FR-10, Pool C FR-17); Pool D FR-06 chưa thực hiện.
 
 ## Demo video
@@ -38,7 +38,7 @@ Sau đó quét cấu trúc repo để tìm ứng dụng, feature, interface và 
 ## Việc còn lại trước khi nộp
 
 1. ~~Xác nhận 2 bug FR-10 và mở GitHub Issue kèm ảnh~~ — **đã xong** (Issue #33, #34).
-2. ~~Xác nhận 6 bug FR-17 qua Postman và mở GitHub Issue kèm ảnh~~ — **đã xong** (Issue #47…#52; chỉ dùng ảnh Postman, không dùng ảnh UI).
+2. ~~Xác nhận 6 bug FR-17 qua Postman và mở GitHub Issue kèm ảnh~~ — **đã xong** (Issue #47…#52; chỉ dùng ảnh Postman, không dùng ảnh UI). 2 bug mới `BUG-FR17-07/08` đã có ảnh Postman, đang được publish Issue; `DT-06` vẫn là ca FAIL duy nhất chưa có ảnh.
 3. Hoàn thành FR-06 (Mobile) theo Domain/EP + BVA; không gán số 0 cho feature chưa làm.
 4. Sinh viên viết AI Gap Analysis cho FR02/FR10/FR17 và `reports/ai-critique.md`; rà soát lại `reports/ai-audit.md` và bổ sung nếu còn tương tác AI khác.
 5. Xuất PDF (`main-report`, `ai-audit`, `ai-critique`), tạo `git-commit-log.txt`, đóng gói bài nộp theo yêu cầu HW02; bổ sung bảng tự đánh giá trong README.

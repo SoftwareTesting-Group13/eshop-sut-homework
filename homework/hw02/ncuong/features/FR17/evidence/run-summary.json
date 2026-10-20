@@ -37,8 +37,8 @@
     "designed": 32,
     "executed": 32,
     "pass": 11,
-    "fail": 18,
-    "inconclusive": 3,
+    "fail": 20,
+    "inconclusive": 1,
     "blocked": 0,
     "not_run": 0
   },
@@ -555,15 +555,19 @@
         "seeds_present": null,
         "absent_after_delete": null
       },
-      "oracle": "Chưa xác định — đặc tả chỉ nói code duy nhất, không nói uniqueness phân biệt hoa/thường. Đây là quan sát, không chấm PASS/FAIL.",
+      "oracle": "CONFIRMED — uniqueness của code không phân biệt hoa/thường; save10 trùng SAVE10.",
       "actual": "HTTP 200; new_rows=1; body={\"message\":\"Coupon created\",\"id\":10}; new_rows_data=[{\"id\":10,\"code\":\"save10\",\"type\":\"percent\",\"discount_value\":10,\"min_order_amount\":100000,\"expired_at\":\"2099-12-31\",\"max_uses_per_user\":1,\"is_active\":1}]",
       "verdict": "INCONCLUSIVE",
       "cleanup": "DELETE /api/admin/coupons/10 -> HTTP 200",
       "bugId": null,
-      "notes": "UI tự uppercase code nên không gửi được save10 qua form thông thường; ca này API-only. Nếu tạo được, ghi nhận hai mã cùng nghĩa khác hoa/thường.",
+      "notes": "UI tự uppercase code nên ca này API-only. Quy tắc uniqueness không phân biệt hoa/thường do người kiểm thử xác nhận 2026-10-21.",
       "evId": "EV-FR17-007",
       "timestamp": "2026-10-20T15:38:26.831Z (2026-10-20 22:38:26 +0700)",
-      "logFile": "DT-07.log"
+      "logFile": "DT-07.log",
+      "status": "FAIL",
+      "expected": "Từ chối (non-2xx); không tạo row mới — uniqueness không phân biệt hoa/thường (người kiểm thử xác nhận 2026-10-21).",
+      "bug": "BUG-FR17-07",
+      "bug_id": "BUG-FR17-07"
     },
     {
       "id": "DT-08",
@@ -2483,15 +2487,19 @@
         "seeds_present": null,
         "absent_after_delete": null
       },
-      "oracle": "Chưa xác định — FR-17 chỉ nói discount_value dương, không đặt upper bound cho percent. Đây là quan sát, không chấm PASS/FAIL; ảnh hưởng cách FR-09 tính giảm giá nếu >100%.",
+      "oracle": "CONFIRMED — với type=percent, discount_value phải <= 100; 150 không hợp lệ.",
       "actual": "HTTP 200; new_rows=1; body={\"message\":\"Coupon created\",\"id\":34}; new_rows_data=[{\"id\":34,\"code\":\"FR17-DT-32\",\"type\":\"percent\",\"discount_value\":150,\"min_order_amount\":100000,\"expired_at\":\"2099-12-31\",\"max_uses_per_user\":1,\"is_active\":1}]",
       "verdict": "INCONCLUSIVE",
       "cleanup": "DELETE /api/admin/coupons/34 -> HTTP 200",
       "bugId": null,
-      "notes": "UI không có max nên người dùng nhập được 150. Quan sát giá trị lưu và ghi nhận khoảng trống đặc tả.",
+      "notes": "UI không có max nên nhập được 150; finding mới xác nhận qua API. Upper bound 100 do người kiểm thử xác nhận 2026-10-21.",
       "evId": "EV-FR17-032",
       "timestamp": "2026-10-20T15:38:27.002Z (2026-10-20 22:38:27 +0700)",
-      "logFile": "DT-32.log"
+      "logFile": "DT-32.log",
+      "status": "FAIL",
+      "expected": "Từ chối (non-2xx); không tạo row mới — percent tối đa 100 (người kiểm thử xác nhận 2026-10-21).",
+      "bug": "BUG-FR17-08",
+      "bug_id": "BUG-FR17-08"
     }
   ],
   "out_of_scope_observations": [
@@ -2522,5 +2530,13 @@
       },
       "cleanup": "DELETE /api/admin/coupons/35 bằng admin -> HTTP 200"
     }
-  ]
+  ],
+  "reclassification": {
+    "date": "2026-10-21",
+    "source": "Người kiểm thử xác nhận OBS-FR17-03 và OBS-FR17-04 là bug.",
+    "cases": {
+      "DT-07": "BUG-FR17-07",
+      "DT-32": "BUG-FR17-08"
+    }
+  }
 }

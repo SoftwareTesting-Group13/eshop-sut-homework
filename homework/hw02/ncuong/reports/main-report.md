@@ -16,7 +16,7 @@
 | --- | --- | --- | --- |
 | A | FR-02 — Login and account lockout | **Đã kiểm thử** (15 ca; 2 bug đã xác nhận, Issue [#25](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/25) & [#26](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/26)) | [`features/FR02/`](../features/FR02/) |
 | B | FR-10 — Order state machine | **Đã kiểm thử** (20 ca; 18 PASS, 2 FAIL; 2 bug `BUG-FR10-01/02` đã xác nhận qua UI và mở Issue kèm screenshot) | [`features/FR10/`](../features/FR10/) |
-| C | FR-17 — Coupon management (CRUD) | **Đã kiểm thử** (32 ca; 11 PASS, 18 FAIL, 3 Quan sát; 6 bug đã xác nhận qua API bằng ảnh Postman; Issue #47…#52; UI không dùng làm bằng chứng) | [`features/FR17/`](../features/FR17/) |
+| C | FR-17 — Coupon management (CRUD) | **Đã kiểm thử** (32 ca; 11 PASS, 20 FAIL, 1 Quan sát; 8 bug đã xác nhận qua API; 39 ảnh Postman phủ 19/20 FAIL; 6 Issue #47…#52, 2 bug mới `BUG-FR17-07/08` đang được publish; UI không dùng làm bằng chứng) | [`features/FR17/`](../features/FR17/) |
 | D | FR-06 — Product detail view (Mobile) | Chưa thực hiện | — |
 
 Mỗi feature có `domain-analysis.md`, `boundary-analysis.md`, `test-cases.md`, `test-results.md` và `evidence/` trong `../features/<FEATURE_CODE>/`.
@@ -60,12 +60,12 @@ Coverage theo nghĩa vụ: EP 20 lớp — thiết kế 20/20, đã chạy 20/20
 | Test case thiết kế (T-ID duy nhất) | 32 |
 | Đã chạy | 32 |
 | PASS | 11 |
-| FAIL | 18 |
-| Quan sát / INCONCLUSIVE | 3 |
+| FAIL | 20 |
+| Quan sát / INCONCLUSIVE | 1 |
 | BLOCKED | 0 |
 | Chưa chạy | 0 |
 
-Coverage theo nghĩa vụ: EP 32 lớp — thiết kế 32/32, đã chạy 32/32, có oracle 29/32 (11 PASS, 18 FAIL), 3 lớp UNRESOLVED/Quan sát; BVA 9 điểm biên (B1 3, B2 3, B3 3) — thiết kế 9/9, đã chạy 9/9, đạt oracle 5/9, dùng lại 9 T-ID EP (0 T-ID BVA-only). Interface: API admin `POST/GET/DELETE` coupon; UI admin mới có hướng dẫn manual; **chỉ dùng bằng chứng Postman/API, không dùng ảnh UI**. Chi tiết: [`domain-analysis.md`](../features/FR17/domain-analysis.md), [`boundary-analysis.md`](../features/FR17/boundary-analysis.md), [`test-cases.md`](../features/FR17/test-cases.md), [`test-results.md`](../features/FR17/test-results.md).
+Coverage theo nghĩa vụ: EP 32 lớp — thiết kế 32/32, đã chạy 32/32, có oracle 31/32 (11 PASS, 20 FAIL), 1 lớp UNRESOLVED/Quan sát (P31); BVA 9 điểm biên (B1 3, B2 3, B3 3) — thiết kế 9/9, đã chạy 9/9, đạt oracle 5/9, dùng lại 9 T-ID EP (0 T-ID BVA-only). Interface: API admin `POST/GET/DELETE` coupon; UI admin mới có hướng dẫn manual; **chỉ dùng bằng chứng Postman/API, không dùng ảnh UI**. Chi tiết: [`domain-analysis.md`](../features/FR17/domain-analysis.md), [`boundary-analysis.md`](../features/FR17/boundary-analysis.md), [`test-cases.md`](../features/FR17/test-cases.md), [`test-results.md`](../features/FR17/test-results.md).
 
 FR-06 chưa có kết quả. Không gán số 0 cho feature chưa thực hiện.
 
@@ -75,8 +75,8 @@ FR-06 chưa có kết quả. Không gán số 0 cho feature chưa thực hiện.
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | FR-02 | 15 | 15 | 11 | 3 | 1 | 0 | 0 |
 | FR-10 | 20 | 20 | 18 | 2 | 0 | 0 | 0 |
-| FR-17 | 32 | 32 | 11 | 18 | 3 | 0 | 0 |
-| **Tổng (T-ID duy nhất)** | **67** | **67** | **40** | **23** | **4** | **0** | **0** |
+| FR-17 | 32 | 32 | 11 | 20 | 1 | 0 | 0 |
+| **Tổng (T-ID duy nhất)** | **67** | **67** | **40** | **25** | **2** | **0** | **0** |
 
 Đã chạy = PASS + FAIL + Quan sát; chỉ cộng T-ID duy nhất của từng feature, không cộng chéo EP/BVA.
 
@@ -94,16 +94,26 @@ FR-06 chưa có kết quả. Không gán số 0 cho feature chưa thực hiện.
 | BUG-FR17-04 | FR17 | Backend nhận `expired_at` thiếu/rỗng/sai định dạng | High | DT-15, DT-16, DT-17 | Đã xác nhận API; Issue [#50](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/50); ảnh Postman | [`test-results.md`](../features/FR17/test-results.md) |
 | BUG-FR17-05 | FR17 | Backend nhận `min_order_amount` âm/không phải số/thiếu | Medium | DT-21, DT-22, DT-23 | Đã xác nhận API; Issue [#51](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/51); ảnh Postman | [`test-results.md`](../features/FR17/test-results.md) |
 | BUG-FR17-06 | FR17 | Backend nhận `max_uses_per_user < 1` hoặc thiếu; number `0` thành `1` | Medium | DT-26, DT-27, DT-28 | Đã xác nhận API; Issue [#52](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52); ảnh Postman | [`test-results.md`](../features/FR17/test-results.md) |
+| BUG-FR17-07 | FR17 | Tạo được `save10` bên cạnh `SAVE10` do uniqueness phân biệt hoa/thường | Medium | DT-07 | Đã xác nhận API bằng ảnh Postman (3 ảnh); Issue đang tạo | [`test-results.md`](../features/FR17/test-results.md) |
+| BUG-FR17-08 | FR17 | Tạo được coupon `percent` với `discount_value=150` (vượt 100%) | High | DT-32 | Đã xác nhận API bằng ảnh Postman (2 ảnh); Issue đang tạo | [`test-results.md`](../features/FR17/test-results.md) |
 
 **Thống kê severity FR02:** Critical 0 · High 1 · Medium 1 · Low 0 · **Tổng 2**.
 
 **Thống kê severity FR10:** Critical 0 · High 1 · Medium 1 · Low 0 · **Tổng 2** (đã mở Issue #33, #34).
 
-**Thống kê severity FR17:** Critical 0 · High 2 · Medium 4 · Low 0 · **Tổng 6** (6 bug đã xác nhận qua API bằng ảnh Postman; đã mở Issue [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47)…[#52](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52); không dùng ảnh UI).
+**Thống kê severity FR17:** Critical 0 · High 3 · Medium 5 · Low 0 · **Tổng 8** (6 bug cũ đã mở Issue #47…#52; 2 bug mới `BUG-FR17-07/08` đã có ảnh Postman, Issue đang tạo; không dùng ảnh UI).
 
-Ảnh xác nhận API: [`features/FR17/screenshots/`](../features/FR17/screenshots/) (34 ảnh Postman, người kiểm thử cung cấp). 6 GitHub Issue đã mở: [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47), [#48](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/48), [#49](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/49), [#50](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/50), [#51](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/51), [#52](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52); nội dung draft tại [`features/FR17/issues/`](../features/FR17/issues/).
+Ảnh xác nhận API: [`features/FR17/screenshots/`](../features/FR17/screenshots/) (39 ảnh Postman, người kiểm thử cung cấp, phủ 8 bug; 19/20 FAIL có ảnh, chỉ còn `DT-06` chưa có ảnh). 6 GitHub Issue đã mở: [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47), [#48](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/48), [#49](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/49), [#50](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/50), [#51](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/51), [#52](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52). `BUG-FR17-07/08` đã có ảnh Postman và đang được publish tại [`BUG-FR17-07.md`](../features/FR17/issues/BUG-FR17-07.md), [`BUG-FR17-08.md`](../features/FR17/issues/BUG-FR17-08.md).
 
-Hai bug FR-02 và FR-10 đã được người kiểm thử xác nhận qua UI; screenshot đã được đính kèm trong GitHub Issue tương ứng (FR-02: `screenshots/BUG-FR02-01.png`, `BUG-FR02-02.png`; FR-10: `screenshots/BUG-FR10-01-*.png`, `BUG-FR10-02-*.png`). Sáu bug FR-17 đã xác nhận qua **API** bằng ảnh Postman và đã mở Issue #47…#52; chỉ dùng bằng chứng Postman/API, không dùng ảnh UI.
+Hai bug FR-02 và FR-10 đã được người kiểm thử xác nhận qua UI; screenshot đã được đính kèm trong GitHub Issue tương ứng (FR-02: `screenshots/BUG-FR02-01.png`, `BUG-FR02-02.png`; FR-10: `screenshots/BUG-FR10-01-*.png`, `BUG-FR10-02-*.png`). Sáu bug FR-17 cũ đã xác nhận qua **API** bằng ảnh Postman và đã mở Issue #47…#52. Hai bug mới `BUG-FR17-07/08` được xác nhận qua ảnh Postman ngày 2026-10-21, Issue đang được tạo; chỉ dùng bằng chứng Postman/API, không dùng ảnh UI.
+
+**Chi tiết ngắn BUG-FR17-07:** DB test có seed `SAVE10`; gửi `POST /api/admin/coupons` với `code=save10` và các trường baseline. Actual: HTTP 200, tạo row `save10`; `GET /api/coupons` trả cả `SAVE10` và `save10`. Expected: non-2xx, không tạo row vì uniqueness không phân biệt hoa/thường. Evidence: [`DT-07.log`](../features/FR17/evidence/DT-07.log); ảnh Postman: [seed SAVE10](../features/FR17/screenshots/BUG-FR17-07-CouponUppercase.png), [POST save10](../features/FR17/screenshots/BUG-FR17-07-CreateCouponLowercase.png), [GET save10](../features/FR17/screenshots/BUG-FR17-07-GetCouponLowercase.png). Chi tiết đầy đủ: [`test-results.md`](../features/FR17/test-results.md).
+
+---
+
+**Chi tiết ngắn BUG-FR17-08:** DB test có 4 seed; gửi `POST /api/admin/coupons` với `type=percent`, `discount_value=150` và các trường baseline. Actual: HTTP 200, tạo row `FR17-DT-32` với `discount_value=150`; `GET` trả nguyên `150`. Expected: non-2xx, không tạo row vì percent tối đa `100`. Evidence: [`DT-32.log`](../features/FR17/evidence/DT-32.log); ảnh Postman: [POST discount 150](../features/FR17/screenshots/BUG-FR17-08-Discount150.png), [GET discount 150](../features/FR17/screenshots/BUG-FR17-08-GetDiscount150.png). Chi tiết đầy đủ: [`test-results.md`](../features/FR17/test-results.md).
+
+---
 
 ## 4. Tài liệu kèm theo
 
@@ -111,7 +121,7 @@ Hai bug FR-02 và FR-10 đã được người kiểm thử xác nhận qua UI; 
 - Bug + screenshot + GitHub Issue FR02: [#25](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/25), [#26](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/26); nội dung issue: [`features/FR02/issues/`](../features/FR02/issues/).
 - Domain/BVA/evidence của FR10: [`features/FR10/`](../features/FR10/); evidence log: [`FR10-evidence.md`](../features/FR10/evidence/FR10-evidence.md).
 - Bug + screenshot + GitHub Issue FR10: [#33](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/33), [#34](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/34); nội dung issue: [`features/FR10/issues/`](../features/FR10/issues/).
-- Domain/BVA/evidence của FR17: [`features/FR17/`](../features/FR17/); evidence log: [`FR17-evidence.md`](../features/FR17/evidence/FR17-evidence.md); driver: [`run-fr17.mjs`](../features/FR17/evidence/run-fr17.mjs). Bug FR17 đã xác nhận API; ảnh tại [`features/FR17/screenshots/`](../features/FR17/screenshots/); **Issue**: [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47), [#48](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/48), [#49](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/49), [#50](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/50), [#51](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/51), [#52](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52).
+- Domain/BVA/evidence của FR17: [`features/FR17/`](../features/FR17/); evidence log: [`FR17-evidence.md`](../features/FR17/evidence/FR17-evidence.md); driver: [`run-fr17.mjs`](../features/FR17/evidence/run-fr17.mjs). Bug FR17 đã xác nhận API; 39 ảnh tại [`features/FR17/screenshots/`](../features/FR17/screenshots/); **Issue đã mở**: [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47), [#48](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/48), [#49](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/49), [#50](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/50), [#51](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/51), [#52](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52). `BUG-FR17-07/08` đã có ảnh, Issue đang tạo.
 - Quan sát ngoài EP/BVA: [`supporting-materials/fr02-observations.md`](../supporting-materials/fr02-observations.md), [`supporting-materials/fr10-observations.md`](../supporting-materials/fr10-observations.md), [`supporting-materials/fr17-observations.md`](../supporting-materials/fr17-observations.md) (không cộng vào coverage).
 - AI Audit Report: [`ai-audit.md`](ai-audit.md).
 - AI Critique: [`ai-critique.md`](ai-critique.md) — sinh viên tự viết.

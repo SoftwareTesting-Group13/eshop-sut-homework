@@ -7,7 +7,7 @@
 - **Reset trạng thái:** DB test mới seed 4 coupon (`SAVE10`, `BIGBUY`, `VIP100`, `EXPIRED`); mỗi ca lấy snapshot `GET /api/coupons` trước/sau và xóa coupon do ca tạo. DB làm việc `backend/database.sqlite` giữ nguyên SHA-256 `c63f0054…` trước và sau run.
 - **Source code:** không sửa `backend/` hoặc `frontend-admin/`; backend `server.js` SHA-256 `47573ce5…`, `database.js` SHA-256 `33664206…`. Các thay đổi có sẵn của người dùng ở `prompt.txt`/`skills/` không thuộc phiên này và không bị chỉnh sửa.
 - **Chi tiết thô:** `evidence/FR17-evidence.md` + `evidence/DT-*.log`, `evidence/run-summary.json`, `evidence/session-header.log`, driver `evidence/run-fr17.mjs`.
-- **Screenshot API:** 34 ảnh Postman do người kiểm thử cung cấp tại `screenshots/`; 17/18 FAIL có ảnh, `DT-06` chưa có ảnh; **chỉ dùng ảnh Postman, không dùng ảnh UI**.
+- **Screenshot API:** 39 ảnh Postman do người kiểm thử cung cấp tại `screenshots/`; 19/20 FAIL có ảnh, `DT-06` chưa có ảnh; **chỉ dùng ảnh Postman, không dùng ảnh UI**.
 
 ## Kết quả theo run
 
@@ -19,7 +19,7 @@
 | DT-04 | API POST | 200 `Coupon created`; row mới `code=""` | FAIL | CONFIRMED | CHƯA CHẠY — API-only (`required`) | EV-FR17-004 (`DT-04.log`) | BUG-FR17-01 |
 | DT-05 | API POST | 200 `Coupon created`; row mới `code=NULL` | FAIL | CONFIRMED | CHƯA CHẠY — API-only (không có key) | EV-FR17-005 (`DT-05.log`) | BUG-FR17-01 |
 | DT-06 | API POST | 200 `Coupon created`; row mới `code="   "` | FAIL | ASSUMED | CHƯA CHẠY — khả thi | EV-FR17-006 (`DT-06.log`) | BUG-FR17-01 |
-| DT-07 | API POST | 200; row mới `code="save10"` bên cạnh `SAVE10` | Quan sát | UNRESOLVED | CHƯA CHẠY — API-only (UI uppercase) | EV-FR17-007 (`DT-07.log`) | — (OBS-FR17-03) |
+| DT-07 | API POST | 200; row mới `code="save10"` bên cạnh `SAVE10` | FAIL | CONFIRMED (quy tắc uniqueness không phân biệt hoa/thường, người kiểm thử xác nhận 2026-10-21) | CHƯA CHẠY — API-only (UI uppercase) | EV-FR17-007 (`DT-07.log`) | BUG-FR17-07 |
 | DT-08 | API POST | 200; row mới `type="percentage"` | FAIL | CONFIRMED | CHƯA CHẠY — API-only (select) | EV-FR17-008 (`DT-08.log`) | BUG-FR17-02 |
 | DT-09 | API POST | 200; row mới `type=NULL` | FAIL | CONFIRMED | CHƯA CHẠY — API-only (select) | EV-FR17-009 (`DT-09.log`) | BUG-FR17-02 |
 | DT-10 | API POST | 200; row mới `discount_value=0` | FAIL | CONFIRMED | CHƯA CHẠY — khả thi | EV-FR17-010 (`DT-10.log`) | BUG-FR17-03 |
@@ -44,7 +44,7 @@
 | DT-29 | API GET | 200; list 5 rows: 4 seed + `FR17-DT-29`, đúng trường | PASS | CONFIRMED | CHƯA CHẠY — khả thi | EV-FR17-029 (`DT-29.log`) | — |
 | DT-30 | API DELETE | POST tạo 200; DELETE 200 `Coupon deleted`; list còn 4 row, coupon biến mất | PASS | CONFIRMED | CHƯA CHẠY — khả thi | EV-FR17-030 (`DT-30.log`) | — |
 | DT-31 | API DELETE | 200 `Coupon deleted` cho id 999999; list vẫn 4 row | Quan sát | UNRESOLVED | CHƯA CHẠY — API-only | EV-FR17-031 (`DT-31.log`) | — (OBS-FR17-02) |
-| DT-32 | API POST | 200; row mới `type=percent`, `discount_value=150` | Quan sát | UNRESOLVED | CHƯA CHẠY — khả thi | EV-FR17-032 (`DT-32.log`) | — (OBS-FR17-04) |
+| DT-32 | API POST | 200; row mới `type=percent`, `discount_value=150` | FAIL | CONFIRMED (percent tối đa 100, người kiểm thử xác nhận 2026-10-21) | CHƯA CHẠY — khả thi | EV-FR17-032 (`DT-32.log`) | BUG-FR17-08 |
 
 **Ghi chú DT-03:** R2 (code duy nhất) được enforce — coupon trùng không được tạo, nên verdict PASS theo oracle "non-2xx + không tạo row". Tuy nhiên API trả **500** kèm chuỗi lỗi SQLite thay vì một lỗi validation; đặc tả FR-17 không quy định status/message, nên đây là **quan sát** OBS-FR17-01, không phải FAIL của R2.
 
@@ -54,13 +54,13 @@
 
 | Phạm vi | Thiết kế | Đã chạy | PASS | FAIL | Quan sát | BLOCKED | Chưa chạy |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| **Tất cả T-ID duy nhất** | **32** | **32** | **11** | **18** | **3** | **0** | **0** |
+| **Tất cả T-ID duy nhất** | **32** | **32** | **11** | **20** | **1** | **0** | **0** |
 
-Đã chạy = PASS + FAIL + Quan sát = 11 + 18 + 3 = 32; Thiết kế = Đã chạy + BLOCKED + Chưa chạy = 32.
+Đã chạy = PASS + FAIL + Quan sát = 11 + 20 + 1 = 32; Thiết kế = Đã chạy + BLOCKED + Chưa chạy = 32.
 
 - **Theo kỹ thuật (có thể chồng lấp, không cộng thành tổng):** EP 32 lớp (`P1`–`P32`) trên 32 T-ID; BVA 9 điểm biên (B1 3, B2 3, B3 3) dùng lại 9 T-ID, không có T-ID BVA-only.
-- **Theo oracle:** CONFIRMED 26 T-ID; ASSUMED 3 T-ID (DT-06, DT-17, DT-18); UNRESOLVED 3 T-ID (DT-07, DT-31, DT-32).
-- **Đạt oracle theo nghĩa vụ:** EP 29 lớp có oracle → 11 PASS, 18 FAIL; BVA 9 điểm → 5 PASS, 4 FAIL.
+- **Theo oracle:** CONFIRMED 28 T-ID; ASSUMED 3 T-ID (DT-06, DT-17, DT-18); UNRESOLVED 1 T-ID (DT-31).
+- **Đạt oracle theo nghĩa vụ:** EP 31 lớp có oracle → 11 PASS, 20 FAIL; BVA 9 điểm → 5 PASS, 4 FAIL.
 - **UI:** 32/32 T-ID có hướng dẫn manual; 0/32 đã chạy UI; UI không được cộng vào verdict/coverage API.
 
 ## Bug report
@@ -75,6 +75,8 @@
 | BUG-FR17-04 | FR17 | Backend nhận `expired_at` thiếu/rỗng/sai định dạng | High | High | DT-15, DT-16, DT-17 | **Đã xác nhận API** (ảnh Postman); Issue [#50](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/50) | `DT-15.log`…`DT-17.log` |
 | BUG-FR17-05 | FR17 | Backend nhận `min_order_amount` âm, không phải số hoặc thiếu | Medium | Medium | DT-21, DT-22, DT-23 | **Đã xác nhận API** (ảnh Postman); Issue [#51](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/51) | `DT-21.log`…`DT-23.log` |
 | BUG-FR17-06 | FR17 | Backend nhận `max_uses_per_user < 1` hoặc thiếu; number `0` bị đổi thành `1` | Medium | Medium | DT-26, DT-27, DT-28 | **Đã xác nhận API** (ảnh Postman); Issue [#52](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52) | `DT-26.log`…`DT-28.log` |
+| BUG-FR17-07 | FR17 | Backend nhận `code` khác hoa/thường khi đã có mã tương ứng (`save10` bên cạnh `SAVE10`) | Medium | Medium | DT-07 | **Đã xác nhận API** (ảnh Postman); Issue đang tạo | `DT-07.log` + 3 ảnh |
+| BUG-FR17-08 | FR17 | Backend nhận `discount_value = 150` cho coupon `percent` (vượt 100%) | High | High | DT-32 | **Đã xác nhận API** (ảnh Postman); Issue đang tạo | `DT-32.log` + 2 ảnh |
 
 ### Tiêu chí phân loại
 
@@ -325,6 +327,78 @@ curl -s -X POST http://localhost:3000/api/admin/coupons \
 **Screenshot API:** [06-MaxUsesPerUser0](screenshots/BUG-FR17-06-MaxUsesPerUser0.png), [06-MaxUsesPerUser0Up1](screenshots/BUG-FR17-06-MaxUsesPerUser0Up1.png), [06-MaxUsesPerUserNegative](screenshots/BUG-FR17-06-MaxUsesPerUserNegative.png), [06-GetMaxUsesPerUserNegative](screenshots/BUG-FR17-06-GetMaxUsesPerUserNegative.png), [06-MissingMaxUses](screenshots/BUG-FR17-06-MissingMaxUses.png), [06-GetMissingMaxUses](screenshots/BUG-FR17-06-GetMissingMaxUses.png).
 **Root cause:** `backend/server.js:474` dùng `max_uses_per_user || 1`; không có kiểm tra `>= 1`; cột `max_uses_per_user INTEGER DEFAULT 1` không có `CHECK` (`backend/database.js:37`). Hệ quả nguồn FR-09: `usage_count >= -1` luôn đúng → coupon bị coi là hết lượt ngay từ đầu (`server.js:391-396`).
 
+#### BUG-FR17-07 — Backend nhận `code` khác hoa/thường khi đã có mã tương ứng
+
+| Mục | Giá trị |
+| --- | --- |
+| Feature / rule | FR-17 — Coupon CRUD; R2 `code` bắt buộc và duy nhất **không phân biệt hoa/thường** (người kiểm thử xác nhận 2026-10-21) |
+| Test case | DT-07 — `code = "save10"` khi seed `SAVE10` đã tồn tại |
+| Build / môi trường | `f389502…`; API `POST /api/admin/coupons`; Node/Express + SQLite; DB test cách ly |
+| Severity / Priority | **Medium / Medium** — tạo được coupon nhìn giống hệt mã đã có; UI tự uppercase nên finding là API-only, nhưng dữ liệu có thể gây nhầm lẫn/trùng nghĩa khi tích hợp |
+| Trạng thái / lặp lại | **Đã xác nhận qua API** bằng ảnh Postman; Issue đang tạo; 1/1 run API + ảnh chụp lần chạy lại |
+
+**Chuẩn bị:** DB test có 4 seed, gồm `SAVE10`; đăng nhập admin; các trường còn lại baseline (`type=percent`, `discount_value=10`, `min_order_amount=100000`, `expired_at=2099-12-31`, `max_uses_per_user=1`).
+
+**Các bước (API đã chạy):**
+
+```zsh
+curl -s -w '\nHTTP %{http_code}\n' -X POST http://localhost:3000/api/admin/coupons \
+  -H "Authorization: Bearer $ADMIN_TOKEN" -H 'Content-Type: application/json' \
+  -d '{"code":"save10","type":"percent","discount_value":10,"min_order_amount":100000,"expired_at":"2099-12-31","max_uses_per_user":1}'
+
+curl -s http://localhost:3000/api/coupons \
+  -H "Authorization: Bearer $ADMIN_TOKEN" | jq '.[] | select(.code == "SAVE10" or .code == "save10")'
+```
+
+| Mốc | Expected theo rule | Actual quan sát được |
+| --- | --- | --- |
+| Tạo `save10` khi đã có `SAVE10` | Non-2xx; không có row mới | `HTTP 200`, body `{"message":"Coupon created","id":10}` |
+| Danh sách sau request | Chỉ còn `SAVE10` | Có cả `SAVE10` và `save10` |
+
+**Kết luận:** Backend coi hai mã khác hoa/thường là hai giá trị duy nhất, vi phạm quy tắc uniqueness không phân biệt hoa/thường. UI admin tự `toUpperCase()` nên người dùng thông thường khó gửi `save10`; đây là lỗi API-only.
+
+**Root cause:** `backend/database.js:31` khai báo `code TEXT UNIQUE` với collation BINARY mặc định; `backend/server.js:466-479` không chuẩn hóa `code` trước khi `INSERT`. UI uppercase tại `frontend-admin/src/App.jsx:641-645` chỉ che lỗi trên đường UI.
+
+**Evidence:** `DT-07.log` (EV-FR17-007). **Screenshot API:** [07-CouponUppercase](screenshots/BUG-FR17-07-CouponUppercase.png), [07-CreateCouponLowercase](screenshots/BUG-FR17-07-CreateCouponLowercase.png), [07-GetCouponLowercase](screenshots/BUG-FR17-07-GetCouponLowercase.png). **Issue:** đang tạo.
+
+---
+
+#### BUG-FR17-08 — Backend nhận `discount_value = 150` cho coupon `percent`
+
+| Mục | Giá trị |
+| --- | --- |
+| Feature / rule | FR-17 — Coupon CRUD; R4 `discount_value` dương và với `type = percent` không vượt quá `100` (người kiểm thử xác nhận 2026-10-21) |
+| Test case | DT-32 — `type = "percent"`, `discount_value = 150` |
+| Build / môi trường | `f389502…`; API `POST /api/admin/coupons`; Node/Express + SQLite; DB test cách ly |
+| Severity / Priority | **High / High** — coupon có mức giảm không thể tồn tại; dữ liệu sai có thể làm FR-09 tính số tiền âm/không hợp lý |
+| Trạng thái / lặp lại | **Đã xác nhận qua API** bằng ảnh Postman; Issue đang tạo; 1/1 run API + ảnh chụp lần chạy lại |
+
+**Chuẩn bị:** DB test có 4 seed; đăng nhập admin; baseline `code=FR17-DT-32`, `min_order_amount=100000`, `expired_at=2099-12-31`, `max_uses_per_user=1`; chỉ đổi `type=percent`, `discount_value=150`.
+
+**Các bước (API đã chạy):**
+
+```zsh
+curl -s -w '\nHTTP %{http_code}\n' -X POST http://localhost:3000/api/admin/coupons \
+  -H "Authorization: Bearer $ADMIN_TOKEN" -H 'Content-Type: application/json' \
+  -d '{"code":"FR17-DT-32","type":"percent","discount_value":150,"min_order_amount":100000,"expired_at":"2099-12-31","max_uses_per_user":1}'
+
+curl -s http://localhost:3000/api/coupons \
+  -H "Authorization: Bearer $ADMIN_TOKEN" | jq '.[] | select(.code == "FR17-DT-32")'
+```
+
+| Mốc | Expected theo rule | Actual quan sát được |
+| --- | --- | --- |
+| Tạo coupon `percent` với `150` | Non-2xx; không có row mới | `HTTP 200`, body `{"message":"Coupon created","id":34}` |
+| Danh sách sau request | Không có `FR17-DT-32` | Row `FR17-DT-32` có `discount_value=150` |
+
+**Kết luận:** Backend không kiểm tra upper bound `100` cho percent, nên lưu một mức giảm vô nghĩa. UI không có `max` trên ô Giá trị nên người dùng cũng có thể nhập trực tiếp `150`; finding có đường UI tiềm năng nhưng mới xác nhận qua API.
+
+**Root cause:** `backend/server.js:457-481` chỉ `INSERT` giá trị, không kiểm tra `type === "percent"` và `discount_value <= 100`; `frontend-admin/src/App.jsx:659-675` không đặt `max`.
+
+**Evidence:** `DT-32.log` (EV-FR17-032). **Screenshot API:** [08-Discount150](screenshots/BUG-FR17-08-Discount150.png), [08-GetDiscount150](screenshots/BUG-FR17-08-GetDiscount150.png). **Issue:** đang tạo.
+
+---
+
 ## Quan sát ngoài oracle EP/BVA
 
 Các mục dưới đây **không cộng vào coverage**; chi tiết và nguồn ở `supporting-materials/fr17-observations.md`.
@@ -333,8 +407,8 @@ Các mục dưới đây **không cộng vào coverage**; chi tiết và nguồn
 | --- | --- | --- | --- |
 | OBS-FR17-01 | Trùng `code` trả HTTP 500 kèm `SQLITE_CONSTRAINT` thay vì lỗi validation | DT-03 (PASS về uniqueness) | Chờ người kiểm thử quyết định |
 | OBS-FR17-02 | Xóa id không tồn tại trả 200 `Coupon deleted` | DT-31 | Chờ người kiểm thử quyết định |
-| OBS-FR17-03 | `save10` được tạo bên cạnh `SAVE10`; uniqueness hoa/thường chưa rõ | DT-07 | Chưa có oracle |
-| OBS-FR17-04 | `percent` với `discount_value=150` được chấp nhận; FR-17 không có upper bound | DT-32 | Chưa có oracle |
+| OBS-FR17-03 | `save10` được tạo bên cạnh `SAVE10` | DT-07 | **Đã xác nhận — BUG-FR17-07**; không còn là quan sát |
+| OBS-FR17-04 | `percent` với `discount_value=150` được chấp nhận | DT-32 | **Đã xác nhận — BUG-FR17-08**; không còn là quan sát |
 | OBS-FR17-05 | UI coupon không có `<label>`/dấu `*` cho trường bắt buộc (FR-22) | Source UI | Chưa chạy UI |
 | OBS-FR17-06 | User token gọi được `POST /api/admin/coupons` (FR-12) | OBS log | Đã xác nhận qua API |
 | OBS-FR17-07 | FR-09 `apply-coupon`: công thức percent sai, dùng `>` thay `>=`, endpoint công khai | OBS log | Đã chạy, ngoài phạm vi FR-17 |
@@ -345,8 +419,9 @@ Các mục dưới đây **không cộng vào coverage**; chi tiết và nguồn
 ## Khoảng trống và câu hỏi mở
 
 - **UI không dùng làm bằng chứng:** 16 T-ID UI-reachable chỉ có hướng dẫn manual; kết luận FR-17 dựa trên API/Postman, không dùng ảnh UI.
-- **GitHub Issue:** đã publish [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47)…#[52](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52) kèm 34 ảnh Postman; không dùng ảnh UI.
-- **Oracle chưa đầy đủ:** status/message validation không được đặc tả; case-sensitivity của `code`, upper bound percent, hành vi xóa id không tồn tại vẫn UNRESOLVED.
+- **GitHub Issue:** 6 bug cũ đã publish [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47)…#[52](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52) kèm 34 ảnh Postman; 2 bug mới `BUG-FR17-07/08` đã có thêm 5 ảnh Postman và Issue đang được tạo (tổng 39 ảnh).
+- **Oracle chưa đầy đủ:** status/message validation không được đặc tả; hành vi xóa id không tồn tại vẫn UNRESOLVED. Case-sensitivity của `code` và upper bound percent đã được người kiểm thử xác nhận ngày 2026-10-21.
+- **Ảnh/Issue còn thiếu:** chỉ còn `DT-06` chưa có ảnh; `DT-07` và `DT-32` đã có ảnh Postman, 2 Issue mới đang được tạo.
 - **ASSUMED:** code toàn khoảng trắng là invalid; `expired_at` phải đúng định dạng ngày; coupon quá khứ vẫn được tạo; `max_uses_per_user` là số nguyên.
 - **Ngoài phạm vi:** FR-09 (áp dụng coupon) và FR-12 (phân quyền admin) chỉ ghi quan sát, không tính coverage.
 - **Không có Update:** FR-17 chỉ yêu cầu Thêm/Xem/Xóa; không kiểm thử sửa coupon.
@@ -355,10 +430,10 @@ Các mục dưới đây **không cộng vào coverage**; chi tiết và nguồn
 
 ## Trạng thái Issue / screenshot
 
-- 6 bug `BUG-FR17-01`…`BUG-FR17-06`: **Đã xác nhận qua API** (ảnh Postman); chỉ dùng ảnh Postman, không dùng ảnh UI.
-- GitHub Issue đã mở: [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47), [#48](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/48), [#49](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/49), [#50](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/50), [#51](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/51), [#52](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52); nội dung draft tại [`features/FR17/issues/`](issues/).
-- **34 ảnh API** tại `screenshots/` (17/18 FAIL có ảnh; `DT-06` chưa có ảnh).
-- Không còn bước publish; UI không dùng làm bằng chứng cho FR-17.
+- 8 bug `BUG-FR17-01`…`BUG-FR17-08`: **Đã xác nhận qua API**; 8 bug đều có ảnh Postman; không dùng ảnh UI.
+- GitHub Issue đã mở cho 6 bug cũ: [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47), [#48](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/48), [#49](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/49), [#50](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/50), [#51](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/51), [#52](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52); `BUG-FR17-07/08` tại [`BUG-FR17-07.md`](issues/BUG-FR17-07.md) và [`BUG-FR17-08.md`](issues/BUG-FR17-08.md), Issue đang tạo.
+- **39 ảnh API** tại `screenshots/` (19/20 FAIL có ảnh; `DT-06` chưa có ảnh).
+- `DT-07`/`DT-32` đã có ảnh; 2 Issue mới đang được tạo. UI không dùng làm bằng chứng cho FR-17.
 
 ## AI Gap Analysis — chờ sinh viên
 

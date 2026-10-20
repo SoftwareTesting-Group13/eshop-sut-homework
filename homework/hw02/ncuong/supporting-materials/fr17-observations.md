@@ -1,6 +1,6 @@
-# FR-17 — Quan sát ngoài phạm vi EP/BVA
+# FR-17 — Quan sát bổ sung (OBS-FR17-03/04 đã chuyển thành bug)
 
-> Các quan sát dưới đây **không thuộc** bộ ca Domain/EP và BVA của FR-17, **không cộng vào coverage** kỹ thuật. Chúng được lưu riêng để người kiểm thử xem xét; nếu xác nhận là bug thì vẫn báo cáo và mở GitHub Issue kèm screenshot theo HW02 §6.
+> Các quan sát dưới đây ban đầu được lưu riêng để người kiểm thử xem xét. Ngày **2026-10-21**, người kiểm thử xác nhận **OBS-FR17-03** và **OBS-FR17-04** là bug; hai mục này đã được chuyển vào báo cáo bug với ID `BUG-FR17-07` và `BUG-FR17-08`, dùng lại test case DT-07/DT-32 (không cộng thêm T-ID mới). Các quan sát còn lại vẫn nằm ngoài coverage kỹ thuật.
 
 ## OBS-FR17-01 — Trùng `code` trả HTTP 500 kèm lỗi SQLite
 
@@ -20,17 +20,17 @@
 ## OBS-FR17-03 — `save10` được tạo bên cạnh `SAVE10`
 
 - **Nguồn:** `backend/database.js:31` — `code TEXT UNIQUE` dùng collation mặc định (BINARY), nên `SAVE10` và `save10` là hai giá trị khác nhau. UI admin tự `toUpperCase()` (`frontend-admin/src/App.jsx:641-645`) nên người dùng thường không gửi được `save10`; API thì gửi được.
-- **Liên quan đặc tả:** FR-17 nói `code` duy nhất nhưng không nói uniqueness phân biệt hoa/thường. Không đủ oracle để gọi bug.
+- **Liên quan đặc tả:** FR-17 yêu cầu `code` duy nhất. Ngày **2026-10-21**, người kiểm thử xác nhận uniqueness phải **không phân biệt hoa/thường**; vì cột `code TEXT UNIQUE` dùng collation BINARY, `save10` đang được tạo bên cạnh `SAVE10` là bug.
 - **Bằng chứng:** `features/FR17/evidence/DT-07.log` — HTTP 200, row mới `code="save10"` trong khi seed `SAVE10` vẫn tồn tại.
-- **Trạng thái:** UNRESOLVED/Quan sát; cần người kiểm thử quyết định quy tắc uniqueness.
+- **Trạng thái:** **Đã xác nhận — `BUG-FR17-07`**. Bug đã vào `test-results.md` và master report; ảnh Postman đã có, Issue đang được tạo.
 
 ## OBS-FR17-04 — `percent` với `discount_value=150` được chấp nhận
 
 - **Nguồn:** `backend/server.js:457-481` không có upper bound; `frontend-admin/src/App.jsx:659-675` ô Giá trị không có `max`.
-- **Liên quan đặc tả:** FR-17 chỉ nói `discount_value` dương, không đặt ngưỡng 100% cho percent. Không đủ oracle để gọi bug ở FR-17.
+- **Liên quan đặc tả:** FR-17 yêu cầu `discount_value` dương. Ngày **2026-10-21**, người kiểm thử xác nhận với `type = percent`, mức giảm không được vượt quá `100`; `150%` là mức không hợp lệ kể cả khi đặc tả không ghi upper bound.
 - **Bằng chứng:** `features/FR17/evidence/DT-32.log` — HTTP 200, row mới `discount_value=150`.
 - **Ảnh hưởng tiềm ẩn (FR-09, ngoài phạm vi):** công thức percent hiện tại là `total * (1 - discount_value)` thay vì `total * discount_value / 100`; với 150% có thể cho kết quả âm/không hợp lý. Xem OBS-FR17-07.
-- **Trạng thái:** UNRESOLVED/Quan sát.
+- **Trạng thái:** **Đã xác nhận — `BUG-FR17-08`**. Bug đã vào `test-results.md` và master report; ảnh Postman đã có, Issue đang được tạo.
 
 ## OBS-FR17-05 — Form coupon thiếu nhãn và dấu `*` cho trường bắt buộc
 
@@ -103,8 +103,8 @@
 | --- | --- | --- | --- | --- |
 | OBS-FR17-01 | Error handling | API (DT-03) | Không | Chờ quyết định |
 | OBS-FR17-02 | Delete id không tồn tại | API (DT-31) | Không | Chờ quyết định |
-| OBS-FR17-03 | Case-sensitive uniqueness | API (DT-07) | Không | Chờ quyết định |
-| OBS-FR17-04 | Percent >100 | API (DT-32) | Không | Chờ quyết định |
+| OBS-FR17-03 | Case-sensitive uniqueness | API (DT-07) | Có — người kiểm thử xác nhận | **BUG-FR17-07** |
+| OBS-FR17-04 | Percent >100 | API (DT-32) | Có — người kiểm thử xác nhận | **BUG-FR17-08** |
 | OBS-FR17-05 | UI labels/`*` | Chưa (source) | Không (FR-22) | Chờ người kiểm thử |
 | OBS-FR17-06 | Thiếu role check | API | Không (FR-12) | Đã xác nhận, ngoài phạm vi |
 | OBS-FR17-07 | FR-09 apply-coupon | API | Không (FR-09) | Đã xác nhận, ngoài phạm vi |

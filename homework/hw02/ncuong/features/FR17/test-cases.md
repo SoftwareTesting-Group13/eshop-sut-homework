@@ -14,7 +14,7 @@ Thiết kế ca từ lớp tương đương trong `domain-analysis.md` và đi�
 | DT-04 | EP; P4, R2 | `code = ""` | Non-2xx; không có row mới |
 | DT-05 | EP; P5, R2 | Bỏ hẳn key `code` | Non-2xx; không có row mới |
 | DT-06 | EP; P6, R2 | `code = "   "` | Non-2xx; không có row mới (ASSUMED) |
-| DT-07 | EP; P7, R2 | `code = "save10"` khi đã có `SAVE10` | Chưa xác định — Quan sát uniqueness hoa/thường |
+| DT-07 | EP; P7, R2 | `code = "save10"` khi đã có `SAVE10` | Non-2xx; không tạo row mới — uniqueness không phân biệt hoa/thường |
 | DT-08 | EP; P8, R3 | `type = "percentage"` | Non-2xx; không có row mới |
 | DT-09 | EP; P9, R3 | Bỏ hẳn key `type` | Non-2xx; không có row mới |
 | DT-10 | EP + BVA; P10, B3-ON, R4 | `discount_value = 0` | Non-2xx; không có row mới |
@@ -39,7 +39,7 @@ Thiết kế ca từ lớp tương đương trong `domain-analysis.md` và đi�
 | DT-29 | EP; P29, R1, R8 | Tạo `FR17-DT-29` rồi `GET /api/coupons` | 2xx; danh sách có 4 seed + row mới, đúng trường |
 | DT-30 | EP; P30, R9 | Tạo `FR17-DT-30`, `DELETE` theo id, rồi `GET` | 2xx; coupon biến mất khỏi danh sách |
 | DT-31 | EP; P31 | `DELETE /api/admin/coupons/999999` | Chưa xác định — Quan sát |
-| DT-32 | EP; P32, R4 | `type = percent`, `discount_value = 150` | Chưa xác định — Quan sát (không có upper bound) |
+| DT-32 | EP; P32, R4 | `type = percent`, `discount_value = 150` | Non-2xx; không tạo row mới — percent tối đa 100 |
 
 ## Đường chạy API và thao tác UI thủ công
 
@@ -99,7 +99,7 @@ Thiết kế ca từ lớp tương đương trong `domain-analysis.md` và đi�
 
 - **API:** `POST /api/admin/coupons` — `code = "save10"` khi DB có `SAVE10`.
 - **UI thông thường:** Không cùng input-state — UI tự `toUpperCase()`, không gửi được `save10`; ca API-only.
-- **Manual UI:** không có đường UI thông thường. Đây là quan sát, không có Expected PASS/FAIL.
+- **Manual UI:** không có đường UI thông thường. **Expected:** non-2xx và không tạo row mới; uniqueness của `code` không phân biệt hoa/thường (người kiểm thử xác nhận 2026-10-21).
 
 ### Nhóm `type`
 
@@ -272,7 +272,7 @@ Thiết kế ca từ lớp tương đương trong `domain-analysis.md` và đi�
 
 - **API:** `POST /api/admin/coupons` — `type = "percent"`, `discount_value = 150`.
 - **UI thông thường:** Khả thi — ô Giá trị không có `max`.
-- **Manual UI:** Loại=`Phần trăm (%)`, Giá trị=`150` → **Tạo mã** → Quan sát: row `150%` có xuất hiện không; ghi nhận, không chấm PASS/FAIL vì FR-17 không có upper bound.
+- **Manual UI:** Loại=`Phần trăm (%)`, Giá trị=`150` → **Tạo mã** → **Expected:** không có row mới; percent tối đa `100`, nên `150` không hợp lệ (người kiểm thử xác nhận 2026-10-21).
 - **Reset:** **Xóa** row nếu có.
 
 ## Ghi chú về UI và phạm vi

@@ -15,7 +15,7 @@ I use AI tools for the following tasks,
 
 > **Phạm vi lập báo cáo (capture notes):**
 > - Bằng chứng khả dụng: phiên hội thoại hiện tại (prompt của người dùng + các artifact do agent tạo trong repo); không có file export transcript riêng. Hai screenshot (`features/FR02/screenshots/BUG-FR02-01.png`, `BUG-FR02-02.png`) và 34 ảnh FR17 trong `features/FR17/screenshots/` do **người dùng** cung cấp, không phải AI tạo.
-> - Số interaction đã ghi: **10** (AI-001…AI-010; các prompt của người dùng; các tool call nội bộ không phải prompt của người dùng nên không liệt kê).
+> - Số interaction đã ghi: **11** (AI-001…AI-011; các prompt của người dùng; các tool call nội bộ không phải prompt của người dùng nên không liệt kê).
 > - Công cụ AI đã dùng (theo bằng chứng): OpenCode agent, model `DeepSeek V4.1 Flash Free` (provider `opencode`).
 > - Công cụ/phiên được nhắc tới nhưng không kiểm tra được: không.
 
@@ -260,6 +260,8 @@ Output của agent là bộ artifact tạo/cập nhật trong repo (nội dung �
 
 Tóm tắt kết quả agent đã tạo (số liệu nằm trong các file trên): 32 T-ID duy nhất; 32 đã chạy; 11 PASS, 18 FAIL, 3 Quan sát/INCONCLUSIVE, 0 BLOCKED, 0 chưa chạy; EP 32 lớp, BVA 9 điểm biên dùng lại 9 T-ID (0 T-ID BVA-only). 6 bug ứng viên `BUG-FR17-01…06` (2 High, 4 Medium) đang **Chờ người kiểm thử xác nhận**; agent không tự mở GitHub Issue, không tự chụp screenshot, không điền AI Gap Analysis hay AI Critique. Thực thi trên instance SUT cách ly trong thư mục tạm (commit `f389502cdb308b133fe9044e34505f19202dd887`); Database làm việc giữ nguyên SHA-256 `c63f0054…`. UI admin mới có hướng dẫn manual, **chưa chạy UI**; 16 T-ID UI-reachable, 16 T-ID API-only. Quan sát ngoài phạm vi FR-17 (FR-09/FR-12) được lưu riêng, không cộng coverage.
 
+> **Ghi chú lịch sử:** số liệu trong AI-007 là tại thời điểm 2026-10-20. Sau xác nhận của người kiểm thử ở AI-011, FR-17 có **11 PASS, 20 FAIL, 1 Quan sát**; tổng 3 feature là **40 PASS, 25 FAIL, 2 Quan sát**.
+
 > Phản hồi cuối của agent cho người dùng là bản tóm tắt bàn giao (số ca, coverage, bug, câu hỏi mở, trạng thái AI Audit); toàn bộ nội dung kỹ thuật chi tiết nằm trong các artifact liên kết ở trên. Các thông điệp tool nội bộ (đọc file, chạy lệnh) không phải output người dùng thấy nên không chép vào đây.
 
 ---
@@ -330,6 +332,8 @@ Output của agent là các thay đổi trong repo (nội dung kiểm tra đư�
 - Link raw GitHub sẽ sống sau khi commit/push nhánh `ncuong`; trước đó ảnh vẫn xem được cục bộ trong repo.
 - Không publish GitHub Issue, không commit/push, không sửa source, template, skill hay `backend/database.sqlite`. Working DB hiện đang modified so với HEAD nhưng không phải do AI-009 sửa.
 
+> **Ghi chú lịch sử:** `17/18 ca FAIL` và `6 bug` là số liệu tại thời điểm AI-009. Sau AI-011, FR-17 có **20 FAIL** và **8 bug**; xem tổng hợp hiện hành ở AI-011.
+
 > Phản hồi cuối của agent cho người dùng là bản tóm tắt ảnh đã đính vào đâu, số ảnh/độ phủ, trạng thái Issue và các việc còn lại (UI nếu muốn, commit/push, publish Issue); không có thao tác publish hay commit.
 
 ---
@@ -370,6 +374,47 @@ Output của agent là các thay đổi trong repo, commit/push và 6 Issue đã
 
 ---
 
+## Interaction AI-011
+
+- **AI tool:** OpenCode agent — model `DeepSeek V4.1 Flash Free` (provider `opencode`).
+- **Date and time:** 2026-10-21 (prompt không cung cấp giờ; không tự tạo timestamp).
+- **Source:** Phiên hội thoại hiện tại; evidence log `DT-07.log`/`DT-32.log` của run `run-20261020-fr17`; không có ảnh mới trong lượt này.
+- **Task:** Xác nhận `OBS-FR17-03` (`save10` bên cạnh `SAVE10`) và `OBS-FR17-04` (`percent` với `discount_value=150`) là bug; thêm vào FR-17, chạy lại bộ skill và cập nhật báo cáo đầy đủ; ghi AI Audit.
+
+### Your prompt
+
+```text
+OBS-FR17-03 — save10 được tạo bên cạnh SAVE10
+OBS-FR17-04 — percent với discount_value=150 được chấp nhận
+T xác nhận đây là 2 bug. FR1703 vì trường trong db là text unique --> có phân biệt hoa thường rồi.
+FR1704 --> 150% là 1 mức discount không hợp lệ kể cả khi ko có rule, vì giảm giá thực tế ko ai giảm tới mức này cả.
+Thêm 2 bug này vào fr17 hiện tại, chạy lại @homework/hw02/ncuong/skills/ và thêm vào report báo cáo đầy đủ. Ghi xong nhớ AI Audit log @homework/hw02/ncuong/skills/ai-audit-logger/.
+```
+
+### The AI output
+
+Output của agent là các thay đổi trong repo (kiểm tra được):
+
+| Artifact | Thay đổi |
+| --- | --- |
+| Domain / BVA | `features/FR17/domain-analysis.md`, `boundary-analysis.md`: thêm quy tắc uniqueness không phân biệt hoa/thường và upper bound `100` cho percent; P7/P32 có oracle non-2xx; ghi rõ đây là xác nhận của người kiểm thử ngày 2026-10-21, không phải suy từ hành vi SUT |
+| Test cases | `features/FR17/test-cases.md`: DT-07 và DT-32 đổi Expected sang từ chối, không tạo row |
+| Test results | `features/FR17/test-results.md`: DT-07/DT-32 chuyển `Quan sát` → `FAIL`; thêm `BUG-FR17-07` (Medium) và `BUG-FR17-08` (High); counts FR-17 thành `11 PASS / 20 FAIL / 1 Quan sát`; tổng thành `67/67/40/25/2`; thêm reproduction, root cause, trạng thái ảnh/Issue |
+| Evidence | `features/FR17/evidence/FR17-evidence.md`, `DT-07.log`, `DT-32.log`, `run-summary.json`: cập nhật oracle/status/bug ID/counts; giữ nguyên Actual của lần chạy và thêm metadata reclassification |
+| Bug drafts | `features/FR17/issues/BUG-FR17-07.md`, `BUG-FR17-08.md`: tạo draft đầy đủ; **chưa publish** vì chưa có ảnh Postman cho DT-07/DT-32 |
+| Reports | `reports/main-report.md`, `README.md`, `supporting-materials/fr17-observations.md`: cập nhật 8 bug FR-17 (`High 3 / Medium 5`), counts, liên kết evidence và trạng thái 2 Issue draft |
+| AI Audit | `reports/ai-audit.md`: thêm AI-011, tăng số interaction lên 11 |
+
+- Hai bug dùng ID mới `BUG-FR17-07` và `BUG-FR17-08`, không tái sử dụng ID của bug khác; DT-07/DT-32 vẫn giữ nguyên T-ID nên tổng thiết kế/đã chạy không đổi (`32`).
+- `BUG-FR17-07` là lỗi API-only vì UI tự uppercase `code`; `BUG-FR17-08` có đường UI tiềm năng nhưng bằng chứng mới là API.
+- **Giới hạn:** không có ảnh Postman mới cho `DT-07`/`DT-32`, nên 2 Issue chỉ ở dạng draft; không tạo ảnh giả, không dùng ảnh UI.
+- Không sửa source `backend/`/`frontend-admin/`, không sửa `backend/database.sqlite`, không sửa bộ skill; không commit/push trong lượt này.
+- Các thay đổi của người dùng trong `prompt.txt` và `skills/` vẫn giữ nguyên.
+
+> Phản hồi cuối của agent cho người dùng là tóm tắt 2 bug mới, counts đã đổi, các file báo cáo đã cập nhật, và việc 2 GitHub Issue còn draft chờ ảnh Postman.
+
+---
+
 ## Optional audit table (theo mẫu `[AI-02]` — bổ sung, không thay thế 4 trường bắt buộc)
 
 | (1) Prompt + Công cụ | (2) Output AI | (3) Verdict | (4) Lý do | (5) Bản SV sửa |
@@ -384,5 +429,6 @@ Output của agent là các thay đổi trong repo, commit/push và 6 Issue đã
 | OpenCode · DeepSeek V4.1 Flash Free · 2026-10-20 · Time not available in source · “Viết issue template luôn m, chưa commit nhma có template rồi mà @homework/hw02/ncuong/skills/test-findings-report-writer/assets/github-issue-template.md” | 6 draft Issue FR17 tại `features/FR17/issues/BUG-FR17-01.md`…`BUG-FR17-06.md`; cập nhật link draft trong `test-results.md`, `main-report.md`, `README.md`; không publish/không commit | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 | OpenCode · DeepSeek V4.1 Flash Free · 2026-10-21 · Time not available in source · “T có đính kèm ảnh trong screenshot r đó, đính kèm vào các báo cáo liên quan với issue đi m. Nhớ AI Audit” | 34 ảnh Postman được nhúng vào 6 Issue draft FR17 và liên kết trong `test-results.md`, `FR17-evidence.md`, `main-report.md`, `README.md`; trạng thái chuyển thành “đã xác nhận API; UI chưa chạy”; không publish/không commit | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 | OpenCode · DeepSeek V4.1 Flash Free · 2026-10-21 · Time not available in source · “Không sài ảnh UI nha, sài ảnh postman thôi, tạo issue luôn cho t đi” | Commit/push `4dae771` (artifact + ảnh) và `0b32a5a` (link Issue/báo cáo); tạo Issue FR17 #47…#52 kèm ảnh Postman; cập nhật draft Issue và `test-results.md`, `FR17-evidence.md`, `main-report.md`, `README.md`; chỉ dùng ảnh Postman, không dùng ảnh UI | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
+| OpenCode · DeepSeek V4.1 Flash Free · 2026-10-21 · Time not available in source · “OBS-FR17-03 … OBS-FR17-04 … T xác nhận đây là 2 bug … Thêm 2 bug này vào fr17 hiện tại … Ghi xong nhớ AI Audit log …” | Chuyển DT-07/DT-32 sang FAIL; thêm `BUG-FR17-07`/`BUG-FR17-08`; cập nhật domain/BVA/test-cases/test-results/evidence/observations/master report/README; counts FR-17 `11/20/1`, tổng `40/25/2`; tạo 2 Issue draft chờ ảnh Postman; thêm AI-011 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 
 > Cột (3)–(5) do **sinh viên** tự đánh giá/điền; báo cáo không tự suy diễn verdict hay bản sửa của sinh viên.

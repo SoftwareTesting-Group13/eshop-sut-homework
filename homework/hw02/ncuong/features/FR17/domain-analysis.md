@@ -9,9 +9,9 @@
 | Rule | Hệ thống phải làm gì? | Điều kiện ảnh hưởng | Trạng thái | Nguồn |
 | --- | --- | --- | --- | --- |
 | R1 | Admin thêm được coupon hợp lệ; coupon được lưu và nhìn thấy trong danh sách. | `POST /api/admin/coupons` với body hợp lệ | CONFIRMED | `README.md` §5 FR-17 ("Thêm") |
-| R2 | `code` là trường bắt buộc và duy nhất. | `code` rỗng/thiếu/trùng; uniqueness phân biệt hoa-thường chưa rõ | CONFIRMED (case-sensitivity: UNRESOLVED) | `README.md` §5 FR-17 |
+| R2 | `code` là trường bắt buộc và duy nhất; uniqueness **không phân biệt hoa/thường**. | `code` rỗng/thiếu/trùng; `save10` khi đã có `SAVE10` | CONFIRMED | `README.md` §5 FR-17; quy tắc uniqueness do người kiểm thử xác nhận 2026-10-21 |
 | R3 | `type` là trường bắt buộc, chỉ nhận `percent` hoặc `fixed`. | `type` thiếu/ngoài enum | CONFIRMED | `README.md` §5 FR-17 |
-| R4 | `discount_value` là trường bắt buộc, phải là số dương (`> 0`). | `0`, âm, không phải số, thiếu; upper bound của percent chưa rõ | CONFIRMED (upper bound: UNRESOLVED) | `README.md` §5 FR-17 |
+| R4 | `discount_value` là trường bắt buộc, phải là số dương (`> 0`); với `type = percent` không được vượt quá `100`. | `0`, âm, không phải số, thiếu; percent `150` | CONFIRMED (upper bound 100 do người kiểm thử xác nhận 2026-10-21) | `README.md` §5 FR-17 |
 | R5 | `expired_at` là trường bắt buộc và phải là ngày hợp lệ. | thiếu/rỗng/sai định dạng; ngày quá khứ | CONFIRMED (format/past: ASSUMED) | `README.md` §5 FR-17; `api_specification.md` §6.4 |
 | R6 | `min_order_amount` là trường bắt buộc, là số `>= 0`. | `0`, dương, âm, không phải số, thiếu | CONFIRMED | `README.md` §5 FR-17 |
 | R7 | `max_uses_per_user` là trường bắt buộc, là số nguyên `>= 1`. | `0`, âm, thiếu; số thập phân không được đặc tả | CONFIRMED (integer: ASSUMED) | `README.md` §5 FR-17 |
@@ -23,8 +23,7 @@
 - **ASSUMED — code chỉ toàn khoảng trắng là không hợp lệ (DT-06):** đặc tả chỉ nói `code` bắt buộc; một mã chỉ có khoảng trắng không thể là mã có nghĩa. UI dùng `required` nhưng `required` không chặn chuỗi khoảng trắng.
 - **ASSUMED — `expired_at` phải là ngày hợp lệ (DT-17):** API example dùng `YYYY-MM-DD`; UI dùng `input type="date"`. FR-17 chỉ nói trường bắt buộc, không nói rõ định dạng.
 - **ASSUMED — coupon đã hết hạn vẫn được tạo (DT-18):** FR-17 không cấm ngày quá khứ; bảng seed có coupon `EXPIRED` với `expired_at = 2020-01-01`. Đây là lớp hợp lệ theo nghĩa CRUD, dù coupon sẽ không dùng được ở FR-09.
-- **UNRESOLVED — uniqueness phân biệt hoa/thường (DT-07):** đặc tả chỉ nói "duy nhất"; không nói `SAVE10` và `save10` có bị coi là trùng không.
-- **UNRESOLVED — upper bound của `discount_value` khi `type = percent` (DT-32):** FR-17 chỉ nói dương; không có ngưỡng 100%. Đây là quan sát, không chấm PASS/FAIL.
+- **Đã giải quyết bằng xác nhận của người kiểm thử (2026-10-21):** (1) uniqueness của `code` **không phân biệt hoa/thường**, nên `save10` khi đã có `SAVE10` phải bị từ chối; (2) với `type = percent`, `discount_value = 150` là không hợp lệ vì vượt quá `100`. Hai quy tắc này được dùng làm oracle cho DT-07 và DT-32; đây là xác nhận nghiệp vụ của người kiểm thử, không phải suy ra từ hành vi SUT.
 - **UNRESOLVED — xóa id không tồn tại (DT-31):** FR-17 không quy định status/message.
 - **UNRESOLVED — status/message chính xác khi validation thất bại:** đặc tả không quy định; oracle dùng **non-2xx và coupon không được tạo**, không áp đặt 400/422.
 - **Ngoài mô hình:** `is_active` không nằm trong danh sách trường bắt buộc của FR-17; DB mặc định 1 khi tạo. Không kiểm thử `is_active` như một chiều input.
@@ -43,7 +42,7 @@
 | P4 | Code rỗng | `""` | Từ chối; không có row mới | DT-04 | R2 |
 | P5 | Thiếu hẳn key `code` | body không có `code` | Từ chối; không có row mới | DT-05 | R2 |
 | P6 | Code chỉ toàn khoảng trắng | `"   "` | Từ chối; không có row mới (ASSUMED) | DT-06 | R2 |
-| P7 | Code khác hoa/thường với code đã có | `save10` khi đã có `SAVE10` | Chưa xác định — Quan sát | DT-07 | R2 |
+| P7 | Code khác hoa/thường với code đã có | `save10` khi đã có `SAVE10` | Từ chối (non-2xx); không tạo row mới | DT-07 | R2 |
 
 **Nhóm `type`:**
 
@@ -99,23 +98,23 @@
 | P29 | Xem danh sách sau khi tạo coupon | Tạo `FR17-DT-29` rồi `GET /api/coupons` | Danh sách có 4 seed + coupon mới, đúng trường | DT-29 | R1, R8 |
 | P30 | Xóa coupon đang tồn tại | Tạo `FR17-DT-30`, `DELETE` theo id | Xóa thành công (2xx); coupon biến mất khỏi danh sách | DT-30 | R9 |
 | P31 | Xóa id không tồn tại | `DELETE /api/admin/coupons/999999` | Chưa xác định — Quan sát | DT-31 | R9 |
-| P32 | Percent lớn hơn 100 | `type = percent`, `discount_value = 150` | Chưa xác định — Quan sát (không có upper bound trong FR-17) | DT-32 | R4 |
+| P32 | Percent lớn hơn 100 | `type = percent`, `discount_value = 150` | Từ chối (non-2xx); không tạo row mới | DT-32 | R4 |
 
 ## Coverage theo mô hình EP
 
 | Nhóm | Lớp EP | T-ID | PASS | FAIL | Quan sát |
 | --- | --- | ---: | ---: | ---: | ---: |
-| `code` | P1, P3–P7 | 6 | 2 | 3 | 1 |
+| `code` | P1, P3–P7 | 6 | 2 | 4 | 0 |
 | `type` | P2, P8, P9 | 3 | 1 | 2 | 0 |
 | `discount_value` | P10–P14 | 5 | 1 | 4 | 0 |
 | `expired_at` | P15–P18 | 4 | 1 | 3 | 0 |
 | `min_order_amount` | P19–P23 | 5 | 2 | 3 | 0 |
 | `max_uses_per_user` | P24–P28 | 5 | 2 | 3 | 0 |
 | Xem / Xóa | P29–P31 | 3 | 2 | 0 | 1 |
-| Quan sát percent | P32 | 1 | 0 | 0 | 1 |
-| **Tổng** | **P1–P32** | **32** | **11** | **18** | **3** |
+| Percent >100 | P32 | 1 | 0 | 1 | 0 |
+| **Tổng** | **P1–P32** | **32** | **11** | **20** | **1** |
 
-- **EP:** thiết kế 32/32 lớp, đã chạy 32/32; 29 lớp có oracle (11 PASS, 18 FAIL); 3 lớp UNRESOLVED/Quan sát (P7, P31, P32).
+- **EP:** thiết kế 32/32 lớp, đã chạy 32/32; 31 lớp có oracle (11 PASS, 20 FAIL); 1 lớp UNRESOLVED/Quan sát (P31). DT-07 và DT-32 đã chuyển từ quan sát thành FAIL, lần lượt là `BUG-FR17-07` và `BUG-FR17-08`.
 - **BVA:** 9 điểm biên thuộc B1–B3 dùng lại 9 T-ID (DT-10, DT-11, DT-14, DT-19, DT-20, DT-21, DT-24, DT-25, DT-26); không có T-ID BVA-only. Chi tiết ở `boundary-analysis.md`.
 - **Tổng T-ID duy nhất:** 32; không cộng trùng EP và BVA.
 - **Liên kết:** P-ID → T-ID ở bảng trên; T-ID → EV-ID/Actual → verdict ở `test-results.md` và `evidence/`.

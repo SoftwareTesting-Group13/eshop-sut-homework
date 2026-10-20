@@ -35,8 +35,10 @@ BVA chỉ áp dụng cho các ngưỡng số học có trong FR-17: `min_order_a
 
 ## B3 — `discount_value > 0`
 
-**Rule:** R4 — `discount_value` là trường bắt buộc, phải là số dương.  
-**Biên:** `0`, dấu bằng **không** thuộc phía hợp lệ (`> 0`); đơn vị: `%` nếu `type = percent`, VND nếu `type = fixed`; bước nguyên `1`.  
+**Rule:** R4 — `discount_value` là trường bắt buộc, phải là số dương; với `type = percent`, giá trị không được vượt quá `100`.
+
+**Biên dưới:** `0`, dấu bằng **không** thuộc phía hợp lệ (`> 0`); đơn vị: `%` nếu `type = percent`, VND nếu `type = fixed`; bước nguyên `1`.
+
 **Setup chung:** như B1; chỉ đổi `discount_value`, giữ `type = percent` cho cả 3 điểm để so sánh cùng đơn vị.
 
 | Điểm | Giá trị/trạng thái cần tạo | Expected | Test case | Khả năng thử |
@@ -45,7 +47,7 @@ BVA chỉ áp dụng cho các ngưỡng số học có trong FR-17: `min_order_a
 | Tại biên | `discount_value = 0` | Từ chối (non-2xx); không có row mới | DT-10 | Khả thi — UI cho phép `0` |
 | Ngay trên | `discount_value = 1` | Tạo thành công (2xx); row có `discount_value = 1` | DT-14 | Khả thi — UI cho phép `1` |
 
-**Ghi chú:** FR-17 không đặt upper bound cho `discount_value` khi `type = percent`; vì vậy `100` không phải biên của đặc tả và không được thêm vào BVA. Giá trị `150` được ghi nhận riêng như quan sát DT-32, không chấm PASS/FAIL.
+**Ghi chú (cập nhật 2026-10-21):** Người kiểm thử xác nhận với `type = percent`, `discount_value` không được vượt quá `100`; do đó `150` là giá trị không hợp lệ. DT-32 (150) chuyển thành **FAIL**, gắn `BUG-FR17-08`. Catalog hiện tại chưa có các ca sát biên `99/100/101`; nếu cần BVA đầy đủ cho upper bound này thì phải thiết kế và chạy bổ sung, không tự suy kết quả.
 
 ## Vì sao các trường khác không có BVA
 
