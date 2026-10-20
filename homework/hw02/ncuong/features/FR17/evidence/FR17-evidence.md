@@ -11,7 +11,7 @@
 | SUT / build | `eshop-sut-homework` commit `f389502cdb308b133fe9044e34505f19202dd887` |
 | Môi trường | macOS; Node v26.9.0; backend Node/Express + SQLite; instance cách ly (bản sao `server.js`/`database.js`, `database.sqlite` riêng, `node_modules` symlink) |
 | Thời điểm chạy | 2026-10-20T15:38:26.710Z (2026-10-20 22:38:26 +0700) → 2026-10-20T15:38:27.016Z (2026-10-20 22:38:27 +0700) |
-| Người/agent thực thi | AI agent (theo skill `domain-testing-workflow`); screenshot API: người kiểm thử cung cấp 39 ảnh Postman; chỉ dùng bằng chứng Postman/API, không dùng ảnh UI |
+| Người/agent thực thi | AI agent (theo skill `domain-testing-workflow`); screenshot API: người kiểm thử cung cấp 39 ảnh Postman + 1 ảnh UI bổ sung cho `BUG-FR17-08`; bằng chứng chính là Postman/API |
 | GitHub Issue | [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47), [#48](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/48), [#49](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/49), [#50](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/50), [#51](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/51), [#52](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52), [#53](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/53), [#54](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/54) |
 | Thư mục evidence | `evidence/` |
 | Database làm việc | `backend/database.sqlite`, SHA-256 trước/sau: `c63f00544180ba1fbb1427a9b9dd3f1784842698809972f33ce90482e7420ba6` / `c63f00544180ba1fbb1427a9b9dd3f1784842698809972f33ce90482e7420ba6` |
@@ -37,7 +37,7 @@
 
 ## Ảnh xác nhận API (người kiểm thử cung cấp)
 
-> 39 ảnh Postman xác nhận request/response API, **không dùng ảnh UI**. 19/20 FAIL có ảnh; chỉ còn `DT-06` chưa có ảnh. File nằm trong `../screenshots/`.
+> 39 ảnh Postman xác nhận request/response API; bổ sung 1 ảnh UI áp dụng coupon `150%` cho `BUG-FR17-08`, chỉ minh họa hệ quả FR-09. 19/20 FAIL có ảnh API; chỉ còn `DT-06` chưa có ảnh. File nằm trong `../screenshots/`.
 
 | Bug | Test case | Ảnh request | Ảnh GET |
 | --- | --- | --- | --- |
@@ -62,6 +62,8 @@
 | BUG-FR17-07 | DT-07 (seed) | [CouponUppercase](../screenshots/BUG-FR17-07-CouponUppercase.png) | — |
 | BUG-FR17-07 | DT-07 | [CreateCouponLowercase](../screenshots/BUG-FR17-07-CreateCouponLowercase.png) | [GetCouponLowercase](../screenshots/BUG-FR17-07-GetCouponLowercase.png) |
 | BUG-FR17-08 | DT-32 | [Discount150](../screenshots/BUG-FR17-08-Discount150.png) | [GetDiscount150](../screenshots/BUG-FR17-08-GetDiscount150.png) |
+
+**Ảnh UI bổ sung (hệ quả FR-09):** [BUG-FR17-08-AppliedDiscount150](../screenshots/BUG-FR17-08-AppliedDiscount150.png) — UI áp dụng coupon `FR17-DT-32` thành công với mức giảm `150%`; hiển thị tiết kiệm `-4,470,000,000 đ` và thành tiền `4,500,000,000 đ`. Ảnh UI chỉ bổ sung hệ quả, không thay thế 2 ảnh Postman.
 
 ## Evidence items
 
@@ -2911,5 +2913,5 @@ HTTP 200
 - **Artifact:** `evidence/DT-32.log`
 - **Cleanup:** DELETE /api/admin/coupons/34 -> HTTP 200
 - **Bug liên quan:** BUG-FR17-08
-- **Screenshot:** [POST discount 150](../screenshots/BUG-FR17-08-Discount150.png), [GET discount 150](../screenshots/BUG-FR17-08-GetDiscount150.png); ảnh chụp lần chạy lại có row `id=6` thay vì `id=34` trong log, cùng request/response.
+- **Screenshot:** [POST discount 150](../screenshots/BUG-FR17-08-Discount150.png), [GET discount 150](../screenshots/BUG-FR17-08-GetDiscount150.png); ảnh chụp lần chạy lại có row `id=6` thay vì `id=34` trong log, cùng request/response. Ảnh UI bổ sung: [AppliedDiscount150](../screenshots/BUG-FR17-08-AppliedDiscount150.png) — áp dụng coupon `150%` thành công, tiết kiệm `-4,470,000,000 đ`, thành tiền `4,500,000,000 đ`; chỉ minh họa hệ quả FR-09.
 - **Ghi chú:** UI không có max nên người dùng nhập được 150; finding mới xác nhận qua API. Upper bound 100 do người kiểm thử xác nhận ngày 2026-10-21.

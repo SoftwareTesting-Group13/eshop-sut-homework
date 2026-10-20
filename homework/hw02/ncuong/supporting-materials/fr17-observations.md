@@ -28,9 +28,9 @@
 
 - **Nguồn:** `backend/server.js:457-481` không có upper bound; `frontend-admin/src/App.jsx:659-675` ô Giá trị không có `max`.
 - **Liên quan đặc tả:** FR-17 yêu cầu `discount_value` dương. Ngày **2026-10-21**, người kiểm thử xác nhận với `type = percent`, mức giảm không được vượt quá `100`; `150%` là mức không hợp lệ kể cả khi đặc tả không ghi upper bound.
-- **Bằng chứng:** `features/FR17/evidence/DT-32.log` — HTTP 200, row mới `discount_value=150`.
+- **Bằng chứng:** `features/FR17/evidence/DT-32.log` — HTTP 200, row mới `discount_value=150`. Ảnh UI bổ sung: [`BUG-FR17-08-AppliedDiscount150.png`](../features/FR17/screenshots/BUG-FR17-08-AppliedDiscount150.png) — coupon `150%` áp dụng thành công, tiết kiệm `-4,470,000,000 đ`, thành tiền `4,500,000,000 đ` (hệ quả FR-09).
 - **Ảnh hưởng tiềm ẩn (FR-09, ngoài phạm vi):** công thức percent hiện tại là `total * (1 - discount_value)` thay vì `total * discount_value / 100`; với 150% có thể cho kết quả âm/không hợp lý. Xem OBS-FR17-07.
-- **Trạng thái:** **Đã xác nhận — `BUG-FR17-08`**. Bug đã vào `test-results.md` và master report; ảnh Postman đã có, Issue [#54](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/54) đã publish.
+- **Trạng thái:** **Đã xác nhận — `BUG-FR17-08`**. Bug đã vào `test-results.md` và master report; 2 ảnh Postman + 1 ảnh UI bổ sung, Issue [#54](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/54) đã publish.
 
 ## OBS-FR17-05 — Form coupon thiếu nhãn và dấu `*` cho trường bắt buộc
 
