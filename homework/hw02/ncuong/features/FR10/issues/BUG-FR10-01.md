@@ -26,11 +26,11 @@ Trong Web Admin, một đơn đã ở trạng thái **Đã hủy** (`canceled` �
 
 1. Đăng nhập Web Admin bằng `admin@eshop.com`, mở tab **"Đơn hàng"**.
 2. Tìm một đơn đang ở trạng thái **"Đã hủy"**. Quan sát: đơn vẫn có nút **"Đánh dấu Đã giao"**.
-   ![Đơn #1 ở trạng thái Đã hủy vẫn có nút Đánh dấu Đã giao](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR10/screenshots/BUG-FR10-01-Cancelled-Admin.png)
+   ![Đơn hàng số 1 ở trạng thái Đã hủy vẫn có nút Đánh dấu Đã giao](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR10/screenshots/BUG-FR10-01-Cancelled-Admin.png)
 3. Bấm **"Đánh dấu Đã giao"**.
 4. Quan sát trạng thái đơn: chuyển thành **"Đã giao"**.
-   ![Sau khi bấm, đơn #1 chuyển sang Đã giao](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR10/screenshots/BUG-FR10-01-Delivered-Admin.png)
-5. Đăng nhập Web bằng `test@eshop.com`, mở trang Hồ sơ → **"Lịch sử đơn hàng"**: đơn #1 cũng hiển thị **"Đã giao"**.
+   ![Sau khi bấm, đơn hàng số 1 chuyển sang Đã giao](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR10/screenshots/BUG-FR10-01-Delivered-Admin.png)
+5. Đăng nhập Web bằng `test@eshop.com`, mở trang Hồ sơ → **"Lịch sử đơn hàng"**: đơn hàng số 1 cũng hiển thị **"Đã giao"**.
    ![Lịch sử đơn hàng phía user cũng hiển thị Đã giao](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR10/screenshots/BUG-FR10-01-Delivered-User.png)
 
 | Mốc / bước | Expected theo rule | Actual quan sát được |

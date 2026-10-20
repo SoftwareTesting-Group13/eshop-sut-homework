@@ -27,13 +27,13 @@
 **Đường tái hiện đã kiểm chứng:** UI (Web) + đối chiếu API/trạng thái.
 
 1. Đăng nhập Web Admin bằng `admin@eshop.com`, mở tab **"Đơn hàng"**, đưa đơn về trạng thái **"Đang giao"**. Quan sát: đơn có nút **"Hoàn thành"** (admin không có nút hủy).
-   ![Đơn #2 ở trạng thái Đang giao trong Admin](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR10/screenshots/BUG-FR10-02-Delivering-Admin.png)
-2. Đăng nhập Web bằng `test@eshop.com`, mở Hồ sơ → **"Lịch sử đơn hàng"**. Quan sát: đơn #2 **"Đang giao"** vẫn hiển thị nút **"Hủy đơn"** — trái với rule "ở `shipping`, User không được tự hủy".
+   ![Đơn hàng số 2 ở trạng thái Đang giao trong Admin](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR10/screenshots/BUG-FR10-02-Delivering-Admin.png)
+2. Đăng nhập Web bằng `test@eshop.com`, mở Hồ sơ → **"Lịch sử đơn hàng"**. Quan sát: đơn hàng số 2 **"Đang giao"** vẫn hiển thị nút **"Hủy đơn"** — trái với rule "ở `shipping`, User không được tự hủy".
    ![Đơn Đang giao vẫn có nút Hủy đơn phía user](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR10/screenshots/BUG-FR10-02-Delivering-User.png)
 3. Bấm **"Hủy đơn"**. Quan sát: hiện thông báo **"Hủy đơn thành công!"**.
    ![Thông báo Hủy đơn thành công](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR10/screenshots/BUG-FR10-02-Noti-Cancelled-User.png)
 4. Đóng thông báo, quan sát trạng thái đơn: chuyển thành **"Đã hủy"**.
-   ![Đơn #2 chuyển sang Đã hủy](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR10/screenshots/BUG-FR10-02-Status-Cancelled-User.png)
+   ![Đơn hàng số 2 chuyển sang Đã hủy](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR10/screenshots/BUG-FR10-02-Status-Cancelled-User.png)
 
 | Mốc / bước | Expected theo rule | Actual quan sát được |
 | --- | --- | --- |

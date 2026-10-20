@@ -886,11 +886,11 @@ HTTP 200 · pre-state status=shipping · post-state status=canceled
 | Kỹ thuật | UI confirmation |
 | Thời điểm | 2026-10-20 ~11:53–11:55 +0700 (theo thời điểm file ảnh) |
 | Interface | Web Admin `http://localhost:5174` → tab "Đơn hàng" → nút "Đánh dấu Đã giao"; đối chiếu Web `http://localhost:5173` → Hồ sơ → "Lịch sử đơn hàng" |
-| Tiền điều kiện / reset state | đơn #1 của `test@eshop.com` đang ở trạng thái "Đã hủy" |
+| Tiền điều kiện / reset state | đơn hàng số 1 của `test@eshop.com` đang ở trạng thái "Đã hủy" |
 
 **Kết quả thô (theo ảnh):**
-- Trước: đơn #1 hiển thị "Đã hủy" nhưng vẫn có nút "Đánh dấu Đã giao".
-- Sau khi bấm: đơn #1 hiển thị "Đã giao"; phía user cũng thấy "Đã giao".
+- Trước: đơn hàng số 1 hiển thị "Đã hủy" nhưng vẫn có nút "Đánh dấu Đã giao".
+- Sau khi bấm: đơn hàng số 1 hiển thị "Đã giao"; phía user cũng thấy "Đã giao".
 
 - **Expected (oracle ref):** `canceled` là trạng thái kết thúc ⇒ không có thao tác chuyển đi, trạng thái giữ "Đã hủy".
 - **Actual:** đơn chuyển "Đã hủy" → "Đã giao" qua UI.
@@ -909,11 +909,11 @@ HTTP 200 · pre-state status=shipping · post-state status=canceled
 | Kỹ thuật | UI confirmation |
 | Thời điểm | 2026-10-20 ~11:48–11:50 +0700 (theo thời điểm file ảnh) |
 | Interface | Web `http://localhost:5173` → Hồ sơ → "Lịch sử đơn hàng" → nút "Hủy đơn"; đối chiếu Web Admin tab "Đơn hàng" |
-| Tiền điều kiện / reset state | đơn #2 của `test@eshop.com` đang ở trạng thái "Đang giao" (admin đã chuyển) |
+| Tiền điều kiện / reset state | đơn hàng số 2 của `test@eshop.com` đang ở trạng thái "Đang giao" (admin đã chuyển) |
 
 **Kết quả thô (theo ảnh):**
-- Admin: đơn #2 "Đang giao", chỉ có nút "Hoàn thành".
-- User: đơn #2 "Đang giao" vẫn có nút "Hủy đơn"; bấm → thông báo "Hủy đơn thành công!"; sau đó đơn hiển thị "Đã hủy".
+- Admin: đơn hàng số 2 "Đang giao", chỉ có nút "Hoàn thành".
+- User: đơn hàng số 2 "Đang giao" vẫn có nút "Hủy đơn"; bấm → thông báo "Hủy đơn thành công!"; sau đó đơn hiển thị "Đã hủy".
 
 - **Expected (oracle ref):** ở `shipping`, User không được tự hủy ⇒ không có nút hủy / bị từ chối, trạng thái giữ "Đang giao".
 - **Actual:** UI cho phép hủy và đơn chuyển "Đang giao" → "Đã hủy".

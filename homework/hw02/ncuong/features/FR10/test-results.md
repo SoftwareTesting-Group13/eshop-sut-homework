@@ -102,7 +102,7 @@ Priority là mức ưu tiên xử lý, đánh giá riêng theo mức ảnh hư�
 
 **Expected:** `canceled` là trạng thái kết thúc — mọi chuyển đổi khỏi `canceled` phải trả lỗi và giữ nguyên trạng thái (R7, R9). **Actual:** API chấp nhận và đặt đơn thành `delivered`.
 **Độ lặp lại:** 2/2 (DT-14 và rerun trên đơn mới). **Root cause (theo code):** `backend/server.js:550-551`.
-**Đường UI (đã xác nhận):** Web Admin → tab "Đơn hàng"; đơn #1 ở "Đã hủy" vẫn hiển thị nút "Đánh dấu Đã giao" (`frontend-admin/src/App.jsx:862-869`). Bấm nút → đơn chuyển "Đã giao"; Web phía user cũng hiển thị "Đã giao". Ảnh: `screenshots/BUG-FR10-01-Cancelled-Admin.png` → `BUG-FR10-01-Delivered-Admin.png` → `BUG-FR10-01-Delivered-User.png`.
+**Đường UI (đã xác nhận):** Web Admin → tab "Đơn hàng"; đơn hàng số 1 ở "Đã hủy" vẫn hiển thị nút "Đánh dấu Đã giao" (`frontend-admin/src/App.jsx:862-869`). Bấm nút → đơn chuyển "Đã giao"; Web phía user cũng hiển thị "Đã giao". Ảnh: `screenshots/BUG-FR10-01-Cancelled-Admin.png` → `BUG-FR10-01-Delivered-Admin.png` → `BUG-FR10-01-Delivered-User.png`.
 **Reproduce nhanh (API):**
 ```bash
 curl -s -X PUT http://localhost:3000/api/admin/orders/14/status \
@@ -140,7 +140,7 @@ curl -s http://localhost:3000/api/orders/14
 
 **Expected:** ở `shipping`, User không được phép tự hủy; yêu cầu hủy phải trả lỗi và giữ nguyên trạng thái (R8, R9). **Actual:** API hủy thành công và đặt đơn thành `canceled`.
 **Độ lặp lại:** 2/2 (DT-16 và rerun trên đơn mới). **Root cause (theo code):** `backend/server.js:328-331` (chỉ chặn `delivered`/`canceled`).
-**Đường UI (đã xác nhận):** Web (`frontend-web/src/pages/Profile.jsx:200`) → Hồ sơ → "Lịch sử đơn hàng": đơn #2 "Đang giao" vẫn hiển thị nút "Hủy đơn" (điều kiện `status !== "delivered" && status !== "canceled"`). Bấm nút → alert "Hủy đơn thành công!" → đơn chuyển "Đã hủy". Ảnh: `screenshots/BUG-FR10-02-Delivering-Admin.png`, `BUG-FR10-02-Delivering-User.png`, `BUG-FR10-02-Noti-Cancelled-User.png`, `BUG-FR10-02-Status-Cancelled-User.png`.
+**Đường UI (đã xác nhận):** Web (`frontend-web/src/pages/Profile.jsx:200`) → Hồ sơ → "Lịch sử đơn hàng": đơn hàng số 2 "Đang giao" vẫn hiển thị nút "Hủy đơn" (điều kiện `status !== "delivered" && status !== "canceled"`). Bấm nút → alert "Hủy đơn thành công!" → đơn chuyển "Đã hủy". Ảnh: `screenshots/BUG-FR10-02-Delivering-Admin.png`, `BUG-FR10-02-Delivering-User.png`, `BUG-FR10-02-Noti-Cancelled-User.png`, `BUG-FR10-02-Status-Cancelled-User.png`.
 **Reproduce nhanh (API):**
 ```bash
 curl -s -X PUT http://localhost:3000/api/orders/16/cancel \
