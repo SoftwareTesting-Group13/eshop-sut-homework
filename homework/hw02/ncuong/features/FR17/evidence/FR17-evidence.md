@@ -11,7 +11,8 @@
 | SUT / build | `eshop-sut-homework` commit `f389502cdb308b133fe9044e34505f19202dd887` |
 | Môi trường | macOS; Node v26.9.0; backend Node/Express + SQLite; instance cách ly (bản sao `server.js`/`database.js`, `database.sqlite` riêng, `node_modules` symlink) |
 | Thời điểm chạy | 2026-10-20T15:38:26.710Z (2026-10-20 22:38:26 +0700) → 2026-10-20T15:38:27.016Z (2026-10-20 22:38:27 +0700) |
-| Người/agent thực thi | AI agent (theo skill `domain-testing-workflow`); screenshot API: người kiểm thử cung cấp 34 ảnh Postman; UI chưa chạy |
+| Người/agent thực thi | AI agent (theo skill `domain-testing-workflow`); screenshot API: người kiểm thử cung cấp 34 ảnh Postman; chỉ dùng bằng chứng Postman/API, không dùng ảnh UI |
+| GitHub Issue | [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47), [#48](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/48), [#49](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/49), [#50](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/50), [#51](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/51), [#52](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52) |
 | Thư mục evidence | `evidence/` |
 | Database làm việc | `backend/database.sqlite`, SHA-256 trước/sau: `c63f00544180ba1fbb1427a9b9dd3f1784842698809972f33ce90482e7420ba6` / `c63f00544180ba1fbb1427a9b9dd3f1784842698809972f33ce90482e7420ba6` |
 | Database test | `/private/var/folders/2f/64j8q4t10vz15mrnyzk48_j80000gn/T/opencode/fr17-sut/database.sqlite`, SHA-256 sau run FR17 (trước các probe OBS): `8a9e1caac1c8872ee4de72181126604307f4e541b85e2a88a815b821529bab86` |
@@ -34,13 +35,13 @@
 
 ## Ảnh xác nhận API (người kiểm thử cung cấp)
 
-> 34 ảnh Postman xác nhận request/response API, **không phải ảnh UI**. 17/18 FAIL có ảnh; `DT-06` chưa có ảnh UI. File nằm trong `../screenshots/`.
+> 34 ảnh Postman xác nhận request/response API, **không dùng ảnh UI**. 17/18 FAIL có ảnh; `DT-06` chưa có ảnh. File nằm trong `../screenshots/`.
 
 | Bug | Test case | Ảnh request | Ảnh GET |
 | --- | --- | --- | --- |
 | BUG-FR17-01 | DT-04 | [CodeEmpty](../screenshots/BUG-FR17-01-CodeEmpty.png) | [GetCodeEmpty](../screenshots/BUG-FR17-01-GetCodeEmpty.png) |
 | BUG-FR17-01 | DT-05 | [MissingCode](../screenshots/BUG-FR17-01-MissingCode.png) | [CodeNull](../screenshots/BUG-FR17-01-CodeNull.png) |
-| BUG-FR17-01 | DT-06 | — | — (chưa có ảnh UI) |
+| BUG-FR17-01 | DT-06 | — | — (chưa có ảnh) |
 | BUG-FR17-02 | DT-08 | [TypeInvalid](../screenshots/BUG-FR17-02-TypeInvalid.png) | [GetCodeHasTypeInvalid](../screenshots/BUG-FR17-02-GetCodeHasTypeInvalid.png) |
 | BUG-FR17-02 | DT-09 | [MissingType](../screenshots/BUG-FR17-02-MissingType.png) | [GetNullType](../screenshots/BUG-FR17-02-GetNullType.png) |
 | BUG-FR17-03 | DT-10 | [DiscountValue0](../screenshots/BUG-FR17-03-DiscountValue0.png) | [GetDiscountValue0](../screenshots/BUG-FR17-03-GetDiscountValue0.png) |

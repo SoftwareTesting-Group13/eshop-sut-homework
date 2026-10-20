@@ -1,6 +1,6 @@
 # BUG-FR17-04 — Tạo được coupon với `expired_at` thiếu, rỗng hoặc sai định dạng
 
-> **Trạng thái:** Đã xác nhận qua API bằng ảnh Postman do người kiểm thử cung cấp; **chỉ dùng bằng chứng Postman/API, không dùng ảnh UI**.
+> **Trạng thái:** Đã xác nhận qua API bằng ảnh Postman do người kiểm thử cung cấp; **chỉ dùng bằng chứng Postman/API, không dùng ảnh UI**. GitHub Issue: [#50](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/50).
 
 ## Tóm tắt
 
@@ -12,7 +12,7 @@
 | Test case | `DT-15` (thiếu key), `DT-16` (`""`), `DT-17` (`"not-a-date"` — ASSUMED: phải là ngày hợp lệ) |
 | Build / môi trường | commit `f389502cdb308b133fe9044e34505f19202dd887`; Node v26.9.0 + Express + SQLite; API `http://localhost:3000`; DB test cách ly seed 4 coupon |
 | Severity / Priority | **High / High** — coupon có expiry `NULL`/rỗng/không parse được vẫn `is_active=1`; điều kiện C2 của FR-09 dựa trên `new Date(expired_at)`, nên coupon có thể không bao giờ hết hạn hoặc không bao giờ áp dụng được. Input không đi qua form UI thông thường vì ô ngày có `required`/`type="date"` |
-| Trạng thái / lặp lại | **Đã xác nhận qua API** (ảnh Postman); UI chưa chạy; 1/1 run API cho mỗi input trong cùng run `run-20261020-fr17` |
+| Trạng thái / lặp lại | **Đã xác nhận qua API** (ảnh Postman); UI không dùng làm bằng chứng; 1/1 run API cho mỗi input trong cùng run `run-20261020-fr17` |
 
 ## Chuẩn bị để tái hiện
 
@@ -67,17 +67,17 @@ curl -s "$BASE/api/coupons" -H "Authorization: Bearer $ADMIN_TOKEN" \
 
 ### Ảnh xác nhận API (người kiểm thử cung cấp)
 
-> Ảnh Postman dưới đây xác nhận request/response API; **không phải ảnh UI**. UI vẫn chưa kiểm chứng.
+> Ảnh Postman dưới đây xác nhận request/response API; **không dùng ảnh UI**.
 
 - `DT-15` — POST thiếu key `expired_at` trả 200; GET row `expired_at=null`:
-  ![Ảnh DT-15 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-04-MissingExpiredAt.png)
-  ![Ảnh DT-15 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-04-GetMissingExpiredAt.png)
+  ![Ảnh DT-15 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-04-MissingExpiredAt.png)
+  ![Ảnh DT-15 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-04-GetMissingExpiredAt.png)
 - `DT-16` — POST `expired_at=""` trả 200; GET row `expired_at=""`:
-  ![Ảnh DT-16 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-04-EmptyExpiredAt.png)
-  ![Ảnh DT-16 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-04-GetEmptyExpiredAt.png)
+  ![Ảnh DT-16 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-04-EmptyExpiredAt.png)
+  ![Ảnh DT-16 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-04-GetEmptyExpiredAt.png)
 - `DT-17` — POST `expired_at="not-a-date"` trả 200; GET row `expired_at="not-a-date"`:
-  ![Ảnh DT-17 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-04-InvalidExpiredAt.png)
-  ![Ảnh DT-17 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-04-GetInvalidExpiredAt.png)
+  ![Ảnh DT-17 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-04-InvalidExpiredAt.png)
+  ![Ảnh DT-17 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-04-GetInvalidExpiredAt.png)
 
 ## Cách kiểm tra thủ công trên UI
 
@@ -99,8 +99,8 @@ Cần đối chiếu vì UI có thể hiển thị chuỗi ngày sai hoặc `Inv
 
 - Log/run: [`DT-15.log`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/DT-15.log), [`DT-16.log`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/DT-16.log), [`DT-17.log`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/DT-17.log); tổng hợp [`FR17-evidence.md`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/FR17-evidence.md) — EV-FR17-015…017, run `run-20261020-fr17`.
 - Screenshot: **Đã có 6 ảnh API** do người kiểm thử cung cấp (xem mục “Ảnh xác nhận API” ở trên); chỉ dùng ảnh Postman, không dùng ảnh UI.
-- Lặp lại: **1/1** run API cho mỗi input (ba input trong cùng run); chưa có rerun độc lập và chưa chạy UI.
-- GitHub Issue: **Chưa mở** — người kiểm thử quyết định publish từ draft này.
+- Lặp lại: **1/1** run API cho mỗi input (ba input trong cùng run); chưa có rerun độc lập; UI không dùng làm bằng chứng.
+- GitHub Issue: [#50](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/50).
 
 ## Điều tra nguyên nhân (theo source, đã đối chiếu)
 

@@ -1,6 +1,6 @@
 # BUG-FR17-01 — Tạo được coupon với `code` rỗng, thiếu hoặc chỉ khoảng trắng
 
-> **Trạng thái:** Đã xác nhận qua API bằng ảnh Postman do người kiểm thử cung cấp; **chỉ dùng bằng chứng Postman/API, không dùng ảnh UI**.
+> **Trạng thái:** Đã xác nhận qua API bằng ảnh Postman do người kiểm thử cung cấp; **chỉ dùng bằng chứng Postman/API, không dùng ảnh UI**. GitHub Issue: [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47).
 
 ## Tóm tắt
 
@@ -12,7 +12,7 @@
 | Test case | `DT-04` (`code=""`), `DT-05` (thiếu key `code`), `DT-06` (`code="   "` — ASSUMED: khoảng trắng không phải mã hợp lệ) |
 | Build / môi trường | commit `f389502cdb308b133fe9044e34505f19202dd887`; Node v26.9.0 + Express + SQLite; API `http://localhost:3000`; DB test cách ly seed 4 coupon, không dùng DB làm việc |
 | Severity / Priority | **Medium / Medium** — tạo được coupon không có mã có nghĩa; coupon vẫn `is_active=1` và có thể xuất hiện trong danh sách/áp dụng. Input rỗng/thiếu cần gọi API trực tiếp, nhưng chuỗi khoảng trắng có thể đi qua form UI thông thường |
-| Trạng thái / lặp lại | **Đã xác nhận qua API** (ảnh Postman); UI chưa chạy; 1/1 run API cho mỗi input trong cùng run `run-20261020-fr17` |
+| Trạng thái / lặp lại | **Đã xác nhận qua API** (ảnh Postman); UI không dùng làm bằng chứng; 1/1 run API cho mỗi input trong cùng run `run-20261020-fr17` |
 
 ## Chuẩn bị để tái hiện
 
@@ -70,14 +70,14 @@ curl -s "$BASE/api/coupons" -H "Authorization: Bearer $ADMIN_TOKEN" \
 
 ### Ảnh xác nhận API (người kiểm thử cung cấp)
 
-> Ảnh Postman dưới đây xác nhận request/response API; **không phải ảnh UI**. UI vẫn chưa kiểm chứng.
+> Ảnh Postman dưới đây xác nhận request/response API; **không dùng ảnh UI**.
 
 - `DT-04` — POST `code=""` trả 200; GET row `code=""`:
-  ![Ảnh DT-04 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-01-CodeEmpty.png)
-  ![Ảnh DT-04 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-01-GetCodeEmpty.png)
+  ![Ảnh DT-04 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-01-CodeEmpty.png)
+  ![Ảnh DT-04 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-01-GetCodeEmpty.png)
 - `DT-05` — POST thiếu key `code` trả 200; GET row `code=null`:
-  ![Ảnh DT-05 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-01-MissingCode.png)
-  ![Ảnh DT-05 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-01-CodeNull.png)
+  ![Ảnh DT-05 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-01-MissingCode.png)
+  ![Ảnh DT-05 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-01-CodeNull.png)
 - `DT-06` — **chưa có ảnh**; UI dự kiến nhập ba khoảng trắng, xem hướng dẫn bên dưới.
 
 ## Cách kiểm tra thủ công trên UI
@@ -86,7 +86,7 @@ curl -s "$BASE/api/coupons" -H "Authorization: Bearer $ADMIN_TOKEN" \
 
 1. Mở `http://localhost:5174`, đăng nhập `admin@eshop.com` / `Admin123!`, chọn tab **Mã Giảm Giá**.
 2. Trong form **Tạo mã giảm giá mới**, nhập **Mã coupon** = ba khoảng trắng; chọn **Loại** = `Phần trăm (%)`; **Giá trị** = `10`; **Đơn tối thiểu** = `100000`; **Ngày hết hạn** = `2099-12-31`; **Số lần dùng tối đa/người** = `1`; bấm **Tạo mã**.
-3. Expected: không có row mới (mã toàn khoảng trắng không phải mã hợp lệ). Actual cần kiểm tra: row mới có cột **Mã** trắng/khó thấy trong bảng; chụp screenshot bảng và alert (nếu có). Sau đó bấm **Xóa** ở đúng row nếu row xuất hiện.
+3. Expected: không có row mới (mã toàn khoảng trắng không phải mã hợp lệ). Actual cần kiểm tra: row mới có cột **Mã** trắng/khó thấy trong bảng; không dùng ảnh UI làm bằng chứng. Sau đó bấm **Xóa** ở đúng row nếu row xuất hiện.
 
 ## Đối chiếu kỹ thuật
 
@@ -102,8 +102,8 @@ Cần đối chiếu vì UI chỉ hiển thị cột **Mã**; API/DB mới cho t
 
 - Log/run: [`DT-04.log`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/DT-04.log), [`DT-05.log`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/DT-05.log), [`DT-06.log`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/DT-06.log); tổng hợp [`FR17-evidence.md`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/FR17-evidence.md) — EV-FR17-004…006, run `run-20261020-fr17`.
 - Screenshot: **Đã có 4 ảnh API** do người kiểm thử cung cấp (xem mục “Ảnh xác nhận API” ở trên); chỉ dùng ảnh Postman, không dùng ảnh UI.
-- Lặp lại: **1/1** run API cho mỗi input (ba input trong cùng run); chưa có rerun độc lập và chưa chạy UI.
-- GitHub Issue: **Chưa mở** — người kiểm thử quyết định publish từ draft này.
+- Lặp lại: **1/1** run API cho mỗi input (ba input trong cùng run); chưa có rerun độc lập; UI không dùng làm bằng chứng.
+- GitHub Issue: [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47).
 
 ## Điều tra nguyên nhân (theo source, đã đối chiếu)
 

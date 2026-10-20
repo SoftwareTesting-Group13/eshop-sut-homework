@@ -10,11 +10,12 @@ I use AI tools for the following tasks,
 - Đọc đặc tả FR-17, thiết kế EP/BVA cho Coupon CRUD, rà soát source coupon (backend + admin UI) để tìm bug và lập artifact FR17.
 - Thiết lập instance SUT cách ly, chạy 32 ca API cho FR-17, ghi evidence, đánh giá coverage và cập nhật master report/README.
 - Soạn 6 GitHub Issue draft cho FR-17 theo template `test-findings-report-writer`; sau đó đính 34 ảnh Postman do người kiểm thử cung cấp vào draft và các báo cáo liên quan, giữ UI chưa kiểm chứng, không publish/không commit.
+- Tạo 6 GitHub Issue FR-17 (#47…#52) kèm ảnh Postman, commit/push artifact FR-17 và cập nhật link Issue trong báo cáo; không dùng ảnh UI.
 - Soạn AI Audit Report này.
 
 > **Phạm vi lập báo cáo (capture notes):**
 > - Bằng chứng khả dụng: phiên hội thoại hiện tại (prompt của người dùng + các artifact do agent tạo trong repo); không có file export transcript riêng. Hai screenshot (`features/FR02/screenshots/BUG-FR02-01.png`, `BUG-FR02-02.png`) và 34 ảnh FR17 trong `features/FR17/screenshots/` do **người dùng** cung cấp, không phải AI tạo.
-> - Số interaction đã ghi: **9** (AI-001…AI-009; các prompt của người dùng; các tool call nội bộ không phải prompt của người dùng nên không liệt kê).
+> - Số interaction đã ghi: **10** (AI-001…AI-010; các prompt của người dùng; các tool call nội bộ không phải prompt của người dùng nên không liệt kê).
 > - Công cụ AI đã dùng (theo bằng chứng): OpenCode agent, model `DeepSeek V4.1 Flash Free` (provider `opencode`).
 > - Công cụ/phiên được nhắc tới nhưng không kiểm tra được: không.
 
@@ -333,6 +334,42 @@ Output của agent là các thay đổi trong repo (nội dung kiểm tra đư�
 
 ---
 
+## Interaction AI-010
+
+- **AI tool:** OpenCode agent — model `DeepSeek V4.1 Flash Free` (provider `opencode`).
+- **Date and time:** 2026-10-21 (prompt không cung cấp giờ; không tự tạo timestamp).
+- **Source:** Phiên hội thoại hiện tại (không có transcript export); Issue được tạo qua GitHub API bằng credential có sẵn; ảnh do người dùng cung cấp trong `features/FR17/screenshots/`.
+- **Task:** Chỉ dùng ảnh Postman, không dùng ảnh UI; publish 6 GitHub Issue FR-17 và cập nhật link Issue trong các báo cáo.
+
+### Your prompt
+
+```text
+Không sài ảnh UI nha, sài ảnh postman thôi, tạo issue luôn cho t đi
+```
+
+### The AI output
+
+Output của agent là các thay đổi trong repo, commit/push và 6 Issue đã publish (kiểm tra được):
+
+| Issue | URL |
+| --- | --- |
+| `BUG-FR17-01` | https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47 |
+| `BUG-FR17-02` | https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/48 |
+| `BUG-FR17-03` | https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/49 |
+| `BUG-FR17-04` | https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/50 |
+| `BUG-FR17-05` | https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/51 |
+| `BUG-FR17-06` | https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52 |
+
+- Đã commit artifact FR-17 và ảnh Postman tại commit `4dae771`, push lên nhánh `ncuong` để raw URL của ảnh sống.
+- Đã tạo 6 Issue, sau đó cập nhật lại body Issue bằng link Issue tương ứng; tất cả Issue đang `open`.
+- Đã đổi raw URL ảnh sang dạng `raw.githubusercontent.com/.../refs/heads/ncuong/...` để tránh 404 khi branch mới được push; kiểm tra mẫu ảnh trả HTTP 200.
+- Cập nhật `test-results.md`, `FR17-evidence.md`, `main-report.md`, `README.md` và 6 draft Issue với link #47…#52; bỏ trạng thái “chưa publish”.
+- **Chỉ dùng ảnh Postman/API**, không dùng ảnh UI; không sửa source hay `backend/database.sqlite`. Working DB vẫn đang modified so với HEAD từ phiên kiểm thử của người dùng.
+
+> Phản hồi cuối của agent cho người dùng là danh sách 6 Issue đã tạo kèm link, xác nhận ảnh Postman đã render và ghi chú không dùng ảnh UI.
+
+---
+
 ## Optional audit table (theo mẫu `[AI-02]` — bổ sung, không thay thế 4 trường bắt buộc)
 
 | (1) Prompt + Công cụ | (2) Output AI | (3) Verdict | (4) Lý do | (5) Bản SV sửa |
@@ -346,5 +383,6 @@ Output của agent là các thay đổi trong repo (nội dung kiểm tra đư�
 | OpenCode · DeepSeek V4.1 Flash Free · 2026-10-20 22:31 +0700 · “Triển khai Domain Testing cho Feature 17 - Coupon, đọc kỹ @homework/hw02/ncuong/prompt.txt, làm kỹ lưỡng các test case và rà soát tất cả các bug có thể xảy ra trong source nhé. Xong hết thì nhớ AI Audit Log. Thời gian hiện tại là: 20/10/2026 22:31” | Bộ artifact FR17 tại `features/FR17/` (4 file + evidence 32 log + driver) + `supporting-materials/fr17-observations.md` + cập nhật `reports/main-report.md`, `reports/ai-audit.md`, `README.md` | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 | OpenCode · DeepSeek V4.1 Flash Free · 2026-10-20 · Time not available in source · “Viết issue template luôn m, chưa commit nhma có template rồi mà @homework/hw02/ncuong/skills/test-findings-report-writer/assets/github-issue-template.md” | 6 draft Issue FR17 tại `features/FR17/issues/BUG-FR17-01.md`…`BUG-FR17-06.md`; cập nhật link draft trong `test-results.md`, `main-report.md`, `README.md`; không publish/không commit | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 | OpenCode · DeepSeek V4.1 Flash Free · 2026-10-21 · Time not available in source · “T có đính kèm ảnh trong screenshot r đó, đính kèm vào các báo cáo liên quan với issue đi m. Nhớ AI Audit” | 34 ảnh Postman được nhúng vào 6 Issue draft FR17 và liên kết trong `test-results.md`, `FR17-evidence.md`, `main-report.md`, `README.md`; trạng thái chuyển thành “đã xác nhận API; UI chưa chạy”; không publish/không commit | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
+| OpenCode · DeepSeek V4.1 Flash Free · 2026-10-21 · Time not available in source · “Không sài ảnh UI nha, sài ảnh postman thôi, tạo issue luôn cho t đi” | Commit/push `4dae771`; tạo Issue FR17 #47…#52 kèm ảnh Postman; cập nhật draft Issue và `test-results.md`, `FR17-evidence.md`, `main-report.md`, `README.md`; chỉ dùng ảnh Postman, không dùng ảnh UI | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 
 > Cột (3)–(5) do **sinh viên** tự đánh giá/điền; báo cáo không tự suy diễn verdict hay bản sửa của sinh viên.

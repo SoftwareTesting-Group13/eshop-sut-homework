@@ -1,6 +1,6 @@
 # BUG-FR17-02 — Tạo được coupon với `type` ngoài `percent/fixed` hoặc thiếu `type`
 
-> **Trạng thái:** Đã xác nhận qua API bằng ảnh Postman do người kiểm thử cung cấp; **chỉ dùng bằng chứng Postman/API, không dùng ảnh UI**.
+> **Trạng thái:** Đã xác nhận qua API bằng ảnh Postman do người kiểm thử cung cấp; **chỉ dùng bằng chứng Postman/API, không dùng ảnh UI**. GitHub Issue: [#48](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/48).
 
 ## Tóm tắt
 
@@ -12,7 +12,7 @@
 | Test case | `DT-08` (`type="percentage"`), `DT-09` (thiếu key `type`) |
 | Build / môi trường | commit `f389502cdb308b133fe9044e34505f19202dd887`; Node v26.9.0 + Express + SQLite; API `http://localhost:3000`; DB test cách ly seed 4 coupon |
 | Severity / Priority | **Medium / Medium** — coupon có `type` không hợp lệ vẫn được tạo và `is_active=1`; khi áp dụng, nhánh `else` của FR-09 coi mọi giá trị khác `percent` là `fixed`, nên cách tính giảm giá có thể sai. Tuy nhiên input không đi qua select UI thông thường, cần API trực tiếp |
-| Trạng thái / lặp lại | **Đã xác nhận qua API** (ảnh Postman); UI chưa chạy; 1/1 run API cho mỗi input trong cùng run `run-20261020-fr17` |
+| Trạng thái / lặp lại | **Đã xác nhận qua API** (ảnh Postman); UI không dùng làm bằng chứng; 1/1 run API cho mỗi input trong cùng run `run-20261020-fr17` |
 
 ## Chuẩn bị để tái hiện
 
@@ -61,14 +61,14 @@ curl -s "$BASE/api/coupons" -H "Authorization: Bearer $ADMIN_TOKEN" \
 
 ### Ảnh xác nhận API (người kiểm thử cung cấp)
 
-> Ảnh Postman dưới đây xác nhận request/response API; **không phải ảnh UI**. UI vẫn chưa kiểm chứng.
+> Ảnh Postman dưới đây xác nhận request/response API; **không dùng ảnh UI**.
 
 - `DT-08` — POST `type="percentage"` trả 200; GET row `type="percentage"`:
-  ![Ảnh DT-08 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-02-TypeInvalid.png)
-  ![Ảnh DT-08 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-02-GetCodeHasTypeInvalid.png)
+  ![Ảnh DT-08 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-02-TypeInvalid.png)
+  ![Ảnh DT-08 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-02-GetCodeHasTypeInvalid.png)
 - `DT-09` — POST thiếu key `type` trả 200; GET row `type=null`:
-  ![Ảnh DT-09 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-02-MissingType.png)
-  ![Ảnh DT-09 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-02-GetNullType.png)
+  ![Ảnh DT-09 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-02-MissingType.png)
+  ![Ảnh DT-09 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-02-GetNullType.png)
 
 ## Cách kiểm tra thủ công trên UI
 
@@ -99,8 +99,8 @@ Cần đối chiếu vì UI không hiển thị giá trị `type` thô; bảng c
 
 - Log/run: [`DT-08.log`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/DT-08.log), [`DT-09.log`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/DT-09.log); tổng hợp [`FR17-evidence.md`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/FR17-evidence.md) — EV-FR17-008/009, run `run-20261020-fr17`.
 - Screenshot: **Đã có 4 ảnh API** do người kiểm thử cung cấp (xem mục “Ảnh xác nhận API” ở trên); chỉ dùng ảnh Postman, không dùng ảnh UI.
-- Lặp lại: **1/1** run API cho mỗi input (hai input trong cùng run); chưa có rerun độc lập và chưa chạy UI.
-- GitHub Issue: **Chưa mở** — người kiểm thử quyết định publish từ draft này.
+- Lặp lại: **1/1** run API cho mỗi input (hai input trong cùng run); chưa có rerun độc lập; UI không dùng làm bằng chứng.
+- GitHub Issue: [#48](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/48).
 
 ## Điều tra nguyên nhân (theo source, đã đối chiếu)
 

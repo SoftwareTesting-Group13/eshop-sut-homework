@@ -1,6 +1,6 @@
 # BUG-FR17-05 — Tạo được coupon với `min_order_amount` âm, không phải số hoặc thiếu
 
-> **Trạng thái:** Đã xác nhận qua API bằng ảnh Postman do người kiểm thử cung cấp; **chỉ dùng bằng chứng Postman/API, không dùng ảnh UI**.
+> **Trạng thái:** Đã xác nhận qua API bằng ảnh Postman do người kiểm thử cung cấp; **chỉ dùng bằng chứng Postman/API, không dùng ảnh UI**. GitHub Issue: [#51](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/51).
 
 ## Tóm tắt
 
@@ -12,7 +12,7 @@
 | Test case | `DT-21` (`-1` — dưới biên B1), `DT-22` (thiếu key), `DT-23` (`"abc"`) |
 | Build / môi trường | commit `f389502cdb308b133fe9044e34505f19202dd887`; Node v26.9.0 + Express + SQLite; API `http://localhost:3000`; DB test cách ly seed 4 coupon |
 | Severity / Priority | **Medium / Medium** — `-1` vô hiệu hóa ngưỡng đơn tối thiểu (mọi đơn đều đủ điều kiện), `NULL`/`"abc"` có thể làm coupon không bao giờ áp dụng hoặc so sánh sai; coupon vẫn `is_active=1`. `-1` đi được qua form UI thông thường |
-| Trạng thái / lặp lại | **Đã xác nhận qua API** (ảnh Postman); UI chưa chạy; 1/1 run API cho mỗi input trong cùng run `run-20261020-fr17` |
+| Trạng thái / lặp lại | **Đã xác nhận qua API** (ảnh Postman); UI không dùng làm bằng chứng; 1/1 run API cho mỗi input trong cùng run `run-20261020-fr17` |
 
 ## Chuẩn bị để tái hiện
 
@@ -67,17 +67,17 @@ curl -s "$BASE/api/coupons" -H "Authorization: Bearer $ADMIN_TOKEN" \
 
 ### Ảnh xác nhận API (người kiểm thử cung cấp)
 
-> Ảnh Postman dưới đây xác nhận request/response API; **không phải ảnh UI**. UI vẫn chưa kiểm chứng.
+> Ảnh Postman dưới đây xác nhận request/response API; **không dùng ảnh UI**.
 
 - `DT-21` — POST `min_order_amount=-1` trả 200; GET row `min_order_amount=-1`:
-  ![Ảnh DT-21 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-05-MinOrderNegative.png)
-  ![Ảnh DT-21 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-05-GetMinOrderNegative.png)
+  ![Ảnh DT-21 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-05-MinOrderNegative.png)
+  ![Ảnh DT-21 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-05-GetMinOrderNegative.png)
 - `DT-22` — POST thiếu key `min_order_amount` trả 200; GET row `min_order_amount=null`:
-  ![Ảnh DT-22 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-05-MissingMinOrderAmount.png)
-  ![Ảnh DT-22 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-05-GetMissingMinOrderAmount.png)
+  ![Ảnh DT-22 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-05-MissingMinOrderAmount.png)
+  ![Ảnh DT-22 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-05-GetMissingMinOrderAmount.png)
 - `DT-23` — POST `min_order_amount="abc"` trả 200; GET row `min_order_amount="abc"`:
-  ![Ảnh DT-23 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-05-InvalidMinOrder.png)
-  ![Ảnh DT-23 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-05-GetInvalidMinOrder.png)
+  ![Ảnh DT-23 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-05-InvalidMinOrder.png)
+  ![Ảnh DT-23 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-05-GetInvalidMinOrder.png)
 
 ## Cách kiểm tra thủ công trên UI
 
@@ -85,7 +85,7 @@ curl -s "$BASE/api/coupons" -H "Authorization: Bearer $ADMIN_TOKEN" \
 
 1. Mở `http://localhost:5174`, đăng nhập `admin@eshop.com` / `Admin123!`, chọn tab **Mã Giảm Giá**.
 2. Nhập **Mã coupon** = `FR17-UI-DT-21` (mã chỉ để phân biệt row UI với row API, không phải biến đang kiểm tra); **Loại** = `Phần trăm (%)`; **Giá trị** = `10`; **Đơn tối thiểu** = `-1`; **Ngày hết hạn** = `2099-12-31`; **Số lần** = `1`; bấm **Tạo mã**.
-3. Expected: không có row mới. Actual cần kiểm tra: row mới hiển thị `-1 ₫` ở cột **Đơn tối thiểu**; chụp screenshot bảng. Sau đó bấm **Xóa** ở đúng row nếu row xuất hiện.
+3. Expected: không có row mới. Actual cần kiểm tra: row mới hiển thị `-1 ₫` ở cột **Đơn tối thiểu**; không dùng ảnh UI làm bằng chứng. Sau đó bấm **Xóa** ở đúng row nếu row xuất hiện.
 
 Không dùng ô **Đơn tối thiểu** trống để đại diện cho `DT-22`: UI gửi chuỗi rỗng `""`, khác với input bỏ hẳn key; đó là input khác, không gán cho test case này.
 
@@ -103,8 +103,8 @@ Cần đối chiếu vì UI có thể hiển thị `undefined ₫`/blank hoặc 
 
 - Log/run: [`DT-21.log`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/DT-21.log), [`DT-22.log`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/DT-22.log), [`DT-23.log`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/DT-23.log); tổng hợp [`FR17-evidence.md`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/FR17-evidence.md) — EV-FR17-021…023, run `run-20261020-fr17`.
 - Screenshot: **Đã có 6 ảnh API** do người kiểm thử cung cấp (xem mục “Ảnh xác nhận API” ở trên); chỉ dùng ảnh Postman, không dùng ảnh UI.
-- Lặp lại: **1/1** run API cho mỗi input (ba input trong cùng run); chưa có rerun độc lập và chưa chạy UI.
-- GitHub Issue: **Chưa mở** — người kiểm thử quyết định publish từ draft này.
+- Lặp lại: **1/1** run API cho mỗi input (ba input trong cùng run); chưa có rerun độc lập; UI không dùng làm bằng chứng.
+- GitHub Issue: [#51](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/51).
 
 ## Điều tra nguyên nhân (theo source, đã đối chiếu)
 

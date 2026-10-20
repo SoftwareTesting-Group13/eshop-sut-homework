@@ -1,6 +1,6 @@
 # BUG-FR17-03 — Tạo được coupon với `discount_value <= 0`, không phải số hoặc thiếu
 
-> **Trạng thái:** Đã xác nhận qua API bằng ảnh Postman do người kiểm thử cung cấp; **chỉ dùng bằng chứng Postman/API, không dùng ảnh UI**.
+> **Trạng thái:** Đã xác nhận qua API bằng ảnh Postman do người kiểm thử cung cấp; **chỉ dùng bằng chứng Postman/API, không dùng ảnh UI**. GitHub Issue: [#49](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/49).
 
 ## Tóm tắt
 
@@ -12,7 +12,7 @@
 | Test case | `DT-10` (`0` — biên B3), `DT-11` (`-1` — dưới biên B3), `DT-12` (thiếu key), `DT-13` (`"abc"`) |
 | Build / môi trường | commit `f389502cdb308b133fe9044e34505f19202dd887`; Node v26.9.0 + Express + SQLite; API `http://localhost:3000`; DB test cách ly seed 4 coupon |
 | Severity / Priority | **High / High** — coupon `0%`/`-1%`/`NULL`/`"abc"` vẫn `is_active=1`; khi áp dụng, công thức percent hiện tại `total * (1 - discount_value)` có thể cho giảm giá âm hoặc `NaN`, ảnh hưởng trực tiếp số tiền người dùng phải trả (FR-09). `0`/`-1` đi được qua form UI thông thường |
-| Trạng thái / lặp lại | **Đã xác nhận qua API** (ảnh Postman); UI chưa chạy; 1/1 run API cho mỗi input trong cùng run `run-20261020-fr17` |
+| Trạng thái / lặp lại | **Đã xác nhận qua API** (ảnh Postman); UI không dùng làm bằng chứng; 1/1 run API cho mỗi input trong cùng run `run-20261020-fr17` |
 
 ## Chuẩn bị để tái hiện
 
@@ -73,20 +73,20 @@ curl -s "$BASE/api/coupons" -H "Authorization: Bearer $ADMIN_TOKEN" \
 
 ### Ảnh xác nhận API (người kiểm thử cung cấp)
 
-> Ảnh Postman dưới đây xác nhận request/response API; **không phải ảnh UI**. UI vẫn chưa kiểm chứng.
+> Ảnh Postman dưới đây xác nhận request/response API; **không dùng ảnh UI**.
 
 - `DT-10` — POST `discount_value=0` trả 200; GET row `discount_value=0`:
-  ![Ảnh DT-10 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-03-DiscountValue0.png)
-  ![Ảnh DT-10 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-03-GetDiscountValue0.png)
+  ![Ảnh DT-10 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-03-DiscountValue0.png)
+  ![Ảnh DT-10 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-03-GetDiscountValue0.png)
 - `DT-11` — POST `discount_value=-1` trả 200; GET row `discount_value=-1`:
-  ![Ảnh DT-11 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-03-DiscountValueNegative.png)
-  ![Ảnh DT-11 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-03-GetDiscountNegative.png)
+  ![Ảnh DT-11 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-03-DiscountValueNegative.png)
+  ![Ảnh DT-11 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-03-GetDiscountNegative.png)
 - `DT-12` — POST thiếu key `discount_value` trả 200; GET row `discount_value=null`:
-  ![Ảnh DT-12 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-03-MissingDiscountValue.png)
-  ![Ảnh DT-12 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-03-GetMissingDiscountValue.png)
+  ![Ảnh DT-12 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-03-MissingDiscountValue.png)
+  ![Ảnh DT-12 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-03-GetMissingDiscountValue.png)
 - `DT-13` — POST `discount_value="abc"` trả 200; GET row `discount_value="abc"`:
-  ![Ảnh DT-13 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-03-DiscountValueInvalid.png)
-  ![Ảnh DT-13 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-03-GetDiscountValueInvalid.png)
+  ![Ảnh DT-13 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-03-DiscountValueInvalid.png)
+  ![Ảnh DT-13 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-03-GetDiscountValueInvalid.png)
 
 ## Cách kiểm tra thủ công trên UI
 
@@ -94,7 +94,7 @@ curl -s "$BASE/api/coupons" -H "Authorization: Bearer $ADMIN_TOKEN" \
 
 1. Mở `http://localhost:5174`, đăng nhập `admin@eshop.com` / `Admin123!`, chọn tab **Mã Giảm Giá**.
 2. Với `DT-10`: nhập **Mã coupon** = `FR17-UI-DT-10` (mã chỉ để phân biệt row UI với row API, không phải biến đang kiểm tra); **Loại** = `Phần trăm (%)`; **Giá trị** = `0`; **Đơn tối thiểu** = `100000`; **Ngày hết hạn** = `2099-12-31`; **Số lần** = `1`; bấm **Tạo mã**. Lặp lại với `DT-11`, **Giá trị** = `-1`, mã `FR17-UI-DT-11`.
-3. Expected: không có row mới. Actual cần kiểm tra: row mới hiển thị `0%` hoặc `-1%`; chụp screenshot bảng. Sau đó bấm **Xóa** ở đúng row nếu row xuất hiện.
+3. Expected: không có row mới. Actual cần kiểm tra: row mới hiển thị `0%` hoặc `-1%`; không dùng ảnh UI làm bằng chứng. Sau đó bấm **Xóa** ở đúng row nếu row xuất hiện.
 
 Không dùng ô **Giá trị** trống để đại diện cho `DT-12`: UI gửi chuỗi rỗng `""`, khác với input bỏ hẳn key; đó là input khác, không gán cho test case này.
 
@@ -112,8 +112,8 @@ Cần đối chiếu vì UI có thể hiển thị `abc ₫`/`NaN%` hoặc khôn
 
 - Log/run: [`DT-10.log`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/DT-10.log), [`DT-11.log`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/DT-11.log), [`DT-12.log`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/DT-12.log), [`DT-13.log`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/DT-13.log); tổng hợp [`FR17-evidence.md`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/FR17-evidence.md) — EV-FR17-010…013, run `run-20261020-fr17`.
 - Screenshot: **Đã có 8 ảnh API** do người kiểm thử cung cấp (xem mục “Ảnh xác nhận API” ở trên); chỉ dùng ảnh Postman, không dùng ảnh UI.
-- Lặp lại: **1/1** run API cho mỗi input (bốn input trong cùng run); chưa có rerun độc lập và chưa chạy UI.
-- GitHub Issue: **Chưa mở** — người kiểm thử quyết định publish từ draft này.
+- Lặp lại: **1/1** run API cho mỗi input (bốn input trong cùng run); chưa có rerun độc lập; UI không dùng làm bằng chứng.
+- GitHub Issue: [#49](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/49).
 
 ## Điều tra nguyên nhân (theo source, đã đối chiếu)
 

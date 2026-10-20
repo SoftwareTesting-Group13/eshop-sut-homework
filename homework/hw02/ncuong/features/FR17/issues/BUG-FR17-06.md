@@ -1,6 +1,6 @@
 # BUG-FR17-06 — Tạo được coupon với `max_uses_per_user < 1` hoặc thiếu; number `0` bị đổi thành `1`
 
-> **Trạng thái:** Đã xác nhận qua API bằng ảnh Postman do người kiểm thử cung cấp; **chỉ dùng bằng chứng Postman/API, không dùng ảnh UI**.
+> **Trạng thái:** Đã xác nhận qua API bằng ảnh Postman do người kiểm thử cung cấp; **chỉ dùng bằng chứng Postman/API, không dùng ảnh UI**. GitHub Issue: [#52](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52).
 
 ## Tóm tắt
 
@@ -12,7 +12,7 @@
 | Test case | `DT-26` (`0` — dưới biên B2), `DT-27` (`-1`), `DT-28` (thiếu key) |
 | Build / môi trường | commit `f389502cdb308b133fe9044e34505f19202dd887`; Node v26.9.0 + Express + SQLite; API `http://localhost:3000`; DB test cách ly seed 4 coupon |
 | Severity / Priority | **Medium / Medium** — `0` bị đổi thành `1` (dữ liệu khác input), `-1` làm coupon bị coi là hết lượt ngay từ đầu, thiếu key được default thay vì từ chối; coupon vẫn `is_active=1`. Cả ba input đều API-only vì UI có `min="1"` |
-| Trạng thái / lặp lại | **Đã xác nhận qua API** (ảnh Postman); UI chưa chạy; 1/1 run API cho mỗi input trong cùng run `run-20261020-fr17` |
+| Trạng thái / lặp lại | **Đã xác nhận qua API** (ảnh Postman); UI không dùng làm bằng chứng; 1/1 run API cho mỗi input trong cùng run `run-20261020-fr17` |
 
 ## Chuẩn bị để tái hiện
 
@@ -67,17 +67,17 @@ curl -s "$BASE/api/coupons" -H "Authorization: Bearer $ADMIN_TOKEN" \
 
 ### Ảnh xác nhận API (người kiểm thử cung cấp)
 
-> Ảnh Postman dưới đây xác nhận request/response API; **không phải ảnh UI**. UI vẫn chưa kiểm chứng.
+> Ảnh Postman dưới đây xác nhận request/response API; **không dùng ảnh UI**.
 
 - `DT-26` — POST `max_uses_per_user=0` trả 200; GET row lưu `max_uses_per_user=1`:
-  ![Ảnh DT-26 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-06-MaxUsesPerUser0.png)
-  ![Ảnh DT-26 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-06-MaxUsesPerUser0Up1.png)
+  ![Ảnh DT-26 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-06-MaxUsesPerUser0.png)
+  ![Ảnh DT-26 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-06-MaxUsesPerUser0Up1.png)
 - `DT-27` — POST `max_uses_per_user=-1` trả 200; GET row `max_uses_per_user=-1`:
-  ![Ảnh DT-27 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-06-MaxUsesPerUserNegative.png)
-  ![Ảnh DT-27 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-06-GetMaxUsesPerUserNegative.png)
+  ![Ảnh DT-27 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-06-MaxUsesPerUserNegative.png)
+  ![Ảnh DT-27 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-06-GetMaxUsesPerUserNegative.png)
 - `DT-28` — POST thiếu key `max_uses_per_user` trả 200; GET row lưu `max_uses_per_user=1`:
-  ![Ảnh DT-28 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-06-MissingMaxUses.png)
-  ![Ảnh DT-28 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-06-GetMissingMaxUses.png)
+  ![Ảnh DT-28 request](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-06-MissingMaxUses.png)
+  ![Ảnh DT-28 GET](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/refs/heads/ncuong/homework/hw02/ncuong/features/FR17/screenshots/BUG-FR17-06-GetMissingMaxUses.png)
 
 ## Cách kiểm tra thủ công trên UI
 
@@ -99,8 +99,8 @@ Cần đối chiếu vì response tạo coupon không trả lại giá trị đ�
 
 - Log/run: [`DT-26.log`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/DT-26.log), [`DT-27.log`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/DT-27.log), [`DT-28.log`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/DT-28.log); tổng hợp [`FR17-evidence.md`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/FR17-evidence.md) — EV-FR17-026…028, run `run-20261020-fr17`.
 - Screenshot: **Đã có 6 ảnh API** do người kiểm thử cung cấp (xem mục “Ảnh xác nhận API” ở trên); chỉ dùng ảnh Postman, không dùng ảnh UI.
-- Lặp lại: **1/1** run API cho mỗi input (ba input trong cùng run); chưa có rerun độc lập và chưa chạy UI.
-- GitHub Issue: **Chưa mở** — người kiểm thử quyết định publish từ draft này.
+- Lặp lại: **1/1** run API cho mỗi input (ba input trong cùng run); chưa có rerun độc lập; UI không dùng làm bằng chứng.
+- GitHub Issue: [#52](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52).
 
 ## Điều tra nguyên nhân (theo source, đã đối chiếu)
 

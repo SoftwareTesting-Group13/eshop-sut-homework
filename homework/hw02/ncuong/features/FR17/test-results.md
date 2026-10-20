@@ -3,11 +3,11 @@
 - **Run được chọn để tổng hợp:** `run-20261020-fr17`.
 - **Build/commit SUT:** repo `eshop-sut-homework`, commit `f389502cdb308b133fe9044e34505f19202dd887` (backend `server.js` SHA-256 `47573ce5…`, `database.js` SHA-256 `33664206…`).
 - **Môi trường:** macOS (darwin), Node v26.9.0; backend Node/Express + SQLite; instance cách ly trong thư mục tạm (`server.js`/`database.js`/`package.json` là bản sao, `database.sqlite` riêng, `node_modules` symlink). Thời điểm chạy: `2026-10-20 22:38:26 +0700` → `2026-10-20 22:38:27 +0700` (= `2026-10-20T15:38:26Z` → `15:38:27Z`).
-- **Interface đã chạy:** API `POST /api/admin/coupons`, `GET /api/coupons`, `DELETE /api/admin/coupons/:id` với admin token. UI admin chỉ chuẩn bị đường manual; **chưa chạy UI**, không có verdict UI.
+- **Interface đã chạy:** API `POST /api/admin/coupons`, `GET /api/coupons`, `DELETE /api/admin/coupons/:id` với admin token. UI admin chỉ chuẩn bị đường manual; **UI không dùng làm bằng chứng**, không có verdict UI.
 - **Reset trạng thái:** DB test mới seed 4 coupon (`SAVE10`, `BIGBUY`, `VIP100`, `EXPIRED`); mỗi ca lấy snapshot `GET /api/coupons` trước/sau và xóa coupon do ca tạo. DB làm việc `backend/database.sqlite` giữ nguyên SHA-256 `c63f0054…` trước và sau run.
 - **Source code:** không sửa `backend/` hoặc `frontend-admin/`; backend `server.js` SHA-256 `47573ce5…`, `database.js` SHA-256 `33664206…`. Các thay đổi có sẵn của người dùng ở `prompt.txt`/`skills/` không thuộc phiên này và không bị chỉnh sửa.
 - **Chi tiết thô:** `evidence/FR17-evidence.md` + `evidence/DT-*.log`, `evidence/run-summary.json`, `evidence/session-header.log`, driver `evidence/run-fr17.mjs`.
-- **Screenshot API:** 34 ảnh Postman do người kiểm thử cung cấp tại `screenshots/`; 17/18 FAIL có ảnh, `DT-06` chưa có ảnh UI; **UI vẫn chưa chạy**.
+- **Screenshot API:** 34 ảnh Postman do người kiểm thử cung cấp tại `screenshots/`; 17/18 FAIL có ảnh, `DT-06` chưa có ảnh; **chỉ dùng ảnh Postman, không dùng ảnh UI**.
 
 ## Kết quả theo run
 
@@ -69,12 +69,12 @@
 
 | Bug ID | Feature | Title | Severity | Priority | Related TC | Status | Evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| BUG-FR17-01 | FR17 | Backend nhận `code` rỗng/thiếu/chỉ khoảng trắng khi tạo coupon | Medium | Medium | DT-04, DT-05, DT-06 | **Đã xác nhận API** (ảnh Postman); UI chưa chạy | `DT-04.log`, `DT-05.log`, `DT-06.log` |
-| BUG-FR17-02 | FR17 | Backend nhận `type` ngoài `percent/fixed` hoặc thiếu `type` | Medium | Medium | DT-08, DT-09 | **Đã xác nhận API** (ảnh Postman); UI chưa chạy | `DT-08.log`, `DT-09.log` |
-| BUG-FR17-03 | FR17 | Backend nhận `discount_value` `<= 0`, không phải số hoặc thiếu | High | High | DT-10, DT-11, DT-12, DT-13 | **Đã xác nhận API** (ảnh Postman); UI chưa chạy | `DT-10.log`…`DT-13.log` |
-| BUG-FR17-04 | FR17 | Backend nhận `expired_at` thiếu/rỗng/sai định dạng | High | High | DT-15, DT-16, DT-17 | **Đã xác nhận API** (ảnh Postman); UI chưa chạy | `DT-15.log`…`DT-17.log` |
-| BUG-FR17-05 | FR17 | Backend nhận `min_order_amount` âm, không phải số hoặc thiếu | Medium | Medium | DT-21, DT-22, DT-23 | **Đã xác nhận API** (ảnh Postman); UI chưa chạy | `DT-21.log`…`DT-23.log` |
-| BUG-FR17-06 | FR17 | Backend nhận `max_uses_per_user < 1` hoặc thiếu; number `0` bị đổi thành `1` | Medium | Medium | DT-26, DT-27, DT-28 | **Đã xác nhận API** (ảnh Postman); UI chưa chạy | `DT-26.log`…`DT-28.log` |
+| BUG-FR17-01 | FR17 | Backend nhận `code` rỗng/thiếu/chỉ khoảng trắng khi tạo coupon | Medium | Medium | DT-04, DT-05, DT-06 | **Đã xác nhận API** (ảnh Postman); Issue [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47) | `DT-04.log`, `DT-05.log`, `DT-06.log` |
+| BUG-FR17-02 | FR17 | Backend nhận `type` ngoài `percent/fixed` hoặc thiếu `type` | Medium | Medium | DT-08, DT-09 | **Đã xác nhận API** (ảnh Postman); Issue [#48](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/48) | `DT-08.log`, `DT-09.log` |
+| BUG-FR17-03 | FR17 | Backend nhận `discount_value` `<= 0`, không phải số hoặc thiếu | High | High | DT-10, DT-11, DT-12, DT-13 | **Đã xác nhận API** (ảnh Postman); Issue [#49](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/49) | `DT-10.log`…`DT-13.log` |
+| BUG-FR17-04 | FR17 | Backend nhận `expired_at` thiếu/rỗng/sai định dạng | High | High | DT-15, DT-16, DT-17 | **Đã xác nhận API** (ảnh Postman); Issue [#50](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/50) | `DT-15.log`…`DT-17.log` |
+| BUG-FR17-05 | FR17 | Backend nhận `min_order_amount` âm, không phải số hoặc thiếu | Medium | Medium | DT-21, DT-22, DT-23 | **Đã xác nhận API** (ảnh Postman); Issue [#51](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/51) | `DT-21.log`…`DT-23.log` |
+| BUG-FR17-06 | FR17 | Backend nhận `max_uses_per_user < 1` hoặc thiếu; number `0` bị đổi thành `1` | Medium | Medium | DT-26, DT-27, DT-28 | **Đã xác nhận API** (ảnh Postman); Issue [#52](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52) | `DT-26.log`…`DT-28.log` |
 
 ### Tiêu chí phân loại
 
@@ -132,9 +132,9 @@ curl -s -X POST http://localhost:3000/api/admin/coupons \
 
 **Expected:** non-2xx và `GET /api/coupons` không có row mới.  
 **Actual:** cả ba trả `200 {"message":"Coupon created",...}`; `GET` có row mới với `code=""`, `code=NULL`, `code="   "` tương ứng.  
-**UI (Dự kiến — chưa kiểm chứng UI):** DT-04/DT-05 không đi được qua UI vì ô Mã có `required`; DT-06 có thể đi được: nhập ba khoảng trắng vào ô **Mã coupon**, điền các trường còn lại, click **Tạo mã**, kiểm tra bảng có row mã trắng. Chụp screenshot bảng nếu có.  
+**UI (Dự kiến — chưa kiểm chứng UI):** DT-04/DT-05 không đi được qua UI vì ô Mã có `required`; DT-06 có thể đi được: nhập ba khoảng trắng vào ô **Mã coupon**, điền các trường còn lại, click **Tạo mã**, kiểm tra bảng có row mã trắng; không dùng ảnh UI làm bằng chứng.
 **Evidence:** `DT-04.log`, `DT-05.log`, `DT-06.log`.  
-**Screenshot API:** [01-CodeEmpty](screenshots/BUG-FR17-01-CodeEmpty.png), [01-GetCodeEmpty](screenshots/BUG-FR17-01-GetCodeEmpty.png), [01-MissingCode](screenshots/BUG-FR17-01-MissingCode.png), [01-CodeNull](screenshots/BUG-FR17-01-CodeNull.png); `DT-06` chưa có ảnh UI.  
+**Screenshot API:** [01-CodeEmpty](screenshots/BUG-FR17-01-CodeEmpty.png), [01-GetCodeEmpty](screenshots/BUG-FR17-01-GetCodeEmpty.png), [01-MissingCode](screenshots/BUG-FR17-01-MissingCode.png), [01-CodeNull](screenshots/BUG-FR17-01-CodeNull.png); `DT-06` chưa có ảnh.
 **Root cause (đọc source):** `backend/server.js:457-481` không kiểm tra `code`/trim trước khi `INSERT`; DB `code TEXT UNIQUE` (`backend/database.js:29-38`) chỉ bắt trùng, không bắt rỗng/NULL.
 
 #### BUG-FR17-02 — Backend nhận `type` ngoài enum hoặc thiếu `type`
@@ -165,7 +165,7 @@ curl -s -X POST http://localhost:3000/api/admin/coupons \
 **Actual:** cả hai 200; row mới lưu `type="percentage"` và `type=NULL`.  
 **UI (Dự kiến — chưa kiểm chứng UI):** không có đường UI thông thường — **Loại** là select chỉ có `Phần trăm (%)` và `Số tiền cố định (₫)`; giữ API-only.  
 **Evidence:** `DT-08.log`, `DT-09.log`.  
-**Screenshot API:** [02-TypeInvalid](screenshots/BUG-FR17-02-TypeInvalid.png), [02-GetCodeHasTypeInvalid](screenshots/BUG-FR17-02-GetCodeHasTypeInvalid.png), [02-MissingType](screenshots/BUG-FR17-02-MissingType.png), [02-GetNullType](screenshots/BUG-FR17-02-GetNullType.png).  
+**Screenshot API:** [02-TypeInvalid](screenshots/BUG-FR17-02-TypeInvalid.png), [02-GetCodeHasTypeInvalid](screenshots/BUG-FR17-02-GetCodeHasTypeInvalid.png), [02-MissingType](screenshots/BUG-FR17-02-MissingType.png), [02-GetNullType](screenshots/BUG-FR17-02-GetNullType.png).
 **Root cause:** `backend/server.js:457-481` không kiểm tra enum/bắt buộc; `backend/database.js:32` chỉ có `DEFAULT 'percent'`, không có `CHECK` hay `NOT NULL`. Hệ quả nguồn FR-09: `coupon.type === "percent"` sai thì rơi vào nhánh fixed (`server.js:398-404`).
 
 #### BUG-FR17-03 — Backend nhận `discount_value <= 0`, không phải số hoặc thiếu
@@ -206,9 +206,9 @@ curl -s -X POST http://localhost:3000/api/admin/coupons \
 
 **Expected:** non-2xx; không có row mới.  
 **Actual:** cả bốn 200; row mới lưu `0`, `-1`, `NULL`, `"abc"` (typeof text).  
-**UI (Dự kiến — chưa kiểm chứng UI):** DT-10/DT-11 đi được — ô **Giá trị** là `type="number"` không có `min`, nhập `0`/`-1` rồi **Tạo mã**, kiểm tra bảng có row `0%`/`-1%`; chụp screenshot. DT-12/DT-13 không đi được vì `required`/`type=number` → API-only.  
+**UI (Dự kiến — chưa kiểm chứng UI):** DT-10/DT-11 đi được — ô **Giá trị** là `type="number"` không có `min`, nhập `0`/`-1` rồi **Tạo mã**, kiểm tra bảng có row `0%`/`-1%`; không dùng ảnh UI làm bằng chứng. DT-12/DT-13 không đi được vì `required`/`type=number` → API-only.
 **Evidence:** `DT-10.log`…`DT-13.log`.  
-**Screenshot API:** [03-DiscountValue0](screenshots/BUG-FR17-03-DiscountValue0.png), [03-GetDiscountValue0](screenshots/BUG-FR17-03-GetDiscountValue0.png), [03-DiscountValueNegative](screenshots/BUG-FR17-03-DiscountValueNegative.png), [03-GetDiscountNegative](screenshots/BUG-FR17-03-GetDiscountNegative.png), [03-MissingDiscountValue](screenshots/BUG-FR17-03-MissingDiscountValue.png), [03-GetMissingDiscountValue](screenshots/BUG-FR17-03-GetMissingDiscountValue.png), [03-DiscountValueInvalid](screenshots/BUG-FR17-03-DiscountValueInvalid.png), [03-GetDiscountValueInvalid](screenshots/BUG-FR17-03-GetDiscountValueInvalid.png).  
+**Screenshot API:** [03-DiscountValue0](screenshots/BUG-FR17-03-DiscountValue0.png), [03-GetDiscountValue0](screenshots/BUG-FR17-03-GetDiscountValue0.png), [03-DiscountValueNegative](screenshots/BUG-FR17-03-DiscountValueNegative.png), [03-GetDiscountNegative](screenshots/BUG-FR17-03-GetDiscountNegative.png), [03-MissingDiscountValue](screenshots/BUG-FR17-03-MissingDiscountValue.png), [03-GetMissingDiscountValue](screenshots/BUG-FR17-03-GetMissingDiscountValue.png), [03-DiscountValueInvalid](screenshots/BUG-FR17-03-DiscountValueInvalid.png), [03-GetDiscountValueInvalid](screenshots/BUG-FR17-03-GetDiscountValueInvalid.png).
 **Root cause:** `backend/server.js:457-481` không kiểm tra kiểu/số dương; cột `discount_value INTEGER` không có `CHECK` (`backend/database.js:33`). Hệ quả nguồn FR-09: percent `total * (1 - discount_value)` (`server.js:398-401`) với số âm/không phải số cho kết quả sai/`NaN`; fixed lấy nguyên `discount_value` (`server.js:402-404`).
 
 #### BUG-FR17-04 — Backend nhận `expired_at` thiếu/rỗng/sai định dạng
@@ -246,7 +246,7 @@ curl -s -X POST http://localhost:3000/api/admin/coupons \
 **Actual:** cả ba 200; row mới lưu `NULL`, `""`, `"not-a-date"`.  
 **UI (Dự kiến — chưa kiểm chứng UI):** không có đường UI thông thường — ô **Ngày hết hạn** có `required` và `type="date"`; giữ API-only.  
 **Evidence:** `DT-15.log`…`DT-17.log`.  
-**Screenshot API:** [04-MissingExpiredAt](screenshots/BUG-FR17-04-MissingExpiredAt.png), [04-GetMissingExpiredAt](screenshots/BUG-FR17-04-GetMissingExpiredAt.png), [04-EmptyExpiredAt](screenshots/BUG-FR17-04-EmptyExpiredAt.png), [04-GetEmptyExpiredAt](screenshots/BUG-FR17-04-GetEmptyExpiredAt.png), [04-InvalidExpiredAt](screenshots/BUG-FR17-04-InvalidExpiredAt.png), [04-GetInvalidExpiredAt](screenshots/BUG-FR17-04-GetInvalidExpiredAt.png).  
+**Screenshot API:** [04-MissingExpiredAt](screenshots/BUG-FR17-04-MissingExpiredAt.png), [04-GetMissingExpiredAt](screenshots/BUG-FR17-04-GetMissingExpiredAt.png), [04-EmptyExpiredAt](screenshots/BUG-FR17-04-EmptyExpiredAt.png), [04-GetEmptyExpiredAt](screenshots/BUG-FR17-04-GetEmptyExpiredAt.png), [04-InvalidExpiredAt](screenshots/BUG-FR17-04-InvalidExpiredAt.png), [04-GetInvalidExpiredAt](screenshots/BUG-FR17-04-GetInvalidExpiredAt.png).
 **Root cause:** `backend/server.js:457-481` không kiểm tra `expired_at`; cột `expired_at DATETIME` không có `NOT NULL`/`CHECK` (`backend/database.js:35`). Hệ quả nguồn FR-09: `new Date("")`/`new Date("not-a-date")` là Invalid Date, phép `expiry < now` trả `false` → coupon có thể được coi là còn hạn; `new Date(null)` = 1970 → luôn hết hạn (`server.js:380-384`).
 
 #### BUG-FR17-05 — Backend nhận `min_order_amount` âm, không phải số hoặc thiếu
@@ -282,9 +282,9 @@ curl -s -X POST http://localhost:3000/api/admin/coupons \
 
 **Expected:** non-2xx; không có row mới.  
 **Actual:** cả ba 200; row mới lưu `-1`, `NULL`, `"abc"`.  
-**UI (Dự kiến — chưa kiểm chứng UI):** DT-21 đi được — ô **Đơn tối thiểu** là `type="number"` không có `min`, nhập `-1`, **Tạo mã**, kiểm tra bảng có `-1 ₫`; chụp screenshot. DT-22/DT-23 API-only vì UI luôn gửi key và `type=number` chặn `abc`. (Nếu tester xóa trắng ô, UI gửi `""` — input khác, không gán cho DT-22.)  
+**UI (Dự kiến — chưa kiểm chứng UI):** DT-21 đi được — ô **Đơn tối thiểu** là `type="number"` không có `min`, nhập `-1`, **Tạo mã**, kiểm tra bảng có `-1 ₫`; không dùng ảnh UI làm bằng chứng. DT-22/DT-23 API-only vì UI luôn gửi key và `type=number` chặn `abc`. (Nếu tester xóa trắng ô, UI gửi `""` — input khác, không gán cho DT-22.)
 **Evidence:** `DT-21.log`…`DT-23.log`.  
-**Screenshot API:** [05-MinOrderNegative](screenshots/BUG-FR17-05-MinOrderNegative.png), [05-GetMinOrderNegative](screenshots/BUG-FR17-05-GetMinOrderNegative.png), [05-MissingMinOrderAmount](screenshots/BUG-FR17-05-MissingMinOrderAmount.png), [05-GetMissingMinOrderAmount](screenshots/BUG-FR17-05-GetMissingMinOrderAmount.png), [05-InvalidMinOrder](screenshots/BUG-FR17-05-InvalidMinOrder.png), [05-GetInvalidMinOrder](screenshots/BUG-FR17-05-GetInvalidMinOrder.png).  
+**Screenshot API:** [05-MinOrderNegative](screenshots/BUG-FR17-05-MinOrderNegative.png), [05-GetMinOrderNegative](screenshots/BUG-FR17-05-GetMinOrderNegative.png), [05-MissingMinOrderAmount](screenshots/BUG-FR17-05-MissingMinOrderAmount.png), [05-GetMissingMinOrderAmount](screenshots/BUG-FR17-05-GetMissingMinOrderAmount.png), [05-InvalidMinOrder](screenshots/BUG-FR17-05-InvalidMinOrder.png), [05-GetInvalidMinOrder](screenshots/BUG-FR17-05-GetInvalidMinOrder.png).
 **Root cause:** `backend/server.js:457-481` không kiểm tra số/`>= 0`; cột `min_order_amount INTEGER DEFAULT 0` không có `CHECK` (`backend/database.js:34`). Khi `NULL`, UI có thể hiển thị `undefined ₫`/blank; khi `"abc"`, so sánh số với chuỗi không theo nghĩa mong đợi.
 
 #### BUG-FR17-06 — Backend nhận `max_uses_per_user < 1` hoặc thiếu; number `0` bị đổi thành `1`
@@ -322,7 +322,7 @@ curl -s -X POST http://localhost:3000/api/admin/coupons \
 **Actual:** cả ba 200; JSON number `0` lưu thành `1` (do `max_uses_per_user || 1`), `-1` lưu `-1`, thiếu key lưu `1`.  
 **UI (Dự kiến — chưa kiểm chứng UI):** không có đường UI thông thường cho `0`/`-1` vì ô có `min="1"`; ca API-only. Bỏ trống ô gửi `""` (khác input "omitted"), backend `|| 1` cũng cho `1` — nếu tester thử, ghi thành quan sát riêng, không gán cho DT-26/DT-28.  
 **Evidence:** `DT-26.log`…`DT-28.log`.  
-**Screenshot API:** [06-MaxUsesPerUser0](screenshots/BUG-FR17-06-MaxUsesPerUser0.png), [06-MaxUsesPerUser0Up1](screenshots/BUG-FR17-06-MaxUsesPerUser0Up1.png), [06-MaxUsesPerUserNegative](screenshots/BUG-FR17-06-MaxUsesPerUserNegative.png), [06-GetMaxUsesPerUserNegative](screenshots/BUG-FR17-06-GetMaxUsesPerUserNegative.png), [06-MissingMaxUses](screenshots/BUG-FR17-06-MissingMaxUses.png), [06-GetMissingMaxUses](screenshots/BUG-FR17-06-GetMissingMaxUses.png).  
+**Screenshot API:** [06-MaxUsesPerUser0](screenshots/BUG-FR17-06-MaxUsesPerUser0.png), [06-MaxUsesPerUser0Up1](screenshots/BUG-FR17-06-MaxUsesPerUser0Up1.png), [06-MaxUsesPerUserNegative](screenshots/BUG-FR17-06-MaxUsesPerUserNegative.png), [06-GetMaxUsesPerUserNegative](screenshots/BUG-FR17-06-GetMaxUsesPerUserNegative.png), [06-MissingMaxUses](screenshots/BUG-FR17-06-MissingMaxUses.png), [06-GetMissingMaxUses](screenshots/BUG-FR17-06-GetMissingMaxUses.png).
 **Root cause:** `backend/server.js:474` dùng `max_uses_per_user || 1`; không có kiểm tra `>= 1`; cột `max_uses_per_user INTEGER DEFAULT 1` không có `CHECK` (`backend/database.js:37`). Hệ quả nguồn FR-09: `usage_count >= -1` luôn đúng → coupon bị coi là hết lượt ngay từ đầu (`server.js:391-396`).
 
 ## Quan sát ngoài oracle EP/BVA
@@ -344,8 +344,8 @@ Các mục dưới đây **không cộng vào coverage**; chi tiết và nguồn
 
 ## Khoảng trống và câu hỏi mở
 
-- **UI chưa chạy:** 16 T-ID UI-reachable mới có hướng dẫn manual; cần người kiểm thử chạy, chụp screenshot cho bug ứng viên và xác nhận bug.
-- **GitHub Issue chưa publish:** 6 bug đã xác nhận qua API; UI chưa chạy; đã có draft tại `features/FR17/issues/` và 34 ảnh API tại `screenshots/`, chưa publish Issue.
+- **UI không dùng làm bằng chứng:** 16 T-ID UI-reachable chỉ có hướng dẫn manual; kết luận FR-17 dựa trên API/Postman, không dùng ảnh UI.
+- **GitHub Issue:** đã publish [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47)…#[52](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52) kèm 34 ảnh Postman; không dùng ảnh UI.
 - **Oracle chưa đầy đủ:** status/message validation không được đặc tả; case-sensitivity của `code`, upper bound percent, hành vi xóa id không tồn tại vẫn UNRESOLVED.
 - **ASSUMED:** code toàn khoảng trắng là invalid; `expired_at` phải đúng định dạng ngày; coupon quá khứ vẫn được tạo; `max_uses_per_user` là số nguyên.
 - **Ngoài phạm vi:** FR-09 (áp dụng coupon) và FR-12 (phân quyền admin) chỉ ghi quan sát, không tính coverage.
@@ -355,10 +355,10 @@ Các mục dưới đây **không cộng vào coverage**; chi tiết và nguồn
 
 ## Trạng thái Issue / screenshot
 
-- 6 bug `BUG-FR17-01`…`BUG-FR17-06`: **Đã xác nhận qua API** (ảnh Postman); UI chưa chạy.
-- Draft Issue đã soạn theo template: [`BUG-FR17-01`](issues/BUG-FR17-01.md), [`BUG-FR17-02`](issues/BUG-FR17-02.md), [`BUG-FR17-03`](issues/BUG-FR17-03.md), [`BUG-FR17-04`](issues/BUG-FR17-04.md), [`BUG-FR17-05`](issues/BUG-FR17-05.md), [`BUG-FR17-06`](issues/BUG-FR17-06.md). Các draft **chưa publish**; ảnh API đã có, UI vẫn chờ nếu muốn xác nhận bổ sung.
-- Chưa mở GitHub Issue; đã có **34 ảnh API** tại `screenshots/` (17/18 FAIL có ảnh; `DT-06` chưa có ảnh UI).
-- Còn lại: (tuỳ chọn) chạy UI để xác nhận bổ sung và chụp screenshot UI; sau đó publish Issue từ draft theo `skills/test-findings-report-writer/assets/github-issue-template.md`, cập nhật `test-results.md`, `main-report.md`, `README.md` và AI Audit.
+- 6 bug `BUG-FR17-01`…`BUG-FR17-06`: **Đã xác nhận qua API** (ảnh Postman); chỉ dùng ảnh Postman, không dùng ảnh UI.
+- GitHub Issue đã mở: [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47), [#48](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/48), [#49](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/49), [#50](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/50), [#51](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/51), [#52](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52); nội dung draft tại [`features/FR17/issues/`](issues/).
+- **34 ảnh API** tại `screenshots/` (17/18 FAIL có ảnh; `DT-06` chưa có ảnh).
+- Không còn bước publish; UI không dùng làm bằng chứng cho FR-17.
 
 ## AI Gap Analysis — chờ sinh viên
 
