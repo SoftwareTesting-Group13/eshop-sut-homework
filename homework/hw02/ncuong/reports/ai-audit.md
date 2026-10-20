@@ -12,11 +12,12 @@ I use AI tools for the following tasks,
 - Soạn 6 GitHub Issue draft cho FR-17 theo template `test-findings-report-writer`; sau đó đính 34 ảnh Postman do người kiểm thử cung cấp vào draft và các báo cáo liên quan, giữ UI chưa kiểm chứng, không publish/không commit.
 - Tạo 6 GitHub Issue FR-17 (#47…#52) kèm ảnh Postman, commit/push artifact FR-17 và cập nhật link Issue trong báo cáo; không dùng ảnh UI.
 - Bổ sung 5 ảnh Postman cho `BUG-FR17-07/08`, publish Issue #53/#54, cập nhật báo cáo và ghi AI Audit.
+- Bổ sung 1 ảnh UI áp dụng coupon `150%` cho `BUG-FR17-08`, cập nhật Issue #54 và báo cáo; ảnh UI chỉ minh họa hệ quả, không thay bằng chứng API.
 - Soạn AI Audit Report này.
 
 > **Phạm vi lập báo cáo (capture notes):**
-> - Bằng chứng khả dụng: phiên hội thoại hiện tại (prompt của người dùng + các artifact do agent tạo trong repo); không có file export transcript riêng. Hai screenshot (`features/FR02/screenshots/BUG-FR02-01.png`, `BUG-FR02-02.png`) và 39 ảnh FR17 trong `features/FR17/screenshots/` do **người dùng** cung cấp, không phải AI tạo.
-> - Số interaction đã ghi: **12** (AI-001…AI-012; các prompt của người dùng; các tool call nội bộ không phải prompt của người dùng nên không liệt kê).
+> - Bằng chứng khả dụng: phiên hội thoại hiện tại (prompt của người dùng + các artifact do agent tạo trong repo); không có file export transcript riêng. Hai screenshot (`features/FR02/screenshots/BUG-FR02-01.png`, `BUG-FR02-02.png`) và 39 ảnh Postman + 1 ảnh UI FR17 trong `features/FR17/screenshots/` do **người dùng** cung cấp, không phải AI tạo.
+> - Số interaction đã ghi: **13** (AI-001…AI-013; các prompt của người dùng; các tool call nội bộ không phải prompt của người dùng nên không liệt kê).
 > - Công cụ AI đã dùng (theo bằng chứng): OpenCode agent, model `DeepSeek V4.1 Flash Free` (provider `opencode`).
 > - Công cụ/phiên được nhắc tới nhưng không kiểm tra được: không.
 
@@ -456,6 +457,40 @@ Output của agent là các thay đổi trong repo và 2 Issue đã publish (ki�
 
 ---
 
+## Interaction AI-013
+
+- **AI tool:** OpenCode agent — model `DeepSeek V4.1 Flash Free` (provider `opencode`).
+- **Date and time:** 2026-10-21 (prompt không cung cấp giờ; không tự tạo timestamp).
+- **Source:** Phiên hội thoại hiện tại; ảnh UI mới `features/FR17/screenshots/BUG-FR17-08-AppliedDiscount150.png`; Issue #54; commit `2a8c77c`.
+- **Task:** Bổ sung 1 ảnh UI áp dụng coupon `150%` vào `BUG-FR17-08`/Issue #54 và cập nhật báo cáo; giữ ảnh Postman/API là bằng chứng chính.
+
+### Your prompt
+
+```text
+T mới thêm 1 ảnh applied coupon 150% ấy, sửa issue tí cho cái ảnh t mới thêm nha m
+```
+
+### The AI output
+
+Output của agent là các thay đổi trong repo và Issue #54 đã cập nhật (kiểm tra được):
+
+| Artifact | Thay đổi |
+| --- | --- |
+| Ảnh UI bổ sung | `features/FR17/screenshots/BUG-FR17-08-AppliedDiscount150.png`: coupon `FR17-DT-32` được áp dụng thành công với mức giảm `150%`; UI hiển thị tiết kiệm `-4,470,000,000 đ`, thành tiền `4,500,000,000 đ` |
+| Issue #54 | Body được PATCH bằng bản draft cuối, thêm ảnh UI; Issue hiện có 2 ảnh Postman + 1 ảnh UI |
+| Bug draft / test results | `features/FR17/issues/BUG-FR17-08.md`, `features/FR17/test-results.md`: thêm link ảnh UI, ghi rõ đây là bằng chứng bổ sung hệ quả FR-09, không thay bằng chứng API |
+| Evidence / reports | `features/FR17/evidence/FR17-evidence.md`, `reports/main-report.md`, `README.md`, `supporting-materials/fr17-observations.md`: cập nhật thành **39 ảnh Postman + 1 ảnh UI**, 19/20 FAIL có ảnh API, `DT-06` vẫn là ca duy nhất chưa có ảnh API |
+| AI Audit | `reports/ai-audit.md`: thêm AI-013, tăng số interaction lên 13 |
+
+- Đã commit/push ảnh và báo cáo tại `2a8c77c`; raw URL của ảnh mới trả HTTP 200.
+- Đã kiểm tra Issue #54 có đúng 3 ảnh raw GitHub, gồm `BUG-FR17-08-AppliedDiscount150.png`.
+- **Không đổi** counts FR-17 (`11 PASS / 20 FAIL / 1 Quan sát`) và severity (`High 3 / Medium 5`); ảnh UI chỉ bổ sung hệ quả FR-09.
+- Không stage `prompt.txt`, `skills/**` hoặc `backend/database.sqlite`.
+
+> Phản hồi cuối của agent cho người dùng là xác nhận đã thêm ảnh applied coupon `150%` vào `BUG-FR17-08`/Issue #54, ảnh render được, và ghi chú ảnh UI chỉ là bằng chứng bổ sung.
+
+---
+
 ## Optional audit table (theo mẫu `[AI-02]` — bổ sung, không thay thế 4 trường bắt buộc)
 
 | (1) Prompt + Công cụ | (2) Output AI | (3) Verdict | (4) Lý do | (5) Bản SV sửa |
@@ -472,5 +507,6 @@ Output của agent là các thay đổi trong repo và 2 Issue đã publish (ki�
 | OpenCode · DeepSeek V4.1 Flash Free · 2026-10-21 · Time not available in source · “Không sài ảnh UI nha, sài ảnh postman thôi, tạo issue luôn cho t đi” | Commit/push `4dae771` (artifact + ảnh) và `0b32a5a` (link Issue/báo cáo); tạo Issue FR17 #47…#52 kèm ảnh Postman; cập nhật draft Issue và `test-results.md`, `FR17-evidence.md`, `main-report.md`, `README.md`; chỉ dùng ảnh Postman, không dùng ảnh UI | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 | OpenCode · DeepSeek V4.1 Flash Free · 2026-10-21 · Time not available in source · “OBS-FR17-03 … OBS-FR17-04 … T xác nhận đây là 2 bug … Thêm 2 bug này vào fr17 hiện tại … Ghi xong nhớ AI Audit log …” | Chuyển DT-07/DT-32 sang FAIL; thêm `BUG-FR17-07`/`BUG-FR17-08`; cập nhật domain/BVA/test-cases/test-results/evidence/observations/master report/README; counts FR-17 `11/20/1`, tổng `40/25/2`; tạo 2 Issue draft chờ ảnh Postman; thêm AI-011 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 | OpenCode · DeepSeek V4.1 Flash Free · 2026-10-21 · Time not available in source · “T vừa thêm các ảnh cho 2 issue mới, bổ sung vào báo cáo và tạo issue dùm t nhé. Nhớ AI Audit” | Thêm 5 ảnh Postman cho BUG-FR17-07/08; cập nhật 39 ảnh/19-of-20 FAIL/8 Issue; publish Issue #53/#54; commit/push `80abf1a`; cập nhật draft, test-results, evidence, main-report, README, observations; thêm AI-012 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
+| OpenCode · DeepSeek V4.1 Flash Free · 2026-10-21 · Time not available in source · “T mới thêm 1 ảnh applied coupon 150% ấy, sửa issue tí cho cái ảnh t mới thêm nha m” | Thêm ảnh UI `BUG-FR17-08-AppliedDiscount150.png` vào BUG-FR17-08/Issue #54; cập nhật draft, test-results, evidence, main-report, README, observations; commit/push `2a8c77c`; thêm AI-013 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 
 > Cột (3)–(5) do **sinh viên** tự đánh giá/điền; báo cáo không tự suy diễn verdict hay bản sửa của sinh viên.
