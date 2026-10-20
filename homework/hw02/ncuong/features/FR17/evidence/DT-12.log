@@ -1,0 +1,79 @@
+# EV-FR17-012 — DT-12 (API POST /api/admin/coupons)
+
+| Trường | Giá trị |
+| --- | --- |
+| Test case | DT-12 |
+| Run ID / lần thử | run-20261020-fr17 / 1 |
+| Kỹ thuật | EP |
+| Obligation IDs | P12, R4 |
+| Thời điểm | 2026-10-20T15:38:26.867Z (2026-10-20 22:38:26 +0700) |
+| Interface | API POST /api/admin/coupons |
+| Setup / trạng thái trước | Đăng nhập admin; bỏ hẳn key discount_value; các trường còn lại hợp lệ. |
+
+## Thao tác / request thật
+
+```http
+POST /api/admin/coupons
+Authorization: Bearer <redacted-test-token>
+Content-Type: application/json
+
+{
+  "code": "FR17-DT-12",
+  "type": "percent",
+  "min_order_amount": 100000,
+  "expired_at": "2099-12-31",
+  "max_uses_per_user": 1
+}
+```
+
+## Kết quả thô
+
+```json
+HTTP 200
+{
+  "message": "Coupon created",
+  "id": 15
+}
+```
+
+### Kiểm tra trạng thái qua GET /api/coupons
+
+```json
+{
+  "before_count": 4,
+  "after_count": 5,
+  "new_rows": [
+    {
+      "id": 15,
+      "code": "FR17-DT-12",
+      "type": "percent",
+      "discount_value": null,
+      "min_order_amount": 100000,
+      "expired_at": "2099-12-31",
+      "max_uses_per_user": 1,
+      "is_active": 1
+    }
+  ],
+  "target_row": {
+    "id": 15,
+    "code": "FR17-DT-12",
+    "type": "percent",
+    "discount_value": null,
+    "min_order_amount": 100000,
+    "expired_at": "2099-12-31",
+    "is_active": 1,
+    "max_uses_per_user": 1
+  },
+  "field_checks": null,
+  "seeds_present": null,
+  "absent_after_delete": null
+}
+```
+
+- **Expected (oracle ref):** Bị từ chối (non-2xx) và không tạo coupon mới; discount_value là trường bắt buộc. Nguồn: README.md §5 FR-17.
+- **Actual:** HTTP 200; new_rows=1; body={"message":"Coupon created","id":15}; unexpected_rows=[{"id":15,"code":"FR17-DT-12","type":"percent","discount_value":null,"min_order_amount":100000,"expired_at":"2099-12-31","max_uses_per_user":1,"is_active":1}]
+- **Status:** `FAIL`
+- **Artifact:** `evidence/DT-12.log`
+- **Cleanup:** DELETE /api/admin/coupons/15 -> HTTP 200
+- **Bug liên quan:** BUG-FR17-03
+- **Ghi chú:** UI có required nên ca bỏ hẳn key là API-only.

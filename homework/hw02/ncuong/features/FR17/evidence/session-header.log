@@ -1,0 +1,23 @@
+# FR17 — Session header
+
+| Mục | Giá trị |
+| --- | --- |
+| Run ID | run-20261020-fr17 |
+| Bắt đầu | 2026-10-20T15:38:26.710Z (2026-10-20 22:38:26 +0700) |
+| Kết thúc | 2026-10-20T15:38:27.016Z (2026-10-20 22:38:27 +0700) |
+| Repo | /Users/cuong/Documents/Code/eshop-sut-homework |
+| Commit | f389502cdb308b133fe9044e34505f19202dd887 |
+| Branch | ncuong |
+| Backend server.js SHA-256 | 47573ce5a6bf9a894748d2bb56cc8d1659ad7acd033fdd6db6b3e4d9473eb487 |
+| Backend database.js SHA-256 | 3366420632bb9c982905b22e3969f69515e39e7a37a4f84eba56ead7e94afed8 |
+| OS / Node | darwin / v26.9.0 |
+| Base URL | http://localhost:3000 |
+| SUT dir | /private/var/folders/2f/64j8q4t10vz15mrnyzk48_j80000gn/T/opencode/fr17-sut |
+| Cách ly | Bản sao server.js/database.js/package.json trong thư mục tạm; database.sqlite riêng; node_modules symlink; không dùng DB làm việc. |
+| Working DB | /Users/cuong/Documents/Code/eshop-sut-homework/backend/database.sqlite |
+| Working DB SHA-256 before | c63f00544180ba1fbb1427a9b9dd3f1784842698809972f33ce90482e7420ba6 |
+| Working DB SHA-256 after | c63f00544180ba1fbb1427a9b9dd3f1784842698809972f33ce90482e7420ba6 |
+| Test DB | /private/var/folders/2f/64j8q4t10vz15mrnyzk48_j80000gn/T/opencode/fr17-sut/database.sqlite |
+| Test DB SHA-256 before | 8c0fa89a2b364b27b9c29b29382456f2accfe038e2493605fb896beea406d0c8 |
+| Test DB SHA-256 after | 8a9e1caac1c8872ee4de72181126604307f4e541b85e2a88a815b821529bab86 |
+| Seed coupons | SAVE10, BIGBUY, VIP100, EXPIRED |

@@ -1,0 +1,80 @@
+# EV-FR17-017 — DT-17 (API POST /api/admin/coupons)
+
+| Trường | Giá trị |
+| --- | --- |
+| Test case | DT-17 |
+| Run ID / lần thử | run-20261020-fr17 / 1 |
+| Kỹ thuật | EP |
+| Obligation IDs | P17, R5 |
+| Thời điểm | 2026-10-20T15:38:26.901Z (2026-10-20 22:38:26 +0700) |
+| Interface | API POST /api/admin/coupons |
+| Setup / trạng thái trước | Đăng nhập admin; expired_at='not-a-date'; các trường còn lại hợp lệ. |
+
+## Thao tác / request thật
+
+```http
+POST /api/admin/coupons
+Authorization: Bearer <redacted-test-token>
+Content-Type: application/json
+
+{
+  "code": "FR17-DT-17",
+  "type": "percent",
+  "discount_value": 10,
+  "min_order_amount": 100000,
+  "expired_at": "not-a-date",
+  "max_uses_per_user": 1
+}
+```
+
+## Kết quả thô
+
+```json
+HTTP 200
+{
+  "message": "Coupon created",
+  "id": 20
+}
+```
+
+### Kiểm tra trạng thái qua GET /api/coupons
+
+```json
+{
+  "before_count": 4,
+  "after_count": 5,
+  "new_rows": [
+    {
+      "id": 20,
+      "code": "FR17-DT-17",
+      "type": "percent",
+      "discount_value": 10,
+      "min_order_amount": 100000,
+      "expired_at": "not-a-date",
+      "max_uses_per_user": 1,
+      "is_active": 1
+    }
+  ],
+  "target_row": {
+    "id": 20,
+    "code": "FR17-DT-17",
+    "type": "percent",
+    "discount_value": 10,
+    "min_order_amount": 100000,
+    "expired_at": "not-a-date",
+    "is_active": 1,
+    "max_uses_per_user": 1
+  },
+  "field_checks": null,
+  "seeds_present": null,
+  "absent_after_delete": null
+}
+```
+
+- **Expected (oracle ref):** Bị từ chối (non-2xx) và không tạo coupon mới; expired_at phải là ngày hợp lệ (ASSUMED: API example dùng YYYY-MM-DD, UI dùng input type=date). Nguồn: README.md §5 FR-17; api_specification.md §6.4.
+- **Actual:** HTTP 200; new_rows=1; body={"message":"Coupon created","id":20}; unexpected_rows=[{"id":20,"code":"FR17-DT-17","type":"percent","discount_value":10,"min_order_amount":100000,"expired_at":"not-a-date","max_uses_per_user":1,"is_active":1}]
+- **Status:** `FAIL`
+- **Artifact:** `evidence/DT-17.log`
+- **Cleanup:** DELETE /api/admin/coupons/20 -> HTTP 200
+- **Bug liên quan:** BUG-FR17-04
+- **Ghi chú:** ASSUMED về định dạng ngày; UI date input không gửi được chuỗi này nên ca API-only.

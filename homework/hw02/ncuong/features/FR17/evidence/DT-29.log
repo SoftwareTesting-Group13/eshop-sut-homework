@@ -1,0 +1,120 @@
+# EV-FR17-029 — DT-29 (API GET /api/coupons (sau khi POST tạo coupon))
+
+| Trường | Giá trị |
+| --- | --- |
+| Test case | DT-29 |
+| Run ID / lần thử | run-20261020-fr17 / 1 |
+| Kỹ thuật | EP |
+| Obligation IDs | P29, R1, R7 |
+| Thời điểm | 2026-10-20T15:38:26.983Z (2026-10-20 22:38:26 +0700) |
+| Interface | API GET /api/coupons (sau khi POST tạo coupon) |
+| Setup / trạng thái trước | Đăng nhập admin; DB test có 4 seed coupon; tạo coupon FR17-DT-29 rồi gọi GET /api/coupons. |
+
+## Thao tác / request thật
+
+```http
+POST /api/admin/coupons
+Authorization: Bearer <redacted-test-token>
+Content-Type: application/json
+
+{
+  "code": "FR17-DT-29",
+  "type": "percent",
+  "discount_value": 10,
+  "min_order_amount": 100000,
+  "expired_at": "2099-12-31",
+  "max_uses_per_user": 1
+}
+```
+
+## Kết quả thô
+
+```json
+HTTP 200
+{
+  "message": "Coupon created",
+  "id": 32
+}
+```
+
+### Kiểm tra trạng thái qua GET /api/coupons
+
+```json
+{
+  "before_count": 4,
+  "after_count": 5,
+  "new_rows": [
+    {
+      "id": 32,
+      "code": "FR17-DT-29",
+      "type": "percent",
+      "discount_value": 10,
+      "min_order_amount": 100000,
+      "expired_at": "2099-12-31",
+      "max_uses_per_user": 1,
+      "is_active": 1
+    }
+  ],
+  "target_row": {
+    "id": 32,
+    "code": "FR17-DT-29",
+    "type": "percent",
+    "discount_value": 10,
+    "min_order_amount": 100000,
+    "expired_at": "2099-12-31",
+    "is_active": 1,
+    "max_uses_per_user": 1
+  },
+  "field_checks": [
+    {
+      "field": "code",
+      "expected": "FR17-DT-29",
+      "actual": "FR17-DT-29",
+      "pass": true
+    },
+    {
+      "field": "type",
+      "expected": "percent",
+      "actual": "percent",
+      "pass": true
+    },
+    {
+      "field": "discount_value",
+      "expected": 10,
+      "actual": 10,
+      "pass": true
+    },
+    {
+      "field": "min_order_amount",
+      "expected": 100000,
+      "actual": 100000,
+      "pass": true
+    },
+    {
+      "field": "expired_at",
+      "expected": "2099-12-31",
+      "actual": "2099-12-31",
+      "pass": true
+    },
+    {
+      "field": "max_uses_per_user",
+      "expected": 1,
+      "actual": 1,
+      "pass": true
+    }
+  ],
+  "seeds_present": {
+    "before": true,
+    "after": true
+  },
+  "absent_after_delete": null
+}
+```
+
+- **Expected (oracle ref):** GET /api/coupons trả danh sách nhìn thấy được, gồm 4 seed coupon và coupon vừa tạo với đủ trường đúng giá trị. Nguồn: README.md §5 FR-17 (Xem); api_specification.md §5.2.
+- **Actual:** POST HTTP 200; before_count=4; after_count=5; seeds_before=true; seeds_after=true; target={"id":32,"code":"FR17-DT-29","type":"percent","discount_value":10,"min_order_amount":100000,"expired_at":"2099-12-31","is_active":1,"max_uses_per_user":1}; field_checks=[{"field":"code","expected":"FR17-DT-29","actual":"FR17-DT-29","pass":true},{"field":"type","expected":"percent","actual":"percent","pass":true},{"field":"discount_value","expected":10,"actual":10,"pass":true},{"field":"min_order_amount","expected":100000,"actual":100000,"pass":true},{"field":"expired_at","expected":"2099-12-31","actual":"2099-12-31","pass":true},{"field":"max_uses_per_user","expected":1,"actual":1,"pass":true}]
+- **Status:** `PASS`
+- **Artifact:** `evidence/DT-29.log`
+- **Cleanup:** DELETE /api/admin/coupons/32 -> HTTP 200
+- **Bug liên quan:** không
+- **Ghi chú:** Ca này kiểm tra yêu cầu Xem danh sách; không kiểm tra thứ tự hiển thị vì đặc tả không quy định.

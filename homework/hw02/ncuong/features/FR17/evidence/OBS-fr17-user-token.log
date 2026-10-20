@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-10-20T15:38:27.005Z (2026-10-20 22:38:27 +0700)",
+  "user": {
+    "id": 2,
+    "email": "test@eshop.com",
+    "role": "user"
+  },
+  "getStatus": 200,
+  "getCount": 4,
+  "createStatus": 200,
+  "createBody": {
+    "message": "Coupon created",
+    "id": 35
+  },
+  "created": true,
+  "createdRow": {
+    "id": 35,
+    "code": "FR17-OBS-USER",
+    "type": "percent",
+    "discount_value": 10,
+    "min_order_amount": 100000,
+    "expired_at": "2099-12-31",
+    "is_active": 1,
+    "max_uses_per_user": 1
+  },
+  "cleanup": "DELETE /api/admin/coupons/35 bằng admin -> HTTP 200"
+}

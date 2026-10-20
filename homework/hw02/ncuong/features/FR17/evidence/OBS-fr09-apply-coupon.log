@@ -1,0 +1,86 @@
+{
+  "timestamp": "2026-10-20T15:38:35.427Z",
+  "note": "Out-of-scope FR-09 observations; no Authorization header sent.",
+  "cases": [
+    {
+      "label": "SAVE10 percent, total=500000 (above min 300000)",
+      "request": {
+        "code": "SAVE10",
+        "total_amount": 500000,
+        "user_id": 2
+      },
+      "status": 200,
+      "body": {
+        "success": true,
+        "coupon_id": 1,
+        "discount_amount": -4500000,
+        "final_amount": 5000000,
+        "message": "Áp dụng thành công! Giảm 10%"
+      }
+    },
+    {
+      "label": "SAVE10 percent, total=300000 (equal min 300000)",
+      "request": {
+        "code": "SAVE10",
+        "total_amount": 300000,
+        "user_id": 3
+      },
+      "status": 400,
+      "body": {
+        "error": "Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này"
+      }
+    },
+    {
+      "label": "SAVE10 percent, total=299999 (below min 300000)",
+      "request": {
+        "code": "SAVE10",
+        "total_amount": 299999,
+        "user_id": 4
+      },
+      "status": 400,
+      "body": {
+        "error": "Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này"
+      }
+    },
+    {
+      "label": "BIGBUY fixed, total=500000 (equal min 500000)",
+      "request": {
+        "code": "BIGBUY",
+        "total_amount": 500000,
+        "user_id": 5
+      },
+      "status": 400,
+      "body": {
+        "error": "Đơn hàng chưa đủ giá trị tối thiểu 500,000 ₫ để áp dụng mã này"
+      }
+    },
+    {
+      "label": "BIGBUY fixed, total=500001 (above min)",
+      "request": {
+        "code": "BIGBUY",
+        "total_amount": 500001,
+        "user_id": 6
+      },
+      "status": 200,
+      "body": {
+        "success": true,
+        "coupon_id": 2,
+        "discount_amount": 50000,
+        "final_amount": 450001,
+        "message": "Áp dụng thành công! Giảm 50,000 ₫"
+      }
+    },
+    {
+      "label": "EXPIRED percent, total=500000",
+      "request": {
+        "code": "EXPIRED",
+        "total_amount": 500000,
+        "user_id": 7
+      },
+      "status": 400,
+      "body": {
+        "error": "Mã giảm giá đã hết hạn"
+      }
+    }
+  ]
+}

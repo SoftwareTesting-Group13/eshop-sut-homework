@@ -1,0 +1,2526 @@
+{
+  "run_id": "run-20261020-fr17",
+  "started_at": "2026-10-20T15:38:26.710Z (2026-10-20 22:38:26 +0700)",
+  "finished_at": "2026-10-20T15:38:27.016Z (2026-10-20 22:38:27 +0700)",
+  "repo": "/Users/cuong/Documents/Code/eshop-sut-homework",
+  "sut_commit": "f389502cdb308b133fe9044e34505f19202dd887",
+  "branch": "ncuong",
+  "source": {
+    "backend/server.js": "47573ce5a6bf9a894748d2bb56cc8d1659ad7acd033fdd6db6b3e4d9473eb487",
+    "backend/database.js": "3366420632bb9c982905b22e3969f69515e39e7a37a4f84eba56ead7e94afed8"
+  },
+  "environment": {
+    "platform": "darwin",
+    "node": "v26.9.0",
+    "port": 3000,
+    "base_url": "http://localhost:3000",
+    "sut_dir": "/private/var/folders/2f/64j8q4t10vz15mrnyzk48_j80000gn/T/opencode/fr17-sut",
+    "isolation": "Bản sao server.js/database.js/package.json trong thư mục tạm; database.sqlite riêng; node_modules symlink; không dùng DB làm việc."
+  },
+  "working_db": {
+    "path": "/Users/cuong/Documents/Code/eshop-sut-homework/backend/database.sqlite",
+    "sha256_before": "c63f00544180ba1fbb1427a9b9dd3f1784842698809972f33ce90482e7420ba6",
+    "sha256_after": "c63f00544180ba1fbb1427a9b9dd3f1784842698809972f33ce90482e7420ba6"
+  },
+  "test_db": {
+    "path": "/private/var/folders/2f/64j8q4t10vz15mrnyzk48_j80000gn/T/opencode/fr17-sut/database.sqlite",
+    "sha256_before": "8c0fa89a2b364b27b9c29b29382456f2accfe038e2493605fb896beea406d0c8",
+    "sha256_after": "8a9e1caac1c8872ee4de72181126604307f4e541b85e2a88a815b821529bab86"
+  },
+  "seed_coupons": [
+    "SAVE10",
+    "BIGBUY",
+    "VIP100",
+    "EXPIRED"
+  ],
+  "counts": {
+    "designed": 32,
+    "executed": 32,
+    "pass": 11,
+    "fail": 18,
+    "inconclusive": 3,
+    "blocked": 0,
+    "not_run": 0
+  },
+  "cases": [
+    {
+      "id": "DT-01",
+      "technique": "EP",
+      "obligations": [
+        "P1",
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6",
+        "R7"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "DB test mới seed 4 coupon (SAVE10, BIGBUY, VIP100, EXPIRED); đăng nhập admin@eshop.com; các trường khác giữ baseline hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 5
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":5}",
+        "ms": 3,
+        "requestBody": {
+          "code": "FR17-DT-01",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "max_uses_per_user": 1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 5,
+            "code": "FR17-DT-01",
+            "type": "percent",
+            "discount_value": 10,
+            "min_order_amount": 100000,
+            "expired_at": "2099-12-31",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 5,
+          "code": "FR17-DT-01",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "is_active": 1,
+          "max_uses_per_user": 1
+        },
+        "field_checks": [
+          {
+            "field": "code",
+            "expected": "FR17-DT-01",
+            "actual": "FR17-DT-01",
+            "pass": true
+          },
+          {
+            "field": "type",
+            "expected": "percent",
+            "actual": "percent",
+            "pass": true
+          },
+          {
+            "field": "discount_value",
+            "expected": 10,
+            "actual": 10,
+            "pass": true
+          },
+          {
+            "field": "min_order_amount",
+            "expected": 100000,
+            "actual": 100000,
+            "pass": true
+          },
+          {
+            "field": "expired_at",
+            "expected": "2099-12-31",
+            "actual": "2099-12-31",
+            "pass": true
+          },
+          {
+            "field": "max_uses_per_user",
+            "expected": 1,
+            "actual": 1,
+            "pass": true
+          }
+        ],
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Tạo thành công (2xx); coupon xuất hiện trong GET /api/coupons với đủ 6 trường đúng giá trị. Nguồn: README.md §5 FR-17; api_specification.md §6.4.",
+      "actual": "HTTP 200; new_rows=1; target={\"id\":5,\"code\":\"FR17-DT-01\",\"type\":\"percent\",\"discount_value\":10,\"min_order_amount\":100000,\"expired_at\":\"2099-12-31\",\"is_active\":1,\"max_uses_per_user\":1}; field_checks=[{\"field\":\"code\",\"expected\":\"FR17-DT-01\",\"actual\":\"FR17-DT-01\",\"pass\":true},{\"field\":\"type\",\"expected\":\"percent\",\"actual\":\"percent\",\"pass\":true},{\"field\":\"discount_value\",\"expected\":10,\"actual\":10,\"pass\":true},{\"field\":\"min_order_amount\",\"expected\":100000,\"actual\":100000,\"pass\":true},{\"field\":\"expired_at\",\"expected\":\"2099-12-31\",\"actual\":\"2099-12-31\",\"pass\":true},{\"field\":\"max_uses_per_user\",\"expected\":1,\"actual\":1,\"pass\":true}]",
+      "verdict": "PASS",
+      "cleanup": "DELETE /api/admin/coupons/5 -> HTTP 200",
+      "bugId": null,
+      "notes": "Baseline percent; đồng thời kiểm tra persistence qua GET danh sách.",
+      "evId": "EV-FR17-001",
+      "timestamp": "2026-10-20T15:38:26.787Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-01.log"
+    },
+    {
+      "id": "DT-02",
+      "technique": "EP",
+      "obligations": [
+        "P2",
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6",
+        "R7"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "DB test mới seed 4 coupon; đăng nhập admin; type=fixed, discount_value=50000, min_order_amount=200000.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 6
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":6}",
+        "ms": 3,
+        "requestBody": {
+          "code": "FR17-DT-02",
+          "type": "fixed",
+          "discount_value": 50000,
+          "min_order_amount": 200000,
+          "expired_at": "2099-12-31",
+          "max_uses_per_user": 1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 6,
+            "code": "FR17-DT-02",
+            "type": "fixed",
+            "discount_value": 50000,
+            "min_order_amount": 200000,
+            "expired_at": "2099-12-31",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 6,
+          "code": "FR17-DT-02",
+          "type": "fixed",
+          "discount_value": 50000,
+          "min_order_amount": 200000,
+          "expired_at": "2099-12-31",
+          "is_active": 1,
+          "max_uses_per_user": 1
+        },
+        "field_checks": [
+          {
+            "field": "code",
+            "expected": "FR17-DT-02",
+            "actual": "FR17-DT-02",
+            "pass": true
+          },
+          {
+            "field": "type",
+            "expected": "fixed",
+            "actual": "fixed",
+            "pass": true
+          },
+          {
+            "field": "discount_value",
+            "expected": 50000,
+            "actual": 50000,
+            "pass": true
+          },
+          {
+            "field": "min_order_amount",
+            "expected": 200000,
+            "actual": 200000,
+            "pass": true
+          },
+          {
+            "field": "expired_at",
+            "expected": "2099-12-31",
+            "actual": "2099-12-31",
+            "pass": true
+          },
+          {
+            "field": "max_uses_per_user",
+            "expected": 1,
+            "actual": 1,
+            "pass": true
+          }
+        ],
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Tạo thành công (2xx); coupon type=fixed xuất hiện trong GET /api/coupons với đủ 6 trường đúng giá trị. Nguồn: README.md §5 FR-17; api_specification.md §6.4.",
+      "actual": "HTTP 200; new_rows=1; target={\"id\":6,\"code\":\"FR17-DT-02\",\"type\":\"fixed\",\"discount_value\":50000,\"min_order_amount\":200000,\"expired_at\":\"2099-12-31\",\"is_active\":1,\"max_uses_per_user\":1}; field_checks=[{\"field\":\"code\",\"expected\":\"FR17-DT-02\",\"actual\":\"FR17-DT-02\",\"pass\":true},{\"field\":\"type\",\"expected\":\"fixed\",\"actual\":\"fixed\",\"pass\":true},{\"field\":\"discount_value\",\"expected\":50000,\"actual\":50000,\"pass\":true},{\"field\":\"min_order_amount\",\"expected\":200000,\"actual\":200000,\"pass\":true},{\"field\":\"expired_at\",\"expected\":\"2099-12-31\",\"actual\":\"2099-12-31\",\"pass\":true},{\"field\":\"max_uses_per_user\",\"expected\":1,\"actual\":1,\"pass\":true}]",
+      "verdict": "PASS",
+      "cleanup": "DELETE /api/admin/coupons/6 -> HTTP 200",
+      "bugId": null,
+      "notes": "Lớp hợp lệ của type=fixed.",
+      "evId": "EV-FR17-002",
+      "timestamp": "2026-10-20T15:38:26.799Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-02.log"
+    },
+    {
+      "id": "DT-03",
+      "technique": "EP",
+      "obligations": [
+        "P3",
+        "R2"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "DB test có seed SAVE10; đăng nhập admin; gửi code trùng SAVE10 với các trường còn lại hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 500,
+        "ok": false,
+        "body": {
+          "error": "SQLITE_CONSTRAINT: UNIQUE constraint failed: coupons.code"
+        },
+        "text": "{\"error\":\"SQLITE_CONSTRAINT: UNIQUE constraint failed: coupons.code\"}",
+        "ms": 2,
+        "requestBody": {
+          "code": "SAVE10",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "max_uses_per_user": 1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 4,
+        "new_rows": [],
+        "target_row": null,
+        "field_checks": null,
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Bị từ chối (non-2xx) và không tạo coupon mới; code phải duy nhất. Nguồn: README.md §5 FR-17.",
+      "actual": "HTTP 500; new_rows=0; body={\"error\":\"SQLITE_CONSTRAINT: UNIQUE constraint failed: coupons.code\"}",
+      "verdict": "PASS",
+      "cleanup": "không tạo row nào",
+      "bugId": null,
+      "notes": "Đặc tả không quy định status/message cho trùng code; verdict chỉ dựa trên việc coupon không được tạo. Quan sát mã lỗi thô trong log.",
+      "evId": "EV-FR17-003",
+      "timestamp": "2026-10-20T15:38:26.806Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-03.log"
+    },
+    {
+      "id": "DT-04",
+      "technique": "EP",
+      "obligations": [
+        "P4",
+        "R2"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "Đăng nhập admin; code = chuỗi rỗng; các trường còn lại hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 7
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":7}",
+        "ms": 2,
+        "requestBody": {
+          "code": "",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "max_uses_per_user": 1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 7,
+            "code": "",
+            "type": "percent",
+            "discount_value": 10,
+            "min_order_amount": 100000,
+            "expired_at": "2099-12-31",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": null,
+        "field_checks": null,
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Bị từ chối (non-2xx) và không tạo coupon mới; code là trường bắt buộc. Nguồn: README.md §5 FR-17.",
+      "actual": "HTTP 200; new_rows=1; body={\"message\":\"Coupon created\",\"id\":7}; unexpected_rows=[{\"id\":7,\"code\":\"\",\"type\":\"percent\",\"discount_value\":10,\"min_order_amount\":100000,\"expired_at\":\"2099-12-31\",\"max_uses_per_user\":1,\"is_active\":1}]",
+      "verdict": "FAIL",
+      "cleanup": "DELETE /api/admin/coupons/7 -> HTTP 200",
+      "bugId": "BUG-FR17-01",
+      "notes": "UI có thuộc tính required nên không gửi được chuỗi rỗng qua form thông thường.",
+      "evId": "EV-FR17-004",
+      "timestamp": "2026-10-20T15:38:26.813Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-04.log"
+    },
+    {
+      "id": "DT-05",
+      "technique": "EP",
+      "obligations": [
+        "P5",
+        "R2"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "Đăng nhập admin; bỏ hẳn key code khỏi JSON; các trường còn lại hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 8
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":8}",
+        "ms": 2,
+        "requestBody": {
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "max_uses_per_user": 1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 8,
+            "code": null,
+            "type": "percent",
+            "discount_value": 10,
+            "min_order_amount": 100000,
+            "expired_at": "2099-12-31",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": null,
+        "field_checks": null,
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Bị từ chối (non-2xx) và không tạo coupon mới; code là trường bắt buộc. Nguồn: README.md §5 FR-17.",
+      "actual": "HTTP 200; new_rows=1; body={\"message\":\"Coupon created\",\"id\":8}; unexpected_rows=[{\"id\":8,\"code\":null,\"type\":\"percent\",\"discount_value\":10,\"min_order_amount\":100000,\"expired_at\":\"2099-12-31\",\"max_uses_per_user\":1,\"is_active\":1}]",
+      "verdict": "FAIL",
+      "cleanup": "DELETE /api/admin/coupons/8 -> HTTP 200",
+      "bugId": "BUG-FR17-01",
+      "notes": "Khác với code rỗng: request không có key code. UI luôn gửi key code nên ca này API-only.",
+      "evId": "EV-FR17-005",
+      "timestamp": "2026-10-20T15:38:26.818Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-05.log"
+    },
+    {
+      "id": "DT-06",
+      "technique": "EP",
+      "obligations": [
+        "P6",
+        "R2"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "Đăng nhập admin; code = ba khoảng trắng; các trường còn lại hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 9
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":9}",
+        "ms": 2,
+        "requestBody": {
+          "code": "   ",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "max_uses_per_user": 1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 9,
+            "code": "   ",
+            "type": "percent",
+            "discount_value": 10,
+            "min_order_amount": 100000,
+            "expired_at": "2099-12-31",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 9,
+          "code": "   ",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "is_active": 1,
+          "max_uses_per_user": 1
+        },
+        "field_checks": null,
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Bị từ chối (non-2xx) và không tạo coupon mới; code chỉ gồm khoảng trắng không phải code hợp lệ (ASSUMED: cần trim trước khi kiểm tra bắt buộc). Nguồn: README.md §5 FR-17.",
+      "actual": "HTTP 200; new_rows=1; body={\"message\":\"Coupon created\",\"id\":9}; unexpected_rows=[{\"id\":9,\"code\":\"   \",\"type\":\"percent\",\"discount_value\":10,\"min_order_amount\":100000,\"expired_at\":\"2099-12-31\",\"max_uses_per_user\":1,\"is_active\":1}]",
+      "verdict": "FAIL",
+      "cleanup": "DELETE /api/admin/coupons/9 -> HTTP 200",
+      "bugId": "BUG-FR17-01",
+      "notes": "ASSUMED: đặc tả không nói rõ trim, nhưng code chỉ có khoảng trắng không thể là mã duy nhất có nghĩa. UI required không chặn chuỗi khoảng trắng.",
+      "evId": "EV-FR17-006",
+      "timestamp": "2026-10-20T15:38:26.825Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-06.log"
+    },
+    {
+      "id": "DT-07",
+      "technique": "EP",
+      "obligations": [
+        "P7",
+        "R2"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "DB test có seed SAVE10; đăng nhập admin; gửi code viết thường save10.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 10
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":10}",
+        "ms": 2,
+        "requestBody": {
+          "code": "save10",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "max_uses_per_user": 1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 10,
+            "code": "save10",
+            "type": "percent",
+            "discount_value": 10,
+            "min_order_amount": 100000,
+            "expired_at": "2099-12-31",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 10,
+          "code": "save10",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "is_active": 1,
+          "max_uses_per_user": 1
+        },
+        "field_checks": null,
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Chưa xác định — đặc tả chỉ nói code duy nhất, không nói uniqueness phân biệt hoa/thường. Đây là quan sát, không chấm PASS/FAIL.",
+      "actual": "HTTP 200; new_rows=1; body={\"message\":\"Coupon created\",\"id\":10}; new_rows_data=[{\"id\":10,\"code\":\"save10\",\"type\":\"percent\",\"discount_value\":10,\"min_order_amount\":100000,\"expired_at\":\"2099-12-31\",\"max_uses_per_user\":1,\"is_active\":1}]",
+      "verdict": "INCONCLUSIVE",
+      "cleanup": "DELETE /api/admin/coupons/10 -> HTTP 200",
+      "bugId": null,
+      "notes": "UI tự uppercase code nên không gửi được save10 qua form thông thường; ca này API-only. Nếu tạo được, ghi nhận hai mã cùng nghĩa khác hoa/thường.",
+      "evId": "EV-FR17-007",
+      "timestamp": "2026-10-20T15:38:26.831Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-07.log"
+    },
+    {
+      "id": "DT-08",
+      "technique": "EP",
+      "obligations": [
+        "P8",
+        "R3"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "Đăng nhập admin; type = percentage; các trường còn lại hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 11
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":11}",
+        "ms": 1,
+        "requestBody": {
+          "code": "FR17-DT-08",
+          "type": "percentage",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "max_uses_per_user": 1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 11,
+            "code": "FR17-DT-08",
+            "type": "percentage",
+            "discount_value": 10,
+            "min_order_amount": 100000,
+            "expired_at": "2099-12-31",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 11,
+          "code": "FR17-DT-08",
+          "type": "percentage",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "is_active": 1,
+          "max_uses_per_user": 1
+        },
+        "field_checks": null,
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Bị từ chối (non-2xx) và không tạo coupon mới; type chỉ nhận percent/fixed. Nguồn: README.md §5 FR-17.",
+      "actual": "HTTP 200; new_rows=1; body={\"message\":\"Coupon created\",\"id\":11}; unexpected_rows=[{\"id\":11,\"code\":\"FR17-DT-08\",\"type\":\"percentage\",\"discount_value\":10,\"min_order_amount\":100000,\"expired_at\":\"2099-12-31\",\"max_uses_per_user\":1,\"is_active\":1}]",
+      "verdict": "FAIL",
+      "cleanup": "DELETE /api/admin/coupons/11 -> HTTP 200",
+      "bugId": "BUG-FR17-02",
+      "notes": "UI là select percent/fixed nên không gửi được type ngoài enum; ca này API-only.",
+      "evId": "EV-FR17-008",
+      "timestamp": "2026-10-20T15:38:26.838Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-08.log"
+    },
+    {
+      "id": "DT-09",
+      "technique": "EP",
+      "obligations": [
+        "P9",
+        "R3"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "Đăng nhập admin; bỏ hẳn key type; các trường còn lại hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 12
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":12}",
+        "ms": 4,
+        "requestBody": {
+          "code": "FR17-DT-09",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "max_uses_per_user": 1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 12,
+            "code": "FR17-DT-09",
+            "type": null,
+            "discount_value": 10,
+            "min_order_amount": 100000,
+            "expired_at": "2099-12-31",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 12,
+          "code": "FR17-DT-09",
+          "type": null,
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "is_active": 1,
+          "max_uses_per_user": 1
+        },
+        "field_checks": null,
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Bị từ chối (non-2xx) và không tạo coupon mới; type là trường bắt buộc và chỉ nhận percent/fixed. Nguồn: README.md §5 FR-17.",
+      "actual": "HTTP 200; new_rows=1; body={\"message\":\"Coupon created\",\"id\":12}; unexpected_rows=[{\"id\":12,\"code\":\"FR17-DT-09\",\"type\":null,\"discount_value\":10,\"min_order_amount\":100000,\"expired_at\":\"2099-12-31\",\"max_uses_per_user\":1,\"is_active\":1}]",
+      "verdict": "FAIL",
+      "cleanup": "DELETE /api/admin/coupons/12 -> HTTP 200",
+      "bugId": "BUG-FR17-02",
+      "notes": "UI select luôn có giá trị nên ca này API-only.",
+      "evId": "EV-FR17-009",
+      "timestamp": "2026-10-20T15:38:26.847Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-09.log"
+    },
+    {
+      "id": "DT-10",
+      "technique": "EP + BVA",
+      "obligations": [
+        "P10",
+        "B3-ON",
+        "R4"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "Đăng nhập admin; discount_value=0; các trường còn lại hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 13
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":13}",
+        "ms": 2,
+        "requestBody": {
+          "code": "FR17-DT-10",
+          "type": "percent",
+          "discount_value": 0,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "max_uses_per_user": 1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 13,
+            "code": "FR17-DT-10",
+            "type": "percent",
+            "discount_value": 0,
+            "min_order_amount": 100000,
+            "expired_at": "2099-12-31",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 13,
+          "code": "FR17-DT-10",
+          "type": "percent",
+          "discount_value": 0,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "is_active": 1,
+          "max_uses_per_user": 1
+        },
+        "field_checks": null,
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Bị từ chối (non-2xx) và không tạo coupon mới; discount_value phải dương (> 0). 0 là điểm biên ON phía invalid. Nguồn: README.md §5 FR-17.",
+      "actual": "HTTP 200; new_rows=1; body={\"message\":\"Coupon created\",\"id\":13}; unexpected_rows=[{\"id\":13,\"code\":\"FR17-DT-10\",\"type\":\"percent\",\"discount_value\":0,\"min_order_amount\":100000,\"expired_at\":\"2099-12-31\",\"max_uses_per_user\":1,\"is_active\":1}]",
+      "verdict": "FAIL",
+      "cleanup": "DELETE /api/admin/coupons/13 -> HTTP 200",
+      "bugId": "BUG-FR17-03",
+      "notes": "UI type=number không có min nên người dùng có thể nhập 0 và submit.",
+      "evId": "EV-FR17-010",
+      "timestamp": "2026-10-20T15:38:26.852Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-10.log"
+    },
+    {
+      "id": "DT-11",
+      "technique": "EP + BVA",
+      "obligations": [
+        "P11",
+        "B3-below",
+        "R4"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "Đăng nhập admin; discount_value=-1; các trường còn lại hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 14
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":14}",
+        "ms": 2,
+        "requestBody": {
+          "code": "FR17-DT-11",
+          "type": "percent",
+          "discount_value": -1,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "max_uses_per_user": 1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 14,
+            "code": "FR17-DT-11",
+            "type": "percent",
+            "discount_value": -1,
+            "min_order_amount": 100000,
+            "expired_at": "2099-12-31",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 14,
+          "code": "FR17-DT-11",
+          "type": "percent",
+          "discount_value": -1,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "is_active": 1,
+          "max_uses_per_user": 1
+        },
+        "field_checks": null,
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Bị từ chối (non-2xx) và không tạo coupon mới; discount_value phải dương. -1 là điểm ngay dưới biên 0. Nguồn: README.md §5 FR-17.",
+      "actual": "HTTP 200; new_rows=1; body={\"message\":\"Coupon created\",\"id\":14}; unexpected_rows=[{\"id\":14,\"code\":\"FR17-DT-11\",\"type\":\"percent\",\"discount_value\":-1,\"min_order_amount\":100000,\"expired_at\":\"2099-12-31\",\"max_uses_per_user\":1,\"is_active\":1}]",
+      "verdict": "FAIL",
+      "cleanup": "DELETE /api/admin/coupons/14 -> HTTP 200",
+      "bugId": "BUG-FR17-03",
+      "notes": "UI type=number không có min nên nhập được -1.",
+      "evId": "EV-FR17-011",
+      "timestamp": "2026-10-20T15:38:26.859Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-11.log"
+    },
+    {
+      "id": "DT-12",
+      "technique": "EP",
+      "obligations": [
+        "P12",
+        "R4"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "Đăng nhập admin; bỏ hẳn key discount_value; các trường còn lại hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 15
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":15}",
+        "ms": 2,
+        "requestBody": {
+          "code": "FR17-DT-12",
+          "type": "percent",
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "max_uses_per_user": 1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 15,
+            "code": "FR17-DT-12",
+            "type": "percent",
+            "discount_value": null,
+            "min_order_amount": 100000,
+            "expired_at": "2099-12-31",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 15,
+          "code": "FR17-DT-12",
+          "type": "percent",
+          "discount_value": null,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "is_active": 1,
+          "max_uses_per_user": 1
+        },
+        "field_checks": null,
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Bị từ chối (non-2xx) và không tạo coupon mới; discount_value là trường bắt buộc. Nguồn: README.md §5 FR-17.",
+      "actual": "HTTP 200; new_rows=1; body={\"message\":\"Coupon created\",\"id\":15}; unexpected_rows=[{\"id\":15,\"code\":\"FR17-DT-12\",\"type\":\"percent\",\"discount_value\":null,\"min_order_amount\":100000,\"expired_at\":\"2099-12-31\",\"max_uses_per_user\":1,\"is_active\":1}]",
+      "verdict": "FAIL",
+      "cleanup": "DELETE /api/admin/coupons/15 -> HTTP 200",
+      "bugId": "BUG-FR17-03",
+      "notes": "UI có required nên ca bỏ hẳn key là API-only.",
+      "evId": "EV-FR17-012",
+      "timestamp": "2026-10-20T15:38:26.867Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-12.log"
+    },
+    {
+      "id": "DT-13",
+      "technique": "EP",
+      "obligations": [
+        "P13",
+        "R4"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "Đăng nhập admin; discount_value='abc'; các trường còn lại hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 16
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":16}",
+        "ms": 2,
+        "requestBody": {
+          "code": "FR17-DT-13",
+          "type": "percent",
+          "discount_value": "abc",
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "max_uses_per_user": 1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 16,
+            "code": "FR17-DT-13",
+            "type": "percent",
+            "discount_value": "abc",
+            "min_order_amount": 100000,
+            "expired_at": "2099-12-31",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 16,
+          "code": "FR17-DT-13",
+          "type": "percent",
+          "discount_value": "abc",
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "is_active": 1,
+          "max_uses_per_user": 1
+        },
+        "field_checks": null,
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Bị từ chối (non-2xx) và không tạo coupon mới; discount_value phải là số dương. Nguồn: README.md §5 FR-17.",
+      "actual": "HTTP 200; new_rows=1; body={\"message\":\"Coupon created\",\"id\":16}; unexpected_rows=[{\"id\":16,\"code\":\"FR17-DT-13\",\"type\":\"percent\",\"discount_value\":\"abc\",\"min_order_amount\":100000,\"expired_at\":\"2099-12-31\",\"max_uses_per_user\":1,\"is_active\":1}]",
+      "verdict": "FAIL",
+      "cleanup": "DELETE /api/admin/coupons/16 -> HTTP 200",
+      "bugId": "BUG-FR17-03",
+      "notes": "UI type=number không gửi được abc; ca này API-only.",
+      "evId": "EV-FR17-013",
+      "timestamp": "2026-10-20T15:38:26.872Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-13.log"
+    },
+    {
+      "id": "DT-14",
+      "technique": "EP + BVA",
+      "obligations": [
+        "P14",
+        "B3-above",
+        "R4"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "Đăng nhập admin; discount_value=1; các trường còn lại hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 17
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":17}",
+        "ms": 3,
+        "requestBody": {
+          "code": "FR17-DT-14",
+          "type": "percent",
+          "discount_value": 1,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "max_uses_per_user": 1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 17,
+            "code": "FR17-DT-14",
+            "type": "percent",
+            "discount_value": 1,
+            "min_order_amount": 100000,
+            "expired_at": "2099-12-31",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 17,
+          "code": "FR17-DT-14",
+          "type": "percent",
+          "discount_value": 1,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "is_active": 1,
+          "max_uses_per_user": 1
+        },
+        "field_checks": [
+          {
+            "field": "code",
+            "expected": "FR17-DT-14",
+            "actual": "FR17-DT-14",
+            "pass": true
+          },
+          {
+            "field": "type",
+            "expected": "percent",
+            "actual": "percent",
+            "pass": true
+          },
+          {
+            "field": "discount_value",
+            "expected": 1,
+            "actual": 1,
+            "pass": true
+          },
+          {
+            "field": "min_order_amount",
+            "expected": 100000,
+            "actual": 100000,
+            "pass": true
+          },
+          {
+            "field": "expired_at",
+            "expected": "2099-12-31",
+            "actual": "2099-12-31",
+            "pass": true
+          },
+          {
+            "field": "max_uses_per_user",
+            "expected": 1,
+            "actual": 1,
+            "pass": true
+          }
+        ],
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Tạo thành công (2xx); discount_value=1 là giá trị dương nhỏ nhất, coupon xuất hiện với discount_value=1. Nguồn: README.md §5 FR-17.",
+      "actual": "HTTP 200; new_rows=1; target={\"id\":17,\"code\":\"FR17-DT-14\",\"type\":\"percent\",\"discount_value\":1,\"min_order_amount\":100000,\"expired_at\":\"2099-12-31\",\"is_active\":1,\"max_uses_per_user\":1}; field_checks=[{\"field\":\"code\",\"expected\":\"FR17-DT-14\",\"actual\":\"FR17-DT-14\",\"pass\":true},{\"field\":\"type\",\"expected\":\"percent\",\"actual\":\"percent\",\"pass\":true},{\"field\":\"discount_value\",\"expected\":1,\"actual\":1,\"pass\":true},{\"field\":\"min_order_amount\",\"expected\":100000,\"actual\":100000,\"pass\":true},{\"field\":\"expired_at\",\"expected\":\"2099-12-31\",\"actual\":\"2099-12-31\",\"pass\":true},{\"field\":\"max_uses_per_user\",\"expected\":1,\"actual\":1,\"pass\":true}]",
+      "verdict": "PASS",
+      "cleanup": "DELETE /api/admin/coupons/17 -> HTTP 200",
+      "bugId": null,
+      "notes": "Điểm ngay trên biên 0 của B3.",
+      "evId": "EV-FR17-014",
+      "timestamp": "2026-10-20T15:38:26.881Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-14.log"
+    },
+    {
+      "id": "DT-15",
+      "technique": "EP",
+      "obligations": [
+        "P15",
+        "R5"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "Đăng nhập admin; bỏ hẳn key expired_at; các trường còn lại hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 18
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":18}",
+        "ms": 2,
+        "requestBody": {
+          "code": "FR17-DT-15",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "max_uses_per_user": 1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 18,
+            "code": "FR17-DT-15",
+            "type": "percent",
+            "discount_value": 10,
+            "min_order_amount": 100000,
+            "expired_at": null,
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 18,
+          "code": "FR17-DT-15",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": null,
+          "is_active": 1,
+          "max_uses_per_user": 1
+        },
+        "field_checks": null,
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Bị từ chối (non-2xx) và không tạo coupon mới; expired_at là trường bắt buộc. Nguồn: README.md §5 FR-17.",
+      "actual": "HTTP 200; new_rows=1; body={\"message\":\"Coupon created\",\"id\":18}; unexpected_rows=[{\"id\":18,\"code\":\"FR17-DT-15\",\"type\":\"percent\",\"discount_value\":10,\"min_order_amount\":100000,\"expired_at\":null,\"max_uses_per_user\":1,\"is_active\":1}]",
+      "verdict": "FAIL",
+      "cleanup": "DELETE /api/admin/coupons/18 -> HTTP 200",
+      "bugId": "BUG-FR17-04",
+      "notes": "UI có required nên ca bỏ hẳn key là API-only.",
+      "evId": "EV-FR17-015",
+      "timestamp": "2026-10-20T15:38:26.887Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-15.log"
+    },
+    {
+      "id": "DT-16",
+      "technique": "EP",
+      "obligations": [
+        "P16",
+        "R5"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "Đăng nhập admin; expired_at=chuỗi rỗng; các trường còn lại hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 19
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":19}",
+        "ms": 2,
+        "requestBody": {
+          "code": "FR17-DT-16",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "",
+          "max_uses_per_user": 1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 19,
+            "code": "FR17-DT-16",
+            "type": "percent",
+            "discount_value": 10,
+            "min_order_amount": 100000,
+            "expired_at": "",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 19,
+          "code": "FR17-DT-16",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "",
+          "is_active": 1,
+          "max_uses_per_user": 1
+        },
+        "field_checks": null,
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Bị từ chối (non-2xx) và không tạo coupon mới; expired_at là trường bắt buộc. Nguồn: README.md §5 FR-17.",
+      "actual": "HTTP 200; new_rows=1; body={\"message\":\"Coupon created\",\"id\":19}; unexpected_rows=[{\"id\":19,\"code\":\"FR17-DT-16\",\"type\":\"percent\",\"discount_value\":10,\"min_order_amount\":100000,\"expired_at\":\"\",\"max_uses_per_user\":1,\"is_active\":1}]",
+      "verdict": "FAIL",
+      "cleanup": "DELETE /api/admin/coupons/19 -> HTTP 200",
+      "bugId": "BUG-FR17-04",
+      "notes": "UI required chặn chuỗi rỗng; ca này API-only.",
+      "evId": "EV-FR17-016",
+      "timestamp": "2026-10-20T15:38:26.894Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-16.log"
+    },
+    {
+      "id": "DT-17",
+      "technique": "EP",
+      "obligations": [
+        "P17",
+        "R5"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "Đăng nhập admin; expired_at='not-a-date'; các trường còn lại hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 20
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":20}",
+        "ms": 2,
+        "requestBody": {
+          "code": "FR17-DT-17",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "not-a-date",
+          "max_uses_per_user": 1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 20,
+            "code": "FR17-DT-17",
+            "type": "percent",
+            "discount_value": 10,
+            "min_order_amount": 100000,
+            "expired_at": "not-a-date",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 20,
+          "code": "FR17-DT-17",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "not-a-date",
+          "is_active": 1,
+          "max_uses_per_user": 1
+        },
+        "field_checks": null,
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Bị từ chối (non-2xx) và không tạo coupon mới; expired_at phải là ngày hợp lệ (ASSUMED: API example dùng YYYY-MM-DD, UI dùng input type=date). Nguồn: README.md §5 FR-17; api_specification.md §6.4.",
+      "actual": "HTTP 200; new_rows=1; body={\"message\":\"Coupon created\",\"id\":20}; unexpected_rows=[{\"id\":20,\"code\":\"FR17-DT-17\",\"type\":\"percent\",\"discount_value\":10,\"min_order_amount\":100000,\"expired_at\":\"not-a-date\",\"max_uses_per_user\":1,\"is_active\":1}]",
+      "verdict": "FAIL",
+      "cleanup": "DELETE /api/admin/coupons/20 -> HTTP 200",
+      "bugId": "BUG-FR17-04",
+      "notes": "ASSUMED về định dạng ngày; UI date input không gửi được chuỗi này nên ca API-only.",
+      "evId": "EV-FR17-017",
+      "timestamp": "2026-10-20T15:38:26.901Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-17.log"
+    },
+    {
+      "id": "DT-18",
+      "technique": "EP",
+      "obligations": [
+        "P18",
+        "R5"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "Đăng nhập admin; expired_at='2020-01-01'; các trường còn lại hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 21
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":21}",
+        "ms": 1,
+        "requestBody": {
+          "code": "FR17-DT-18",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2020-01-01",
+          "max_uses_per_user": 1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 21,
+            "code": "FR17-DT-18",
+            "type": "percent",
+            "discount_value": 10,
+            "min_order_amount": 100000,
+            "expired_at": "2020-01-01",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 21,
+          "code": "FR17-DT-18",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2020-01-01",
+          "is_active": 1,
+          "max_uses_per_user": 1
+        },
+        "field_checks": [
+          {
+            "field": "code",
+            "expected": "FR17-DT-18",
+            "actual": "FR17-DT-18",
+            "pass": true
+          },
+          {
+            "field": "type",
+            "expected": "percent",
+            "actual": "percent",
+            "pass": true
+          },
+          {
+            "field": "discount_value",
+            "expected": 10,
+            "actual": 10,
+            "pass": true
+          },
+          {
+            "field": "min_order_amount",
+            "expected": 100000,
+            "actual": 100000,
+            "pass": true
+          },
+          {
+            "field": "expired_at",
+            "expected": "2020-01-01",
+            "actual": "2020-01-01",
+            "pass": true
+          },
+          {
+            "field": "max_uses_per_user",
+            "expected": 1,
+            "actual": 1,
+            "pass": true
+          }
+        ],
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Tạo thành công (2xx); FR-17 chỉ yêu cầu expired_at, không cấm ngày quá khứ; seed có coupon EXPIRED. (ASSUMED từ seed + phạm vi FR-17.)",
+      "actual": "HTTP 200; new_rows=1; target={\"id\":21,\"code\":\"FR17-DT-18\",\"type\":\"percent\",\"discount_value\":10,\"min_order_amount\":100000,\"expired_at\":\"2020-01-01\",\"is_active\":1,\"max_uses_per_user\":1}; field_checks=[{\"field\":\"code\",\"expected\":\"FR17-DT-18\",\"actual\":\"FR17-DT-18\",\"pass\":true},{\"field\":\"type\",\"expected\":\"percent\",\"actual\":\"percent\",\"pass\":true},{\"field\":\"discount_value\",\"expected\":10,\"actual\":10,\"pass\":true},{\"field\":\"min_order_amount\",\"expected\":100000,\"actual\":100000,\"pass\":true},{\"field\":\"expired_at\",\"expected\":\"2020-01-01\",\"actual\":\"2020-01-01\",\"pass\":true},{\"field\":\"max_uses_per_user\",\"expected\":1,\"actual\":1,\"pass\":true}]",
+      "verdict": "PASS",
+      "cleanup": "DELETE /api/admin/coupons/21 -> HTTP 200",
+      "bugId": null,
+      "notes": "ASSUMED: đặc tả không nói expired_at phải ở tương lai. UI date cho phép chọn ngày quá khứ.",
+      "evId": "EV-FR17-018",
+      "timestamp": "2026-10-20T15:38:26.906Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-18.log"
+    },
+    {
+      "id": "DT-19",
+      "technique": "EP + BVA",
+      "obligations": [
+        "P19",
+        "B1-ON",
+        "R6"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "Đăng nhập admin; min_order_amount=0; các trường còn lại hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 22
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":22}",
+        "ms": 4,
+        "requestBody": {
+          "code": "FR17-DT-19",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 0,
+          "expired_at": "2099-12-31",
+          "max_uses_per_user": 1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 22,
+            "code": "FR17-DT-19",
+            "type": "percent",
+            "discount_value": 10,
+            "min_order_amount": 0,
+            "expired_at": "2099-12-31",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 22,
+          "code": "FR17-DT-19",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 0,
+          "expired_at": "2099-12-31",
+          "is_active": 1,
+          "max_uses_per_user": 1
+        },
+        "field_checks": [
+          {
+            "field": "code",
+            "expected": "FR17-DT-19",
+            "actual": "FR17-DT-19",
+            "pass": true
+          },
+          {
+            "field": "type",
+            "expected": "percent",
+            "actual": "percent",
+            "pass": true
+          },
+          {
+            "field": "discount_value",
+            "expected": 10,
+            "actual": 10,
+            "pass": true
+          },
+          {
+            "field": "min_order_amount",
+            "expected": 0,
+            "actual": 0,
+            "pass": true
+          },
+          {
+            "field": "expired_at",
+            "expected": "2099-12-31",
+            "actual": "2099-12-31",
+            "pass": true
+          },
+          {
+            "field": "max_uses_per_user",
+            "expected": 1,
+            "actual": 1,
+            "pass": true
+          }
+        ],
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Tạo thành công (2xx); min_order_amount=0 thỏa >= 0 (điểm biên ON hợp lệ). Nguồn: README.md §5 FR-17.",
+      "actual": "HTTP 200; new_rows=1; target={\"id\":22,\"code\":\"FR17-DT-19\",\"type\":\"percent\",\"discount_value\":10,\"min_order_amount\":0,\"expired_at\":\"2099-12-31\",\"is_active\":1,\"max_uses_per_user\":1}; field_checks=[{\"field\":\"code\",\"expected\":\"FR17-DT-19\",\"actual\":\"FR17-DT-19\",\"pass\":true},{\"field\":\"type\",\"expected\":\"percent\",\"actual\":\"percent\",\"pass\":true},{\"field\":\"discount_value\",\"expected\":10,\"actual\":10,\"pass\":true},{\"field\":\"min_order_amount\",\"expected\":0,\"actual\":0,\"pass\":true},{\"field\":\"expired_at\",\"expected\":\"2099-12-31\",\"actual\":\"2099-12-31\",\"pass\":true},{\"field\":\"max_uses_per_user\",\"expected\":1,\"actual\":1,\"pass\":true}]",
+      "verdict": "PASS",
+      "cleanup": "DELETE /api/admin/coupons/22 -> HTTP 200",
+      "bugId": null,
+      "notes": "UI cho phép 0 (không có min).",
+      "evId": "EV-FR17-019",
+      "timestamp": "2026-10-20T15:38:26.914Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-19.log"
+    },
+    {
+      "id": "DT-20",
+      "technique": "EP + BVA",
+      "obligations": [
+        "P20",
+        "B1-above",
+        "R6"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "Đăng nhập admin; min_order_amount=1; các trường còn lại hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 23
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":23}",
+        "ms": 2,
+        "requestBody": {
+          "code": "FR17-DT-20",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 1,
+          "expired_at": "2099-12-31",
+          "max_uses_per_user": 1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 23,
+            "code": "FR17-DT-20",
+            "type": "percent",
+            "discount_value": 10,
+            "min_order_amount": 1,
+            "expired_at": "2099-12-31",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 23,
+          "code": "FR17-DT-20",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 1,
+          "expired_at": "2099-12-31",
+          "is_active": 1,
+          "max_uses_per_user": 1
+        },
+        "field_checks": [
+          {
+            "field": "code",
+            "expected": "FR17-DT-20",
+            "actual": "FR17-DT-20",
+            "pass": true
+          },
+          {
+            "field": "type",
+            "expected": "percent",
+            "actual": "percent",
+            "pass": true
+          },
+          {
+            "field": "discount_value",
+            "expected": 10,
+            "actual": 10,
+            "pass": true
+          },
+          {
+            "field": "min_order_amount",
+            "expected": 1,
+            "actual": 1,
+            "pass": true
+          },
+          {
+            "field": "expired_at",
+            "expected": "2099-12-31",
+            "actual": "2099-12-31",
+            "pass": true
+          },
+          {
+            "field": "max_uses_per_user",
+            "expected": 1,
+            "actual": 1,
+            "pass": true
+          }
+        ],
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Tạo thành công (2xx); min_order_amount=1 thỏa >= 0 (điểm ngay trên biên 0). Nguồn: README.md §5 FR-17.",
+      "actual": "HTTP 200; new_rows=1; target={\"id\":23,\"code\":\"FR17-DT-20\",\"type\":\"percent\",\"discount_value\":10,\"min_order_amount\":1,\"expired_at\":\"2099-12-31\",\"is_active\":1,\"max_uses_per_user\":1}; field_checks=[{\"field\":\"code\",\"expected\":\"FR17-DT-20\",\"actual\":\"FR17-DT-20\",\"pass\":true},{\"field\":\"type\",\"expected\":\"percent\",\"actual\":\"percent\",\"pass\":true},{\"field\":\"discount_value\",\"expected\":10,\"actual\":10,\"pass\":true},{\"field\":\"min_order_amount\",\"expected\":1,\"actual\":1,\"pass\":true},{\"field\":\"expired_at\",\"expected\":\"2099-12-31\",\"actual\":\"2099-12-31\",\"pass\":true},{\"field\":\"max_uses_per_user\",\"expected\":1,\"actual\":1,\"pass\":true}]",
+      "verdict": "PASS",
+      "cleanup": "DELETE /api/admin/coupons/23 -> HTTP 200",
+      "bugId": null,
+      "notes": "UI cho phép 1.",
+      "evId": "EV-FR17-020",
+      "timestamp": "2026-10-20T15:38:26.921Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-20.log"
+    },
+    {
+      "id": "DT-21",
+      "technique": "EP + BVA",
+      "obligations": [
+        "P21",
+        "B1-below",
+        "R6"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "Đăng nhập admin; min_order_amount=-1; các trường còn lại hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 24
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":24}",
+        "ms": 2,
+        "requestBody": {
+          "code": "FR17-DT-21",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": -1,
+          "expired_at": "2099-12-31",
+          "max_uses_per_user": 1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 24,
+            "code": "FR17-DT-21",
+            "type": "percent",
+            "discount_value": 10,
+            "min_order_amount": -1,
+            "expired_at": "2099-12-31",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 24,
+          "code": "FR17-DT-21",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": -1,
+          "expired_at": "2099-12-31",
+          "is_active": 1,
+          "max_uses_per_user": 1
+        },
+        "field_checks": null,
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Bị từ chối (non-2xx) và không tạo coupon mới; min_order_amount phải >= 0. -1 là điểm ngay dưới biên 0. Nguồn: README.md §5 FR-17.",
+      "actual": "HTTP 200; new_rows=1; body={\"message\":\"Coupon created\",\"id\":24}; unexpected_rows=[{\"id\":24,\"code\":\"FR17-DT-21\",\"type\":\"percent\",\"discount_value\":10,\"min_order_amount\":-1,\"expired_at\":\"2099-12-31\",\"max_uses_per_user\":1,\"is_active\":1}]",
+      "verdict": "FAIL",
+      "cleanup": "DELETE /api/admin/coupons/24 -> HTTP 200",
+      "bugId": "BUG-FR17-05",
+      "notes": "UI type=number không có min nên nhập được -1.",
+      "evId": "EV-FR17-021",
+      "timestamp": "2026-10-20T15:38:26.928Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-21.log"
+    },
+    {
+      "id": "DT-22",
+      "technique": "EP",
+      "obligations": [
+        "P22",
+        "R6"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "Đăng nhập admin; bỏ hẳn key min_order_amount; các trường còn lại hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 25
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":25}",
+        "ms": 2,
+        "requestBody": {
+          "code": "FR17-DT-22",
+          "type": "percent",
+          "discount_value": 10,
+          "expired_at": "2099-12-31",
+          "max_uses_per_user": 1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 25,
+            "code": "FR17-DT-22",
+            "type": "percent",
+            "discount_value": 10,
+            "min_order_amount": null,
+            "expired_at": "2099-12-31",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 25,
+          "code": "FR17-DT-22",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": null,
+          "expired_at": "2099-12-31",
+          "is_active": 1,
+          "max_uses_per_user": 1
+        },
+        "field_checks": null,
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Bị từ chối (non-2xx) và không tạo coupon mới; min_order_amount là trường bắt buộc. Nguồn: README.md §5 FR-17.",
+      "actual": "HTTP 200; new_rows=1; body={\"message\":\"Coupon created\",\"id\":25}; unexpected_rows=[{\"id\":25,\"code\":\"FR17-DT-22\",\"type\":\"percent\",\"discount_value\":10,\"min_order_amount\":null,\"expired_at\":\"2099-12-31\",\"max_uses_per_user\":1,\"is_active\":1}]",
+      "verdict": "FAIL",
+      "cleanup": "DELETE /api/admin/coupons/25 -> HTTP 200",
+      "bugId": "BUG-FR17-05",
+      "notes": "UI luôn gửi key min_order_amount (có thể là chuỗi rỗng), nên ca bỏ hẳn key là API-only.",
+      "evId": "EV-FR17-022",
+      "timestamp": "2026-10-20T15:38:26.934Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-22.log"
+    },
+    {
+      "id": "DT-23",
+      "technique": "EP",
+      "obligations": [
+        "P23",
+        "R6"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "Đăng nhập admin; min_order_amount='abc'; các trường còn lại hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 26
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":26}",
+        "ms": 4,
+        "requestBody": {
+          "code": "FR17-DT-23",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": "abc",
+          "expired_at": "2099-12-31",
+          "max_uses_per_user": 1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 26,
+            "code": "FR17-DT-23",
+            "type": "percent",
+            "discount_value": 10,
+            "min_order_amount": "abc",
+            "expired_at": "2099-12-31",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 26,
+          "code": "FR17-DT-23",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": "abc",
+          "expired_at": "2099-12-31",
+          "is_active": 1,
+          "max_uses_per_user": 1
+        },
+        "field_checks": null,
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Bị từ chối (non-2xx) và không tạo coupon mới; min_order_amount phải là số >= 0. Nguồn: README.md §5 FR-17.",
+      "actual": "HTTP 200; new_rows=1; body={\"message\":\"Coupon created\",\"id\":26}; unexpected_rows=[{\"id\":26,\"code\":\"FR17-DT-23\",\"type\":\"percent\",\"discount_value\":10,\"min_order_amount\":\"abc\",\"expired_at\":\"2099-12-31\",\"max_uses_per_user\":1,\"is_active\":1}]",
+      "verdict": "FAIL",
+      "cleanup": "DELETE /api/admin/coupons/26 -> HTTP 200",
+      "bugId": "BUG-FR17-05",
+      "notes": "UI type=number không gửi được abc; ca này API-only.",
+      "evId": "EV-FR17-023",
+      "timestamp": "2026-10-20T15:38:26.941Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-23.log"
+    },
+    {
+      "id": "DT-24",
+      "technique": "EP + BVA",
+      "obligations": [
+        "P24",
+        "B2-ON",
+        "R6"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "Đăng nhập admin; max_uses_per_user=1; các trường còn lại hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 27
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":27}",
+        "ms": 2,
+        "requestBody": {
+          "code": "FR17-DT-24",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "max_uses_per_user": 1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 27,
+            "code": "FR17-DT-24",
+            "type": "percent",
+            "discount_value": 10,
+            "min_order_amount": 100000,
+            "expired_at": "2099-12-31",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 27,
+          "code": "FR17-DT-24",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "is_active": 1,
+          "max_uses_per_user": 1
+        },
+        "field_checks": [
+          {
+            "field": "code",
+            "expected": "FR17-DT-24",
+            "actual": "FR17-DT-24",
+            "pass": true
+          },
+          {
+            "field": "type",
+            "expected": "percent",
+            "actual": "percent",
+            "pass": true
+          },
+          {
+            "field": "discount_value",
+            "expected": 10,
+            "actual": 10,
+            "pass": true
+          },
+          {
+            "field": "min_order_amount",
+            "expected": 100000,
+            "actual": 100000,
+            "pass": true
+          },
+          {
+            "field": "expired_at",
+            "expected": "2099-12-31",
+            "actual": "2099-12-31",
+            "pass": true
+          },
+          {
+            "field": "max_uses_per_user",
+            "expected": 1,
+            "actual": 1,
+            "pass": true
+          }
+        ],
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Tạo thành công (2xx); max_uses_per_user=1 thỏa >= 1 (điểm biên ON hợp lệ). Nguồn: README.md §5 FR-17.",
+      "actual": "HTTP 200; new_rows=1; target={\"id\":27,\"code\":\"FR17-DT-24\",\"type\":\"percent\",\"discount_value\":10,\"min_order_amount\":100000,\"expired_at\":\"2099-12-31\",\"is_active\":1,\"max_uses_per_user\":1}; field_checks=[{\"field\":\"code\",\"expected\":\"FR17-DT-24\",\"actual\":\"FR17-DT-24\",\"pass\":true},{\"field\":\"type\",\"expected\":\"percent\",\"actual\":\"percent\",\"pass\":true},{\"field\":\"discount_value\",\"expected\":10,\"actual\":10,\"pass\":true},{\"field\":\"min_order_amount\",\"expected\":100000,\"actual\":100000,\"pass\":true},{\"field\":\"expired_at\",\"expected\":\"2099-12-31\",\"actual\":\"2099-12-31\",\"pass\":true},{\"field\":\"max_uses_per_user\",\"expected\":1,\"actual\":1,\"pass\":true}]",
+      "verdict": "PASS",
+      "cleanup": "DELETE /api/admin/coupons/27 -> HTTP 200",
+      "bugId": null,
+      "notes": "UI min=1 cho phép 1.",
+      "evId": "EV-FR17-024",
+      "timestamp": "2026-10-20T15:38:26.949Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-24.log"
+    },
+    {
+      "id": "DT-25",
+      "technique": "EP + BVA",
+      "obligations": [
+        "P25",
+        "B2-above",
+        "R6"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "Đăng nhập admin; max_uses_per_user=2; các trường còn lại hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 28
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":28}",
+        "ms": 1,
+        "requestBody": {
+          "code": "FR17-DT-25",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "max_uses_per_user": 2
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 28,
+            "code": "FR17-DT-25",
+            "type": "percent",
+            "discount_value": 10,
+            "min_order_amount": 100000,
+            "expired_at": "2099-12-31",
+            "max_uses_per_user": 2,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 28,
+          "code": "FR17-DT-25",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "is_active": 1,
+          "max_uses_per_user": 2
+        },
+        "field_checks": [
+          {
+            "field": "code",
+            "expected": "FR17-DT-25",
+            "actual": "FR17-DT-25",
+            "pass": true
+          },
+          {
+            "field": "type",
+            "expected": "percent",
+            "actual": "percent",
+            "pass": true
+          },
+          {
+            "field": "discount_value",
+            "expected": 10,
+            "actual": 10,
+            "pass": true
+          },
+          {
+            "field": "min_order_amount",
+            "expected": 100000,
+            "actual": 100000,
+            "pass": true
+          },
+          {
+            "field": "expired_at",
+            "expected": "2099-12-31",
+            "actual": "2099-12-31",
+            "pass": true
+          },
+          {
+            "field": "max_uses_per_user",
+            "expected": 2,
+            "actual": 2,
+            "pass": true
+          }
+        ],
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Tạo thành công (2xx); max_uses_per_user=2 thỏa >= 1 (điểm ngay trên biên 1). Nguồn: README.md §5 FR-17.",
+      "actual": "HTTP 200; new_rows=1; target={\"id\":28,\"code\":\"FR17-DT-25\",\"type\":\"percent\",\"discount_value\":10,\"min_order_amount\":100000,\"expired_at\":\"2099-12-31\",\"is_active\":1,\"max_uses_per_user\":2}; field_checks=[{\"field\":\"code\",\"expected\":\"FR17-DT-25\",\"actual\":\"FR17-DT-25\",\"pass\":true},{\"field\":\"type\",\"expected\":\"percent\",\"actual\":\"percent\",\"pass\":true},{\"field\":\"discount_value\",\"expected\":10,\"actual\":10,\"pass\":true},{\"field\":\"min_order_amount\",\"expected\":100000,\"actual\":100000,\"pass\":true},{\"field\":\"expired_at\",\"expected\":\"2099-12-31\",\"actual\":\"2099-12-31\",\"pass\":true},{\"field\":\"max_uses_per_user\",\"expected\":2,\"actual\":2,\"pass\":true}]",
+      "verdict": "PASS",
+      "cleanup": "DELETE /api/admin/coupons/28 -> HTTP 200",
+      "bugId": null,
+      "notes": "UI min=1 cho phép 2.",
+      "evId": "EV-FR17-025",
+      "timestamp": "2026-10-20T15:38:26.955Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-25.log"
+    },
+    {
+      "id": "DT-26",
+      "technique": "EP + BVA",
+      "obligations": [
+        "P26",
+        "B2-below",
+        "R6"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "Đăng nhập admin; max_uses_per_user=0; các trường còn lại hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 29
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":29}",
+        "ms": 3,
+        "requestBody": {
+          "code": "FR17-DT-26",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "max_uses_per_user": 0
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 29,
+            "code": "FR17-DT-26",
+            "type": "percent",
+            "discount_value": 10,
+            "min_order_amount": 100000,
+            "expired_at": "2099-12-31",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 29,
+          "code": "FR17-DT-26",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "is_active": 1,
+          "max_uses_per_user": 1
+        },
+        "field_checks": null,
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Bị từ chối (non-2xx) và không tạo coupon mới; max_uses_per_user phải >= 1. 0 là điểm ngay dưới biên 1. Nguồn: README.md §5 FR-17.",
+      "actual": "HTTP 200; new_rows=1; body={\"message\":\"Coupon created\",\"id\":29}; unexpected_rows=[{\"id\":29,\"code\":\"FR17-DT-26\",\"type\":\"percent\",\"discount_value\":10,\"min_order_amount\":100000,\"expired_at\":\"2099-12-31\",\"max_uses_per_user\":1,\"is_active\":1}]",
+      "verdict": "FAIL",
+      "cleanup": "DELETE /api/admin/coupons/29 -> HTTP 200",
+      "bugId": "BUG-FR17-06",
+      "notes": "UI min=1 chặn submit 0; ca này API-only. Backend dùng max_uses_per_user || 1 nên cần kiểm tra giá trị lưu thực tế.",
+      "evId": "EV-FR17-026",
+      "timestamp": "2026-10-20T15:38:26.963Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-26.log"
+    },
+    {
+      "id": "DT-27",
+      "technique": "EP",
+      "obligations": [
+        "P27",
+        "R6"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "Đăng nhập admin; max_uses_per_user=-1; các trường còn lại hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 30
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":30}",
+        "ms": 2,
+        "requestBody": {
+          "code": "FR17-DT-27",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "max_uses_per_user": -1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 30,
+            "code": "FR17-DT-27",
+            "type": "percent",
+            "discount_value": 10,
+            "min_order_amount": 100000,
+            "expired_at": "2099-12-31",
+            "max_uses_per_user": -1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 30,
+          "code": "FR17-DT-27",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "is_active": 1,
+          "max_uses_per_user": -1
+        },
+        "field_checks": null,
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Bị từ chối (non-2xx) và không tạo coupon mới; max_uses_per_user phải >= 1. Nguồn: README.md §5 FR-17.",
+      "actual": "HTTP 200; new_rows=1; body={\"message\":\"Coupon created\",\"id\":30}; unexpected_rows=[{\"id\":30,\"code\":\"FR17-DT-27\",\"type\":\"percent\",\"discount_value\":10,\"min_order_amount\":100000,\"expired_at\":\"2099-12-31\",\"max_uses_per_user\":-1,\"is_active\":1}]",
+      "verdict": "FAIL",
+      "cleanup": "DELETE /api/admin/coupons/30 -> HTTP 200",
+      "bugId": "BUG-FR17-06",
+      "notes": "UI min=1 chặn submit -1; ca này API-only.",
+      "evId": "EV-FR17-027",
+      "timestamp": "2026-10-20T15:38:26.968Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-27.log"
+    },
+    {
+      "id": "DT-28",
+      "technique": "EP",
+      "obligations": [
+        "P28",
+        "R6"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "Đăng nhập admin; bỏ hẳn key max_uses_per_user; các trường còn lại hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 31
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":31}",
+        "ms": 2,
+        "requestBody": {
+          "code": "FR17-DT-28",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31"
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 31,
+            "code": "FR17-DT-28",
+            "type": "percent",
+            "discount_value": 10,
+            "min_order_amount": 100000,
+            "expired_at": "2099-12-31",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 31,
+          "code": "FR17-DT-28",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "is_active": 1,
+          "max_uses_per_user": 1
+        },
+        "field_checks": null,
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Bị từ chối (non-2xx) và không tạo coupon mới; max_uses_per_user là trường bắt buộc. Nguồn: README.md §5 FR-17.",
+      "actual": "HTTP 200; new_rows=1; body={\"message\":\"Coupon created\",\"id\":31}; unexpected_rows=[{\"id\":31,\"code\":\"FR17-DT-28\",\"type\":\"percent\",\"discount_value\":10,\"min_order_amount\":100000,\"expired_at\":\"2099-12-31\",\"max_uses_per_user\":1,\"is_active\":1}]",
+      "verdict": "FAIL",
+      "cleanup": "DELETE /api/admin/coupons/31 -> HTTP 200",
+      "bugId": "BUG-FR17-06",
+      "notes": "UI luôn gửi key max_uses_per_user (có thể là chuỗi rỗng), nên ca bỏ hẳn key là API-only.",
+      "evId": "EV-FR17-028",
+      "timestamp": "2026-10-20T15:38:26.974Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-28.log"
+    },
+    {
+      "id": "DT-29",
+      "technique": "EP",
+      "obligations": [
+        "P29",
+        "R1",
+        "R7"
+      ],
+      "interface": "API GET /api/coupons (sau khi POST tạo coupon)",
+      "setup": "Đăng nhập admin; DB test có 4 seed coupon; tạo coupon FR17-DT-29 rồi gọi GET /api/coupons.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 32
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":32}",
+        "ms": 2,
+        "requestBody": {
+          "code": "FR17-DT-29",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "max_uses_per_user": 1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 32,
+            "code": "FR17-DT-29",
+            "type": "percent",
+            "discount_value": 10,
+            "min_order_amount": 100000,
+            "expired_at": "2099-12-31",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 32,
+          "code": "FR17-DT-29",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "is_active": 1,
+          "max_uses_per_user": 1
+        },
+        "field_checks": [
+          {
+            "field": "code",
+            "expected": "FR17-DT-29",
+            "actual": "FR17-DT-29",
+            "pass": true
+          },
+          {
+            "field": "type",
+            "expected": "percent",
+            "actual": "percent",
+            "pass": true
+          },
+          {
+            "field": "discount_value",
+            "expected": 10,
+            "actual": 10,
+            "pass": true
+          },
+          {
+            "field": "min_order_amount",
+            "expected": 100000,
+            "actual": 100000,
+            "pass": true
+          },
+          {
+            "field": "expired_at",
+            "expected": "2099-12-31",
+            "actual": "2099-12-31",
+            "pass": true
+          },
+          {
+            "field": "max_uses_per_user",
+            "expected": 1,
+            "actual": 1,
+            "pass": true
+          }
+        ],
+        "seeds_present": {
+          "before": true,
+          "after": true
+        },
+        "absent_after_delete": null
+      },
+      "oracle": "GET /api/coupons trả danh sách nhìn thấy được, gồm 4 seed coupon và coupon vừa tạo với đủ trường đúng giá trị. Nguồn: README.md §5 FR-17 (Xem); api_specification.md §5.2.",
+      "actual": "POST HTTP 200; before_count=4; after_count=5; seeds_before=true; seeds_after=true; target={\"id\":32,\"code\":\"FR17-DT-29\",\"type\":\"percent\",\"discount_value\":10,\"min_order_amount\":100000,\"expired_at\":\"2099-12-31\",\"is_active\":1,\"max_uses_per_user\":1}; field_checks=[{\"field\":\"code\",\"expected\":\"FR17-DT-29\",\"actual\":\"FR17-DT-29\",\"pass\":true},{\"field\":\"type\",\"expected\":\"percent\",\"actual\":\"percent\",\"pass\":true},{\"field\":\"discount_value\",\"expected\":10,\"actual\":10,\"pass\":true},{\"field\":\"min_order_amount\",\"expected\":100000,\"actual\":100000,\"pass\":true},{\"field\":\"expired_at\",\"expected\":\"2099-12-31\",\"actual\":\"2099-12-31\",\"pass\":true},{\"field\":\"max_uses_per_user\",\"expected\":1,\"actual\":1,\"pass\":true}]",
+      "verdict": "PASS",
+      "cleanup": "DELETE /api/admin/coupons/32 -> HTTP 200",
+      "bugId": null,
+      "notes": "Ca này kiểm tra yêu cầu Xem danh sách; không kiểm tra thứ tự hiển thị vì đặc tả không quy định.",
+      "evId": "EV-FR17-029",
+      "timestamp": "2026-10-20T15:38:26.983Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-29.log"
+    },
+    {
+      "id": "DT-30",
+      "technique": "EP",
+      "obligations": [
+        "P30",
+        "R8"
+      ],
+      "interface": "API DELETE /api/admin/coupons/:id + GET /api/coupons",
+      "setup": "Đăng nhập admin; tạo coupon FR17-DT-30 rồi xóa theo id.",
+      "request": {
+        "method": "DELETE",
+        "endpoint": "/api/admin/coupons/33",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon deleted"
+        },
+        "text": "{\"message\":\"Coupon deleted\"}",
+        "ms": 2
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 4,
+        "new_rows": [
+          {
+            "id": 33,
+            "code": "FR17-DT-30",
+            "type": "percent",
+            "discount_value": 10,
+            "min_order_amount": 100000,
+            "expired_at": "2099-12-31",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 33,
+          "code": "FR17-DT-30",
+          "type": "percent",
+          "discount_value": 10,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "is_active": 1,
+          "max_uses_per_user": 1
+        },
+        "field_checks": null,
+        "seeds_present": null,
+        "absent_after_delete": true
+      },
+      "oracle": "Xóa coupon đang tồn tại thành công (2xx) và coupon biến mất khỏi GET /api/coupons. Nguồn: README.md §5 FR-17 (Xóa); api_specification.md §6.4.",
+      "actual": "POST create HTTP 200; DELETE HTTP 200; body={\"message\":\"Coupon deleted\"}; still_present=false; after_delete_count=4",
+      "verdict": "PASS",
+      "cleanup": "row đã bị xóa bởi chính ca test",
+      "bugId": null,
+      "notes": "Không kiểm tra confirm dialog vì đặc tả FR-17 không yêu cầu.",
+      "evId": "EV-FR17-030",
+      "timestamp": "2026-10-20T15:38:26.990Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-30.log"
+    },
+    {
+      "id": "DT-31",
+      "technique": "EP",
+      "obligations": [
+        "P31"
+      ],
+      "interface": "API DELETE /api/admin/coupons/:id",
+      "setup": "Đăng nhập admin; DB test không có coupon id 999999; gọi DELETE /api/admin/coupons/999999.",
+      "request": {
+        "method": "DELETE",
+        "endpoint": "/api/admin/coupons/999999",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon deleted"
+        },
+        "text": "{\"message\":\"Coupon deleted\"}",
+        "ms": 2
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 4,
+        "new_rows": [],
+        "target_row": null,
+        "field_checks": null,
+        "seeds_present": null,
+        "absent_after_delete": true
+      },
+      "oracle": "Chưa xác định — FR-17 yêu cầu Admin có thể Xóa mã giảm giá nhưng không quy định hành vi khi id không tồn tại. Đây là Quan sát/INCONCLUSIVE.",
+      "actual": "HTTP 200; body={\"message\":\"Coupon deleted\"}; before_count=4; after_count=4",
+      "verdict": "INCONCLUSIVE",
+      "cleanup": "không tạo tài nguyên",
+      "bugId": null,
+      "notes": "Quan sát status/body thực tế; không chấm PASS/FAIL vì thiếu oracle. Nếu thấy 2xx thì ghi nhận như một điểm cần người kiểm thử quyết định.",
+      "evId": "EV-FR17-031",
+      "timestamp": "2026-10-20T15:38:26.994Z (2026-10-20 22:38:26 +0700)",
+      "logFile": "DT-31.log"
+    },
+    {
+      "id": "DT-32",
+      "technique": "EP",
+      "obligations": [
+        "P32",
+        "R4"
+      ],
+      "interface": "API POST /api/admin/coupons",
+      "setup": "Đăng nhập admin; type=percent, discount_value=150; các trường còn lại hợp lệ.",
+      "request": {
+        "method": "POST",
+        "endpoint": "/api/admin/coupons",
+        "status": 200,
+        "ok": true,
+        "body": {
+          "message": "Coupon created",
+          "id": 34
+        },
+        "text": "{\"message\":\"Coupon created\",\"id\":34}",
+        "ms": 2,
+        "requestBody": {
+          "code": "FR17-DT-32",
+          "type": "percent",
+          "discount_value": 150,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "max_uses_per_user": 1
+        }
+      },
+      "verification": {
+        "before_count": 4,
+        "after_count": 5,
+        "new_rows": [
+          {
+            "id": 34,
+            "code": "FR17-DT-32",
+            "type": "percent",
+            "discount_value": 150,
+            "min_order_amount": 100000,
+            "expired_at": "2099-12-31",
+            "max_uses_per_user": 1,
+            "is_active": 1
+          }
+        ],
+        "target_row": {
+          "id": 34,
+          "code": "FR17-DT-32",
+          "type": "percent",
+          "discount_value": 150,
+          "min_order_amount": 100000,
+          "expired_at": "2099-12-31",
+          "is_active": 1,
+          "max_uses_per_user": 1
+        },
+        "field_checks": null,
+        "seeds_present": null,
+        "absent_after_delete": null
+      },
+      "oracle": "Chưa xác định — FR-17 chỉ nói discount_value dương, không đặt upper bound cho percent. Đây là quan sát, không chấm PASS/FAIL; ảnh hưởng cách FR-09 tính giảm giá nếu >100%.",
+      "actual": "HTTP 200; new_rows=1; body={\"message\":\"Coupon created\",\"id\":34}; new_rows_data=[{\"id\":34,\"code\":\"FR17-DT-32\",\"type\":\"percent\",\"discount_value\":150,\"min_order_amount\":100000,\"expired_at\":\"2099-12-31\",\"max_uses_per_user\":1,\"is_active\":1}]",
+      "verdict": "INCONCLUSIVE",
+      "cleanup": "DELETE /api/admin/coupons/34 -> HTTP 200",
+      "bugId": null,
+      "notes": "UI không có max nên người dùng nhập được 150. Quan sát giá trị lưu và ghi nhận khoảng trống đặc tả.",
+      "evId": "EV-FR17-032",
+      "timestamp": "2026-10-20T15:38:27.002Z (2026-10-20 22:38:27 +0700)",
+      "logFile": "DT-32.log"
+    }
+  ],
+  "out_of_scope_observations": [
+    {
+      "timestamp": "2026-10-20T15:38:27.005Z (2026-10-20 22:38:27 +0700)",
+      "user": {
+        "id": 2,
+        "email": "test@eshop.com",
+        "role": "user"
+      },
+      "getStatus": 200,
+      "getCount": 4,
+      "createStatus": 200,
+      "createBody": {
+        "message": "Coupon created",
+        "id": 35
+      },
+      "created": true,
+      "createdRow": {
+        "id": 35,
+        "code": "FR17-OBS-USER",
+        "type": "percent",
+        "discount_value": 10,
+        "min_order_amount": 100000,
+        "expired_at": "2099-12-31",
+        "is_active": 1,
+        "max_uses_per_user": 1
+      },
+      "cleanup": "DELETE /api/admin/coupons/35 bằng admin -> HTTP 200"
+    }
+  ]
+}

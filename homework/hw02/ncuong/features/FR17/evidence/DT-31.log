@@ -1,0 +1,52 @@
+# EV-FR17-031 — DT-31 (API DELETE /api/admin/coupons/:id)
+
+| Trường | Giá trị |
+| --- | --- |
+| Test case | DT-31 |
+| Run ID / lần thử | run-20261020-fr17 / 1 |
+| Kỹ thuật | EP |
+| Obligation IDs | P31 |
+| Thời điểm | 2026-10-20T15:38:26.994Z (2026-10-20 22:38:26 +0700) |
+| Interface | API DELETE /api/admin/coupons/:id |
+| Setup / trạng thái trước | Đăng nhập admin; DB test không có coupon id 999999; gọi DELETE /api/admin/coupons/999999. |
+
+## Thao tác / request thật
+
+```http
+DELETE /api/admin/coupons/999999
+Authorization: Bearer <redacted-test-token>
+Content-Type: application/json
+
+(no body)
+```
+
+## Kết quả thô
+
+```json
+HTTP 200
+{
+  "message": "Coupon deleted"
+}
+```
+
+### Kiểm tra trạng thái qua GET /api/coupons
+
+```json
+{
+  "before_count": 4,
+  "after_count": 4,
+  "new_rows": [],
+  "target_row": null,
+  "field_checks": null,
+  "seeds_present": null,
+  "absent_after_delete": true
+}
+```
+
+- **Expected (oracle ref):** Chưa xác định — FR-17 yêu cầu Admin có thể Xóa mã giảm giá nhưng không quy định hành vi khi id không tồn tại. Đây là Quan sát/INCONCLUSIVE.
+- **Actual:** HTTP 200; body={"message":"Coupon deleted"}; before_count=4; after_count=4
+- **Status:** `INCONCLUSIVE`
+- **Artifact:** `evidence/DT-31.log`
+- **Cleanup:** không tạo tài nguyên
+- **Bug liên quan:** không
+- **Ghi chú:** Quan sát status/body thực tế; không chấm PASS/FAIL vì thiếu oracle. Nếu thấy 2xx thì ghi nhận như một điểm cần người kiểm thử quyết định.

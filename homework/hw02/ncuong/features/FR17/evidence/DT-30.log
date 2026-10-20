@@ -1,0 +1,72 @@
+# EV-FR17-030 — DT-30 (API DELETE /api/admin/coupons/:id + GET /api/coupons)
+
+| Trường | Giá trị |
+| --- | --- |
+| Test case | DT-30 |
+| Run ID / lần thử | run-20261020-fr17 / 1 |
+| Kỹ thuật | EP |
+| Obligation IDs | P30, R8 |
+| Thời điểm | 2026-10-20T15:38:26.990Z (2026-10-20 22:38:26 +0700) |
+| Interface | API DELETE /api/admin/coupons/:id + GET /api/coupons |
+| Setup / trạng thái trước | Đăng nhập admin; tạo coupon FR17-DT-30 rồi xóa theo id. |
+
+## Thao tác / request thật
+
+```http
+DELETE /api/admin/coupons/33
+Authorization: Bearer <redacted-test-token>
+Content-Type: application/json
+
+(no body)
+```
+
+## Kết quả thô
+
+```json
+HTTP 200
+{
+  "message": "Coupon deleted"
+}
+```
+
+### Kiểm tra trạng thái qua GET /api/coupons
+
+```json
+{
+  "before_count": 4,
+  "after_count": 4,
+  "new_rows": [
+    {
+      "id": 33,
+      "code": "FR17-DT-30",
+      "type": "percent",
+      "discount_value": 10,
+      "min_order_amount": 100000,
+      "expired_at": "2099-12-31",
+      "max_uses_per_user": 1,
+      "is_active": 1
+    }
+  ],
+  "target_row": {
+    "id": 33,
+    "code": "FR17-DT-30",
+    "type": "percent",
+    "discount_value": 10,
+    "min_order_amount": 100000,
+    "expired_at": "2099-12-31",
+    "is_active": 1,
+    "max_uses_per_user": 1
+  },
+  "field_checks": null,
+  "seeds_present": null,
+  "absent_after_delete": true
+}
+```
+
+- **Expected (oracle ref):** Xóa coupon đang tồn tại thành công (2xx) và coupon biến mất khỏi GET /api/coupons. Nguồn: README.md §5 FR-17 (Xóa); api_specification.md §6.4.
+- **Actual:** POST create HTTP 200; DELETE HTTP 200; body={"message":"Coupon deleted"}; still_present=false; after_delete_count=4
+- **Status:** `PASS`
+- **Artifact:** `evidence/DT-30.log`
+- **Cleanup:** row đã bị xóa bởi chính ca test
+- **Bug liên quan:** không
+- **Ghi chú:** Không kiểm tra confirm dialog vì đặc tả FR-17 không yêu cầu.

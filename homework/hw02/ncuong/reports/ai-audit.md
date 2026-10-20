@@ -7,11 +7,14 @@ I use AI tools for the following tasks,
 - Soạn báo cáo feature FR02 (domain, boundary, catalog, results) và cập nhật master report/README.
 - Tạo GitHub Issue cho 2 bug đã được sinh viên xác nhận, đính screenshot vào báo cáo và issue.
 - Xóa 2 issue cũ và tạo lại theo template mới của skill `test-findings-report-writer` sau khi template được bổ sung.
+- Đọc đặc tả FR-17, thiết kế EP/BVA cho Coupon CRUD, rà soát source coupon (backend + admin UI) để tìm bug và lập artifact FR17.
+- Thiết lập instance SUT cách ly, chạy 32 ca API cho FR-17, ghi evidence, đánh giá coverage và cập nhật master report/README.
+- Soạn 6 GitHub Issue draft cho FR-17 theo template `test-findings-report-writer`; sau đó đính 34 ảnh Postman do người kiểm thử cung cấp vào draft và các báo cáo liên quan, giữ UI chưa kiểm chứng, không publish/không commit.
 - Soạn AI Audit Report này.
 
 > **Phạm vi lập báo cáo (capture notes):**
-> - Bằng chứng khả dụng: phiên hội thoại hiện tại (prompt của người dùng + các artifact do agent tạo trong repo); không có file export transcript riêng. Hai screenshot (`features/FR02/screenshots/BUG-FR02-01.png`, `BUG-FR02-02.png`) do **người dùng** cung cấp, không phải AI tạo.
-> - Số interaction đã ghi: **4** (các prompt của người dùng; các tool call nội bộ không phải prompt của người dùng nên không liệt kê).
+> - Bằng chứng khả dụng: phiên hội thoại hiện tại (prompt của người dùng + các artifact do agent tạo trong repo); không có file export transcript riêng. Hai screenshot (`features/FR02/screenshots/BUG-FR02-01.png`, `BUG-FR02-02.png`) và 34 ảnh FR17 trong `features/FR17/screenshots/` do **người dùng** cung cấp, không phải AI tạo.
+> - Số interaction đã ghi: **9** (AI-001…AI-009; các prompt của người dùng; các tool call nội bộ không phải prompt của người dùng nên không liệt kê).
 > - Công cụ AI đã dùng (theo bằng chứng): OpenCode agent, model `DeepSeek V4.1 Flash Free` (provider `opencode`).
 > - Công cụ/phiên được nhắc tới nhưng không kiểm tra được: không.
 
@@ -215,6 +218,121 @@ Output của agent là các thay đổi trong repo và trên GitHub (kiểm tra 
 
 ---
 
+## Interaction AI-007
+
+- **AI tool:** OpenCode agent — model `DeepSeek V4.1 Flash Free` (provider `opencode`).
+- **Date and time:** 2026-10-20 22:31 +0700 (theo thời gian người dùng cung cấp trong prompt).
+- **Source:** Phiên hội thoại hiện tại (không có transcript export); artifact và evidence do agent tạo trong repo.
+- **Task:** Triển khai toàn bộ quy trình Domain Testing + BVA cho FR-17 (Coupon management — CRUD) theo `homework/hw02/ncuong/prompt.txt`; rà soát source coupon để tìm bug; ghi AI Audit.
+
+### Your prompt
+
+```text
+Triển khai Domain Testing cho Feature 17 - Coupon, đọc kỹ @homework/hw02/ncuong/prompt.txt, làm kỹ lưỡng các test case và rà soát tất cả các bug có thể xảy ra trong source nhé. Xong hết thì nhớ AI Audit Log. Thời gian hiện tại là: 20/10/2026 22:31
+```
+
+Phần đính kèm của prompt là toàn văn file `homework/hw02/ncuong/prompt.txt` (nội dung người dùng cung cấp trong cùng lượt gửi; file còn trong repo để đối chiếu nguyên văn), bắt đầu bằng:
+
+```text
+# Prompt kiểm thử Domain/EP + BVA cho một feature HW02
+
+## Cấu hình duy nhất cần đổi
+
+TARGET_FEATURE_ID: FR17
+```
+
+### The AI output
+
+Output của agent là bộ artifact tạo/cập nhật trong repo (nội dung đầy đủ, kiểm tra được):
+
+| Artifact | Đường dẫn |
+| --- | --- |
+| Domain analysis (EP) | `homework/hw02/ncuong/features/FR17/domain-analysis.md` |
+| Boundary analysis (BVA) | `homework/hw02/ncuong/features/FR17/boundary-analysis.md` |
+| Test case catalog | `homework/hw02/ncuong/features/FR17/test-cases.md` |
+| Test results + bug + coverage | `homework/hw02/ncuong/features/FR17/test-results.md` |
+| Evidence log + log thô | `homework/hw02/ncuong/features/FR17/evidence/` (`FR17-evidence.md`, `DT-01.log`…`DT-32.log`, `run-summary.json`, `session-header.log`, `cleanup.log`, `run-fr17.mjs`, `OBS-fr17-user-token.log`, `OBS-fr09-apply-coupon.log`) |
+| Quan sát ngoài EP/BVA | `homework/hw02/ncuong/supporting-materials/fr17-observations.md` |
+| Master report cập nhật | `homework/hw02/ncuong/reports/main-report.md` |
+| README cập nhật | `homework/hw02/ncuong/README.md` |
+| AI Audit cập nhật | `homework/hw02/ncuong/reports/ai-audit.md` |
+
+Tóm tắt kết quả agent đã tạo (số liệu nằm trong các file trên): 32 T-ID duy nhất; 32 đã chạy; 11 PASS, 18 FAIL, 3 Quan sát/INCONCLUSIVE, 0 BLOCKED, 0 chưa chạy; EP 32 lớp, BVA 9 điểm biên dùng lại 9 T-ID (0 T-ID BVA-only). 6 bug ứng viên `BUG-FR17-01…06` (2 High, 4 Medium) đang **Chờ người kiểm thử xác nhận**; agent không tự mở GitHub Issue, không tự chụp screenshot, không điền AI Gap Analysis hay AI Critique. Thực thi trên instance SUT cách ly trong thư mục tạm (commit `f389502cdb308b133fe9044e34505f19202dd887`); Database làm việc giữ nguyên SHA-256 `c63f0054…`. UI admin mới có hướng dẫn manual, **chưa chạy UI**; 16 T-ID UI-reachable, 16 T-ID API-only. Quan sát ngoài phạm vi FR-17 (FR-09/FR-12) được lưu riêng, không cộng coverage.
+
+> Phản hồi cuối của agent cho người dùng là bản tóm tắt bàn giao (số ca, coverage, bug, câu hỏi mở, trạng thái AI Audit); toàn bộ nội dung kỹ thuật chi tiết nằm trong các artifact liên kết ở trên. Các thông điệp tool nội bộ (đọc file, chạy lệnh) không phải output người dùng thấy nên không chép vào đây.
+
+---
+
+## Interaction AI-008
+
+- **AI tool:** OpenCode agent — model `DeepSeek V4.1 Flash Free` (provider `opencode`).
+- **Date and time:** 2026-10-20 (prompt không cung cấp giờ; không tự tạo timestamp).
+- **Source:** Phiên hội thoại hiện tại (không có transcript export); artifact do agent tạo trong repo.
+- **Task:** Soạn 6 GitHub Issue draft cho FR-17 theo template có sẵn của skill `test-findings-report-writer`; không commit, không publish Issue, không chụp screenshot.
+
+### Your prompt
+
+```text
+Viết issue template luôn m, chưa commit nhma có template rồi mà @homework/hw02/ncuong/skills/test-findings-report-writer/assets/github-issue-template.md
+```
+
+Phần đính kèm của prompt là toàn văn file `homework/hw02/ncuong/skills/test-findings-report-writer/assets/github-issue-template.md` (nội dung người dùng cung cấp trong cùng lượt gửi; file còn trong repo để đối chiếu nguyên văn).
+
+### The AI output
+
+Output của agent là 6 draft Issue mới trong repo (nội dung đầy đủ, kiểm tra được):
+
+| Draft Issue | Đường dẫn |
+| --- | --- |
+| `BUG-FR17-01` — `code` rỗng/thiếu/chỉ khoảng trắng | `homework/hw02/ncuong/features/FR17/issues/BUG-FR17-01.md` |
+| `BUG-FR17-02` — `type` ngoài `percent/fixed` hoặc thiếu | `homework/hw02/ncuong/features/FR17/issues/BUG-FR17-02.md` |
+| `BUG-FR17-03` — `discount_value <= 0`, không phải số hoặc thiếu | `homework/hw02/ncuong/features/FR17/issues/BUG-FR17-03.md` |
+| `BUG-FR17-04` — `expired_at` thiếu/rỗng/sai định dạng | `homework/hw02/ncuong/features/FR17/issues/BUG-FR17-04.md` |
+| `BUG-FR17-05` — `min_order_amount` âm/không phải số/thiếu | `homework/hw02/ncuong/features/FR17/issues/BUG-FR17-05.md` |
+| `BUG-FR17-06` — `max_uses_per_user < 1` hoặc thiếu; `0` thành `1` | `homework/hw02/ncuong/features/FR17/issues/BUG-FR17-06.md` |
+
+Mỗi draft dùng đúng các mục của template: trạng thái, tóm tắt, bảng Feature/rule + Test case + Build/môi trường + Severity/Priority + Trạng thái/lặp lại, chuẩn bị, đường tái hiện API đã kiểm chứng, bảng Expected/Actual, phần UI thủ công, đối chiếu kỹ thuật, bằng chứng, điều tra nguyên nhân. Với 4 input có thể đi qua form UI (`DT-06`, `DT-10`, `DT-11`, `DT-21`), phần UI ghi rõ **“Hướng dẫn dự kiến — chưa kiểm chứng UI”**; các input còn lại là **API-only** kèm control/gate chặn tương ứng, không mô phỏng UI.
+
+Các draft giữ trạng thái **Chờ người kiểm thử xác nhận**, không có screenshot, không có URL Issue publish, không có Actual UI giả; evidence link dùng nhánh `ncuong` và sẽ sống sau khi commit/push. Agent cũng cập nhật link draft trong `features/FR17/test-results.md`, `reports/main-report.md` và `README.md`, đồng thời giữ nguyên source, template, DB làm việc và không commit.
+
+> Phản hồi cuối của agent cho người dùng là bản tóm tắt các draft đã soạn, vị trí file và việc còn lại (xác nhận UI, chụp screenshot, publish Issue); không có thay đổi source hay commit.
+
+---
+
+## Interaction AI-009
+
+- **AI tool:** OpenCode agent — model `DeepSeek V4.1 Flash Free` (provider `opencode`).
+- **Date and time:** 2026-10-21 (prompt không cung cấp giờ; không tự tạo timestamp).
+- **Source:** Phiên hội thoại hiện tại (không có transcript export); 34 ảnh do **người dùng** đính kèm trong `features/FR17/screenshots/`; artifact do agent cập nhật trong repo.
+- **Task:** Đính 34 ảnh Postman vào 6 Issue draft và các báo cáo liên quan của FR-17; cập nhật trạng thái “đã xác nhận qua API, UI chưa chạy”; ghi AI Audit.
+
+### Your prompt
+
+```text
+T có đính kèm ảnh trong screenshot r đó, đính kèm vào các báo cáo liên quan với issue đi m. Nhớ AI Audit
+```
+
+### The AI output
+
+Output của agent là các thay đổi trong repo (nội dung kiểm tra được):
+
+| Artifact | Thay đổi |
+| --- | --- |
+| 6 Issue draft FR-17 | `homework/hw02/ncuong/features/FR17/issues/BUG-FR17-01.md`…`BUG-FR17-06.md`: thêm mục **Ảnh xác nhận API**, nhúng 34 ảnh Postman bằng raw GitHub URL (nhánh `ncuong`); cập nhật trạng thái sang **Đã xác nhận qua API; UI chưa kiểm chứng**; vẫn **chưa publish** |
+| Test results | `homework/hw02/ncuong/features/FR17/test-results.md`: thêm ghi chú 34 ảnh API, link ảnh theo từng bug, cập nhật trạng thái 6 bug; nêu rõ `DT-06` chưa có ảnh UI |
+| Evidence log | `homework/hw02/ncuong/features/FR17/evidence/FR17-evidence.md`: thêm bảng ánh xạ 34 ảnh theo bug/test case và ghi chú ảnh API không phải ảnh UI |
+| Master report / README | `homework/hw02/ncuong/reports/main-report.md`, `homework/hw02/ncuong/README.md`: cập nhật trạng thái FR-17, link thư mục ảnh, số lượng 34 ảnh và việc chưa publish Issue |
+| AI Audit | `homework/hw02/ncuong/reports/ai-audit.md`: thêm AI-009, tăng số interaction lên 9 |
+
+- Đã phân loại 34 ảnh theo tên file và kiểm tra mẫu nội dung: `BUG-FR17-01` 4 ảnh, `02` 4, `03` 8, `04` 6, `05` 6, `06` 6; 17/18 ca FAIL có ảnh, `DT-06` không có ảnh vì UI chưa chạy.
+- Ảnh là **Postman request/response API**, không phải ảnh UI; báo cáo giữ phân biệt “đã xác nhận API” và “UI chưa kiểm chứng”, không tạo Actual UI giả.
+- Link raw GitHub sẽ sống sau khi commit/push nhánh `ncuong`; trước đó ảnh vẫn xem được cục bộ trong repo.
+- Không publish GitHub Issue, không commit/push, không sửa source, template, skill hay `backend/database.sqlite`. Working DB hiện đang modified so với HEAD nhưng không phải do AI-009 sửa.
+
+> Phản hồi cuối của agent cho người dùng là bản tóm tắt ảnh đã đính vào đâu, số ảnh/độ phủ, trạng thái Issue và các việc còn lại (UI nếu muốn, commit/push, publish Issue); không có thao tác publish hay commit.
+
+---
+
 ## Optional audit table (theo mẫu `[AI-02]` — bổ sung, không thay thế 4 trường bắt buộc)
 
 | (1) Prompt + Công cụ | (2) Output AI | (3) Verdict | (4) Lý do | (5) Bản SV sửa |
@@ -225,5 +343,8 @@ Output của agent là các thay đổi trong repo và trên GitHub (kiểm tra 
 | OpenCode · DeepSeek V4.1 Flash Free · Time not available in source · “@homework/hw02/ncuong/prompt.txt Triển khai Domain Testing cho Feature 10 nhé. … Làm xong nhớ viết AI Audit Log …” | Bộ artifact FR10 tại `features/FR10/` (4 file + evidence + 2 nháp Issue) + `supporting-materials/fr10-observations.md` + cập nhật `reports/main-report.md`, `reports/ai-audit.md`, `README.md` | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 | OpenCode · DeepSeek V4.1 Flash Free · Time not available in source · “t vừa thêm ảnh cũng như confirm 2 bug + add screenshots trên UI rồi ấy. Tạo issue tương ứng nhé.” | Issue #33, #34 kèm 7 screenshot; commit/push ảnh `f49ac90`; cập nhật `test-results.md`, `FR10-evidence.md` (EV-024/025), `issues/*.md`, `fr10-observations.md`, `main-report.md`, `README.md` | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 | OpenCode · DeepSeek V4.1 Flash Free · Time not available in source · “Quan sát: đơn … #2 "Đang giao" … Sửa lại dùm t 2 cái issue này. Vì m sài #2 nên issue nó nhận diện là issue số 2 … nhớ AI Audit log” | Sửa `đơn #1/#2` → `đơn hàng số 1/2` trong Issue #33, #34 (published) và `issues/*.md`, `test-results.md`, `FR10-evidence.md`; xác nhận chỉ còn tham chiếu #13 có chủ đích | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
+| OpenCode · DeepSeek V4.1 Flash Free · 2026-10-20 22:31 +0700 · “Triển khai Domain Testing cho Feature 17 - Coupon, đọc kỹ @homework/hw02/ncuong/prompt.txt, làm kỹ lưỡng các test case và rà soát tất cả các bug có thể xảy ra trong source nhé. Xong hết thì nhớ AI Audit Log. Thời gian hiện tại là: 20/10/2026 22:31” | Bộ artifact FR17 tại `features/FR17/` (4 file + evidence 32 log + driver) + `supporting-materials/fr17-observations.md` + cập nhật `reports/main-report.md`, `reports/ai-audit.md`, `README.md` | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
+| OpenCode · DeepSeek V4.1 Flash Free · 2026-10-20 · Time not available in source · “Viết issue template luôn m, chưa commit nhma có template rồi mà @homework/hw02/ncuong/skills/test-findings-report-writer/assets/github-issue-template.md” | 6 draft Issue FR17 tại `features/FR17/issues/BUG-FR17-01.md`…`BUG-FR17-06.md`; cập nhật link draft trong `test-results.md`, `main-report.md`, `README.md`; không publish/không commit | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
+| OpenCode · DeepSeek V4.1 Flash Free · 2026-10-21 · Time not available in source · “T có đính kèm ảnh trong screenshot r đó, đính kèm vào các báo cáo liên quan với issue đi m. Nhớ AI Audit” | 34 ảnh Postman được nhúng vào 6 Issue draft FR17 và liên kết trong `test-results.md`, `FR17-evidence.md`, `main-report.md`, `README.md`; trạng thái chuyển thành “đã xác nhận API; UI chưa chạy”; không publish/không commit | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 
 > Cột (3)–(5) do **sinh viên** tự đánh giá/điền; báo cáo không tự suy diễn verdict hay bản sửa của sinh viên.

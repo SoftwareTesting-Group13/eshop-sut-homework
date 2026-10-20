@@ -1,0 +1,11 @@
+# FR17 — Cleanup log
+
+| Mục | Giá trị |
+| --- | --- |
+| Thời điểm cleanup | 2026-10-20 22:43:27 +0700 |
+| Isolated SUT | `/private/var/folders/2f/64j8q4t10vz15mrnyzk48_j80000gn/T/opencode/fr17-sut` |
+| Server PID | 23952 |
+| Test DB trước khi xóa | 4 rows: BIGBUY, EXPIRED, SAVE10, VIP100 |
+| Working DB SHA-256 sau cleanup | `c63f00544180ba1fbb1427a9b9dd3f1784842698809972f33ce90482e7420ba6` |
+| Hành động | Dừng server cách ly; xóa thư mục SUT tạm; không xóa DB làm việc |
+| Kết quả | SUT tạm đã xóa; working DB giữ nguyên |
