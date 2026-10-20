@@ -20,6 +20,7 @@ This is the **data schema**, not a required 11-column report table. In a detaile
 - **obligation IDs:** every class, boundary point, decision rule, or transition the case covers, so `coverage-goal-planner` can count from here.
 - **Expected:** the oracle from `test-oracle-writer` (or its reference), kept separate from **Actual**.
 - **Status:** `designed / passed / failed / blocked / inconclusive / chưa chạy` for a named run. Keep each execution attempt and its `EV-ID` in the evidence log; a designed case is not evidence that behavior passed.
+- **Interface routes:** For each T-ID, keep API and ordinary manual UI routes under the same case when they exercise the same input/state and oracle. Give UI steps, visible observation and screenshot target where reachable. If the UI blocks or transforms the input, explain the difference and retain the API route; create a separate T-ID only when the UI stimulus or oracle is materially different. Keep route-specific execution status and EV-ID separate, so one API PASS/FAIL does not claim a UI result.
 
 ## Method
 

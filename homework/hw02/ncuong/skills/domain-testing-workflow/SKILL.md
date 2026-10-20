@@ -10,6 +10,8 @@ description: >
 
 Coordinate a complete, traceable, and reusable Domain Testing workflow from requirements to test evidence and reporting.
 
+The cross-interface testing method below applies to any product. The HW02 entry sequence, paths, and submission rules are a local adapter; use the actual specification, surfaces, and deliverables in another project.
+
 Act as the **orchestrator** of specialized testing skills. Delegate detailed analysis to the appropriate skills instead of duplicating their responsibilities.
 
 Prioritize specification correctness, meaningful coverage, execution safety, and evidence-backed conclusions.
@@ -36,7 +38,7 @@ For HW02, derive the submitted test suite with the two techniques required by th
 - Equivalence Partitioning (EP) for Domain Testing.
 - Boundary Value Analysis (BVA).
 
-Decision tables and state models may clarify a feature's rules or test setup, but do not create a third test suite or claim separate technique coverage unless the user requests it. A browser may be used to execute an EP/BVA case when that is the relevant interface; rendered UI attributes, layout, language, and navigation checks are not automatically in scope.
+Decision tables and state models may clarify a feature's rules or test setup, but do not create a third test suite or claim separate technique coverage unless the user requests it. A browser may be used to execute an EP/BVA case when that is the relevant interface; rendered UI attributes, layout, language, and navigation checks are not automatically in scope. When a feature has both an API and a user-facing UI, plan both routes for the same business rule where each route can send the required input and expose the outcome. Do not treat API execution as UI execution.
 
 **Completeness means covering the relevant equivalence classes and meaningful boundaries with traceable cases, not adding unrelated validation categories.**
 
@@ -139,6 +141,8 @@ Every selected test must have:
 - Expected oracle.
 - Feasibility status.
 
+For every selected case, inspect the real UI flow as well as the API contract when both exist. Record whether an ordinary user can submit **the same value/state** through the UI, whether the UI changes or blocks it (required fields, select options, numeric/date limits, client role gate), and what can be seen on screen. A form that sends an empty string does not reproduce an API case that omits a JSON field. Mark routes that need devtools or direct requests as API/technical routes, not normal manual UI.
+
 If the specification does not establish an oracle, mark it unresolved.
 
 **Gate:** Every selected test has a justified coverage purpose and a valid oracle, or an explicitly documented gap.
@@ -216,7 +220,7 @@ Do not run destructive tests against working or production data without explicit
 ### Execution methods
 
 - API: Send real HTTP requests to the test SUT.
-- Browser: use automation only when an in-scope EP/BVA case must be executed through the UI.
+- Browser/mobile UI: execute an in-scope EP/BVA case through user actions when the environment and task permit it; automation is optional.
 - State-dependent tests: Establish required states before execution.
 - Database tests: Use isolated fixtures or test databases.
 - External integrations: Use sandbox services or controlled mocks where appropriate.
@@ -234,6 +238,8 @@ Record:
 - Related defect ID, when applicable.
 
 Do not treat source-code inspection as execution.
+
+For a full feature test with a user-facing UI, provide a **manual UI reproduction route** for every case that the UI can actually express, even if the agent's own run used API only. Give the tester the exact starting screen/URL, account and role, fixture/prior state, input values, clicks/taps in order, visible Expected, what to capture in a screenshot, and reset/cleanup between attempts. Derive navigation and input controls from the real application/source, then label the route `planned—UI not yet verified` until someone runs it. If the UI blocks or transforms the case, state the precise control or gate and keep the API route; do not claim the original API input was tested through UI. For a defect reachable by both routes, keep both paths and separate their Actual, verdict and EV-ID. Count the underlying EP/BVA case once, not once per interface.
 
 Do not fabricate logs, screenshots, or observed outcomes.
 
@@ -341,6 +347,8 @@ Before handoff, verify:
 - Boundary inclusion and precision are correct.
 - Interacting predicates and states are modeled when relevant.
 - Every selected test has a source rule and observable oracle.
+- UI-reachable cases have tester-ready manual steps and a screenshot target; API-only cases explain why an ordinary UI cannot express the same input/state.
+- API and UI observations have separate evidence and are never inferred from each other.
 - Test IDs are stable across all artifacts.
 - The shared catalog contains no unnecessary duplicates.
 - Coverage metrics use consistent denominators.

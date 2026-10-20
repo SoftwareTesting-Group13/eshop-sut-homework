@@ -120,6 +120,8 @@ Preserve all valid coverage relationships without duplicating test cases.
 
 Do not count a mapped test as executed unless execution evidence exists.
 
+When API and UI exercise one obligation, keep interface execution status alongside the mapping: API evidence covers only the API attempt, UI evidence only the UI attempt. Report route gaps separately from the EP/BVA denominator; do not create a third technique metric or count the same case twice because it has two routes.
+
 ## 6. Evaluate coverage
 
 Track separately:

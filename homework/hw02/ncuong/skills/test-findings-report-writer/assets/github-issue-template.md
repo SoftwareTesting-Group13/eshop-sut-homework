@@ -37,6 +37,16 @@
 
 **Kết luận:** `<Nêu chính xác điểm vi phạm rule; giải thích hệ quả đối với người dùng.>`
 
+## Cách kiểm tra thủ công trên UI (nếu cùng input/state đi được qua UI)
+
+**Trạng thái:** `<Đã tái hiện qua UI và EV-ID riêng / Hướng dẫn dự kiến, chưa chạy>`. Giữ mục này cả khi bug mới có evidence API, miễn là luồng UI thông thường có thể gửi cùng giá trị và hiển thị kết quả. Nếu không, thay bằng một câu nêu control/gate chặn hoặc đổi input, rồi giữ đường API ở trên; không coi devtools là UI thông thường.
+
+1. `<Mở URL/màn hình cụ thể; đăng nhập tài khoản và role chính xác; nêu fixture/trạng thái trước.>`
+2. `<Điền từng trường với giá trị cụ thể; chọn mục và bấm nút theo đúng thứ tự.>`
+3. `<Quan sát vị trí trên màn hình, Expected, dấu hiệu lỗi cần chụp và cách reset để chạy lại.>`
+
+`<Nếu chưa chạy UI: không ghi Actual UI hoặc đính ảnh giả; nếu đã chạy, dẫn EV-ID/screenshot của chính lần UI đó.>`
+
 ## Đối chiếu kỹ thuật (chỉ khi cần)
 
 `<Lệnh đọc trạng thái API/DB, kết quả tương ứng và lý do cần đối chiếu. Bỏ hẳn mục này nếu Expected/Actual đã quan sát đủ trên UI.>`

@@ -1,6 +1,6 @@
 # Bộ skill kiểm thử theo miền dữ liệu
 
-Thư mục này chứa **15 skill** hỗ trợ phân tích yêu cầu, thiết kế và thực thi test, đánh giá coverage, rồi viết báo cáo kiểm thử bằng tiếng Việt. Bài HW02 dùng **Domain Testing với Equivalence Partitioning (EP)** và **Boundary Value Analysis (BVA)**. Decision table hoặc state model chỉ hỗ trợ phân tích rule khi cần; không tự tạo thêm bộ test UI.
+Thư mục này chứa **15 skill** hỗ trợ phân tích yêu cầu, thiết kế và thực thi test, đánh giá coverage, rồi viết báo cáo kiểm thử bằng tiếng Việt. Quy tắc kiểm thử, đối chiếu API/UI và tách evidence áp dụng cho sản phẩm khác; các đường dẫn `homework/hw02/...`, yêu cầu nộp bài và ví dụ EShop chỉ là quy ước của bài này. Bài HW02 dùng **Domain Testing với Equivalence Partitioning (EP)** và **Boundary Value Analysis (BVA)**. Decision table hoặc state model chỉ hỗ trợ phân tích rule khi cần; không tự tạo thêm bộ test UI.
 
 README này dành cho người đọc trong nhóm. Bộ skill riêng của sinh viên nằm ở `homework/hw02/<tên viết tắt>/skills/`; yêu cầu bài ở `homework/hw02/docs/`. Báo cáo chung nằm ở `reports/` (`main-report.md`, `ai-audit.md`, `ai-critique.md` và bản PDF tương ứng khi nộp); báo cáo từng feature nằm ở `features/<FEATURE_CODE>/`. HW02 còn yêu cầu `git-commit-log.txt` và chọn bốn feature, mỗi pool một feature. Mỗi thư mục con có `SKILL.md` mô tả cách một AI agent thực hiện công việc; các file trong `assets/` là mẫu đầu ra. Skill không tự biến nội dung báo cáo thành sự thật: kết quả PASS/FAIL vẫn cần chạy trên hệ thống và có bằng chứng.
 
@@ -41,6 +41,8 @@ Có thể dùng riêng một skill cho một việc nhỏ. Với bài kiểm th�
 | [`state-transition-test-designer`](state-transition-test-designer/SKILL.md) | Dùng khi hành vi phụ thuộc trạng thái trước đó hoặc thứ tự sự kiện, ví dụ khóa tài khoản, đơn hàng, retry, hết hạn. Xét guard, sự kiện bị từ chối, side effect và invariant. | State `S-ID`, transition `TR-ID`, chuỗi setup và case theo transition. |
 
 **Domain Testing** là cách nhìn tổng thể vào miền input và các rule. **Equivalence Partitioning** chọn đại diện cho những vùng được kỳ vọng hành xử giống nhau. **BVA** tập trung vào nơi hành vi có thể đổi tại biên. Một case có thể phục vụ cả hai kỹ thuật và chỉ cần tồn tại **một lần** trong catalog.
+
+Khi sản phẩm có cả API và giao diện người dùng, với mỗi case hãy kiểm tra giao diện có gửi được đúng input/trạng thái hay không. Ca đi được qua UI cần hướng dẫn thao tác thủ công đủ cụ thể để người kiểm thử đăng nhập, nhập dữ liệu, bấm nút, quan sát Expected và chụp đúng trạng thái. Vẫn giữ đường API để kiểm tra backend; nếu UI chặn hoặc biến đổi input, ghi lý do và giữ ca API-only. Hai đường có evidence/verdict riêng, nhưng cùng một ca EP/BVA không được cộng hai lần. Bước UI suy từ source chỉ là **dự kiến**, chưa phải kết quả chạy thật.
 
 Các skill thiết kế đều lấy Expected từ yêu cầu hoặc nguồn được chấp nhận. Hành vi đang có trong code/SUT có thể giúp điều tra lỗi, nhưng không tự trở thành đặc tả. Nếu rule thiếu hoặc mâu thuẫn, ghi là chưa rõ thay vì tự đặt ngưỡng, mã lỗi hay kết quả mong đợi.
 

@@ -2,9 +2,11 @@
 
 ## Kết quả theo run
 
-| T-ID | Run ID | Actual | Status | EV-ID / evidence | Bug ID |
-| --- | --- | --- | --- | --- | --- |
-| `<T-ID>` | `<run hoặc Chưa chạy>` | `<quan sát thực hoặc —>` | `PASS/FAIL/INCONCLUSIVE/BLOCKED/CHƯA CHẠY` | `<EV-ID nếu đã thử>` | `<nếu có>` |
+| T-ID | Interface | Run ID | Actual | Status | EV-ID / evidence | Bug ID |
+| --- | --- | --- | --- | --- | --- | --- |
+| `<T-ID>` | `API / UI` | `<run hoặc Chưa chạy>` | `<quan sát thực hoặc —>` | `PASS/FAIL/INCONCLUSIVE/BLOCKED/CHƯA CHẠY` | `<EV-ID nếu đã thử>` | `<nếu có>` |
+
+Một T-ID có thể có hai dòng interface nhưng chỉ được đếm một lần trong tổng case. Nếu API đã chạy còn UI mới có hướng dẫn manual, dòng UI là `CHƯA CHẠY`, không lấy verdict API gán sang UI. Ghi rõ interface/run dùng cho verdict và coverage hiện hành; nêu các ca API-only cùng lý do UI chặn/đổi input.
 
 ## Tổng hợp case duy nhất
 
@@ -66,6 +68,8 @@ Priority là mức ưu tiên xử lý, đánh giá riêng theo mức ảnh hư�
 **Các bước tái hiện:**
 1. `<UI đã kiểm chứng: Người dùng mở trang ... / API đã kiểm chứng: Người kiểm thử gửi request ...>`
 2. `<Người dùng nhập/bấm/chờ và thấy gì; hoặc người kiểm thử đọc response/DB. Giữ giá trị cụ thể.>`
+
+**Đường UI cho tester (nếu cùng input/state khả thi):** `<màn hình/URL → tài khoản + fixture → từng giá trị nhập → nút bấm → kết quả phải nhìn thấy → screenshot cần chụp>`. Trạng thái `<đã chạy + EV-ID / dự kiến từ source, chưa chạy>`. Nếu không khả thi, ghi control/gate cụ thể và giữ đường API.
 
 | Bước | Input / hành động | Quan sát |
 | --- | --- | --- |

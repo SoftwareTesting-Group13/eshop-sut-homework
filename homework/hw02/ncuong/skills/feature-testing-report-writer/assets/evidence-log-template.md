@@ -25,6 +25,7 @@
 
 - **EV-ID** đánh số tăng dần theo **thứ tự thực thi**; mỗi mục chỉ liên kết một `T-ID`, nhưng một `T-ID` có thể có nhiều `EV-ID` khi chạy lại. Ghi `Run ID` và số lần thử để không ghi đè lịch sử.
 - Mỗi mục nêu: interface, cách chuẩn bị state, **lệnh/thao tác thật**, kết quả thô, Expected (tham chiếu oracle), Actual, Status.
+- Nếu cùng T-ID chạy qua API và UI, tạo **EV-ID khác nhau** cho từng lần, ghi interface và verdict riêng; chỉ liên kết screenshot thật của lần UI. Bước manual dự kiến đặt ở test case/bug report, không ghi thành evidence đã chạy.
 - **Lệnh thật, đầy đủ, nằm trong khối mã shell.** Mọi lệnh phải ở trong fenced code block có gắn ngôn ngữ (`zsh` hoặc `bash`) và ghi **đủ tham số** — **không** viết tắt kiểu `curl …` và **không** nhét lệnh vào giữa dòng văn. Ghi cả hành vi side-effect (DB row, header) khi có.
 - **JSON phải pretty-print (mỗi field một dòng) trong khối mã `json`.** Tuyệt đối **không** viết cả object trên một dòng, và **không** gộp `request`/`response`/`pre-state`/`post-state` vào một dòng. Chỉ được rút gọn một chuỗi dài (token, mật khẩu) bằng `…` **bên trong dòng giá trị**, không rút gọn cả object.
 - Chỉ kèm script chạy test khi đó là deliverable được yêu cầu; nếu dùng script tạm, ghi cách tái hiện trong log và giữ script tạm ngoài bài nộp.
@@ -75,6 +76,8 @@ HTTP 401 · pre-state login_attempts=0 locked_until=NULL · post-state login_att
 ```zsh
 <lệnh thật, ĐẦY ĐỦ tham số — ví dụ: curl -s -X POST http://localhost:3000/api/login -H 'Content-Type: application/json' --data-raw '{"email":"nobody@eshop.com","password":"Whatever1!"}'>
 ```
+
+`<Nếu interface là UI: thay khối lệnh bằng danh sách thao tác người kiểm thử đã thực sự làm, gồm URL, tài khoản/role, fixture, giá trị từng trường, nút bấm và thứ tự. Ghi ảnh/screen recording/quan sát thô thật; không chép hướng dẫn dự kiến thành Actual.>`
 
 **Kết quả thô:**
 ```json
