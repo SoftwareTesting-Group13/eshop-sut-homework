@@ -1,6 +1,6 @@
 # BUG-FR17-07 — Tạo được `save10` bên cạnh `SAVE10` do uniqueness phân biệt hoa/thường
 
-> **Trạng thái:** Đã xác nhận qua API bằng ảnh Postman do người kiểm thử cung cấp; **chỉ dùng bằng chứng Postman/API, không dùng ảnh UI**. GitHub Issue sẽ được cập nhật sau khi tạo.
+> **Trạng thái:** Đã xác nhận qua API bằng ảnh Postman do người kiểm thử cung cấp; **chỉ dùng bằng chứng Postman/API, không dùng ảnh UI**. GitHub Issue: [#53](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/53).
 
 ## Tóm tắt
 
@@ -12,7 +12,7 @@
 | Test case | `DT-07` — `code = "save10"` khi seed `SAVE10` đã tồn tại |
 | Build / môi trường | commit `f389502cdb308b133fe9044e34505f19202dd887`; Node v26.9.0 + Express + SQLite; API `http://localhost:3000`; DB test cách ly seed 4 coupon |
 | Severity / Priority | **Medium / Medium** — tạo được mã nhìn giống hệt mã đã có, gây trùng nghĩa/nhầm lẫn dữ liệu; đường UI bị chặn bởi uppercase nên đây là lỗi API-only |
-| Trạng thái / lặp lại | **Đã xác nhận qua API**; 1/1 run API; **đã có 3 ảnh Postman**; Issue đang được tạo |
+| Trạng thái / lặp lại | **Đã xác nhận qua API**; 1/1 run API; **đã có 3 ảnh Postman**; Issue [#53](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/53) đã publish |
 
 ## Chuẩn bị để tái hiện
 
@@ -79,7 +79,7 @@ Không có bước UI thay thế cho cùng input/state; giữ đường API ở 
 - Log/run: [`DT-07.log`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/DT-07.log); tổng hợp [`FR17-evidence.md`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/FR17-evidence.md) — EV-FR17-007, run `run-20261020-fr17`.
 - Screenshot: **Đã có 3 ảnh API** do người kiểm thử cung cấp (xem mục “Ảnh xác nhận API” ở trên); chỉ dùng ảnh Postman, không dùng ảnh UI.
 - Lặp lại: **1/1** run API; ảnh chụp lần chạy lại xác nhận cùng hành vi.
-- GitHub Issue: sẽ cập nhật sau khi tạo.
+- GitHub Issue: [#53](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/53) — đã publish.
 
 ## Điều tra nguyên nhân (theo source, đã đối chiếu)
 

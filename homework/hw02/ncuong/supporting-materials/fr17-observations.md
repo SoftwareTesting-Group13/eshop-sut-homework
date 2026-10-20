@@ -22,7 +22,7 @@
 - **Nguồn:** `backend/database.js:31` — `code TEXT UNIQUE` dùng collation mặc định (BINARY), nên `SAVE10` và `save10` là hai giá trị khác nhau. UI admin tự `toUpperCase()` (`frontend-admin/src/App.jsx:641-645`) nên người dùng thường không gửi được `save10`; API thì gửi được.
 - **Liên quan đặc tả:** FR-17 yêu cầu `code` duy nhất. Ngày **2026-10-21**, người kiểm thử xác nhận uniqueness phải **không phân biệt hoa/thường**; vì cột `code TEXT UNIQUE` dùng collation BINARY, `save10` đang được tạo bên cạnh `SAVE10` là bug.
 - **Bằng chứng:** `features/FR17/evidence/DT-07.log` — HTTP 200, row mới `code="save10"` trong khi seed `SAVE10` vẫn tồn tại.
-- **Trạng thái:** **Đã xác nhận — `BUG-FR17-07`**. Bug đã vào `test-results.md` và master report; ảnh Postman đã có, Issue đang được tạo.
+- **Trạng thái:** **Đã xác nhận — `BUG-FR17-07`**. Bug đã vào `test-results.md` và master report; ảnh Postman đã có, Issue [#53](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/53) đã publish.
 
 ## OBS-FR17-04 — `percent` với `discount_value=150` được chấp nhận
 
@@ -30,7 +30,7 @@
 - **Liên quan đặc tả:** FR-17 yêu cầu `discount_value` dương. Ngày **2026-10-21**, người kiểm thử xác nhận với `type = percent`, mức giảm không được vượt quá `100`; `150%` là mức không hợp lệ kể cả khi đặc tả không ghi upper bound.
 - **Bằng chứng:** `features/FR17/evidence/DT-32.log` — HTTP 200, row mới `discount_value=150`.
 - **Ảnh hưởng tiềm ẩn (FR-09, ngoài phạm vi):** công thức percent hiện tại là `total * (1 - discount_value)` thay vì `total * discount_value / 100`; với 150% có thể cho kết quả âm/không hợp lý. Xem OBS-FR17-07.
-- **Trạng thái:** **Đã xác nhận — `BUG-FR17-08`**. Bug đã vào `test-results.md` và master report; ảnh Postman đã có, Issue đang được tạo.
+- **Trạng thái:** **Đã xác nhận — `BUG-FR17-08`**. Bug đã vào `test-results.md` và master report; ảnh Postman đã có, Issue [#54](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/54) đã publish.
 
 ## OBS-FR17-05 — Form coupon thiếu nhãn và dấu `*` cho trường bắt buộc
 

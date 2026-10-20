@@ -1,6 +1,6 @@
 # BUG-FR17-08 — Tạo được coupon `percent` với `discount_value = 150` (vượt 100%)
 
-> **Trạng thái:** Đã xác nhận qua API bằng ảnh Postman do người kiểm thử cung cấp; **chỉ dùng bằng chứng Postman/API, không dùng ảnh UI**. GitHub Issue sẽ được cập nhật sau khi tạo.
+> **Trạng thái:** Đã xác nhận qua API bằng ảnh Postman do người kiểm thử cung cấp; **chỉ dùng bằng chứng Postman/API, không dùng ảnh UI**. GitHub Issue: [#54](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/54).
 
 ## Tóm tắt
 
@@ -12,7 +12,7 @@
 | Test case | `DT-32` — `type = "percent"`, `discount_value = 150` |
 | Build / môi trường | commit `f389502cdb308b133fe9044e34505f19202dd887`; Node v26.9.0 + Express + SQLite; API `http://localhost:3000`; DB test cách ly seed 4 coupon |
 | Severity / Priority | **High / High** — mức giảm không thể tồn tại; dữ liệu sai có thể làm FR-09 tính số tiền âm/không hợp lý, ảnh hưởng trực tiếp tới giá trị đơn hàng |
-| Trạng thái / lặp lại | **Đã xác nhận qua API**; 1/1 run API; **đã có 2 ảnh Postman**; Issue đang được tạo |
+| Trạng thái / lặp lại | **Đã xác nhận qua API**; 1/1 run API; **đã có 2 ảnh Postman**; Issue [#54](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/54) đã publish |
 
 ## Chuẩn bị để tái hiện
 
@@ -75,7 +75,7 @@ curl -s "$BASE/api/coupons" -H "Authorization: Bearer $ADMIN_TOKEN" \
 - Log/run: [`DT-32.log`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/DT-32.log); tổng hợp [`FR17-evidence.md`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR17/evidence/FR17-evidence.md) — EV-FR17-032, run `run-20261020-fr17`.
 - Screenshot: **Đã có 2 ảnh API** do người kiểm thử cung cấp (xem mục “Ảnh xác nhận API” ở trên); chỉ dùng ảnh Postman, không dùng ảnh UI.
 - Lặp lại: **1/1** run API; ảnh chụp lần chạy lại xác nhận cùng hành vi.
-- GitHub Issue: sẽ cập nhật sau khi tạo.
+- GitHub Issue: [#54](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/54) — đã publish.
 
 ## Điều tra nguyên nhân (theo source, đã đối chiếu)
 

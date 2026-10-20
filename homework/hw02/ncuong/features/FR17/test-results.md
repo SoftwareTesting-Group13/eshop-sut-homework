@@ -75,8 +75,8 @@
 | BUG-FR17-04 | FR17 | Backend nhận `expired_at` thiếu/rỗng/sai định dạng | High | High | DT-15, DT-16, DT-17 | **Đã xác nhận API** (ảnh Postman); Issue [#50](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/50) | `DT-15.log`…`DT-17.log` |
 | BUG-FR17-05 | FR17 | Backend nhận `min_order_amount` âm, không phải số hoặc thiếu | Medium | Medium | DT-21, DT-22, DT-23 | **Đã xác nhận API** (ảnh Postman); Issue [#51](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/51) | `DT-21.log`…`DT-23.log` |
 | BUG-FR17-06 | FR17 | Backend nhận `max_uses_per_user < 1` hoặc thiếu; number `0` bị đổi thành `1` | Medium | Medium | DT-26, DT-27, DT-28 | **Đã xác nhận API** (ảnh Postman); Issue [#52](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52) | `DT-26.log`…`DT-28.log` |
-| BUG-FR17-07 | FR17 | Backend nhận `code` khác hoa/thường khi đã có mã tương ứng (`save10` bên cạnh `SAVE10`) | Medium | Medium | DT-07 | **Đã xác nhận API** (ảnh Postman); Issue đang tạo | `DT-07.log` + 3 ảnh |
-| BUG-FR17-08 | FR17 | Backend nhận `discount_value = 150` cho coupon `percent` (vượt 100%) | High | High | DT-32 | **Đã xác nhận API** (ảnh Postman); Issue đang tạo | `DT-32.log` + 2 ảnh |
+| BUG-FR17-07 | FR17 | Backend nhận `code` khác hoa/thường khi đã có mã tương ứng (`save10` bên cạnh `SAVE10`) | Medium | Medium | DT-07 | **Đã xác nhận API** (ảnh Postman); Issue [#53](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/53) | `DT-07.log` + 3 ảnh |
+| BUG-FR17-08 | FR17 | Backend nhận `discount_value = 150` cho coupon `percent` (vượt 100%) | High | High | DT-32 | **Đã xác nhận API** (ảnh Postman); Issue [#54](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/54) | `DT-32.log` + 2 ảnh |
 
 ### Tiêu chí phân loại
 
@@ -335,7 +335,7 @@ curl -s -X POST http://localhost:3000/api/admin/coupons \
 | Test case | DT-07 — `code = "save10"` khi seed `SAVE10` đã tồn tại |
 | Build / môi trường | `f389502…`; API `POST /api/admin/coupons`; Node/Express + SQLite; DB test cách ly |
 | Severity / Priority | **Medium / Medium** — tạo được coupon nhìn giống hệt mã đã có; UI tự uppercase nên finding là API-only, nhưng dữ liệu có thể gây nhầm lẫn/trùng nghĩa khi tích hợp |
-| Trạng thái / lặp lại | **Đã xác nhận qua API** bằng ảnh Postman; Issue đang tạo; 1/1 run API + ảnh chụp lần chạy lại |
+| Trạng thái / lặp lại | **Đã xác nhận qua API** bằng ảnh Postman; Issue [#53](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/53); 1/1 run API + ảnh chụp lần chạy lại |
 
 **Chuẩn bị:** DB test có 4 seed, gồm `SAVE10`; đăng nhập admin; các trường còn lại baseline (`type=percent`, `discount_value=10`, `min_order_amount=100000`, `expired_at=2099-12-31`, `max_uses_per_user=1`).
 
@@ -359,7 +359,7 @@ curl -s http://localhost:3000/api/coupons \
 
 **Root cause:** `backend/database.js:31` khai báo `code TEXT UNIQUE` với collation BINARY mặc định; `backend/server.js:466-479` không chuẩn hóa `code` trước khi `INSERT`. UI uppercase tại `frontend-admin/src/App.jsx:641-645` chỉ che lỗi trên đường UI.
 
-**Evidence:** `DT-07.log` (EV-FR17-007). **Screenshot API:** [07-CouponUppercase](screenshots/BUG-FR17-07-CouponUppercase.png), [07-CreateCouponLowercase](screenshots/BUG-FR17-07-CreateCouponLowercase.png), [07-GetCouponLowercase](screenshots/BUG-FR17-07-GetCouponLowercase.png). **Issue:** đang tạo.
+**Evidence:** `DT-07.log` (EV-FR17-007). **Screenshot API:** [07-CouponUppercase](screenshots/BUG-FR17-07-CouponUppercase.png), [07-CreateCouponLowercase](screenshots/BUG-FR17-07-CreateCouponLowercase.png), [07-GetCouponLowercase](screenshots/BUG-FR17-07-GetCouponLowercase.png). **Issue:** [#53](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/53).
 
 ---
 
@@ -371,7 +371,7 @@ curl -s http://localhost:3000/api/coupons \
 | Test case | DT-32 — `type = "percent"`, `discount_value = 150` |
 | Build / môi trường | `f389502…`; API `POST /api/admin/coupons`; Node/Express + SQLite; DB test cách ly |
 | Severity / Priority | **High / High** — coupon có mức giảm không thể tồn tại; dữ liệu sai có thể làm FR-09 tính số tiền âm/không hợp lý |
-| Trạng thái / lặp lại | **Đã xác nhận qua API** bằng ảnh Postman; Issue đang tạo; 1/1 run API + ảnh chụp lần chạy lại |
+| Trạng thái / lặp lại | **Đã xác nhận qua API** bằng ảnh Postman; Issue [#54](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/54); 1/1 run API + ảnh chụp lần chạy lại |
 
 **Chuẩn bị:** DB test có 4 seed; đăng nhập admin; baseline `code=FR17-DT-32`, `min_order_amount=100000`, `expired_at=2099-12-31`, `max_uses_per_user=1`; chỉ đổi `type=percent`, `discount_value=150`.
 
@@ -395,7 +395,7 @@ curl -s http://localhost:3000/api/coupons \
 
 **Root cause:** `backend/server.js:457-481` chỉ `INSERT` giá trị, không kiểm tra `type === "percent"` và `discount_value <= 100`; `frontend-admin/src/App.jsx:659-675` không đặt `max`.
 
-**Evidence:** `DT-32.log` (EV-FR17-032). **Screenshot API:** [08-Discount150](screenshots/BUG-FR17-08-Discount150.png), [08-GetDiscount150](screenshots/BUG-FR17-08-GetDiscount150.png). **Issue:** đang tạo.
+**Evidence:** `DT-32.log` (EV-FR17-032). **Screenshot API:** [08-Discount150](screenshots/BUG-FR17-08-Discount150.png), [08-GetDiscount150](screenshots/BUG-FR17-08-GetDiscount150.png). **Issue:** [#54](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/54).
 
 ---
 
@@ -419,9 +419,9 @@ Các mục dưới đây **không cộng vào coverage**; chi tiết và nguồn
 ## Khoảng trống và câu hỏi mở
 
 - **UI không dùng làm bằng chứng:** 16 T-ID UI-reachable chỉ có hướng dẫn manual; kết luận FR-17 dựa trên API/Postman, không dùng ảnh UI.
-- **GitHub Issue:** 6 bug cũ đã publish [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47)…#[52](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52) kèm 34 ảnh Postman; 2 bug mới `BUG-FR17-07/08` đã có thêm 5 ảnh Postman và Issue đang được tạo (tổng 39 ảnh).
+- **GitHub Issue:** 8 bug đã publish [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47)…[#54](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/54) kèm 39 ảnh Postman; 2 bug mới `BUG-FR17-07/08` có Issue [#53](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/53)/[#54](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/54).
 - **Oracle chưa đầy đủ:** status/message validation không được đặc tả; hành vi xóa id không tồn tại vẫn UNRESOLVED. Case-sensitivity của `code` và upper bound percent đã được người kiểm thử xác nhận ngày 2026-10-21.
-- **Ảnh/Issue còn thiếu:** chỉ còn `DT-06` chưa có ảnh; `DT-07` và `DT-32` đã có ảnh Postman, 2 Issue mới đang được tạo.
+- **Ảnh còn thiếu:** chỉ còn `DT-06` chưa có ảnh; `DT-07` và `DT-32` đã có ảnh Postman và Issue tương ứng [#53](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/53)/[#54](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/54).
 - **ASSUMED:** code toàn khoảng trắng là invalid; `expired_at` phải đúng định dạng ngày; coupon quá khứ vẫn được tạo; `max_uses_per_user` là số nguyên.
 - **Ngoài phạm vi:** FR-09 (áp dụng coupon) và FR-12 (phân quyền admin) chỉ ghi quan sát, không tính coverage.
 - **Không có Update:** FR-17 chỉ yêu cầu Thêm/Xem/Xóa; không kiểm thử sửa coupon.
@@ -431,9 +431,9 @@ Các mục dưới đây **không cộng vào coverage**; chi tiết và nguồn
 ## Trạng thái Issue / screenshot
 
 - 8 bug `BUG-FR17-01`…`BUG-FR17-08`: **Đã xác nhận qua API**; 8 bug đều có ảnh Postman; không dùng ảnh UI.
-- GitHub Issue đã mở cho 6 bug cũ: [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47), [#48](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/48), [#49](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/49), [#50](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/50), [#51](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/51), [#52](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52); `BUG-FR17-07/08` tại [`BUG-FR17-07.md`](issues/BUG-FR17-07.md) và [`BUG-FR17-08.md`](issues/BUG-FR17-08.md), Issue đang tạo.
+- GitHub Issue đã mở cho 8 bug: [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47), [#48](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/48), [#49](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/49), [#50](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/50), [#51](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/51), [#52](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/52), [#53](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/53), [#54](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/54); draft tương ứng tại [`BUG-FR17-07.md`](issues/BUG-FR17-07.md) và [`BUG-FR17-08.md`](issues/BUG-FR17-08.md).
 - **39 ảnh API** tại `screenshots/` (19/20 FAIL có ảnh; `DT-06` chưa có ảnh).
-- `DT-07`/`DT-32` đã có ảnh; 2 Issue mới đang được tạo. UI không dùng làm bằng chứng cho FR-17.
+- `DT-07`/`DT-32` đã có ảnh và Issue [#53](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/53)/[#54](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/54). UI không dùng làm bằng chứng cho FR-17.
 
 ## AI Gap Analysis — chờ sinh viên
 
