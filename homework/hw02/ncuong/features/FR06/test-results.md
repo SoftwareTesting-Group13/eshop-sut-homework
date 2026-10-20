@@ -39,8 +39,8 @@ T08/T09 dùng lại ở hai nhóm BVA; tổng BVA là 6 nghĩa vụ điểm như
 
 ## Bug và giới hạn
 
-- **BUG-FR06-01 (Medium):** Thiếu tên danh mục ở ID 1, 2 và 5; [nháp Issue](issues/BUG-FR06-01.md), [ảnh ID 1](screenshots/T01-detail-ID1.png), [ID 2](screenshots/T02-detail-ID2.png), [ID 5](screenshots/T03-detail-ID5.png).
-- **BUG-FR06-02 (Medium):** Chấp nhận quantity không hợp lệ, đổi thành `1` hoặc lấy tiền tố số; [nháp Issue](issues/BUG-FR06-02.md), [ảnh `0` trước bấm](screenshots/T11-input-0.png), [alert](screenshots/T11-success-0.png), [giỏ](screenshots/T11-cart-1.png), các lớp còn lại trong evidence. Hai bug đã tái hiện trên UI; nháp Issue chờ sinh viên review trước khi publish theo `prompt.txt`.
+- **BUG-FR06-01 (Medium):** Thiếu tên danh mục ở ID 1, 2 và 5; [Issue #55](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/55) (3 ảnh UI), [bản lưu](issues/BUG-FR06-01.md), [ảnh ID 1](screenshots/T01-detail-ID1.png), [ID 2](screenshots/T02-detail-ID2.png), [ID 5](screenshots/T03-detail-ID5.png).
+- **BUG-FR06-02 (Medium):** Chấp nhận quantity không hợp lệ, đổi thành `1` hoặc lấy tiền tố số; [Issue #56](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/56) (7 ảnh UI nhúng), [bản lưu](issues/BUG-FR06-02.md), [ảnh `0` trước bấm](screenshots/T11-input-0.png), [alert](screenshots/T11-success-0.png), [giỏ](screenshots/T11-cart-1.png), các lớp còn lại trong evidence. Người dùng đã chốt hai bug; cả hai Issue đã publish.
 - **Ngoài phạm vi FR-06:** Navbar đè lên status bar Android nên không tap được mục Giỏ tại vị trí hiển thị; [ghi chú](../../supporting-materials/fr06-observations.md). Không cộng thành T-ID/bug FR-06.
 - **UNRESOLVED:** API spec không quy định status/body cho ID vắng/sai cú pháp; không có upper bound quantity. Đường dán chữ bằng UI thường và iOS/thiết bị vật lý chưa chạy; kết luận chính BUG-FR06-02 đã được xác nhận độc lập bởi rỗng/`0`/`-1`/`1.5` trên TextInput.
 

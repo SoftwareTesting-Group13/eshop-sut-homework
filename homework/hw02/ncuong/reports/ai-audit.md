@@ -16,12 +16,13 @@ I use AI tools for the following tasks,
 - Đọc rule FR-06 và API spec, thiết kế Domain/EP + BVA cho Product detail view trên mobile, chạy API cách ly, ghi giới hạn môi trường mobile và cập nhật báo cáo.
 - Sửa cấu hình API endpoint cho Expo mobile theo Android emulator/iOS Simulator/thiết bị thật và kiểm tra bản export Android.
 - Cài tạm Expo Go và dependency, chạy FR-06 trên Android emulator/backend cách ly, chụp screenshot, phân tích bug, cập nhật báo cáo và dọn tài nguyên do lượt test tạo.
+- Rà báo cáo FR-06, commit/push artifact và ảnh, tạo GitHub Issue #55/#56 kèm ảnh UI, cập nhật liên kết vào báo cáo.
 - Soạn AI Audit Report này.
 
 > **Phạm vi lập báo cáo (capture notes):**
 > - Bằng chứng khả dụng: phiên hội thoại hiện tại (prompt của người dùng + các artifact do agent tạo trong repo); không có file export transcript riêng. Hai screenshot (`features/FR02/screenshots/BUG-FR02-01.png`, `BUG-FR02-02.png`) và 39 ảnh Postman + 1 ảnh UI FR17 trong `features/FR17/screenshots/` do **người dùng** cung cấp. 24 screenshot FR-06 trong `features/FR06/screenshots/` do agent chụp trực tiếp từ Android emulator trong AI-016.
-> - Số interaction đã ghi: **16** (AI-001…AI-016; các prompt của người dùng; các tool call nội bộ không phải prompt của người dùng nên không liệt kê).
-> - Công cụ AI đã dùng (theo bằng chứng): OpenCode agent, model `DeepSeek V4.1 Flash Free` (provider `opencode`); Codex (OpenAI, GPT-6) cho AI-014…AI-016.
+> - Số interaction đã ghi: **17** (AI-001…AI-017; các prompt của người dùng; các tool call nội bộ không phải prompt của người dùng nên không liệt kê).
+> - Công cụ AI đã dùng (theo bằng chứng): OpenCode agent, model `DeepSeek V4.1 Flash Free` (provider `opencode`); Codex (OpenAI, GPT-6) cho AI-014…AI-017.
 > - Công cụ/phiên được nhắc tới nhưng không kiểm tra được: không.
 
 ---
@@ -555,6 +556,25 @@ Output là bộ artifact FR-06 tại `features/FR06/`: 16 T-ID đã chạy (3 PA
 
 ---
 
+## Interaction AI-017
+
+- **AI tool:** Codex (OpenAI, GPT-6).
+- **Date and time:** Time not available in source (client context date 2026-10-21, không có giờ gửi prompt).
+- **Source:** Prompt người dùng trong phiên này; commit `4e4f0ee3aac82aed2e526929bfa6dab41601e5c8`, GitHub Issue [#55](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/55) và [#56](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/56).
+- **Task:** Rà report FR-06, commit/push ảnh và artifact, tạo hai GitHub Issue sau khi người dùng chốt, cập nhật link vào báo cáo.
+
+### Your prompt
+
+```text
+OK chốt hết nhé, check report + commit + tạo issue cho 2 bug dùm t.
+```
+
+### The AI output
+
+Rà lại 16 ca FR-06 (3 PASS, 9 FAIL, 4 INCONCLUSIVE), 24 screenshot, link và nội dung hai bug. Commit/push `4e4f0ee3aac82aed2e526929bfa6dab41601e5c8` đúng các file FR-06, endpoint mobile, setup guide và report; không stage `prompt.txt` thay đổi có sẵn. Kiểm tra 10 ảnh UI nhúng trên GitHub đều HTTP 200; tạo [Issue #55 — BUG-FR06-01](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/55) và [Issue #56 — BUG-FR06-02](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/56). Cập nhật bản lưu Issue, test results, evidence, main report, README và AI Audit; commit/push tiếp các link và trạng thái Issue.
+
+---
+
 ## Optional audit table (theo mẫu `[AI-02]` — bổ sung, không thay thế 4 trường bắt buộc)
 
 | (1) Prompt + Công cụ | (2) Output AI | (3) Verdict | (4) Lý do | (5) Bản SV sửa |
@@ -575,5 +595,6 @@ Output là bộ artifact FR-06 tại `features/FR06/`: 16 T-ID đã chạy (3 PA
 | Codex · GPT-6 · Time not available in source · “Tiến hành thực hiện test domain testing cho FR-06 — Product detail view (Mobile)…” | 16 ca EP/BVA, 7 ca API INCONCLUSIVE, 9 ca BLOCKED mobile; artifact FR06, master report, README, AI-014 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 | Codex · GPT-6 · Time not available in source · “Ủa mobile dc build dưới dạng react native…” | Sửa endpoint Expo mobile trong `frontend-mobile/App.js`, cập nhật `setup_guide.md`, xác nhận Android bundle; AI-015 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 | Codex · GPT-6 · Time not available in source · “cài xong tự test, tự tìm và phân tích bug lại từ đầu nhé…” | Run FR-06 Android 16 ca (3 PASS, 9 FAIL, 4 INCONCLUSIVE), 2 bug, 24 screenshot, 2 draft Issue; cập nhật report/evidence/AI Audit; cleanup tài nguyên cài tạm; AI-016 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
+| Codex · GPT-6 · Time not available in source · “OK chốt hết nhé, check report + commit + tạo issue cho 2 bug dùm t.” | Commit/push artifact FR-06 + 24 ảnh; Issue #55/#56 có 10 ảnh UI nhúng; cập nhật report/evidence/README/AI Audit và commit link; AI-017 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 
 > Cột (3)–(5) do **sinh viên** tự đánh giá/điền; báo cáo không tự suy diễn verdict hay bản sửa của sinh viên.

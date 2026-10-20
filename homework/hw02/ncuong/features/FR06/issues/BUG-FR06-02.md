@@ -10,7 +10,7 @@
 | Test case | T10 rỗng; T11 `0` (BVA ngay dưới biên); T12 `-1`; T13 `1.5`; T14 `abc`; T16 `2abc` |
 | Build / môi trường | Commit `46a2d87e6e27b222dc857819be35a2268bf8bb45` + thay đổi local `API_URL`; Android emulator Pixel_10_Pro, Expo Go SDK 54; giỏ cục bộ, backend test cách ly |
 | Severity / Priority | Medium / High — giá trị invalid âm thầm biến thành số lượng mua thực, ảnh hưởng ý định mua hàng và tổng tiền |
-| Trạng thái / lặp lại | Đã xác nhận UI: 6 lớp input, T10/T11 còn lặp lại từ giỏ rỗng; người dùng đã chốt tạo Issue; nội dung sẵn sàng publish |
+| Trạng thái / lặp lại | Đã xác nhận UI: 6 lớp input, T10/T11 còn lặp lại từ giỏ rỗng; đã mở [Issue #56](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/56) kèm 7 ảnh UI |
 
 ## Chuẩn bị để tái hiện
 

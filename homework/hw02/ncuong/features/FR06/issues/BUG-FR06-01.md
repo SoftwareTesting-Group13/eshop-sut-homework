@@ -10,7 +10,7 @@ Chọn bất kỳ sản phẩm fixture ID 1, 2 hoặc 5 từ danh sách và mở
 | Test case | T01 (Điện thoại, ID 1), T02 (giá API dạng chuỗi, ID 2), T03 (Phụ kiện, ID 5) |
 | Build / môi trường | Commit `46a2d87e6e27b222dc857819be35a2268bf8bb45` + thay đổi local `API_URL` để kết nối; Android emulator Pixel_10_Pro, Expo Go SDK 54, backend/SQLite test cách ly tại `10.0.2.2:3000/api` |
 | Severity / Priority | Medium / Medium — người dùng không thấy một trong năm thông tin bắt buộc, ảnh hưởng mọi sản phẩm đã thử |
-| Trạng thái / lặp lại | Đã xác nhận UI; 3/3 sản phẩm khác nhau trong ba lần mở chi tiết độc lập; người dùng đã chốt tạo Issue; nội dung sẵn sàng publish |
+| Trạng thái / lặp lại | Đã xác nhận UI; 3/3 sản phẩm khác nhau trong ba lần mở chi tiết độc lập; đã mở [Issue #55](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/55) kèm 3 ảnh UI |
 
 ## Chuẩn bị để tái hiện
 
