@@ -40,9 +40,107 @@
 
 Các phân số coverage trên là số nghĩa vụ EP/BVA, không cộng vào 89 T-ID; lớp A1 của FR-10 dùng lại DT-01. FR-02 bổ sung 3 T-ID, 2 bug mới có ảnh UI/API tại [screenshots](../features/FR02/screenshots/) và [evidence](../features/FR02/evidence/FR02-evidence.md). FR-10 bổ sung 3 T-ID quyền truy cập, có [raw API log](../features/FR10/evidence/FR10-evidence.md) và [ảnh trình bày log](../features/FR10/screenshots/BUG-FR10-03-api-evidence.png) trong Issue #60. FR-06 có 24 screenshot tại [screenshots](../features/FR06/screenshots/) và [evidence log](../features/FR06/evidence/FR06-evidence.md); FR-17 có 39 ảnh Postman cho 19/20 ca FAIL và 1 ảnh UI minh họa hệ quả coupon 150% tại [screenshots](../features/FR17/screenshots/).
 
-## 3. Tổng hợp bug
+## 3. Domain Testing — phân lớp tương đương
 
-### 3.1. Bug đã xác nhận
+Phân miền theo đầu vào, trạng thái và tác nhân của từng FR; mỗi lớp có một ca đại diện. Kỳ vọng lấy từ [README của SUT](../../../../README.md) và [API specification](../../../../api_specification.md). Các giả định và trường hợp thiếu oracle được ghi rõ trong báo cáo feature; FAIL là kết quả chạy sai kỳ vọng, còn Quan sát là đã chạy nhưng chưa đủ cơ sở chấm. Bảng dưới tóm lược lớp, oracle và Actual; bảng lớp đầy đủ cùng EV-ID nằm trong các link ở §1.
+
+### 3.1. FR-02 — Login and account lockout
+
+Miền gồm `email`, `password`, trạng thái khóa và bộ đếm đăng nhập sai. Baseline là tài khoản test chưa khóa, mật khẩu `Passw0rd!`.
+
+| Lớp EP | Ca đại diện và oracle | Kết quả |
+| --- | --- | --- |
+| P1 | Email đã đăng ký + mật khẩu đúng → JWT; DT-01 | PASS |
+| P2 | Mật khẩu sai từ bộ đếm 0 → không token, bộ đếm tăng đúng 1; DT-02 | FAIL: tăng 2, BUG-FR02-01 |
+| P3–P5 | Email chưa đăng ký, mật khẩu rỗng, email rỗng/thiếu → không token; DT-03–DT-05 | 3 PASS |
+| P6 | Email sai định dạng chưa đăng ký gửi thẳng API; spec chỉ quy định validation ở UI; DT-06 | Quan sát |
+| P7–P8 | Tài khoản đang khóa + mật khẩu đúng/sai → từ chối, không tăng bộ đếm; DT-07–DT-08 | 2 PASS |
+| P9 | Một lần sai rồi đăng nhập đúng → reset bộ đếm về 0; BVA-07 | PASS; giả định từ chữ “liên tiếp” |
+| P10 | Tài khoản đăng ký với `not-an-email`; form login phải chặn email sai định dạng; DT-09 | FAIL: form gửi request và đăng nhập, BUG-FR02-03 |
+| P11 | Body có email nhưng thiếu key `password` → không token, nếu tăng bộ đếm thì chỉ tăng 1; DT-10 | FAIL ở bộ đếm +2, cùng BUG-FR02-01; không cấp token |
+| P12 | Account có password DB `NULL`, gửi `password:null` → không token; DT-11 | FAIL: cấp JWT, BUG-FR02-04 |
+
+**Coverage EP:** 12/12 lớp đã thiết kế và chạy; 7 PASS, 4 FAIL, 1 Quan sát. Riêng thời lượng khóa sai được phát hiện ở BVA, BUG-FR02-02.
+
+### 3.2. FR-10 — Order state machine
+
+Miền cốt lõi là trạng thái nguồn × trạng thái đích × tác nhân. Luồng tiến hợp lệ: `pending → confirmed → shipping → delivered`; `canceled` là nhánh kết thúc. Cả `delivered` và `canceled` không được rời đi. User chỉ hủy đơn của mình khi còn `pending` hoặc `confirmed`.
+
+| Lớp EP | Ca đại diện và oracle | Kết quả |
+| --- | --- | --- |
+| P1–P3 | Admin tiến tuần tự qua ba cạnh hợp lệ; DT-01–DT-03 | 3 PASS |
+| P4–P7 | Admin/user hủy ở `pending` hoặc `confirmed` → `canceled`; DT-04–DT-07 | 4 PASS |
+| P8–P12 | Bỏ qua, lùi hoặc đặt lại cùng trạng thái → lỗi và không đổi đơn; DT-08–DT-12 | 5 PASS |
+| P13–P14 | Rời `delivered`/`canceled` → lỗi và không đổi đơn; DT-13–DT-14 | 1 PASS, 1 FAIL: `canceled → delivered`, BUG-FR10-01 |
+| P15 | Đích `shipped` ngoài tập trạng thái → lỗi, không đổi; DT-15 | PASS |
+| P16–P18 | User hủy ở `shipping`/`delivered`/`canceled` → lỗi, không đổi; DT-16–DT-18 | 2 PASS, 1 FAIL: hủy `shipping`, BUG-FR10-02 |
+| P19–P20 | Đơn không tồn tại/không sở hữu; admin hủy từ `shipping` theo sơ đồ → lỗi, không đổi; DT-19–DT-20 | 2 PASS; oracle P20 là giả định cần nhóm xác nhận |
+
+**Coverage EP trạng thái:** 20/20 lớp đã chạy; 18 PASS, 2 FAIL. Miền quyền bổ sung AI-GAP-FR10-01 có 4 lớp: admin token được phép (DT-01, PASS); user token trên đơn của mình và của người khác phải bị chặn (DT-21/DT-22, 2 FAIL, BUG-FR10-03); không token bị chặn (DT-23, PASS). Miền quyền 4/4 đã chạy, 2 PASS, 2 FAIL; DT-01 dùng chung nên tổng feature là 23 T-ID.
+
+### 3.3. FR-17 — Coupon management
+
+Baseline tạo coupon qua API Admin: code mới, `type=percent`, `discount_value=10`, `min_order_amount=100000`, `expired_at=2099-12-31`, `max_uses_per_user=1`; mỗi nhóm chỉ đổi một trường. Với input không hợp lệ, oracle là từ chối và không tạo row.
+
+| Nhóm EP | Lớp/ca đại diện | Oracle chính | Kết quả |
+| --- | --- | --- | --- |
+| `code` | P1, P3–P7; DT-01, DT-03–DT-07 | Code bắt buộc, duy nhất; `save10` trùng `SAVE10` theo oracle người kiểm thử xác nhận | 2 PASS, 4 FAIL |
+| `type` | P2, P8–P9; DT-02, DT-08–DT-09 | Chỉ `percent`/`fixed`, trường bắt buộc | 1 PASS, 2 FAIL |
+| `discount_value` | P10–P14; DT-10–DT-14 | Số dương; 0, âm, thiếu, chữ bị từ chối | 1 PASS, 4 FAIL |
+| `expired_at` | P15–P18; DT-15–DT-18 | Trường bắt buộc, ngày hợp lệ; ngày quá khứ được chấm theo giả định | 1 PASS, 3 FAIL |
+| `min_order_amount` | P19–P23; DT-19–DT-23 | Số ≥ 0, trường bắt buộc | 2 PASS, 3 FAIL |
+| `max_uses_per_user` | P24–P28; DT-24–DT-28 | Số nguyên ≥ 1, trường bắt buộc | 2 PASS, 3 FAIL |
+| Xem/xóa | P29–P31; DT-29–DT-31 | Xem đúng danh sách, xóa ID tồn tại; ID không tồn tại thiếu oracle | 2 PASS, 1 Quan sát |
+| Percent > 100 | P32; DT-32 (`150`) | Từ chối giá trị >100% theo oracle người kiểm thử xác nhận | 1 FAIL, BUG-FR17-08 |
+
+**Coverage EP:** 32/32 lớp đã chạy; 11 PASS, 20 FAIL, 1 Quan sát. Các ca FAIL được nhóm thành 8 bug trong §5. Giới hạn 100% là kết luận nghiệp vụ được người kiểm thử xác nhận sau khi đọc spec; không diễn đạt như giới hạn có sẵn trong spec gốc.
+
+### 3.4. FR-06 — Product detail view (Mobile)
+
+Miền gồm sản phẩm được chọn, dữ liệu chi tiết và chuỗi quantity trong ô nhập. UI được chạy trên Android emulator; ID ngoài danh sách chỉ thử qua API vì không chọn được trên UI.
+
+| Lớp EP | Ca đại diện và oracle | Kết quả |
+| --- | --- | --- |
+| P01–P03 | ID 1, 2, 5 → đủ ảnh, tên, giá, mô tả và danh mục; T01–T03 | 3 FAIL: thiếu danh mục, BUG-FR06-01 |
+| P04–P07 | ID `0`, `6`, `abc`, `1.5`; T04–T07 | 4 Quan sát: API spec thiếu oracle status/body cho ID sai |
+| P08–P09 | Quantity `1`, `2` → giỏ nhận đúng số lượng và có phản hồi; T08–T09 | 2 PASS |
+| P10–P14 | Rỗng, `0`, `-1`, `1.5`, `abc` → không được thêm hàng; T10–T14 | 5 FAIL: giỏ vẫn nhận, BUG-FR06-02 |
+| P15 | Thêm cùng sản phẩm lần hai → giỏ tăng đúng; T15 | PASS |
+| P16 | Chuỗi hỗn hợp `2abc` → không được thêm hàng; T16 | FAIL, BUG-FR06-02 |
+
+**Coverage EP:** 16/16 lớp đã chạy; 3 PASS, 9 FAIL, 4 Quan sát. T13 dùng ADB để đưa `1.5` vào TextInput; đường nhập bằng bàn phím mềm/dán trên thiết bị thật chưa được xác nhận.
+
+## 4. Boundary Value Analysis — điểm biên
+
+BVA chỉ đặt trên ngưỡng hoặc chuyển trạng thái có oracle; các ca trùng EP dùng chung T-ID. Các cột kết quả đếm **nghĩa vụ điểm biên**, không cộng với 89 test case duy nhất ở §2.
+
+| Feature | Biên, phía invalid/valid và ca | Kỳ vọng tại điểm biên | Kết quả |
+| --- | --- | --- | --- |
+| FR-02 B1 | Lần sai thứ 2 / thứ 3 / thử thêm khi đã khóa; BVA-02–BVA-04 | 2 chưa khóa; 3 bắt đầu khóa; sau khóa bị chặn, bộ đếm giữ nguyên | 2 PASS, 1 FAIL: khóa sớm ở lần 2 |
+| FR-02 B2 | `t0+29s` / `t0+31s` / khóa đã hết hạn; BVA-05, BVA-06, BVA-08 | 29s còn khóa; sau 30s và khi hết hạn được đăng nhập | 2 PASS, 1 FAIL: khóa 180s |
+| FR-02 B3/B4 | Bộ đếm `0→1` khi sai / reset về 0 sau đúng; DT-02, BVA-07 | Tăng đúng 1 / reset về 0 | 1 PASS, 1 FAIL: tăng 2 |
+| FR-10 B1 | User hủy ở `pending`, `confirmed` / `shipping`, `delivered`, `canceled`; DT-06, DT-07, DT-16–DT-18 | Chỉ hai trạng thái đầu cho hủy | 4 PASS, 1 FAIL: hủy được ở `shipping` |
+| FR-10 B2 | Vào `delivered` từ `shipping` / rời `delivered` về `shipping`; DT-03, DT-13 | Cho vào, chặn rời | 2 PASS |
+| FR-10 B3 | Vào `canceled` từ `pending`/`confirmed` / rời `canceled` đến `delivered`; DT-04/DT-05, DT-14 | Cho vào, chặn rời | 1 PASS, 1 FAIL: rời được `canceled` |
+| FR-17 B1 | `min_order_amount = -1 / 0 / 1`; DT-21, DT-19, DT-20 | -1 bị từ chối; 0 và 1 được nhận | 2 PASS, 1 FAIL |
+| FR-17 B2 | `max_uses_per_user = 0 / 1 / 2`; DT-26, DT-24, DT-25 | 0 bị từ chối; 1 và 2 được nhận | 2 PASS, 1 FAIL |
+| FR-17 B3 | `discount_value = -1 / 0 / 1`; DT-11, DT-10, DT-14 | -1 và 0 bị từ chối; 1 được nhận | 1 PASS, 2 FAIL |
+| FR-06 B1 | Quantity `0 / 1 / 2`; T11, T08, T09 | 0 bị từ chối; 1 và 2 được nhận | 2 PASS, 1 FAIL |
+| FR-06 B2 | Quantity `1 / 1.5 / 2`; T08, T13, T09 | Số nguyên được nhận; 1.5 bị từ chối | 2 PASS, 1 FAIL |
+
+| Feature | Điểm biên thiết kế | Đã chạy | Đạt oracle | Không đạt | Ghi chú |
+| --- | ---: | ---: | ---: | ---: | --- |
+| FR-02 | 8 | 8 | 5 | 3 | B3 dùng lại DT-02 |
+| FR-10 | 9 | 9 | 7 | 2 | Các ca BVA dùng lại EP |
+| FR-17 | 9 | 9 | 5 | 4 | Chỉ có biên dưới từ spec gốc |
+| FR-06 | 6 | 6 | 4 | 2 | 6 điểm, 4 T-ID vì T08/T09 dùng hai lần |
+| **Tổng nghĩa vụ điểm** | **32** | **32** | **21** | **11** | **Không cộng vào 89 T-ID** |
+
+**Giới hạn BVA:** FR-17 có thêm giới hạn nghiệp vụ percent tối đa 100% do người kiểm thử xác nhận; DT-32 (`150`) là một lớp EP, chưa phải bộ điểm biên trên. Các điểm sát biên `99/100/101` chưa được thiết kế/chạy nên coverage BVA 9/9 chỉ tính ba biên dưới đã xác định trước. FR-06 không coi ID `0/6` là điểm biên vì `1…5` chỉ là dải fixture; keyboard thường cho T13 chưa được kiểm tra. Miền role của FR-10 là phân loại rời rạc nên nằm ở EP, không tạo BVA số học.
+
+## 5. Tổng hợp bug
+
+### 5.1. Bug đã xác nhận
 
 | Bug ID | Mô tả ngắn | Severity | Priority | T-ID liên quan | Trạng thái / đường xác nhận | Issue / chi tiết |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -64,7 +162,7 @@ Các phân số coverage trên là số nghĩa vụ EP/BVA, không cộng vào 8
 | BUG-FR06-01 | Chi tiết sản phẩm thiếu tên danh mục | Medium | Medium | T01–T03 | Đã xác nhận UI Android | [#55](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/55) · [Results](../features/FR06/test-results.md) |
 | BUG-FR06-02 | Quantity invalid vẫn thêm vào giỏ | Medium | High | T10–T14, T16 | Đã xác nhận UI Android | [#56](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/56) · [Results](../features/FR06/test-results.md) |
 
-### 3.2. Severity
+### 5.2. Severity
 
 | Feature | Critical | High | Medium | Low | Tổng |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -83,7 +181,7 @@ Các phân số coverage trên là số nghĩa vụ EP/BVA, không cộng vào 8
 
 Priority đánh giá riêng theo mức ảnh hưởng, tần suất và độ cấp bách; vì vậy BUG-FR02-02 và BUG-FR06-02 có priority High dù severity Medium.
 
-### 3.3. Tái hiện ngắn theo bug
+### 5.3. Tái hiện ngắn theo bug
 
 Các bước dưới đây dùng fixture và quyền truy cập của từng [feature report](#1-feature-đã-chọn). FR-17 là kết quả API/Postman; hướng dẫn UI trong feature report chưa được tính là đã chạy.
 
@@ -240,7 +338,7 @@ Các bước dưới đây dùng fixture và quyền truy cập của từng [fe
 
 ---
 
-## 4. Tài liệu liên quan
+## 6. Tài liệu liên quan
 
-- [AI Audit Report](ai-audit.md); [AI Critique](ai-critique.md) — sinh viên tự viết.
+- [AI Audit Report](ai-audit.md); [AI Critique](ai-critique.md) — sinh viên rà soát trước khi nộp.
 - Quan sát ngoài EP/BVA: [FR-02](../supporting-materials/fr02-observations.md), [FR-10](../supporting-materials/fr10-observations.md), [FR-17](../supporting-materials/fr17-observations.md), [FR-06](../supporting-materials/fr06-observations.md). Không cộng vào coverage.

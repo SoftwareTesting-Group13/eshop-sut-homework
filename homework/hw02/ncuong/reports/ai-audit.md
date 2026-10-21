@@ -21,13 +21,14 @@ I use AI tools for the following tasks,
 - Mở rộng AI Gap FR-02 thành ba ca Domain/EP thực chạy, tạo fixture qua FR-01, kiểm tra UI Firefox và API/DB cách ly, chụp ảnh, mở Issue #58/#59, cập nhật báo cáo và dọn môi trường test.
 - Chạy Domain/EP cho AI-GAP-FR10-01 trên miền quyền API Admin với DB cách ly, ghi evidence và bug report nháp, cập nhật số liệu FR-10/master report, dọn môi trường test.
 - Chụp ảnh bản trình bày raw API log cho BUG-FR10-03, gắn vào GitHub Issue #60, cập nhật báo cáo/evidence và dọn profile trình duyệt tạm.
+- Rà số liệu bốn FR, biên tập README cho mục nộp bài và bổ sung phần Domain Testing/BVA vào main report Markdown; kiểm tra link, phép cộng và ghi audit.
 - Soạn AI Audit Report này.
 
 > **Phạm vi lập báo cáo (capture notes):**
 > - Bằng chứng khả dụng: phiên hội thoại hiện tại (prompt của người dùng + các artifact do agent tạo trong repo); không có file export transcript riêng. Hai screenshot (`features/FR02/screenshots/BUG-FR02-01.png`, `BUG-FR02-02.png`) và 39 ảnh Postman + 1 ảnh UI FR17 trong `features/FR17/screenshots/` do **người dùng** cung cấp. 24 screenshot FR-06 trong `features/FR06/screenshots/` do agent chụp trực tiếp từ Android emulator trong AI-016.
-> - Số interaction đã ghi: **21** (AI-001…AI-021; các tool call nội bộ không phải prompt của người dùng nên không liệt kê). AI-021 ghi lượt chụp ảnh và tạo Issue #60.
+> - Số interaction đã ghi: **22** (AI-001…AI-022; các tool call nội bộ không phải prompt của người dùng nên không liệt kê). AI-022 ghi lượt chỉnh README và main report để chuẩn bị nộp bài.
 > - Giới hạn nguồn: giữa AI-018 và AI-019 có các trao đổi ngắn về AI Gap FR-02/FR-17/FR-10/FR-06. Trong nguồn còn giữ của lượt này chỉ có nguyên văn prompt, không có đủ nguyên văn output tương ứng; chưa chép các trao đổi đó thành bản ghi đầy đủ hoặc tự dựng lại output. Cần transcript export để hoàn chỉnh khoảng này.
-> - Công cụ AI đã dùng (theo bằng chứng): OpenCode agent, model `DeepSeek V4.1 Flash Free` (provider `opencode`); Codex (OpenAI, GPT-6) cho AI-014…AI-021.
+> - Công cụ AI đã dùng (theo bằng chứng): OpenCode agent, model `DeepSeek V4.1 Flash Free` (provider `opencode`); Codex (OpenAI, GPT-6) cho AI-014…AI-022.
 > - Công cụ/phiên được nhắc tới nhưng không kiểm tra được: không.
 
 ---
@@ -670,6 +671,30 @@ Screenshot case vừa rồi và tạo issue cho t luôn đi.
 
 ---
 
+## Interaction AI-022
+
+- **AI tool:** Codex (OpenAI, GPT-6).
+- **Date and time:** Time not available in source (client context date 2026-10-21, không có giờ gửi prompt).
+- **Source:** Prompt người dùng trong phiên này; `README.md`, `reports/main-report.md`, `reports/ai-audit.md`.
+- **Task:** Chỉnh README và main report Markdown để chuẩn bị nộp HW02; bổ sung tóm tắt Domain Testing/BVA và bảng tự đánh giá; ghi AI Audit.
+
+### Your prompt
+
+```text
+A README.md  containing the self-assessment table (below) and a testsummary report: number of features; number of test cases designed,
+executed, passed, failed, and not yet executed; number of bugs; anddemo videos.
+
+Main report Markdown + PDF, including the Domain Testing report andthe Boundary Value Analysis report
+
+Fix README và Main Report lại để t chuẩn bị nộp bài nha (ko cần xuất PDF, viết markdown xong t review lại rồi nộp nha, giữ nguyên các FR nhé). Nhớ AI Audit
+```
+
+### The AI output
+
+Đã chỉnh README với bảng tự đánh giá theo thang 100 điểm, test summary 4 feature/89 ca/17 bug và mục video demo ghi rõ chưa có link. Main report Markdown hiện có phần Domain Testing và BVA cho cả bốn FR, giữ nguyên bảng bug và link evidence. Đã cập nhật AI Audit; kiểm tra số liệu, link nội bộ và `git diff --check`. Không sửa file FR, không xuất PDF hay commit. Còn cần bạn điền điểm, link video và viết AI Critique trước khi nộp.
+
+---
+
 ## Optional audit table (theo mẫu `[AI-02]` — bổ sung, không thay thế 4 trường bắt buộc)
 
 | (1) Prompt + Công cụ | (2) Output AI | (3) Verdict | (4) Lý do | (5) Bản SV sửa |
@@ -695,5 +720,6 @@ Screenshot case vừa rồi và tạo issue cho t luôn đi.
 | Codex · GPT-6 · Time not available in source · “Bổ sung cho t thêm 2 bug ở phần AI-GAP-FR02-01…” | Chạy DT-09–DT-11, 2 bug mới; ảnh UI/API; Issue #58/#59; cập nhật FR02, master report, README và AI Audit; dọn test temp; AI-019 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 | Codex · GPT-6 · Time not available in source · “Triển khai Domain Testing cho AI-GAP-FR10-01” | Chạy DT-21–DT-23 trên DB cách ly; xác nhận BUG-FR10-03 qua API, tạo nháp Issue, cập nhật report/evidence/README/AI Audit; AI-020 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 | Codex · GPT-6 · Time not available in source · “Screenshot case vừa rồi và tạo issue cho t luôn đi.” | Chụp ảnh từ raw API log, gắn vào Issue #60, cập nhật report/evidence/README/AI Audit và dọn Firefox profile tạm; AI-021 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
+| Codex · GPT-6 · Time not available in source · “Fix README và Main Report lại để t chuẩn bị nộp bài nha … Nhớ AI Audit” | README có bảng tự đánh giá/test summary/video demo; main report có phần Domain/BVA của bốn FR; kiểm tra link và số liệu; thêm AI-022 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 
 > Cột (3)–(5) do **sinh viên** tự đánh giá/điền; báo cáo không tự suy diễn verdict hay bản sửa của sinh viên.

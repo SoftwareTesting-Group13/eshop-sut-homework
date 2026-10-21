@@ -44,4 +44,12 @@ T08/T09 dùng lại ở hai nhóm BVA; tổng BVA là 6 nghĩa vụ điểm như
 - **Ngoài phạm vi FR-06:** Navbar đè lên status bar Android nên không tap được mục Giỏ tại vị trí hiển thị; [ghi chú](../../supporting-materials/fr06-observations.md). Không cộng thành T-ID/bug FR-06.
 - **UNRESOLVED:** API spec không quy định status/body cho ID vắng/sai cú pháp; không có upper bound quantity. Đường dán chữ bằng UI thường và iOS/thiết bị vật lý chưa chạy; kết luận chính BUG-FR06-02 đã được xác nhận độc lập bởi rỗng/`0`/`-1`/`1.5` trên TextInput.
 
-AI Gap Analysis và AI Critique là phần sinh viên tự viết. Cleanup và hash DB làm việc được ghi ở evidence.
+## AI Gap Analysis
+
+Hai lỗi `BUG-FR06-01/02` đã có trong bộ test và không tính là AI gap. Điểm dưới đây là **giả thuyết nghiệp vụ cần làm rõ**, chưa được chấm thành bug mới hoặc cộng vào coverage FR-06.
+
+| Gap ID | AI output/source | Test case/bug tôi phát hiện thêm | Cách tôi phát hiện | Vì sao AI bỏ sót (nhận định của tôi) | Bổ sung/sửa chữa |
+| --- | --- | --- | --- | --- | --- |
+| AI-GAP-FR06-01 | `T09` và `T15` được chấm PASS vì giỏ có quantity `2` và nút thêm hàng có phản hồi; bộ ca chưa đối chiếu số trên nhãn “Giỏ” với tổng số món. | Tôi thấy sau khi thêm **2 chiếc cùng một sản phẩm**, giỏ hiển thị số lượng `2` nhưng nhãn trên cùng vẫn là “Giỏ (1)”. Nếu con số này nhằm báo tổng số món khách đang mua thì người dùng sẽ hiểu sai. Đây là điểm cần xác nhận ý nghĩa badge, **chưa kết luận bug**. | Xem ảnh [`T09-cart-2.png`](screenshots/T09-cart-2.png) và [`T15-cart-2.png`](screenshots/T15-cart-2.png): một dòng sản phẩm có quantity `2`, còn đầu trang hiện `(1)`. Trong `frontend-mobile/App.js`, nhãn lấy `cart.length`, tức đếm số dòng sản phẩm. README §8 yêu cầu link Giỏ hàng hiển thị badge số lượng sản phẩm trong giỏ nhưng không nói rõ đếm dòng hay tổng đơn vị. | AI chỉ kiểm tra thao tác thêm hàng và quantity trong giỏ theo FR-06/FR-07, chưa đặt câu hỏi từ góc nhìn người mua về ý nghĩa con số trên badge. | Làm rõ với nhóm badge phải đếm **tổng đơn vị** hay **số sản phẩm khác nhau**. Nếu là tổng đơn vị, thêm ca một sản phẩm quantity `2` và ca thêm hai lần quantity `1`; expected badge `2`, lưu ảnh rõ phần header rồi mới báo bug. |
+
+Cleanup và hash DB làm việc được ghi ở evidence. AI Critique là phần sinh viên tự viết.

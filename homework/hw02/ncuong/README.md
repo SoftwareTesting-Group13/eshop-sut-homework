@@ -1,45 +1,57 @@
-# HW02 — Dương Nhật Cường (23120223)
+# HW02 — Domain Testing và Boundary Value Analysis
 
-- Yêu cầu bài: [`../docs/2026.HW02.Domain Testing_En.md`](../docs/2026.HW02.Domain%20Testing_En.md)
-- Báo cáo chung: [`reports/main-report.md`](reports/main-report.md); [`reports/ai-audit.md`](reports/ai-audit.md) ghi các tương tác AI của các lượt FR02, FR10, FR17 và FR06; [`reports/ai-critique.md`](reports/ai-critique.md) dành cho sinh viên tự viết.
-- Bộ skill cá nhân: [`skills/`](skills/).
+**Sinh viên:** Dương Nhật Cường · **MSSV:** 23120223 · **Nhóm:** Group13
 
-## Thứ tự bắt đầu bài HW02
+**SUT:** EShop · **Đề bài:** [HW02 Domain Testing](../docs/2026.HW02.Domain%20Testing_En.md)
 
-Trước khi đọc bộ skill hoặc đi sâu vào source code, đọc **cả ba** tài liệu từ gốc repo theo thứ tự: [`README.md`](../../../README.md) (rule nghiệp vụ và Expected) → [`api_specification.md`](../../../api_specification.md) (hợp đồng API) → [`homework/hw02/docs/2026.HW02.Domain Testing_En.md`](../docs/2026.HW02.Domain%20Testing_En.md) (phạm vi, EP/BVA và đầu ra).
+## Hồ sơ báo cáo
 
-Sau đó quét cấu trúc repo để tìm ứng dụng, feature, interface và artifact hiện có. Lúc này mới đọc [`README` của bộ skill](skills/README.md), [`domain-testing-workflow/SKILL.md`](skills/domain-testing-workflow/SKILL.md), các skill chuyên biệt và source liên quan. Đọc API spec kể cả khi feature chạy qua UI/mobile; nếu nguồn mâu thuẫn, ghi điểm chưa rõ thay vì suy Expected từ code.
+- [Main report — Domain Testing và BVA](reports/main-report.md)
+- [AI Audit Report](reports/ai-audit.md) · [AI Critique](reports/ai-critique.md)
+- [Agent Skills](skills/)
 
-## Trạng thái feature
+| Nhóm | Feature | Phân tích miền | Phân tích biên | Test case | Kết quả |
+| --- | --- | --- | --- | --- | --- |
+| A | FR-02 — Login and account lockout | [Domain](features/FR02/domain-analysis.md) | [BVA](features/FR02/boundary-analysis.md) | [Catalog](features/FR02/test-cases.md) | [Results](features/FR02/test-results.md) |
+| B | FR-10 — Order state machine | [Domain](features/FR10/domain-analysis.md) | [BVA](features/FR10/boundary-analysis.md) | [Catalog](features/FR10/test-cases.md) | [Results](features/FR10/test-results.md) |
+| C | FR-17 — Coupon management (CRUD) | [Domain](features/FR17/domain-analysis.md) | [BVA](features/FR17/boundary-analysis.md) | [Catalog](features/FR17/test-cases.md) | [Results](features/FR17/test-results.md) |
+| D | FR-06 — Product detail view (Mobile) | [Domain](features/FR06/domain-analysis.md) | [BVA](features/FR06/boundary-analysis.md) | [Catalog](features/FR06/test-cases.md) | [Results](features/FR06/test-results.md) |
 
-| Nhóm | Feature | Trạng thái |
+## Test summary
+
+**Số feature: 4.** Đếm theo test case ID duy nhất; ca dùng cho cả Domain và BVA chỉ tính một lần. “Đã chạy” gồm PASS, FAIL và Quan sát/INCONCLUSIVE; ca Quan sát đã thực thi nhưng chưa đủ oracle để kết luận. “Chưa chạy” không gồm Quan sát.
+
+| Feature | Thiết kế | Đã chạy | PASS | FAIL | Quan sát | BLOCKED | Chưa chạy | Bug |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| FR-02 | 18 | 18 | 11 | 6 | 1 | 0 | 0 | 4 |
+| FR-10 | 23 | 23 | 19 | 4 | 0 | 0 | 0 | 3 |
+| FR-17 | 32 | 32 | 11 | 20 | 1 | 0 | 0 | 8 |
+| FR-06 | 16 | 16 | 3 | 9 | 4 | 0 | 0 | 2 |
+| **Tổng: 4 feature** | **89** | **89** | **44** | **39** | **6** | **0** | **0** | **17** |
+
+**Số bug: 17** (FR-02: 4; FR-10: 3; FR-17: 8; FR-06: 2). Mỗi bug có một GitHub Issue; ID, mức độ, ca liên quan và link Issue nằm trong [bảng bug của main report](reports/main-report.md#51-bug-đã-xác-nhận). Evidence và screenshot được dẫn từ kết quả của từng feature.
+
+## Bảng tự đánh giá
+
+Theo thang điểm trong đề HW02. Cột tự đánh giá để sinh viên điền sau khi rà bản nộp; chưa tự chấm điểm thay sinh viên.
+
+| STT | Tiêu chí | Điểm tối đa | Điểm tự đánh giá |
+| ---: | --- | ---: | ---: |
+| 1 | Feature A — FR-02 (Domain + Boundary) | 25 | — |
+| 2 | Feature B — FR-10 (Domain + Boundary) | 25 | — |
+| 3 | Feature C — FR-17 (Domain + Boundary) | 25 | — |
+| 4 | Feature D — FR-06 Mobile (Domain + Boundary) | 15 | — |
+| 5 | Agent Skills | 10 | — |
+| **Tổng** | | **100** | **—** |
+
+## Demo videos
+
+| Nội dung | Link YouTube | Trạng thái |
 | --- | --- | --- |
-| A | FR-02 — Login and account lockout | Đã kiểm thử — 18 ca (11 PASS, 6 FAIL, 1 Quan sát); 4 bug có evidence và Issue [#25](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/25)/[#26](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/26)/[#58](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/58)/[#59](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/59) |
-| B | FR-10 — Order state machine | 23 ca (19 PASS, 4 FAIL): 20 ca trạng thái cũ + 3 ca miền quyền AI-GAP-FR10-01; Issue [#33](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/33)/[#34](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/34) có ảnh UI, [#60](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/60) có ảnh log API |
-| C | FR-17 — Coupon management (CRUD) | Đã kiểm thử — 32 ca (11 PASS, 20 FAIL, 1 Quan sát); 8 bug đã xác nhận API, Issue #47…#54; 39 ảnh Postman + 1 ảnh UI bổ sung cho BUG-08, phủ 19/20 FAIL; bằng chứng chính là API |
-| D | FR-06 — Product detail view (Mobile) | Đã chạy 16 ca (3 PASS, 9 FAIL, 4 INCONCLUSIVE); 2 bug UI Android, 24 screenshot; Issue [#55](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/55)/[#56](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/56) kèm ảnh |
+| Demo sử dụng Agent Skills từ đầu đến cuối trên một feature | [Xem video](https://youtu.be/Grs61GfzvQA) | Đã bổ sung link |
 
-## Tổng hợp test summary hiện hành
+## Cần bổ sung trước khi nộp
 
-| Feature | Thiết kế | Đã chạy | PASS | FAIL | Quan sát | BLOCKED | Chưa chạy |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| FR-02 | 18 | 18 | 11 | 6 | 1 | 0 | 0 |
-| FR-10 | 23 | 23 | 19 | 4 | 0 | 0 | 0 |
-| FR-17 | 32 | 32 | 11 | 20 | 1 | 0 | 0 |
-| FR-06 | 16 | 16 | 3 | 9 | 4 | 0 | 0 |
-| **Tổng** | **89** | **89** | **44** | **39** | **6** | **0** | **0** |
-
-- Bug hiện hành: FR-02 có 4 bug, gồm 2 bug bổ sung [#58](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/58) xác nhận UI và [#59](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/59) xác nhận API 2/2; ảnh tại [`features/FR02/screenshots/`](features/FR02/screenshots/). FR-10 có 3 bug: #33/#34 có ảnh UI, [#60](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/60) có ảnh trình bày raw log API. FR-17 có 8 bug đã xác nhận API (3 High, 5 Medium); 39 ảnh Postman + 1 ảnh UI bổ sung tại [`features/FR17/screenshots/`](features/FR17/screenshots/) phủ 19/20 FAIL (chỉ còn `DT-06` chưa có ảnh API). 8 bug đã mở Issue [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47)…[#54](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/54); bằng chứng chính là Postman/API.
-- Feature có artifact hiện hành: 4/4; FR-06 đã chạy Android emulator/Expo Go, có [24 screenshot](features/FR06/screenshots/), [bản lưu Issue #55/#56](features/FR06/issues/) và [evidence](features/FR06/evidence/FR06-evidence.md). [Domain](features/FR06/domain-analysis.md), [BVA](features/FR06/boundary-analysis.md), [catalog](features/FR06/test-cases.md), [results](features/FR06/test-results.md).
-
-## Demo video
-
-- *(chưa có — bổ sung link YouTube demo skill khi nộp)*
-
-## Việc còn lại trước khi nộp
-
-1. ~~Mở Issue kèm ảnh cho 3 bug FR-10~~ — **đã xong** ([#33](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/33), [#34](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/34), [#60](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/60)); #60 dùng ảnh log API, không phải ảnh UI app.
-2. ~~Xác nhận 8 bug FR-17 qua Postman và mở GitHub Issue kèm ảnh~~ — **đã xong** (Issue #47…#54; bằng chứng chính là ảnh Postman; 1 ảnh UI bổ sung hệ quả `BUG-FR17-08`). 2 bug mới `BUG-FR17-07/08` đã publish tại [#53](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/53)/[#54](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/54); `DT-06` vẫn là ca FAIL duy nhất chưa có ảnh API.
-3. ~~Review 2 bug FR-06 và publish Issue kèm screenshot~~ — **đã xong** ([#55](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/55), [#56](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/56)). Bốn ca API-only T04–T07 còn INCONCLUSIVE do thiếu oracle; đường dán chữ T14/T16 trên bàn phím mềm và iOS/thiết bị thật chưa kiểm tra.
-4. ~~Publish 2 Issue mới FR02 kèm ảnh và cập nhật AI Audit cho lượt test này~~ — **đã xong** ([#58](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/58), [#59](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/59)). AI Gap Analysis FR02/FR10/FR17/FR06 đã có trong feature report; sinh viên rà soát và viết `reports/ai-critique.md`. Audit còn thiếu nguyên văn output của một số lượt trao đổi giữa AI-018 và AI-019 do không có transcript export.
-5. Xuất PDF (`main-report`, `ai-audit`, `ai-critique`), tạo `git-commit-log.txt`, đóng gói bài nộp theo yêu cầu HW02; bổ sung bảng tự đánh giá trong README.
+- Điền điểm tự đánh giá.
+- Sinh viên rà soát và chỉnh sửa [AI Critique](reports/ai-critique.md) trước khi nộp.
+- Sau khi duyệt Markdown, xuất các PDF theo yêu cầu đề bài.

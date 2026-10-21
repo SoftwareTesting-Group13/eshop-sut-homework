@@ -435,6 +435,10 @@ Các mục dưới đây **không cộng vào coverage**; chi tiết và nguồn
 - **39 ảnh API + 1 ảnh UI** tại `screenshots/` (19/20 FAIL có ảnh API; `DT-06` chưa có ảnh).
 - `DT-07`/`DT-32` đã có ảnh và Issue [#53](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/53)/[#54](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/54). Ảnh UI chỉ bổ sung hệ quả `BUG-FR17-08`, không thay bằng chứng API.
 
-## AI Gap Analysis — chờ sinh viên
+## AI Gap Analysis
 
-> Sinh viên tự review test case/bug và viết phần này; AI không tự đánh giá thay, không tự nhận là đã tìm ra gap hay không có gap.
+Đặc tả FR-17 chỉ ghi `discount_value` phải dương, **không quy định giới hạn trên**. Vì vậy 100% dưới đây là mốc người kiểm thử suy luận và đề xuất cho coupon loại `percent`, chưa phải biên được xác định trong đặc tả; không áp dụng mốc này cho loại `fixed`.
+
+| Gap ID | AI output/source | Test case/bug tôi phát hiện thêm | Cách tôi phát hiện | Vì sao AI bỏ sót (nhận định của tôi) | Bổ sung/sửa chữa |
+| --- | --- | --- | --- | --- | --- |
+| AI-GAP-FR17-01 | AI dựa vào FR-17, nơi chỉ yêu cầu `discount_value > 0`, nên các ca ban đầu tập trung vào giá trị 0 và âm; AI không nêu câu hỏi về mức giảm quá lớn của loại `percent`. | Tôi đề xuất rằng mức giảm theo phần trăm không nên vượt quá 100%. Ca `DT-32` cho thấy hệ thống vẫn tạo được coupon `percent` giảm 150%; hiện tượng này đã được báo cáo ở `BUG-FR17-08` (Issue #54) theo suy luận nghiệp vụ của tôi. | Tôi xem công thức tính giảm giá và nhận thấy mức trên 100% không có ý nghĩa với một khoản giảm theo phần trăm. Sau đó tôi thử `discount_value = 150`, kiểm tra coupon được lưu qua API và quan sát kết quả bất thường khi áp dụng mã. | Spec không nêu giới hạn trên, nên AI chỉ kiểm các ràng buộc được viết rõ. AI đã đặt câu hỏi liệu giá trị phần trăm quá lớn có hợp lý trong nghiệp vụ hay không chứ không kết luận. Trong khi với người, chỉ cần thấy giảm giá > 100% là không hợp lý. Dẫn đến việc AI phải suy luận và trả lại 1 bug hiển nhiên cho con người review lại mà không viết luôn report như yêu cầu. | Đề nghị bổ sung giới hạn biên cho percent, làm rõ nghiệp vụ cho `type = percent` và quy định cách xử lý giá trị vượt giới hạn; sau khi yêu cầu được chốt mới thiết kế ca kiểm tra sát biên tương ứng. |
