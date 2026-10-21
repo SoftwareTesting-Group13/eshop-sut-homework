@@ -60,3 +60,5 @@ Mẫu số là các điểm biên đủ điều kiện: B1 có 5 điểm, B2 có
 
 - **Mẫu số BVA:** 9 điểm đủ điều kiện. **Designed 9/9**, **Executed 9/9**, **Passed 7/9**; 2 điểm FAIL có evidence.
 - Các điểm B1/B2/B3 trùng `T-ID` với lớp EP (`DT-04…DT-07`, `DT-13`, `DT-14`, `DT-16`, `DT-17`) nên **không cộng thêm** case: một ca phục vụ cả EP và BVA chỉ tính một lần trong catalog. Chi tiết Actual và bug ở `test-results.md`.
+
+**AI-GAP-FR10-01:** Miền quyền `admin`/`user`/không token và quan hệ sở hữu là các lớp rời rạc, không có ngưỡng liền kề hay thứ tự để đặt điểm BVA. Ba ca DT-21–DT-23 là Domain/EP bổ sung; mẫu số BVA FR-10 vẫn là 9 điểm.

@@ -1,0 +1,86 @@
+{
+  "runId": "run-20261021-fr10-gap-access",
+  "testedCommit": "9955eba27e0e4bf45613649150bf3c2eb681a20f",
+  "interface": "Backend API on isolated SQLite copy",
+  "serverLog": "Database initialized and seeded (Phase 2).\nServer is running on http://localhost:3000\nConnected to database",
+  "cases": [
+    {
+      "id": "DT-21",
+      "actor": "user",
+      "orderId": 1,
+      "setup": {
+        "checkoutStatus": 200,
+        "owner": "test@eshop.com",
+        "initialStatus": "pending"
+      },
+      "request": {
+        "method": "PUT",
+        "path": "/api/admin/orders/1/status",
+        "body": {
+          "status": "confirmed"
+        },
+        "authorization": "Bearer [REDACTED]"
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "message": "Order status updated"
+        }
+      },
+      "afterStatus": "confirmed",
+      "checkedAt": "2026-10-21T03:00:51.512Z"
+    },
+    {
+      "id": "CONTROL-ADMIN",
+      "actor": "admin",
+      "orderId": 2,
+      "setup": {
+        "checkoutStatus": 200,
+        "owner": "test@eshop.com",
+        "initialStatus": "pending"
+      },
+      "request": {
+        "method": "PUT",
+        "path": "/api/admin/orders/2/status",
+        "body": {
+          "status": "confirmed"
+        },
+        "authorization": "Bearer [REDACTED]"
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "message": "Order status updated"
+        }
+      },
+      "afterStatus": "confirmed",
+      "checkedAt": "2026-10-21T03:00:51.518Z"
+    },
+    {
+      "id": "CONTROL-NO-TOKEN",
+      "actor": "unauthenticated",
+      "orderId": 3,
+      "setup": {
+        "checkoutStatus": 200,
+        "owner": "test@eshop.com",
+        "initialStatus": "pending"
+      },
+      "request": {
+        "method": "PUT",
+        "path": "/api/admin/orders/3/status",
+        "body": {
+          "status": "confirmed"
+        },
+        "authorization": "none"
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "error": "Unauthorized"
+        }
+      },
+      "afterStatus": "pending",
+      "checkedAt": "2026-10-21T03:00:51.521Z"
+    }
+  ]
+}

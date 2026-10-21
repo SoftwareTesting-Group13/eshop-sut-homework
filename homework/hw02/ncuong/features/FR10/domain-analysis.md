@@ -1,7 +1,7 @@
 # FR10 — Domain analysis (EP)
 
 **Feature / interface:** FR-10 Trạng thái Đơn hàng (Order State Machine). Kiểm thử qua **Backend API** — đổi trạng thái bởi admin `PUT /api/admin/orders/:id/status` (body `{"status": ...}`) và hủy đơn bởi user `PUT /api/orders/:id/cancel`; quan sát trạng thái bằng `GET /api/orders/:id`.  
-**Phạm vi:** các chuyển đổi trạng thái của đơn hàng và quyền tác nhân trên chuyển đổi hủy. Không kiểm thử FR-11/FR-13/FR-18 (chỉ dùng API admin để tạo fixture trạng thái), không kiểm thử layout/DOM.  
+**Phạm vi cốt lõi:** các chuyển đổi trạng thái của đơn hàng và quyền tác nhân trên chuyển đổi hủy. Không kiểm thử FR-11/FR-13 hoặc layout/DOM. AI-GAP-FR10-01 bổ sung miền quyền gọi API Admin theo FR-12/FR-18 ở cuối file, tách khỏi coverage trạng thái cốt lõi.
 **Nguồn yêu cầu:** `README.md` §5 FR-10; hợp đồng API `api_specification.md` §4.6 (`cancel`) và §6.2 (`/api/admin/orders/:id/status`); quy tắc tác nhân ở FR-18 (`README.md` §6) và FR-20 (`README.md` §7).
 
 ## Quy tắc dùng để chia miền
@@ -23,7 +23,7 @@
 - **A1 (mã lỗi):** đặc tả chỉ yêu cầu "trả về lỗi với thông báo phù hợp", **không** quy định HTTP status hay nội dung. Oracle dùng ở mức "phản hồi là lỗi (không 2xx) và trạng thái đơn không đổi"; SUT trả `400`/`404` — ghi nhận là hành vi quan sát, không phải Expected từ đặc tả.
 - **Q1 (biên `shipping → canceled` cho admin):** câu "chỉ Admin mới có thể thao tác" ở `shipping` có thể đọc là admin được hủy đơn đang giao. Sơ đồ FR-10 **không** có cung `shipping → canceled` và yêu cầu "phải tuân theo sơ đồ", nên lớp này chấm **phải bị từ chối** theo sơ đồ — đánh dấu `ASSUMED` (DT-20).
 - **Q2 (đơn không tồn tại/không sở hữu):** đặc tả không định nghĩa phản hồi cho đơn không tồn tại; ghi nhận `404` là hành vi quan sát (DT-19).
-- **Q3 (quyền gọi API admin):** việc user thường có thể gọi `PUT /api/admin/orders/:id/status` là rủi ro kiểm soát truy cập (FR-12), **không** phải miền dữ liệu của FR-10 ⇒ không tính EP/BVA (xem `../../supporting-materials/fr10-observations.md`).
+- **Q3 (quyền gọi API admin):** lớp quyền này thuộc FR-12/FR-18, không thuộc miền **chuyển trạng thái** FR-10. AI-GAP-FR10-01 đã được kiểm thử riêng ở phần bổ sung cuối file; không thay mẫu số EP/BVA cốt lõi bên dưới.
 
 ## Mô hình trạng thái (hỗ trợ, không phải kỹ thuật coverage riêng)
 
@@ -88,3 +88,16 @@ Mẫu số là các lớp EP đủ điều kiện: **P1–P20 = 20 lớp** (khô
 
 - **Mẫu số EP:** 20 lớp đủ điều kiện. **Designed 20/20**, **Executed 20/20**, **Passed 18/20**; `P14` và `P16` FAIL.
 - FAIL vẫn tính đã chạy. Chi tiết Actual, `EV-ID` và bug ở `test-results.md`.
+
+## Domain Testing bổ sung — AI-GAP-FR10-01 (quyền gọi API Admin)
+
+**Nguồn oracle:** README §FR-12 yêu cầu mọi `/api/admin/*` có JWT hợp lệ và `role='admin'`; FR-18 giao thao tác đổi trạng thái cho Admin; API spec §6.2 đặt endpoint dưới `/api/admin/`. Chọn chuyển đổi hợp lệ `pending → confirmed` để chỉ thay đổi actor/quyền, tránh lỗi state machine che kết quả phân quyền. Không giả định mã lỗi cụ thể: với actor không đủ quyền, Expected là phản hồi từ chối và đơn giữ `pending`.
+
+| Lớp quyền | Điều kiện và đại diện | Expected | Ca | Kết quả API |
+| --- | --- | --- | --- | --- |
+| A1 — admin hợp lệ | Admin token, đơn user ở `pending`, body `{"status":"confirmed"}` | Thành công, đơn → `confirmed` | DT-01 (đối chứng chạy lại) | PASS |
+| A2 — user, đơn của mình | User token, đơn của chính user ở `pending`, cùng body | Từ chối, đơn giữ `pending` | DT-21 | FAIL — BUG-FR10-03 |
+| A3 — user, đơn người khác | User token, đơn của tài khoản khác ở `pending`, cùng body | Từ chối, đơn giữ `pending` | DT-22 | FAIL — BUG-FR10-03 |
+| A4 — không token | Không có Authorization, đơn user ở `pending`, cùng body | Từ chối, đơn giữ `pending` | DT-23 | PASS |
+
+Quyền sở hữu tách A2/A3 vì API Admin quản lý đơn toàn hệ thống; A3 xác định tác động lên đơn của người khác. Token sai/hết hạn là nhánh xác thực kỹ thuật khác, chưa chọn làm nghĩa vụ cho gap này. Không có biên số/thứ tự có nghĩa giữa các role, nên BVA bổ sung **N/A**. Coverage EP bổ sung: **4/4 thiết kế, 4/4 chạy, 2/4 đạt oracle**; DT-01 là ca chung với bộ cũ, nên chỉ có **3 T-ID mới**. Coverage EP cốt lõi P1–P20 và BVA B1–B3 giữ nguyên.

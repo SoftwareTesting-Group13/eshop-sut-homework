@@ -927,16 +927,16 @@ HTTP 200 · pre-state status=shipping · post-state status=canceled
 
 | Chỉ số | Số lượng |
 | --- | ---: |
-| Ca thiết kế | 20 |
-| Ca đã chạy duy nhất trong run được chọn | 20 |
-| Tổng lần thử thực thi (EV-ID) | 25 (23 lần chạy API + 2 xác nhận UI) |
-| PASS | 18 |
-| FAIL | 2 |
+| Ca thiết kế | 23 (20 cốt lõi + 3 quyền bổ sung) |
+| Ca đã chạy duy nhất qua các run được chọn | 23 |
+| Tổng lần thử thực thi (EV-ID) | 32 (25 cũ + 7 API bổ sung, gồm rerun/đối chứng) |
+| PASS | 19 |
+| FAIL | 4 |
 | Quan sát / Inconclusive | 0 |
 | BLOCKED (nêu lý do) | 0 |
 
-- **Artifact thô:** `DT-01.log` … `DT-20.log`, `DT-14-rerun.log`, `DT-16-rerun.log`, `DT-19-variants.log`, `run-summary.json`, `session-header.log`, `run-fr10.mjs`; xác nhận UI: `../screenshots/*.png`.
-- **Đối chiếu catalog:** mỗi T-ID được tính đã chạy có ít nhất một EV-ID của run; DT-14 và DT-16 có thêm EV rerun (độ lặp lại 2/2). Không có EV-ID mồ côi.
+- **Artifact thô:** `DT-01.log` … `DT-20.log`, `DT-14-rerun.log`, `DT-16-rerun.log`, `DT-19-variants.log`, `run-summary.json`, `session-header.log`, `run-fr10.mjs`; xác nhận UI: `../screenshots/*.png`; quyền bổ sung: `ev-gap-access-run1.json`, `ev-gap-access-run2.json`, `ev-gap-access-cross.json`.
+- **Đối chiếu catalog:** 20 T-ID cũ có EV gốc; DT-21/22/23 có EV bổ sung. DT-01 được chạy lại làm đối chứng (EV-027/030), không tăng T-ID. DT-14/16 và DT-21 có rerun. Không có EV-ID mồ côi.
 
 ## Xác nhận cleanup sau khi hoàn tất
 
@@ -945,3 +945,44 @@ HTTP 200 · pre-state status=shipping · post-state status=canceled
 | Test services đã dừng | `kill 96828`; `lsof -nP -iTCP:3000 -sTCP:LISTEN` → `PORT3000_FREE` |
 | Database test/file tạm đã xóa | `rm -rf /private/.../T/opencode/fr10-sut`; đã kiểm tra không còn thư mục |
 | Database làm việc đã trở về trạng thái trước khi chạy | `backend/database.sqlite` SHA-256 vẫn `c63f00544180ba1fbb1427a9b9dd3f1784842698809972f33ce90482e7420ba6` (khớp trước/sau); `git status` không có thay đổi ngoài `features/FR10/` |
+
+## Run bổ sung — AI-GAP-FR10-01
+
+| Mục | Giá trị |
+| --- | --- |
+| Run ID | `run-20261021-fr10-gap-access` |
+| SUT | commit `9955eba27e0e4bf45613649150bf3c2eb681a20f`; backend Node v26.9.0/SQLite bản sao ở `/private/tmp/fr10-gap-run.Trf42g` |
+| Interface | `POST /api/login`, `POST /api/checkout`, `PUT /api/admin/orders/:id/status`, `GET /api/orders/:id` trên localhost:3000 |
+| Setup/reset | Mỗi lần chạy khởi động bản sao `server.js`/`database.js`, tạo DB test mới; từng ca checkout đơn riêng ở `pending`. Run 2 khởi tạo lại DB, nên cùng id là đơn độc lập. |
+| DB làm việc trước run | SHA-256 `c63f00544180ba1fbb1427a9b9dd3f1784842698809972f33ce90482e7420ba6` |
+
+**Lệnh chạy thật** (script test tạm gọi API bằng Node `fetch`; request/response không chứa JWT nguyên văn trong log):
+
+```zsh
+node /private/tmp/fr10-gap-run.Trf42g/run.cjs
+node /private/tmp/fr10-gap-run.Trf42g/run.cjs
+node /private/tmp/fr10-gap-run.Trf42g/run-cross.cjs
+```
+
+Mỗi lần chạy lấy token từ đăng nhập seed `admin@eshop.com` hoặc `test@eshop.com`, xác nhận role từ response, rồi tạo đơn mới. Lệnh trên là lệnh phiên test đã chạy; thư mục tạm được dọn sau khi lưu raw log. Để tái hiện thủ công lâu dài, xem [nháp bug](../issues/BUG-FR10-03.md).
+
+| EV-ID | T-ID / actor / đơn | Thời điểm UTC | Request thực tế | Before → HTTP/response → After | Verdict / raw log |
+| --- | --- | --- | --- | --- | --- |
+| EV-FR10-026 | DT-21 / user token / đơn của mình #1 | 2026-10-21 03:00:38 | `PUT /api/admin/orders/1/status`, `{"status":"confirmed"}` | `pending` → 200 `Order status updated` → `confirmed` | **FAIL** · [run 1](ev-gap-access-run1.json) |
+| EV-FR10-027 | DT-01 đối chứng / admin token / đơn user #2 | 2026-10-21 03:00:38 | `PUT /api/admin/orders/2/status`, cùng body | `pending` → 200 `Order status updated` → `confirmed` | PASS · [run 1](ev-gap-access-run1.json) |
+| EV-FR10-028 | DT-23 / không token / đơn user #3 | 2026-10-21 03:00:38 | `PUT /api/admin/orders/3/status`, cùng body | `pending` → 401 `Unauthorized` → `pending` | PASS · [run 1](ev-gap-access-run1.json) |
+| EV-FR10-029 | DT-21 / user token / đơn của mình #1, DB mới | 2026-10-21 03:00:51 | `PUT /api/admin/orders/1/status`, cùng body | `pending` → 200 `Order status updated` → `confirmed` | **FAIL** · [run 2](ev-gap-access-run2.json) |
+| EV-FR10-030 | DT-01 đối chứng / admin token / đơn user #2, DB mới | 2026-10-21 03:00:51 | `PUT /api/admin/orders/2/status`, cùng body | `pending` → 200 `Order status updated` → `confirmed` | PASS · [run 2](ev-gap-access-run2.json) |
+| EV-FR10-031 | DT-23 / không token / đơn user #3, DB mới | 2026-10-21 03:00:51 | `PUT /api/admin/orders/3/status`, cùng body | `pending` → 401 `Unauthorized` → `pending` | PASS · [run 2](ev-gap-access-run2.json) |
+| EV-FR10-032 | DT-22 / user token / đơn của admin #1, DB mới | 2026-10-21 03:01:30 | `PUT /api/admin/orders/1/status`, cùng body | `pending` → 200 `Order status updated` → `confirmed` | **FAIL** · [cross-owner](ev-gap-access-cross.json) |
+
+**Oracle trước chạy:** token user hoặc không token phải bị từ chối và trạng thái giữ `pending` theo FR-12; token admin được phép chuyển `pending→confirmed` theo FR-10 R1/FR-18. HTTP status cụ thể không quy định. Raw JSON lưu request, response, status trước/sau và timestamp cho từng EV; Bearer đã redacted. UI Admin chặn login role user, nên không có lần chạy UI cho đúng input user-token tới API Admin.
+
+### Cleanup run bổ sung
+
+| Mục | Kết quả |
+| --- | --- |
+| Dịch vụ test | Node child process dừng sau mỗi lần chạy; `lsof -nP -iTCP:3000 -sTCP:LISTEN` không còn listener. |
+| Thư mục tạm | Đã xóa đúng `/private/tmp/fr10-gap-run.Trf42g`; `test ! -e` thành công. |
+| DB làm việc | SHA-256 sau run vẫn `c63f00544180ba1fbb1427a9b9dd3f1784842698809972f33ce90482e7420ba6`, khớp trước run. |
+| Chỉnh sửa có sẵn khác | Giữ nguyên các file người dùng đã sửa tại FR-06, FR-17 và `prompt.txt`; các file đó không thuộc run này. |

@@ -19,13 +19,14 @@ I use AI tools for the following tasks,
 - Rà báo cáo FR-06, commit/push artifact và ảnh, tạo GitHub Issue #55/#56 kèm ảnh UI, cập nhật liên kết vào báo cáo.
 - Biên tập lại main report HW02 thành bản tổng hợp nhất quán cho bốn feature, giữ số liệu gốc và bổ sung tái hiện ngắn cho từng bug.
 - Mở rộng AI Gap FR-02 thành ba ca Domain/EP thực chạy, tạo fixture qua FR-01, kiểm tra UI Firefox và API/DB cách ly, chụp ảnh, mở Issue #58/#59, cập nhật báo cáo và dọn môi trường test.
+- Chạy Domain/EP cho AI-GAP-FR10-01 trên miền quyền API Admin với DB cách ly, ghi evidence và bug report nháp, cập nhật số liệu FR-10/master report, dọn môi trường test.
 - Soạn AI Audit Report này.
 
 > **Phạm vi lập báo cáo (capture notes):**
 > - Bằng chứng khả dụng: phiên hội thoại hiện tại (prompt của người dùng + các artifact do agent tạo trong repo); không có file export transcript riêng. Hai screenshot (`features/FR02/screenshots/BUG-FR02-01.png`, `BUG-FR02-02.png`) và 39 ảnh Postman + 1 ảnh UI FR17 trong `features/FR17/screenshots/` do **người dùng** cung cấp. 24 screenshot FR-06 trong `features/FR06/screenshots/` do agent chụp trực tiếp từ Android emulator trong AI-016.
-> - Số interaction đã ghi: **19** (AI-001…AI-019; các tool call nội bộ không phải prompt của người dùng nên không liệt kê). AI-019 ghi lượt triển khai FR-02 hiện tại.
+> - Số interaction đã ghi: **20** (AI-001…AI-020; các tool call nội bộ không phải prompt của người dùng nên không liệt kê). AI-020 ghi lượt triển khai AI-GAP-FR10-01.
 > - Giới hạn nguồn: giữa AI-018 và AI-019 có các trao đổi ngắn về AI Gap FR-02/FR-17/FR-10/FR-06. Trong nguồn còn giữ của lượt này chỉ có nguyên văn prompt, không có đủ nguyên văn output tương ứng; chưa chép các trao đổi đó thành bản ghi đầy đủ hoặc tự dựng lại output. Cần transcript export để hoàn chỉnh khoảng này.
-> - Công cụ AI đã dùng (theo bằng chứng): OpenCode agent, model `DeepSeek V4.1 Flash Free` (provider `opencode`); Codex (OpenAI, GPT-6) cho AI-014…AI-019.
+> - Công cụ AI đã dùng (theo bằng chứng): OpenCode agent, model `DeepSeek V4.1 Flash Free` (provider `opencode`); Codex (OpenAI, GPT-6) cho AI-014…AI-020.
 > - Công cụ/phiên được nhắc tới nhưng không kiểm tra được: không.
 
 ---
@@ -624,6 +625,29 @@ Viết lại report + clean. Làm xong nhớ AI Audit Log.
 
 ---
 
+## Interaction AI-020
+
+- **AI tool:** Codex (OpenAI, GPT-6).
+- **Date and time:** Time not available in source (client context date 2026-10-21, không có giờ gửi prompt).
+- **Source:** Prompt người dùng trong phiên này; `run-20261021-fr10-gap-access`, raw API log ở `features/FR10/evidence/ev-gap-access-*.json`.
+- **Task:** Triển khai Domain Testing cho miền quyền trong AI-GAP-FR10-01, chạy API/DB cách ly, cập nhật báo cáo và ghi bug nháp.
+
+### Your prompt
+
+```text
+[skills](homework/hw02/ncuong/skills/) Triển khai Domain Testing cho AI-GAP-FR10-01.
+```
+
+### The AI output
+
+Đã chạy Domain Testing cho **AI-GAP-FR10-01** trên DB cách ly. JWT user thường đổi được đơn `pending → confirmed` qua API Admin: **2/2 với đơn của mình, 1/1 với đơn người khác**. Đối chứng: JWT admin đổi được đơn; không token bị 401 và đơn giữ nguyên.
+
+Đã thêm DT-21–DT-23 và [BUG-FR10-03](/Users/cuong/Documents/Code/eshop-sut-homework/homework/hw02/ncuong/features/FR10/issues/BUG-FR10-03.md) vào [báo cáo FR-10](/Users/cuong/Documents/Code/eshop-sut-homework/homework/hw02/ncuong/features/FR10/test-results.md). Tổng FR-10 hiện là **23 ca: 19 PASS, 4 FAIL**; coverage EP/BVA trạng thái cũ giữ nguyên, miền quyền có coverage riêng. [Main report](/Users/cuong/Documents/Code/eshop-sut-homework/homework/hw02/ncuong/reports/main-report.md) và [AI Audit](/Users/cuong/Documents/Code/eshop-sut-homework/homework/hw02/ncuong/reports/ai-audit.md) đã cập nhật.
+
+BUG-FR10-03 mới có bằng chứng API và nháp Issue; **chưa có screenshot hay GitHub Issue**, đang chờ sinh viên review theo `prompt.txt`. Đã xóa thư mục test tạm, dừng dịch vụ test; checksum DB làm việc không đổi.
+
+---
+
 ## Optional audit table (theo mẫu `[AI-02]` — bổ sung, không thay thế 4 trường bắt buộc)
 
 | (1) Prompt + Công cụ | (2) Output AI | (3) Verdict | (4) Lý do | (5) Bản SV sửa |
@@ -647,5 +671,6 @@ Viết lại report + clean. Làm xong nhớ AI Audit Log.
 | Codex · GPT-6 · Time not available in source · “OK chốt hết nhé, check report + commit + tạo issue cho 2 bug dùm t.” | Commit/push artifact FR-06 + 24 ảnh; Issue #55/#56 có 10 ảnh UI nhúng; cập nhật report/evidence/README/AI Audit và commit link; AI-017 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 | Codex · GPT-6 · Time not available in source · “Clean lại dùm t cái main report đi m” | Biên tập lại `reports/main-report.md`: 83 case, 14 bug có 14 mục tái hiện ngắn, severity 5 High/9 Medium, link hợp lệ; AI-018 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 | Codex · GPT-6 · Time not available in source · “Bổ sung cho t thêm 2 bug ở phần AI-GAP-FR02-01…” | Chạy DT-09–DT-11, 2 bug mới; ảnh UI/API; Issue #58/#59; cập nhật FR02, master report, README và AI Audit; dọn test temp; AI-019 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
+| Codex · GPT-6 · Time not available in source · “Triển khai Domain Testing cho AI-GAP-FR10-01” | Chạy DT-21–DT-23 trên DB cách ly; xác nhận BUG-FR10-03 qua API, tạo nháp Issue, cập nhật report/evidence/README/AI Audit; AI-020 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 
 > Cột (3)–(5) do **sinh viên** tự đánh giá/điền; báo cáo không tự suy diễn verdict hay bản sửa của sinh viên.

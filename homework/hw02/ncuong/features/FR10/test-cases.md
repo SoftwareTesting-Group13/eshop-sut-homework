@@ -2,7 +2,7 @@
 
 Catalog dùng chung cho Domain/EP và BVA. Mỗi `T-ID` một dòng; ca phục vụ cả hai kỹ thuật vẫn chỉ có một dòng. Tiền tố `DT-` bắt nguồn từ EP/Domain; một số ca đồng thời là điểm biên BVA (ghi trong cột obligation). Trạng thái/`EV-ID` ở `test-results.md`.
 
-**Setup chung:** Backend test cách ly (bản sao `server.js`/`database.js` trong thư mục tạm, DB riêng). Mỗi ca tạo một **đơn mới** bằng `POST /api/checkout` với user `test@eshop.com`, rồi đưa về trạng thái nguồn bằng chính API admin `PUT /api/admin/orders/:id/status` (các chuyển đổi hợp lệ). Token admin: `admin@eshop.com`/`Admin123!`; token user: `test@eshop.com`/`Test1234!`. Oracle chung cho ca phải từ chối: **phản hồi lỗi (không 2xx) và trạng thái đơn giữ nguyên**.
+**Setup chung cho bộ cốt lõi:** Backend test cách ly (bản sao `server.js`/`database.js` trong thư mục tạm, DB riêng). Mỗi ca tạo một **đơn mới** bằng `POST /api/checkout` với user `test@eshop.com`, rồi đưa về trạng thái nguồn bằng chính API admin `PUT /api/admin/orders/:id/status` (các chuyển đổi hợp lệ). Token admin: `admin@eshop.com`/`Admin123!`; token user: `test@eshop.com`/`Test1234!`. Oracle chung cho ca phải từ chối: **phản hồi lỗi (không 2xx) và trạng thái đơn giữ nguyên**. DT-21–DT-23 có setup riêng bên dưới.
 
 | T-ID | Phương pháp & obligation IDs | Setup + input + thao tác | Expected / oracle |
 | --- | --- | --- | --- |
@@ -27,4 +27,16 @@ Catalog dùng chung cho Domain/EP và BVA. Mỗi `T-ID` một dòng; ca phục v
 | DT-19 | EP P19; R9 (ASSUMED) | (a) admin `PUT .../orders/999999/status` body `{"status":"confirmed"}`; (b) `PUT /api/orders/999999/cancel`; (c) admin hủy đơn của user khác | Lỗi; không đổi trạng thái đơn nào |
 | DT-20 | EP P20; R8 (ASSUMED — Q1) | order `shipping`; admin body `{"status":"canceled"}` | Lỗi (sơ đồ không có cung shipping→canceled); đơn giữ `shipping` |
 
-**Ca gộp:** DT-04/DT-05 gộp lớp EP `P4`/`P5` với điểm BVA B3 "tiến vào terminal canceled"; DT-06/DT-07 gộp `P6`/`P7` với B1 "ngay dưới / tại biên"; DT-03 gộp `P3` với B2 "tiến vào delivered"; DT-13 gộp `P13` với B2 "rời delivered"; DT-14 gộp `P14` với B3 "rời canceled"; DT-16/DT-17/DT-18 gộp `P16`/`P17`/`P18` với các điểm B1. **Tổng 20 T-ID duy nhất.**
+### Bổ sung AI-GAP-FR10-01 — miền quyền API Admin (FR-12/FR-18)
+
+Giữ `status=confirmed` và trạng thái nguồn `pending` ở cả ba ca để cô lập actor. DT-01 là đối chứng admin đã có và được chạy lại; không tạo thêm T-ID cho cùng input/Expected. Với actor không đủ quyền, oracle từ FR-12 là **từ chối (không 2xx) và trạng thái đơn không đổi**; mã lỗi cụ thể không được quy định.
+
+| T-ID | Lớp EP bổ sung | Setup + thao tác cụ thể | Expected / oracle | Đường UI thông thường |
+| --- | --- | --- | --- | --- |
+| DT-21 | A2 — user, đơn của mình | User `test@eshop.com` tạo đơn `pending` qua checkout; gọi `PUT /api/admin/orders/:id/status` bằng **JWT user**, body `{"status":"confirmed"}` | Từ chối; đơn giữ `pending` | API-only: Admin UI từ chối đăng nhập role user; web user không có nút xác nhận đơn. |
+| DT-22 | A3 — user, đơn người khác | Admin `admin@eshop.com` tạo đơn `pending`; user `test@eshop.com` gọi cùng endpoint/body với id đơn đó | Từ chối; đơn giữ `pending` | API-only vì cùng role gate/nút thiếu như DT-21. |
+| DT-23 | A4 — không token | User tạo đơn `pending`; gọi cùng endpoint/body **không có Authorization** | Từ chối; đơn giữ `pending` | API-only đối với thao tác đổi trạng thái; trình duyệt không trình bày control Admin cho khách chưa đăng nhập. |
+
+Ba ca này dùng cùng API/DB test cách ly; mỗi ca tạo đơn riêng và đọc `GET /api/orders/:id` trước/sau. Không dùng thao tác DevTools làm đường UI. Miền bổ sung có 4 lớp A1–A4 (A1 dùng DT-01), 3 T-ID mới. **Tổng catalog: 23 T-ID duy nhất**; bộ cốt lõi FR-10 bên trên vẫn 20 T-ID, EP P1–P20 và BVA B1–B3 giữ nguyên.
+
+**Ca gộp của bộ cốt lõi:** DT-04/DT-05 gộp lớp EP `P4`/`P5` với điểm BVA B3 "tiến vào terminal canceled"; DT-06/DT-07 gộp `P6`/`P7` với B1 "ngay dưới / tại biên"; DT-03 gộp `P3` với B2 "tiến vào delivered"; DT-13 gộp `P13` với B2 "rời delivered"; DT-14 gộp `P14` với B3 "rời canceled"; DT-16/DT-17/DT-18 gộp `P16`/`P17`/`P18` với các điểm B1. **Bộ cốt lõi có 20 T-ID duy nhất**; ba T-ID bổ sung ở trên được tính riêng vào tổng catalog 23.

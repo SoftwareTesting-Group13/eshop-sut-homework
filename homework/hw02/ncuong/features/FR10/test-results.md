@@ -1,11 +1,12 @@
 # FR10 — Test results
 
-- **Run được chọn để tổng hợp:** `run-20261020-fr10`
+- **Run được chọn để tổng hợp:** 20 ca cốt lõi từ `run-20261020-fr10`; ba ca Domain/EP quyền truy cập bổ sung từ `run-20261021-fr10-gap-access` (hai lần chạy DT-21 và đối chứng; một lần DT-22). Mỗi T-ID chỉ tính một lần.
 - **Build/commit SUT:** repo `eshop-sut-homework`, commit `09a950cf451428bd8f54542b3f11a0e4b6fdaa91`
 - **Môi trường:** macOS, Node v26.9.0, backend Node/Express + SQLite; instance cách ly trong thư mục tạm (`server.js`/`database.js` là bản sao, `database.sqlite` riêng, `node_modules` symlink). Thời điểm chạy: `2026-10-20 02:56 +0700` (= `2026-10-19T19:56Z`).
 - **Interface:** `PUT http://localhost:3000/api/admin/orders/:id/status` (admin), `PUT /api/orders/:id/cancel` (user), quan sát `GET /api/orders/:id`.
 - **Reset trạng thái:** mỗi ca tạo đơn mới qua `POST /api/checkout` (user `test@eshop.com`) rồi đưa về trạng thái nguồn bằng API admin (các chuyển đổi hợp lệ). Không dùng DB làm việc.
 - **Chi tiết thô:** `evidence/FR10-evidence.md` + các file `evidence/*.log`, `evidence/run-summary.json`; xác nhận UI: `screenshots/*.png` (EV-FR10-024/025).
+- **Run bổ sung:** commit `9955eba27e0e4bf45613649150bf3c2eb681a20f`, backend/SQLite bản sao cách ly; raw log `evidence/ev-gap-access-run1.json`, `ev-gap-access-run2.json`, `ev-gap-access-cross.json`. JWT không lưu trong log; chỉ ghi actor và sự hiện diện của Bearer.
 
 ## Kết quả theo run
 
@@ -31,17 +32,20 @@
 | DT-18 | run-20261020-fr10 | 400 `Cannot cancel this order.`; giữ `canceled` | PASS | EV-FR10-018 (`DT-18.log`) | — |
 | DT-19 | run-20261020-fr10 | 404 `Order not found` (đơn 999999); biến thể: user hủy đơn không sở hữu → 404, đơn giữ `pending` | PASS | EV-FR10-019, EV-FR10-023 (`DT-19.log`, `DT-19-variants.log`) | — |
 | DT-20 | run-20261020-fr10 | 400 `... from shipping to canceled`; giữ `shipping` | PASS | EV-FR10-020 (`DT-20.log`) | — |
+| DT-21 | run-20261021-fr10-gap-access | User token đổi **đơn của mình** `pending→confirmed`: HTTP 200; đơn đổi thành `confirmed` (lặp lại 2/2) | **FAIL** | EV-FR10-026/029 (`ev-gap-access-run1/2.json`) | BUG-FR10-03 |
+| DT-22 | run-20261021-fr10-gap-access | User token đổi **đơn người khác** `pending→confirmed`: HTTP 200; đơn đổi thành `confirmed` | **FAIL** | EV-FR10-032 (`ev-gap-access-cross.json`) | BUG-FR10-03 |
+| DT-23 | run-20261021-fr10-gap-access | Không token: HTTP 401 `Unauthorized`, đơn vẫn `pending` (2/2) | PASS | EV-FR10-028/031 (`ev-gap-access-run1/2.json`) | — |
 
 ## Tổng hợp case duy nhất
 
 | Phạm vi | Thiết kế | Đã chạy | PASS | FAIL | Quan sát | BLOCKED | Chưa chạy |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| **Tất cả T-ID duy nhất** | 20 | 20 | 18 | 2 | 0 | 0 | 0 |
+| **Tất cả T-ID duy nhất** | 23 | 23 | 19 | 4 | 0 | 0 | 0 |
 
-Đã chạy = PASS + FAIL + Quan sát = 18 + 2 = 20; Thiết kế = Đã chạy + BLOCKED + Chưa chạy = 20.
+Đã chạy = PASS + FAIL + Quan sát = 19 + 4 = 23; Thiết kế = Đã chạy + BLOCKED + Chưa chạy = 23.
 
-- **Theo kỹ thuật (có thể chồng lấp, không cộng thành tổng):** EP/Domain 20 lớp (`P1`–`P20`) trên 20 T-ID; BVA 9 điểm biên (B1 5, B2 2, B3 2) trên 8 T-ID (dùng lại ca EP).
-- Bằng chứng: `evidence/FR10-evidence.md` + `evidence/DT-*.log`, `evidence/run-summary.json`, `evidence/session-header.log`.
+- **Theo kỹ thuật:** bộ trạng thái cốt lõi EP/Domain 20 lớp (`P1`–`P20`) trên 20 T-ID, BVA 9 điểm biên trên 8 T-ID; miền quyền bổ sung A1–A4 gồm 4 lớp EP trên DT-01/DT-21–DT-23 (DT-01 dùng chung, không đếm lại). Không có BVA mới cho role rời rạc.
+- Bằng chứng: `evidence/FR10-evidence.md` + `evidence/DT-*.log`, `evidence/run-summary.json`, `evidence/session-header.log`, `evidence/ev-gap-access-*.json`.
 
 ---
 
@@ -53,12 +57,13 @@
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | BUG-FR10-01 | FR10 | Admin chuyển được đơn `canceled` sang `delivered` (xuyên trạng thái kết thúc) | Medium | Medium | DT-14 | Đã xác nhận qua UI; Issue [#33](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/33) (kèm screenshot) | `DT-14.log`, `DT-14-rerun.log`, `screenshots/BUG-FR10-01-*.png` |
 | BUG-FR10-02 | FR10 | User tự hủy được đơn đang `shipping` (được phép hủy sai trạng thái) | High | High | DT-16 | Đã xác nhận qua UI; Issue [#34](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/34) (kèm screenshot) | `DT-16.log`, `DT-16-rerun.log`, `screenshots/BUG-FR10-02-*.png` |
+| BUG-FR10-03 | FR10 / FR12 | User thường tự xác nhận được đơn của mình **và đơn người khác** qua API Admin | High | High | DT-21, DT-22 | Đã tái hiện API; chờ sinh viên review, screenshot/Issue chưa có | `ev-gap-access-run1.json`, `ev-gap-access-run2.json`, `ev-gap-access-cross.json`; [nháp Issue](issues/BUG-FR10-03.md) |
 
 ### Thống kê severity
 
 | Critical | High | Medium | Low | Tổng |
 | ---: | ---: | ---: | ---: | ---: |
-| 0 | 1 | 1 | 0 | **2** |
+| 0 | 2 | 1 | 0 | **3** |
 
 ### Tiêu chí phân loại
 
@@ -150,34 +155,52 @@ curl -s http://localhost:3000/api/orders/16
 
 ---
 
+#### BUG-FR10-03 — User thường gọi API Admin để xác nhận đơn
+
+| Trường | Giá trị |
+| --- | --- |
+| Feature / rule | FR-12 mọi `/api/admin/*` phải có JWT hợp lệ và role admin; FR-18 chỉ Admin quản lý trạng thái; FR-10 R1 |
+| Test case | DT-21 (đơn của mình), DT-22 (đơn người khác); DT-01 và DT-23 là đối chứng |
+| Build / run | `9955eba27e0e4bf45613649150bf3c2eb681a20f`; `run-20261021-fr10-gap-access`; backend/SQLite cách ly |
+| Severity / Priority | High / High — user thường đã đổi được cả đơn thuộc tài khoản khác khi biết ID |
+| Evidence | [run 1](evidence/ev-gap-access-run1.json), [run 2](evidence/ev-gap-access-run2.json), [đơn người khác](evidence/ev-gap-access-cross.json), [nháp Issue](issues/BUG-FR10-03.md) |
+| Trạng thái | API tái hiện 2/2 với đơn của mình và 1/1 với đơn người khác; chờ sinh viên review, screenshot/Issue chưa có |
+
+**Tiền điều kiện:** đăng nhập `test@eshop.com` để lấy JWT role `user`; có đơn `pending` được tạo qua checkout. DT-22 dùng đơn khác thuộc `admin@eshop.com`. Trên DB test mới, mỗi ca có đơn riêng.
+
+**Đường API đã chạy:** gửi `PUT /api/admin/orders/:id/status` với `Authorization: Bearer <JWT user>` và body `{"status":"confirmed"}`; đọc `GET /api/orders/:id` trước/sau. Expected: từ chối vì token không có `role='admin'`, đơn vẫn `pending`. Actual: HTTP 200 `Order status updated`; đơn thành `confirmed` ở cả đơn của mình lẫn đơn người khác. Không có token thì HTTP 401 và trạng thái giữ nguyên; token admin thành công như đối chứng.
+
+**Đường UI:** Admin UI chặn đăng nhập tài khoản role user ở `frontend-admin/src/App.jsx:65`; web user không có nút xác nhận đơn. Vì vậy cùng input user-token tới API Admin chỉ đi được qua request trực tiếp; **chưa có xác nhận UI**. Root cause từ source: route `backend/server.js:525` chỉ dùng `authenticateToken`, không kiểm tra role sau xác thực.
+
+---
+
 ## Coverage & gaps
 
 | Tiêu chí coverage | Nghĩa vụ đủ điều kiện | Thiết kế | Đã chạy | PASS | Chưa phủ |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Lớp tương đương EP (P1–P20) | 20 | 20 | 20 | 18 | 0 (P14, P16 FAIL) |
 | Điểm biên BVA (B1–B3) | 9 | 9 | 9 | 7 | 0 (2 điểm FAIL) |
+| EP bổ sung quyền API Admin (A1–A4, FR-12/FR-18) | 4 | 4 | 4 | 2 | 0 (A2, A3 FAIL) |
 
-- **Coverage theo nghĩa vụ:** EP designed 20/20, executed 20/20, passed 18/20. BVA designed 9/9, executed 9/9, passed 7/9. Gộp T-ID: 20 thiết kế / 20 đã chạy / 18 PASS / 2 FAIL.
+- **Coverage theo nghĩa vụ:** EP trạng thái designed 20/20, executed 20/20, passed 18/20. BVA designed 9/9, executed 9/9, passed 7/9. EP quyền bổ sung designed 4/4, executed 4/4, passed 2/4; A1 dùng chung DT-01 nên không cộng trùng. Gộp T-ID: 23 thiết kế / 23 đã chạy / 19 PASS / 4 FAIL.
 - **Mục tiêu đề xuất (chưa được duyệt):** thiết kế và thực thi 100% nghĩa vụ đủ điều kiện; đạt oracle theo từng nghĩa vụ. **Goal status:** designed `GOAL_MET`, executed `GOAL_MET`, passed `GOAL_NOT_MET` (EP 18/20, BVA 7/9 do 2 nghĩa vụ FAIL). Coverage đạt không đồng nghĩa feature không còn lỗi.
-- **Chưa bao phủ:** không có nghĩa vụ EP/BVA nào bị bỏ trống. Điểm chưa rõ: Q1 — `shipping→canceled` cho admin (DT-20 chấm theo sơ đồ, `ASSUMED`); Q2 — phản hồi đơn không tồn tại/không sở hữu (DT-19 ghi nhận hành vi `404`); Q3 — quyền gọi API admin (quan sát ngoài EP/BVA).
+- **Chưa bao phủ:** không có nghĩa vụ EP/BVA đã chọn nào bị bỏ trống. Điểm chưa rõ còn lại: Q1 — `shipping→canceled` cho admin (DT-20 chấm theo sơ đồ, `ASSUMED`); Q2 — phản hồi đơn không tồn tại/không sở hữu (DT-19 ghi nhận hành vi `404`). Q3 đã chạy trong miền quyền bổ sung.
 - **Infeasible/khó:** không có; mọi điểm biên đều tạo được bằng API hợp lệ.
 - **Ca BLOCKED:** không có.
 
 ## Ngoài phạm vi EP/BVA (không tính coverage)
 
-- API đổi trạng thái admin `PUT /api/admin/orders/:id/status` **không kiểm tra `role = 'admin'`** (chỉ `authenticateToken`): user thường vẫn gọi được. Đây là rủi ro FR-12/truy cập, không phải miền dữ liệu FR-10. Ghi tại `../../supporting-materials/fr10-observations.md`.
+- Quan sát source về thiếu kiểm tra role ở API Admin đã được chạy xác nhận dưới AI-GAP-FR10-01 và chuyển thành DT-21/DT-22, BUG-FR10-03. Đây là miền quyền FR-12/FR-18 bổ sung, **không** cộng vào EP/BVA trạng thái FR-10 cốt lõi. Ghi nguồn tại `../../supporting-materials/fr10-observations.md`.
 - Nút "Hủy đơn" trên UI web và nút "Đánh dấu Đã giao" trên Admin UI đã được xác nhận bằng UI (screenshot) và là đường tái hiện của 2 bug; không phải lớp dữ liệu mới nên không cộng coverage.
 
 ## AI Gap Analysis
 
-> Phần này do **người kiểm thử tự rà soát và viết** (không điền thay). Trạng thái: `Chờ người kiểm thử rà soát và viết`.
-
 | Gap ID | AI output/source | Test case/bug tôi phát hiện thêm | Cách tôi phát hiện | Vì sao AI bỏ sót (nhận định của tôi) | Bổ sung/sửa chữa |
 | --- | --- | --- | --- | --- | --- |
-|  |  |  |  |  |  |
+| AI-GAP-FR10-01 | Trong `test-cases.md`, các ca gọi `PUT /api/admin/orders/:id/status` đều dùng token admin. AI có ghi rủi ro thiếu kiểm tra quyền ở `fr10-observations.md` nhưng chưa thiết kế và chạy ca với token user thường. | Tôi thấy cần thử cho user thường gọi API này để tự chuyển đơn `pending → confirmed`. Theo nghiệp vụ, khách hàng không thể tự xác nhận đơn thay admin; nếu API chấp nhận thì đây là lỗi phân quyền. | Đối chiếu sơ đồ FR-10 và FR-18: bước xác nhận/giao hàng do Admin thực hiện. FR-12 còn yêu cầu mọi API `/api/admin/*` kiểm tra `role = 'admin'`. Trong `backend/server.js`, route đổi trạng thái chỉ dùng `authenticateToken`, không kiểm tra role. | AI tập trung vào cặp trạng thái trước/sau và luôn dùng đúng tài khoản admin cho ca hợp lệ. AI đã nhận ra rủi ro khi đọc source nhưng xếp ra ngoài phạm vi EP/BVA, nên chưa kiểm chứng quyền thao tác trong luồng thực tế. | Đã chạy DT-21 (đơn mình, 2/2), DT-22 (đơn người khác, 1/1), DT-23 (không token, 2/2), đối chứng admin DT-01; phát hiện **BUG-FR10-03**. Có raw log và [nháp Issue](issues/BUG-FR10-03.md); chờ sinh viên review/screenshot rồi publish. Coverage EP/BVA trạng thái FR-10 giữ nguyên; miền quyền có coverage riêng A1–A4. |
 
 ## Việc còn lại
 
 1. ~~Người kiểm thử xác nhận 2 bug và mở GitHub Issue~~ — **đã xong**: xác nhận qua UI + screenshot; Issue [#33](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/33), [#34](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/34).
-2. Chốt Q1 (`shipping→canceled` cho admin) và Q3 (kiểm soát truy cập API admin) với nhóm giảng viên/nhóm.
-3. Viết AI Gap Analysis cho FR10 và AI Critique (phần của sinh viên).
+2. Chốt Q1 (`shipping→canceled` cho admin) với nhóm giảng viên/nhóm; Q3 đã xác nhận là BUG-FR10-03 bằng API.
+3. Sinh viên review BUG-FR10-03, chụp screenshot evidence API và mở GitHub Issue theo yêu cầu HW02; viết AI Critique (phần của sinh viên).

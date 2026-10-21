@@ -4,10 +4,10 @@
 
 ## OBS-FR10-01 — API đổi trạng thái admin không kiểm tra quyền admin
 
-- **Nguồn quan sát (đọc source, chưa chạy thử với token user):** `backend/server.js:525` — `PUT /api/admin/orders/:id/status` chỉ dùng middleware `authenticateToken` (xác thực token), **không** kiểm tra `req.user.role === 'admin'`. Các API admin khác cũng tương tự.
+- **Nguồn quan sát ban đầu:** `backend/server.js:525` — `PUT /api/admin/orders/:id/status` chỉ dùng middleware `authenticateToken` (xác thực token), **không** kiểm tra `req.user.role === 'admin'`. Các API admin khác có thể có cùng vấn đề nhưng chưa được kiểm thử trong AI-GAP-FR10-01.
 - **Liên quan đặc tả:** FR-12 (`README.md` §6) — "Tất cả các API Admin (`/api/admin/*`) … đều phải yêu cầu token JWT hợp lệ và `role = 'admin'`".
-- **Vì sao ngoài EP/BVA:** đây là kiểm soát truy cập (FR-12), không phải miền dữ liệu/trạng thái của FR-10. Trong bộ ca FR-10, mọi thao tác admin đều dùng token admin; quyền truy cập không phải biến của state machine.
-- **Trạng thái:** Quan sát từ source; **chưa** chạy xác nhận (nếu muốn báo cáo cần chạy request bằng token user và đối chiếu; có thể thuộc phạm vi FR-12). Chờ người kiểm thử quyết định.
+- **Phạm vi kỹ thuật:** quyền truy cập thuộc FR-12/FR-18, không làm thay đổi mẫu số EP/BVA trạng thái FR-10 cốt lõi. Người kiểm thử yêu cầu kiểm tra riêng miền quyền tại AI-GAP-FR10-01.
+- **Trạng thái:** Đã chạy API cách ly: user token đổi được đơn của mình 2/2 và đơn người khác 1/1; không token bị 401, admin token thành công. Xem `features/FR10/test-results.md` DT-21–DT-23, `evidence/ev-gap-access-*.json` và nháp BUG-FR10-03. Chờ sinh viên review/screenshot/Issue; không tuyên bố đã chạy UI.
 
 ## OBS-FR10-02 — Nút hủy/đánh dấu giao trên UI tương ứng với 2 bug
 
