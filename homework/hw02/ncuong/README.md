@@ -9,6 +9,7 @@
 - [Main report — Domain Testing và BVA](reports/main-report.md)
 - [AI Audit Report](reports/ai-audit.md) · [AI Critique](reports/ai-critique.md)
 - [Agent Skills](skills/)
+- [Git commit log](git-commit-log.txt)
 
 | Nhóm | Feature | Phân tích miền | Phân tích biên | Test case | Kết quả |
 | --- | --- | --- | --- | --- | --- |

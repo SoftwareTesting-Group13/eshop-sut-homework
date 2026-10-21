@@ -1,0 +1,34 @@
+HW02 — Git commit log (Dương Nhật Cường, 23120223)
+Branch: ncuong
+History snapshot through: 43c626cdbb89ad89b709283217208661af536cba
+Scope: commits affecting homework/hw02/ncuong
+Format: short hash | author date/time | author | subject
+Note: the packaging commit that adds this log is excluded to avoid a self-reference.
+
+43c626c | 2026-10-21T11:39:49+07:00 | cuogne | docs(hw02): finalize testing reports critique and demo link
+c6fb1b9 | 2026-10-21T10:11:15+07:00 | cuogne | docs(FR10): link authorization bug issue and audit screenshot
+1ae0488 | 2026-10-21T10:09:11+07:00 | cuogne | test(FR10): attach API evidence screenshot for access bug
+67499ef | 2026-10-21T10:06:59+07:00 | cuogne | test(FR10): exercise admin order authorization gap
+9955eba | 2026-10-21T09:57:03+07:00 | cuogne | docs(FR02): link verified gap issues and audit run
+933d77e | 2026-10-21T09:52:28+07:00 | cuogne | test(FR02): verify AI gap cases and add evidence for two defects
+2010a50 | 2026-10-21T04:47:25+07:00 | cuogne | docs(hw02): streamline master testing report
+956216f | 2026-10-21T04:07:13+07:00 | cuogne | docs(fr06): link published bug issues and audit
+4e4f0ee | 2026-10-21T04:05:24+07:00 | cuogne | test(fr06): execute mobile domain cases with screenshots
+46a2d87 | 2026-10-21T02:46:18+07:00 | cuogne | feat(docs): update skills
+541796a | 2026-10-21T02:36:02+07:00 | cuogne | docs(FR17): log applied coupon UI evidence in AI audit
+2a8c77c | 2026-10-21T02:35:13+07:00 | cuogne | docs(FR17): add applied coupon 150% UI evidence for BUG-FR17-08
+7ac343d | 2026-10-21T02:25:31+07:00 | cuogne | docs(FR17): publish issues 53-54 and finalize screenshot coverage
+80abf1a | 2026-10-21T02:23:10+07:00 | cuogne | docs(FR17): add Postman evidence for BUG-FR17-07/08
+c08a966 | 2026-10-21T01:28:12+07:00 | cuogne | docs(FR17): record published issue links in AI audit
+0b32a5a | 2026-10-21T01:27:15+07:00 | cuogne | docs(FR17): publish coupon bug issues with Postman evidence
+4dae771 | 2026-10-21T01:19:46+07:00 | cuogne | test(FR17): add coupon testing artifacts and Postman evidence
+f389502 | 2026-10-20T21:52:47+07:00 | cuogne | feat(docs): update skills and templates
+e61f740 | 2026-10-20T12:08:03+07:00 | cuogne | docs(FR10): avoid auto-linking order numbers in bug issues
+41df52b | 2026-10-20T12:03:56+07:00 | cuogne | docs(FR10): record UI-confirmed bugs and link issues #33 #34
+f49ac90 | 2026-10-20T12:00:25+07:00 | cuogne | test(FR10): add UI screenshots confirming BUG-FR10-01/02
+09a950c | 2026-10-20T01:49:38+07:00 | cuogne | feat: add github issue template
+2787a05 | 2026-10-20T01:48:21+07:00 | cuogne | docs(FR02): recreate bug issues #25 #26 from test-findings-report-writer template
+1c8e5b0 | 2026-10-20T01:31:20+07:00 | cuogne | docs(FR02): record confirmed bugs with screenshots and GitHub issues #23 #24
+c6d9622 | 2026-10-20T01:29:08+07:00 | cuogne | test(FR02): add bug confirmation screenshots for BUG-FR02-01/02
+365073a | 2026-10-20T00:34:37+07:00 | cuogne | feat: add test and reports for FR02 (no issue, no review, no screenshot)
+f316266 | 2026-10-20T00:20:40+07:00 | cuogne | create SKILL.md for domain testing and templates
