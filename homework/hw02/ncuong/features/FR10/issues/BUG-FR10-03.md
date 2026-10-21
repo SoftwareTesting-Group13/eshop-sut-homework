@@ -1,6 +1,6 @@
 # BUG-FR10-03 — User thường đổi được trạng thái đơn qua API Admin
 
-> **Trạng thái:** Đã tái hiện API; chờ sinh viên review, chụp screenshot và mở GitHub Issue. Đây là bản nháp, chưa có URL Issue.
+> **Trạng thái kiểm chứng:** Đã tái hiện API; UI thường không gửi được đúng request user-token tới API Admin. Ảnh dưới là screenshot bản trình bày raw log API, không phải ảnh app/Postman.
 
 ## Tóm tắt
 
@@ -48,7 +48,7 @@ curl -sS "$API_BASE/api/orders/$ORDER_ID"
 **API-only cho đúng stimulus:** Admin UI từ chối đăng nhập tài khoản role user (`frontend-admin/src/App.jsx:65`); web user không có nút xác nhận đơn. Thao tác request trực tiếp là đường tái hiện đã kiểm chứng. Không ghi nhận Actual UI cho lỗi này.
 
 - [Raw run 1](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR10/evidence/ev-gap-access-run1.json), [raw run 2](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR10/evidence/ev-gap-access-run2.json), [raw biến thể khác chủ sở hữu](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR10/evidence/ev-gap-access-cross.json), [evidence log](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/ncuong/homework/hw02/ncuong/features/FR10/evidence/FR10-evidence.md).
-- Screenshot và GitHub Issue: **chờ sinh viên review/chụp/đăng** theo quy trình HW02.
+- Screenshot bằng chứng API (render từ hai raw JSON đã lưu, token đã redacted): ![BUG-FR10-03 — API evidence DT-21 và DT-22](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw02/ncuong/features/FR10/screenshots/BUG-FR10-03-api-evidence.png)
 
 ## Điều tra nguyên nhân từ source
 

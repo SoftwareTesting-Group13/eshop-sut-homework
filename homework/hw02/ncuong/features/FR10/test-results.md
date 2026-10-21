@@ -57,7 +57,7 @@
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | BUG-FR10-01 | FR10 | Admin chuyển được đơn `canceled` sang `delivered` (xuyên trạng thái kết thúc) | Medium | Medium | DT-14 | Đã xác nhận qua UI; Issue [#33](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/33) (kèm screenshot) | `DT-14.log`, `DT-14-rerun.log`, `screenshots/BUG-FR10-01-*.png` |
 | BUG-FR10-02 | FR10 | User tự hủy được đơn đang `shipping` (được phép hủy sai trạng thái) | High | High | DT-16 | Đã xác nhận qua UI; Issue [#34](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/34) (kèm screenshot) | `DT-16.log`, `DT-16-rerun.log`, `screenshots/BUG-FR10-02-*.png` |
-| BUG-FR10-03 | FR10 / FR12 | User thường tự xác nhận được đơn của mình **và đơn người khác** qua API Admin | High | High | DT-21, DT-22 | Đã tái hiện API; chờ sinh viên review, screenshot/Issue chưa có | `ev-gap-access-run1.json`, `ev-gap-access-run2.json`, `ev-gap-access-cross.json`; [nháp Issue](issues/BUG-FR10-03.md) |
+| BUG-FR10-03 | FR10 / FR12 | User thường tự xác nhận được đơn của mình **và đơn người khác** qua API Admin | High | High | DT-21, DT-22 | Đã tái hiện API; có ảnh log, Issue chuẩn bị đăng | `ev-gap-access-run1.json`, `ev-gap-access-run2.json`, `ev-gap-access-cross.json`; [ảnh API](screenshots/BUG-FR10-03-api-evidence.png), [nội dung Issue](issues/BUG-FR10-03.md) |
 
 ### Thống kê severity
 
@@ -163,8 +163,8 @@ curl -s http://localhost:3000/api/orders/16
 | Test case | DT-21 (đơn của mình), DT-22 (đơn người khác); DT-01 và DT-23 là đối chứng |
 | Build / run | `9955eba27e0e4bf45613649150bf3c2eb681a20f`; `run-20261021-fr10-gap-access`; backend/SQLite cách ly |
 | Severity / Priority | High / High — user thường đã đổi được cả đơn thuộc tài khoản khác khi biết ID |
-| Evidence | [run 1](evidence/ev-gap-access-run1.json), [run 2](evidence/ev-gap-access-run2.json), [đơn người khác](evidence/ev-gap-access-cross.json), [nháp Issue](issues/BUG-FR10-03.md) |
-| Trạng thái | API tái hiện 2/2 với đơn của mình và 1/1 với đơn người khác; chờ sinh viên review, screenshot/Issue chưa có |
+| Evidence | [run 1](evidence/ev-gap-access-run1.json), [run 2](evidence/ev-gap-access-run2.json), [đơn người khác](evidence/ev-gap-access-cross.json), [ảnh API](screenshots/BUG-FR10-03-api-evidence.png), [nội dung Issue](issues/BUG-FR10-03.md) |
+| Trạng thái | API tái hiện 2/2 với đơn của mình và 1/1 với đơn người khác; có ảnh trình bày log; Issue chuẩn bị đăng |
 
 **Tiền điều kiện:** đăng nhập `test@eshop.com` để lấy JWT role `user`; có đơn `pending` được tạo qua checkout. DT-22 dùng đơn khác thuộc `admin@eshop.com`. Trên DB test mới, mỗi ca có đơn riêng.
 
