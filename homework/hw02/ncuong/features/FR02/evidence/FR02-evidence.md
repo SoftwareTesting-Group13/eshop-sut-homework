@@ -830,3 +830,12 @@ curl -sS -X POST http://127.0.0.1:3000/api/login -H 'Content-Type: application/j
 | Test services đã dừng | `kill 80029`; `lsof -nP -iTCP:3000 -sTCP:LISTEN` → `PORT3000_FREE` |
 | Database test/file tạm đã xóa | `rm -rf` thư mục SUT tạm `/private/.../T/opencode/fr02-sut`; đã xác nhận không còn thư mục |
 | Database làm việc đã trở về trạng thái trước khi chạy | `backend/database.sqlite` SHA-256 vẫn `c63f00544180ba1fbb1427a9b9dd3f1784842698809972f33ce90482e7420ba6` (khớp trước khi chạy); `git status` không có thay đổi ngoài `features/` mới |
+
+### Cleanup run bổ sung `run-20261021-fr02-gap-api/ui`
+
+| Mục | Kết quả thực tế |
+| --- | --- |
+| Dịch vụ test | Đã dừng backend, Vite và Firefox headless; `lsof` không có listener ở cổng 3000, 5173, 9222, 4444. |
+| Thư mục test tạm | Đã xóa đúng thư mục do run này tạo: `/private/tmp/fr02-gap-run.Ocb6If`; kiểm tra `test ! -e` thành công. |
+| Database làm việc | `backend/database.sqlite` SHA-256 trước/sau đều là `c63f00544180ba1fbb1427a9b9dd3f1784842698809972f33ce90482e7420ba6`. |
+| File người dùng có sẵn | Giữ nguyên các chỉnh sửa chưa commit ở `features/FR06/test-results.md`, `features/FR10/test-results.md`, `features/FR17/test-results.md`, `prompt.txt`. |

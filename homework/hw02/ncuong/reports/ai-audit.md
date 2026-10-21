@@ -18,12 +18,14 @@ I use AI tools for the following tasks,
 - Cài tạm Expo Go và dependency, chạy FR-06 trên Android emulator/backend cách ly, chụp screenshot, phân tích bug, cập nhật báo cáo và dọn tài nguyên do lượt test tạo.
 - Rà báo cáo FR-06, commit/push artifact và ảnh, tạo GitHub Issue #55/#56 kèm ảnh UI, cập nhật liên kết vào báo cáo.
 - Biên tập lại main report HW02 thành bản tổng hợp nhất quán cho bốn feature, giữ số liệu gốc và bổ sung tái hiện ngắn cho từng bug.
+- Mở rộng AI Gap FR-02 thành ba ca Domain/EP thực chạy, tạo fixture qua FR-01, kiểm tra UI Firefox và API/DB cách ly, chụp ảnh, mở Issue #58/#59, cập nhật báo cáo và dọn môi trường test.
 - Soạn AI Audit Report này.
 
 > **Phạm vi lập báo cáo (capture notes):**
 > - Bằng chứng khả dụng: phiên hội thoại hiện tại (prompt của người dùng + các artifact do agent tạo trong repo); không có file export transcript riêng. Hai screenshot (`features/FR02/screenshots/BUG-FR02-01.png`, `BUG-FR02-02.png`) và 39 ảnh Postman + 1 ảnh UI FR17 trong `features/FR17/screenshots/` do **người dùng** cung cấp. 24 screenshot FR-06 trong `features/FR06/screenshots/` do agent chụp trực tiếp từ Android emulator trong AI-016.
-> - Số interaction đã ghi: **18** (AI-001…AI-018; các prompt của người dùng; các tool call nội bộ không phải prompt của người dùng nên không liệt kê).
-> - Công cụ AI đã dùng (theo bằng chứng): OpenCode agent, model `DeepSeek V4.1 Flash Free` (provider `opencode`); Codex (OpenAI, GPT-6) cho AI-014…AI-018.
+> - Số interaction đã ghi: **19** (AI-001…AI-019; các tool call nội bộ không phải prompt của người dùng nên không liệt kê). AI-019 ghi lượt triển khai FR-02 hiện tại.
+> - Giới hạn nguồn: giữa AI-018 và AI-019 có các trao đổi ngắn về AI Gap FR-02/FR-17/FR-10/FR-06. Trong nguồn còn giữ của lượt này chỉ có nguyên văn prompt, không có đủ nguyên văn output tương ứng; chưa chép các trao đổi đó thành bản ghi đầy đủ hoặc tự dựng lại output. Cần transcript export để hoàn chỉnh khoảng này.
+> - Công cụ AI đã dùng (theo bằng chứng): OpenCode agent, model `DeepSeek V4.1 Flash Free` (provider `opencode`); Codex (OpenAI, GPT-6) cho AI-014…AI-019.
 > - Công cụ/phiên được nhắc tới nhưng không kiểm tra được: không.
 
 ---
@@ -595,6 +597,33 @@ Clean lại dùm t cái main report đi m
 
 ---
 
+## Interaction AI-019
+
+- **AI tool:** Codex (OpenAI, GPT-6).
+- **Date and time:** Time not available in source (client context date 2026-10-21, không có giờ gửi prompt).
+- **Source:** Prompt người dùng trong phiên này; `run-20261021-fr02-gap-api`, `run-20261021-fr02-gap-ui`; commit `933d77e`; GitHub Issue [#58](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/58) và [#59](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/59).
+- **Task:** Chạy lại Domain/EP cho hai AI Gap FR-02, chụp bằng chứng, publish Issue, cập nhật report và dọn môi trường.
+
+### Your prompt
+
+```text
+Bổ sung cho t thêm 2 bug ở phần AI-GAP-FR02-01 (liên hệ FR Đăng ký, tạo 1 tài khoản định dạng sai email và login vào) và AI-GAP-FR02-03.
+
+[skills](homework/hw02/ncuong/skills/) Triển khai lại domain testing cho 2 case này. [prompt.txt](homework/hw02/ncuong/prompt.txt) đọc kỹ. Cap màn hình và tạo lại issue dùm t.
+Viết lại report + clean. Làm xong nhớ AI Audit Log.
+```
+
+### The AI output
+
+Đã triển khai lại FR-02 và cập nhật [test results](/Users/cuong/Documents/Code/eshop-sut-homework/homework/hw02/ncuong/features/FR02/test-results.md) cùng [main report](/Users/cuong/Documents/Code/eshop-sut-homework/homework/hw02/ncuong/reports/main-report.md). Ba ca bổ sung DT-09–DT-11 đã chạy; tổng FR-02 là **18 ca: 11 PASS, 6 FAIL, 1 Quan sát**.
+
+- **AI-GAP-FR02-01:** Đăng ký `not-an-email` qua API rồi đăng nhập được trên web. Form dùng `type="text"`; đã mở [Issue #58](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/58) kèm ảnh UI trước/sau.
+- **AI-GAP-FR02-03:** Thiếu hẳn key `password` bị từ chối 401, nhưng bộ đếm tăng 2 (bug #25 đã có). Với tài khoản có mật khẩu DB `NULL`, gửi `password:null` lại nhận JWT; đã mở [Issue #59](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/59) kèm ảnh log API. Ảnh này là bản trình bày log API, không phải ảnh giao diện app.
+
+Đã ghi [AI Audit Log](/Users/cuong/Documents/Code/eshop-sut-homework/homework/hw02/ncuong/reports/ai-audit.md), xóa đúng thư mục test tạm và dừng các dịch vụ test; checksum DB làm việc giữ nguyên. Các chỉnh sửa có sẵn ở FR-06, FR-10, FR-17 và `prompt.txt` được giữ nguyên.
+
+---
+
 ## Optional audit table (theo mẫu `[AI-02]` — bổ sung, không thay thế 4 trường bắt buộc)
 
 | (1) Prompt + Công cụ | (2) Output AI | (3) Verdict | (4) Lý do | (5) Bản SV sửa |
@@ -617,5 +646,6 @@ Clean lại dùm t cái main report đi m
 | Codex · GPT-6 · Time not available in source · “cài xong tự test, tự tìm và phân tích bug lại từ đầu nhé…” | Run FR-06 Android 16 ca (3 PASS, 9 FAIL, 4 INCONCLUSIVE), 2 bug, 24 screenshot, 2 draft Issue; cập nhật report/evidence/AI Audit; cleanup tài nguyên cài tạm; AI-016 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 | Codex · GPT-6 · Time not available in source · “OK chốt hết nhé, check report + commit + tạo issue cho 2 bug dùm t.” | Commit/push artifact FR-06 + 24 ảnh; Issue #55/#56 có 10 ảnh UI nhúng; cập nhật report/evidence/README/AI Audit và commit link; AI-017 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 | Codex · GPT-6 · Time not available in source · “Clean lại dùm t cái main report đi m” | Biên tập lại `reports/main-report.md`: 83 case, 14 bug có 14 mục tái hiện ngắn, severity 5 High/9 Medium, link hợp lệ; AI-018 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
+| Codex · GPT-6 · Time not available in source · “Bổ sung cho t thêm 2 bug ở phần AI-GAP-FR02-01…” | Chạy DT-09–DT-11, 2 bug mới; ảnh UI/API; Issue #58/#59; cập nhật FR02, master report, README và AI Audit; dọn test temp; AI-019 | *(SV tự điền)* | *(SV tự điền theo ISTQB)* | *(SV tự điền)* |
 
 > Cột (3)–(5) do **sinh viên** tự đánh giá/điền; báo cáo không tự suy diễn verdict hay bản sửa của sinh viên.

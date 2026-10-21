@@ -51,8 +51,8 @@
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | BUG-FR02-01 | FR02 | Bộ đếm đăng nhập sai tăng 2 thay vì 1 → khóa tài khoản sau 2 lần sai | High | High | DT-02, BVA-02, BVA-03 | Đã tái hiện (2/2); SV đã xác nhận — Issue [#25](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/25) | `ev-DT-02.log`, `ev-DT-02-rerun.log`, `ev-BVA-02.log`, `screenshots/BUG-FR02-01.png` |
 | BUG-FR02-02 | FR02 | Thời lượng khóa tài khoản là 180 giây thay vì 30 giây | Medium | High | BVA-02, BVA-06 | Đã tái hiện (2/2); SV đã xác nhận — Issue [#26](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/26) | `ev-BVA-02.log`, `ev-BVA-05-06.log`, `screenshots/BUG-FR02-02.png` |
-| BUG-FR02-03 | FR02 | Form đăng nhập cho email sai định dạng đi qua và đăng nhập thành công | Medium | Medium | DT-09 | Đã xác nhận UI + API; Issue đang chuẩn bị | `ev-gap-api.json`, `ev-gap-ui.json`, `screenshots/BUG-FR02-03-before.png`, `BUG-FR02-03-after.png` |
-| BUG-FR02-04 | FR02 | Đăng nhập bằng `password:null` vẫn nhận JWT nếu account có password `NULL` | High | High | DT-11 | Đã tái hiện API 2/2; Issue đang chuẩn bị | `ev-gap-api.json`, `screenshots/BUG-FR02-04-api-evidence.png` |
+| BUG-FR02-03 | FR02 | Form đăng nhập cho email sai định dạng đi qua và đăng nhập thành công | Medium | Medium | DT-09 | Đã xác nhận UI + API; Issue [#58](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/58) | `ev-gap-api.json`, `ev-gap-ui.json`, `screenshots/BUG-FR02-03-before.png`, `BUG-FR02-03-after.png` |
+| BUG-FR02-04 | FR02 | Đăng nhập bằng `password:null` vẫn nhận JWT nếu account có password `NULL` | High | High | DT-11 | Đã tái hiện API 2/2; Issue [#59](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/59) | `ev-gap-api.json`, `screenshots/BUG-FR02-04-api-evidence.png` |
 
 ### Thống kê severity
 
@@ -73,7 +73,7 @@ Priority là mức ưu tiên xử lý, đánh giá riêng theo mức ảnh hư�
 
 ### Chi tiết (manual reproduction)
 
-> **Môi trường chung:** commit `f3162660…`; backend Node/Express + SQLite chạy cách ly; base URL `http://localhost:3000`. **Cả hai bug đã được người kiểm thử xác nhận; screenshot đã đính và GitHub Issue đã mở:** BUG-FR02-01 → [#25](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/25), BUG-FR02-02 → [#26](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/26). Nội dung issue đầy đủ lưu tại `issues/BUG-FR02-01.md`, `issues/BUG-FR02-02.md`.
+> **Môi trường chung:** backend Node/Express + SQLite chạy cách ly; base URL `http://localhost:3000`. Hai bug ban đầu chạy ở commit `f3162660…` và đã được người kiểm thử xác nhận: BUG-FR02-01 → [#25](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/25), BUG-FR02-02 → [#26](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/26). Hai bug bổ sung chạy ở commit `2010a503…` và đã mở Issue [#58](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/58)/[#59](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/59). Bản lưu đầy đủ ở `issues/`.
 
 #### BUG-FR02-01 — Bộ đếm đăng nhập sai tăng 2 thay vì 1 → khóa tài khoản sau 2 lần sai
 
@@ -85,7 +85,7 @@ Priority là mức ưu tiên xử lý, đánh giá riêng theo mức ảnh hư�
 | Severity / Priority | High / High |
 | Trạng thái | Đã tái hiện 2/2; **người kiểm thử đã xác nhận**; đã mở GitHub Issue |
 | Evidence | `evidence/ev-DT-02.log`, `evidence/ev-DT-02-rerun.log`, `evidence/ev-BVA-02.log` |
-| Screenshot | `screenshots/BUG-FR02-01.png` (đã đính vào Issue #23) |
+| Screenshot | `screenshots/BUG-FR02-01.png` (đã đính vào Issue #25) |
 | GitHub Issue | [#25](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/25) |
 
 **Tiền điều kiện:** tài khoản `fr02.wrong@eshop.com` / `Passw0rd!` tồn tại, DB test có `login_attempts = 0`, `locked_until = NULL`.
@@ -124,7 +124,7 @@ sqlite3 backend/database.sqlite "SELECT login_attempts,locked_until FROM users W
 | Severity / Priority | Medium / High |
 | Trạng thái | Đã tái hiện 2/2; **người kiểm thử đã xác nhận**; đã mở GitHub Issue |
 | Evidence | `evidence/ev-BVA-02.log`, `evidence/ev-BVA-05-06.log` |
-| Screenshot | `screenshots/BUG-FR02-02.png` (đã đính vào Issue #24) |
+| Screenshot | `screenshots/BUG-FR02-02.png` (đã đính vào Issue #26) |
 | GitHub Issue | [#26](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/26) |
 
 **Tiền điều kiện:** tài khoản chưa khóa; kích hoạt khóa bằng lần sai đưa bộ đếm qua ngưỡng; ghi lại thời điểm khóa `t0`.
@@ -162,6 +162,7 @@ curl -s -X POST http://localhost:3000/api/login \
 | Build / run | `2010a503…`; `run-20261021-fr02-gap-ui` (Firefox 158) + `run-20261021-fr02-gap-api` |
 | Severity / Priority | Medium / Medium — bỏ qua kiểm tra định dạng bắt buộc ở form |
 | Evidence | `evidence/ev-gap-ui.json`, `evidence/ev-gap-api.json`, [ảnh trước](screenshots/BUG-FR02-03-before.png), [ảnh sau](screenshots/BUG-FR02-03-after.png) |
+| GitHub Issue | [#58](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/58) |
 
 **Tiền điều kiện:** trên DB test riêng, `POST /api/register` với `{"name":"FR02 Gap Malformed","email":"not-an-email","password":"Passw0rd!"}` trả 200 và tạo account. Đây là vi phạm riêng của FR-01, nhưng chỉ là fixture để kiểm thử FR-02; không cộng thêm T-ID FR-01.
 
@@ -180,6 +181,7 @@ curl -s -X POST http://localhost:3000/api/login \
 | Build / run | `2010a503…`; `run-20261021-fr02-gap-api`, backend/SQLite cách ly |
 | Severity / Priority | High / High — cấp JWT cho account không có mật khẩu hợp lệ |
 | Evidence | `evidence/ev-gap-api.json`, [ảnh log API](screenshots/BUG-FR02-04-api-evidence.png) |
+| GitHub Issue | [#59](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/59) |
 
 **Tiền điều kiện:** API đăng ký tạo `fr02.gap.null@eshop.com` với `password:null`; DB test lưu `users.password = NULL`. Đây là lỗi đầu vào liên quan FR-01; form đăng ký thông thường có `required` và không gửi JSON `null`.
 
@@ -213,8 +215,8 @@ Hai gap do người kiểm thử nêu đã được đưa vào catalog và chạ
 
 | Gap ID | AI output/source | Test case/bug tôi phát hiện thêm | Cách tôi phát hiện | Vì sao AI bỏ sót (nhận định của tôi) | Bổ sung/sửa chữa |
 | --- | --- | --- | --- | --- | --- |
-| AI-GAP-FR02-01 | `DT-06` ban đầu chỉ gửi `not-an-email` chưa đăng ký đến API, nhận 401; không kiểm tra form. | `DT-09`: tạo tài khoản `not-an-email` qua API FR-01 rồi đăng nhập trên web; form chấp nhận và cấp session, **BUG-FR02-03**. | Tôi đối chiếu yêu cầu FR-02 `type="email"` với form, chuẩn bị fixture qua FR-01 rồi chạy UI; ảnh trước/sau và log API/UI đã lưu. | AI chỉ nhìn phản hồi 401 của email chưa tồn tại và bỏ qua tương tác giữa tính hợp lệ của email với trạng thái **đã đăng ký**. | Đã bổ sung P10/DT-09, evidence UI + API và bug report/Issue riêng. |
-| AI-GAP-FR02-03 | `DT-04` thử mật khẩu rỗng; `DT-05` body `{}` làm thiếu cả email lẫn password. | `DT-10` cô lập **key password vắng**: 401/no-token đúng, nhưng bộ đếm +2 thuộc BUG-FR02-01. Mở rộng lớp này thành `DT-11` với `password:null` và account DB `NULL`: nhận 200 + JWT, **BUG-FR02-04**. | Tôi tách ba giá trị rỗng / thiếu key / `null` để kiểm từng nhánh; tạo fixture `NULL` qua API FR-01, chạy lại trên hai tài khoản và xem log/ảnh API. | AI gộp các biến thể "không có mật khẩu sử dụng được" và chỉ thử body `{}` với hai trường cùng vắng, nên không phát hiện so sánh `null === null`. | Đã bổ sung P11/DT-10 và P12/DT-11; không mở bug trùng cho DT-10, báo lỗi cấp JWT ở DT-11 bằng Issue riêng. |
+| AI-GAP-FR02-01 | `DT-06` ban đầu chỉ gửi `not-an-email` chưa đăng ký đến API, nhận 401; không kiểm tra form. | `DT-09`: tạo tài khoản `not-an-email` qua API FR-01 rồi đăng nhập trên web; form chấp nhận và cấp session, **BUG-FR02-03**. | Tôi đối chiếu yêu cầu FR-02 `type="email"` với form, chuẩn bị fixture qua FR-01 rồi chạy UI; ảnh trước/sau và log API/UI đã lưu. | AI chỉ nhìn phản hồi 401 của email chưa tồn tại và bỏ qua tương tác giữa tính hợp lệ của email với trạng thái **đã đăng ký**. | Đã bổ sung P10/DT-09, evidence UI + API và [Issue #58](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/58). |
+| AI-GAP-FR02-03 | `DT-04` thử mật khẩu rỗng; `DT-05` body `{}` làm thiếu cả email lẫn password. | `DT-10` cô lập **key password vắng**: 401/no-token đúng, nhưng bộ đếm +2 thuộc BUG-FR02-01. Mở rộng lớp này thành `DT-11` với `password:null` và account DB `NULL`: nhận 200 + JWT, **BUG-FR02-04**. | Tôi tách ba giá trị rỗng / thiếu key / `null` để kiểm từng nhánh; tạo fixture `NULL` qua API FR-01, chạy lại trên hai tài khoản và xem log/ảnh API. | AI gộp các biến thể "không có mật khẩu sử dụng được" và chỉ thử body `{}` với hai trường cùng vắng, nên không phát hiện so sánh `null === null`. | Đã bổ sung P11/DT-10 và P12/DT-11; không mở bug trùng cho DT-10, báo lỗi cấp JWT ở DT-11 bằng [Issue #59](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/59). |
 
 ## Việc còn lại
 

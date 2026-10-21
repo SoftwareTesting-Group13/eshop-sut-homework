@@ -1,5 +1,7 @@
 # BUG-FR02-04 — API đăng nhập cấp JWT với `password: null`
 
+**GitHub Issue:** [#59](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/59)
+
 ## Tóm tắt
 
 Nếu API đăng ký tạo một tài khoản có password DB `NULL`, API đăng nhập cho phép gửi `password: null` và trả JWT. Đây là credential không có mật khẩu sử dụng được. **Body thiếu hẳn key `password` là ca khác:** nó bị từ chối 401, không thuộc lỗi cấp JWT này.

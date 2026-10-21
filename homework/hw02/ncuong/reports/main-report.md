@@ -48,8 +48,8 @@ Các phân số coverage trên là số nghĩa vụ EP/BVA, không cộng vào 8
 | --- | --- | --- | --- | --- | --- | --- |
 | BUG-FR02-01 | Mỗi lần đăng nhập sai cộng 2, khóa sớm sau 2 lần | High | High | DT-02, BVA-02, BVA-03 | Đã xác nhận API + UI | [#25](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/25) · [Results](../features/FR02/test-results.md) |
 | BUG-FR02-02 | Khóa 180 giây thay vì 30 giây | Medium | High | BVA-02, BVA-06 | Đã xác nhận API + UI | [#26](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/26) · [Results](../features/FR02/test-results.md) |
-| BUG-FR02-03 | Form login chấp nhận email sai định dạng | Medium | Medium | DT-09 | Đã tái hiện UI + API, có ảnh | [Results](../features/FR02/test-results.md) · Issue đang chuẩn bị |
-| BUG-FR02-04 | Login `password:null` cấp JWT | High | High | DT-11 | Đã tái hiện API 2/2, có ảnh log | [Results](../features/FR02/test-results.md) · Issue đang chuẩn bị |
+| BUG-FR02-03 | Form login chấp nhận email sai định dạng | Medium | Medium | DT-09 | Đã tái hiện UI + API, có ảnh | [#58](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/58) · [Results](../features/FR02/test-results.md) |
+| BUG-FR02-04 | Login `password:null` cấp JWT | High | High | DT-11 | Đã tái hiện API 2/2, có ảnh log | [#59](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/59) · [Results](../features/FR02/test-results.md) |
 | BUG-FR10-01 | Admin chuyển đơn canceled thành delivered | Medium | Medium | DT-14 | Đã xác nhận API + UI | [#33](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/33) · [Results](../features/FR10/test-results.md) |
 | BUG-FR10-02 | User hủy được đơn đang shipping | High | High | DT-16 | Đã xác nhận API + UI | [#34](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/34) · [Results](../features/FR10/test-results.md) |
 | BUG-FR17-01 | Tạo coupon với code rỗng/thiếu/chỉ khoảng trắng | Medium | Medium | DT-04–DT-06 | Đã xác nhận API/Postman | [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47) · [Results](../features/FR17/test-results.md) |
@@ -109,7 +109,7 @@ Các bước dưới đây dùng fixture và quyền truy cập của từng [fe
 1. Trên DB test, tạo `not-an-email` / `Passw0rd!` qua API đăng ký; API hiện cho phép fixture này.
 2. Mở form `/login`, nhập `not-an-email` và `Passw0rd!`, bấm **Sign In**.
 
-**Expected:** ô email `type="email"` chặn định dạng sai trước submit. **Actual:** `type="text"`, browser cho submit; trang chủ hiện user đã đăng nhập và token được lưu. [Evidence + ảnh UI](../features/FR02/evidence/FR02-evidence.md) · [Results](../features/FR02/test-results.md).
+**Expected:** ô email `type="email"` chặn định dạng sai trước submit. **Actual:** `type="text"`, browser cho submit; trang chủ hiện user đã đăng nhập và token được lưu. [Evidence + ảnh UI](../features/FR02/evidence/FR02-evidence.md) · [Issue #58](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/58).
 
 ---
 
@@ -118,7 +118,7 @@ Các bước dưới đây dùng fixture và quyền truy cập của từng [fe
 1. Trên DB test, API đăng ký tạo account `fr02.gap.null@eshop.com` với `password:null`; DB lưu `NULL`.
 2. Gửi `POST /api/login` với cùng email và `password:null`; lặp lại bằng account thứ hai.
 
-**Expected:** từ chối xác thực, không cấp JWT. **Actual:** cả hai lần trả HTTP 200 + JWT. Ca thiếu hẳn key `password` trả 401 và chỉ tái hiện BUG-FR02-01 ở bộ đếm. [Evidence + ảnh log API](../features/FR02/evidence/FR02-evidence.md) · [Results](../features/FR02/test-results.md).
+**Expected:** từ chối xác thực, không cấp JWT. **Actual:** cả hai lần trả HTTP 200 + JWT. Ca thiếu hẳn key `password` trả 401 và chỉ tái hiện BUG-FR02-01 ở bộ đếm. [Evidence + ảnh log API](../features/FR02/evidence/FR02-evidence.md) · [Issue #59](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/59).
 
 ---
 

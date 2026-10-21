@@ -1,5 +1,7 @@
 # BUG-FR02-03 — Form đăng nhập cho email sai định dạng đi qua và cấp phiên đăng nhập
 
+**GitHub Issue:** [#58](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/58)
+
 ## Tóm tắt
 
 FR-02 yêu cầu ô Email của form đăng nhập dùng `type="email"` để kiểm tra định dạng HTML5. Sau khi tạo fixture `not-an-email` qua API đăng ký, form web vẫn chấp nhận chuỗi này và đăng nhập thành công.
