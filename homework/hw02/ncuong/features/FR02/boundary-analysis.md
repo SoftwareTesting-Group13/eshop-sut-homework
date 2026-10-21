@@ -56,6 +56,8 @@ B3 không phải ngưỡng đổi hành vi nên chỉ có một điểm giá tr�
 
 ## Coverage BVA
 
+Các lớp bổ sung `P10` (định dạng email), `P11` (thiếu key password) và `P12` (`password: null`) là các miền phân loại, không tạo ngưỡng số/thời gian mới. Vì vậy không gán B-ID giả hoặc tăng mẫu số BVA; `DT-10` vẫn quan sát cùng quy tắc tăng đúng 1 của B3 và tái hiện BUG-FR02-01, nhưng không tạo thêm điểm biên độc lập.
+
 Mẫu số là các điểm biên đủ điều kiện: B1 có 3 điểm, B2 có 3 điểm, B3 có 1 điểm, B4 có 1 điểm = **8 điểm**.
 
 | Nghĩa vụ biên | Khả thi | Có case | Đã chạy đúng điểm có evidence | Đạt oracle | Còn thiếu / không quan sát được |

@@ -1,0 +1,146 @@
+{
+  "run": "run-20261021-fr02-gap-ui",
+  "events": [
+    {
+      "at": "2026-10-21T02:44:10.859Z",
+      "step": "login-form-inputs",
+      "inputs": [
+        {
+          "type": "object",
+          "value": [
+            [
+              "type",
+              {
+                "type": "string",
+                "value": "text"
+              }
+            ],
+            [
+              "required",
+              {
+                "type": "boolean",
+                "value": true
+              }
+            ],
+            [
+              "outerHTML",
+              {
+                "type": "string",
+                "value": "<input class=\"w-full border p-2 rounded\" required=\"\" type=\"text\" value=\"\">"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "object",
+          "value": [
+            [
+              "type",
+              {
+                "type": "string",
+                "value": "text"
+              }
+            ],
+            [
+              "required",
+              {
+                "type": "boolean",
+                "value": true
+              }
+            ],
+            [
+              "outerHTML",
+              {
+                "type": "string",
+                "value": "<input class=\"w-full border p-2 rounded\" required=\"\" type=\"text\" value=\"\">"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "at": "2026-10-21T02:44:10.871Z",
+      "step": "fill-malformed-credentials",
+      "actual": [
+        [
+          "email",
+          {
+            "type": "string",
+            "value": "not-an-email"
+          }
+        ],
+        [
+          "passwordPresent",
+          {
+            "type": "boolean",
+            "value": true
+          }
+        ],
+        [
+          "type",
+          {
+            "type": "string",
+            "value": "text"
+          }
+        ],
+        [
+          "typeMismatch",
+          {
+            "type": "boolean",
+            "value": false
+          }
+        ],
+        [
+          "formValid",
+          {
+            "type": "boolean",
+            "value": true
+          }
+        ]
+      ]
+    },
+    {
+      "at": "2026-10-21T02:44:10.908Z",
+      "screenshot": "/Users/cuong/Documents/Code/eshop-sut-homework/homework/hw02/ncuong/features/FR02/screenshots/BUG-FR02-03-before.png"
+    },
+    {
+      "at": "2026-10-21T02:44:12.415Z",
+      "step": "after-submit",
+      "actual": [
+        [
+          "url",
+          {
+            "type": "string",
+            "value": "http://127.0.0.1:5173/"
+          }
+        ],
+        [
+          "bodyText",
+          {
+            "type": "string",
+            "value": "EShop\nGiỏ hàng\nChào, FR02 Gap Malformed\nThoát\nDanh sách sản phẩm\nTìm\niPhone 15 Pro Max\n\n30.000.000 VND\n\nXem chi tiết\nThêm vào giỏ\nSamsung Galaxy S24 Ultra\n\n28.000.000 VND\n\nXem chi tiết\nThêm vào giỏ\nMacBook Pro M3\n\n45.000.000 VND\n\nXem chi tiết\nThêm vào giỏ\nTai nghe AirPods Pro 2\n\n6.000.000 VND\n\nXem chi tiết\nThêm vào giỏ\nBàn phím cơ Keychron Q1\n\n4.000.000 VND\n\nXem chi tiết\nThêm vào giỏ\nHiển thị 5 sản phẩm\n© 2026 EShop SUT. Dành cho mục đích kiểm th"
+          }
+        ],
+        [
+          "tokenStored",
+          {
+            "type": "boolean",
+            "value": true
+          }
+        ],
+        [
+          "formPresent",
+          {
+            "type": "boolean",
+            "value": true
+          }
+        ]
+      ]
+    },
+    {
+      "at": "2026-10-21T02:44:12.450Z",
+      "screenshot": "/Users/cuong/Documents/Code/eshop-sut-homework/homework/hw02/ncuong/features/FR02/screenshots/BUG-FR02-03-after.png"
+    }
+  ]
+}

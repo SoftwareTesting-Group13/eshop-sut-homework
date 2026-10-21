@@ -687,20 +687,141 @@ pre-state login_attempts=3 locked_until=2026-10-19T16:26:46.054Z
 
 ---
 
+### EV-FR02-018 — DT-09 UI: email sai định dạng trên form
+
+| Trường | Giá trị |
+| --- | --- |
+| Run ID | `run-20261021-fr02-gap-ui` |
+| Thời điểm | 2026-10-21 09:44:10 +0700 |
+| Interface | Firefox 158 headless, `http://127.0.0.1:5173/login` |
+| Setup | Account `not-an-email` / `Passw0rd!` có trong DB test nhờ API đăng ký; browser profile test riêng |
+
+**Thao tác thật:** mở `/login`; điền `not-an-email` và `Passw0rd!`; đọc `input.type`, `validity.typeMismatch`, `form.checkValidity()`; chụp ảnh; bấm **Sign In**; đọc URL/header/localStorage và chụp ảnh sau submit. Mật khẩu có thể nhìn thấy trên ảnh vì chính SUT đặt input `type="text"`; đây là tài khoản fixture, không phải credential thật.
+
+**Actual thô (trích `ev-gap-ui.json`):**
+
+```json
+{
+  "emailInputType": "text",
+  "emailTypeMismatch": false,
+  "formValid": true,
+  "afterSubmitUrl": "http://127.0.0.1:5173/",
+  "header": "Chào, FR02 Gap Malformed",
+  "tokenStored": true
+}
+```
+
+- **Expected:** R4 — email input `type="email"`, chặn `not-an-email` trước khi gửi đăng nhập.
+- **Verdict:** FAIL → BUG-FR02-03.
+- **Artifacts:** [raw BiDi observation](ev-gap-ui.json), [form trước submit](../screenshots/BUG-FR02-03-before.png), [trang sau submit](../screenshots/BUG-FR02-03-after.png).
+
+---
+
+### EV-FR02-019 — DT-09 API: fixture email sai định dạng vẫn login
+
+| Trường | Giá trị |
+| --- | --- |
+| Run ID | `run-20261021-fr02-gap-api` |
+| Thời điểm | 2026-10-21 09:44:49 +0700 |
+| Interface | `POST /api/register`, `POST /api/login`, DB test |
+
+**Lệnh tương đương request đã chạy:**
+
+```zsh
+curl -sS -X POST http://127.0.0.1:3000/api/register -H 'Content-Type: application/json' --data-raw '{"name":"FR02 Gap Malformed","email":"not-an-email","password":"Passw0rd!"}'
+curl -sS -X POST http://127.0.0.1:3000/api/login -H 'Content-Type: application/json' --data-raw '{"email":"not-an-email","password":"Passw0rd!"}'
+```
+
+**Actual:** register HTTP 200, DB có `email=not-an-email`; login HTTP 200 + JWT. Fixture khác `plainsecond` cũng 200 + JWT. Token được redacted trong [raw log](ev-gap-api.json). API spec không định nghĩa validation email tại endpoint login nên kết quả API là bằng chứng hệ quả/fixture; **verdict R4 dựa vào UI ở EV-FR02-018**.
+
+---
+
+### EV-FR02-020 — DT-10 API: chỉ thiếu key password
+
+| Trường | Giá trị |
+| --- | --- |
+| Run ID | `run-20261021-fr02-gap-api` |
+| Thời điểm | 2026-10-21 09:44:49 +0700 |
+| Interface | `POST /api/login`, DB test |
+| Setup | `fr02.gap.valid@eshop.com` / `Passw0rd!`; `login_attempts=0`, chưa khóa |
+
+**Lệnh tương đương request đã chạy:**
+
+```zsh
+curl -sS -X POST http://127.0.0.1:3000/api/login -H 'Content-Type: application/json' --data-raw '{"email":"fr02.gap.valid@eshop.com"}'
+```
+
+**Actual:**
+
+```json
+{
+  "status": 401,
+  "body": {
+    "error": "Invalid email or password"
+  },
+  "login_attempts_before": 0,
+  "login_attempts_after": 2
+}
+```
+
+- **Expected:** không JWT; R2 tăng đúng 1 nếu tính là một lần đăng nhập sai.
+- **Verdict:** FAIL do side effect +2, cùng BUG-FR02-01. Assertion từ chối/no-token đạt; **không** gọi đây là bug mới.
+- **Artifact:** [raw log](ev-gap-api.json).
+
+---
+
+### EV-FR02-021 — DT-11 API: password null tường minh
+
+| Trường | Giá trị |
+| --- | --- |
+| Run ID | `run-20261021-fr02-gap-api` |
+| Thời điểm | 2026-10-21 09:44:49 +0700 |
+| Interface | `POST /api/register`, `POST /api/login`, DB test |
+
+**Lệnh tương đương request đã chạy:**
+
+```zsh
+curl -sS -X POST http://127.0.0.1:3000/api/register -H 'Content-Type: application/json' --data-raw '{"name":"FR02 Gap Null","email":"fr02.gap.null@eshop.com","password":null}'
+curl -sS -X POST http://127.0.0.1:3000/api/login -H 'Content-Type: application/json' --data-raw '{"email":"fr02.gap.null@eshop.com","password":null}'
+```
+
+**Actual:**
+
+```json
+{
+  "registration_status": 200,
+  "database_password": null,
+  "login_status": 200,
+  "jwt_present": true,
+  "independent_rerun": {
+    "email": "fr02.gap.null2@eshop.com",
+    "registration_status": 200,
+    "login_status": 200,
+    "jwt_present": true
+  }
+}
+```
+
+- **Expected:** R8 — không cấp token nếu mật khẩu không phải credential hợp lệ.
+- **Verdict:** FAIL → BUG-FR02-04, tái hiện 2/2. `null` tường minh khác body thiếu key ở DT-10.
+- **Artifacts:** [raw log](ev-gap-api.json), [ảnh chụp bản trình bày log API](../screenshots/BUG-FR02-04-api-evidence.png) (không phải ảnh UI).
+
+---
+
 ## Tổng hợp evidence
 
 | Chỉ số | Số lượng |
 | --- | ---: |
-| Ca thiết kế | 15 |
-| Ca đã chạy duy nhất trong run được chọn | 15 |
-| Tổng lần thử thực thi (EV-ID) | 17 |
+| Ca thiết kế | 18 |
+| Ca đã chạy duy nhất qua các run được chọn | 18 |
+| Tổng EV-ID | 21 |
 | PASS | 11 |
-| FAIL | 3 |
+| FAIL | 6 |
 | Quan sát / Inconclusive | 1 |
 | BLOCKED (nêu lý do) | 0 |
 
-- **Artifact thô:** `fixture-register.log`, `ev-DT-01.log`, `ev-DT-01-token-check.log`, `ev-DT-02.log`, `ev-DT-02-rerun.log`, `ev-DT-03.log`, `ev-DT-04-05.log`, `ev-DT-06.log`, `ev-DT-07-08.log`, `ev-BVA-02.log`, `ev-BVA-03-04.log`, `ev-BVA-05-06.log`, `ev-BVA-07.log`, `ev-BVA-08.log`, `final-db-state.log`, `../screenshots/BUG-FR02-01.png`, `../screenshots/BUG-FR02-02.png`.
-- **Đối chiếu catalog:** mọi T-ID được tính đã chạy đều có ít nhất một EV-ID của run; DT-01 và DT-02 có thêm EV rerun/xác nhận token; không có EV-ID mồ côi.
+- **Artifact thô mới:** `ev-gap-api.json`, `ev-gap-ui.json`, `../screenshots/BUG-FR02-03-before.png`, `BUG-FR02-03-after.png`, `BUG-FR02-04-api-evidence.png`; artifact cũ của run `run-20261020-fr02` giữ nguyên.
+- **Đối chiếu catalog:** 15 T-ID cũ có EV-FR02-001…017; DT-09 có EV-018 UI và EV-019 API; DT-10 có EV-020; DT-11 có EV-021. Ba ca mới chỉ tính một lần mỗi T-ID.
 
 ## Xác nhận cleanup sau khi hoàn tất
 

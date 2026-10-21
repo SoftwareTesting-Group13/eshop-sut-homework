@@ -1,0 +1,323 @@
+{
+  "run": "run-20261021-fr02-gap-api",
+  "events": [
+    {
+      "at": "2026-10-21T02:44:49.379Z",
+      "label": "register-valid-control",
+      "request": {
+        "method": "POST",
+        "path": "/api/register",
+        "body": {
+          "name": "FR02 Gap Valid",
+          "email": "fr02.gap.valid@eshop.com",
+          "password": "Passw0rd!"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "message": "User registered successfully",
+          "id": 3
+        }
+      }
+    },
+    {
+      "at": "2026-10-21T02:44:49.383Z",
+      "label": "register-malformed-1",
+      "request": {
+        "method": "POST",
+        "path": "/api/register",
+        "body": {
+          "name": "FR02 Gap Malformed",
+          "email": "not-an-email",
+          "password": "Passw0rd!"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "message": "User registered successfully",
+          "id": 4
+        }
+      }
+    },
+    {
+      "at": "2026-10-21T02:44:49.383Z",
+      "label": "malformed-before-login",
+      "db": {
+        "id": 4,
+        "email": "not-an-email",
+        "password": "[redacted]",
+        "login_attempts": 0,
+        "locked_until": null
+      }
+    },
+    {
+      "at": "2026-10-21T02:44:49.386Z",
+      "label": "login-malformed-1",
+      "request": {
+        "method": "POST",
+        "path": "/api/login",
+        "body": {
+          "email": "not-an-email",
+          "password": "Passw0rd!"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "message": "Login successful",
+          "token": "[redacted; present]",
+          "user": {
+            "id": 4,
+            "name": "FR02 Gap Malformed",
+            "email": "not-an-email",
+            "password": "[redacted]",
+            "role": "user",
+            "login_attempts": 0,
+            "locked_until": null,
+            "reset_token": null,
+            "shipping_address": null,
+            "phone": null
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-21T02:44:49.386Z",
+      "label": "malformed-after-login",
+      "db": {
+        "id": 4,
+        "email": "not-an-email",
+        "password": "[redacted]",
+        "login_attempts": 0,
+        "locked_until": null
+      }
+    },
+    {
+      "at": "2026-10-21T02:44:49.388Z",
+      "label": "register-malformed-2",
+      "request": {
+        "method": "POST",
+        "path": "/api/register",
+        "body": {
+          "name": "FR02 Gap Malformed 2",
+          "email": "plainsecond",
+          "password": "Passw0rd!"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "message": "User registered successfully",
+          "id": 5
+        }
+      }
+    },
+    {
+      "at": "2026-10-21T02:44:49.390Z",
+      "label": "login-malformed-2",
+      "request": {
+        "method": "POST",
+        "path": "/api/login",
+        "body": {
+          "email": "plainsecond",
+          "password": "Passw0rd!"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "message": "Login successful",
+          "token": "[redacted; present]",
+          "user": {
+            "id": 5,
+            "name": "FR02 Gap Malformed 2",
+            "email": "plainsecond",
+            "password": "[redacted]",
+            "role": "user",
+            "login_attempts": 0,
+            "locked_until": null,
+            "reset_token": null,
+            "shipping_address": null,
+            "phone": null
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-21T02:44:49.390Z",
+      "label": "valid-before-omitted",
+      "db": {
+        "id": 3,
+        "email": "fr02.gap.valid@eshop.com",
+        "password": "[redacted]",
+        "login_attempts": 0,
+        "locked_until": null
+      }
+    },
+    {
+      "at": "2026-10-21T02:44:49.391Z",
+      "label": "login-password-omitted",
+      "request": {
+        "method": "POST",
+        "path": "/api/login",
+        "body": {
+          "email": "fr02.gap.valid@eshop.com"
+        }
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "error": "Invalid email or password"
+        }
+      }
+    },
+    {
+      "at": "2026-10-21T02:44:49.391Z",
+      "label": "valid-after-omitted",
+      "db": {
+        "id": 3,
+        "email": "fr02.gap.valid@eshop.com",
+        "password": "[redacted]",
+        "login_attempts": 0,
+        "locked_until": null
+      }
+    },
+    {
+      "at": "2026-10-21T02:44:49.392Z",
+      "label": "register-null-password",
+      "request": {
+        "method": "POST",
+        "path": "/api/register",
+        "body": {
+          "name": "FR02 Gap Null",
+          "email": "fr02.gap.null@eshop.com",
+          "password": null
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "message": "User registered successfully",
+          "id": 6
+        }
+      }
+    },
+    {
+      "at": "2026-10-21T02:44:49.393Z",
+      "label": "null-before-login",
+      "db": {
+        "id": 6,
+        "email": "fr02.gap.null@eshop.com",
+        "password": null,
+        "login_attempts": 0,
+        "locked_until": null
+      }
+    },
+    {
+      "at": "2026-10-21T02:44:49.394Z",
+      "label": "login-null-password",
+      "request": {
+        "method": "POST",
+        "path": "/api/login",
+        "body": {
+          "email": "fr02.gap.null@eshop.com",
+          "password": null
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "message": "Login successful",
+          "token": "[redacted; present]",
+          "user": {
+            "id": 6,
+            "name": "FR02 Gap Null",
+            "email": "fr02.gap.null@eshop.com",
+            "password": "[redacted]",
+            "role": "user",
+            "login_attempts": 0,
+            "locked_until": null,
+            "reset_token": null,
+            "shipping_address": null,
+            "phone": null
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-21T02:44:49.394Z",
+      "label": "null-after-login",
+      "db": {
+        "id": 6,
+        "email": "fr02.gap.null@eshop.com",
+        "password": null,
+        "login_attempts": 0,
+        "locked_until": null
+      }
+    },
+    {
+      "at": "2026-10-21T02:44:49.395Z",
+      "label": "register-null-password-rerun",
+      "request": {
+        "method": "POST",
+        "path": "/api/register",
+        "body": {
+          "name": "FR02 Gap Null Repeat",
+          "email": "fr02.gap.null2@eshop.com",
+          "password": null
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "message": "User registered successfully",
+          "id": 7
+        }
+      }
+    },
+    {
+      "at": "2026-10-21T02:44:49.396Z",
+      "label": "login-null-password-rerun",
+      "request": {
+        "method": "POST",
+        "path": "/api/login",
+        "body": {
+          "email": "fr02.gap.null2@eshop.com",
+          "password": null
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "message": "Login successful",
+          "token": "[redacted; present]",
+          "user": {
+            "id": 7,
+            "name": "FR02 Gap Null Repeat",
+            "email": "fr02.gap.null2@eshop.com",
+            "password": "[redacted]",
+            "role": "user",
+            "login_attempts": 0,
+            "locked_until": null,
+            "reset_token": null,
+            "shipping_address": null,
+            "phone": null
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-21T02:44:49.397Z",
+      "label": "null-rerun-after-login",
+      "db": {
+        "id": 7,
+        "email": "fr02.gap.null2@eshop.com",
+        "password": null,
+        "login_attempts": 0,
+        "locked_until": null
+      }
+    }
+  ]
+}

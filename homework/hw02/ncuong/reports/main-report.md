@@ -25,20 +25,20 @@
 
 | Feature / run được chọn | Thiết kế | Đã chạy | PASS | FAIL | Quan sát | BLOCKED | Chưa chạy |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| FR-02 / run-20261020-fr02 | 15 | 15 | 11 | 3 | 1 | 0 | 0 |
+| FR-02 / run-20261020-fr02 + run-20261021-fr02-gap-api/ui | 18 | 18 | 11 | 6 | 1 | 0 | 0 |
 | FR-10 / run-20261020-fr10 | 20 | 20 | 18 | 2 | 0 | 0 | 0 |
 | FR-17 / run-20261020-fr17 | 32 | 32 | 11 | 20 | 1 | 0 | 0 |
 | FR-06 / run-20261021-fr06-mobile và API-only run-20261021-fr06-api | 16 | 16 | 3 | 9 | 4 | 0 | 0 |
-| **Tổng** | **83** | **83** | **43** | **34** | **6** | **0** | **0** |
+| **Tổng** | **86** | **86** | **43** | **37** | **6** | **0** | **0** |
 
 | Feature | EP: thiết kế / chạy / PASS | BVA: thiết kế / chạy / PASS | Giao diện và giới hạn |
 | --- | --- | --- | --- |
-| FR-02 | 9 / 9 / 7 | 8 / 8 / 5 | API trên backend/DB cách ly; 1 ca Quan sát thiếu oracle. |
+| FR-02 | 12 / 12 / 7 | 8 / 8 / 5 | API trên backend/DB cách ly; DT-09 còn có UI Firefox; 1 ca Quan sát thiếu oracle. |
 | FR-10 | 20 / 20 / 18 | 9 / 9 / 7 | API đã chạy; 2 bug còn được xác nhận qua UI. |
 | FR-17 | 32 / 32 / 11 | 9 / 9 / 5 | Kết quả chính từ API/Postman; UI admin chưa chạy cùng các ca. 1 ca Quan sát thiếu oracle. |
 | FR-06 | 16 / 16 / 3 | 6 / 6 / 4 | 12 ca có Actual UI Android; 4 ca ID bất thường chỉ chạy API và thiếu oracle status/body. |
 
-Các phân số coverage trên là số nghĩa vụ EP/BVA, không cộng vào 83 T-ID. FR-06 có 24 screenshot tại [screenshots](../features/FR06/screenshots/) và [evidence log](../features/FR06/evidence/FR06-evidence.md); FR-17 có 39 ảnh Postman cho 19/20 ca FAIL và 1 ảnh UI minh họa hệ quả coupon 150% tại [screenshots](../features/FR17/screenshots/).
+Các phân số coverage trên là số nghĩa vụ EP/BVA, không cộng vào 86 T-ID. FR-02 bổ sung 3 T-ID, 2 bug mới có ảnh UI/API tại [screenshots](../features/FR02/screenshots/) và [evidence](../features/FR02/evidence/FR02-evidence.md). FR-06 có 24 screenshot tại [screenshots](../features/FR06/screenshots/) và [evidence log](../features/FR06/evidence/FR06-evidence.md); FR-17 có 39 ảnh Postman cho 19/20 ca FAIL và 1 ảnh UI minh họa hệ quả coupon 150% tại [screenshots](../features/FR17/screenshots/).
 
 ## 3. Tổng hợp bug
 
@@ -48,6 +48,8 @@ Các phân số coverage trên là số nghĩa vụ EP/BVA, không cộng vào 8
 | --- | --- | --- | --- | --- | --- | --- |
 | BUG-FR02-01 | Mỗi lần đăng nhập sai cộng 2, khóa sớm sau 2 lần | High | High | DT-02, BVA-02, BVA-03 | Đã xác nhận API + UI | [#25](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/25) · [Results](../features/FR02/test-results.md) |
 | BUG-FR02-02 | Khóa 180 giây thay vì 30 giây | Medium | High | BVA-02, BVA-06 | Đã xác nhận API + UI | [#26](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/26) · [Results](../features/FR02/test-results.md) |
+| BUG-FR02-03 | Form login chấp nhận email sai định dạng | Medium | Medium | DT-09 | Đã tái hiện UI + API, có ảnh | [Results](../features/FR02/test-results.md) · Issue đang chuẩn bị |
+| BUG-FR02-04 | Login `password:null` cấp JWT | High | High | DT-11 | Đã tái hiện API 2/2, có ảnh log | [Results](../features/FR02/test-results.md) · Issue đang chuẩn bị |
 | BUG-FR10-01 | Admin chuyển đơn canceled thành delivered | Medium | Medium | DT-14 | Đã xác nhận API + UI | [#33](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/33) · [Results](../features/FR10/test-results.md) |
 | BUG-FR10-02 | User hủy được đơn đang shipping | High | High | DT-16 | Đã xác nhận API + UI | [#34](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/34) · [Results](../features/FR10/test-results.md) |
 | BUG-FR17-01 | Tạo coupon với code rỗng/thiếu/chỉ khoảng trắng | Medium | Medium | DT-04–DT-06 | Đã xác nhận API/Postman | [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47) · [Results](../features/FR17/test-results.md) |
@@ -65,11 +67,11 @@ Các phân số coverage trên là số nghĩa vụ EP/BVA, không cộng vào 8
 
 | Feature | Critical | High | Medium | Low | Tổng |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| FR-02 | 0 | 1 | 1 | 0 | 2 |
+| FR-02 | 0 | 2 | 2 | 0 | 4 |
 | FR-10 | 0 | 1 | 1 | 0 | 2 |
 | FR-17 | 0 | 3 | 5 | 0 | 8 |
 | FR-06 | 0 | 0 | 2 | 0 | 2 |
-| **Tổng** | **0** | **5** | **9** | **0** | **14** |
+| **Tổng** | **0** | **6** | **10** | **0** | **16** |
 
 | Mức | Tiêu chí |
 | --- | --- |
@@ -99,6 +101,24 @@ Các bước dưới đây dùng fixture và quyền truy cập của từng [fe
 2. Tại t0 + 31 giây, đăng nhập bằng mật khẩu đúng.
 
 **Expected:** khóa 30 giây, đăng nhập lại được. **Actual:** locked_until cách t0 khoảng 180 giây và API vẫn trả 403. [Evidence](../features/FR02/evidence/FR02-evidence.md) · [Issue #26](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/26).
+
+---
+
+#### BUG-FR02-03 — Email sai định dạng vẫn đăng nhập trên web
+
+1. Trên DB test, tạo `not-an-email` / `Passw0rd!` qua API đăng ký; API hiện cho phép fixture này.
+2. Mở form `/login`, nhập `not-an-email` và `Passw0rd!`, bấm **Sign In**.
+
+**Expected:** ô email `type="email"` chặn định dạng sai trước submit. **Actual:** `type="text"`, browser cho submit; trang chủ hiện user đã đăng nhập và token được lưu. [Evidence + ảnh UI](../features/FR02/evidence/FR02-evidence.md) · [Results](../features/FR02/test-results.md).
+
+---
+
+#### BUG-FR02-04 — Password null vẫn cấp JWT
+
+1. Trên DB test, API đăng ký tạo account `fr02.gap.null@eshop.com` với `password:null`; DB lưu `NULL`.
+2. Gửi `POST /api/login` với cùng email và `password:null`; lặp lại bằng account thứ hai.
+
+**Expected:** từ chối xác thực, không cấp JWT. **Actual:** cả hai lần trả HTTP 200 + JWT. Ca thiếu hẳn key `password` trả 401 và chỉ tái hiện BUG-FR02-01 ở bộ đếm. [Evidence + ảnh log API](../features/FR02/evidence/FR02-evidence.md) · [Results](../features/FR02/test-results.md).
 
 ---
 

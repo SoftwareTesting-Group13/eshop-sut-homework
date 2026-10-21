@@ -14,7 +14,7 @@ Sau đó quét cấu trúc repo để tìm ứng dụng, feature, interface và 
 
 | Nhóm | Feature | Trạng thái |
 | --- | --- | --- |
-| A | FR-02 — Login and account lockout | Đã kiểm thử — 15 ca (11 PASS, 3 FAIL, 1 Quan sát); 2 bug đã xác nhận, Issue [#25](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/25) & [#26](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/26) kèm screenshot |
+| A | FR-02 — Login and account lockout | Đã kiểm thử — 18 ca (11 PASS, 6 FAIL, 1 Quan sát); 4 bug có evidence; Issue cũ [#25](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/25)/[#26](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/26), 2 Issue mới đang chuẩn bị |
 | B | FR-10 — Order state machine | Đã kiểm thử — 20 ca (18 PASS, 2 FAIL); 2 bug đã xác nhận qua UI, Issue [#33](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/33) & [#34](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/34) kèm screenshot |
 | C | FR-17 — Coupon management (CRUD) | Đã kiểm thử — 32 ca (11 PASS, 20 FAIL, 1 Quan sát); 8 bug đã xác nhận API, Issue #47…#54; 39 ảnh Postman + 1 ảnh UI bổ sung cho BUG-08, phủ 19/20 FAIL; bằng chứng chính là API |
 | D | FR-06 — Product detail view (Mobile) | Đã chạy 16 ca (3 PASS, 9 FAIL, 4 INCONCLUSIVE); 2 bug UI Android, 24 screenshot; Issue [#55](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/55)/[#56](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/56) kèm ảnh |
@@ -23,13 +23,13 @@ Sau đó quét cấu trúc repo để tìm ứng dụng, feature, interface và 
 
 | Feature | Thiết kế | Đã chạy | PASS | FAIL | Quan sát | BLOCKED | Chưa chạy |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| FR-02 | 15 | 15 | 11 | 3 | 1 | 0 | 0 |
+| FR-02 | 18 | 18 | 11 | 6 | 1 | 0 | 0 |
 | FR-10 | 20 | 20 | 18 | 2 | 0 | 0 | 0 |
 | FR-17 | 32 | 32 | 11 | 20 | 1 | 0 | 0 |
 | FR-06 | 16 | 16 | 3 | 9 | 4 | 0 | 0 |
-| **Tổng** | **83** | **83** | **43** | **34** | **6** | **0** | **0** |
+| **Tổng** | **86** | **86** | **43** | **37** | **6** | **0** | **0** |
 
-- Bug hiện hành: FR-02 và FR-10 đều có 2 bug đã xác nhận qua UI và mở Issue kèm ảnh (FR-02: #25, #26; FR-10: #33, #34). FR-17 có 8 bug đã xác nhận API (3 High, 5 Medium); 39 ảnh Postman + 1 ảnh UI bổ sung tại [`features/FR17/screenshots/`](features/FR17/screenshots/) phủ 19/20 FAIL (chỉ còn `DT-06` chưa có ảnh API). 8 bug đã mở Issue [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47)…#[54](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/54); 2 bug mới `BUG-FR17-07/08` có Issue [#53](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/53)/[#54](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/54) ([BUG-FR17-07](features/FR17/issues/BUG-FR17-07.md), [BUG-FR17-08](features/FR17/issues/BUG-FR17-08.md)). Bằng chứng chính là Postman/API; ảnh UI chỉ bổ sung hệ quả `BUG-FR17-08`.
+- Bug hiện hành: FR-02 có 4 bug: #25/#26 đã mở trước, BUG-FR02-03 xác nhận UI và BUG-FR02-04 xác nhận API 2/2 đang chuẩn bị Issue; ảnh tại [`features/FR02/screenshots/`](features/FR02/screenshots/). FR-10 có 2 bug Issue #33/#34. FR-17 có 8 bug đã xác nhận API (3 High, 5 Medium); 39 ảnh Postman + 1 ảnh UI bổ sung tại [`features/FR17/screenshots/`](features/FR17/screenshots/) phủ 19/20 FAIL (chỉ còn `DT-06` chưa có ảnh API). 8 bug đã mở Issue [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47)…[#54](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/54); bằng chứng chính là Postman/API.
 - Feature có artifact hiện hành: 4/4; FR-06 đã chạy Android emulator/Expo Go, có [24 screenshot](features/FR06/screenshots/), [bản lưu Issue #55/#56](features/FR06/issues/) và [evidence](features/FR06/evidence/FR06-evidence.md). [Domain](features/FR06/domain-analysis.md), [BVA](features/FR06/boundary-analysis.md), [catalog](features/FR06/test-cases.md), [results](features/FR06/test-results.md).
 
 ## Demo video
@@ -41,5 +41,5 @@ Sau đó quét cấu trúc repo để tìm ứng dụng, feature, interface và 
 1. ~~Xác nhận 2 bug FR-10 và mở GitHub Issue kèm ảnh~~ — **đã xong** (Issue #33, #34).
 2. ~~Xác nhận 8 bug FR-17 qua Postman và mở GitHub Issue kèm ảnh~~ — **đã xong** (Issue #47…#54; bằng chứng chính là ảnh Postman; 1 ảnh UI bổ sung hệ quả `BUG-FR17-08`). 2 bug mới `BUG-FR17-07/08` đã publish tại [#53](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/53)/[#54](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/54); `DT-06` vẫn là ca FAIL duy nhất chưa có ảnh API.
 3. ~~Review 2 bug FR-06 và publish Issue kèm screenshot~~ — **đã xong** ([#55](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/55), [#56](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/56)). Bốn ca API-only T04–T07 còn INCONCLUSIVE do thiếu oracle; đường dán chữ T14/T16 trên bàn phím mềm và iOS/thiết bị thật chưa kiểm tra.
-4. Sinh viên viết AI Gap Analysis cho FR02/FR10/FR17 và `reports/ai-critique.md`; rà soát lại `reports/ai-audit.md` và bổ sung nếu còn tương tác AI khác.
+4. AI Gap Analysis FR02/FR10/FR17/FR06 đã có trong feature report; sinh viên rà soát và viết `reports/ai-critique.md`. Publish 2 Issue mới FR02 kèm ảnh và hoàn tất AI Audit.
 5. Xuất PDF (`main-report`, `ai-audit`, `ai-critique`), tạo `git-commit-log.txt`, đóng gói bài nộp theo yêu cầu HW02; bổ sung bảng tự đánh giá trong README.

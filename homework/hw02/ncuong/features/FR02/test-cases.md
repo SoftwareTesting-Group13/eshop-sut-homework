@@ -21,5 +21,27 @@ Catalog dùng chung cho Domain/EP và BVA. Mỗi `T-ID` một dòng; ca phục v
 | BVA-06 | BVA B2 tại/ngay trên 30 s | Cùng tài khoản, chờ `t0 + 31 s`, mật khẩu **đúng**; `POST /api/login` | Hết khóa: đăng nhập thành công, trả `token` |
 | BVA-07 | BVA B4 (đặt lại về 0); EP P9 | `fr02.reset@eshop.com`: 1 lần sai rồi đăng nhập đúng | Thành công, trả `token`; `login_attempts = 0`, `locked_until = NULL` |
 | BVA-08 | BVA B2 (trạng thái hết hạn); R6 | `fr02.expired@eshop.com` với `locked_until` = quá khứ (ISO), mật khẩu đúng | Hết khóa: đăng nhập thành công, trả `token` |
+| DT-09 | EP P10; R4; AI-GAP-FR02-01 | Dùng API FR-01 tạo `not-an-email` / `Passw0rd!`; mở form web `/login`, điền đúng hai giá trị và submit; đối chiếu API login riêng | Input email là `type="email"`; HTML5 chặn `not-an-email`, không gửi yêu cầu đăng nhập/không tạo session. Việc API FR-01 nhận fixture sai định dạng là vấn đề liên quan FR-01, không phải oracle của ca UI này |
+| DT-10 | EP P11; R8, R2; AI-GAP-FR02-03 | Tài khoản `fr02.gap.valid@eshop.com` / `Passw0rd!` có `login_attempts=0`; `POST /api/login` body chỉ có `{"email":"fr02.gap.valid@eshop.com"}` | Không cấp JWT; nếu xử lý như đăng nhập sai thì `login_attempts` tăng đúng 1 theo R2; không khóa |
+| DT-11 | EP P12; R8; mở rộng AI-GAP-FR02-03 | API FR-01 tạo `fr02.gap.null@eshop.com` với `password:null` (DB `NULL`); `POST /api/login` cùng email và `password:null` | Không cấp JWT cho tài khoản không có mật khẩu hợp lệ; không coi `null === null` là xác thực thành công |
 
-**Ca gộp:** DT-02 = BVA-01 (một lần chạy quan sát cả kết quả đăng nhập lẫn giá trị bộ đếm). BVA-07 gộp `P9` + `B4`. Tổng **15 T-ID duy nhất**.
+**Ca gộp:** DT-02 = BVA-01 (một lần chạy quan sát cả kết quả đăng nhập lẫn giá trị bộ đếm). BVA-07 gộp `P9` + `B4`. DT-09–DT-11 không tạo nghĩa vụ BVA mới. Tổng **18 T-ID duy nhất**.
+
+## Đường chạy và tính khả thi của các ca bổ sung
+
+### DT-09 — email sai định dạng trên form
+
+- **Fixture qua API FR-01:** `POST http://localhost:3000/api/register` với `{"name":"FR02 Gap Malformed","email":"not-an-email","password":"Passw0rd!"}` trên DB test; kiểm tra tài khoản được tạo. Đây là setup liên quan FR-01, không tính thành T-ID FR-02.
+- **UI đã chạy:** mở `http://127.0.0.1:5173/login` trong Firefox, chưa đăng nhập; điền `not-an-email` và `Passw0rd!`, bấm **Sign In**. Expected: email input `type="email"`, browser báo sai định dạng và không chuyển trang/không lưu token. Chụp form với giá trị sai trước bấm và trang sau bấm. Actual ở `EV-FR02-018`.
+- **Đối chiếu API:** `POST /api/login` cùng email/password để chứng minh fixture có thể xác thực; kết quả API không thay cho verdict UI.
+
+### DT-10 — chỉ thiếu key password
+
+- **API đã chạy:** `POST http://localhost:3000/api/login`, `Content-Type: application/json`, body `{"email":"fr02.gap.valid@eshop.com"}`; đọc response và `login_attempts` trước/sau ở DB test. Actual ở `EV-FR02-020`.
+- **UI thông thường:** không cùng input. Form `/login` có ô mật khẩu `required`; để trống sẽ bị chặn hoặc gửi chuỗi rỗng, không tạo body JSON **thiếu hẳn key**. Giữ ca này API-only.
+
+### DT-11 — password null tường minh
+
+- **Fixture qua API FR-01:** `POST /api/register` với email `fr02.gap.null@eshop.com`, `password:null`; kiểm tra DB test lưu `NULL`.
+- **API đã chạy:** `POST /api/login` với `{"email":"fr02.gap.null@eshop.com","password":null}`; kiểm tra HTTP response và token. Lặp lại trên `fr02.gap.null2@eshop.com`. Actual ở `EV-FR02-021`.
+- **UI thông thường:** không cùng input. Form nhập mật khẩu `required` và gửi chuỗi, không gửi JSON `null`; ảnh bằng chứng cho ca này là ảnh chụp trang trình bày log API thực tế, không phải ảnh UI app.
