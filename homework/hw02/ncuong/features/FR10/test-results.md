@@ -57,7 +57,7 @@
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | BUG-FR10-01 | FR10 | Admin chuyển được đơn `canceled` sang `delivered` (xuyên trạng thái kết thúc) | Medium | Medium | DT-14 | Đã xác nhận qua UI; Issue [#33](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/33) (kèm screenshot) | `DT-14.log`, `DT-14-rerun.log`, `screenshots/BUG-FR10-01-*.png` |
 | BUG-FR10-02 | FR10 | User tự hủy được đơn đang `shipping` (được phép hủy sai trạng thái) | High | High | DT-16 | Đã xác nhận qua UI; Issue [#34](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/34) (kèm screenshot) | `DT-16.log`, `DT-16-rerun.log`, `screenshots/BUG-FR10-02-*.png` |
-| BUG-FR10-03 | FR10 / FR12 | User thường tự xác nhận được đơn của mình **và đơn người khác** qua API Admin | High | High | DT-21, DT-22 | Đã tái hiện API; có ảnh log, Issue chuẩn bị đăng | `ev-gap-access-run1.json`, `ev-gap-access-run2.json`, `ev-gap-access-cross.json`; [ảnh API](screenshots/BUG-FR10-03-api-evidence.png), [nội dung Issue](issues/BUG-FR10-03.md) |
+| BUG-FR10-03 | FR10 / FR12 | User thường tự xác nhận được đơn của mình **và đơn người khác** qua API Admin | High | High | DT-21, DT-22 | Đã tái hiện API; ảnh log đính trong Issue [#60](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/60) | `ev-gap-access-run1.json`, `ev-gap-access-run2.json`, `ev-gap-access-cross.json`; [ảnh API](screenshots/BUG-FR10-03-api-evidence.png) |
 
 ### Thống kê severity
 
@@ -164,7 +164,7 @@ curl -s http://localhost:3000/api/orders/16
 | Build / run | `9955eba27e0e4bf45613649150bf3c2eb681a20f`; `run-20261021-fr10-gap-access`; backend/SQLite cách ly |
 | Severity / Priority | High / High — user thường đã đổi được cả đơn thuộc tài khoản khác khi biết ID |
 | Evidence | [run 1](evidence/ev-gap-access-run1.json), [run 2](evidence/ev-gap-access-run2.json), [đơn người khác](evidence/ev-gap-access-cross.json), [ảnh API](screenshots/BUG-FR10-03-api-evidence.png), [nội dung Issue](issues/BUG-FR10-03.md) |
-| Trạng thái | API tái hiện 2/2 với đơn của mình và 1/1 với đơn người khác; có ảnh trình bày log; Issue chuẩn bị đăng |
+| Trạng thái | API tái hiện 2/2 với đơn của mình và 1/1 với đơn người khác; [Issue #60](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/60) kèm ảnh trình bày log |
 
 **Tiền điều kiện:** đăng nhập `test@eshop.com` để lấy JWT role `user`; có đơn `pending` được tạo qua checkout. DT-22 dùng đơn khác thuộc `admin@eshop.com`. Trên DB test mới, mỗi ca có đơn riêng.
 
@@ -197,10 +197,10 @@ curl -s http://localhost:3000/api/orders/16
 
 | Gap ID | AI output/source | Test case/bug tôi phát hiện thêm | Cách tôi phát hiện | Vì sao AI bỏ sót (nhận định của tôi) | Bổ sung/sửa chữa |
 | --- | --- | --- | --- | --- | --- |
-| AI-GAP-FR10-01 | Trong `test-cases.md`, các ca gọi `PUT /api/admin/orders/:id/status` đều dùng token admin. AI có ghi rủi ro thiếu kiểm tra quyền ở `fr10-observations.md` nhưng chưa thiết kế và chạy ca với token user thường. | Tôi thấy cần thử cho user thường gọi API này để tự chuyển đơn `pending → confirmed`. Theo nghiệp vụ, khách hàng không thể tự xác nhận đơn thay admin; nếu API chấp nhận thì đây là lỗi phân quyền. | Đối chiếu sơ đồ FR-10 và FR-18: bước xác nhận/giao hàng do Admin thực hiện. FR-12 còn yêu cầu mọi API `/api/admin/*` kiểm tra `role = 'admin'`. Trong `backend/server.js`, route đổi trạng thái chỉ dùng `authenticateToken`, không kiểm tra role. | AI tập trung vào cặp trạng thái trước/sau và luôn dùng đúng tài khoản admin cho ca hợp lệ. AI đã nhận ra rủi ro khi đọc source nhưng xếp ra ngoài phạm vi EP/BVA, nên chưa kiểm chứng quyền thao tác trong luồng thực tế. | Đã chạy DT-21 (đơn mình, 2/2), DT-22 (đơn người khác, 1/1), DT-23 (không token, 2/2), đối chứng admin DT-01; phát hiện **BUG-FR10-03**. Có raw log và [nháp Issue](issues/BUG-FR10-03.md); chờ sinh viên review/screenshot rồi publish. Coverage EP/BVA trạng thái FR-10 giữ nguyên; miền quyền có coverage riêng A1–A4. |
+| AI-GAP-FR10-01 | Trong `test-cases.md`, các ca gọi `PUT /api/admin/orders/:id/status` đều dùng token admin. AI có ghi rủi ro thiếu kiểm tra quyền ở `fr10-observations.md` nhưng chưa thiết kế và chạy ca với token user thường. | Tôi thấy cần thử cho user thường gọi API này để tự chuyển đơn `pending → confirmed`. Theo nghiệp vụ, khách hàng không thể tự xác nhận đơn thay admin; nếu API chấp nhận thì đây là lỗi phân quyền. | Đối chiếu sơ đồ FR-10 và FR-18: bước xác nhận/giao hàng do Admin thực hiện. FR-12 còn yêu cầu mọi API `/api/admin/*` kiểm tra `role = 'admin'`. Trong `backend/server.js`, route đổi trạng thái chỉ dùng `authenticateToken`, không kiểm tra role. | AI tập trung vào cặp trạng thái trước/sau và luôn dùng đúng tài khoản admin cho ca hợp lệ. AI đã nhận ra rủi ro khi đọc source nhưng xếp ra ngoài phạm vi EP/BVA, nên chưa kiểm chứng quyền thao tác trong luồng thực tế. | Đã chạy DT-21 (đơn mình, 2/2), DT-22 (đơn người khác, 1/1), DT-23 (không token, 2/2), đối chứng admin DT-01; phát hiện **BUG-FR10-03**. Raw log và ảnh API đã gắn vào [Issue #60](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/60). Coverage EP/BVA trạng thái FR-10 giữ nguyên; miền quyền có coverage riêng A1–A4. |
 
 ## Việc còn lại
 
 1. ~~Người kiểm thử xác nhận 2 bug và mở GitHub Issue~~ — **đã xong**: xác nhận qua UI + screenshot; Issue [#33](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/33), [#34](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/34).
 2. Chốt Q1 (`shipping→canceled` cho admin) với nhóm giảng viên/nhóm; Q3 đã xác nhận là BUG-FR10-03 bằng API.
-3. Sinh viên review BUG-FR10-03, chụp screenshot evidence API và mở GitHub Issue theo yêu cầu HW02; viết AI Critique (phần của sinh viên).
+3. ~~Gắn screenshot API và mở Issue BUG-FR10-03~~ — **đã xong** ([#60](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/60)). Sinh viên viết AI Critique theo yêu cầu bài.

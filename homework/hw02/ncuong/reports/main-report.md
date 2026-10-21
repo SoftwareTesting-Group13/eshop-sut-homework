@@ -38,7 +38,7 @@
 | FR-17 | 32 / 32 / 11 | 9 / 9 / 5 | Kết quả chính từ API/Postman; UI admin chưa chạy cùng các ca. 1 ca Quan sát thiếu oracle. |
 | FR-06 | 16 / 16 / 3 | 6 / 6 / 4 | 12 ca có Actual UI Android; 4 ca ID bất thường chỉ chạy API và thiếu oracle status/body. |
 
-Các phân số coverage trên là số nghĩa vụ EP/BVA, không cộng vào 89 T-ID; lớp A1 của FR-10 dùng lại DT-01. FR-02 bổ sung 3 T-ID, 2 bug mới có ảnh UI/API tại [screenshots](../features/FR02/screenshots/) và [evidence](../features/FR02/evidence/FR02-evidence.md). FR-10 bổ sung 3 T-ID quyền truy cập, có [raw API log](../features/FR10/evidence/FR10-evidence.md); BUG-FR10-03 đang chờ review/ảnh/Issue. FR-06 có 24 screenshot tại [screenshots](../features/FR06/screenshots/) và [evidence log](../features/FR06/evidence/FR06-evidence.md); FR-17 có 39 ảnh Postman cho 19/20 ca FAIL và 1 ảnh UI minh họa hệ quả coupon 150% tại [screenshots](../features/FR17/screenshots/).
+Các phân số coverage trên là số nghĩa vụ EP/BVA, không cộng vào 89 T-ID; lớp A1 của FR-10 dùng lại DT-01. FR-02 bổ sung 3 T-ID, 2 bug mới có ảnh UI/API tại [screenshots](../features/FR02/screenshots/) và [evidence](../features/FR02/evidence/FR02-evidence.md). FR-10 bổ sung 3 T-ID quyền truy cập, có [raw API log](../features/FR10/evidence/FR10-evidence.md) và [ảnh trình bày log](../features/FR10/screenshots/BUG-FR10-03-api-evidence.png) trong Issue #60. FR-06 có 24 screenshot tại [screenshots](../features/FR06/screenshots/) và [evidence log](../features/FR06/evidence/FR06-evidence.md); FR-17 có 39 ảnh Postman cho 19/20 ca FAIL và 1 ảnh UI minh họa hệ quả coupon 150% tại [screenshots](../features/FR17/screenshots/).
 
 ## 3. Tổng hợp bug
 
@@ -52,7 +52,7 @@ Các phân số coverage trên là số nghĩa vụ EP/BVA, không cộng vào 8
 | BUG-FR02-04 | Login `password:null` cấp JWT | High | High | DT-11 | Đã tái hiện API 2/2, có ảnh log | [#59](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/59) · [Results](../features/FR02/test-results.md) |
 | BUG-FR10-01 | Admin chuyển đơn canceled thành delivered | Medium | Medium | DT-14 | Đã xác nhận API + UI | [#33](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/33) · [Results](../features/FR10/test-results.md) |
 | BUG-FR10-02 | User hủy được đơn đang shipping | High | High | DT-16 | Đã xác nhận API + UI | [#34](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/34) · [Results](../features/FR10/test-results.md) |
-| BUG-FR10-03 | User thường đổi được trạng thái đơn qua API Admin, kể cả đơn người khác | High | High | DT-21, DT-22 | API tái hiện; chờ sinh viên review/screenshot | [Nháp Issue](../features/FR10/issues/BUG-FR10-03.md) · [Results](../features/FR10/test-results.md) |
+| BUG-FR10-03 | User thường đổi được trạng thái đơn qua API Admin, kể cả đơn người khác | High | High | DT-21, DT-22 | API tái hiện, ảnh log đính Issue | [#60](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/60) · [Results](../features/FR10/test-results.md) |
 | BUG-FR17-01 | Tạo coupon với code rỗng/thiếu/chỉ khoảng trắng | Medium | Medium | DT-04–DT-06 | Đã xác nhận API/Postman | [#47](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/47) · [Results](../features/FR17/test-results.md) |
 | BUG-FR17-02 | Tạo coupon với type sai hoặc thiếu | Medium | Medium | DT-08–DT-09 | Đã xác nhận API/Postman | [#48](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/48) · [Results](../features/FR17/test-results.md) |
 | BUG-FR17-03 | Tạo coupon với discount_value không hợp lệ | High | High | DT-10–DT-13 | Đã xác nhận API/Postman | [#49](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/49) · [Results](../features/FR17/test-results.md) |
@@ -146,7 +146,7 @@ Các bước dưới đây dùng fixture và quyền truy cập của từng [fe
 1. Tạo đơn `pending` trên DB test; đăng nhập `test@eshop.com` để lấy JWT role user.
 2. Gửi `PUT /api/admin/orders/:id/status` với JWT user và `{"status":"confirmed"}`; đọc lại đơn. Lặp lại với đơn thuộc tài khoản khác.
 
-**Expected:** từ chối và giữ `pending` vì `/api/admin/*` yêu cầu role admin. **Actual:** HTTP 200 và cả hai đơn thành `confirmed`; không token bị 401. [Evidence API](../features/FR10/evidence/FR10-evidence.md) · [Nháp Issue, chờ sinh viên review](../features/FR10/issues/BUG-FR10-03.md).
+**Expected:** từ chối và giữ `pending` vì `/api/admin/*` yêu cầu role admin. **Actual:** HTTP 200 và cả hai đơn thành `confirmed`; không token bị 401. [Evidence API + ảnh log](../features/FR10/evidence/FR10-evidence.md) · [Issue #60](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/60).
 
 ---
 

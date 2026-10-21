@@ -964,7 +964,7 @@ node /private/tmp/fr10-gap-run.Trf42g/run.cjs
 node /private/tmp/fr10-gap-run.Trf42g/run-cross.cjs
 ```
 
-Mỗi lần chạy lấy token từ đăng nhập seed `admin@eshop.com` hoặc `test@eshop.com`, xác nhận role từ response, rồi tạo đơn mới. Lệnh trên là lệnh phiên test đã chạy; thư mục tạm được dọn sau khi lưu raw log. Để tái hiện thủ công lâu dài, xem [nháp bug](../issues/BUG-FR10-03.md).
+Mỗi lần chạy lấy token từ đăng nhập seed `admin@eshop.com` hoặc `test@eshop.com`, xác nhận role từ response, rồi tạo đơn mới. Lệnh trên là lệnh phiên test đã chạy; thư mục tạm được dọn sau khi lưu raw log. Để tái hiện thủ công lâu dài, xem [BUG-FR10-03 / Issue #60](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/60).
 
 | EV-ID | T-ID / actor / đơn | Thời điểm UTC | Request thực tế | Before → HTTP/response → After | Verdict / raw log |
 | --- | --- | --- | --- | --- | --- |
@@ -979,6 +979,10 @@ Mỗi lần chạy lấy token từ đăng nhập seed `admin@eshop.com` hoặc 
 **Oracle trước chạy:** token user hoặc không token phải bị từ chối và trạng thái giữ `pending` theo FR-12; token admin được phép chuyển `pending→confirmed` theo FR-10 R1/FR-18. HTTP status cụ thể không quy định. Raw JSON lưu request, response, status trước/sau và timestamp cho từng EV; Bearer đã redacted. UI Admin chặn login role user, nên không có lần chạy UI cho đúng input user-token tới API Admin.
 
 **Screenshot evidence:** [BUG-FR10-03-api-evidence.png](../screenshots/BUG-FR10-03-api-evidence.png) là ảnh chụp bằng Firefox headless của bản trình bày đúng các record DT-21/DT-22 từ `ev-gap-access-run1.json` và `ev-gap-access-cross.json`, thêm đối chứng DT-23/DT-01 từ run 1. Ảnh ghi rõ nguồn và redacted JWT; **không phải ảnh UI app hoặc Postman, không phải lần chạy API mới**. EV-026/032 và raw JSON vẫn là bằng chứng gốc.
+
+Ảnh đã đính trong [GitHub Issue #60](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/60); URL raw image trả HTTP 200 khi kiểm tra trước khi đăng.
+
+Thư mục dựng ảnh và Firefox profile tạm `/private/tmp/fr10-issue-shot.rkwU5b` đã được xóa sau khi publish Issue; ảnh cần giữ lại nằm ở `../screenshots/BUG-FR10-03-api-evidence.png`.
 
 ### Cleanup run bổ sung
 

@@ -1,5 +1,7 @@
 # BUG-FR10-03 — User thường đổi được trạng thái đơn qua API Admin
 
+**GitHub Issue:** [#60](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/60)
+
 > **Trạng thái kiểm chứng:** Đã tái hiện API; UI thường không gửi được đúng request user-token tới API Admin. Ảnh dưới là screenshot bản trình bày raw log API, không phải ảnh app/Postman.
 
 ## Tóm tắt
