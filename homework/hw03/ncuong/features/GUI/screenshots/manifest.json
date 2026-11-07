@@ -1,0 +1,326 @@
+[
+  {
+    "file": "screenshots/CHK-01-login-heading.png",
+    "ids": [
+      "CHK-01"
+    ],
+    "title": "Login heading names the wrong screen",
+    "detail": "Observed <h2>Đăng Ký</h2> on /login; expected a Login heading such as “Đăng nhập”."
+  },
+  {
+    "file": "screenshots/CHK-02-login-title.png",
+    "ids": [
+      "CHK-02"
+    ],
+    "title": "Browser tab title is not page-specific",
+    "detail": "document.title = \"frontend-web\" on /login; expected “Đăng nhập — EShop” or similar."
+  },
+  {
+    "file": "screenshots/CHK-17-18-19-login-fields.png",
+    "ids": [
+      "CHK-17",
+      "CHK-18",
+      "CHK-19"
+    ],
+    "title": "Login fields have wrong types and no programmatic labels",
+    "detail": "Both inputs are type=\"text\" (password is visible); labels “Username”/“Mật khẩu” have no for/id association; axe-core reports 2 critical label violations."
+  },
+  {
+    "file": "screenshots/CHK-36-login-tab-order.png",
+    "ids": [
+      "CHK-36"
+    ],
+    "title": "Tab order starts at the submit button",
+    "detail": "The Sign In button has tabindex=\"1\", so the first Tab from the page focuses it before the email/password fields. Visual order is violated."
+  },
+  {
+    "file": "screenshots/CHK-50-51-login-error.png",
+    "ids": [
+      "CHK-50",
+      "CHK-51"
+    ],
+    "title": "Login error is generic and not announced",
+    "detail": "Only “Đăng nhập thất bại. Vui lòng kiểm tra lại.” is shown, with no role=\"alert\"/aria-live, no field association and no distinction between wrong credentials, lockout or network failure."
+  },
+  {
+    "file": "screenshots/CHK-69-login-while-authenticated.png",
+    "ids": [
+      "CHK-69"
+    ],
+    "title": "Authenticated user still sees the Login form",
+    "detail": "The header shows “Chào, HW03 UI Tester” but /login still renders the login form instead of redirecting to the home page."
+  },
+  {
+    "file": "screenshots/CHK-34-forgot-link-reload.png",
+    "ids": [
+      "CHK-34"
+    ],
+    "title": "Forgot-password link causes a full page reload",
+    "detail": "The link is a raw <a href=\"/forgot-password\">; window.__spaMarker was lost after the click, proving a full document reload instead of React Router navigation."
+  },
+  {
+    "file": "screenshots/CHK-07-register-contrast.png",
+    "ids": [
+      "CHK-07"
+    ],
+    "title": "Helper text and primary button fail WCAG AA contrast",
+    "detail": "axe-core: helper text #9ca3af on #ffffff = 2.53:1; white on #ef4444 = 3.76:1 (both below 4.5:1)."
+  },
+  {
+    "file": "screenshots/CHK-23-register-password-rule.png",
+    "ids": [
+      "CHK-23"
+    ],
+    "title": "Password rule text contradicts the implementation",
+    "detail": "The helper text promises “ký tự đặc biệt”, but the regex requires a whitespace character and rejects special characters. “Abcd1234!” is rejected although it satisfies the displayed rule."
+  },
+  {
+    "file": "screenshots/CHK-21-register-invalid-email.png",
+    "ids": [
+      "CHK-21"
+    ],
+    "title": "Registration accepts a malformed email address",
+    "detail": "The email field is type=\"text\" with no format check. “not-an-email-1794048870220” was accepted and the app redirected to /login."
+  },
+  {
+    "file": "screenshots/CHK-54-register-duplicate-email.png",
+    "ids": [
+      "CHK-54"
+    ],
+    "title": "Duplicate email registration is accepted silently",
+    "detail": "Registering “dup1794048871770@example.com” twice both redirected to /login with no error. The backend has no unique constraint on email."
+  },
+  {
+    "file": "screenshots/CHK-56-register-loading.png",
+    "ids": [
+      "CHK-56"
+    ],
+    "title": "No loading or disabled state while registering",
+    "detail": "During a delayed /api/register request the button remains enabled, keeps the label “Đăng Ký”, and has no aria-busy/spinner. Double submits are possible."
+  },
+  {
+    "file": "screenshots/CHK-55-register-raw-error.png",
+    "ids": [
+      "CHK-55"
+    ],
+    "title": "Server errors are rendered verbatim",
+    "detail": "The catch block renders err.response.data.error directly. A simulated 500 produced “SQLITE_ERROR: no such column: name” in the UI."
+  },
+  {
+    "file": "screenshots/CHK-58-forgot-otp-exposed.png",
+    "ids": [
+      "CHK-58"
+    ],
+    "title": "OTP is displayed in the page instead of being sent privately",
+    "detail": "Step 2 shows “Mã OTP của bạn là: 1183” in a green success box. Anyone with the email address can read the reset code on screen."
+  },
+  {
+    "file": "screenshots/CHK-11-forgot-buttons.png",
+    "ids": [
+      "CHK-11"
+    ],
+    "title": "Primary and secondary actions look identical",
+    "detail": "“Đặt lại mật khẩu” and “← Quay lại” are both full-width green buttons with the same styling, so the destructive primary action has no visual priority."
+  },
+  {
+    "file": "screenshots/CHK-26-forgot-otp-input.png",
+    "ids": [
+      "CHK-26"
+    ],
+    "title": "OTP input has no numeric/4-digit constraint",
+    "detail": "The OTP field is type=\"text\" with no maxlength, inputmode=\"numeric\" or pattern; it accepts arbitrary text and length."
+  },
+  {
+    "file": "screenshots/CHK-43-forgot-focus.png",
+    "ids": [
+      "CHK-43"
+    ],
+    "title": "Focus is lost after the step transition",
+    "detail": "After “Lấy mã OTP”, document.activeElement is BODY. Focus is not moved to the OTP field or the step-2 heading."
+  },
+  {
+    "file": "screenshots/CHK-44-forgot-step-indicator.png",
+    "ids": [
+      "CHK-44"
+    ],
+    "title": "No step indicator on the two-step reset flow",
+    "detail": "Step 2 shows no “2/2” or progress indicator; users cannot tell how many steps remain."
+  },
+  {
+    "file": "screenshots/CHK-59-forgot-alert.png",
+    "ids": [
+      "CHK-59"
+    ],
+    "title": "Invalid-email feedback uses a blocking native alert",
+    "detail": "Observed alert: “Lỗi: User not found”. No inline message, no field highlight and no accessible live region."
+  },
+  {
+    "file": "screenshots/CHK-13-14-profile-headings-title.png",
+    "ids": [
+      "CHK-13",
+      "CHK-14"
+    ],
+    "title": "Profile has no h1 and no page-specific title",
+    "detail": "document.title = \"frontend-web\"; the page contains two <h2> elements and zero <h1>. Heading hierarchy and browser tab do not identify the Profile screen."
+  },
+  {
+    "file": "screenshots/CHK-32-profile-labels.png",
+    "ids": [
+      "CHK-32"
+    ],
+    "title": "Profile inputs are not associated with their labels",
+    "detail": "All four <label> elements lack for/id; axe-core reports critical label violations. Screen readers announce the inputs without names."
+  },
+  {
+    "file": "screenshots/CHK-16-profile-contrast.png",
+    "ids": [
+      "CHK-16"
+    ],
+    "title": "Profile text/status contrast fails WCAG AA",
+    "detail": "axe-core: yellow #fde047 on blue #2563eb = 3.92:1; white on red #ef4444 = 3.76:1. Both are below 4.5:1 for normal text."
+  },
+  {
+    "file": "screenshots/CHK-31-profile-phone-alert.png",
+    "ids": [
+      "CHK-31"
+    ],
+    "title": "Valid Vietnamese phone number is rejected by a blocking alert",
+    "detail": "Observed alert: “Số điện thoại không hợp lệ. Vui lòng nhập đúng 9-10 chữ số.”. The regex /^[1-9][0-9]{8,9}$/ rejects every number starting with 0, including the placeholder 0912345678; feedback is not inline."
+  },
+  {
+    "file": "screenshots/CHK-61-profile-update-alert.png",
+    "ids": [
+      "CHK-61"
+    ],
+    "title": "Profile update feedback is a blocking alert",
+    "detail": "Observed alert: “Cập nhật thành công!”. There is no inline success message, no aria-live region and no focus/state update after saving."
+  },
+  {
+    "file": "screenshots/CHK-62-profile-orders-loading.png",
+    "ids": [
+      "CHK-62"
+    ],
+    "title": "Order history shows the empty state while still loading",
+    "detail": "During a delayed /api/orders/my-orders request, “Bạn chưa có đơn hàng nào.” is already visible; there is no spinner, skeleton or aria-busy state."
+  },
+  {
+    "file": "screenshots/CHK-63-profile-orders-error.png",
+    "ids": [
+      "CHK-63"
+    ],
+    "title": "Order-history failure is shown as an empty list",
+    "detail": "When /api/orders/my-orders returns 500, the catch block sets orders=[] and the UI says “Bạn chưa có đơn hàng nào.” No error message or retry action is shown."
+  },
+  {
+    "file": "screenshots/CHK-64-profile-cancel.png",
+    "ids": [
+      "CHK-64"
+    ],
+    "title": "Cancel-order has no confirmation and is offered for shipping orders",
+    "detail": "The “Hủy đơn” button is shown for a “Đang giao” order and calls the API immediately; the only dialog is the error “Lỗi: Order not found”. No “Bạn có chắc?” confirmation."
+  },
+  {
+    "file": "screenshots/CHK-45-profile-unauth.png",
+    "ids": [
+      "CHK-45"
+    ],
+    "title": "Unauthenticated /profile does not redirect to Login",
+    "detail": "The URL stays /profile and only the text “Vui lòng đăng nhập” is rendered. There is no redirect and no return path."
+  },
+  {
+    "file": "screenshots/CHK-47-profile-logout.png",
+    "ids": [
+      "CHK-47"
+    ],
+    "title": "Logout leaves the user on the protected Profile URL",
+    "detail": "After “Thoát”, the URL remains /profile and the page shows “Vui lòng đăng nhập” instead of navigating to a public page."
+  },
+  {
+    "file": "screenshots/CHK-48-profile-active-nav.png",
+    "ids": [
+      "CHK-48"
+    ],
+    "title": "Navigation has no active/current-page indication",
+    "detail": "The header links have only hover styles; no aria-current, active class or visual state identifies the current Profile page."
+  },
+  {
+    "file": "screenshots/CHK-15-profile-mobile-table.png",
+    "ids": [
+      "CHK-15"
+    ],
+    "title": "Order-history table forces horizontal page scrolling on mobile",
+    "detail": "At 360px viewport the page scrollWidth is 399px (39px overflow) because the 5-column table keeps its desktop width. The table has no responsive card layout or scroll container."
+  },
+  {
+    "file": "screenshots/CHK-65-login-rtl.png",
+    "ids": [
+      "CHK-65"
+    ],
+    "title": "RTL direction does not mirror the layout",
+    "detail": "With dir=\"rtl\", physical Tailwind utilities keep the “Quên mật khẩu?” link right-aligned and the header/order unchanged; the layout is not mirrored for RTL readers."
+  },
+  {
+    "file": "screenshots/CHK-06-register-title.png",
+    "ids": [
+      "CHK-06"
+    ],
+    "title": "Register page has no page-specific tab title",
+    "detail": "document.title = \"frontend-web\" on /register; expected a Register-specific title."
+  },
+  {
+    "file": "screenshots/CHK-10-forgot-title.png",
+    "ids": [
+      "CHK-10"
+    ],
+    "title": "Forgot Password page has no page-specific tab title",
+    "detail": "document.title = \"frontend-web\" on /forgot-password; expected a Forgot Password-specific title."
+  },
+  {
+    "file": "screenshots/CHK-25-forgot-email-type.png",
+    "ids": [
+      "CHK-25"
+    ],
+    "title": "Forgot Password email field has no email input semantics",
+    "detail": "The email field is type=\"text\" with no inputmode/pattern; malformed addresses are only rejected by the backend after submission."
+  },
+  {
+    "file": "screenshots/CHK-24-register-no-confirm.png",
+    "ids": [
+      "CHK-24"
+    ],
+    "title": "Register form has no confirm-password field",
+    "detail": "Only one password input is present; a typo cannot be detected before account creation."
+  },
+  {
+    "file": "screenshots/CHK-49-login-loading.png",
+    "ids": [
+      "CHK-49"
+    ],
+    "title": "Login button has no loading or disabled state",
+    "detail": "During a delayed /api/login request the button remains enabled, keeps the label “Sign In” and has no spinner/aria-busy. Double submits are possible."
+  },
+  {
+    "file": "screenshots/CHK-53-register-silent-success.png",
+    "ids": [
+      "CHK-53"
+    ],
+    "title": "Successful registration redirects silently",
+    "detail": "After a successful POST /api/register the app navigates to /login without any success message, so the user cannot tell whether the account was created."
+  },
+  {
+    "file": "screenshots/CHK-28-forgot-no-confirm.png",
+    "ids": [
+      "CHK-28"
+    ],
+    "title": "Reset form has no confirm-password field",
+    "detail": "Step 2 asks for only one “Mật khẩu mới” input; a typo locks the user out of the new password."
+  },
+  {
+    "file": "screenshots/CHK-30-profile-phone-inputmode.png",
+    "ids": [
+      "CHK-30"
+    ],
+    "title": "Phone field has no tel inputmode or format constraint",
+    "detail": "The phone input is type=\"text\" with no inputmode=\"tel\", pattern, maxlength or minlength; mobile users get a full keyboard and arbitrary input is accepted until submit."
+  }
+]
