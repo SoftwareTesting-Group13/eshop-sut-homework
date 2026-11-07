@@ -1,0 +1,10 @@
+# HW03 — Git commit log
+
+| Commit | Date | Message |
+| --- | --- | --- |
+| `3b544be` | 2026-11-07 18:04 | docs(hw03): add Task 1 report, AI audit, critique and PDFs |
+| `b3ee557` | 2026-11-07 18:04 | feat(hw03): add 26 GUI bug reports and GitHub issue drafts |
+| `3db3030` | 2026-11-07 18:04 | feat(hw03): add 69-item GUI checklist and execution evidence |
+| `f82b1ff` | 2026-11-07 18:04 | feat(hw03): add agent skills and fix skill frontmatter |
+
+The log above lists the Task 1 commits in reverse chronological order. This file is committed separately so it can record the earlier hashes.
