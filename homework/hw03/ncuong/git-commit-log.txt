@@ -2,6 +2,7 @@
 
 | Commit | Date | Message |
 | --- | --- | --- |
+| `c95b29e` | 2026-11-07 20:08 | docs(hw03): publish 26 GitHub issues and link them from bug reports |
 | `fe4f1b1` | 2026-11-07 19:27 | docs(hw03): merge AI initial checklist and review additions into one file |
 | `78e11b9` | 2026-11-07 19:02 | docs(hw03): tighten AI audit artifact inventory and refresh PDFs |
 | `3258ff9` | 2026-11-07 18:55 | docs(hw03): update GUI test summary after the review revision |
