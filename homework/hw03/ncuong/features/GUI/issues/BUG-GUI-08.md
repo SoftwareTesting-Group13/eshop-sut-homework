@@ -1,37 +1,62 @@
-## Summary
+# [BUG-GUI-08] Ô email dùng `type=text` và ô mật khẩu hiển thị rõ ký tự
 
-Login password is visible and the email field has no email semantics.
+**Severity:** Major · **Priority:** High · **FR:** FR-02 — Đăng nhập; FR-22 — Form · **Screen:** `/login`
 
-## Environment
+## Mô tả
 
-- SUT: EShop (`frontend-web`)
-- URL: http://localhost:5173
-- Browser: Chromium 158 (Playwright 1.65)
-- Viewport: 1280×900 desktop; 360×800 mobile for responsive checks
-- FR: FR-02 · IA-02 · Login
-- Checklist IDs: CHK-17, CHK-18
+Cả hai input đều là `type="text"`; mật khẩu hiển thị rõ và nhãn thứ nhất là “Username” dù backend xác thực bằng email.
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Open /login.
-2. Type into both fields and inspect the input types.
+1. Mở `/login`.
+2. Nhập email và mật khẩu; kiểm tra `type` của hai input.
 
 ## Expected
 
-The email field is type=email and the password field is type=password.
+Ô email dùng `type="email"`; ô mật khẩu dùng `type="password"` (FR-02, FR-22).
 
 ## Actual
 
-Both fields are type=text; the password is visible on screen and the label says “Username” although the backend expects an email.
+Cả hai input đều là `type="text"`; mật khẩu hiển thị rõ và nhãn thứ nhất là “Username” dù backend xác thực bằng email.
 
-## Evidence
+## Checklist IDs
+
+CHK-17, CHK-18
+
+## Nguyên nhân
+
+**[`frontend-web/src/pages/Login.jsx:28`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Login.jsx#L28)–[L45](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Login.jsx#L45)**
+
+```jsx
+          <label className="block text-gray-700 mb-2">Username</label>
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full border p-2 rounded"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-gray-700 mb-2">Mật khẩu</label>
+          <input
+            type="text"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full border p-2 rounded"
+            required
+          />
+```
+
+Hai input đều khai báo `type="text"`; label không phải “Email”.
+
+## Đề xuất sửa
+
+Đổi input email sang `type="email"`, input mật khẩu sang `type="password"` và đổi nhãn thành “Email”.
+
+## Screenshots
 
 ![BUG-GUI-08](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw03/ncuong/features/GUI/screenshots/CHK-17-18-19-login-fields.png)
 
-## Root cause
 
-frontend-web/src/pages/Login.jsx:29-45.
-
-## Suggested fix
-
-Use type=email, type=password and label the first field “Email”.
+> Screenshot dùng raw URL trên nhánh `ncuong`; cần push nhánh này trước khi publish issue.

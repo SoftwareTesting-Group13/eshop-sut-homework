@@ -1,37 +1,54 @@
-## Summary
+# [BUG-GUI-17] Focus bị mất sau khi chuyển sang bước OTP
 
-Focus is lost after switching to the OTP step.
+**Severity:** Minor · **Priority:** Medium · **FR:** FR-03 — Quên mật khẩu · **Screen:** `/forgot-password`
 
-## Environment
+## Mô tả
 
-- SUT: EShop (`frontend-web`)
-- URL: http://localhost:5173
-- Browser: Chromium 158 (Playwright 1.65)
-- Viewport: 1280×900 desktop; 360×800 mobile for responsive checks
-- FR: FR-03 · IA-03 · Forgot Password
-- Checklist IDs: CHK-43
+`document.activeElement` là `BODY`; người dùng screen-reader/bàn phím không biết bước đã đổi.
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Request an OTP.
-2. Inspect document.activeElement after step 2 renders.
+1. Yêu cầu OTP thành công.
+2. Kiểm tra `document.activeElement` sau khi bước 2 render.
 
 ## Expected
 
-Focus moves to the OTP field or the step-2 heading and the change is announced.
+Focus chuyển tới ô OTP hoặc heading bước 2 và thay đổi được announce.
 
 ## Actual
 
-document.activeElement is BODY; screen-reader and keyboard users are not told that the step changed.
+`document.activeElement` là `BODY`; người dùng screen-reader/bàn phím không biết bước đã đổi.
 
-## Evidence
+## Checklist IDs
+
+CHK-43
+
+## Nguyên nhân
+
+**[`frontend-web/src/pages/ForgotPassword.jsx:13`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/ForgotPassword.jsx#L13)–[L22](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/ForgotPassword.jsx#L22)**
+
+```jsx
+  const handleRequest = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post('http://localhost:3000/api/forgot-password', { email });
+      setMessage(`Mã OTP của bạn là: ${res.data.resetToken}`);
+      setStep(2);
+    } catch (err) {
+      alert("Lỗi: " + (err.response?.data?.error || err.message));
+    }
+  };
+```
+
+`setStep(2)` không kèm focus management.
+
+## Đề xuất sửa
+
+Dùng `useEffect` để focus heading/input bước 2 và thêm `aria-live` cho status message.
+
+## Screenshots
 
 ![BUG-GUI-17](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw03/ncuong/features/GUI/screenshots/CHK-43-forgot-focus.png)
 
-## Root cause
 
-ForgotPassword.jsx:13-22 (setStep without focus management).
-
-## Suggested fix
-
-Focus the step-2 heading or first input in an effect and use aria-live for the status message.
+> Screenshot dùng raw URL trên nhánh `ncuong`; cần push nhánh này trước khi publish issue.

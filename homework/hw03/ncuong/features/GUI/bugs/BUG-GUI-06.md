@@ -1,42 +1,55 @@
-# BUG-GUI-06 — Order-history table forces horizontal page scrolling on mobile
+# BUG-GUI-06 — Bảng lịch sử đơn hàng gây horizontal scroll ở viewport 360px
 
-| Field | Value |
+**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-06.md`](../issues/BUG-GUI-06.md)
+
+## Tóm tắt
+
+Bảng lịch sử đơn hàng gây horizontal scroll ở viewport 360px. Bug được phát hiện khi thực thi checklist GUI Task 1 trên màn hình `/profile`.
+
+| Mục | Giá trị |
 | --- | --- |
-| Severity | **Major** |
-| FR | FR-04 |
-| Interface aspect | IA-01 |
-| Screen | Profile |
-| Checklist IDs | CHK-15 |
-| Environment | Chromium 158 (Playwright 1.65), 1280×900; backend http://localhost:3000, web http://localhost:5173 |
-| Status | Draft — student review and GitHub publication pending |
+| Feature / rule | FR-04 — Hồ sơ cá nhân |
+| Checklist | CHK-15 |
+| Màn hình | `/profile` |
+| Môi trường | Chromium 158 / Playwright 1.65; backend `http://localhost:3000`; web `http://localhost:5173`; viewport 1280×900 (mobile 360×800 khi có kiểm tra responsive). |
+| Severity / Priority | **Major** / High |
+| Lặp lại | 1/1 trên build hiện tại |
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Open /profile at a 360px viewport with at least one order.
-2. Measure document.documentElement.scrollWidth.
+1. Đăng nhập, mở `/profile` ở viewport 360×800 với ít nhất một đơn hàng.
+2. Đo `document.documentElement.scrollWidth` và `clientWidth`.
 
-## Expected result
+| Mốc | Expected | Actual |
+| --- | --- | --- |
+| Sau thao tác | Bảng co giãn hoặc nằm trong vùng scroll riêng; cả trang không có horizontal scroll. | `scrollWidth` = 399px, `clientWidth` = 360px (tràn 39px); bảng 5 cột giữ nguyên width desktop và bị cắt. |
 
-The table adapts (scroll container or card layout) and the page has no horizontal scroll.
+## Bằng chứng
 
-## Actual result
+![BUG-GUI-06 — CHK-15-profile-mobile-table.png](../screenshots/CHK-15-profile-mobile-table.png)
 
-Page scrollWidth is 399px vs clientWidth 360px (39px overflow); the 5-column table keeps its desktop width and is clipped.
+## Nguyên nhân đối chiếu mã nguồn
 
-## Evidence
+**[`frontend-web/src/pages/Profile.jsx:171`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Profile.jsx#L171)–[L179](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Profile.jsx#L179)**
 
-![BUG-GUI-06 evidence](../screenshots/CHK-15-profile-mobile-table.png)
+```jsx
+          <table className="w-full text-left">
+            <thead>
+              <tr className="border-b bg-gray-50">
+                <th className="p-2">Mã ĐH</th>
+                <th className="p-2">Ngày đặt</th>
+                <th className="p-2">Tổng tiền</th>
+                <th className="p-2">Trạng thái</th>
+                <th className="p-2">Thao tác</th>
+              </tr>
+```
 
-## Root cause
+`<table className="w-full text-left">` không có wrapper `overflow-x-auto` hay layout card cho mobile.
 
-frontend-web/src/pages/Profile.jsx:171-212 — no responsive wrapper or card layout.
+## Đề xuất sửa
 
-## Suggested fix
+Bọc bảng trong `overflow-x-auto` với `min-width`, hoặc render card đơn hàng dưới breakpoint `md`.
 
-Wrap the table in overflow-x-auto with a min-width, or render order cards below the md breakpoint.
+## Ghi chú
 
-## GitHub issue
-
-- Title: `[BUG-GUI-06] Order-history table forces horizontal page scrolling on mobile`
-- Labels: `bug`, `major`, `ia-01`, `fr-04`
-- Publishing is blocked in this environment because the GitHub CLI/token is not configured; the ready-to-publish body is in `issues/`.
+Screenshot được chụp trên SUT đang chạy tại `http://localhost:5173`; code block lấy trực tiếp từ source tại commit [`85af3ba`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9).

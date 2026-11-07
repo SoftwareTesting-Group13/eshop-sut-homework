@@ -1,42 +1,53 @@
-# BUG-GUI-16 — Login tab order starts at the submit button because of tabindex=1
+# BUG-GUI-16 — Tab order bắt đầu ở nút Sign In vì `tabIndex=1`
 
-| Field | Value |
+**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-16.md`](../issues/BUG-GUI-16.md)
+
+## Tóm tắt
+
+Tab order bắt đầu ở nút Sign In vì `tabIndex=1`. Bug được phát hiện khi thực thi checklist GUI Task 1 trên màn hình `/login`.
+
+| Mục | Giá trị |
 | --- | --- |
-| Severity | **Major** |
-| FR | FR-02 |
-| Interface aspect | IA-03 |
-| Screen | Login |
-| Checklist IDs | CHK-36 |
-| Environment | Chromium 158 (Playwright 1.65), 1280×900; backend http://localhost:3000, web http://localhost:5173 |
-| Status | Draft — student review and GitHub publication pending |
+| Feature / rule | FR-21 — Tiêu chuẩn giao diện chung |
+| Checklist | CHK-36 |
+| Màn hình | `/login` |
+| Môi trường | Chromium 158 / Playwright 1.65; backend `http://localhost:3000`; web `http://localhost:5173`; viewport 1280×900 (mobile 360×800 khi có kiểm tra responsive). |
+| Severity / Priority | **Major** / High |
+| Lặp lại | 1/1 trên build hiện tại |
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Open /login.
-2. Focus the document body and press Tab once.
+1. Mở `/login`.
+2. Focus vào body và bấm Tab một lần; ghi lại phần tử được focus.
 
-## Expected result
+| Mốc | Expected | Actual |
+| --- | --- | --- |
+| Sau thao tác | Tab đầu tiên vào ô email, sau đó mật khẩu, link quên mật khẩu, nút submit, link đăng ký. | Tab đầu tiên focus vào nút “Sign In” vì nút có `tabIndex={1}`; người dùng bàn phím bỏ qua hai ô nhập và thứ tự thị giác bị đảo. |
 
-The first Tab focuses the email field, then password, forgot link, submit, register link.
+## Bằng chứng
 
-## Actual result
+![BUG-GUI-16 — CHK-36-login-tab-order.png](../screenshots/CHK-36-login-tab-order.png)
 
-The first Tab focuses the Sign In button because it has tabindex="1"; keyboard users skip the fields and the visual order is violated.
+## Nguyên nhân đối chiếu mã nguồn
 
-## Evidence
+**[`frontend-web/src/pages/Login.jsx:53`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Login.jsx#L53)–[L59](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Login.jsx#L59)**
 
-![BUG-GUI-16 evidence](../screenshots/CHK-36-login-tab-order.png)
+```jsx
+        <button
+          type="submit"
+          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+          tabIndex={1}
+        >
+          Sign In
+        </button>
+```
 
-## Root cause
+`tabIndex={1}` trên button submit.
 
-Login.jsx:53-59 (tabIndex={1}).
+## Đề xuất sửa
 
-## Suggested fix
+Bỏ `tabIndex`; để DOM order quyết định tab order.
 
-Remove tabIndex; rely on DOM order.
+## Ghi chú
 
-## GitHub issue
-
-- Title: `[BUG-GUI-16] Login tab order starts at the submit button because of tabindex=1`
-- Labels: `bug`, `major`, `ia-03`, `fr-02`
-- Publishing is blocked in this environment because the GitHub CLI/token is not configured; the ready-to-publish body is in `issues/`.
+Screenshot được chụp trên SUT đang chạy tại `http://localhost:5173`; code block lấy trực tiếp từ source tại commit [`85af3ba`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9).

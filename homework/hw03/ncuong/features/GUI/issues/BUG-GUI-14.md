@@ -1,39 +1,51 @@
-## Summary
+# [BUG-GUI-14] Regex số điện thoại từ chối số Việt Nam hợp lệ và dùng alert chặn
 
-Phone validation rejects valid Vietnamese numbers and uses a blocking alert.
+**Severity:** Blocker · **Priority:** High · **FR:** FR-04 — Hồ sơ cá nhân · **Screen:** `/profile`
 
-## Environment
+## Mô tả
 
-- SUT: EShop (`frontend-web`)
-- URL: http://localhost:5173
-- Browser: Chromium 158 (Playwright 1.65)
-- Viewport: 1280×900 desktop; 360×800 mobile for responsive checks
-- FR: FR-04 · IA-02 · Profile
-- Checklist IDs: CHK-30, CHK-31
+Alert “Số điện thoại không hợp lệ...” hiện ra. Regex `/^[1-9][0-9]{8,9}$/` từ chối mọi số bắt đầu bằng `0`, gồm cả placeholder `0912345678`; lỗi dùng `alert()` thay vì inline.
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Log in and open /profile.
-2. Enter the placeholder value 0912345678 and click “Cập nhật”.
+1. Đăng nhập và mở `/profile`.
+2. Nhập số `0912345678` (đúng placeholder) và bấm “Cập nhật”.
 
 ## Expected
 
-The phone number is accepted and the profile is saved.
+Số bắt đầu bằng `0`, dài 10–11 chữ số được chấp nhận và lưu hồ sơ (FR-04).
 
 ## Actual
 
-An alert says “Số điện thoại không hợp lệ. Vui lòng nhập đúng 9-10 chữ số.” The regex /^[1-9][0-9]{8,9}$/ rejects every number starting with 0, which is the normal Vietnamese mobile prefix.
+Alert “Số điện thoại không hợp lệ...” hiện ra. Regex `/^[1-9][0-9]{8,9}$/` từ chối mọi số bắt đầu bằng `0`, gồm cả placeholder `0912345678`; lỗi dùng `alert()` thay vì inline.
 
-## Evidence
+## Checklist IDs
 
-![BUG-GUI-14](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw03/ncuong/features/GUI/screenshots/CHK-30-profile-phone-inputmode.png)
+CHK-31
+
+## Nguyên nhân
+
+**[`frontend-web/src/pages/Profile.jsx:40`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Profile.jsx#L40)–[L46](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Profile.jsx#L46)**
+
+```jsx
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+
+    if (!/^[1-9][0-9]{8,9}$/.test(phone)) {
+      alert("Số điện thoại không hợp lệ. Vui lòng nhập đúng 9-10 chữ số.");
+      return;
+    }
+```
+
+Regex bắt đầu bằng `[1-9]` và dùng `alert()`.
+
+## Đề xuất sửa
+
+Dùng `/^0\d{9,10}$/` (hoặc thư viện validate), thêm `inputmode="tel"` và hiển thị lỗi inline.
+
+## Screenshots
 
 ![BUG-GUI-14](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw03/ncuong/features/GUI/screenshots/CHK-31-profile-phone-alert.png)
 
-## Root cause
 
-Profile.jsx:43-46.
-
-## Suggested fix
-
-Use a Vietnamese phone rule such as /^0\d{9,10}$/ (or a library), add inputmode=tel, and show an inline error instead of alert().
+> Screenshot dùng raw URL trên nhánh `ncuong`; cần push nhánh này trước khi publish issue.

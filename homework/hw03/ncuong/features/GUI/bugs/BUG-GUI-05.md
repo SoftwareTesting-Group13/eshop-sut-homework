@@ -1,42 +1,72 @@
-# BUG-GUI-05 — Profile page has no h1 and two h2 headings
+# BUG-GUI-05 — Ba màn hình Register, Forgot Password và Profile không có thẻ `<h1>`
 
-| Field | Value |
+**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-05.md`](../issues/BUG-GUI-05.md)
+
+## Tóm tắt
+
+Ba màn hình Register, Forgot Password và Profile không có thẻ `<h1>`. Bug được phát hiện khi thực thi checklist GUI Task 1 trên màn hình `/register, /forgot-password, /profile`.
+
+| Mục | Giá trị |
 | --- | --- |
-| Severity | **Minor** |
-| FR | FR-04 |
-| Interface aspect | IA-01 |
-| Screen | Profile |
-| Checklist IDs | CHK-13 |
-| Environment | Chromium 158 (Playwright 1.65), 1280×900; backend http://localhost:3000, web http://localhost:5173 |
-| Status | Draft — student review and GitHub publication pending |
+| Feature / rule | FR-21 — Tiêu chuẩn giao diện chung |
+| Checklist | CHK-05, CHK-09, CHK-13 |
+| Màn hình | `/register, /forgot-password, /profile` |
+| Môi trường | Chromium 158 / Playwright 1.65; backend `http://localhost:3000`; web `http://localhost:5173`; viewport 1280×900 (mobile 360×800 khi có kiểm tra responsive). |
+| Severity / Priority | **Minor** / Medium |
+| Lặp lại | 1/1 trên build hiện tại |
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Open /profile while logged in.
-2. Inspect the heading outline or run axe-core.
+1. Mở lần lượt `/register`, `/forgot-password`, `/profile`.
+2. Đếm số thẻ `<h1>` trong DOM hoặc chạy axe-core.
 
-## Expected result
+| Mốc | Expected | Actual |
+| --- | --- | --- |
+| Sau thao tác | Mỗi trang có đúng một `<h1>` mô tả nội dung trang (FR-21). | Cả ba trang có 0 `<h1>`; tiêu đề được render bằng `<h2>` (Profile có hai `<h2>` cho hai section). |
 
-One h1 for the page and h2 for the two sections.
+## Bằng chứng
 
-## Actual result
+![BUG-GUI-05 — CHK-05-register-h1.png](../screenshots/CHK-05-register-h1.png)
 
-0 h1 and two h2 elements (“Hồ sơ của bạn”, “Lịch sử đơn hàng”); axe-core reports “page-has-heading-one”.
+![BUG-GUI-05 — CHK-09-forgot-h1.png](../screenshots/CHK-09-forgot-h1.png)
 
-## Evidence
+![BUG-GUI-05 — CHK-13-profile-h1.png](../screenshots/CHK-13-profile-h1.png)
 
-![BUG-GUI-05 evidence](../screenshots/CHK-13-14-profile-headings-title.png)
+## Nguyên nhân đối chiếu mã nguồn
 
-## Root cause
+**[`frontend-web/src/pages/Register.jsx:31`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Register.jsx#L31)–[L33](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Register.jsx#L33)**
 
-frontend-web/src/pages/Profile.jsx:113, 167.
+```jsx
+    <div className="max-w-md mx-auto mt-10 bg-white p-8 border rounded shadow-sm">
+      <h2 className="text-2xl font-bold mb-6 text-center">Đăng Ký Tài Khoản</h2>
+      {error && <div className="bg-red-100 text-red-700 p-3 mb-4 rounded">{error}</div>}
+```
 
-## Suggested fix
+Tiêu đề Register là `<h2>`.
 
-Use an h1 for the page title and h2 for the section titles.
+**[`frontend-web/src/pages/ForgotPassword.jsx:42`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/ForgotPassword.jsx#L42)–[L44](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/ForgotPassword.jsx#L44)**
 
-## GitHub issue
+```jsx
+    <div className="max-w-md mx-auto mt-10 bg-white p-8 border rounded shadow-sm">
+      <h2 className="text-2xl font-bold mb-6 text-center">Quên Mật Khẩu</h2>
+```
 
-- Title: `[BUG-GUI-05] Profile page has no h1 and two h2 headings`
-- Labels: `bug`, `minor`, `ia-01`, `fr-04`
-- Publishing is blocked in this environment because the GitHub CLI/token is not configured; the ready-to-publish body is in `issues/`.
+Tiêu đề Forgot Password là `<h2>`.
+
+**[`frontend-web/src/pages/Profile.jsx:112`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Profile.jsx#L112)–[L114](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Profile.jsx#L114)**
+
+```jsx
+      <div className="w-full md:w-1/3 bg-white p-6 border rounded shadow-sm">
+        <h2 className="text-2xl font-bold mb-4">Hồ sơ của bạn</h2>
+        <form onSubmit={handleUpdate} className="space-y-4">
+```
+
+Section hồ sơ dùng `<h2>`; section lịch sử đơn hàng cũng dùng `<h2>` tại dòng 167.
+
+## Đề xuất sửa
+
+Dùng `<h1>` cho tiêu đề trang và `<h2>` cho các section; thêm kiểm tra heading outline.
+
+## Ghi chú
+
+Screenshot được chụp trên SUT đang chạy tại `http://localhost:5173`; code block lấy trực tiếp từ source tại commit [`85af3ba`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9).

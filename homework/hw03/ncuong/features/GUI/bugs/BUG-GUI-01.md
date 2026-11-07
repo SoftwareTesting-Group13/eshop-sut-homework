@@ -1,42 +1,47 @@
-# BUG-GUI-01 — Login page heading says “Đăng Ký” instead of “Đăng nhập”
+# BUG-GUI-01 — Tiêu đề trang Đăng nhập ghi “Đăng Ký” thay vì “Đăng nhập”
 
-| Field | Value |
+**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-01.md`](../issues/BUG-GUI-01.md)
+
+## Tóm tắt
+
+Tiêu đề trang Đăng nhập ghi “Đăng Ký” thay vì “Đăng nhập”. Bug được phát hiện khi thực thi checklist GUI Task 1 trên màn hình `/login`.
+
+| Mục | Giá trị |
 | --- | --- |
-| Severity | **Minor** |
-| FR | FR-02 |
-| Interface aspect | IA-01 |
-| Screen | Login |
-| Checklist IDs | CHK-01 |
-| Environment | Chromium 158 (Playwright 1.65), 1280×900; backend http://localhost:3000, web http://localhost:5173 |
-| Status | Draft — student review and GitHub publication pending |
+| Feature / rule | FR-02 — Đăng nhập |
+| Checklist | CHK-01 |
+| Màn hình | `/login` |
+| Môi trường | Chromium 158 / Playwright 1.65; backend `http://localhost:3000`; web `http://localhost:5173`; viewport 1280×900 (mobile 360×800 khi có kiểm tra responsive). |
+| Severity / Priority | **Minor** / Medium |
+| Lặp lại | 1/1 trên build hiện tại |
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Open http://localhost:5173/login.
-2. Read the card heading above the form.
+1. Mở `http://localhost:5173/login` trong cửa sổ chưa đăng nhập.
+2. Đọc tiêu đề trên card đăng nhập, ngay phía trên hai ô nhập.
 
-## Expected result
+| Mốc | Expected | Actual |
+| --- | --- | --- |
+| Sau thao tác | Tiêu đề mô tả đúng màn hình Đăng nhập (ví dụ “Đăng nhập”) và là một thẻ `<h1>`. | Tiêu đề là `<h2>Đăng Ký</h2>`; trang không có `<h1>`. Người dùng có thể tưởng đang ở màn hình đăng ký. |
 
-The heading identifies the Login screen (for example “Đăng nhập”).
+## Bằng chứng
 
-## Actual result
+![BUG-GUI-01 — CHK-01-login-heading.png](../screenshots/CHK-01-login-heading.png)
 
-The heading is “Đăng Ký” (Register), so users can believe they are on the registration screen.
+## Nguyên nhân đối chiếu mã nguồn
 
-## Evidence
+**[`frontend-web/src/pages/Login.jsx:24`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Login.jsx#L24)**
 
-![BUG-GUI-01 evidence](../screenshots/CHK-01-login-heading.png)
+```jsx
+      <h2 className="text-2xl font-bold mb-6 text-center">Đăng Ký</h2>
+```
 
-## Root cause
+Chuỗi tiêu đề bị copy từ màn hình Register và không được sửa lại.
 
-frontend-web/src/pages/Login.jsx:24 — hard-coded <h2>Đăng Ký</h2>.
+## Đề xuất sửa
 
-## Suggested fix
+Đổi tiêu đề thành “Đăng nhập” và dùng `<h1>` cho tiêu đề trang; thêm kiểm tra heading vào test auth.
 
-Change the heading to “Đăng nhập” and add a page-title test to the auth-screen suite.
+## Ghi chú
 
-## GitHub issue
-
-- Title: `[BUG-GUI-01] Login page heading says “Đăng Ký” instead of “Đăng nhập”`
-- Labels: `bug`, `minor`, `ia-01`, `fr-02`
-- Publishing is blocked in this environment because the GitHub CLI/token is not configured; the ready-to-publish body is in `issues/`.
+Screenshot được chụp trên SUT đang chạy tại `http://localhost:5173`; code block lấy trực tiếp từ source tại commit [`85af3ba`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9).

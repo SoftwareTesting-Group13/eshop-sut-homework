@@ -1,42 +1,40 @@
-# Bug report — HW03 GUI checklist
+# Bug report — HW03 Task 1 (GUI checklist)
 
-**SUT:** EShop web frontend · **Executed:** 2026-11-07 · **Browser:** Chromium 158 (Playwright 1.65)
+**Tổng số bug:** 26 · **Blocker:** 1 · **Major:** 11 · **Minor:** 14
 
-**Total bugs:** 26 · **Blocker:** 2 · **Major:** 12 · **Minor:** 12
+Mỗi bug có báo cáo riêng trong [`bugs/`](bugs/) với bước tái hiện, Expected/Actual, screenshot và root cause kèm code block + link tới đúng dòng source.
 
-Every bug below is reproducible from the steps in its linked report and has at least one screenshot. The GitHub issue body for each bug is in `issues/`; publication is pending GitHub authentication in this environment.
-
-| ID | Severity | FR | Screen | Title | Checklist IDs | Evidence |
+| ID | Severity | FR | Màn hình | Checklist | Tiêu đề | Bug report |
 | --- | --- | --- | --- | --- | --- | --- |
-| [BUG-GUI-01](bugs/BUG-GUI-01.md) | Minor | FR-02 | Login | Login page heading says “Đăng Ký” instead of “Đăng nhập” | CHK-01 | CHK-01-login-heading.png |
-| [BUG-GUI-02](bugs/BUG-GUI-02.md) | Minor | FR-01..04 | All auth screens | All pages share the browser tab title “frontend-web” | CHK-02, CHK-06, CHK-10, CHK-14 | CHK-02-login-title.png, CHK-06-register-title.png, CHK-10-forgot-title.png, CHK-13-14-profile-headings-title.png |
-| [BUG-GUI-03](bugs/BUG-GUI-03.md) | Major | FR-01, FR-04 | Register, Profile | Text and button contrast fails WCAG 2.2 AA in several places | CHK-07, CHK-16 | CHK-07-register-contrast.png, CHK-16-profile-contrast.png |
-| [BUG-GUI-04](bugs/BUG-GUI-04.md) | Minor | FR-03 | Forgot Password | Forgot-password step 2 primary and back buttons look identical | CHK-11 | CHK-11-forgot-buttons.png |
-| [BUG-GUI-05](bugs/BUG-GUI-05.md) | Minor | FR-04 | Profile | Profile page has no h1 and two h2 headings | CHK-13 | CHK-13-14-profile-headings-title.png |
-| [BUG-GUI-06](bugs/BUG-GUI-06.md) | Major | FR-04 | Profile | Order-history table forces horizontal page scrolling on mobile | CHK-15 | CHK-15-profile-mobile-table.png |
-| [BUG-GUI-07](bugs/BUG-GUI-07.md) | Minor | FR-01..04 | All auth screens | RTL direction does not mirror the auth layout | CHK-65 | CHK-65-login-rtl.png |
-| [BUG-GUI-08](bugs/BUG-GUI-08.md) | Major | FR-02 | Login | Login password is visible and the email field has no email semantics | CHK-17, CHK-18 | CHK-17-18-19-login-fields.png |
-| [BUG-GUI-09](bugs/BUG-GUI-09.md) | Major | FR-01..04 | Login, Register, Forgot Password, Profile | Form inputs lack programmatic label associations | CHK-19, CHK-32 | CHK-17-18-19-login-fields.png, CHK-32-profile-labels.png |
-| [BUG-GUI-10](bugs/BUG-GUI-10.md) | Major | FR-01, FR-03 | Register, Forgot Password | Email format and duplicate-email checks are missing | CHK-21, CHK-25, CHK-54 | CHK-21-register-invalid-email.png, CHK-25-forgot-email-type.png, CHK-54-register-duplicate-email.png |
-| [BUG-GUI-11](bugs/BUG-GUI-11.md) | Major | FR-01, FR-03 | Register, Forgot Password | Password rule text contradicts the implemented regex | CHK-23 | CHK-23-register-password-rule.png |
-| [BUG-GUI-12](bugs/BUG-GUI-12.md) | Minor | FR-01, FR-03 | Register, Forgot Password | Registration and password reset have no confirm-password field | CHK-24, CHK-28 | CHK-24-register-no-confirm.png, CHK-28-forgot-no-confirm.png |
-| [BUG-GUI-13](bugs/BUG-GUI-13.md) | Minor | FR-03 | Forgot Password | OTP input is unconstrained and step 2 has no step indicator | CHK-26, CHK-44 | CHK-26-forgot-otp-input.png, CHK-44-forgot-step-indicator.png |
-| [BUG-GUI-14](bugs/BUG-GUI-14.md) | Blocker | FR-04 | Profile | Phone validation rejects valid Vietnamese numbers and uses a blocking alert | CHK-30, CHK-31 | CHK-30-profile-phone-inputmode.png, CHK-31-profile-phone-alert.png |
-| [BUG-GUI-15](bugs/BUG-GUI-15.md) | Minor | FR-02 | Login | Forgot-password link performs a full page reload | CHK-34 | CHK-34-forgot-link-reload.png |
-| [BUG-GUI-16](bugs/BUG-GUI-16.md) | Major | FR-02 | Login | Login tab order starts at the submit button because of tabindex=1 | CHK-36 | CHK-36-login-tab-order.png |
-| [BUG-GUI-17](bugs/BUG-GUI-17.md) | Minor | FR-03 | Forgot Password | Focus is lost after switching to the OTP step | CHK-43 | CHK-43-forgot-focus.png |
-| [BUG-GUI-18](bugs/BUG-GUI-18.md) | Major | FR-02, FR-04 | Login, Profile | Auth route guards are missing (profile, login, logout) | CHK-45, CHK-47, CHK-69 | CHK-45-profile-unauth.png, CHK-47-profile-logout.png, CHK-69-login-while-authenticated.png |
-| [BUG-GUI-19](bugs/BUG-GUI-19.md) | Minor | FR-04 | Profile | Navigation has no current-page indication | CHK-48 | CHK-48-profile-active-nav.png |
-| [BUG-GUI-20](bugs/BUG-GUI-20.md) | Minor | FR-01, FR-02 | Login, Register | Login and Register buttons have no loading or disabled state | CHK-49, CHK-56 | CHK-49-login-loading.png, CHK-56-register-loading.png |
-| [BUG-GUI-21](bugs/BUG-GUI-21.md) | Major | FR-01..04 | Login, Forgot Password, Profile | Form feedback uses blocking alert() or unannounced divs | CHK-50, CHK-51, CHK-59, CHK-61 | CHK-50-51-login-error.png, CHK-59-forgot-alert.png, CHK-61-profile-update-alert.png |
-| [BUG-GUI-22](bugs/BUG-GUI-22.md) | Minor | FR-01 | Register | Successful registration redirects silently | CHK-53 | CHK-53-register-silent-success.png |
-| [BUG-GUI-23](bugs/BUG-GUI-23.md) | Major | FR-01 | Register | Server error text is rendered verbatim | CHK-55 | CHK-55-register-raw-error.png |
-| [BUG-GUI-24](bugs/BUG-GUI-24.md) | Blocker | FR-03 | Forgot Password | Password-reset OTP is displayed on screen | CHK-58 | CHK-58-forgot-otp-exposed.png |
-| [BUG-GUI-25](bugs/BUG-GUI-25.md) | Major | FR-04 | Profile | Order-history loading and error states are shown as an empty list | CHK-62, CHK-63 | CHK-62-profile-orders-loading.png, CHK-63-profile-orders-error.png |
-| [BUG-GUI-26](bugs/BUG-GUI-26.md) | Major | FR-04 | Profile | Cancel-order has no confirmation and is offered for shipping orders | CHK-64 | CHK-64-profile-cancel.png |
+| BUG-GUI-14 | **Blocker** | FR-04 | `/profile` | CHK-31 | Regex số điện thoại từ chối số Việt Nam hợp lệ và dùng alert chặn | [chi tiết](bugs/BUG-GUI-14.md) |
+| BUG-GUI-03 | **Major** | FR-21 | `/register, /profile` | CHK-07, CHK-16 | Text phụ và nút đỏ không đạt WCAG 2.2 AA về contrast | [chi tiết](bugs/BUG-GUI-03.md) |
+| BUG-GUI-06 | **Major** | FR-04 | `/profile` | CHK-15 | Bảng lịch sử đơn hàng gây horizontal scroll ở viewport 360px | [chi tiết](bugs/BUG-GUI-06.md) |
+| BUG-GUI-08 | **Major** | FR-02 | `/login` | CHK-17, CHK-18 | Ô email dùng `type=text` và ô mật khẩu hiển thị rõ ký tự | [chi tiết](bugs/BUG-GUI-08.md) |
+| BUG-GUI-09 | **Major** | FR-22 | `/login, /register, /forgot-password, /profile` | CHK-19, CHK-32 | Input không có label liên kết bằng chương trình | [chi tiết](bugs/BUG-GUI-09.md) |
+| BUG-GUI-10 | **Major** | FR-01 | `/register, /forgot-password` | CHK-21, CHK-25, CHK-54 | Không kiểm tra định dạng email và không chặn email trùng | [chi tiết](bugs/BUG-GUI-10.md) |
+| BUG-GUI-11 | **Major** | FR-01 | `/register, /forgot-password` | CHK-23 | Nội dung mô tả password rule mâu thuẫn với regex thực tế | [chi tiết](bugs/BUG-GUI-11.md) |
+| BUG-GUI-13 | **Major** | FR-03 | `/forgot-password` | CHK-26, CHK-44 | OTP chỉ có 4 chữ số, input không giới hạn và bước 2 thiếu step indicator | [chi tiết](bugs/BUG-GUI-13.md) |
+| BUG-GUI-16 | **Major** | FR-21 | `/login` | CHK-36 | Tab order bắt đầu ở nút Sign In vì `tabIndex=1` | [chi tiết](bugs/BUG-GUI-16.md) |
+| BUG-GUI-21 | **Major** | FR-22 | `/login, /forgot-password` | CHK-50, CHK-59, CHK-75 | Thông báo lỗi nằm dưới nút submit hoặc dùng alert chặn | [chi tiết](bugs/BUG-GUI-21.md) |
+| BUG-GUI-23 | **Major** | FR-01 | `/register` | CHK-55 | UI render nguyên văn lỗi kỹ thuật từ server | [chi tiết](bugs/BUG-GUI-23.md) |
+| BUG-GUI-25 | **Major** | FR-04 | `/profile` | CHK-62, CHK-63 | Loading và lỗi tải đơn hàng đều hiển thị thành “chưa có đơn hàng” | [chi tiết](bugs/BUG-GUI-25.md) |
+| BUG-GUI-01 | **Minor** | FR-02 | `/login` | CHK-01 | Tiêu đề trang Đăng nhập ghi “Đăng Ký” thay vì “Đăng nhập” | [chi tiết](bugs/BUG-GUI-01.md) |
+| BUG-GUI-04 | **Minor** | FR-03 | `/forgot-password` | CHK-11 | Hai nút ở bước 2 Quên mật khẩu trông giống hệt nhau | [chi tiết](bugs/BUG-GUI-04.md) |
+| BUG-GUI-05 | **Minor** | FR-21 | `/register, /forgot-password, /profile` | CHK-05, CHK-09, CHK-13 | Ba màn hình Register, Forgot Password và Profile không có thẻ `<h1>` | [chi tiết](bugs/BUG-GUI-05.md) |
+| BUG-GUI-07 | **Minor** | FR-21 | `/login, /register, /forgot-password, /profile` | CHK-65 | Layout không mirror khi document direction là RTL | [chi tiết](bugs/BUG-GUI-07.md) |
+| BUG-GUI-12 | **Minor** | FR-01 | `/register, /forgot-password` | CHK-24, CHK-28 | Form đăng ký và đặt lại mật khẩu thiếu trường xác nhận mật khẩu | [chi tiết](bugs/BUG-GUI-12.md) |
+| BUG-GUI-17 | **Minor** | FR-03 | `/forgot-password` | CHK-43 | Focus bị mất sau khi chuyển sang bước OTP | [chi tiết](bugs/BUG-GUI-17.md) |
+| BUG-GUI-19 | **Minor** | FR-23 | `/profile` | CHK-48 | Navbar không chỉ ra trang hiện tại | [chi tiết](bugs/BUG-GUI-19.md) |
+| BUG-GUI-20 | **Minor** | FR-01 | `/login, /register` | CHK-49, CHK-56 | Nút Login và Register không có loading/disabled state | [chi tiết](bugs/BUG-GUI-20.md) |
+| BUG-GUI-27 | **Minor** | FR-22 | `/login, /register, /forgot-password, /profile` | CHK-70 | Không có ký hiệu `*` cạnh nhãn trường bắt buộc | [chi tiết](bugs/BUG-GUI-27.md) |
+| BUG-GUI-28 | **Minor** | FR-21 | `/login` | CHK-71 | Login dùng “Username” và “Sign In” giữa giao diện tiếng Việt | [chi tiết](bugs/BUG-GUI-28.md) |
+| BUG-GUI-29 | **Minor** | FR-23 | `/profile` | CHK-47 | Nút đăng xuất có nhãn “Thoát” thay vì “Đăng xuất” | [chi tiết](bugs/BUG-GUI-29.md) |
+| BUG-GUI-30 | **Minor** | FR-24 | `/profile` | CHK-73 | Empty state lịch sử đơn hàng không có icon/hình minh họa | [chi tiết](bugs/BUG-GUI-30.md) |
+| BUG-GUI-31 | **Minor** | FR-21 | `/register, /forgot-password` | CHK-74 | Nút hành động tích cực dùng màu đỏ/xanh lá thay vì xanh dương | [chi tiết](bugs/BUG-GUI-31.md) |
+| BUG-GUI-32 | **Minor** | FR-23 | `/login, /register, /forgot-password, /profile` | CHK-80 | Link “Giỏ hàng” trên header không có badge số lượng | [chi tiết](bugs/BUG-GUI-32.md) |
 
-## Severity model
+## Ghi chú
 
-- **Blocker:** prevents the user from completing the flow or exposes the account (BUG-GUI-14, BUG-GUI-24).
-- **Major:** causes task failure, data loss/confusion, a WCAG failure with real impact, or a security/privacy leak.
-- **Minor:** visible defect or friction with a workaround; does not block the task.
+- Screenshot chỉ tồn tại cho các item Failed; mỗi ảnh có banner đỏ ghi checklist ID và lỗi quan sát.
+- GitHub Issues chưa publish vì môi trường không có `gh` CLI/token; 26 issue draft nằm trong [`issues/`](issues/).
+- Severity: **Blocker** = không thể hoàn thành tác vụ chính; **Major** = sai requirement rõ ràng hoặc cản trở đáng kể; **Minor** = lỗi hiển thị/nhất quán.

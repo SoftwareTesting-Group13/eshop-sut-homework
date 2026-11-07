@@ -1,37 +1,47 @@
-## Summary
+# [BUG-GUI-23] UI render nguyên văn lỗi kỹ thuật từ server
 
-Server error text is rendered verbatim.
+**Severity:** Major · **Priority:** High · **FR:** FR-01 — Đăng ký; FR-24 — Feedback · **Screen:** `/register`
 
-## Environment
+## Mô tả
 
-- SUT: EShop (`frontend-web`)
-- URL: http://localhost:5173
-- Browser: Chromium 158 (Playwright 1.65)
-- Viewport: 1280×900 desktop; 360×800 mobile for responsive checks
-- FR: FR-01 · IA-04 · Register
-- Checklist IDs: CHK-55
+UI hiển thị “SQLITE_ERROR: no such column: name” vì catch block dùng trực tiếp `err.response.data.error`.
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Simulate POST /api/register returning 500 with a SQLite error.
-2. Submit the form.
+1. Giả lập `POST /api/register` trả 500 với body chứa lỗi SQLite.
+2. Submit form đăng ký.
 
 ## Expected
 
-A generic, human-readable error; technical details stay in server logs.
+Thông báo lỗi thân thiện, generic; chi tiết kỹ thuật chỉ nằm trong log server.
 
 ## Actual
 
-The UI renders “SQLITE_ERROR: no such column: name” because the catch block uses err.response.data.error directly.
+UI hiển thị “SQLITE_ERROR: no such column: name” vì catch block dùng trực tiếp `err.response.data.error`.
 
-## Evidence
+## Checklist IDs
+
+CHK-55
+
+## Nguyên nhân
+
+**[`frontend-web/src/pages/Register.jsx:25`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Register.jsx#L25)–[L27](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Register.jsx#L27)**
+
+```jsx
+    } catch (err) {
+      setError(err.response?.data?.error || 'Đăng ký thất bại.');
+    }
+```
+
+Render `err.response?.data?.error` trực tiếp ra UI.
+
+## Đề xuất sửa
+
+Map lỗi đã biết sang message thân thiện; log raw error ở server; không render database message.
+
+## Screenshots
 
 ![BUG-GUI-23](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw03/ncuong/features/GUI/screenshots/CHK-55-register-raw-error.png)
 
-## Root cause
 
-Register.jsx:26.
-
-## Suggested fix
-
-Map known errors to friendly messages and log the raw error server-side; never render database messages.
+> Screenshot dùng raw URL trên nhánh `ncuong`; cần push nhánh này trước khi publish issue.

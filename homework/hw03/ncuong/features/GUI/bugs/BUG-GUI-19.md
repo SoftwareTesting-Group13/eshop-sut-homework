@@ -1,42 +1,65 @@
-# BUG-GUI-19 — Navigation has no current-page indication
+# BUG-GUI-19 — Navbar không chỉ ra trang hiện tại
 
-| Field | Value |
+**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-19.md`](../issues/BUG-GUI-19.md)
+
+## Tóm tắt
+
+Navbar không chỉ ra trang hiện tại. Bug được phát hiện khi thực thi checklist GUI Task 1 trên màn hình `/profile`.
+
+| Mục | Giá trị |
 | --- | --- |
-| Severity | **Minor** |
-| FR | FR-04 |
-| Interface aspect | IA-03 |
-| Screen | Profile |
-| Checklist IDs | CHK-48 |
-| Environment | Chromium 158 (Playwright 1.65), 1280×900; backend http://localhost:3000, web http://localhost:5173 |
-| Status | Draft — student review and GitHub publication pending |
+| Feature / rule | FR-23 — Navigation |
+| Checklist | CHK-48 |
+| Màn hình | `/profile` |
+| Môi trường | Chromium 158 / Playwright 1.65; backend `http://localhost:3000`; web `http://localhost:5173`; viewport 1280×900 (mobile 360×800 khi có kiểm tra responsive). |
+| Severity / Priority | **Minor** / Medium |
+| Lặp lại | 1/1 trên build hiện tại |
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Open /profile while logged in.
-2. Inspect the header links for aria-current or an active class.
+1. Đăng nhập và mở `/profile`.
+2. Kiểm tra `aria-current`, class active hoặc underline trên các link header.
 
-## Expected result
+| Mốc | Expected | Actual |
+| --- | --- | --- |
+| Sau thao tác | Trang hiện tại được chỉ ra bằng visual state và `aria-current="page"` (FR-23). | Chỉ có hover style; không có `aria-current`, active class hay underline cho `/profile`. |
 
-The current page is visually and programmatically indicated.
+## Bằng chứng
 
-## Actual result
+![BUG-GUI-19 — CHK-48-profile-active-nav.png](../screenshots/CHK-48-profile-active-nav.png)
 
-Only hover styles exist; no aria-current, active class or underline identifies /profile.
+## Nguyên nhân đối chiếu mã nguồn
 
-## Evidence
+**[`frontend-web/src/App.jsx:20`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/App.jsx#L20)–[L38](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/App.jsx#L38)**
 
-![BUG-GUI-19 evidence](../screenshots/CHK-48-profile-active-nav.png)
+```jsx
+    <header className="bg-blue-600 text-white p-4 flex justify-between items-center">
+      <Link to="/" className="text-2xl font-bold">EShop</Link>
+      <nav className="flex gap-4 items-center">
+        <Link to="/cart" className="hover:underline">Giỏ hàng</Link>
+        {user ? (
+          <div className="flex gap-4 items-center">
+            <Link to="/profile" className="hover:underline text-yellow-300">
+              <span dangerouslySetInnerHTML={{ __html: `Chào, ${user.name}` }} />
+            </Link>
+            <button onClick={logout} className="bg-red-500 px-3 py-1 rounded">Thoát</button>
+          </div>
+        ) : (
+          <>
+            <Link to="/login" className="hover:underline">Đăng nhập</Link>
+            <Link to="/register" className="hover:underline">Đăng ký</Link>
+          </>
+        )}
+      </nav>
+    </header>
+```
 
-## Root cause
+Header dùng `<Link>` thường, không dùng `<NavLink>` và không có active style.
 
-App.jsx:20-38.
+## Đề xuất sửa
 
-## Suggested fix
+Dùng `<NavLink>` với `aria-current="page"` và class active.
 
-Use NavLink and aria-current="page" plus an active style.
+## Ghi chú
 
-## GitHub issue
-
-- Title: `[BUG-GUI-19] Navigation has no current-page indication`
-- Labels: `bug`, `minor`, `ia-03`, `fr-04`
-- Publishing is blocked in this environment because the GitHub CLI/token is not configured; the ready-to-publish body is in `issues/`.
+Screenshot được chụp trên SUT đang chạy tại `http://localhost:5173`; code block lấy trực tiếp từ source tại commit [`85af3ba`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9).

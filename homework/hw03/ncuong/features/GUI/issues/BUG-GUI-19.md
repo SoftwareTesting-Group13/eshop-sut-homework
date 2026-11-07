@@ -1,37 +1,63 @@
-## Summary
+# [BUG-GUI-19] Navbar không chỉ ra trang hiện tại
 
-Navigation has no current-page indication.
+**Severity:** Minor · **Priority:** Medium · **FR:** FR-23 — Navigation · **Screen:** `/profile`
 
-## Environment
+## Mô tả
 
-- SUT: EShop (`frontend-web`)
-- URL: http://localhost:5173
-- Browser: Chromium 158 (Playwright 1.65)
-- Viewport: 1280×900 desktop; 360×800 mobile for responsive checks
-- FR: FR-04 · IA-03 · Profile
-- Checklist IDs: CHK-48
+Chỉ có hover style; không có `aria-current`, active class hay underline cho `/profile`.
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Open /profile while logged in.
-2. Inspect the header links for aria-current or an active class.
+1. Đăng nhập và mở `/profile`.
+2. Kiểm tra `aria-current`, class active hoặc underline trên các link header.
 
 ## Expected
 
-The current page is visually and programmatically indicated.
+Trang hiện tại được chỉ ra bằng visual state và `aria-current="page"` (FR-23).
 
 ## Actual
 
-Only hover styles exist; no aria-current, active class or underline identifies /profile.
+Chỉ có hover style; không có `aria-current`, active class hay underline cho `/profile`.
 
-## Evidence
+## Checklist IDs
+
+CHK-48
+
+## Nguyên nhân
+
+**[`frontend-web/src/App.jsx:20`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/App.jsx#L20)–[L38](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/App.jsx#L38)**
+
+```jsx
+    <header className="bg-blue-600 text-white p-4 flex justify-between items-center">
+      <Link to="/" className="text-2xl font-bold">EShop</Link>
+      <nav className="flex gap-4 items-center">
+        <Link to="/cart" className="hover:underline">Giỏ hàng</Link>
+        {user ? (
+          <div className="flex gap-4 items-center">
+            <Link to="/profile" className="hover:underline text-yellow-300">
+              <span dangerouslySetInnerHTML={{ __html: `Chào, ${user.name}` }} />
+            </Link>
+            <button onClick={logout} className="bg-red-500 px-3 py-1 rounded">Thoát</button>
+          </div>
+        ) : (
+          <>
+            <Link to="/login" className="hover:underline">Đăng nhập</Link>
+            <Link to="/register" className="hover:underline">Đăng ký</Link>
+          </>
+        )}
+      </nav>
+    </header>
+```
+
+Header dùng `<Link>` thường, không dùng `<NavLink>` và không có active style.
+
+## Đề xuất sửa
+
+Dùng `<NavLink>` với `aria-current="page"` và class active.
+
+## Screenshots
 
 ![BUG-GUI-19](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw03/ncuong/features/GUI/screenshots/CHK-48-profile-active-nav.png)
 
-## Root cause
 
-App.jsx:20-38.
-
-## Suggested fix
-
-Use NavLink and aria-current="page" plus an active style.
+> Screenshot dùng raw URL trên nhánh `ncuong`; cần push nhánh này trước khi publish issue.

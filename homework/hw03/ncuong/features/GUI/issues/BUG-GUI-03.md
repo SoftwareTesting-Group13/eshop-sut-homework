@@ -1,39 +1,72 @@
-## Summary
+# [BUG-GUI-03] Text phụ và nút đỏ không đạt WCAG 2.2 AA về contrast
 
-Text and button contrast fails WCAG 2.2 AA in several places.
+**Severity:** Major · **Priority:** High · **FR:** FR-21 — Tiêu chuẩn giao diện chung · **Screen:** `/register, /profile`
 
-## Environment
+## Mô tả
 
-- SUT: EShop (`frontend-web`)
-- URL: http://localhost:5173
-- Browser: Chromium 158 (Playwright 1.65)
-- Viewport: 1280×900 desktop; 360×800 mobile for responsive checks
-- FR: FR-01, FR-04 · IA-01 · Register, Profile
-- Checklist IDs: CHK-07, CHK-16
+axe-core báo helper text `#9ca3af` trên `#ffffff` = 2.53:1; trắng trên `#ef4444` = 3.76:1; vàng `#fde047` trên xanh `#2563eb` = 3.92:1; nút đăng xuất đỏ/trắng = 3.76:1.
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Open /register and /profile.
-2. Run axe-core or compute the contrast of the helper text, red CTA, yellow username and red logout button.
+1. Mở `/register` và `/profile` (đã đăng nhập).
+2. Chạy axe-core hoặc tính contrast của helper text, nút đỏ, username vàng và nút đăng xuất.
 
 ## Expected
 
-Normal text has at least 4.5:1 contrast against its background.
+Text thường đạt tối thiểu 4.5:1 so với nền; text lớn đạt 3:1.
 
 ## Actual
 
-axe-core reports 2.53:1 for the register helper text, 3.76:1 for white on the red button, 3.92:1 for the yellow username on blue, and 3.76:1 for the red logout button.
+axe-core báo helper text `#9ca3af` trên `#ffffff` = 2.53:1; trắng trên `#ef4444` = 3.76:1; vàng `#fde047` trên xanh `#2563eb` = 3.92:1; nút đăng xuất đỏ/trắng = 3.76:1.
 
-## Evidence
+## Checklist IDs
+
+CHK-07, CHK-16
+
+## Nguyên nhân
+
+**[`frontend-web/src/pages/Register.jsx:64`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Register.jsx#L64)–[L65](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Register.jsx#L65)**
+
+```jsx
+          <p className="text-xs text-gray-400 mt-1">
+            Yêu cầu: Tối thiểu 8 ký tự, có chữ hoa, chữ thường, số và ký tự đặc biệt.
+```
+
+Helper text dùng `text-gray-400` trên nền trắng.
+
+**[`frontend-web/src/pages/Register.jsx:70`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Register.jsx#L70)–[L75](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Register.jsx#L75)**
+
+```jsx
+        <button
+          type="submit"
+          className="w-full bg-red-500 text-white py-2 rounded hover:bg-red-600"
+        >
+          Đăng Ký
+        </button>
+```
+
+Nút tích cực dùng `bg-red-500` với chữ trắng.
+
+**[`frontend-web/src/App.jsx:26`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/App.jsx#L26)–[L29](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/App.jsx#L29)**
+
+```jsx
+            <Link to="/profile" className="hover:underline text-yellow-300">
+              <span dangerouslySetInnerHTML={{ __html: `Chào, ${user.name}` }} />
+            </Link>
+            <button onClick={logout} className="bg-red-500 px-3 py-1 rounded">Thoát</button>
+```
+
+Username dùng `text-yellow-300` trên nền xanh; nút đăng xuất dùng `bg-red-500` với chữ trắng.
+
+## Đề xuất sửa
+
+Dùng màu đậm hơn cho helper text và nút đỏ, hoặc đổi sang nền sáng/chữ tối; chạy lại axe-core sau khi sửa.
+
+## Screenshots
 
 ![BUG-GUI-03](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw03/ncuong/features/GUI/screenshots/CHK-07-register-contrast.png)
 
 ![BUG-GUI-03](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw03/ncuong/features/GUI/screenshots/CHK-16-profile-contrast.png)
 
-## Root cause
 
-frontend-web/src/pages/Register.jsx:64-66, 72; frontend-web/src/App.jsx:26-29.
-
-## Suggested fix
-
-Darken the grey helper text and the red surfaces, or use dark text on light backgrounds; re-run axe-core after the change.
+> Screenshot dùng raw URL trên nhánh `ncuong`; cần push nhánh này trước khi publish issue.

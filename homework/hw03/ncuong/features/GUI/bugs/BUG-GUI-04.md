@@ -1,42 +1,53 @@
-# BUG-GUI-04 — Forgot-password step 2 primary and back buttons look identical
+# BUG-GUI-04 — Hai nút ở bước 2 Quên mật khẩu trông giống hệt nhau
 
-| Field | Value |
+**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-04.md`](../issues/BUG-GUI-04.md)
+
+## Tóm tắt
+
+Hai nút ở bước 2 Quên mật khẩu trông giống hệt nhau. Bug được phát hiện khi thực thi checklist GUI Task 1 trên màn hình `/forgot-password`.
+
+| Mục | Giá trị |
 | --- | --- |
-| Severity | **Minor** |
-| FR | FR-03 |
-| Interface aspect | IA-01 |
-| Screen | Forgot Password |
-| Checklist IDs | CHK-11 |
-| Environment | Chromium 158 (Playwright 1.65), 1280×900; backend http://localhost:3000, web http://localhost:5173 |
-| Status | Draft — student review and GitHub publication pending |
+| Feature / rule | FR-03 — Quên mật khẩu |
+| Checklist | CHK-11 |
+| Màn hình | `/forgot-password` |
+| Môi trường | Chromium 158 / Playwright 1.65; backend `http://localhost:3000`; web `http://localhost:5173`; viewport 1280×900 (mobile 360×800 khi có kiểm tra responsive). |
+| Severity / Priority | **Minor** / Medium |
+| Lặp lại | 1/1 trên build hiện tại |
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Open /forgot-password, enter a valid email and request the OTP.
-2. Compare “Đặt lại mật khẩu” and “← Quay lại”.
+1. Mở `/forgot-password`, nhập email đã đăng ký và bấm “Lấy mã OTP”.
+2. So sánh nút “Đặt lại mật khẩu” và nút “← Quay lại”.
 
-## Expected result
+| Mốc | Expected | Actual |
+| --- | --- | --- |
+| Sau thao tác | Primary action nổi bật, dùng màu xanh dương theo FR-21; secondary/back rõ ràng là hành động phụ. | Cả hai đều là nút xanh lá full-width (`bg-green-600`), cùng kích thước và kiểu chữ; người dùng dễ bấm nhầm. |
 
-The primary action is visually dominant and the secondary/back action is clearly subordinate.
+## Bằng chứng
 
-## Actual result
+![BUG-GUI-04 — CHK-11-forgot-buttons.png](../screenshots/CHK-11-forgot-buttons.png)
 
-Both are full-width green buttons with identical bg-green-600 styling; users can click the wrong one.
+## Nguyên nhân đối chiếu mã nguồn
 
-## Evidence
+**[`frontend-web/src/pages/ForgotPassword.jsx:89`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/ForgotPassword.jsx#L89)–[L95](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/ForgotPassword.jsx#L95)**
 
-![BUG-GUI-04 evidence](../screenshots/CHK-11-forgot-buttons.png)
+```jsx
+              
+          <button type="submit" className="w-full bg-green-600 text-white py-2 rounded">
+            Đặt lại mật khẩu
+          </button>
+          <button type="button" onClick={() => setStep(1)} className="w-full bg-green-600 text-white py-2 rounded">
+            ← Quay lại
+          </button>
+```
 
-## Root cause
+Hai button dùng cùng class `w-full bg-green-600 text-white`.
 
-frontend-web/src/pages/ForgotPassword.jsx:90-95.
+## Đề xuất sửa
 
-## Suggested fix
+Render nút quay lại dạng text/outline và giữ primary action là nút filled màu xanh dương.
 
-Render the back action as a text/outline button and keep the primary action filled.
+## Ghi chú
 
-## GitHub issue
-
-- Title: `[BUG-GUI-04] Forgot-password step 2 primary and back buttons look identical`
-- Labels: `bug`, `minor`, `ia-01`, `fr-03`
-- Publishing is blocked in this environment because the GitHub CLI/token is not configured; the ready-to-publish body is in `issues/`.
+Screenshot được chụp trên SUT đang chạy tại `http://localhost:5173`; code block lấy trực tiếp từ source tại commit [`85af3ba`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9).

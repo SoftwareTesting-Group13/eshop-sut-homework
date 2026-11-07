@@ -1,44 +1,53 @@
-# BUG-GUI-14 — Phone validation rejects valid Vietnamese numbers and uses a blocking alert
+# BUG-GUI-14 — Regex số điện thoại từ chối số Việt Nam hợp lệ và dùng alert chặn
 
-| Field | Value |
+**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-14.md`](../issues/BUG-GUI-14.md)
+
+## Tóm tắt
+
+Regex số điện thoại từ chối số Việt Nam hợp lệ và dùng alert chặn. Bug được phát hiện khi thực thi checklist GUI Task 1 trên màn hình `/profile`.
+
+| Mục | Giá trị |
 | --- | --- |
-| Severity | **Blocker** |
-| FR | FR-04 |
-| Interface aspect | IA-02 |
-| Screen | Profile |
-| Checklist IDs | CHK-30, CHK-31 |
-| Environment | Chromium 158 (Playwright 1.65), 1280×900; backend http://localhost:3000, web http://localhost:5173 |
-| Status | Draft — student review and GitHub publication pending |
+| Feature / rule | FR-04 — Hồ sơ cá nhân |
+| Checklist | CHK-31 |
+| Màn hình | `/profile` |
+| Môi trường | Chromium 158 / Playwright 1.65; backend `http://localhost:3000`; web `http://localhost:5173`; viewport 1280×900 (mobile 360×800 khi có kiểm tra responsive). |
+| Severity / Priority | **Blocker** / High |
+| Lặp lại | 1/1 trên build hiện tại |
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Log in and open /profile.
-2. Enter the placeholder value 0912345678 and click “Cập nhật”.
+1. Đăng nhập và mở `/profile`.
+2. Nhập số `0912345678` (đúng placeholder) và bấm “Cập nhật”.
 
-## Expected result
+| Mốc | Expected | Actual |
+| --- | --- | --- |
+| Sau thao tác | Số bắt đầu bằng `0`, dài 10–11 chữ số được chấp nhận và lưu hồ sơ (FR-04). | Alert “Số điện thoại không hợp lệ...” hiện ra. Regex `/^[1-9][0-9]{8,9}$/` từ chối mọi số bắt đầu bằng `0`, gồm cả placeholder `0912345678`; lỗi dùng `alert()` thay vì inline. |
 
-The phone number is accepted and the profile is saved.
+## Bằng chứng
 
-## Actual result
+![BUG-GUI-14 — CHK-31-profile-phone-alert.png](../screenshots/CHK-31-profile-phone-alert.png)
 
-An alert says “Số điện thoại không hợp lệ. Vui lòng nhập đúng 9-10 chữ số.” The regex /^[1-9][0-9]{8,9}$/ rejects every number starting with 0, which is the normal Vietnamese mobile prefix.
+## Nguyên nhân đối chiếu mã nguồn
 
-## Evidence
+**[`frontend-web/src/pages/Profile.jsx:40`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Profile.jsx#L40)–[L46](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Profile.jsx#L46)**
 
-![BUG-GUI-14 evidence](../screenshots/CHK-30-profile-phone-inputmode.png)
+```jsx
+  const handleUpdate = async (e) => {
+    e.preventDefault();
 
-![BUG-GUI-14 evidence](../screenshots/CHK-31-profile-phone-alert.png)
+    if (!/^[1-9][0-9]{8,9}$/.test(phone)) {
+      alert("Số điện thoại không hợp lệ. Vui lòng nhập đúng 9-10 chữ số.");
+      return;
+    }
+```
 
-## Root cause
+Regex bắt đầu bằng `[1-9]` và dùng `alert()`.
 
-Profile.jsx:43-46.
+## Đề xuất sửa
 
-## Suggested fix
+Dùng `/^0\d{9,10}$/` (hoặc thư viện validate), thêm `inputmode="tel"` và hiển thị lỗi inline.
 
-Use a Vietnamese phone rule such as /^0\d{9,10}$/ (or a library), add inputmode=tel, and show an inline error instead of alert().
+## Ghi chú
 
-## GitHub issue
-
-- Title: `[BUG-GUI-14] Phone validation rejects valid Vietnamese numbers and uses a blocking alert`
-- Labels: `bug`, `blocker`, `ia-02`, `fr-04`
-- Publishing is blocked in this environment because the GitHub CLI/token is not configured; the ready-to-publish body is in `issues/`.
+Screenshot được chụp trên SUT đang chạy tại `http://localhost:5173`; code block lấy trực tiếp từ source tại commit [`85af3ba`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9).

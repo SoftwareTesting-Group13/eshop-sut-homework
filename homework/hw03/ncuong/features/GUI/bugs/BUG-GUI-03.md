@@ -1,44 +1,74 @@
-# BUG-GUI-03 — Text and button contrast fails WCAG 2.2 AA in several places
+# BUG-GUI-03 — Text phụ và nút đỏ không đạt WCAG 2.2 AA về contrast
 
-| Field | Value |
+**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-03.md`](../issues/BUG-GUI-03.md)
+
+## Tóm tắt
+
+Text phụ và nút đỏ không đạt WCAG 2.2 AA về contrast. Bug được phát hiện khi thực thi checklist GUI Task 1 trên màn hình `/register, /profile`.
+
+| Mục | Giá trị |
 | --- | --- |
-| Severity | **Major** |
-| FR | FR-01, FR-04 |
-| Interface aspect | IA-01 |
-| Screen | Register, Profile |
-| Checklist IDs | CHK-07, CHK-16 |
-| Environment | Chromium 158 (Playwright 1.65), 1280×900; backend http://localhost:3000, web http://localhost:5173 |
-| Status | Draft — student review and GitHub publication pending |
+| Feature / rule | FR-21 — Tiêu chuẩn giao diện chung |
+| Checklist | CHK-07, CHK-16 |
+| Màn hình | `/register, /profile` |
+| Môi trường | Chromium 158 / Playwright 1.65; backend `http://localhost:3000`; web `http://localhost:5173`; viewport 1280×900 (mobile 360×800 khi có kiểm tra responsive). |
+| Severity / Priority | **Major** / High |
+| Lặp lại | 1/1 trên build hiện tại |
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Open /register and /profile.
-2. Run axe-core or compute the contrast of the helper text, red CTA, yellow username and red logout button.
+1. Mở `/register` và `/profile` (đã đăng nhập).
+2. Chạy axe-core hoặc tính contrast của helper text, nút đỏ, username vàng và nút đăng xuất.
 
-## Expected result
+| Mốc | Expected | Actual |
+| --- | --- | --- |
+| Sau thao tác | Text thường đạt tối thiểu 4.5:1 so với nền; text lớn đạt 3:1. | axe-core báo helper text `#9ca3af` trên `#ffffff` = 2.53:1; trắng trên `#ef4444` = 3.76:1; vàng `#fde047` trên xanh `#2563eb` = 3.92:1; nút đăng xuất đỏ/trắng = 3.76:1. |
 
-Normal text has at least 4.5:1 contrast against its background.
+## Bằng chứng
 
-## Actual result
+![BUG-GUI-03 — CHK-07-register-contrast.png](../screenshots/CHK-07-register-contrast.png)
 
-axe-core reports 2.53:1 for the register helper text, 3.76:1 for white on the red button, 3.92:1 for the yellow username on blue, and 3.76:1 for the red logout button.
+![BUG-GUI-03 — CHK-16-profile-contrast.png](../screenshots/CHK-16-profile-contrast.png)
 
-## Evidence
+## Nguyên nhân đối chiếu mã nguồn
 
-![BUG-GUI-03 evidence](../screenshots/CHK-07-register-contrast.png)
+**[`frontend-web/src/pages/Register.jsx:64`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Register.jsx#L64)–[L65](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Register.jsx#L65)**
 
-![BUG-GUI-03 evidence](../screenshots/CHK-16-profile-contrast.png)
+```jsx
+          <p className="text-xs text-gray-400 mt-1">
+            Yêu cầu: Tối thiểu 8 ký tự, có chữ hoa, chữ thường, số và ký tự đặc biệt.
+```
 
-## Root cause
+Helper text dùng `text-gray-400` trên nền trắng.
 
-frontend-web/src/pages/Register.jsx:64-66, 72; frontend-web/src/App.jsx:26-29.
+**[`frontend-web/src/pages/Register.jsx:70`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Register.jsx#L70)–[L75](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Register.jsx#L75)**
 
-## Suggested fix
+```jsx
+        <button
+          type="submit"
+          className="w-full bg-red-500 text-white py-2 rounded hover:bg-red-600"
+        >
+          Đăng Ký
+        </button>
+```
 
-Darken the grey helper text and the red surfaces, or use dark text on light backgrounds; re-run axe-core after the change.
+Nút tích cực dùng `bg-red-500` với chữ trắng.
 
-## GitHub issue
+**[`frontend-web/src/App.jsx:26`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/App.jsx#L26)–[L29](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/App.jsx#L29)**
 
-- Title: `[BUG-GUI-03] Text and button contrast fails WCAG 2.2 AA in several places`
-- Labels: `bug`, `major`, `ia-01`, `fr-01`
-- Publishing is blocked in this environment because the GitHub CLI/token is not configured; the ready-to-publish body is in `issues/`.
+```jsx
+            <Link to="/profile" className="hover:underline text-yellow-300">
+              <span dangerouslySetInnerHTML={{ __html: `Chào, ${user.name}` }} />
+            </Link>
+            <button onClick={logout} className="bg-red-500 px-3 py-1 rounded">Thoát</button>
+```
+
+Username dùng `text-yellow-300` trên nền xanh; nút đăng xuất dùng `bg-red-500` với chữ trắng.
+
+## Đề xuất sửa
+
+Dùng màu đậm hơn cho helper text và nút đỏ, hoặc đổi sang nền sáng/chữ tối; chạy lại axe-core sau khi sửa.
+
+## Ghi chú
+
+Screenshot được chụp trên SUT đang chạy tại `http://localhost:5173`; code block lấy trực tiếp từ source tại commit [`85af3ba`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9).

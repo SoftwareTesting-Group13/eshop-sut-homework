@@ -1,44 +1,90 @@
-# BUG-GUI-13 — OTP input is unconstrained and step 2 has no step indicator
+# BUG-GUI-13 — OTP chỉ có 4 chữ số, input không giới hạn và bước 2 thiếu step indicator
 
-| Field | Value |
+**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-13.md`](../issues/BUG-GUI-13.md)
+
+## Tóm tắt
+
+OTP chỉ có 4 chữ số, input không giới hạn và bước 2 thiếu step indicator. Bug được phát hiện khi thực thi checklist GUI Task 1 trên màn hình `/forgot-password`.
+
+| Mục | Giá trị |
 | --- | --- |
-| Severity | **Minor** |
-| FR | FR-03 |
-| Interface aspect | IA-02, IA-03 |
-| Screen | Forgot Password |
-| Checklist IDs | CHK-26, CHK-44 |
-| Environment | Chromium 158 (Playwright 1.65), 1280×900; backend http://localhost:3000, web http://localhost:5173 |
-| Status | Draft — student review and GitHub publication pending |
+| Feature / rule | FR-03 — Quên mật khẩu; FR-22 — Form |
+| Checklist | CHK-26, CHK-44 |
+| Màn hình | `/forgot-password` |
+| Môi trường | Chromium 158 / Playwright 1.65; backend `http://localhost:3000`; web `http://localhost:5173`; viewport 1280×900 (mobile 360×800 khi có kiểm tra responsive). |
+| Severity / Priority | **Major** / High |
+| Lặp lại | 1/1 trên build hiện tại |
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Request an OTP.
-2. Inspect the OTP input and the step-2 layout.
+1. Mở `/forgot-password`, nhập email đã đăng ký và lấy OTP.
+2. Đọc độ dài OTP, kiểm tra `maxlength`/`inputmode`/`pattern` của input và tìm step indicator.
 
-## Expected result
+| Mốc | Expected | Actual |
+| --- | --- | --- |
+| Sau thao tác | OTP 6 chữ số (FR-03, SEC-07); input giới hạn đúng 6 chữ số; có chỉ báo “Bước 1/2”, “Bước 2/2” (FR-03, FR-22). | Backend sinh OTP 4 chữ số (`1000`–`9999`); label ghi “Mã OTP (4 số)”; input là `type="text"`, không `maxlength`, `inputmode` hay `pattern`; không có step indicator. |
 
-A 4-digit numeric input (inputmode=numeric, maxlength=4) and a step indicator such as “Bước 2/2”.
+## Bằng chứng
 
-## Actual result
+![BUG-GUI-13 — CHK-26-forgot-otp-input.png](../screenshots/CHK-26-forgot-otp-input.png)
 
-The OTP input is type=text with maxlength=-1 and no inputmode/pattern; there is no step indicator.
+![BUG-GUI-13 — CHK-44-forgot-step-indicator.png](../screenshots/CHK-44-forgot-step-indicator.png)
 
-## Evidence
+## Nguyên nhân đối chiếu mã nguồn
 
-![BUG-GUI-13 evidence](../screenshots/CHK-26-forgot-otp-input.png)
+**[`backend/server.js:72`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/backend/server.js#L72)**
 
-![BUG-GUI-13 evidence](../screenshots/CHK-44-forgot-step-indicator.png)
+```jsx
+    const resetToken = Math.floor(1000 + Math.random() * 9000).toString();
+```
 
-## Root cause
+`Math.floor(1000 + Math.random() * 9000)` chỉ sinh 4 chữ số.
 
-ForgotPassword.jsx:68-87.
+**[`frontend-web/src/pages/ForgotPassword.jsx:63`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/ForgotPassword.jsx#L63)–[L96](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/ForgotPassword.jsx#L96)**
 
-## Suggested fix
+```jsx
+      {step === 2 && (
+        <form onSubmit={handleReset} className="space-y-4">
+          <div className="bg-green-100 text-green-800 p-3 rounded text-sm mb-4">
+            {message}
+          </div>
+          <div>
+            <label className="block text-gray-700 mb-2">Mã OTP (4 số)</label>
+            <input
+              type="text"
+              value={resetToken}
+              onChange={(e) => setResetToken(e.target.value)}
+              className="w-full border p-2 rounded"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-gray-700 mb-2">Mật khẩu mới</label>
+            <input
+              type="password"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              className="w-full border p-2 rounded"
+              required
+            />
+          </div>
 
-Use inputmode=numeric, maxLength=4, pattern="[0-9]{4}" and add a 1/2–2/2 indicator.
+              
+          <button type="submit" className="w-full bg-green-600 text-white py-2 rounded">
+            Đặt lại mật khẩu
+          </button>
+          <button type="button" onClick={() => setStep(1)} className="w-full bg-green-600 text-white py-2 rounded">
+            ← Quay lại
+          </button>
+        </form>
+```
 
-## GitHub issue
+Label ghi “4 số”; input không có ràng buộc; không render step indicator.
 
-- Title: `[BUG-GUI-13] OTP input is unconstrained and step 2 has no step indicator`
-- Labels: `bug`, `minor`, `ia-02, ia-03`, `fr-03`
-- Publishing is blocked in this environment because the GitHub CLI/token is not configured; the ready-to-publish body is in `issues/`.
+## Đề xuất sửa
+
+Sinh OTP 6 chữ số, dùng `inputmode="numeric"`, `maxLength=6`, `pattern="[0-9]{6}"` và thêm indicator “Bước 1/2”/“Bước 2/2”.
+
+## Ghi chú
+
+Screenshot được chụp trên SUT đang chạy tại `http://localhost:5173`; code block lấy trực tiếp từ source tại commit [`85af3ba`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9).

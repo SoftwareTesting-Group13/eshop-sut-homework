@@ -1,42 +1,56 @@
-# BUG-GUI-17 — Focus is lost after switching to the OTP step
+# BUG-GUI-17 — Focus bị mất sau khi chuyển sang bước OTP
 
-| Field | Value |
+**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-17.md`](../issues/BUG-GUI-17.md)
+
+## Tóm tắt
+
+Focus bị mất sau khi chuyển sang bước OTP. Bug được phát hiện khi thực thi checklist GUI Task 1 trên màn hình `/forgot-password`.
+
+| Mục | Giá trị |
 | --- | --- |
-| Severity | **Minor** |
-| FR | FR-03 |
-| Interface aspect | IA-03 |
-| Screen | Forgot Password |
-| Checklist IDs | CHK-43 |
-| Environment | Chromium 158 (Playwright 1.65), 1280×900; backend http://localhost:3000, web http://localhost:5173 |
-| Status | Draft — student review and GitHub publication pending |
+| Feature / rule | FR-03 — Quên mật khẩu |
+| Checklist | CHK-43 |
+| Màn hình | `/forgot-password` |
+| Môi trường | Chromium 158 / Playwright 1.65; backend `http://localhost:3000`; web `http://localhost:5173`; viewport 1280×900 (mobile 360×800 khi có kiểm tra responsive). |
+| Severity / Priority | **Minor** / Medium |
+| Lặp lại | 1/1 trên build hiện tại |
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Request an OTP.
-2. Inspect document.activeElement after step 2 renders.
+1. Yêu cầu OTP thành công.
+2. Kiểm tra `document.activeElement` sau khi bước 2 render.
 
-## Expected result
+| Mốc | Expected | Actual |
+| --- | --- | --- |
+| Sau thao tác | Focus chuyển tới ô OTP hoặc heading bước 2 và thay đổi được announce. | `document.activeElement` là `BODY`; người dùng screen-reader/bàn phím không biết bước đã đổi. |
 
-Focus moves to the OTP field or the step-2 heading and the change is announced.
+## Bằng chứng
 
-## Actual result
+![BUG-GUI-17 — CHK-43-forgot-focus.png](../screenshots/CHK-43-forgot-focus.png)
 
-document.activeElement is BODY; screen-reader and keyboard users are not told that the step changed.
+## Nguyên nhân đối chiếu mã nguồn
 
-## Evidence
+**[`frontend-web/src/pages/ForgotPassword.jsx:13`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/ForgotPassword.jsx#L13)–[L22](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/ForgotPassword.jsx#L22)**
 
-![BUG-GUI-17 evidence](../screenshots/CHK-43-forgot-focus.png)
+```jsx
+  const handleRequest = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post('http://localhost:3000/api/forgot-password', { email });
+      setMessage(`Mã OTP của bạn là: ${res.data.resetToken}`);
+      setStep(2);
+    } catch (err) {
+      alert("Lỗi: " + (err.response?.data?.error || err.message));
+    }
+  };
+```
 
-## Root cause
+`setStep(2)` không kèm focus management.
 
-ForgotPassword.jsx:13-22 (setStep without focus management).
+## Đề xuất sửa
 
-## Suggested fix
+Dùng `useEffect` để focus heading/input bước 2 và thêm `aria-live` cho status message.
 
-Focus the step-2 heading or first input in an effect and use aria-live for the status message.
+## Ghi chú
 
-## GitHub issue
-
-- Title: `[BUG-GUI-17] Focus is lost after switching to the OTP step`
-- Labels: `bug`, `minor`, `ia-03`, `fr-03`
-- Publishing is blocked in this environment because the GitHub CLI/token is not configured; the ready-to-publish body is in `issues/`.
+Screenshot được chụp trên SUT đang chạy tại `http://localhost:5173`; code block lấy trực tiếp từ source tại commit [`85af3ba`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9).

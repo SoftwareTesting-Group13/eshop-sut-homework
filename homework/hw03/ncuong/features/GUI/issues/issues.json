@@ -1,356 +1,457 @@
 [
   {
-    "id": "BUG-GUI-01",
-    "title": "[BUG-GUI-01] Login page heading says “Đăng Ký” instead of “Đăng nhập”",
-    "body_file": "issues/BUG-GUI-01.md",
+    "id": "BUG-GUI-14",
+    "title": "[BUG-GUI-14] Regex số điện thoại từ chối số Việt Nam hợp lệ và dùng alert chặn",
+    "severity": "Blocker",
+    "priority": "High",
+    "fr": "FR-04 — Hồ sơ cá nhân",
+    "screen": "/profile",
+    "checks": [
+      "CHK-31"
+    ],
     "labels": [
       "bug",
-      "minor",
-      "ia-01"
+      "blocker",
+      "ia-02"
     ],
-    "screenshots": [
-      "CHK-01-login-heading.png"
-    ]
-  },
-  {
-    "id": "BUG-GUI-02",
-    "title": "[BUG-GUI-02] All pages share the browser tab title “frontend-web”",
-    "body_file": "issues/BUG-GUI-02.md",
-    "labels": [
-      "bug",
-      "minor",
-      "ia-01"
-    ],
-    "screenshots": [
-      "CHK-02-login-title.png",
-      "CHK-06-register-title.png",
-      "CHK-10-forgot-title.png",
-      "CHK-13-14-profile-headings-title.png"
-    ]
+    "body_file": "BUG-GUI-14.md"
   },
   {
     "id": "BUG-GUI-03",
-    "title": "[BUG-GUI-03] Text and button contrast fails WCAG 2.2 AA in several places",
-    "body_file": "issues/BUG-GUI-03.md",
+    "title": "[BUG-GUI-03] Text phụ và nút đỏ không đạt WCAG 2.2 AA về contrast",
+    "severity": "Major",
+    "priority": "High",
+    "fr": "FR-21 — Tiêu chuẩn giao diện chung",
+    "screen": "/register, /profile",
+    "checks": [
+      "CHK-07",
+      "CHK-16"
+    ],
     "labels": [
       "bug",
       "major",
       "ia-01"
     ],
-    "screenshots": [
-      "CHK-07-register-contrast.png",
-      "CHK-16-profile-contrast.png"
-    ]
-  },
-  {
-    "id": "BUG-GUI-04",
-    "title": "[BUG-GUI-04] Forgot-password step 2 primary and back buttons look identical",
-    "body_file": "issues/BUG-GUI-04.md",
-    "labels": [
-      "bug",
-      "minor",
-      "ia-01"
-    ],
-    "screenshots": [
-      "CHK-11-forgot-buttons.png"
-    ]
-  },
-  {
-    "id": "BUG-GUI-05",
-    "title": "[BUG-GUI-05] Profile page has no h1 and two h2 headings",
-    "body_file": "issues/BUG-GUI-05.md",
-    "labels": [
-      "bug",
-      "minor",
-      "ia-01"
-    ],
-    "screenshots": [
-      "CHK-13-14-profile-headings-title.png"
-    ]
+    "body_file": "BUG-GUI-03.md"
   },
   {
     "id": "BUG-GUI-06",
-    "title": "[BUG-GUI-06] Order-history table forces horizontal page scrolling on mobile",
-    "body_file": "issues/BUG-GUI-06.md",
+    "title": "[BUG-GUI-06] Bảng lịch sử đơn hàng gây horizontal scroll ở viewport 360px",
+    "severity": "Major",
+    "priority": "High",
+    "fr": "FR-04 — Hồ sơ cá nhân",
+    "screen": "/profile",
+    "checks": [
+      "CHK-15"
+    ],
     "labels": [
       "bug",
       "major",
       "ia-01"
     ],
-    "screenshots": [
-      "CHK-15-profile-mobile-table.png"
-    ]
-  },
-  {
-    "id": "BUG-GUI-07",
-    "title": "[BUG-GUI-07] RTL direction does not mirror the auth layout",
-    "body_file": "issues/BUG-GUI-07.md",
-    "labels": [
-      "bug",
-      "minor",
-      "ia-01"
-    ],
-    "screenshots": [
-      "CHK-65-login-rtl.png"
-    ]
+    "body_file": "BUG-GUI-06.md"
   },
   {
     "id": "BUG-GUI-08",
-    "title": "[BUG-GUI-08] Login password is visible and the email field has no email semantics",
-    "body_file": "issues/BUG-GUI-08.md",
+    "title": "[BUG-GUI-08] Ô email dùng `type=text` và ô mật khẩu hiển thị rõ ký tự",
+    "severity": "Major",
+    "priority": "High",
+    "fr": "FR-02 — Đăng nhập; FR-22 — Form",
+    "screen": "/login",
+    "checks": [
+      "CHK-17",
+      "CHK-18"
+    ],
     "labels": [
       "bug",
       "major",
       "ia-02"
     ],
-    "screenshots": [
-      "CHK-17-18-19-login-fields.png"
-    ]
+    "body_file": "BUG-GUI-08.md"
   },
   {
     "id": "BUG-GUI-09",
-    "title": "[BUG-GUI-09] Form inputs lack programmatic label associations",
-    "body_file": "issues/BUG-GUI-09.md",
+    "title": "[BUG-GUI-09] Input không có label liên kết bằng chương trình",
+    "severity": "Major",
+    "priority": "High",
+    "fr": "FR-22 — Form",
+    "screen": "/login, /register, /forgot-password, /profile",
+    "checks": [
+      "CHK-19",
+      "CHK-32"
+    ],
     "labels": [
       "bug",
       "major",
       "ia-02"
     ],
-    "screenshots": [
-      "CHK-17-18-19-login-fields.png",
-      "CHK-32-profile-labels.png"
-    ]
+    "body_file": "BUG-GUI-09.md"
   },
   {
     "id": "BUG-GUI-10",
-    "title": "[BUG-GUI-10] Email format and duplicate-email checks are missing",
-    "body_file": "issues/BUG-GUI-10.md",
+    "title": "[BUG-GUI-10] Không kiểm tra định dạng email và không chặn email trùng",
+    "severity": "Major",
+    "priority": "High",
+    "fr": "FR-01 — Đăng ký; FR-03 — Quên mật khẩu",
+    "screen": "/register, /forgot-password",
+    "checks": [
+      "CHK-21",
+      "CHK-25",
+      "CHK-54"
+    ],
     "labels": [
       "bug",
       "major",
       "ia-02, ia-04"
     ],
-    "screenshots": [
-      "CHK-21-register-invalid-email.png",
-      "CHK-25-forgot-email-type.png",
-      "CHK-54-register-duplicate-email.png"
-    ]
+    "body_file": "BUG-GUI-10.md"
   },
   {
     "id": "BUG-GUI-11",
-    "title": "[BUG-GUI-11] Password rule text contradicts the implemented regex",
-    "body_file": "issues/BUG-GUI-11.md",
+    "title": "[BUG-GUI-11] Nội dung mô tả password rule mâu thuẫn với regex thực tế",
+    "severity": "Major",
+    "priority": "High",
+    "fr": "FR-01 — Đăng ký; FR-03 — Đặt lại mật khẩu",
+    "screen": "/register, /forgot-password",
+    "checks": [
+      "CHK-23"
+    ],
     "labels": [
       "bug",
       "major",
       "ia-02"
     ],
-    "screenshots": [
-      "CHK-23-register-password-rule.png"
-    ]
-  },
-  {
-    "id": "BUG-GUI-12",
-    "title": "[BUG-GUI-12] Registration and password reset have no confirm-password field",
-    "body_file": "issues/BUG-GUI-12.md",
-    "labels": [
-      "bug",
-      "minor",
-      "ia-02"
-    ],
-    "screenshots": [
-      "CHK-24-register-no-confirm.png",
-      "CHK-28-forgot-no-confirm.png"
-    ]
+    "body_file": "BUG-GUI-11.md"
   },
   {
     "id": "BUG-GUI-13",
-    "title": "[BUG-GUI-13] OTP input is unconstrained and step 2 has no step indicator",
-    "body_file": "issues/BUG-GUI-13.md",
+    "title": "[BUG-GUI-13] OTP chỉ có 4 chữ số, input không giới hạn và bước 2 thiếu step indicator",
+    "severity": "Major",
+    "priority": "High",
+    "fr": "FR-03 — Quên mật khẩu; FR-22 — Form",
+    "screen": "/forgot-password",
+    "checks": [
+      "CHK-26",
+      "CHK-44"
+    ],
     "labels": [
       "bug",
-      "minor",
+      "major",
       "ia-02, ia-03"
     ],
-    "screenshots": [
-      "CHK-26-forgot-otp-input.png",
-      "CHK-44-forgot-step-indicator.png"
-    ]
-  },
-  {
-    "id": "BUG-GUI-14",
-    "title": "[BUG-GUI-14] Phone validation rejects valid Vietnamese numbers and uses a blocking alert",
-    "body_file": "issues/BUG-GUI-14.md",
-    "labels": [
-      "bug",
-      "blocker",
-      "ia-02"
-    ],
-    "screenshots": [
-      "CHK-30-profile-phone-inputmode.png",
-      "CHK-31-profile-phone-alert.png"
-    ]
-  },
-  {
-    "id": "BUG-GUI-15",
-    "title": "[BUG-GUI-15] Forgot-password link performs a full page reload",
-    "body_file": "issues/BUG-GUI-15.md",
-    "labels": [
-      "bug",
-      "minor",
-      "ia-03"
-    ],
-    "screenshots": [
-      "CHK-34-forgot-link-reload.png"
-    ]
+    "body_file": "BUG-GUI-13.md"
   },
   {
     "id": "BUG-GUI-16",
-    "title": "[BUG-GUI-16] Login tab order starts at the submit button because of tabindex=1",
-    "body_file": "issues/BUG-GUI-16.md",
+    "title": "[BUG-GUI-16] Tab order bắt đầu ở nút Sign In vì `tabIndex=1`",
+    "severity": "Major",
+    "priority": "High",
+    "fr": "FR-21 — Tiêu chuẩn giao diện chung",
+    "screen": "/login",
+    "checks": [
+      "CHK-36"
+    ],
     "labels": [
       "bug",
       "major",
       "ia-03"
     ],
-    "screenshots": [
-      "CHK-36-login-tab-order.png"
-    ]
-  },
-  {
-    "id": "BUG-GUI-17",
-    "title": "[BUG-GUI-17] Focus is lost after switching to the OTP step",
-    "body_file": "issues/BUG-GUI-17.md",
-    "labels": [
-      "bug",
-      "minor",
-      "ia-03"
-    ],
-    "screenshots": [
-      "CHK-43-forgot-focus.png"
-    ]
-  },
-  {
-    "id": "BUG-GUI-18",
-    "title": "[BUG-GUI-18] Auth route guards are missing (profile, login, logout)",
-    "body_file": "issues/BUG-GUI-18.md",
-    "labels": [
-      "bug",
-      "major",
-      "ia-03"
-    ],
-    "screenshots": [
-      "CHK-45-profile-unauth.png",
-      "CHK-47-profile-logout.png",
-      "CHK-69-login-while-authenticated.png"
-    ]
-  },
-  {
-    "id": "BUG-GUI-19",
-    "title": "[BUG-GUI-19] Navigation has no current-page indication",
-    "body_file": "issues/BUG-GUI-19.md",
-    "labels": [
-      "bug",
-      "minor",
-      "ia-03"
-    ],
-    "screenshots": [
-      "CHK-48-profile-active-nav.png"
-    ]
-  },
-  {
-    "id": "BUG-GUI-20",
-    "title": "[BUG-GUI-20] Login and Register buttons have no loading or disabled state",
-    "body_file": "issues/BUG-GUI-20.md",
-    "labels": [
-      "bug",
-      "minor",
-      "ia-04"
-    ],
-    "screenshots": [
-      "CHK-49-login-loading.png",
-      "CHK-56-register-loading.png"
-    ]
+    "body_file": "BUG-GUI-16.md"
   },
   {
     "id": "BUG-GUI-21",
-    "title": "[BUG-GUI-21] Form feedback uses blocking alert() or unannounced divs",
-    "body_file": "issues/BUG-GUI-21.md",
+    "title": "[BUG-GUI-21] Thông báo lỗi nằm dưới nút submit hoặc dùng alert chặn",
+    "severity": "Major",
+    "priority": "High",
+    "fr": "FR-22 — Form; FR-24 — Feedback",
+    "screen": "/login, /forgot-password",
+    "checks": [
+      "CHK-50",
+      "CHK-59",
+      "CHK-75"
+    ],
     "labels": [
       "bug",
       "major",
       "ia-04"
     ],
-    "screenshots": [
-      "CHK-50-51-login-error.png",
-      "CHK-59-forgot-alert.png",
-      "CHK-61-profile-update-alert.png"
-    ]
+    "body_file": "BUG-GUI-21.md"
   },
   {
-    "id": "BUG-GUI-22",
-    "title": "[BUG-GUI-22] Successful registration redirects silently",
-    "body_file": "issues/BUG-GUI-22.md",
+    "id": "BUG-GUI-23",
+    "title": "[BUG-GUI-23] UI render nguyên văn lỗi kỹ thuật từ server",
+    "severity": "Major",
+    "priority": "High",
+    "fr": "FR-01 — Đăng ký; FR-24 — Feedback",
+    "screen": "/register",
+    "checks": [
+      "CHK-55"
+    ],
+    "labels": [
+      "bug",
+      "major",
+      "ia-04"
+    ],
+    "body_file": "BUG-GUI-23.md"
+  },
+  {
+    "id": "BUG-GUI-25",
+    "title": "[BUG-GUI-25] Loading và lỗi tải đơn hàng đều hiển thị thành “chưa có đơn hàng”",
+    "severity": "Major",
+    "priority": "High",
+    "fr": "FR-04 — Hồ sơ cá nhân; FR-24 — Feedback",
+    "screen": "/profile",
+    "checks": [
+      "CHK-62",
+      "CHK-63"
+    ],
+    "labels": [
+      "bug",
+      "major",
+      "ia-04"
+    ],
+    "body_file": "BUG-GUI-25.md"
+  },
+  {
+    "id": "BUG-GUI-01",
+    "title": "[BUG-GUI-01] Tiêu đề trang Đăng nhập ghi “Đăng Ký” thay vì “Đăng nhập”",
+    "severity": "Minor",
+    "priority": "Medium",
+    "fr": "FR-02 — Đăng nhập",
+    "screen": "/login",
+    "checks": [
+      "CHK-01"
+    ],
+    "labels": [
+      "bug",
+      "minor",
+      "ia-01"
+    ],
+    "body_file": "BUG-GUI-01.md"
+  },
+  {
+    "id": "BUG-GUI-04",
+    "title": "[BUG-GUI-04] Hai nút ở bước 2 Quên mật khẩu trông giống hệt nhau",
+    "severity": "Minor",
+    "priority": "Medium",
+    "fr": "FR-03 — Quên mật khẩu",
+    "screen": "/forgot-password",
+    "checks": [
+      "CHK-11"
+    ],
+    "labels": [
+      "bug",
+      "minor",
+      "ia-01"
+    ],
+    "body_file": "BUG-GUI-04.md"
+  },
+  {
+    "id": "BUG-GUI-05",
+    "title": "[BUG-GUI-05] Ba màn hình Register, Forgot Password và Profile không có thẻ `<h1>`",
+    "severity": "Minor",
+    "priority": "Medium",
+    "fr": "FR-21 — Tiêu chuẩn giao diện chung",
+    "screen": "/register, /forgot-password, /profile",
+    "checks": [
+      "CHK-05",
+      "CHK-09",
+      "CHK-13"
+    ],
+    "labels": [
+      "bug",
+      "minor",
+      "ia-01"
+    ],
+    "body_file": "BUG-GUI-05.md"
+  },
+  {
+    "id": "BUG-GUI-07",
+    "title": "[BUG-GUI-07] Layout không mirror khi document direction là RTL",
+    "severity": "Minor",
+    "priority": "Low",
+    "fr": "FR-21 — Tiêu chuẩn giao diện chung",
+    "screen": "/login, /register, /forgot-password, /profile",
+    "checks": [
+      "CHK-65"
+    ],
+    "labels": [
+      "bug",
+      "minor",
+      "ia-01"
+    ],
+    "body_file": "BUG-GUI-07.md"
+  },
+  {
+    "id": "BUG-GUI-12",
+    "title": "[BUG-GUI-12] Form đăng ký và đặt lại mật khẩu thiếu trường xác nhận mật khẩu",
+    "severity": "Minor",
+    "priority": "Medium",
+    "fr": "FR-01 — Đăng ký; FR-03 — Đặt lại mật khẩu",
+    "screen": "/register, /forgot-password",
+    "checks": [
+      "CHK-24",
+      "CHK-28"
+    ],
+    "labels": [
+      "bug",
+      "minor",
+      "ia-02"
+    ],
+    "body_file": "BUG-GUI-12.md"
+  },
+  {
+    "id": "BUG-GUI-17",
+    "title": "[BUG-GUI-17] Focus bị mất sau khi chuyển sang bước OTP",
+    "severity": "Minor",
+    "priority": "Medium",
+    "fr": "FR-03 — Quên mật khẩu",
+    "screen": "/forgot-password",
+    "checks": [
+      "CHK-43"
+    ],
+    "labels": [
+      "bug",
+      "minor",
+      "ia-03"
+    ],
+    "body_file": "BUG-GUI-17.md"
+  },
+  {
+    "id": "BUG-GUI-19",
+    "title": "[BUG-GUI-19] Navbar không chỉ ra trang hiện tại",
+    "severity": "Minor",
+    "priority": "Medium",
+    "fr": "FR-23 — Navigation",
+    "screen": "/profile",
+    "checks": [
+      "CHK-48"
+    ],
+    "labels": [
+      "bug",
+      "minor",
+      "ia-03"
+    ],
+    "body_file": "BUG-GUI-19.md"
+  },
+  {
+    "id": "BUG-GUI-20",
+    "title": "[BUG-GUI-20] Nút Login và Register không có loading/disabled state",
+    "severity": "Minor",
+    "priority": "Medium",
+    "fr": "FR-01 — Đăng ký; FR-02 — Đăng nhập",
+    "screen": "/login, /register",
+    "checks": [
+      "CHK-49",
+      "CHK-56"
+    ],
     "labels": [
       "bug",
       "minor",
       "ia-04"
     ],
-    "screenshots": [
-      "CHK-53-register-silent-success.png"
-    ]
+    "body_file": "BUG-GUI-20.md"
   },
   {
-    "id": "BUG-GUI-23",
-    "title": "[BUG-GUI-23] Server error text is rendered verbatim",
-    "body_file": "issues/BUG-GUI-23.md",
+    "id": "BUG-GUI-27",
+    "title": "[BUG-GUI-27] Không có ký hiệu `*` cạnh nhãn trường bắt buộc",
+    "severity": "Minor",
+    "priority": "Medium",
+    "fr": "FR-22 — Form",
+    "screen": "/login, /register, /forgot-password, /profile",
+    "checks": [
+      "CHK-70"
+    ],
     "labels": [
       "bug",
-      "major",
-      "ia-04"
+      "minor",
+      "ia-02"
     ],
-    "screenshots": [
-      "CHK-55-register-raw-error.png"
-    ]
+    "body_file": "BUG-GUI-27.md"
   },
   {
-    "id": "BUG-GUI-24",
-    "title": "[BUG-GUI-24] Password-reset OTP is displayed on screen",
-    "body_file": "issues/BUG-GUI-24.md",
+    "id": "BUG-GUI-28",
+    "title": "[BUG-GUI-28] Login dùng “Username” và “Sign In” giữa giao diện tiếng Việt",
+    "severity": "Minor",
+    "priority": "Medium",
+    "fr": "FR-21 — Tiêu chuẩn giao diện chung",
+    "screen": "/login",
+    "checks": [
+      "CHK-71"
+    ],
     "labels": [
       "bug",
-      "blocker",
-      "ia-04"
+      "minor",
+      "ia-01"
     ],
-    "screenshots": [
-      "CHK-58-forgot-otp-exposed.png"
-    ]
+    "body_file": "BUG-GUI-28.md"
   },
   {
-    "id": "BUG-GUI-25",
-    "title": "[BUG-GUI-25] Order-history loading and error states are shown as an empty list",
-    "body_file": "issues/BUG-GUI-25.md",
+    "id": "BUG-GUI-29",
+    "title": "[BUG-GUI-29] Nút đăng xuất có nhãn “Thoát” thay vì “Đăng xuất”",
+    "severity": "Minor",
+    "priority": "Medium",
+    "fr": "FR-23 — Navigation",
+    "screen": "/profile",
+    "checks": [
+      "CHK-47"
+    ],
     "labels": [
       "bug",
-      "major",
-      "ia-04"
+      "minor",
+      "ia-03"
     ],
-    "screenshots": [
-      "CHK-62-profile-orders-loading.png",
-      "CHK-63-profile-orders-error.png"
-    ]
+    "body_file": "BUG-GUI-29.md"
   },
   {
-    "id": "BUG-GUI-26",
-    "title": "[BUG-GUI-26] Cancel-order has no confirmation and is offered for shipping orders",
-    "body_file": "issues/BUG-GUI-26.md",
+    "id": "BUG-GUI-30",
+    "title": "[BUG-GUI-30] Empty state lịch sử đơn hàng không có icon/hình minh họa",
+    "severity": "Minor",
+    "priority": "Low",
+    "fr": "FR-24 — Feedback & State",
+    "screen": "/profile",
+    "checks": [
+      "CHK-73"
+    ],
     "labels": [
       "bug",
-      "major",
+      "minor",
       "ia-04"
     ],
-    "screenshots": [
-      "CHK-64-profile-cancel.png"
-    ]
+    "body_file": "BUG-GUI-30.md"
+  },
+  {
+    "id": "BUG-GUI-31",
+    "title": "[BUG-GUI-31] Nút hành động tích cực dùng màu đỏ/xanh lá thay vì xanh dương",
+    "severity": "Minor",
+    "priority": "Medium",
+    "fr": "FR-21 — Tiêu chuẩn giao diện chung",
+    "screen": "/register, /forgot-password",
+    "checks": [
+      "CHK-74"
+    ],
+    "labels": [
+      "bug",
+      "minor",
+      "ia-01"
+    ],
+    "body_file": "BUG-GUI-31.md"
+  },
+  {
+    "id": "BUG-GUI-32",
+    "title": "[BUG-GUI-32] Link “Giỏ hàng” trên header không có badge số lượng",
+    "severity": "Minor",
+    "priority": "Medium",
+    "fr": "FR-23 — Navigation",
+    "screen": "/login, /register, /forgot-password, /profile",
+    "checks": [
+      "CHK-80"
+    ],
+    "labels": [
+      "bug",
+      "minor",
+      "ia-03"
+    ],
+    "body_file": "BUG-GUI-32.md"
   }
 ]

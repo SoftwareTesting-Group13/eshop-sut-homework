@@ -1,47 +1,76 @@
-# BUG-GUI-21 — Form feedback uses blocking alert() or unannounced divs
+# BUG-GUI-21 — Thông báo lỗi nằm dưới nút submit hoặc dùng alert chặn
 
-| Field | Value |
+**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-21.md`](../issues/BUG-GUI-21.md)
+
+## Tóm tắt
+
+Thông báo lỗi nằm dưới nút submit hoặc dùng alert chặn. Bug được phát hiện khi thực thi checklist GUI Task 1 trên màn hình `/login, /forgot-password`.
+
+| Mục | Giá trị |
 | --- | --- |
-| Severity | **Major** |
-| FR | FR-01..04 |
-| Interface aspect | IA-04 |
-| Screen | Login, Forgot Password, Profile |
-| Checklist IDs | CHK-50, CHK-51, CHK-59, CHK-61 |
-| Environment | Chromium 158 (Playwright 1.65), 1280×900; backend http://localhost:3000, web http://localhost:5173 |
-| Status | Draft — student review and GitHub publication pending |
+| Feature / rule | FR-22 — Form; FR-24 — Feedback |
+| Checklist | CHK-50, CHK-59, CHK-75 |
+| Màn hình | `/login, /forgot-password` |
+| Môi trường | Chromium 158 / Playwright 1.65; backend `http://localhost:3000`; web `http://localhost:5173`; viewport 1280×900 (mobile 360×800 khi có kiểm tra responsive). |
+| Severity / Priority | **Major** / High |
+| Lặp lại | 1/1 trên build hiện tại |
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Submit a wrong password on /login.
-2. Request an OTP for an unknown email.
-3. Save the profile with an invalid phone.
+1. Nhập sai mật khẩu trên `/login` và submit.
+2. Yêu cầu OTP cho email không tồn tại trên `/forgot-password`.
 
-## Expected result
+| Mốc | Expected | Actual |
+| --- | --- | --- |
+| Sau thao tác | Lỗi hiển thị inline, nằm trên nút submit, gắn với field và được announce qua `role="alert"`/`aria-live` (FR-22). | Login render error div sau `</form>`, bên dưới nút “Sign In”, không có `role`/`aria-live`; Forgot Password dùng `alert("Lỗi: User not found")`, không có inline message hay field highlight. |
 
-Inline, field-associated messages announced through role=alert/aria-live; no blocking dialogs.
+## Bằng chứng
 
-## Actual result
+![BUG-GUI-21 — CHK-50-login-error.png](../screenshots/CHK-50-login-error.png)
 
-Login shows a generic div without role/aria-live; Forgot Password and Profile use native alert(); errors are not associated with fields and do not distinguish causes.
+![BUG-GUI-21 — CHK-59-forgot-alert.png](../screenshots/CHK-59-forgot-alert.png)
 
-## Evidence
+![BUG-GUI-21 — CHK-75-error-position.png](../screenshots/CHK-75-error-position.png)
 
-![BUG-GUI-21 evidence](../screenshots/CHK-50-51-login-error.png)
+## Nguyên nhân đối chiếu mã nguồn
 
-![BUG-GUI-21 evidence](../screenshots/CHK-59-forgot-alert.png)
+**[`frontend-web/src/pages/Login.jsx:61`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Login.jsx#L61)–[L66](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Login.jsx#L66)**
 
-![BUG-GUI-21 evidence](../screenshots/CHK-61-profile-update-alert.png)
+```jsx
+        <div className="text-center text-sm mt-2">
+          Chưa có tài khoản? <Link to="/register" className="text-blue-600 hover:underline">Đăng ký ngay</Link>
+        </div>
+      </form>
 
-## Root cause
+      {error && <div className="bg-red-100 text-red-700 p-3 mt-4 rounded">{error}</div>}
+```
 
-Login.jsx:66; ForgotPassword.jsx:20, 37; Profile.jsx:44, 60-62, 75-78.
+Error div nằm ngoài `<form>`, sau nút submit.
 
-## Suggested fix
+**[`frontend-web/src/pages/ForgotPassword.jsx:19`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/ForgotPassword.jsx#L19)–[L21](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/ForgotPassword.jsx#L21)**
 
-Add an inline error/success region with role=status or role=alert, aria-describedby/aria-invalid on the field, and map server errors to specific messages.
+```jsx
+    } catch (err) {
+      alert("Lỗi: " + (err.response?.data?.error || err.message));
+    }
+```
 
-## GitHub issue
+Dùng `alert()` cho lỗi request OTP.
 
-- Title: `[BUG-GUI-21] Form feedback uses blocking alert() or unannounced divs`
-- Labels: `bug`, `major`, `ia-04`, `fr-01..04`
-- Publishing is blocked in this environment because the GitHub CLI/token is not configured; the ready-to-publish body is in `issues/`.
+**[`frontend-web/src/pages/ForgotPassword.jsx:36`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/ForgotPassword.jsx#L36)–[L38](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/ForgotPassword.jsx#L38)**
+
+```jsx
+    } catch (err) {
+      alert("Mã OTP không đúng hoặc có lỗi xảy ra.");
+    }
+```
+
+Dùng `alert()` cho lỗi reset.
+
+## Đề xuất sửa
+
+Tạo inline error region phía trên nút submit, dùng `role="alert"`/`aria-live`, `aria-invalid` và `aria-describedby` trên field.
+
+## Ghi chú
+
+Screenshot được chụp trên SUT đang chạy tại `http://localhost:5173`; code block lấy trực tiếp từ source tại commit [`85af3ba`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9).

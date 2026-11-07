@@ -1,42 +1,64 @@
-# BUG-GUI-08 — Login password is visible and the email field has no email semantics
+# BUG-GUI-08 — Ô email dùng `type=text` và ô mật khẩu hiển thị rõ ký tự
 
-| Field | Value |
+**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-08.md`](../issues/BUG-GUI-08.md)
+
+## Tóm tắt
+
+Ô email dùng `type=text` và ô mật khẩu hiển thị rõ ký tự. Bug được phát hiện khi thực thi checklist GUI Task 1 trên màn hình `/login`.
+
+| Mục | Giá trị |
 | --- | --- |
-| Severity | **Major** |
-| FR | FR-02 |
-| Interface aspect | IA-02 |
-| Screen | Login |
-| Checklist IDs | CHK-17, CHK-18 |
-| Environment | Chromium 158 (Playwright 1.65), 1280×900; backend http://localhost:3000, web http://localhost:5173 |
-| Status | Draft — student review and GitHub publication pending |
+| Feature / rule | FR-02 — Đăng nhập; FR-22 — Form |
+| Checklist | CHK-17, CHK-18 |
+| Màn hình | `/login` |
+| Môi trường | Chromium 158 / Playwright 1.65; backend `http://localhost:3000`; web `http://localhost:5173`; viewport 1280×900 (mobile 360×800 khi có kiểm tra responsive). |
+| Severity / Priority | **Major** / High |
+| Lặp lại | 1/1 trên build hiện tại |
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Open /login.
-2. Type into both fields and inspect the input types.
+1. Mở `/login`.
+2. Nhập email và mật khẩu; kiểm tra `type` của hai input.
 
-## Expected result
+| Mốc | Expected | Actual |
+| --- | --- | --- |
+| Sau thao tác | Ô email dùng `type="email"`; ô mật khẩu dùng `type="password"` (FR-02, FR-22). | Cả hai input đều là `type="text"`; mật khẩu hiển thị rõ và nhãn thứ nhất là “Username” dù backend xác thực bằng email. |
 
-The email field is type=email and the password field is type=password.
+## Bằng chứng
 
-## Actual result
+![BUG-GUI-08 — CHK-17-18-19-login-fields.png](../screenshots/CHK-17-18-19-login-fields.png)
 
-Both fields are type=text; the password is visible on screen and the label says “Username” although the backend expects an email.
+## Nguyên nhân đối chiếu mã nguồn
 
-## Evidence
+**[`frontend-web/src/pages/Login.jsx:28`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Login.jsx#L28)–[L45](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Login.jsx#L45)**
 
-![BUG-GUI-08 evidence](../screenshots/CHK-17-18-19-login-fields.png)
+```jsx
+          <label className="block text-gray-700 mb-2">Username</label>
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full border p-2 rounded"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-gray-700 mb-2">Mật khẩu</label>
+          <input
+            type="text"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full border p-2 rounded"
+            required
+          />
+```
 
-## Root cause
+Hai input đều khai báo `type="text"`; label không phải “Email”.
 
-frontend-web/src/pages/Login.jsx:29-45.
+## Đề xuất sửa
 
-## Suggested fix
+Đổi input email sang `type="email"`, input mật khẩu sang `type="password"` và đổi nhãn thành “Email”.
 
-Use type=email, type=password and label the first field “Email”.
+## Ghi chú
 
-## GitHub issue
-
-- Title: `[BUG-GUI-08] Login password is visible and the email field has no email semantics`
-- Labels: `bug`, `major`, `ia-02`, `fr-02`
-- Publishing is blocked in this environment because the GitHub CLI/token is not configured; the ready-to-publish body is in `issues/`.
+Screenshot được chụp trên SUT đang chạy tại `http://localhost:5173`; code block lấy trực tiếp từ source tại commit [`85af3ba`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9).
