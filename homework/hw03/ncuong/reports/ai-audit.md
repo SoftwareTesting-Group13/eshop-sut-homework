@@ -130,6 +130,13 @@ Key numbers produced by the agent:
 - **40 screenshots** covering all failed items.
 - Execution environment: EShop backend on `localhost:3000`, web frontend on `localhost:5173`, Chromium 158 / Playwright 1.65, axe-core 4.x, 1280×900 desktop, 360×800 mobile, 640×800 zoom equivalent.
 
+Finalization performed by the agent after the artifact build:
+
+- Repaired the malformed YAML frontmatter in `skills/ui-checklist-generator/SKILL.md` (the description string was unterminated, so the skill could not load).
+- Added the missing `skills/cross-browser-testing/prompts/cross-browser-testing.md` referenced by that skill, and verified all Markdown links resolve.
+- Committed the work in five logical commits and wrote `homework/hw03/ncuong/git-commit-log.txt`.
+- Re-rendered the three report PDFs after the final consistency fixes.
+
 What the agent did **not** do (and did not claim to do):
 
 - It did not publish the GitHub Issues (no `gh` CLI/token in the environment).
