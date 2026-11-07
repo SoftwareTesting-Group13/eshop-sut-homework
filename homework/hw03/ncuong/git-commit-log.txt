@@ -2,6 +2,7 @@
 
 | Commit | Date | Message |
 | --- | --- | --- |
+| `3258ff9` | 2026-11-07 18:55 | docs(hw03): update GUI test summary after the review revision |
 | `7567792` | 2026-11-07 18:52 | docs(hw03): rewrite Task 1 reports in Vietnamese and regenerate PDFs |
 | `c292ba1` | 2026-11-07 18:52 | test(hw03): recapture Vietnamese evidence for failed checklist items |
 | `2e71b50` | 2026-11-07 18:52 | feat(hw03): rebuild Task 1 checklist and bug reports after spec review |
