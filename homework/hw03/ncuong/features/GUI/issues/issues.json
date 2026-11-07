@@ -1,0 +1,356 @@
+[
+  {
+    "id": "BUG-GUI-01",
+    "title": "[BUG-GUI-01] Login page heading says “Đăng Ký” instead of “Đăng nhập”",
+    "body_file": "issues/BUG-GUI-01.md",
+    "labels": [
+      "bug",
+      "minor",
+      "ia-01"
+    ],
+    "screenshots": [
+      "CHK-01-login-heading.png"
+    ]
+  },
+  {
+    "id": "BUG-GUI-02",
+    "title": "[BUG-GUI-02] All pages share the browser tab title “frontend-web”",
+    "body_file": "issues/BUG-GUI-02.md",
+    "labels": [
+      "bug",
+      "minor",
+      "ia-01"
+    ],
+    "screenshots": [
+      "CHK-02-login-title.png",
+      "CHK-06-register-title.png",
+      "CHK-10-forgot-title.png",
+      "CHK-13-14-profile-headings-title.png"
+    ]
+  },
+  {
+    "id": "BUG-GUI-03",
+    "title": "[BUG-GUI-03] Text and button contrast fails WCAG 2.2 AA in several places",
+    "body_file": "issues/BUG-GUI-03.md",
+    "labels": [
+      "bug",
+      "major",
+      "ia-01"
+    ],
+    "screenshots": [
+      "CHK-07-register-contrast.png",
+      "CHK-16-profile-contrast.png"
+    ]
+  },
+  {
+    "id": "BUG-GUI-04",
+    "title": "[BUG-GUI-04] Forgot-password step 2 primary and back buttons look identical",
+    "body_file": "issues/BUG-GUI-04.md",
+    "labels": [
+      "bug",
+      "minor",
+      "ia-01"
+    ],
+    "screenshots": [
+      "CHK-11-forgot-buttons.png"
+    ]
+  },
+  {
+    "id": "BUG-GUI-05",
+    "title": "[BUG-GUI-05] Profile page has no h1 and two h2 headings",
+    "body_file": "issues/BUG-GUI-05.md",
+    "labels": [
+      "bug",
+      "minor",
+      "ia-01"
+    ],
+    "screenshots": [
+      "CHK-13-14-profile-headings-title.png"
+    ]
+  },
+  {
+    "id": "BUG-GUI-06",
+    "title": "[BUG-GUI-06] Order-history table forces horizontal page scrolling on mobile",
+    "body_file": "issues/BUG-GUI-06.md",
+    "labels": [
+      "bug",
+      "major",
+      "ia-01"
+    ],
+    "screenshots": [
+      "CHK-15-profile-mobile-table.png"
+    ]
+  },
+  {
+    "id": "BUG-GUI-07",
+    "title": "[BUG-GUI-07] RTL direction does not mirror the auth layout",
+    "body_file": "issues/BUG-GUI-07.md",
+    "labels": [
+      "bug",
+      "minor",
+      "ia-01"
+    ],
+    "screenshots": [
+      "CHK-65-login-rtl.png"
+    ]
+  },
+  {
+    "id": "BUG-GUI-08",
+    "title": "[BUG-GUI-08] Login password is visible and the email field has no email semantics",
+    "body_file": "issues/BUG-GUI-08.md",
+    "labels": [
+      "bug",
+      "major",
+      "ia-02"
+    ],
+    "screenshots": [
+      "CHK-17-18-19-login-fields.png"
+    ]
+  },
+  {
+    "id": "BUG-GUI-09",
+    "title": "[BUG-GUI-09] Form inputs lack programmatic label associations",
+    "body_file": "issues/BUG-GUI-09.md",
+    "labels": [
+      "bug",
+      "major",
+      "ia-02"
+    ],
+    "screenshots": [
+      "CHK-17-18-19-login-fields.png",
+      "CHK-32-profile-labels.png"
+    ]
+  },
+  {
+    "id": "BUG-GUI-10",
+    "title": "[BUG-GUI-10] Email format and duplicate-email checks are missing",
+    "body_file": "issues/BUG-GUI-10.md",
+    "labels": [
+      "bug",
+      "major",
+      "ia-02, ia-04"
+    ],
+    "screenshots": [
+      "CHK-21-register-invalid-email.png",
+      "CHK-25-forgot-email-type.png",
+      "CHK-54-register-duplicate-email.png"
+    ]
+  },
+  {
+    "id": "BUG-GUI-11",
+    "title": "[BUG-GUI-11] Password rule text contradicts the implemented regex",
+    "body_file": "issues/BUG-GUI-11.md",
+    "labels": [
+      "bug",
+      "major",
+      "ia-02"
+    ],
+    "screenshots": [
+      "CHK-23-register-password-rule.png"
+    ]
+  },
+  {
+    "id": "BUG-GUI-12",
+    "title": "[BUG-GUI-12] Registration and password reset have no confirm-password field",
+    "body_file": "issues/BUG-GUI-12.md",
+    "labels": [
+      "bug",
+      "minor",
+      "ia-02"
+    ],
+    "screenshots": [
+      "CHK-24-register-no-confirm.png",
+      "CHK-28-forgot-no-confirm.png"
+    ]
+  },
+  {
+    "id": "BUG-GUI-13",
+    "title": "[BUG-GUI-13] OTP input is unconstrained and step 2 has no step indicator",
+    "body_file": "issues/BUG-GUI-13.md",
+    "labels": [
+      "bug",
+      "minor",
+      "ia-02, ia-03"
+    ],
+    "screenshots": [
+      "CHK-26-forgot-otp-input.png",
+      "CHK-44-forgot-step-indicator.png"
+    ]
+  },
+  {
+    "id": "BUG-GUI-14",
+    "title": "[BUG-GUI-14] Phone validation rejects valid Vietnamese numbers and uses a blocking alert",
+    "body_file": "issues/BUG-GUI-14.md",
+    "labels": [
+      "bug",
+      "blocker",
+      "ia-02"
+    ],
+    "screenshots": [
+      "CHK-30-profile-phone-inputmode.png",
+      "CHK-31-profile-phone-alert.png"
+    ]
+  },
+  {
+    "id": "BUG-GUI-15",
+    "title": "[BUG-GUI-15] Forgot-password link performs a full page reload",
+    "body_file": "issues/BUG-GUI-15.md",
+    "labels": [
+      "bug",
+      "minor",
+      "ia-03"
+    ],
+    "screenshots": [
+      "CHK-34-forgot-link-reload.png"
+    ]
+  },
+  {
+    "id": "BUG-GUI-16",
+    "title": "[BUG-GUI-16] Login tab order starts at the submit button because of tabindex=1",
+    "body_file": "issues/BUG-GUI-16.md",
+    "labels": [
+      "bug",
+      "major",
+      "ia-03"
+    ],
+    "screenshots": [
+      "CHK-36-login-tab-order.png"
+    ]
+  },
+  {
+    "id": "BUG-GUI-17",
+    "title": "[BUG-GUI-17] Focus is lost after switching to the OTP step",
+    "body_file": "issues/BUG-GUI-17.md",
+    "labels": [
+      "bug",
+      "minor",
+      "ia-03"
+    ],
+    "screenshots": [
+      "CHK-43-forgot-focus.png"
+    ]
+  },
+  {
+    "id": "BUG-GUI-18",
+    "title": "[BUG-GUI-18] Auth route guards are missing (profile, login, logout)",
+    "body_file": "issues/BUG-GUI-18.md",
+    "labels": [
+      "bug",
+      "major",
+      "ia-03"
+    ],
+    "screenshots": [
+      "CHK-45-profile-unauth.png",
+      "CHK-47-profile-logout.png",
+      "CHK-69-login-while-authenticated.png"
+    ]
+  },
+  {
+    "id": "BUG-GUI-19",
+    "title": "[BUG-GUI-19] Navigation has no current-page indication",
+    "body_file": "issues/BUG-GUI-19.md",
+    "labels": [
+      "bug",
+      "minor",
+      "ia-03"
+    ],
+    "screenshots": [
+      "CHK-48-profile-active-nav.png"
+    ]
+  },
+  {
+    "id": "BUG-GUI-20",
+    "title": "[BUG-GUI-20] Login and Register buttons have no loading or disabled state",
+    "body_file": "issues/BUG-GUI-20.md",
+    "labels": [
+      "bug",
+      "minor",
+      "ia-04"
+    ],
+    "screenshots": [
+      "CHK-49-login-loading.png",
+      "CHK-56-register-loading.png"
+    ]
+  },
+  {
+    "id": "BUG-GUI-21",
+    "title": "[BUG-GUI-21] Form feedback uses blocking alert() or unannounced divs",
+    "body_file": "issues/BUG-GUI-21.md",
+    "labels": [
+      "bug",
+      "major",
+      "ia-04"
+    ],
+    "screenshots": [
+      "CHK-50-51-login-error.png",
+      "CHK-59-forgot-alert.png",
+      "CHK-61-profile-update-alert.png"
+    ]
+  },
+  {
+    "id": "BUG-GUI-22",
+    "title": "[BUG-GUI-22] Successful registration redirects silently",
+    "body_file": "issues/BUG-GUI-22.md",
+    "labels": [
+      "bug",
+      "minor",
+      "ia-04"
+    ],
+    "screenshots": [
+      "CHK-53-register-silent-success.png"
+    ]
+  },
+  {
+    "id": "BUG-GUI-23",
+    "title": "[BUG-GUI-23] Server error text is rendered verbatim",
+    "body_file": "issues/BUG-GUI-23.md",
+    "labels": [
+      "bug",
+      "major",
+      "ia-04"
+    ],
+    "screenshots": [
+      "CHK-55-register-raw-error.png"
+    ]
+  },
+  {
+    "id": "BUG-GUI-24",
+    "title": "[BUG-GUI-24] Password-reset OTP is displayed on screen",
+    "body_file": "issues/BUG-GUI-24.md",
+    "labels": [
+      "bug",
+      "blocker",
+      "ia-04"
+    ],
+    "screenshots": [
+      "CHK-58-forgot-otp-exposed.png"
+    ]
+  },
+  {
+    "id": "BUG-GUI-25",
+    "title": "[BUG-GUI-25] Order-history loading and error states are shown as an empty list",
+    "body_file": "issues/BUG-GUI-25.md",
+    "labels": [
+      "bug",
+      "major",
+      "ia-04"
+    ],
+    "screenshots": [
+      "CHK-62-profile-orders-loading.png",
+      "CHK-63-profile-orders-error.png"
+    ]
+  },
+  {
+    "id": "BUG-GUI-26",
+    "title": "[BUG-GUI-26] Cancel-order has no confirmation and is offered for shipping orders",
+    "body_file": "issues/BUG-GUI-26.md",
+    "labels": [
+      "bug",
+      "major",
+      "ia-04"
+    ],
+    "screenshots": [
+      "CHK-64-profile-cancel.png"
+    ]
+  }
+]
