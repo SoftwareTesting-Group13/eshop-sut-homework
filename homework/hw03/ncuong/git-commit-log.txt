@@ -2,6 +2,9 @@
 
 | Commit | Date | Message |
 | --- | --- | --- |
+| `7567792` | 2026-11-07 18:52 | docs(hw03): rewrite Task 1 reports in Vietnamese and regenerate PDFs |
+| `c292ba1` | 2026-11-07 18:52 | test(hw03): recapture Vietnamese evidence for failed checklist items |
+| `2e71b50` | 2026-11-07 18:52 | feat(hw03): rebuild Task 1 checklist and bug reports after spec review |
 | `53c8caf` | 2026-11-07 18:05 | docs(hw03): add the HW03 assignment specification |
 | `5a5e530` | 2026-11-07 18:05 | docs(hw03): add git commit log for Task 1 |
 | `3b544be` | 2026-11-07 18:04 | docs(hw03): add Task 1 report, AI audit, critique and PDFs |
