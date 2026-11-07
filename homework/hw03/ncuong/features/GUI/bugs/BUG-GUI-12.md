@@ -1,6 +1,6 @@
 # BUG-GUI-12 — Form đăng ký và đặt lại mật khẩu thiếu trường xác nhận mật khẩu
 
-**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-12.md`](../issues/BUG-GUI-12.md)
+**GitHub Issue:** [#94](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/94)
 
 ## Tóm tắt
 

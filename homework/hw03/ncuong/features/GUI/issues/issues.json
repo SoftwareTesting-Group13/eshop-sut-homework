@@ -102,7 +102,8 @@
     "labels": [
       "bug",
       "major",
-      "ia-02, ia-04"
+      "ia-02",
+      "ia-04"
     ],
     "body_file": "BUG-GUI-10.md"
   },
@@ -137,7 +138,8 @@
     "labels": [
       "bug",
       "major",
-      "ia-02, ia-03"
+      "ia-02",
+      "ia-03"
     ],
     "body_file": "BUG-GUI-13.md"
   },

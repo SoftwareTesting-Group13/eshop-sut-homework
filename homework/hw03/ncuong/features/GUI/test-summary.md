@@ -68,12 +68,12 @@
 | AI initial checklist + review additions | [`ai-checklist-and-review.md`](ai-checklist-and-review.md) |
 | Bug report | [`bug-report.md`](bug-report.md) |
 | Individual bug reports | [`bugs/`](bugs/) |
-| GitHub issue drafts | [`issues/`](issues/) |
+| GitHub issues (đã publish) | [`issues/`](issues/), [`published.json`](issues/published.json) |
 | Screenshots (Failed items only) | [`screenshots/`](screenshots/) |
 
 ## Ghi chú và hạn chế
 
 - Tất cả 66 item đã được thực thi. Một item Failed không tự động là bug: thiếu confirm-password và step indicator là design gap; 26 bug là defect tái hiện được.
 - Screenshot có banner đỏ tiếng Việt ghi checklist ID, mô tả lỗi và quan sát; ảnh chụp SUT tại `localhost:5173`, không phải mock.
-- GitHub Issues mới ở dạng draft vì môi trường không có `gh` CLI/token. Chạy `bash issues/publish.sh` sau khi `gh auth login` và push nhánh `ncuong`.
+- 26 GitHub Issues đã publish (#80–#105) và screenshot dùng raw URL trên nhánh `ncuong` đã push.
 - Task 1 chỉ chạy trên Chromium; Firefox/Safari/Expo Go thuộc Task 3.

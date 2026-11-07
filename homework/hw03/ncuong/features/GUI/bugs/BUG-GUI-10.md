@@ -1,6 +1,6 @@
 # BUG-GUI-10 — Không kiểm tra định dạng email và không chặn email trùng
 
-**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-10.md`](../issues/BUG-GUI-10.md)
+**GitHub Issue:** [#104](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/104)
 
 ## Tóm tắt
 

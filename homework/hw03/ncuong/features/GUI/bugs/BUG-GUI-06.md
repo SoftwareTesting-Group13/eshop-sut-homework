@@ -1,6 +1,6 @@
 # BUG-GUI-06 — Bảng lịch sử đơn hàng gây horizontal scroll ở viewport 360px
 
-**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-06.md`](../issues/BUG-GUI-06.md)
+**GitHub Issue:** [#82](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/82)
 
 ## Tóm tắt
 

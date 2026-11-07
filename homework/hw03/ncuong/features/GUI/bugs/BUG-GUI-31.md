@@ -1,6 +1,6 @@
 # BUG-GUI-31 — Nút hành động tích cực dùng màu đỏ/xanh lá thay vì xanh dương
 
-**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-31.md`](../issues/BUG-GUI-31.md)
+**GitHub Issue:** [#102](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/102)
 
 ## Tóm tắt
 

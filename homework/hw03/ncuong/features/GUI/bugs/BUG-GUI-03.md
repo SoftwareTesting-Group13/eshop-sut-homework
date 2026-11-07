@@ -1,6 +1,6 @@
 # BUG-GUI-03 — Text phụ và nút đỏ không đạt WCAG 2.2 AA về contrast
 
-**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-03.md`](../issues/BUG-GUI-03.md)
+**GitHub Issue:** [#81](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/81)
 
 ## Tóm tắt
 

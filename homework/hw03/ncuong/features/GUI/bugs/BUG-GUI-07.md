@@ -1,6 +1,6 @@
 # BUG-GUI-07 — Layout không mirror khi document direction là RTL
 
-**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-07.md`](../issues/BUG-GUI-07.md)
+**GitHub Issue:** [#93](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/93)
 
 ## Tóm tắt
 

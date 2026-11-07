@@ -1,6 +1,6 @@
 # BUG-GUI-19 — Navbar không chỉ ra trang hiện tại
 
-**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-19.md`](../issues/BUG-GUI-19.md)
+**GitHub Issue:** [#96](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/96)
 
 ## Tóm tắt
 

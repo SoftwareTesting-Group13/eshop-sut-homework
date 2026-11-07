@@ -1,6 +1,6 @@
 # BUG-GUI-25 — Loading và lỗi tải đơn hàng đều hiển thị thành “chưa có đơn hàng”
 
-**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-25.md`](../issues/BUG-GUI-25.md)
+**GitHub Issue:** [#89](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/89)
 
 ## Tóm tắt
 

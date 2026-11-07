@@ -16,7 +16,7 @@ Tôi dùng AI cho các công việc sau:
 > - AI tool có bằng chứng: **OpenCode agent — model `DeepSeek V4.1 Flash Free` (provider `opencode`)**. Không dùng AI tool nào khác.
 > - Nguồn thời gian: conversation export không có timestamp. Vì vậy cả ba entry ghi **“Không có trong nguồn”**; ngày session 2026-11-07 lấy từ môi trường, không phải từ chat.
 > - Trạng thái human review: checklist 66 item và 26 bug report là **bản nháp do agent tạo**. Sinh viên vẫn phải review, xác nhận bug và publish GitHub Issues. Báo cáo này không khẳng định human review đã xảy ra.
-> - Agent không publish được GitHub Issues vì môi trường không có `gh` CLI/token. Draft và script publish nằm trong `features/GUI/issues/`.
+> - 26 GitHub Issues đã được publish (#80–#105); danh sách máy đọc ở `features/GUI/issues/published.json`.
 
 ---
 
@@ -115,7 +115,7 @@ Agent tạo các artifact có thể kiểm tra sau (nội dung đầy đủ nằ
 | Test summary | `homework/hw03/ncuong/features/GUI/test-summary.md` | Số screen/flow/item/passed/failed/bug/participant/video |
 | Bug report | `homework/hw03/ncuong/features/GUI/bug-report.md` | 26 bug kèm severity, FR, màn hình, checklist ID, screenshot |
 | Bug report riêng | `homework/hw03/ncuong/features/GUI/bugs/` | 26 file `BUG-GUI-*.md`: bước tái hiện, expected/actual, root cause, suggested fix, screenshot |
-| GitHub issue draft | `homework/hw03/ncuong/features/GUI/issues/` | 26 file `BUG-GUI-*.md` + `issues.json` + `publish.sh`; publish bị chặn do thiếu GitHub auth |
+| GitHub Issues | `homework/hw03/ncuong/features/GUI/issues/` | 26 issue đã publish (#80–#105) + `issues.json` + `published.json` + `publish.sh` |
 | Screenshot | `homework/hw03/ncuong/features/GUI/screenshots/` | 38 PNG có annotation tiếng Việt cho 39 item Failed, kèm `manifest.json` |
 | Script build | `homework/hw03/ncuong/features/GUI/tools/build_checklist.py`, `build_bugs.py` | Sinh lại Markdown/Excel/bug artifact |
 | Báo cáo chính | `homework/hw03/ncuong/reports/main-report.md` | Task 1: phương pháp, review rationale, kết quả, phân tích |

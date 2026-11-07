@@ -1,6 +1,6 @@
 # BUG-GUI-05 — Ba màn hình Register, Forgot Password và Profile không có thẻ `<h1>`
 
-**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-05.md`](../issues/BUG-GUI-05.md)
+**GitHub Issue:** [#92](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/92)
 
 ## Tóm tắt
 

@@ -36,5 +36,5 @@ Mỗi bug có báo cáo riêng trong [`bugs/`](bugs/) với bước tái hiện,
 ## Ghi chú
 
 - Screenshot chỉ tồn tại cho các item Failed; mỗi ảnh có banner đỏ ghi checklist ID và lỗi quan sát.
-- GitHub Issues chưa publish vì môi trường không có `gh` CLI/token; 26 issue draft nằm trong [`issues/`](issues/).
+- 26 GitHub Issues đã publish: [#80–#105](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues?q=is%3Aissue+%5BBUG-GUI-). Danh sách máy đọc ở [`issues/published.json`](issues/published.json).
 - Severity: **Blocker** = không thể hoàn thành tác vụ chính; **Major** = sai requirement rõ ràng hoặc cản trở đáng kể; **Minor** = lỗi hiển thị/nhất quán.

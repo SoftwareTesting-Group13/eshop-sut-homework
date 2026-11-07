@@ -1,6 +1,6 @@
 # BUG-GUI-21 — Thông báo lỗi nằm dưới nút submit hoặc dùng alert chặn
 
-**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-21.md`](../issues/BUG-GUI-21.md)
+**GitHub Issue:** [#87](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/87)
 
 ## Tóm tắt
 

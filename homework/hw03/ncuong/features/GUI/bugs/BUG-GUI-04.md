@@ -1,6 +1,6 @@
 # BUG-GUI-04 — Hai nút ở bước 2 Quên mật khẩu trông giống hệt nhau
 
-**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-04.md`](../issues/BUG-GUI-04.md)
+**GitHub Issue:** [#91](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/91)
 
 ## Tóm tắt
 

@@ -1,6 +1,6 @@
 # BUG-GUI-28 — Login dùng “Username” và “Sign In” giữa giao diện tiếng Việt
 
-**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-28.md`](../issues/BUG-GUI-28.md)
+**GitHub Issue:** [#99](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/99)
 
 ## Tóm tắt
 

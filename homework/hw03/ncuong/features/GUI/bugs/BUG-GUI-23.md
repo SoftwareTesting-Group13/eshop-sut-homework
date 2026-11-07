@@ -1,6 +1,6 @@
 # BUG-GUI-23 — UI render nguyên văn lỗi kỹ thuật từ server
 
-**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-23.md`](../issues/BUG-GUI-23.md)
+**GitHub Issue:** [#88](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/88)
 
 ## Tóm tắt
 

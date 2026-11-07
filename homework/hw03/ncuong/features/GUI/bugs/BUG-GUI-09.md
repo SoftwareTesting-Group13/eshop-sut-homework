@@ -1,6 +1,6 @@
 # BUG-GUI-09 — Input không có label liên kết bằng chương trình
 
-**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-09.md`](../issues/BUG-GUI-09.md)
+**GitHub Issue:** [#84](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/84)
 
 ## Tóm tắt
 

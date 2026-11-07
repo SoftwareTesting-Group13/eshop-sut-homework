@@ -1,6 +1,6 @@
 # BUG-GUI-08 — Ô email dùng `type=text` và ô mật khẩu hiển thị rõ ký tự
 
-**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-08.md`](../issues/BUG-GUI-08.md)
+**GitHub Issue:** [#83](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/83)
 
 ## Tóm tắt
 

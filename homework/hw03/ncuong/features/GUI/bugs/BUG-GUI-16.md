@@ -1,6 +1,6 @@
 # BUG-GUI-16 — Tab order bắt đầu ở nút Sign In vì `tabIndex=1`
 
-**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-16.md`](../issues/BUG-GUI-16.md)
+**GitHub Issue:** [#86](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/86)
 
 ## Tóm tắt
 

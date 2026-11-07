@@ -1,6 +1,6 @@
 # BUG-GUI-20 — Nút Login và Register không có loading/disabled state
 
-**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-20.md`](../issues/BUG-GUI-20.md)
+**GitHub Issue:** [#97](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/97)
 
 ## Tóm tắt
 

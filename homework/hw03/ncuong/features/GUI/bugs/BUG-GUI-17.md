@@ -1,6 +1,6 @@
 # BUG-GUI-17 — Focus bị mất sau khi chuyển sang bước OTP
 
-**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-17.md`](../issues/BUG-GUI-17.md)
+**GitHub Issue:** [#95](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/95)
 
 ## Tóm tắt
 

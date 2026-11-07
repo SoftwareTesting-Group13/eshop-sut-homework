@@ -10,9 +10,9 @@ gh issue create --title "[BUG-GUI-03] Text phụ và nút đỏ không đạt WC
 gh issue create --title "[BUG-GUI-06] Bảng lịch sử đơn hàng gây horizontal scroll ở viewport 360px" --body-file BUG-GUI-06.md --label bug --label major --label ia-01
 gh issue create --title "[BUG-GUI-08] Ô email dùng `type=text` và ô mật khẩu hiển thị rõ ký tự" --body-file BUG-GUI-08.md --label bug --label major --label ia-02
 gh issue create --title "[BUG-GUI-09] Input không có label liên kết bằng chương trình" --body-file BUG-GUI-09.md --label bug --label major --label ia-02
-gh issue create --title "[BUG-GUI-10] Không kiểm tra định dạng email và không chặn email trùng" --body-file BUG-GUI-10.md --label bug --label major --label ia-02, ia-04
+gh issue create --title "[BUG-GUI-10] Không kiểm tra định dạng email và không chặn email trùng" --body-file BUG-GUI-10.md --label bug --label major --label ia-02 --label ia-04
 gh issue create --title "[BUG-GUI-11] Nội dung mô tả password rule mâu thuẫn với regex thực tế" --body-file BUG-GUI-11.md --label bug --label major --label ia-02
-gh issue create --title "[BUG-GUI-13] OTP chỉ có 4 chữ số, input không giới hạn và bước 2 thiếu step indicator" --body-file BUG-GUI-13.md --label bug --label major --label ia-02, ia-03
+gh issue create --title "[BUG-GUI-13] OTP chỉ có 4 chữ số, input không giới hạn và bước 2 thiếu step indicator" --body-file BUG-GUI-13.md --label bug --label major --label ia-02 --label ia-03
 gh issue create --title "[BUG-GUI-16] Tab order bắt đầu ở nút Sign In vì `tabIndex=1`" --body-file BUG-GUI-16.md --label bug --label major --label ia-03
 gh issue create --title "[BUG-GUI-21] Thông báo lỗi nằm dưới nút submit hoặc dùng alert chặn" --body-file BUG-GUI-21.md --label bug --label major --label ia-04
 gh issue create --title "[BUG-GUI-23] UI render nguyên văn lỗi kỹ thuật từ server" --body-file BUG-GUI-23.md --label bug --label major --label ia-04

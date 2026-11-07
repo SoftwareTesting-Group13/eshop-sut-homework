@@ -1,6 +1,6 @@
 # BUG-GUI-13 — OTP chỉ có 4 chữ số, input không giới hạn và bước 2 thiếu step indicator
 
-**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-13.md`](../issues/BUG-GUI-13.md)
+**GitHub Issue:** [#105](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/105)
 
 ## Tóm tắt
 

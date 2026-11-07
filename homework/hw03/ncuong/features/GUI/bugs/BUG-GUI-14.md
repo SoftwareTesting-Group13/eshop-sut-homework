@@ -1,6 +1,6 @@
 # BUG-GUI-14 — Regex số điện thoại từ chối số Việt Nam hợp lệ và dùng alert chặn
 
-**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-14.md`](../issues/BUG-GUI-14.md)
+**GitHub Issue:** [#80](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/80)
 
 ## Tóm tắt
 

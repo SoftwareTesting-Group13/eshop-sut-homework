@@ -1,6 +1,6 @@
 # BUG-GUI-01 — Tiêu đề trang Đăng nhập ghi “Đăng Ký” thay vì “Đăng nhập”
 
-**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-01.md`](../issues/BUG-GUI-01.md)
+**GitHub Issue:** [#90](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/90)
 
 ## Tóm tắt
 

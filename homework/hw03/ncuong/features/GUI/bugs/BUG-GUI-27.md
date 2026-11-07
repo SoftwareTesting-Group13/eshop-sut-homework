@@ -1,6 +1,6 @@
 # BUG-GUI-27 — Không có ký hiệu `*` cạnh nhãn trường bắt buộc
 
-**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-27.md`](../issues/BUG-GUI-27.md)
+**GitHub Issue:** [#98](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/98)
 
 ## Tóm tắt
 

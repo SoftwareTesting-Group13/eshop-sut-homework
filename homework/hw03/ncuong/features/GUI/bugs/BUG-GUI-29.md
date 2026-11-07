@@ -1,6 +1,6 @@
 # BUG-GUI-29 — Nút đăng xuất có nhãn “Thoát” thay vì “Đăng xuất”
 
-**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-29.md`](../issues/BUG-GUI-29.md)
+**GitHub Issue:** [#100](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/100)
 
 ## Tóm tắt
 

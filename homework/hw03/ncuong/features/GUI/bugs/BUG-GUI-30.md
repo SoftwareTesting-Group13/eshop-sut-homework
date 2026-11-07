@@ -1,6 +1,6 @@
 # BUG-GUI-30 — Empty state lịch sử đơn hàng không có icon/hình minh họa
 
-**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-30.md`](../issues/BUG-GUI-30.md)
+**GitHub Issue:** [#101](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/101)
 
 ## Tóm tắt
 

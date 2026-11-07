@@ -15,7 +15,7 @@
 - [Checklist AI sinh ban đầu + 25 item bổ sung/sửa sau review](features/GUI/ai-checklist-and-review.md)
 - [Bug report — 26 bug](features/GUI/bug-report.md)
 - [Báo cáo bug riêng lẻ](features/GUI/bugs/)
-- [GitHub issue draft](features/GUI/issues/)
+- [GitHub Issues (đã publish #80–#105)](features/GUI/issues/)
 - [Screenshot — chỉ item Failed](features/GUI/screenshots/)
 - [Agent Skills](skills/)
 
@@ -73,7 +73,7 @@ Theo thang điểm trong đề HW03. Cột tự đánh giá để sinh viên đi
 ## Cần bổ sung trước khi nộp
 
 - [ ] Sinh viên review 66 checklist item và 26 bug; xác nhận bug nào là thật.
-- [ ] Cấu hình `gh auth login` rồi chạy `bash features/GUI/issues/publish.sh` để publish 26 GitHub Issues (kèm screenshot). Hiện môi trường chưa có `gh`/token nên issue mới ở dạng draft.
+- [x] Đã publish 26 GitHub Issues (#80–#105) kèm screenshot; danh sách ở [`features/GUI/issues/published.json`](features/GUI/issues/published.json).
 - [ ] Chạy Task 2: chọn flow, viết task scenario, tuyển 7 participant, pilot, 7 session, SUS/UEQ-S, phân tích severity.
 - [ ] Chạy Task 3: Chrome, Firefox, Safari (hoặc Android Chrome / Expo Go), screenshot có overlay MSSV + họ tên.
 - [ ] Quay video demo Agent Skills và điền link YouTube.
@@ -82,7 +82,7 @@ Theo thang điểm trong đề HW03. Cột tự đánh giá để sinh viên đi
 
 ## Ghi chú về GitHub Issues
 
-26 issue draft nằm trong [`features/GUI/issues/`](features/GUI/issues/), mỗi file có:
+26 issue đã publish (#80–#105); danh sách máy đọc ở [`features/GUI/issues/published.json`](features/GUI/issues/published.json). Mỗi issue có:
 - tiêu đề,
 - môi trường,
 - steps to reproduce,
@@ -90,4 +90,4 @@ Theo thang điểm trong đề HW03. Cột tự đánh giá để sinh viên đi
 - screenshot (raw URL trỏ về nhánh `ncuong`),
 - root cause và suggested fix.
 
-Script publish: [`features/GUI/issues/publish.sh`](features/GUI/issues/publish.sh). Script yêu cầu `gh auth login` và screenshot đã được push lên nhánh `ncuong`.
+Các file draft và [`features/GUI/issues/publish.sh`](features/GUI/issues/publish.sh) được giữ lại để tái tạo issue nếu cần.

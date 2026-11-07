@@ -15,7 +15,7 @@
 | Test summary | [`features/GUI/test-summary.md`](../features/GUI/test-summary.md) |
 | Bug report tổng hợp (26 bug) | [`features/GUI/bug-report.md`](../features/GUI/bug-report.md) |
 | Báo cáo bug riêng (26 file) | [`features/GUI/bugs/`](../features/GUI/bugs/) |
-| GitHub issue draft (26 file) | [`features/GUI/issues/`](../features/GUI/issues/) |
+| GitHub Issues (26 issue đã publish: #80–#105) | [`features/GUI/issues/`](../features/GUI/issues/), [`published.json`](../features/GUI/issues/published.json) |
 | Screenshot cho item Failed (38 ảnh) | [`features/GUI/screenshots/`](../features/GUI/screenshots/) |
 | AI Audit Report | [`reports/ai-audit.md`](ai-audit.md) |
 
@@ -187,7 +187,7 @@ Mỗi bug report có:
 
 ## 1.8 Hạn chế và việc còn lại
 
-- **GitHub Issues chưa publish.** Môi trường không có `gh` CLI/token. 26 issue body đã sẵn trong [`features/GUI/issues/`](../features/GUI/issues/); sau khi `gh auth login` và push nhánh `ncuong`, chạy `bash features/GUI/issues/publish.sh`.
+- **GitHub Issues đã publish.** 26 issue (#80–#105) đã được tạo và screenshot dùng raw URL trên nhánh `ncuong` đã push; danh sách máy đọc ở [`features/GUI/issues/published.json`](../features/GUI/issues/published.json).
 - **Task 1 mới chạy trên một browser engine (Chromium).** Firefox, Safari và Expo Go thuộc Task 3.
 - **Bộ AI ban đầu được giữ nguyên để đối chiếu audit.** Sinh viên cần xác nhận 66 item và 26 bug trước khi nộp.
 - **Timestamp trong AI audit** ghi “không có trong nguồn” vì conversation export không chứa thời gian.

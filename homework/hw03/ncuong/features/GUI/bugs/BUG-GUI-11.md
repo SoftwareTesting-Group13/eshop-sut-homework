@@ -1,6 +1,6 @@
 # BUG-GUI-11 — Nội dung mô tả password rule mâu thuẫn với regex thực tế
 
-**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-11.md`](../issues/BUG-GUI-11.md)
+**GitHub Issue:** [#85](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/85)
 
 ## Tóm tắt
 

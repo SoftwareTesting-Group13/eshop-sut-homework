@@ -1,6 +1,6 @@
 # BUG-GUI-32 — Link “Giỏ hàng” trên header không có badge số lượng
 
-**GitHub Issue:** chưa publish — draft tại [`issues/BUG-GUI-32.md`](../issues/BUG-GUI-32.md)
+**GitHub Issue:** [#103](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/103)
 
 ## Tóm tắt
 
