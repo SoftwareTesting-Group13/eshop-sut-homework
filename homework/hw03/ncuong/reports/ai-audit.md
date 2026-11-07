@@ -115,14 +115,16 @@ Agent tạo các artifact có thể kiểm tra sau (nội dung đầy đủ nằ
 | Kết quả máy đọc | `homework/hw03/ncuong/features/GUI/checklist.json` | Item, summary, phân nguồn, bug ID |
 | Test summary | `homework/hw03/ncuong/features/GUI/test-summary.md` | Số screen/flow/item/passed/failed/bug/participant/video |
 | Bug report | `homework/hw03/ncuong/features/GUI/bug-report.md` | 26 bug kèm severity, FR, màn hình, checklist ID, screenshot |
-| Bug report riêng | `homework/hw03/ncuong/features/GUI/bugs/` | Bước tái hiện, expected/actual, root cause, suggested fix, screenshot |
-| GitHub issue draft | `homework/hw03/ncuong/features/GUI/issues/`, `issues.json`, `publish.sh` | Issue body sẵn sàng publish; publish bị chặn do thiếu GitHub auth |
+| Bug report riêng | `homework/hw03/ncuong/features/GUI/bugs/` | 26 file `BUG-GUI-*.md`: bước tái hiện, expected/actual, root cause, suggested fix, screenshot |
+| GitHub issue draft | `homework/hw03/ncuong/features/GUI/issues/` | 26 file `BUG-GUI-*.md` + `issues.json` + `publish.sh`; publish bị chặn do thiếu GitHub auth |
 | Screenshot | `homework/hw03/ncuong/features/GUI/screenshots/` | 38 PNG có annotation tiếng Việt cho 39 item Failed, kèm `manifest.json` |
 | Script build | `homework/hw03/ncuong/features/GUI/tools/build_checklist.py`, `build_bugs.py` | Sinh lại Markdown/Excel/bug artifact |
 | Báo cáo chính | `homework/hw03/ncuong/reports/main-report.md` | Task 1: phương pháp, review rationale, kết quả, phân tích |
 | AI audit | `homework/hw03/ncuong/reports/ai-audit.md` | Báo cáo này |
 
-Số liệu chính của bộ artifact:
+Bộ artifact ban đầu có 69 item / 25 Passed / 44 Failed / 40 screenshot. Interaction AI-003 rà lại theo README và API spec, sau đó chốt số liệu cuối dưới đây.
+
+Số liệu chính của bộ artifact cuối:
 
 - **66 checklist item**: 18 IA-01, 17 IA-02, 15 IA-03, 16 IA-04.
 - **41 item AI ban đầu được giữ + 25 item bổ sung/sửa sau review.**
