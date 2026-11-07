@@ -12,8 +12,7 @@
 - [GUI checklist — Markdown, 66 item](features/GUI/checklist.md)
 - [GUI checklist — Excel, 66 item](features/GUI/checklist.xlsx)
 - [Test summary](features/GUI/test-summary.md)
-- [Checklist AI sinh ban đầu — 44 item](features/GUI/ai-initial-checklist.md)
-- [25 item bổ sung/sửa sau review + lý do AI bỏ sót](features/GUI/review-additions.md)
+- [Checklist AI sinh ban đầu + 25 item bổ sung/sửa sau review](features/GUI/ai-checklist-and-review.md)
 - [Bug report — 26 bug](features/GUI/bug-report.md)
 - [Báo cáo bug riêng lẻ](features/GUI/bugs/)
 - [GitHub issue draft](features/GUI/issues/)
@@ -55,7 +54,7 @@
 | IA-04 Feedback / state | 16 | 7 | 9 |
 | **Total** | **66** | **27** | **39** |
 
-**Phân nguồn:** 41 item AI sinh ban đầu được giữ + 25 item bổ sung/sửa sau review. Danh sách 25 item và lý do AI bỏ sót nằm ở [`features/GUI/review-additions.md`](features/GUI/review-additions.md).
+**Phân nguồn:** 41 item AI sinh ban đầu được giữ + 25 item bổ sung/sửa sau review. Danh sách 25 item, lý do AI bỏ sót và bộ AI ban đầu nằm ở [`features/GUI/ai-checklist-and-review.md`](features/GUI/ai-checklist-and-review.md).
 
 **Môi trường thực thi:** backend `http://localhost:3000`, web frontend `http://localhost:5173`, Chromium 158 / Playwright 1.65, axe-core 4.x, desktop 1280×900, mobile 360×800, 640×800 (tương đương zoom 200%).
 

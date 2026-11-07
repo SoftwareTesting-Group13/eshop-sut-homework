@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Sinh artifact GUI checklist HW03 (Markdown + Excel + JSON + manifest).
 
-Nguồn chân lý duy nhất cho 62 item sau review theo spec FR-21..FR-24 và
+Nguồn chân lý duy nhất cho 66 item sau review theo spec FR-21..FR-24 và
 FR-01..FR-04. Chạy:
     python tools/build_checklist.py
 """
@@ -462,17 +462,13 @@ rationale = {
     "CHK-67": "AI mặc định 100% zoom, không kiểm tra reflow ở 200% (640 CSS px).",
     "CHK-80": "AI chỉ kiểm tra nội dung từng trang, bỏ sót yêu cầu badge giỏ hàng trên header toàn cục (FR-23).",
 }
-lines = ["# Review additions — các item AI bỏ sót hoặc làm sai\n",
-         f"Sau review theo README FR-21…FR-24, checklist cuối có **{len(ITEMS)} item**: "
-         f"**{source_counts['AI initial']} item AI ban đầu** và **{source_counts['Review addition']} item bổ sung/sửa**. "
-         "Bộ AI ban đầu (44 item được sinh, 41 item được giữ sau review) nằm trong `ai-initial-checklist.md` để đối chiếu audit.\n",
-         "## 1. Item bổ sung mới\n",
+lines = [f"## 2. Item bổ sung mới ({source_counts['Review addition']} item)\n",
          "| ID | IA | Màn hình | Item bổ sung | Vì sao AI bỏ sót |",
          "| --- | --- | --- | --- | --- |"]
 for i in add:
     lines.append(f"| {i['id']} | {i['ia']} | {i['screen']} | {i['item']} | {rationale.get(i['id'], 'Xem báo cáo.')} |")
 
-lines += ["\n## 2. Item AI làm sai và đã sửa\n",
+lines += ["\n## 3. Item AI làm sai và đã sửa\n",
           "| ID | AI ban đầu | Vấn đề | Cách sửa |",
           "| --- | --- | --- | --- |",
           "| CHK-01, CHK-05, CHK-09, CHK-13 | Chỉ kiểm tra text heading | FR-21 yêu cầu đúng một `<h1>` mỗi trang; cả 4 trang dùng `<h2>` | Đổi oracle sang `<h1>` + nội dung heading |",
@@ -484,7 +480,7 @@ lines += ["\n## 2. Item AI làm sai và đã sửa\n",
           "| CHK-58 | OTP không được hiển thị | FR-03 cho phép hiển thị OTP trong môi trường demo | Đảo oracle: hiển thị OTP là pass |",
           "| CHK-60 | Không ghi rõ modality | Alert là blocking nhưng item này chỉ chấm clarity | Ghi chú alert modality thuộc CHK-59 |"]
 
-lines += ["\n## 3. Item bị loại vì ngoài phạm vi Task 1\n",
+lines += ["\n## 4. Item bị loại vì ngoài phạm vi Task 1\n",
           "| ID cũ | Lý do loại |",
           "| --- | --- |",
           "| CHK-02, CHK-06, CHK-10, CHK-14 | Browser tab title không có trong spec GUI |",
@@ -494,8 +490,15 @@ lines += ["\n## 3. Item bị loại vì ngoài phạm vi Task 1\n",
           "| CHK-53 | Success toast khi đăng ký không có trong spec; FR-01 chỉ yêu cầu redirect (CHK-40) |",
           "| CHK-64 | Hủy đơn là business rule FR-10, ngoài FR-01…FR-04 của Task 1 |"]
 
-with open(os.path.join(OUT, "review-additions.md"), "w", encoding="utf-8") as f:
-    f.write("\n".join(lines) + "\n")
+MERGED = os.path.join(OUT, "ai-checklist-and-review.md")
+MARKER = "<!-- REVIEW-ADDITIONS-START -->"
+with open(MERGED, encoding="utf-8") as f:
+    existing = f.read()
+if MARKER not in existing:
+    raise SystemExit(f"missing marker {MARKER} in {MERGED}")
+head = existing.split(MARKER)[0].rstrip() + "\n\n" + MARKER + "\n\n"
+with open(MERGED, "w", encoding="utf-8") as f:
+    f.write(head + "\n".join(lines) + "\n")
 
 # ---- Excel ----
 try:

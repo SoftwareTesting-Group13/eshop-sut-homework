@@ -108,8 +108,7 @@ Agent tạo các artifact có thể kiểm tra sau (nội dung đầy đủ nằ
 
 | Artifact | Đường dẫn | Nội dung |
 | --- | --- | --- |
-| Checklist AI ban đầu | `homework/hw03/ncuong/features/GUI/ai-initial-checklist.md` | 44 item sinh từ tám nhóm của skill |
-| Review additions | `homework/hw03/ncuong/features/GUI/review-additions.md` | 25 item bổ sung/sửa, mỗi item kèm lý do AI bỏ sót |
+| Checklist AI ban đầu + review additions | `homework/hw03/ncuong/features/GUI/ai-checklist-and-review.md` | 44 item sinh từ tám nhóm của skill + 25 item bổ sung/sửa kèm lý do AI bỏ sót |
 | Checklist đầy đủ (Markdown) | `homework/hw03/ncuong/features/GUI/checklist.md` | 66 item, nhóm IA, Passed/Failed, Notes, evidence |
 | Checklist đầy đủ (Excel) | `homework/hw03/ncuong/features/GUI/checklist.xlsx` | Sheet Checklist + Summary + Execution, filter, màu kết quả |
 | Kết quả máy đọc | `homework/hw03/ncuong/features/GUI/checklist.json` | Item, summary, phân nguồn, bug ID |

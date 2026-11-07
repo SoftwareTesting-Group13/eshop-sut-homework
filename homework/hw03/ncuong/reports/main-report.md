@@ -11,8 +11,7 @@
 | --- | --- |
 | GUI checklist (Markdown, 66 item) | [`features/GUI/checklist.md`](../features/GUI/checklist.md) |
 | GUI checklist (Excel: Checklist, Summary, Execution) | [`features/GUI/checklist.xlsx`](../features/GUI/checklist.xlsx) |
-| Checklist AI sinh ban đầu (44 item) | [`features/GUI/ai-initial-checklist.md`](../features/GUI/ai-initial-checklist.md) |
-| 25 item bổ sung/sửa sau review + lý do AI bỏ sót | [`features/GUI/review-additions.md`](../features/GUI/review-additions.md) |
+| Checklist AI sinh ban đầu + 25 item bổ sung/sửa sau review | [`features/GUI/ai-checklist-and-review.md`](../features/GUI/ai-checklist-and-review.md) |
 | Test summary | [`features/GUI/test-summary.md`](../features/GUI/test-summary.md) |
 | Bug report tổng hợp (26 bug) | [`features/GUI/bug-report.md`](../features/GUI/bug-report.md) |
 | Báo cáo bug riêng (26 file) | [`features/GUI/bugs/`](../features/GUI/bugs/) |
@@ -60,12 +59,12 @@ Các chủ đề **không** thuộc Task 1 đã bị loại khỏi checklist: br
 Quy trình theo hướng AI-first nhưng có review:
 
 1. **Sinh bộ ban đầu bằng skill `ui-checklist-generator`.**
-   Skill mở rộng 8 nhóm (layout, typography, colour, interaction, responsiveness, accessibility, product states, polish) trên 4 màn hình. Kết quả: **44 item**, lưu tại [`ai-initial-checklist.md`](../features/GUI/ai-initial-checklist.md).
+   Skill mở rộng 8 nhóm (layout, typography, colour, interaction, responsiveness, accessibility, product states, polish) trên 4 màn hình. Kết quả: **44 item**, lưu cùng phần review tại [`ai-checklist-and-review.md`](../features/GUI/ai-checklist-and-review.md).
 
 2. **Review theo README FR-21…FR-24 và API spec.**
    Đối chiếu từng item với yêu cầu thật, sửa oracle sai và bổ sung item còn thiếu. Kết quả:
    - **41 item AI ban đầu được giữ** (3 item bị loại vì ngoài phạm vi GUI: `inputmode=tel`, success toast sau đăng ký, route guard).
-   - **25 item bổ sung/sửa** trong review, mỗi item có lý do AI bỏ sót ở [`review-additions.md`](../features/GUI/review-additions.md).
+   - **25 item bổ sung/sửa** trong review, mỗi item có lý do AI bỏ sót ở [`ai-checklist-and-review.md`](../features/GUI/ai-checklist-and-review.md).
    - Checklist cuối: **66 item**.
 
 3. **Thực thi trên SUT local.**
@@ -106,7 +105,7 @@ Bảng đầy đủ từng item, kết quả và lý do fail nằm ở [`checkli
 
 ## 1.5 Review: AI bỏ sót gì và vì sao
 
-25 item bổ sung/sửa được ghi chi tiết ở [`review-additions.md`](../features/GUI/review-additions.md). Lý do chia thành ba nhóm.
+25 item bổ sung/sửa được ghi chi tiết ở [`ai-checklist-and-review.md`](../features/GUI/ai-checklist-and-review.md). Lý do chia thành ba nhóm.
 
 ### A. Chất lượng prompt
 

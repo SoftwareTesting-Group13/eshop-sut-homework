@@ -42,9 +42,8 @@
 | Bổ sung/sửa sau review | 25 |
 | **Checklist cuối** | **66** |
 
-25 item bổ sung/sửa và lý do AI bỏ sót nằm ở
-[`review-additions.md`](review-additions.md). Bộ AI ban đầu được giữ ở
-[`ai-initial-checklist.md`](ai-initial-checklist.md).
+25 item bổ sung/sửa, lý do AI bỏ sót và bộ AI ban đầu nằm trong
+[`ai-checklist-and-review.md`](ai-checklist-and-review.md).
 
 ## Môi trường thực thi
 
@@ -66,8 +65,7 @@
 | Full checklist (Markdown) | [`checklist.md`](checklist.md) |
 | Full checklist (Excel) | [`checklist.xlsx`](checklist.xlsx) |
 | Machine-readable results | [`checklist.json`](checklist.json) |
-| AI initial set | [`ai-initial-checklist.md`](ai-initial-checklist.md) |
-| Review additions + rationale | [`review-additions.md`](review-additions.md) |
+| AI initial checklist + review additions | [`ai-checklist-and-review.md`](ai-checklist-and-review.md) |
 | Bug report | [`bug-report.md`](bug-report.md) |
 | Individual bug reports | [`bugs/`](bugs/) |
 | GitHub issue drafts | [`issues/`](issues/) |
