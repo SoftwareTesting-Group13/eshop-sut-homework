@@ -1,189 +1,204 @@
 # HW03 — GUI & Usability
 
-**Student:** Dương Nhật Cường · **MSSV:** 23120223 · **Group:** 13
+**Sinh viên:** Dương Nhật Cường · **MSSV:** 23120223 · **Nhóm:** 13
 **SUT:** EShop — `https://github.com/ttbhanh/eshop-sut`
-**Submission scope of this draft:** Task 1 (GUI checklist) completed; Task 2 and Task 3 are not started yet.
-**Date:** 2026-11-07
+**Phạm vi bản nộp này:** Task 1 — GUI Checklist. Task 2 và Task 3 chưa bắt đầu.
+**Ngày thực thi:** 2026-11-07
 
-## 0. Deliverable map
+## 0. Bản đồ deliverable
 
-| Deliverable | Link |
+| Deliverable | Đường dẫn |
 | --- | --- |
-| GUI checklist (Markdown) | [`features/GUI/checklist.md`](../features/GUI/checklist.md) |
-| GUI checklist (Excel, 69 items) | [`features/GUI/checklist.xlsx`](../features/GUI/checklist.xlsx) |
+| GUI checklist (Markdown, 66 item) | [`features/GUI/checklist.md`](../features/GUI/checklist.md) |
+| GUI checklist (Excel: Checklist, Summary, Execution) | [`features/GUI/checklist.xlsx`](../features/GUI/checklist.xlsx) |
+| Checklist AI sinh ban đầu (44 item) | [`features/GUI/ai-initial-checklist.md`](../features/GUI/ai-initial-checklist.md) |
+| 25 item bổ sung/sửa sau review + lý do AI bỏ sót | [`features/GUI/review-additions.md`](../features/GUI/review-additions.md) |
 | Test summary | [`features/GUI/test-summary.md`](../features/GUI/test-summary.md) |
-| AI initial set | [`features/GUI/ai-initial-checklist.md`](../features/GUI/ai-initial-checklist.md) |
-| Review additions + rationale | [`features/GUI/review-additions.md`](../features/GUI/review-additions.md) |
-| Bug report | [`features/GUI/bug-report.md`](../features/GUI/bug-report.md) |
-| Individual bug reports (26) | [`features/GUI/bugs/`](../features/GUI/bugs/) |
-| GitHub issue drafts (26) | [`features/GUI/issues/`](../features/GUI/issues/) |
-| Screenshots (failed items only) | [`features/GUI/screenshots/`](../features/GUI/screenshots/) |
-| AI audit report | [`reports/ai-audit.md`](ai-audit.md) |
+| Bug report tổng hợp (26 bug) | [`features/GUI/bug-report.md`](../features/GUI/bug-report.md) |
+| Báo cáo bug riêng (26 file) | [`features/GUI/bugs/`](../features/GUI/bugs/) |
+| GitHub issue draft (26 file) | [`features/GUI/issues/`](../features/GUI/issues/) |
+| Screenshot cho item Failed (38 ảnh) | [`features/GUI/screenshots/`](../features/GUI/screenshots/) |
+| AI Audit Report | [`reports/ai-audit.md`](ai-audit.md) |
 
 ---
 
-# Task 1 — GUI checklist
+# Task 1 — GUI Checklist
 
-## 1.1 Scope and objectives
+## 1.1 Phạm vi và mục tiêu
 
-The checklist targets the authentication and profile area of the EShop web frontend:
+Checklist tập trung vào khu vực authentication và profile của EShop web frontend:
 
-| FR | Screen | Why it is in scope |
+| FR | Màn hình | Vì sao chọn |
 | --- | --- | --- |
-| FR-01 Account registration | `/register` | The first screen a new user meets; many validation and feedback states. |
-| FR-02 Login and account lockout | `/login` | The entry point to every authenticated flow; security-sensitive input handling. |
-| FR-03 Forgot password and reset | `/forgot-password` | Two-step flow with OTP, a state transition and error recovery. |
-| FR-04 Profile management | `/profile` | Mixed form + data table; update, empty, loading and error states. |
+| FR-01 Đăng ký tài khoản | `/register` | Nhiều validation, password rule, email uniqueness và feedback sau đăng ký. |
+| FR-02 Đăng nhập & khóa tài khoản | `/login` | Điểm vào của mọi luồng authenticated; input type và thông báo lỗi nhạy cảm. |
+| FR-03 Quên mật khẩu & đặt lại (2 bước) | `/forgot-password` | Luồng 2 bước có OTP, step transition, focus và error recovery. |
+| FR-04 Quản lý hồ sơ | `/profile` | Form + bảng dữ liệu; có update, empty, loading và error state. |
 
-The four interface aspects required by the homework are covered explicitly:
+Bốn interface aspect của đề bài được phủ tường minh:
 
-- **IA-01 General UI standards** — layout, typography, colour/contrast, responsiveness, RTL, dark mode, zoom.
-- **IA-02 Forms** — input types, labels, required fields, validation, password rules, OTP constraints.
-- **IA-03 Navigation** — header, links, SPA routing, tab order, focus, route guards, current-page state.
-- **IA-04 Feedback / state** — loading, success, error, empty, destructive-action confirmation, OTP privacy.
+- **IA-01 General UI standards** — heading, ngôn ngữ, màu hành động, contrast, responsive, RTL, dark mode, zoom.
+- **IA-02 Forms** — input type, label, dấu `*`, validation, password rule, OTP, số điện thoại.
+- **IA-03 Navigation** — header, link, tab order, focus, active nav, badge giỏ hàng.
+- **IA-04 Feedback / state** — loading, success, error, empty, phân biệt lỗi với rỗng.
 
-**Objective:** produce a non-repetitive checklist of more than 40 executable items, execute every item against the SUT, and separate genuine defects from design gaps.
+**Mục tiêu:** tạo checklist hơn 40 item, không trùng lặp, thực thi được; chạy toàn bộ trên SUT; ghi Passed/Failed kèm lý do; tách bug thật khỏi design gap.
 
-## 1.2 Method
+## 1.2 Căn cứ đối chiếu
 
-The work followed the course's AI-first but human-reviewed process:
+Mỗi item có oracle lấy từ một trong các nguồn sau:
 
-1. **Initial AI generation with the `ui-checklist-generator` skill.**
-   The skill's eight categories (layout, typography, colour, interaction, responsiveness, accessibility, product states, polish) were expanded across the four screens. This produced **44 initial items** (preserved in [`ai-initial-checklist.md`](../features/GUI/ai-initial-checklist.md)).
-2. **Critical review of the AI output.**
-   The initial set was compared with what can actually fail on these screens: computed contrast, DOM/ARIA facts, keyboard order, SPA routing, step focus, route guards, responsive data tables, destructive actions and error/empty state separation. The review added **25 items** (see [`review-additions.md`](../features/GUI/review-additions.md)). These additions were produced in the same AI-assisted review pass and are still **pending the student's accept/reject decision**; the AI audit records them as agent output, not as human-authored work.
-3. **Execution.**
-   Every item was executed against a locally running SUT. Functional behaviour was driven with Playwright 1.65 (Chromium 158); DOM/ARIA facts were read from the live page; accessibility facts came from axe-core 4.x. Failed items were screenshotted with an annotation banner.
-4. **Bug triage.**
-   Failed items were grouped by root cause. A failed item is not automatically a bug: missing confirm-password fields and missing step indicators are recorded as design gaps, not defects. The reproducible defects became 26 bug reports.
+1. **README §FR-01…FR-04** — yêu cầu chức năng của bốn màn hình.
+2. **README §FR-21…FR-24** — yêu cầu GUI: ngôn ngữ, màu, đơn vị tiền, `<h1>`, tab order, form, navigation, feedback/state.
+3. **API specification** — endpoint, payload và response dùng để chuẩn bị fixture (đăng ký user, lấy OTP, cập nhật profile, lấy orders).
+4. **Accessibility baseline** — WCAG 2.2 AA cho contrast, label association, heading, focus và live region. Đây là nhóm item bổ sung có chủ đích, vì đề bài nêu accessibility là ví dụ AI thường bỏ sót.
 
-## 1.3 Checklist design
+Các chủ đề **không** thuộc Task 1 đã bị loại khỏi checklist: browser tab title, full-page reload, route guard, order state machine/hủy đơn, coupon, cart, admin, mobile app, cross-browser. Những phần này thuộc Task 2/3 hoặc FR khác.
 
-**69 items** were designed and executed: 44 from the AI initial pass and 25 added during review. Every item belongs to exactly one IA and one FR/screen.
+## 1.3 Phương pháp
+
+Quy trình theo hướng AI-first nhưng có review:
+
+1. **Sinh bộ ban đầu bằng skill `ui-checklist-generator`.**
+   Skill mở rộng 8 nhóm (layout, typography, colour, interaction, responsiveness, accessibility, product states, polish) trên 4 màn hình. Kết quả: **44 item**, lưu tại [`ai-initial-checklist.md`](../features/GUI/ai-initial-checklist.md).
+
+2. **Review theo README FR-21…FR-24 và API spec.**
+   Đối chiếu từng item với yêu cầu thật, sửa oracle sai và bổ sung item còn thiếu. Kết quả:
+   - **41 item AI ban đầu được giữ** (3 item bị loại vì ngoài phạm vi GUI: `inputmode=tel`, success toast sau đăng ký, route guard).
+   - **25 item bổ sung/sửa** trong review, mỗi item có lý do AI bỏ sót ở [`review-additions.md`](../features/GUI/review-additions.md).
+   - Checklist cuối: **66 item**.
+
+3. **Thực thi trên SUT local.**
+   Hành vi chức năng được điều khiển bằng Playwright 1.65 (Chromium 158); DOM/ARIA facts đọc từ trang live; contrast và label violation lấy từ axe-core 4.x. Mỗi item được đánh Passed/Failed; item Failed có Notes ghi quan sát cụ thể.
+
+4. **Chụp screenshot cho item Failed.**
+   Mỗi ảnh có banner đỏ tiếng Việt ghi checklist ID, mô tả lỗi và quan sát thực tế. Không chụp cho item Passed.
+
+5. **Triage bug.**
+   Các Failed item được gom theo root cause. Một Failed item không tự động là bug: thiếu confirm-password hay thiếu step indicator là design gap; bug report chỉ gồm defect tái hiện được. Kết quả: **26 bug**.
+
+## 1.4 Thiết kế checklist
+
+**66 item**, chia theo IA:
 
 | Interface aspect | Items | Passed | Failed |
 | --- | ---: | ---: | ---: |
-| IA-01 General UI standards | 19 | 8 | 11 |
-| IA-02 Forms | 16 | 4 | 12 |
-| IA-03 Navigation | 17 | 9 | 8 |
-| IA-04 Feedback / state | 17 | 4 | 13 |
-| **Total** | **69** | **25** | **44** |
+| IA-01 General UI standards | 18 | 7 | 11 |
+| IA-02 Forms | 17 | 4 | 13 |
+| IA-03 Navigation | 15 | 9 | 6 |
+| IA-04 Feedback / state | 16 | 7 | 9 |
+| **Tổng** | **66** | **27** | **39** |
 
-Coverage is deliberately spread over the four screens rather than concentrated on one:
+Phân nguồn: **41 item AI ban đầu** + **25 item bổ sung/sửa sau review**.
 
-| Screen | Items | Examples of what was checked |
+Phân bố theo màn hình:
+
+| Màn hình | Items | Nội dung chính |
 | --- | ---: | --- |
-| Login | 17 | heading, tab title, input types, label association, tab order, error/loading, authenticated redirect |
-| Register | 16 | email format, duplicate email, password-rule consistency, confirm password, contrast, success feedback, raw server error |
-| Forgot Password | 16 | two-step flow, OTP exposure, OTP input constraints, focus after transition, step indicator, button hierarchy, invalid-email alert |
-| Profile | 17 | heading hierarchy, label association, phone validation, mobile table, order loading/error/empty, cancel confirmation, logout redirect |
-| All auth screens | 3 | RTL layout, dark-mode legibility, 200% zoom |
+| Login | 14 | heading, ngôn ngữ, input type, label, tab order, loading, error, RTL |
+| Register | 14 | `<h1>`, contrast, email format, password rule, confirm password, duplicate email, raw error, loading |
+| Forgot Password | 15 | `<h1>`, email type, OTP 6 số, confirm password, step indicator, focus, alert, button hierarchy |
+| Profile | 15 | `<h1>`, label, phone validation, contrast, active nav, logout label, empty/loading/error state, mobile table |
+| All auth screens | 7 | ngôn ngữ, dấu `*`, error position, RTL, dark mode, 200% zoom, badge giỏ hàng |
+| Register + Forgot Password | 1 | màu nút hành động tích cực |
 
-The complete table with the result and failure reason for every item is in [`checklist.md`](../features/GUI/checklist.md) and [`checklist.xlsx`](../features/GUI/checklist.xlsx).
+Bảng đầy đủ từng item, kết quả và lý do fail nằm ở [`checklist.md`](../features/GUI/checklist.md) và [`checklist.xlsx`](../features/GUI/checklist.xlsx).
 
-## 1.4 Critical review: what the AI missed and why
+## 1.5 Review: AI bỏ sót gì và vì sao
 
-The 25 review additions are listed with a per-item rationale in [`review-additions.md`](../features/GUI/review-additions.md). The reasons fall into three groups.
+25 item bổ sung/sửa được ghi chi tiết ở [`review-additions.md`](../features/GUI/review-additions.md). Lý do chia thành ba nhóm.
 
-### A. Prompt quality
+### A. Chất lượng prompt
 
-The first prompt asked for a GUI checklist for four screens but did not force the AI to produce an *executable oracle* per item. The AI therefore wrote broad statements such as “sufficient contrast” and “mobile usable” without a way to decide pass/fail. The review converted them into measurable checks (computed ratio ≥ 4.5:1, `scrollWidth = clientWidth` at 360px, `activeElement` after a step transition).
+Prompt đầu yêu cầu checklist cho 4 màn hình nhưng không buộc AI viết **executable oracle** cho từng item. Vì vậy AI viết những câu chung như “đủ contrast”, “mobile dùng được”, “feedback rõ ràng” mà không có cách quyết định Pass/Fail. Review đã chuyển thành kiểm tra đo được:
 
-### B. Model limitations
+- contrast ratio tính bằng axe-core ≥ 4.5:1;
+- `scrollWidth = clientWidth` ở 360px;
+- `document.activeElement` sau step transition;
+- `label[for]`/`input#id` hoặc `aria-label`;
+- `aria-current`, `aria-live`, `aria-busy`.
 
-- **No execution.** The AI could not run the SPA, so it could not see that the forgot-password link causes a full reload, that `tabindex="1"` puts the submit button first, or that a 500 response is rendered as an empty order list.
-- **Accessibility by appearance.** The AI treated visible `<label>` text as a label. It did not check `for`/`id`, `aria-label`, `aria-live`, `aria-invalid` or heading levels.
-- **No computed contrast.** The AI said “check contrast” but did not calculate it. axe-core found 2.53:1, 3.76:1 and 3.92:1 failures.
-- **Default assumptions.** The model assumed LTR, light mode and 100% zoom. RTL, dark mode and 200% reflow only appeared after an explicit review.
-- **Feedback vs privacy.** The AI read “Mã OTP của bạn là: …” as helpful feedback; it did not flag it as a password-reset takeover vector.
+### B. Giới hạn của model
 
-### C. Interface characteristics
+- **Không chạy được SPA.** AI không thấy `tabindex="1"` đẩy focus vào nút Sign In, không thấy focus mất sau bước OTP, không thấy 500 response bị hiển thị thành empty list.
+- **Accessibility theo bề ngoài.** AI coi label hiển thị là đủ; không kiểm tra `for`/`id`, `aria-label`, `aria-live`, `aria-invalid`, heading level.
+- **Không tính contrast.** AI chỉ nói “kiểm tra contrast”; axe-core mới tìm ra 2.53:1, 3.76:1, 3.92:1.
+- **Mặc định LTR, light mode, 100% zoom.** RTL, dark mode và 200% reflow chỉ xuất hiện sau review.
+- **Đọc OTP là feedback hữu ích.** AI không phân biệt “hiển thị OTP trong demo” (FR-03 cho phép) với “lộ OTP trong production”; review sửa oracle thành Passed cho môi trường demo.
 
-Some defects are only visible in this particular SUT:
+### C. Đặc thù của SUT
 
-- The register/reset regex requires a whitespace character while the copy promises a special character — a contradiction that only appears when the regex and the copy are read together.
-- The profile phone regex `/^[1-9][0-9]{8,9}$/` rejects every normal Vietnamese number starting with `0`, including the placeholder `0912345678`.
-- The two-step reset flow keeps both steps in one component, so focus management and step indication are easy to miss.
-- The order-history table has five columns and no responsive wrapper, so the page overflows only when an order exists.
+- Copy password rule hứa “ký tự đặc biệt” nhưng regex yêu cầu whitespace và chặn ký tự đặc biệt — mâu thuẫn chỉ lộ khi đọc cả copy và regex.
+- Regex số điện thoại `/^[1-9][0-9]{8,9}$/` từ chối mọi số Việt Nam bắt đầu bằng `0`, gồm placeholder `0912345678`.
+- Luồng reset 2 bước nằm trong một component, nên focus management và step indicator dễ bị bỏ sót.
+- Bảng lịch sử đơn hàng 5 cột không có wrapper responsive, chỉ tràn khi có order.
+- Header dùng utility vật lý (`text-right`, `ml/mr`) nên RTL không mirror.
 
-## 1.5 Execution
+## 1.6 Môi trường thực thi
 
-| Item | Value |
+| Item | Giá trị |
 | --- | --- |
-| Backend | `http://localhost:3000` (`backend/server.js`, seeded SQLite) |
+| Backend | `http://localhost:3000` (`backend/server.js`, SQLite seed) |
 | Web frontend | `http://localhost:5173` (`frontend-web`, Vite) |
 | Browser | Chromium 158 / Playwright 1.65 |
 | Desktop viewport | 1280×900 |
 | Mobile viewport | 360×800 |
 | 200% zoom equivalent | 640×800 |
 | Accessibility engine | axe-core 4.x |
-| Test users | `hw03.ui.23120223@example.com`, plus isolated `dup…` and `silent…` accounts |
-| Order fixtures | Injected with Playwright route interception; no real order rows were created or modified |
+| Test user | `test@eshop.com` / `Test1234!` (seed) |
+| Fixture | User đăng ký qua API/UI; order inject bằng Playwright route interception, không sửa DB order thật |
 
-Execution rules:
+Quy ước kết quả:
 
-- **Passed** = the observed behaviour matches the item's oracle in the executed environment.
-- **Failed** = the observed behaviour contradicts the oracle. The Notes column records the exact observation.
-- Screenshots were captured **only for failed items**; each screenshot has a red banner with the checklist ID and the observed defect.
-- Contrast verdicts come from axe-core's computed ratios, not from visual judgement.
+- **Passed** = hành vi quan sát khớp oracle trong môi trường đã chạy.
+- **Failed** = hành vi quan sát mâu thuẫn oracle; Notes ghi chính xác quan sát.
+- Screenshot chỉ có cho item Failed; banner đỏ ghi ID và lỗi.
+- Contrast lấy từ ratio axe-core tính, không ước lượng bằng mắt.
 
-## 1.6 Results and analysis
+## 1.7 Kết quả và phân tích
 
-### 1.6.1 Headline result
+### 1.7.1 Kết quả tổng
 
-25 of 69 items passed and 44 failed. The failure rate is high because the SUT is intentionally seeded with UI/UX defects, and because the checklist deliberately includes accessibility and state-edge cases that a happy-path smoke test would skip.
+**27/66 item Passed, 39/66 Failed.** Tỷ lệ fail cao vì SUT được seed lỗi UI/UX có chủ đích, và checklist cố ý phủ accessibility cùng các state edge case mà smoke test happy-path thường bỏ qua.
 
-### 1.6.2 Systemic issues (not isolated bugs)
+### 1.7.2 Vấn đề hệ thống (không phải bug lẻ)
 
-1. **Authentication screens are visually and semantically unfinished.** The Login heading says “Đăng Ký”, the password is visible, the email field is `type="text"`, and every form label is unassociated. This is one root pattern (copy/paste auth form without a semantic pass), not four unrelated defects.
-2. **Feedback is either absent or blocking.** Login shows a generic unannounced div; Forgot Password and Profile use native `alert()`. There is no shared inline message/`aria-live` pattern.
-3. **State handling is binary.** Register/Login have no loading state; Profile shows “no orders” while loading and after a 500 response. The UI cannot distinguish “not started”, “empty”, “failed” and “done”.
-4. **Accessibility is not part of the definition of done.** axe-core reports critical label violations on all four screens, no page has an `h1`, contrast fails in several places, tab order is broken by `tabindex="1"`, and RTL/dark-mode/zoom were never considered.
-5. **Destructive and security-sensitive actions lack safeguards.** The OTP is printed on screen; cancel-order has no confirmation and is offered for shipping orders; route guards are missing for `/profile` and `/login`.
+1. **Auth screen thiếu semantic pass.** Login ghi “Đăng Ký”, mật khẩu `type="text"`, email `type="text"`, mọi label thiếu `for/id`, không trang nào có `<h1>`. Đây là một pattern copy/paste form chứ không phải bốn lỗi rời.
+2. **Feedback thiếu hoặc blocking.** Login render error dưới nút submit, không `role="alert"`/`aria-live`; Forgot Password dùng `alert()`; Profile dùng `alert()` cho phone error. Không có pattern inline message dùng chung.
+3. **State handling nhị phân.** Login/Register không có loading state; Profile hiện “chưa có đơn hàng” cả khi đang load và khi 500. UI không phân biệt “chưa bắt đầu”, “rỗng”, “lỗi”, “xong”.
+4. **Accessibility chưa nằm trong definition of done.** axe-core báo critical label violation trên cả bốn màn hình; contrast fail ở Register/Profile; tab order bị `tabIndex={1}` phá; RTL không mirror.
+5. **Security-sensitive action thiếu safeguard.** OTP chỉ 4 chữ số thay vì 6 (FR-03/SEC-07); Forgot Password hiển thị OTP trên màn hình (đúng demo FR-03 nhưng cần lưu ý production); phone validation chặn số hợp lệ.
 
-### 1.6.3 Bugs by severity
+### 1.7.3 Bug theo severity
 
-| Severity | Count | Examples |
+| Severity | Số lượng | Ví dụ |
 | --- | ---: | --- |
-| Blocker | 2 | OTP exposed on screen (BUG-GUI-24); valid Vietnamese phone rejected, blocking profile save (BUG-GUI-14) |
-| Major | 12 | visible password, missing labels, email/duplicate validation, password-rule contradiction, mobile table overflow, tab order, route guards, raw server error, alert-only feedback, order loading/error confusion, cancel without confirmation |
-| Minor | 12 | wrong Login heading, shared tab title, identical step-2 buttons, missing `h1`, RTL, no active nav, no loading state, silent registration success, focus loss, full reload, unconstrained OTP, missing confirm password |
-| **Total** | **26** | See [`bug-report.md`](../features/GUI/bug-report.md) |
+| Blocker | 1 | Regex số điện thoại từ chối số Việt Nam hợp lệ, chặn lưu profile (BUG-GUI-14) |
+| Major | 11 | Mật khẩu hiển thị, label thiếu association, email format/duplicate, password rule mâu thuẫn, mobile table overflow, tab order, raw server error, alert-only feedback, order loading/error, OTP 4 số |
+| Minor | 14 | Heading sai, thiếu `<h1>`, contrast, button hierarchy, RTL, active nav, logout label, empty state, badge giỏ hàng, loading state, focus loss |
+| **Tổng** | **26** | Xem [`bug-report.md`](../features/GUI/bug-report.md) |
 
-Each bug has a report with steps, expected/actual, root cause, suggested fix and screenshot in [`features/GUI/bugs/`](../features/GUI/bugs/). The GitHub issue bodies are in [`features/GUI/issues/`](../features/GUI/issues/).
+Mỗi bug report có:
 
-## 1.7 Limitations and open items
+- bước tái hiện;
+- bảng Expected/Actual;
+- screenshot;
+- **root cause kèm code block lấy trực tiếp từ source** và link GitHub tới đúng dòng, ví dụ [`frontend-web/src/pages/Login.jsx:24`](https://github.com/SoftwareTesting-Group13/eshop-sut-homework/blob/85af3ba875c88283615e22cb108f13e2fccaf0e9/frontend-web/src/pages/Login.jsx#L24);
+- đề xuất sửa.
 
-- **GitHub Issues are not published yet.** This environment has no GitHub CLI or token. The 26 issue bodies are ready in `features/GUI/issues/`; after `gh auth login`, run `bash features/GUI/issues/publish.sh` from `homework/hw03/ncuong`. The report does not claim issue links that do not exist.
-- **Task 1 was executed on one browser engine (Chromium).** Firefox, Safari and the Expo Go platform belong to Task 3.
-- **The AI initial set is preserved as generated.** The student must still review the 69 items and the 26 bugs before submitting; the AI audit records what the agent produced and what it could not verify.
-- **Timestamps in the AI audit are marked “Time not available in source”** because the conversation export does not contain them.
+## 1.8 Hạn chế và việc còn lại
 
-## 1.8 Evidence index
-
-- 44 failed items → 40 annotated screenshots in [`screenshots/`](../features/GUI/screenshots/), with `manifest.json` mapping each image to checklist IDs.
-- axe-core results and DOM facts are summarized in the Notes column; the raw JSON is in `screenshots/manifest.json` and the execution logs are reproducible from the scripts in [`tools/`](../features/GUI/tools/).
-- Excel workbook: `checklist.xlsx` (sheets: Checklist, Summary, Execution).
+- **GitHub Issues chưa publish.** Môi trường không có `gh` CLI/token. 26 issue body đã sẵn trong [`features/GUI/issues/`](../features/GUI/issues/); sau khi `gh auth login` và push nhánh `ncuong`, chạy `bash features/GUI/issues/publish.sh`.
+- **Task 1 mới chạy trên một browser engine (Chromium).** Firefox, Safari và Expo Go thuộc Task 3.
+- **Bộ AI ban đầu được giữ nguyên để đối chiếu audit.** Sinh viên cần xác nhận 66 item và 26 bug trước khi nộp.
+- **Timestamp trong AI audit** ghi “không có trong nguồn” vì conversation export không chứa thời gian.
 
 ---
 
-# Task 2 — Usability evaluation
+# Task 2 — Usability Evaluation
 
-**Status: not started.** To be completed after Task 1 review: flow selection, task scenario, SUS/UEQ-S, 7 participants, pilot, sessions, analysis.
+Chưa bắt đầu. Khi làm sẽ chọn một end-to-end flow, chạy 7 participant, pilot 1 người, dùng SUS/UEQ-S và phân tích severity.
 
-# Task 3 — Cross-browser / cross-platform
+# Task 3 — Cross-Browser / Cross-Platform
 
-**Status: not started.** To be completed after Task 1 review: Chrome, Firefox and Safari (or Android Chrome / Expo Go), with student ID and full name overlaid on every screenshot.
-
-# Agent Skills
-
-The skills used for this task are in [`skills/`](../skills/). The GUI checklist workflow is documented in [`skills/ui-checklist-generator/SKILL.md`](../skills/ui-checklist-generator/SKILL.md) and [`skills/gui-usability-workflow/SKILL.md`](../skills/gui-usability-workflow/SKILL.md). The demo video is not recorded yet.
-
-# AI audit and critique
-
-- AI Audit Report: [`reports/ai-audit.md`](ai-audit.md)
-- AI Critique: [`reports/ai-critique.md`](ai-critique.md) (draft — student review pending)
-
-# Self-assessment
-
-The self-assessment table is in [`README.md`](../README.md). It is intentionally left blank until the student reviews the Task 1 deliverables.
+Chưa bắt đầu. Khi làm sẽ chạy lại checklist trên Chrome, Firefox và Safari (hoặc Android Chrome / Expo Go), screenshot có overlay MSSV + họ tên.

@@ -1,42 +1,43 @@
 # AI Audit Report
 
-I use AI tools for the following tasks,
+Tôi dùng AI cho các công việc sau:
 
-- Reading and summarizing the HW03 requirements.
-- Generating an initial GUI checklist for Login, Register, Forgot Password and Profile with the `ui-checklist-generator` skill.
-- Reviewing the initial set, adding missing items, and explaining why the AI missed them.
-- Running the checklist against the local SUT with Playwright and axe-core, capturing screenshots for failed items.
-- Grouping failures into bug reports and preparing GitHub issue drafts.
-- Writing the Task 1 report, test summary and this AI Audit Report.
+- Đọc và tóm tắt yêu cầu HW03.
+- Sinh bộ GUI checklist ban đầu cho Login, Register, Forgot Password và Profile bằng skill `ui-checklist-generator`.
+- Review bộ ban đầu, bổ sung item còn thiếu và giải thích vì sao AI bỏ sót.
+- Chạy checklist trên SUT local bằng Playwright và axe-core; chụp screenshot cho item Failed.
+- Gom các failure thành bug report và chuẩn bị GitHub issue draft.
+- Rà lại toàn bộ checklist, bug report và screenshot theo README/API spec; viết lại tài liệu tiếng Việt.
+- Viết báo cáo Task 1, test summary và AI Audit Report này.
 
-> **Capture notes (scope and evidence):**
-> - Available evidence: the current conversation (two user prompts and the agent's visible replies) and the artifacts the agent created in this repository. No exported chat transcript is available.
-> - Interactions logged: **2** (`AI-001`, `AI-002`). Internal tool calls (reading files, starting servers, running Playwright) are not user prompts and are not logged as separate interactions.
-> - AI tool evidenced: **OpenCode agent — model `DeepSeek V4.1 Flash Free` (provider `opencode`)**. No other AI tool was used.
-> - Time source: the conversation export does not contain timestamps. Both entries therefore say **“Time not available in source”**; the session date is 2026-11-07 from the environment, not from the chat.
-> - Human review status: the 69-item checklist and the 26 bug reports are **agent-produced drafts**. The student still has to review them, confirm the bugs, and publish the GitHub issues. This report does not claim that review happened.
-> - The agent could not publish GitHub Issues because this environment has no `gh` CLI/token. The drafts and a publish script are in `features/GUI/issues/`.
+> **Ghi chú về phạm vi và bằng chứng:**
+> - Bằng chứng hiện có: conversation hiện tại (ba prompt của người dùng và các phản hồi hiển thị của agent) cùng các artifact agent đã tạo trong repo. Không có bản export chat đầy đủ.
+> - Số interaction được ghi: **3** (`AI-001`, `AI-002`, `AI-003`). Các tool call nội bộ (đọc file, chạy server, chạy Playwright) không phải prompt của người dùng nên không ghi thành interaction riêng.
+> - AI tool có bằng chứng: **OpenCode agent — model `DeepSeek V4.1 Flash Free` (provider `opencode`)**. Không dùng AI tool nào khác.
+> - Nguồn thời gian: conversation export không có timestamp. Vì vậy cả ba entry ghi **“Không có trong nguồn”**; ngày session 2026-11-07 lấy từ môi trường, không phải từ chat.
+> - Trạng thái human review: checklist 66 item và 26 bug report là **bản nháp do agent tạo**. Sinh viên vẫn phải review, xác nhận bug và publish GitHub Issues. Báo cáo này không khẳng định human review đã xảy ra.
+> - Agent không publish được GitHub Issues vì môi trường không có `gh` CLI/token. Draft và script publish nằm trong `features/GUI/issues/`.
 
 ---
 
 ## Interaction AI-001
 
 - **AI tool:** OpenCode agent — model `DeepSeek V4.1 Flash Free` (provider `opencode`).
-- **Date and time:** 2026-11-07 · **Time not available in source**.
-- **Source:** Current conversation; no exported transcript.
-- **Task:** Read the HW03 specification and explain the requirements before starting the assignment.
+- **Ngày và giờ:** 2026-11-07 · **Không có trong nguồn**.
+- **Nguồn:** Conversation hiện tại; không có transcript export.
+- **Task:** Đọc đề HW03 và giải thích yêu cầu trước khi bắt đầu làm bài.
 
-### Your prompt
+### Prompt của người dùng
 
 ```text
 đọc @homework/hw03/docs/2026.HW03.GUI_Usability_En.md trước để hiểu yêu cầu của thầy t nhé
 ```
 
-The attached file was `homework/hw03/docs/2026.HW03.GUI_Usability_En.md` (the full HW03 specification).
+File đính kèm là `homework/hw03/docs/2026.HW03.GUI_Usability_En.md` (toàn bộ đề HW03).
 
-### The AI output
+### Output của AI
 
-The agent replied with the following requirement summary (verbatim):
+Agent trả lời bằng bản tóm tắt yêu cầu sau (nguyên văn):
 
 ```markdown
 ## Tóm tắt HW03
@@ -89,71 +90,93 @@ The agent replied with the following requirement summary (verbatim):
 ## Interaction AI-002
 
 - **AI tool:** OpenCode agent — model `DeepSeek V4.1 Flash Free` (provider `opencode`).
-- **Date and time:** 2026-11-07 · **Time not available in source**.
-- **Source:** Current conversation; artifacts in `homework/hw03/ncuong/`.
-- **Task:** Use the `ui-checklist-generator` skill to generate more than 40 checklist items for Login, Register, Forgot Password and Profile (FR-01…FR-04), split across IA-01…IA-04; execute Task 1; write the AI Audit Report.
+- **Ngày và giờ:** 2026-11-07 · **Không có trong nguồn**.
+- **Nguồn:** Conversation hiện tại; artifact trong `homework/hw03/ncuong/`.
+- **Task:** Dùng skill `ui-checklist-generator` sinh hơn 40 item cho Login, Register, Forgot Password, Profile (FR-01…FR-04), chia theo IA-01…IA-04; thực thi Task 1; ghi AI audit log.
 
-### Your prompt
+### Prompt của người dùng
 
 ```text
 Dùng skill ui-checklist-generator @homework/hw03/ncuong/skills/ui-checklist-generator/ sinh ra >40 mục checklist cho 4 màn hình: Login, Register, Forgot Password, Profile. Chia rõ 4 nhóm IA-01, IA-02, IA-03, IA-04. 4 FR t chọn là FR 01, 02, 03, 04 nhé. Triển Task 1 trước dùm t. Làm xong nhớ ghi ai-audit log. @homework/hw03/ncuong/skills/
 ```
 
-Attached directories: `homework/hw03/ncuong/skills/ui-checklist-generator/` and `homework/hw03/ncuong/skills/` (the seven draft skills).
+Thư mục đính kèm: `homework/hw03/ncuong/skills/ui-checklist-generator/` và `homework/hw03/ncuong/skills/` (bảy skill nháp).
 
-### The AI output
+### Output của AI
 
-The agent produced the following inspectable artifacts (the full content is in the repository; this is the complete output set, not a substitute for it):
+Agent tạo các artifact có thể kiểm tra sau (nội dung đầy đủ nằm trong repo; bảng này là danh mục output, không thay thế nội dung):
 
-| Artifact | Path | Content |
+| Artifact | Đường dẫn | Nội dung |
 | --- | --- | --- |
-| AI initial checklist | `homework/hw03/ncuong/features/GUI/ai-initial-checklist.md` | 44 items generated from the skill's eight categories |
-| Review additions | `homework/hw03/ncuong/features/GUI/review-additions.md` | 25 added items, each with the reason the AI missed it |
-| Full checklist (Markdown) | `homework/hw03/ncuong/features/GUI/checklist.md` | 69 items, IA groups, Passed/Failed, Notes, evidence links |
-| Full checklist (Excel) | `homework/hw03/ncuong/features/GUI/checklist.xlsx` | Checklist + Summary + Execution sheets, filters, colour-coded results |
-| Machine-readable results | `homework/hw03/ncuong/features/GUI/checklist.json` | Items, summary, source split, bug IDs |
-| Test summary | `homework/hw03/ncuong/features/GUI/test-summary.md` | Screens/flows/items/passed/failed/bugs/participants/demo-video counts |
-| Bug report | `homework/hw03/ncuong/features/GUI/bug-report.md` | 26 bugs with severity, FR, screen, checklist IDs and screenshots |
-| Individual bug reports | `homework/hw03/ncuong/features/GUI/bugs/BUG-GUI-01.md` … `BUG-GUI-26.md` | Steps, expected/actual, root cause, suggested fix, screenshot |
-| GitHub issue drafts | `homework/hw03/ncuong/features/GUI/issues/BUG-GUI-01.md` … `BUG-GUI-26.md`, `issues.json`, `publish.sh` | Ready-to-publish issue bodies; publication blocked by missing GitHub auth |
-| Screenshots | `homework/hw03/ncuong/features/GUI/screenshots/` | 40 annotated PNGs covering all 44 failed items, plus `manifest.json` |
-| Build scripts | `homework/hw03/ncuong/features/GUI/tools/build_checklist.py`, `build_bugs.py` | Reproducible generation of the Markdown/Excel/bug artifacts |
-| Main report | `homework/hw03/ncuong/reports/main-report.md` | Task 1 report with method, review rationale, results and analysis |
-| AI audit | `homework/hw03/ncuong/reports/ai-audit.md` | This report |
+| Checklist AI ban đầu | `homework/hw03/ncuong/features/GUI/ai-initial-checklist.md` | 44 item sinh từ tám nhóm của skill |
+| Review additions | `homework/hw03/ncuong/features/GUI/review-additions.md` | 25 item bổ sung/sửa, mỗi item kèm lý do AI bỏ sót |
+| Checklist đầy đủ (Markdown) | `homework/hw03/ncuong/features/GUI/checklist.md` | 66 item, nhóm IA, Passed/Failed, Notes, evidence |
+| Checklist đầy đủ (Excel) | `homework/hw03/ncuong/features/GUI/checklist.xlsx` | Sheet Checklist + Summary + Execution, filter, màu kết quả |
+| Kết quả máy đọc | `homework/hw03/ncuong/features/GUI/checklist.json` | Item, summary, phân nguồn, bug ID |
+| Test summary | `homework/hw03/ncuong/features/GUI/test-summary.md` | Số screen/flow/item/passed/failed/bug/participant/video |
+| Bug report | `homework/hw03/ncuong/features/GUI/bug-report.md` | 26 bug kèm severity, FR, màn hình, checklist ID, screenshot |
+| Bug report riêng | `homework/hw03/ncuong/features/GUI/bugs/` | Bước tái hiện, expected/actual, root cause, suggested fix, screenshot |
+| GitHub issue draft | `homework/hw03/ncuong/features/GUI/issues/`, `issues.json`, `publish.sh` | Issue body sẵn sàng publish; publish bị chặn do thiếu GitHub auth |
+| Screenshot | `homework/hw03/ncuong/features/GUI/screenshots/` | 38 PNG có annotation tiếng Việt cho 39 item Failed, kèm `manifest.json` |
+| Script build | `homework/hw03/ncuong/features/GUI/tools/build_checklist.py`, `build_bugs.py` | Sinh lại Markdown/Excel/bug artifact |
+| Báo cáo chính | `homework/hw03/ncuong/reports/main-report.md` | Task 1: phương pháp, review rationale, kết quả, phân tích |
+| AI audit | `homework/hw03/ncuong/reports/ai-audit.md` | Báo cáo này |
 
-Key numbers produced by the agent:
+Số liệu chính của bộ artifact:
 
-- **69 checklist items**: 19 IA-01, 16 IA-02, 17 IA-03, 17 IA-04.
-- **44 AI-initial items + 25 review additions.**
-- **Executed 69/69: 25 Passed, 44 Failed.**
-- **26 bugs:** 2 Blocker, 12 Major, 12 Minor.
-- **40 screenshots** covering all failed items.
-- Execution environment: EShop backend on `localhost:3000`, web frontend on `localhost:5173`, Chromium 158 / Playwright 1.65, axe-core 4.x, 1280×900 desktop, 360×800 mobile, 640×800 zoom equivalent.
+- **66 checklist item**: 18 IA-01, 17 IA-02, 15 IA-03, 16 IA-04.
+- **41 item AI ban đầu được giữ + 25 item bổ sung/sửa sau review.**
+- **Thực thi 66/66: 27 Passed, 39 Failed.**
+- **26 bug:** 1 Blocker, 11 Major, 14 Minor.
+- **38 screenshot** phủ 39 item Failed (một số ảnh dùng chung cho hai item).
+- Môi trường: backend `localhost:3000`, web frontend `localhost:5173`, Chromium 158 / Playwright 1.65, axe-core 4.x, desktop 1280×900, mobile 360×800, 640×800 tương đương zoom 200%.
 
-Finalization performed by the agent after the artifact build:
+---
 
-- Repaired the malformed YAML frontmatter in `skills/ui-checklist-generator/SKILL.md` (the description string was unterminated, so the skill could not load).
-- Added the missing `skills/cross-browser-testing/prompts/cross-browser-testing.md` referenced by that skill, and verified all Markdown links resolve.
-- Committed the work in five logical commits and wrote `homework/hw03/ncuong/git-commit-log.txt`.
-- Re-rendered the three report PDFs after the final consistency fixes.
+## Interaction AI-003
 
-What the agent did **not** do (and did not claim to do):
+- **AI tool:** OpenCode agent — model `DeepSeek V4.1 Flash Free` (provider `opencode`).
+- **Ngày và giờ:** 2026-11-07 · **Không có trong nguồn**.
+- **Nguồn:** Conversation hiện tại; artifact trong `homework/hw03/ncuong/`.
+- **Task:** Rà lại Task 1 theo README và API spec; sửa các điểm sai/ngoài phạm vi; viết lại toàn bộ tài liệu và screenshot bằng tiếng Việt, không bỏ sót.
 
-- It did not publish the GitHub Issues (no `gh` CLI/token in the environment).
-- It did not run Task 2 (no participants, no SUS/UEQ-S, no sessions).
-- It did not run Task 3 (no Firefox/Safari/Expo Go runs).
-- It did not perform the student's human review of the 69 items or the 26 bugs; the artifacts are drafts for that review.
+### Prompt của người dùng
+
+```text
+Tiếp tục đi m, mấy cái ảnh kia còn tiếng anh thì sửa tiếng việt luôn nhé, làm kỹ lưỡng đầy đủ và không bỏ sót.
+```
+
+### Output của AI
+
+Agent thực hiện một vòng review và sửa lại toàn bộ Task 1:
+
+- **Đối chiếu lại checklist với README FR-01…FR-04, FR-21…FR-24 và API spec.** Loại các item ngoài phạm vi GUI của Task 1 (tab title, full-page reload, route guard, order cancel, success toast, `inputmode=tel`); sửa oracle của các item bị đánh giá sai (OTP hiển thị trong demo là đúng FR-03; lỗi đăng nhập generic là đúng FR-02; feedback cập nhật profile vẫn xác nhận thao tác).
+- **Chốt checklist 66 item:** 41 item AI ban đầu được giữ + 25 item bổ sung/sửa; 27 Passed / 39 Failed.
+- **Viết lại 26 bug report tiếng Việt**, mỗi bug có code block chứa đúng dòng source gây lỗi và link GitHub tới đúng dòng tại commit `85af3ba875c88283615e22cb108f13e2fccaf0e9`.
+- **Chụp lại 38 screenshot** bằng Playwright; toàn bộ banner và annotation chuyển sang tiếng Việt; xóa ảnh cũ/không dùng; cập nhật `manifest.json`.
+- **Viết lại** `reports/main-report.md`, `features/GUI/test-summary.md`, `README.md`, `reports/ai-audit.md`, `reports/ai-critique.md` bằng tiếng Việt với số liệu mới.
+- **Sinh lại PDF** cho main report, AI audit và AI critique từ Markdown.
+
+Kết quả sau review:
+
+| Hạng mục | Trước review | Sau review |
+| --- | ---: | ---: |
+| Checklist item | 69 | 66 |
+| Passed | 25 | 27 |
+| Failed | 44 | 39 |
+| Bug | 26 (2 Blocker / 12 Major / 12 Minor) | 26 (1 Blocker / 11 Major / 14 Minor) |
+| Screenshot | 40 | 38 |
 
 ---
 
 ## Integrity check
 
-| Check | Result |
+| Kiểm tra | Kết quả |
 | --- | --- |
-| Every accessible prompt has a matching output | Yes — AI-001 and AI-002 |
-| Follow-ups collapsed into one entry? | No — the two user prompts are separate |
-| Tool name and model recorded | Yes — OpenCode agent, `DeepSeek V4.1 Flash Free` |
-| Timestamps invented? | No — marked “Time not available in source” |
-| Human corrections substituted for AI output? | No — the artifacts are the agent's output; student review is explicitly pending |
-| Missing/unavailable evidence stated? | Yes — no transcript export, no GitHub auth, no Task 2/3 runs |
-| Number of interactions logged | 2 |
+| Mọi prompt truy cập được có output tương ứng | Có — AI-001, AI-002, AI-003 |
+| Follow-up bị gộp vào một entry? | Không — ba prompt là ba entry riêng |
+| Tên tool và model được ghi | Có — OpenCode agent, `DeepSeek V4.1 Flash Free` |
+| Timestamp bị bịa? | Không — ghi “Không có trong nguồn” |
+| Human correction bị thay bằng output AI? | Không — artifact là output của agent; human review của sinh viên vẫn đang chờ |
+| Bằng chứng thiếu/không có được nêu rõ? | Có — không có transcript export, không có GitHub auth, chưa chạy Task 2/3 |
+| Số interaction được ghi | 3 |
