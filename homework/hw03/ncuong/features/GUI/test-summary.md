@@ -1,64 +1,65 @@
 # Test summary — HW03 Task 1 (GUI checklist)
 
-**Student:** Dương Nhật Cường · **MSSV:** 23120223 · **Group:** 13
-**SUT:** EShop web frontend · **Date:** 2026-11-07
-**Scope:** FR-01 Account registration, FR-02 Login, FR-03 Forgot/reset password, FR-04 Profile management
-**Screens:** Login, Register, Forgot Password, Profile
+**Sinh viên:** Dương Nhật Cường · **MSSV:** 23120223 · **Nhóm:** 13
+**SUT:** EShop web frontend · **Ngày:** 2026-11-07
+**Phạm vi:** FR-01 Đăng ký, FR-02 Đăng nhập, FR-03 Quên/đặt lại mật khẩu, FR-04 Hồ sơ
+**Màn hình:** Login, Register, Forgot Password, Profile
 **Interface aspects:** IA-01 General UI standards, IA-02 Forms, IA-03 Navigation, IA-04 Feedback / state
 
-## Headline numbers
+## Số liệu chính
 
 | Metric | Value |
 | --- | ---: |
 | Screens tested | 4 |
-| End-to-end flows tested | 0 (Task 2 starts after Task 1) |
-| Checklist items designed | 69 |
-| Checklist items executed | 69 |
-| Passed | 25 |
-| Failed | 44 |
+| End-to-end flows tested | 0 (Task 2 chưa bắt đầu) |
+| Checklist items designed | 66 |
+| Checklist items executed | 66 |
+| Passed | 27 |
+| Failed | 39 |
 | Bugs reported | 26 |
-| Blockers | 2 |
-| Major | 12 |
-| Minor | 12 |
-| Participants | 0 (Task 2) |
-| Demo videos | 0 (to be recorded with the Agent Skill) |
+| Blockers | 1 |
+| Major | 11 |
+| Minor | 14 |
+| Screenshots | 38 PNG cho 39 item Failed (một số ảnh dùng chung) |
+| Participants | 0 (Task 2 chưa bắt đầu) |
+| Demo videos | 0 (sẽ quay khi hoàn thiện Agent Skill) |
 
-## Results by interface aspect
+## Kết quả theo interface aspect
 
 | Interface aspect | Items | Passed | Failed |
 | --- | ---: | ---: | ---: |
-| IA-01 General UI standards | 19 | 8 | 11 |
-| IA-02 Forms | 16 | 4 | 12 |
-| IA-03 Navigation | 17 | 9 | 8 |
-| IA-04 Feedback / state | 17 | 4 | 13 |
-| **Total** | **69** | **25** | **44** |
+| IA-01 General UI standards | 18 | 7 | 11 |
+| IA-02 Forms | 17 | 4 | 13 |
+| IA-03 Navigation | 15 | 9 | 6 |
+| IA-04 Feedback / state | 16 | 7 | 9 |
+| **Tổng** | **66** | **27** | **39** |
 
-## Source split
+## Phân nguồn
 
-| Source | Items |
+| Nguồn | Items |
 | --- | ---: |
-| AI-generated initial set (`ui-checklist-generator`) | 44 |
-| Items added during the critical review | 25 |
-| **Total** | **69** |
+| AI sinh ban đầu (`ui-checklist-generator`) | 44 item được sinh, 41 item được giữ |
+| Bổ sung/sửa sau review | 25 |
+| **Checklist cuối** | **66** |
 
-The 25 review additions and the reason the initial AI pass missed each one are listed in
-[`review-additions.md`](review-additions.md). The raw initial set is preserved in
+25 item bổ sung/sửa và lý do AI bỏ sót nằm ở
+[`review-additions.md`](review-additions.md). Bộ AI ban đầu được giữ ở
 [`ai-initial-checklist.md`](ai-initial-checklist.md).
 
-## Execution environment
+## Môi trường thực thi
 
 | Item | Value |
 | --- | --- |
-| Backend | `http://localhost:3000` (`backend/server.js`, seeded SQLite) |
+| Backend | `http://localhost:3000` (`backend/server.js`, SQLite seed) |
 | Web frontend | `http://localhost:5173` (`frontend-web`, Vite) |
 | Browser | Chromium 158 / Playwright 1.65 |
 | Desktop viewport | 1280×900 |
 | Mobile viewport | 360×800 |
 | 200% zoom equivalent | 640×800 |
 | Accessibility engine | axe-core 4.x |
-| Test data | Isolated users `hw03.ui.23120223@example.com`, `dup…@example.com`, `silent…@example.com`; order rows injected with Playwright route interception (no production order data was modified) |
+| Test data | Seed user `test@eshop.com`; user đăng ký qua UI/API; order inject bằng Playwright route interception |
 
-## Artifacts
+## Artifact
 
 | Artifact | Path |
 | --- | --- |
@@ -70,11 +71,11 @@ The 25 review additions and the reason the initial AI pass missed each one are l
 | Bug report | [`bug-report.md`](bug-report.md) |
 | Individual bug reports | [`bugs/`](bugs/) |
 | GitHub issue drafts | [`issues/`](issues/) |
-| Screenshots (44 failed items, 40 images) | [`screenshots/`](screenshots/) |
+| Screenshots (Failed items only) | [`screenshots/`](screenshots/) |
 
-## Notes and limitations
+## Ghi chú và hạn chế
 
-- All 69 items were executed; a failed item is not automatically a bug (missing confirm-password fields and step indicators are design gaps). The 26 bugs are the reproducible defects.
-- Screenshots are annotated with a red banner containing the checklist ID and the observed defect. They show the SUT at `localhost:5173`, not a redesigned mock.
-- GitHub Issues are drafted but **not yet published** because this environment has no GitHub CLI/token. The ready-to-publish bodies are in `issues/`; run `bash issues/publish.sh` after `gh auth login`.
-- The AI audit report records this session; timestamps are marked "Time not available in source" because the conversation export does not contain them.
+- Tất cả 66 item đã được thực thi. Một item Failed không tự động là bug: thiếu confirm-password và step indicator là design gap; 26 bug là defect tái hiện được.
+- Screenshot có banner đỏ tiếng Việt ghi checklist ID, mô tả lỗi và quan sát; ảnh chụp SUT tại `localhost:5173`, không phải mock.
+- GitHub Issues mới ở dạng draft vì môi trường không có `gh` CLI/token. Chạy `bash issues/publish.sh` sau khi `gh auth login` và push nhánh `ncuong`.
+- Task 1 chỉ chạy trên Chromium; Firefox/Safari/Expo Go thuộc Task 3.
