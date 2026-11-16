@@ -20,13 +20,21 @@ async function openCheckout(page, row) {
 for (const row of cases) {
   test(`${row.id}: coupon ${row.code || '(blank)'}`, async ({ page }) => {
     await openCheckout(page, row);
+    let submittedCode;
+    page.on('request', request => {
+      if (request.url().includes('/api/apply-coupon')) {
+        submittedCode = request.postDataJSON().code;
+      }
+    });
     if (!row.code) {
       await expect(page.getByRole('button', { name: 'Áp dụng' })).toBeDisabled();
       return;
     }
     await page.getByPlaceholder('Nhập mã giảm giá...').fill(row.code);
     await page.getByRole('button', { name: 'Áp dụng' }).click();
+    await expect.poll(() => submittedCode, { timeout: 1000 }).toBe(row.code.toUpperCase());
     if (row.ok) {
+      expect(row.total - row.discount).toBe(row.final);
       await expect(page.getByText('Tiết kiệm:')).toBeVisible();
       await expect(page.getByText(`${row.discount.toLocaleString()} ₫`, { exact: true })).toBeVisible();
       await expect(page.getByText(`${row.final.toLocaleString()} ₫`, { exact: true }).last()).toBeVisible();
