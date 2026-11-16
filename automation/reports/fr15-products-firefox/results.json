@@ -1,0 +1,932 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\eshop-sut-homework\\automation\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/fr15-products.spec.js",
+      "--project=firefox",
+      "--workers=1"
+    ],
+    "configFile": "D:\\eshop-sut-homework\\automation\\playwright.config.js",
+    "rootDir": "D:/eshop-sut-homework/automation/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "runBy": "Run by: 23120102",
+      "generatedAt": "2026-11-16T05:12:44.921Z",
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/eshop-sut-homework/automation/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "runBy": "Run by: 23120102",
+          "generatedAt": "2026-11-16T05:12:44.921Z",
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "D:/eshop-sut-homework/automation/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "D:/eshop-sut-homework/automation/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "runBy": "Run by: 23120102",
+          "generatedAt": "2026-11-16T05:12:44.921Z",
+          "actualWorkers": 1
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "D:/eshop-sut-homework/automation/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "D:/eshop-sut-homework/automation/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "runBy": "Run by: 23120102",
+          "generatedAt": "2026-11-16T05:12:44.921Z",
+          "actualWorkers": 1
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "D:/eshop-sut-homework/automation/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\eshop-sut-homework\\automation\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "runBy": "Run by: 23120102",
+          "generatedAt": "2026-11-16T05:12:44.921Z",
+          "actualWorkers": 1
+        },
+        "name": "firefox",
+        "testDir": "D:\\eshop-sut-homework\\automation\\tests",
+        "snapshotDir": "D:\\eshop-sut-homework\\automation\\tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5173",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "browserName": "firefox"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "firefox"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "reports/fr15-products-firefox",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "reports/fr15-products-firefox/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "fr15-products.spec.js",
+      "file": "fr15-products.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "FR15-01: product CRUD input accepted",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:13:03.020Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13403,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:13:02.802Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:13:03.020Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e51565c31903be008585-6c9e578136c12cda1440",
+          "file": "fr15-products.spec.js",
+          "line": 26,
+          "column": 3
+        },
+        {
+          "title": "FR15-02: product CRUD input accepted",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:13:19.291Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5311,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:13:19.199Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:13:19.291Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e51565c31903be008585-d3270d62328e07fdfa81",
+          "file": "fr15-products.spec.js",
+          "line": 26,
+          "column": 3
+        },
+        {
+          "title": "FR15-03: product CRUD input accepted",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:13:24.647Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5183,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:13:24.618Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:13:24.647Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e51565c31903be008585-bd9b58eec85af06b0552",
+          "file": "fr15-products.spec.js",
+          "line": 26,
+          "column": 3
+        },
+        {
+          "title": "FR15-04: product CRUD input rejected",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:13:29.939Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5601,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:42:59",
+                    "location": {
+                      "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
+                      "column": 59,
+                      "line": 42
+                    },
+                    "snippet": " \u001b[90m 40 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 41 |\u001b[39m     } \u001b[36melse\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 42 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 43 |\u001b[39m     }\n \u001b[90m 44 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 45 |\u001b[39m }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
+                        "column": 59,
+                        "line": 42
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n\n  40 |       await expect.poll(() => created, { timeout: 1000 }).toBe(false);\n  41 |     } else {\n> 42 |       await expect.poll(() => created, { timeout: 1000 }).toBe(false);\n     |                                                           ^\n  43 |     }\n  44 |   });\n  45 | }\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:42:59"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:13:29.877Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:13:29.939Z"
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr15-products-FR15-04-product-CRUD-input-rejected-firefox\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr15-products-FR15-04-product-CRUD-input-rejected-firefox\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr15-products-FR15-04-product-CRUD-input-rejected-firefox\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
+                    "column": 59,
+                    "line": 42
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e51565c31903be008585-a78d757973fcd2cdf33e",
+          "file": "fr15-products.spec.js",
+          "line": 26,
+          "column": 3
+        },
+        {
+          "title": "FR15-05: product CRUD input rejected",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:13:39.317Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9014,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:13:39.200Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:13:39.317Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e51565c31903be008585-a8a19d474ef264219811",
+          "file": "fr15-products.spec.js",
+          "line": 26,
+          "column": 3
+        },
+        {
+          "title": "FR15-06: product CRUD input rejected",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:13:51.734Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5470,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:40:59",
+                    "location": {
+                      "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
+                      "column": 59,
+                      "line": 40
+                    },
+                    "snippet": " \u001b[90m 38 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Tên sản phẩm'\u001b[39m))\u001b[33m.\u001b[39mtoBeFocused()\u001b[33m;\u001b[39m\n \u001b[90m 39 |\u001b[39m     } \u001b[36melse\u001b[39m \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mrow\u001b[33m.\u001b[39mprice \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m(row\u001b[33m.\u001b[39mprice) \u001b[33m<=\u001b[39m \u001b[35m0\u001b[39m \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m\u001b[33m.\u001b[39misNaN(\u001b[33mNumber\u001b[39m(row\u001b[33m.\u001b[39mprice))) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m     } \u001b[36melse\u001b[39m {\n \u001b[90m 42 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 43 |\u001b[39m     }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
+                        "column": 59,
+                        "line": 40
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n\n  38 |       await expect(page.getByPlaceholder('Tên sản phẩm')).toBeFocused();\n  39 |     } else if (!row.price || Number(row.price) <= 0 || Number.isNaN(Number(row.price))) {\n> 40 |       await expect.poll(() => created, { timeout: 1000 }).toBe(false);\n     |                                                           ^\n  41 |     } else {\n  42 |       await expect.poll(() => created, { timeout: 1000 }).toBe(false);\n  43 |     }\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:40:59"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:13:51.711Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:13:51.734Z"
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr15-products-FR15-06-product-CRUD-input-rejected-firefox\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr15-products-FR15-06-product-CRUD-input-rejected-firefox\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr15-products-FR15-06-product-CRUD-input-rejected-firefox\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
+                    "column": 59,
+                    "line": 40
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e51565c31903be008585-928cead92422b7051d21",
+          "file": "fr15-products.spec.js",
+          "line": 26,
+          "column": 3
+        },
+        {
+          "title": "FR15-07: product CRUD input rejected",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:13:58.578Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7786,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:40:59",
+                    "location": {
+                      "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
+                      "column": 59,
+                      "line": 40
+                    },
+                    "snippet": " \u001b[90m 38 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Tên sản phẩm'\u001b[39m))\u001b[33m.\u001b[39mtoBeFocused()\u001b[33m;\u001b[39m\n \u001b[90m 39 |\u001b[39m     } \u001b[36melse\u001b[39m \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mrow\u001b[33m.\u001b[39mprice \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m(row\u001b[33m.\u001b[39mprice) \u001b[33m<=\u001b[39m \u001b[35m0\u001b[39m \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m\u001b[33m.\u001b[39misNaN(\u001b[33mNumber\u001b[39m(row\u001b[33m.\u001b[39mprice))) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m     } \u001b[36melse\u001b[39m {\n \u001b[90m 42 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 43 |\u001b[39m     }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
+                        "column": 59,
+                        "line": 40
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n\n  38 |       await expect(page.getByPlaceholder('Tên sản phẩm')).toBeFocused();\n  39 |     } else if (!row.price || Number(row.price) <= 0 || Number.isNaN(Number(row.price))) {\n> 40 |       await expect.poll(() => created, { timeout: 1000 }).toBe(false);\n     |                                                           ^\n  41 |     } else {\n  42 |       await expect.poll(() => created, { timeout: 1000 }).toBe(false);\n  43 |     }\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:40:59"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:13:58.538Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:13:58.578Z"
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr15-products-FR15-07-product-CRUD-input-rejected-firefox\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr15-products-FR15-07-product-CRUD-input-rejected-firefox\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr15-products-FR15-07-product-CRUD-input-rejected-firefox\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
+                    "column": 59,
+                    "line": 40
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e51565c31903be008585-0083dc9b15d72b3ce314",
+          "file": "fr15-products.spec.js",
+          "line": 26,
+          "column": 3
+        },
+        {
+          "title": "FR15-08: product CRUD input rejected",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:14:11.377Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 20309,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:40:59",
+                    "location": {
+                      "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
+                      "column": 59,
+                      "line": 40
+                    },
+                    "snippet": " \u001b[90m 38 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Tên sản phẩm'\u001b[39m))\u001b[33m.\u001b[39mtoBeFocused()\u001b[33m;\u001b[39m\n \u001b[90m 39 |\u001b[39m     } \u001b[36melse\u001b[39m \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mrow\u001b[33m.\u001b[39mprice \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m(row\u001b[33m.\u001b[39mprice) \u001b[33m<=\u001b[39m \u001b[35m0\u001b[39m \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m\u001b[33m.\u001b[39misNaN(\u001b[33mNumber\u001b[39m(row\u001b[33m.\u001b[39mprice))) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m     } \u001b[36melse\u001b[39m {\n \u001b[90m 42 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 43 |\u001b[39m     }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
+                        "column": 59,
+                        "line": 40
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n\n  38 |       await expect(page.getByPlaceholder('Tên sản phẩm')).toBeFocused();\n  39 |     } else if (!row.price || Number(row.price) <= 0 || Number.isNaN(Number(row.price))) {\n> 40 |       await expect.poll(() => created, { timeout: 1000 }).toBe(false);\n     |                                                           ^\n  41 |     } else {\n  42 |       await expect.poll(() => created, { timeout: 1000 }).toBe(false);\n  43 |     }\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:40:59"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:14:11.184Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:14:11.377Z"
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr15-products-FR15-08-product-CRUD-input-rejected-firefox\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr15-products-FR15-08-product-CRUD-input-rejected-firefox\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr15-products-FR15-08-product-CRUD-input-rejected-firefox\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
+                    "column": 59,
+                    "line": 40
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e51565c31903be008585-9b5eacb4837a5834313d",
+          "file": "fr15-products.spec.js",
+          "line": 26,
+          "column": 3
+        },
+        {
+          "title": "FR15-09: product CRUD input accepted",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:14:37.242Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11173,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:14:37.171Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:14:37.242Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e51565c31903be008585-5c74531747d4ff2330d6",
+          "file": "fr15-products.spec.js",
+          "line": 26,
+          "column": 3
+        },
+        {
+          "title": "FR15-10: product CRUD input rejected",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:14:50.433Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 8171,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:42:59",
+                    "location": {
+                      "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
+                      "column": 59,
+                      "line": 42
+                    },
+                    "snippet": " \u001b[90m 40 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 41 |\u001b[39m     } \u001b[36melse\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 42 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 43 |\u001b[39m     }\n \u001b[90m 44 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 45 |\u001b[39m }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
+                        "column": 59,
+                        "line": 42
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n\n  40 |       await expect.poll(() => created, { timeout: 1000 }).toBe(false);\n  41 |     } else {\n> 42 |       await expect.poll(() => created, { timeout: 1000 }).toBe(false);\n     |                                                           ^\n  43 |     }\n  44 |   });\n  45 | }\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:42:59"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:14:50.393Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:14:50.433Z"
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr15-products-FR15-10-product-CRUD-input-rejected-firefox\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr15-products-FR15-10-product-CRUD-input-rejected-firefox\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr15-products-FR15-10-product-CRUD-input-rejected-firefox\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
+                    "column": 59,
+                    "line": 42
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e51565c31903be008585-26ea1e69212602a77da5",
+          "file": "fr15-products.spec.js",
+          "line": 26,
+          "column": 3
+        },
+        {
+          "title": "FR15-11: product CRUD input accepted",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:15:02.195Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11565,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:15:02.081Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:15:02.195Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e51565c31903be008585-b23b87af6df98647b7b0",
+          "file": "fr15-products.spec.js",
+          "line": 26,
+          "column": 3
+        },
+        {
+          "title": "FR15-12: product CRUD input accepted",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:15:15.562Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7595,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:15:15.532Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:15:15.562Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e51565c31903be008585-8335079a4329c321865d",
+          "file": "fr15-products.spec.js",
+          "line": 26,
+          "column": 3
+        },
+        {
+          "title": "FR15-13: editing one product does not rename other products in the table",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:15:23.325Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5554,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:15:23.228Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:15:23.325Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e51565c31903be008585-fe35ac65762993ed5816",
+          "file": "fr15-products.spec.js",
+          "line": 47,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-16T05:12:44.960Z",
+    "duration": 167923.175,
+    "expected": 8,
+    "skipped": 0,
+    "unexpected": 5,
+    "flaky": 0
+  }
+}
