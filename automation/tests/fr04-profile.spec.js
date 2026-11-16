@@ -30,18 +30,24 @@ for (const row of cases) {
     await expect(email).toHaveValue('test@example.test');
     await expect(email).toBeDisabled();
 
-    let submitted = false;
-    page.on('request', request => { if (request.url().includes('/api/users/me') && request.method() === 'PUT') submitted = true; });
+    let submittedBody;
+    page.on('request', request => {
+      if (request.url().includes('/api/users/me') && request.method() === 'PUT') {
+        submittedBody = request.postDataJSON();
+      }
+    });
     await page.getByRole('button', { name: 'Cập nhật' }).click();
     const validAccordingToSpec = row.valid && row.phone.startsWith('0') && /^0\d{9,10}$/.test(row.phone);
     if (validAccordingToSpec) {
-      await expect.poll(() => submitted, { timeout: 1000 }).toBe(true);
+      await expect.poll(() => submittedBody, { timeout: 1000 }).toBeTruthy();
+      expect(submittedBody).toMatchObject({ name: row.name, phone: row.phone, shipping_address: row.address });
+      expect(submittedBody).not.toHaveProperty('email');
       await expect(page.getByRole('heading', { name: 'Lịch sử đơn hàng' })).toBeVisible();
     } else if (!row.name) {
       await expect(name).toBeFocused();
     } else {
       await expect.poll(() => page.dialogMessage, { timeout: 1000 }).toMatch(/Số điện thoại không hợp lệ/);
-      expect(submitted).toBe(false);
+      expect(submittedBody).toBeUndefined();
     }
   });
 }
