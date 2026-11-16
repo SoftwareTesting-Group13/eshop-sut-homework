@@ -1,0 +1,14 @@
+{
+  "name": "eshop-hw04-automation",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "playwright test",
+    "test:fr04": "playwright test tests/fr04-profile.spec.js",
+    "test:fr09": "playwright test tests/fr09-coupon.spec.js",
+    "test:fr15": "playwright test tests/fr15-products.spec.js",
+    "test:matrix": "node run-matrix.js",
+    "report": "playwright show-report"
+  },
+  "devDependencies": { "@playwright/test": "^1.56.1" }
+}
