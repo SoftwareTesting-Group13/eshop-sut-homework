@@ -50,5 +50,6 @@ test('FR15-13: editing one product does not rename other products in the table',
   await alpha.getByRole('button', { name: 'Sửa' }).click();
   await page.getByPlaceholder('Tên sản phẩm').fill('Updated Alpha');
   await page.getByRole('button', { name: 'Lưu sản phẩm' }).click();
+  await expect(page.getByRole('row').filter({ hasText: 'Updated Alpha' })).toContainText('Updated Alpha');
   await expect(page.getByRole('row').filter({ hasText: 'Existing Beta' })).toContainText('Existing Beta', { timeout: 1000 });
 });
