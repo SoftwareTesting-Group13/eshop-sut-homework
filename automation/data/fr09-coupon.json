@@ -1,0 +1,14 @@
+[
+  {"id":"FR09-01","code":"SAVE10","total":300000,"ok":true,"discount":30000,"final":270000},
+  {"id":"FR09-02","code":"SAVE10","total":350000,"ok":true,"discount":35000,"final":315000},
+  {"id":"FR09-03","code":"SAVE10","total":299999,"ok":false,"error":"Đơn hàng chưa đạt giá trị tối thiểu"},
+  {"id":"FR09-04","code":"BIGBUY","total":500000,"ok":true,"discount":50000,"final":450000},
+  {"id":"FR09-05","code":"BIGBUY","total":499999,"ok":false,"error":"Đơn hàng chưa đạt giá trị tối thiểu"},
+  {"id":"FR09-06","code":"EXPIRED","total":300000,"ok":false,"error":"Mã giảm giá đã hết hạn"},
+  {"id":"FR09-07","code":"NOTREAL","total":500000,"ok":false,"error":"Mã giảm giá không tồn tại"},
+  {"id":"FR09-08","code":"","total":500000,"ok":false,"error":"empty"},
+  {"id":"FR09-09","code":"SAVE10","total":300000,"ok":false,"error":"Vui lòng đăng nhập"},
+  {"id":"FR09-10","code":"SAVE10","total":300000,"ok":false,"error":"Bạn đã sử dụng hết lượt"},
+  {"id":"FR09-11","code":"VIP100","total":300000,"ok":true,"discount":100000,"final":200000},
+  {"id":"FR09-12","code":"save10","total":300000,"ok":true,"discount":30000,"final":270000}
+]
