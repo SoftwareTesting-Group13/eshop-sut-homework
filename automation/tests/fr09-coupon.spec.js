@@ -1,7 +1,10 @@
 import { test, expect } from '@playwright/test';
 import cases from '../data/fr09-coupon.json' with { type: 'json' };
 
-test.beforeEach(({}, testInfo) => testInfo.annotations.push({ type: `Run by: ${process.env.STUDENT_ID || '23120102'}`, description: new Date().toISOString() }));
+test.beforeEach(({}, testInfo) => {
+  testInfo.annotations.push({ type: 'Feature', description: 'FR-09 Coupons' });
+  testInfo.annotations.push({ type: `Run by: ${process.env.STUDENT_ID || '23120102'}`, description: new Date().toISOString() });
+});
 
 async function openCheckout(page, row) {
   if (row.error !== 'Vui lòng đăng nhập') await page.addInitScript(() => localStorage.setItem('token', 'hw04-test-token'));

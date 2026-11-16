@@ -1,7 +1,10 @@
 import { test, expect } from '@playwright/test';
 import cases from '../data/fr15-products.json' with { type: 'json' };
 
-test.beforeEach(({}, testInfo) => testInfo.annotations.push({ type: `Run by: ${process.env.STUDENT_ID || '23120102'}`, description: new Date().toISOString() }));
+test.beforeEach(({}, testInfo) => {
+  testInfo.annotations.push({ type: 'Feature', description: 'FR-15 Product CRUD' });
+  testInfo.annotations.push({ type: `Run by: ${process.env.STUDENT_ID || '23120102'}`, description: new Date().toISOString() });
+});
 
 const initialProducts = [
   { id: 11, name: 'Existing Alpha', price: 10000, description: 'alpha', imageUrl: '', category_id: 1 },

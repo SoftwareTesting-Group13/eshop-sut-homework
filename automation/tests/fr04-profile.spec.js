@@ -1,7 +1,10 @@
 import { test, expect } from '@playwright/test';
 import cases from '../data/fr04-profile.json' with { type: 'json' };
 
-test.beforeEach(({}, testInfo) => testInfo.annotations.push({ type: `Run by: ${process.env.STUDENT_ID || '23120102'}`, description: new Date().toISOString() }));
+test.beforeEach(({}, testInfo) => {
+  testInfo.annotations.push({ type: 'Feature', description: 'FR-04 Profile' });
+  testInfo.annotations.push({ type: `Run by: ${process.env.STUDENT_ID || '23120102'}`, description: new Date().toISOString() });
+});
 
 async function openProfile(page) {
   await page.addInitScript(() => localStorage.setItem('token', 'hw04-test-token'));
