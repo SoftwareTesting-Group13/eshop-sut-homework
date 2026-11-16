@@ -1,0 +1,14 @@
+[
+  {"id":"FR15-01","name":"HW04 Valid Product","price":"125000","valid":true},
+  {"id":"FR15-02","name":"HW04 Product Two","price":"1","valid":true},
+  {"id":"FR15-03","name":"Boundary Name 255","price":"99000","valid":true,"nameLength":255},
+  {"id":"FR15-04","name":"Boundary Name 256","price":"99000","valid":false,"nameLength":256},
+  {"id":"FR15-05","name":"","price":"99000","valid":false},
+  {"id":"FR15-06","name":"Zero Price","price":"0","valid":false},
+  {"id":"FR15-07","name":"Negative Price","price":"-1","valid":false},
+  {"id":"FR15-08","name":"Missing Price","price":"","valid":false},
+  {"id":"FR15-09","name":"Decimal Positive Price","price":"1.5","valid":true},
+  {"id":"FR15-10","name":"No Category","price":"1000","valid":false,"noCategory":true},
+  {"id":"FR15-11","name":"Edit Isolation A","price":"150000","valid":true},
+  {"id":"FR15-12","name":"Delete Candidate","price":"200000","valid":true}
+]
