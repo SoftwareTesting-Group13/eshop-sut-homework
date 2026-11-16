@@ -33,10 +33,17 @@ for (const row of cases) {
     await page.getByPlaceholder('Giá tiền').fill(row.price);
     if (row.noCategory) await expect(page.locator('select option')).toHaveCount(0);
     let created = false;
-    page.on('request', request => { if (request.url().endsWith('/api/products') && request.method() === 'POST') created = true; });
+    let createdPayload;
+    page.on('request', request => {
+      if (request.url().endsWith('/api/products') && request.method() === 'POST') {
+        created = true;
+        createdPayload = request.postDataJSON();
+      }
+    });
     await page.getByRole('button', { name: 'Lưu sản phẩm' }).click();
     if (row.valid) {
       await expect.poll(() => created, { timeout: 1000 }).toBe(true);
+      expect(createdPayload).toMatchObject({ name: nameValue, price: row.price });
     } else if (!row.name) {
       await expect(page.getByPlaceholder('Tên sản phẩm')).toBeFocused();
     } else if (!row.price || Number(row.price) <= 0 || Number.isNaN(Number(row.price))) {
