@@ -1,0 +1,688 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\eshop-sut-homework\\automation\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/fr09-coupon.spec.js",
+      "--project=webkit",
+      "--workers=1"
+    ],
+    "configFile": "D:\\eshop-sut-homework\\automation\\playwright.config.js",
+    "rootDir": "D:/eshop-sut-homework/automation/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "runBy": "Run by: 23120102",
+      "generatedAt": "2026-11-16T05:09:49.656Z",
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/eshop-sut-homework/automation/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "runBy": "Run by: 23120102",
+          "generatedAt": "2026-11-16T05:09:49.656Z",
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "D:/eshop-sut-homework/automation/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "D:/eshop-sut-homework/automation/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "runBy": "Run by: 23120102",
+          "generatedAt": "2026-11-16T05:09:49.656Z",
+          "actualWorkers": 1
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "D:/eshop-sut-homework/automation/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "D:/eshop-sut-homework/automation/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "runBy": "Run by: 23120102",
+          "generatedAt": "2026-11-16T05:09:49.656Z",
+          "actualWorkers": 1
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "D:/eshop-sut-homework/automation/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\eshop-sut-homework\\automation\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "runBy": "Run by: 23120102",
+          "generatedAt": "2026-11-16T05:09:49.656Z",
+          "actualWorkers": 1
+        },
+        "name": "webkit",
+        "testDir": "D:\\eshop-sut-homework\\automation\\tests",
+        "snapshotDir": "D:\\eshop-sut-homework\\automation\\tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5173",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "browserName": "webkit"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "webkit"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "reports/fr09-coupon-webkit",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "reports/fr09-coupon-webkit/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "fr09-coupon.spec.js",
+      "file": "fr09-coupon.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "FR09-01: coupon SAVE10",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:10:08.114Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5061,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:10:07.945Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:10:08.114Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4763e1e72eb39689c491-7b8c814f83abab1a2e54",
+          "file": "fr09-coupon.spec.js",
+          "line": 21,
+          "column": 3
+        },
+        {
+          "title": "FR09-02: coupon SAVE10",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:10:13.573Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5365,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:10:13.546Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:10:13.573Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4763e1e72eb39689c491-ab33529521b7a2fed18f",
+          "file": "fr09-coupon.spec.js",
+          "line": 21,
+          "column": 3
+        },
+        {
+          "title": "FR09-03: coupon SAVE10",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:10:18.978Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7921,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:10:18.954Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:10:18.978Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4763e1e72eb39689c491-6e6afbedac69944f8e67",
+          "file": "fr09-coupon.spec.js",
+          "line": 21,
+          "column": 3
+        },
+        {
+          "title": "FR09-04: coupon BIGBUY",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:10:27.094Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9414,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:10:26.978Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:10:27.094Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4763e1e72eb39689c491-f3bc8bc0875c63b2023b",
+          "file": "fr09-coupon.spec.js",
+          "line": 21,
+          "column": 3
+        },
+        {
+          "title": "FR09-05: coupon BIGBUY",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:10:36.594Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5989,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:10:36.538Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:10:36.594Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4763e1e72eb39689c491-cf92b934daf01dce603a",
+          "file": "fr09-coupon.spec.js",
+          "line": 21,
+          "column": 3
+        },
+        {
+          "title": "FR09-06: coupon EXPIRED",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:10:42.735Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6071,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:10:42.661Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:10:42.735Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4763e1e72eb39689c491-d86955c681dd8bfe4c04",
+          "file": "fr09-coupon.spec.js",
+          "line": 21,
+          "column": 3
+        },
+        {
+          "title": "FR09-07: coupon NOTREAL",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:10:48.931Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4748,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:10:48.882Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:10:48.931Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4763e1e72eb39689c491-cb5875a3668359b5d4db",
+          "file": "fr09-coupon.spec.js",
+          "line": 21,
+          "column": 3
+        },
+        {
+          "title": "FR09-08: coupon (blank)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:10:53.802Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3693,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:10:53.727Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:10:53.802Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4763e1e72eb39689c491-69150de8f5d99a09fbc9",
+          "file": "fr09-coupon.spec.js",
+          "line": 21,
+          "column": 3
+        },
+        {
+          "title": "FR09-09: coupon SAVE10",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:10:57.640Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3918,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:10:57.547Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:10:57.640Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4763e1e72eb39689c491-486d7a4ad6427f7a5367",
+          "file": "fr09-coupon.spec.js",
+          "line": 21,
+          "column": 3
+        },
+        {
+          "title": "FR09-10: coupon SAVE10",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:11:01.731Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5082,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:11:01.678Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:11:01.731Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4763e1e72eb39689c491-9a7a2ff313f665c855b3",
+          "file": "fr09-coupon.spec.js",
+          "line": 21,
+          "column": 3
+        },
+        {
+          "title": "FR09-11: coupon VIP100",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:11:06.927Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4699,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:11:06.871Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:11:06.927Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4763e1e72eb39689c491-06fdeff63d7ed4b7d6dd",
+          "file": "fr09-coupon.spec.js",
+          "line": 21,
+          "column": 3
+        },
+        {
+          "title": "FR09-12: coupon save10",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:11:11.935Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4678,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:11:11.677Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:11:11.935Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4763e1e72eb39689c491-aefeb34f2208d06a130f",
+          "file": "fr09-coupon.spec.js",
+          "line": 21,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-16T05:09:49.718Z",
+    "duration": 89749.029,
+    "expected": 12,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

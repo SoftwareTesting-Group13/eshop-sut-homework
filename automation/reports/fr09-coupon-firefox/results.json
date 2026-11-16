@@ -1,0 +1,688 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\eshop-sut-homework\\automation\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/fr09-coupon.spec.js",
+      "--project=firefox",
+      "--workers=1"
+    ],
+    "configFile": "D:\\eshop-sut-homework\\automation\\playwright.config.js",
+    "rootDir": "D:/eshop-sut-homework/automation/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "runBy": "Run by: 23120102",
+      "generatedAt": "2026-11-16T05:07:46.494Z",
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/eshop-sut-homework/automation/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "runBy": "Run by: 23120102",
+          "generatedAt": "2026-11-16T05:07:46.494Z",
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "D:/eshop-sut-homework/automation/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "D:/eshop-sut-homework/automation/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "runBy": "Run by: 23120102",
+          "generatedAt": "2026-11-16T05:07:46.494Z",
+          "actualWorkers": 1
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "D:/eshop-sut-homework/automation/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "D:/eshop-sut-homework/automation/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "runBy": "Run by: 23120102",
+          "generatedAt": "2026-11-16T05:07:46.494Z",
+          "actualWorkers": 1
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "D:/eshop-sut-homework/automation/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\eshop-sut-homework\\automation\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "runBy": "Run by: 23120102",
+          "generatedAt": "2026-11-16T05:07:46.494Z",
+          "actualWorkers": 1
+        },
+        "name": "firefox",
+        "testDir": "D:\\eshop-sut-homework\\automation\\tests",
+        "snapshotDir": "D:\\eshop-sut-homework\\automation\\tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5173",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "browserName": "firefox"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "firefox"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "reports/fr09-coupon-firefox",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "reports/fr09-coupon-firefox/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "fr09-coupon.spec.js",
+      "file": "fr09-coupon.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "FR09-01: coupon SAVE10",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:08:06.185Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16261,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:08:06.145Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:08:06.185Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4763e1e72eb39689c491-909f85f13d05de374411",
+          "file": "fr09-coupon.spec.js",
+          "line": 21,
+          "column": 3
+        },
+        {
+          "title": "FR09-02: coupon SAVE10",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:08:23.601Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6398,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:08:23.411Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:08:23.601Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4763e1e72eb39689c491-b8b282b01765f755d758",
+          "file": "fr09-coupon.spec.js",
+          "line": 21,
+          "column": 3
+        },
+        {
+          "title": "FR09-03: coupon SAVE10",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:08:30.098Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5829,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:08:30.007Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:08:30.098Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4763e1e72eb39689c491-5f4333c8c84386e73c02",
+          "file": "fr09-coupon.spec.js",
+          "line": 21,
+          "column": 3
+        },
+        {
+          "title": "FR09-04: coupon BIGBUY",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:08:36.093Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7694,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:08:36.017Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:08:36.093Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4763e1e72eb39689c491-1d125a73f7d668b94e8d",
+          "file": "fr09-coupon.spec.js",
+          "line": 21,
+          "column": 3
+        },
+        {
+          "title": "FR09-05: coupon BIGBUY",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:08:43.908Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5769,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:08:43.858Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:08:43.908Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4763e1e72eb39689c491-429a857082a46cfbbf35",
+          "file": "fr09-coupon.spec.js",
+          "line": 21,
+          "column": 3
+        },
+        {
+          "title": "FR09-06: coupon EXPIRED",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:08:49.845Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7163,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:08:49.758Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:08:49.845Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4763e1e72eb39689c491-3a3d868153ac0e1375db",
+          "file": "fr09-coupon.spec.js",
+          "line": 21,
+          "column": 3
+        },
+        {
+          "title": "FR09-07: coupon NOTREAL",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:08:57.158Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5883,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:08:57.059Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:08:57.158Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4763e1e72eb39689c491-1ed3ccd359ae527d78a5",
+          "file": "fr09-coupon.spec.js",
+          "line": 21,
+          "column": 3
+        },
+        {
+          "title": "FR09-08: coupon (blank)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:09:03.195Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7173,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:09:03.081Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:09:03.195Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4763e1e72eb39689c491-b45e1e816de4820836d3",
+          "file": "fr09-coupon.spec.js",
+          "line": 21,
+          "column": 3
+        },
+        {
+          "title": "FR09-09: coupon SAVE10",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:09:10.679Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6509,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:09:10.447Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:09:10.679Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4763e1e72eb39689c491-c2a8e730458deb261101",
+          "file": "fr09-coupon.spec.js",
+          "line": 21,
+          "column": 3
+        },
+        {
+          "title": "FR09-10: coupon SAVE10",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:09:17.282Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10611,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:09:17.220Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:09:17.282Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4763e1e72eb39689c491-aecee883a7b1c874511b",
+          "file": "fr09-coupon.spec.js",
+          "line": 21,
+          "column": 3
+        },
+        {
+          "title": "FR09-11: coupon VIP100",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:09:28.023Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6494,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:09:27.951Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:09:28.023Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4763e1e72eb39689c491-bd33d2d29627590592c6",
+          "file": "fr09-coupon.spec.js",
+          "line": 21,
+          "column": 3
+        },
+        {
+          "title": "FR09-12: coupon save10",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-16T05:09:34.704Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6591,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T05:09:34.608Z",
+                  "annotations": [
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-16T05:09:34.704Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4763e1e72eb39689c491-65d26b01ebe75889f912",
+          "file": "fr09-coupon.spec.js",
+          "line": 21,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-16T05:07:46.539Z",
+    "duration": 119521.535,
+    "expected": 12,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
