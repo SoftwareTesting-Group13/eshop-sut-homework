@@ -1,0 +1,114 @@
+{
+  "generatedAt": "2026-11-17T05:04:04.161Z",
+  "studentId": "23120102",
+  "results": [
+    {
+      "feature": "FR-04 Profile",
+      "browser": "chromium",
+      "report": "reports/fr04-profile-chromium/index.html",
+      "counts": {
+        "passed": 7,
+        "failed": 6,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "exitCode": 1
+    },
+    {
+      "feature": "FR-04 Profile",
+      "browser": "firefox",
+      "report": "reports/fr04-profile-firefox/index.html",
+      "counts": {
+        "passed": 7,
+        "failed": 6,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "exitCode": 1
+    },
+    {
+      "feature": "FR-04 Profile",
+      "browser": "webkit",
+      "report": "reports/fr04-profile-webkit/index.html",
+      "counts": {
+        "passed": 7,
+        "failed": 6,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "exitCode": 1
+    },
+    {
+      "feature": "FR-09 Coupons",
+      "browser": "chromium",
+      "report": "reports/fr09-coupon-chromium/index.html",
+      "counts": {
+        "passed": 12,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "exitCode": 0
+    },
+    {
+      "feature": "FR-09 Coupons",
+      "browser": "firefox",
+      "report": "reports/fr09-coupon-firefox/index.html",
+      "counts": {
+        "passed": 12,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "exitCode": 0
+    },
+    {
+      "feature": "FR-09 Coupons",
+      "browser": "webkit",
+      "report": "reports/fr09-coupon-webkit/index.html",
+      "counts": {
+        "passed": 12,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "exitCode": 0
+    },
+    {
+      "feature": "FR-15 Product CRUD",
+      "browser": "chromium",
+      "report": "reports/fr15-products-chromium/index.html",
+      "counts": {
+        "passed": 7,
+        "failed": 6,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "exitCode": 1
+    },
+    {
+      "feature": "FR-15 Product CRUD",
+      "browser": "firefox",
+      "report": "reports/fr15-products-firefox/index.html",
+      "counts": {
+        "passed": 7,
+        "failed": 6,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "exitCode": 1
+    },
+    {
+      "feature": "FR-15 Product CRUD",
+      "browser": "webkit",
+      "report": "reports/fr15-products-webkit/index.html",
+      "counts": {
+        "passed": 7,
+        "failed": 6,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "exitCode": 1
+    }
+  ]
+}

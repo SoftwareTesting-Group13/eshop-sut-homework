@@ -1,0 +1,1076 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\eshop-sut-homework\\automation\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/fr04-profile.spec.js",
+      "--project=webkit",
+      "--workers=1"
+    ],
+    "configFile": "D:\\eshop-sut-homework\\automation\\playwright.config.js",
+    "rootDir": "D:/eshop-sut-homework/automation/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "runBy": "Run by: 23120102",
+      "generatedAt": "2026-11-17T04:57:49.597Z",
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/eshop-sut-homework/automation/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "runBy": "Run by: 23120102",
+          "generatedAt": "2026-11-17T04:57:49.597Z",
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "D:/eshop-sut-homework/automation/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "D:/eshop-sut-homework/automation/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "runBy": "Run by: 23120102",
+          "generatedAt": "2026-11-17T04:57:49.597Z",
+          "actualWorkers": 1
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "D:/eshop-sut-homework/automation/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "D:/eshop-sut-homework/automation/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "runBy": "Run by: 23120102",
+          "generatedAt": "2026-11-17T04:57:49.597Z",
+          "actualWorkers": 1
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "D:/eshop-sut-homework/automation/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\eshop-sut-homework\\automation\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "runBy": "Run by: 23120102",
+          "generatedAt": "2026-11-17T04:57:49.597Z",
+          "actualWorkers": 1
+        },
+        "name": "webkit",
+        "testDir": "D:\\eshop-sut-homework\\automation\\tests",
+        "snapshotDir": "D:\\eshop-sut-homework\\automation\\tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5173",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "browserName": "webkit"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "webkit"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "reports/fr04-profile-webkit",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "reports/fr04-profile-webkit/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "fr04-profile.spec.js",
+      "file": "fr04-profile.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "FR04-01: profile data accepted",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Feature",
+                  "description": "FR-04 Profile"
+                },
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-17T04:58:05.850Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 4785,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n    at D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js:45:65",
+                    "location": {
+                      "file": "D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js",
+                      "column": 65,
+                      "line": 45
+                    },
+                    "snippet": " \u001b[90m 43 |\u001b[39m     \u001b[36mconst\u001b[39m validAccordingToSpec \u001b[33m=\u001b[39m row\u001b[33m.\u001b[39mvalid \u001b[33m&&\u001b[39m row\u001b[33m.\u001b[39mphone\u001b[33m.\u001b[39mstartsWith(\u001b[32m'0'\u001b[39m) \u001b[33m&&\u001b[39m \u001b[35m/^0\\d{9,10}$/\u001b[39m\u001b[33m.\u001b[39mtest(row\u001b[33m.\u001b[39mphone)\u001b[33m;\u001b[39m\n \u001b[90m 44 |\u001b[39m     \u001b[36mif\u001b[39m (validAccordingToSpec) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 45 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m submittedBody\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBeTruthy()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 46 |\u001b[39m       expect(submittedBody)\u001b[33m.\u001b[39mtoMatchObject({ name\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39mname\u001b[33m,\u001b[39m phone\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39mphone\u001b[33m,\u001b[39m shipping_address\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39maddress })\u001b[33m;\u001b[39m\n \u001b[90m 47 |\u001b[39m       expect(submittedBody)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoHaveProperty(\u001b[32m'email'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 48 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'heading'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Lịch sử đơn hàng'\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js",
+                        "column": 65,
+                        "line": 45
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n\n \u001b[90m 43 |\u001b[39m     \u001b[36mconst\u001b[39m validAccordingToSpec \u001b[33m=\u001b[39m row\u001b[33m.\u001b[39mvalid \u001b[33m&&\u001b[39m row\u001b[33m.\u001b[39mphone\u001b[33m.\u001b[39mstartsWith(\u001b[32m'0'\u001b[39m) \u001b[33m&&\u001b[39m \u001b[35m/^0\\d{9,10}$/\u001b[39m\u001b[33m.\u001b[39mtest(row\u001b[33m.\u001b[39mphone)\u001b[33m;\u001b[39m\n \u001b[90m 44 |\u001b[39m     \u001b[36mif\u001b[39m (validAccordingToSpec) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 45 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m submittedBody\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBeTruthy()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 46 |\u001b[39m       expect(submittedBody)\u001b[33m.\u001b[39mtoMatchObject({ name\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39mname\u001b[33m,\u001b[39m phone\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39mphone\u001b[33m,\u001b[39m shipping_address\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39maddress })\u001b[33m;\u001b[39m\n \u001b[90m 47 |\u001b[39m       expect(submittedBody)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoHaveProperty(\u001b[32m'email'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 48 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'heading'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Lịch sử đơn hàng'\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[2m    at D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js:45:65\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T04:58:05.717Z",
+                  "annotations": [
+                    {
+                      "type": "Feature",
+                      "description": "FR-04 Profile"
+                    },
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-17T04:58:05.850Z"
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr04-profile-FR04-01-profile-data-accepted-webkit\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr04-profile-FR04-01-profile-data-accepted-webkit\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr04-profile-FR04-01-profile-data-accepted-webkit\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js",
+                    "column": 65,
+                    "line": 45
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0e6771bc2a4279a53f9e-bb49ee47e1c8e9dc0eeb",
+          "file": "fr04-profile.spec.js",
+          "line": 22,
+          "column": 3
+        },
+        {
+          "title": "FR04-02: profile data accepted",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Feature",
+                  "description": "FR-04 Profile"
+                },
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-17T04:58:15.005Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 4141,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n    at D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js:45:65",
+                    "location": {
+                      "file": "D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js",
+                      "column": 65,
+                      "line": 45
+                    },
+                    "snippet": " \u001b[90m 43 |\u001b[39m     \u001b[36mconst\u001b[39m validAccordingToSpec \u001b[33m=\u001b[39m row\u001b[33m.\u001b[39mvalid \u001b[33m&&\u001b[39m row\u001b[33m.\u001b[39mphone\u001b[33m.\u001b[39mstartsWith(\u001b[32m'0'\u001b[39m) \u001b[33m&&\u001b[39m \u001b[35m/^0\\d{9,10}$/\u001b[39m\u001b[33m.\u001b[39mtest(row\u001b[33m.\u001b[39mphone)\u001b[33m;\u001b[39m\n \u001b[90m 44 |\u001b[39m     \u001b[36mif\u001b[39m (validAccordingToSpec) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 45 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m submittedBody\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBeTruthy()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 46 |\u001b[39m       expect(submittedBody)\u001b[33m.\u001b[39mtoMatchObject({ name\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39mname\u001b[33m,\u001b[39m phone\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39mphone\u001b[33m,\u001b[39m shipping_address\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39maddress })\u001b[33m;\u001b[39m\n \u001b[90m 47 |\u001b[39m       expect(submittedBody)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoHaveProperty(\u001b[32m'email'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 48 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'heading'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Lịch sử đơn hàng'\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js",
+                        "column": 65,
+                        "line": 45
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n\n \u001b[90m 43 |\u001b[39m     \u001b[36mconst\u001b[39m validAccordingToSpec \u001b[33m=\u001b[39m row\u001b[33m.\u001b[39mvalid \u001b[33m&&\u001b[39m row\u001b[33m.\u001b[39mphone\u001b[33m.\u001b[39mstartsWith(\u001b[32m'0'\u001b[39m) \u001b[33m&&\u001b[39m \u001b[35m/^0\\d{9,10}$/\u001b[39m\u001b[33m.\u001b[39mtest(row\u001b[33m.\u001b[39mphone)\u001b[33m;\u001b[39m\n \u001b[90m 44 |\u001b[39m     \u001b[36mif\u001b[39m (validAccordingToSpec) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 45 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m submittedBody\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBeTruthy()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 46 |\u001b[39m       expect(submittedBody)\u001b[33m.\u001b[39mtoMatchObject({ name\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39mname\u001b[33m,\u001b[39m phone\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39mphone\u001b[33m,\u001b[39m shipping_address\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39maddress })\u001b[33m;\u001b[39m\n \u001b[90m 47 |\u001b[39m       expect(submittedBody)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoHaveProperty(\u001b[32m'email'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 48 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'heading'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Lịch sử đơn hàng'\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[2m    at D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js:45:65\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T04:58:14.841Z",
+                  "annotations": [
+                    {
+                      "type": "Feature",
+                      "description": "FR-04 Profile"
+                    },
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-17T04:58:15.005Z"
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr04-profile-FR04-02-profile-data-accepted-webkit\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr04-profile-FR04-02-profile-data-accepted-webkit\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr04-profile-FR04-02-profile-data-accepted-webkit\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js",
+                    "column": 65,
+                    "line": 45
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0e6771bc2a4279a53f9e-cb127135a5bd28390221",
+          "file": "fr04-profile.spec.js",
+          "line": 22,
+          "column": 3
+        },
+        {
+          "title": "FR04-03: profile data accepted",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Feature",
+                  "description": "FR-04 Profile"
+                },
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-17T04:58:21.694Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 4411,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n    at D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js:45:65",
+                    "location": {
+                      "file": "D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js",
+                      "column": 65,
+                      "line": 45
+                    },
+                    "snippet": " \u001b[90m 43 |\u001b[39m     \u001b[36mconst\u001b[39m validAccordingToSpec \u001b[33m=\u001b[39m row\u001b[33m.\u001b[39mvalid \u001b[33m&&\u001b[39m row\u001b[33m.\u001b[39mphone\u001b[33m.\u001b[39mstartsWith(\u001b[32m'0'\u001b[39m) \u001b[33m&&\u001b[39m \u001b[35m/^0\\d{9,10}$/\u001b[39m\u001b[33m.\u001b[39mtest(row\u001b[33m.\u001b[39mphone)\u001b[33m;\u001b[39m\n \u001b[90m 44 |\u001b[39m     \u001b[36mif\u001b[39m (validAccordingToSpec) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 45 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m submittedBody\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBeTruthy()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 46 |\u001b[39m       expect(submittedBody)\u001b[33m.\u001b[39mtoMatchObject({ name\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39mname\u001b[33m,\u001b[39m phone\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39mphone\u001b[33m,\u001b[39m shipping_address\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39maddress })\u001b[33m;\u001b[39m\n \u001b[90m 47 |\u001b[39m       expect(submittedBody)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoHaveProperty(\u001b[32m'email'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 48 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'heading'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Lịch sử đơn hàng'\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js",
+                        "column": 65,
+                        "line": 45
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n\n \u001b[90m 43 |\u001b[39m     \u001b[36mconst\u001b[39m validAccordingToSpec \u001b[33m=\u001b[39m row\u001b[33m.\u001b[39mvalid \u001b[33m&&\u001b[39m row\u001b[33m.\u001b[39mphone\u001b[33m.\u001b[39mstartsWith(\u001b[32m'0'\u001b[39m) \u001b[33m&&\u001b[39m \u001b[35m/^0\\d{9,10}$/\u001b[39m\u001b[33m.\u001b[39mtest(row\u001b[33m.\u001b[39mphone)\u001b[33m;\u001b[39m\n \u001b[90m 44 |\u001b[39m     \u001b[36mif\u001b[39m (validAccordingToSpec) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 45 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m submittedBody\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBeTruthy()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 46 |\u001b[39m       expect(submittedBody)\u001b[33m.\u001b[39mtoMatchObject({ name\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39mname\u001b[33m,\u001b[39m phone\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39mphone\u001b[33m,\u001b[39m shipping_address\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39maddress })\u001b[33m;\u001b[39m\n \u001b[90m 47 |\u001b[39m       expect(submittedBody)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoHaveProperty(\u001b[32m'email'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 48 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'heading'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Lịch sử đơn hàng'\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[2m    at D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js:45:65\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T04:58:21.530Z",
+                  "annotations": [
+                    {
+                      "type": "Feature",
+                      "description": "FR-04 Profile"
+                    },
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-17T04:58:21.694Z"
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr04-profile-FR04-03-profile-data-accepted-webkit\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr04-profile-FR04-03-profile-data-accepted-webkit\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr04-profile-FR04-03-profile-data-accepted-webkit\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js",
+                    "column": 65,
+                    "line": 45
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0e6771bc2a4279a53f9e-432be2b789ae8ad16a98",
+          "file": "fr04-profile.spec.js",
+          "line": 22,
+          "column": 3
+        },
+        {
+          "title": "FR04-04: profile data rejected",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Feature",
+                  "description": "FR-04 Profile"
+                },
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-17T04:58:28.628Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5991,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatch\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/Số điện thoại không hợp lệ/\u001b[39m\nReceived string:  \u001b[31m\"Cập nhật thành công!\"\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatch\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/Số điện thoại không hợp lệ/\u001b[39m\nReceived string:  \u001b[31m\"Cập nhật thành công!\"\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n    at D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js:52:70",
+                    "location": {
+                      "file": "D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js",
+                      "column": 70,
+                      "line": 52
+                    },
+                    "snippet": " \u001b[90m 50 |\u001b[39m       \u001b[36mawait\u001b[39m expect(name)\u001b[33m.\u001b[39mtoBeFocused()\u001b[33m;\u001b[39m\n \u001b[90m 51 |\u001b[39m     } \u001b[36melse\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 52 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m page\u001b[33m.\u001b[39mdialogMessage\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoMatch(\u001b[35m/Số điện thoại không hợp lệ/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 53 |\u001b[39m       expect(submittedBody)\u001b[33m.\u001b[39mtoBeUndefined()\u001b[33m;\u001b[39m\n \u001b[90m 54 |\u001b[39m     }\n \u001b[90m 55 |\u001b[39m   })\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js",
+                        "column": 70,
+                        "line": 52
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatch\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/Số điện thoại không hợp lệ/\u001b[39m\nReceived string:  \u001b[31m\"Cập nhật thành công!\"\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n\n \u001b[90m 50 |\u001b[39m       \u001b[36mawait\u001b[39m expect(name)\u001b[33m.\u001b[39mtoBeFocused()\u001b[33m;\u001b[39m\n \u001b[90m 51 |\u001b[39m     } \u001b[36melse\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 52 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m page\u001b[33m.\u001b[39mdialogMessage\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoMatch(\u001b[35m/Số điện thoại không hợp lệ/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 53 |\u001b[39m       expect(submittedBody)\u001b[33m.\u001b[39mtoBeUndefined()\u001b[33m;\u001b[39m\n \u001b[90m 54 |\u001b[39m     }\n \u001b[90m 55 |\u001b[39m   })\u001b[33m;\u001b[39m\n\u001b[2m    at D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js:52:70\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T04:58:28.478Z",
+                  "annotations": [
+                    {
+                      "type": "Feature",
+                      "description": "FR-04 Profile"
+                    },
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-17T04:58:28.628Z"
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr04-profile-FR04-04-profile-data-rejected-webkit\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr04-profile-FR04-04-profile-data-rejected-webkit\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr04-profile-FR04-04-profile-data-rejected-webkit\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js",
+                    "column": 70,
+                    "line": 52
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0e6771bc2a4279a53f9e-a739b084d9de51d16e0d",
+          "file": "fr04-profile.spec.js",
+          "line": 22,
+          "column": 3
+        },
+        {
+          "title": "FR04-05: profile data rejected",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Feature",
+                  "description": "FR-04 Profile"
+                },
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-17T04:58:37.266Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4904,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T04:58:37.118Z",
+                  "annotations": [
+                    {
+                      "type": "Feature",
+                      "description": "FR-04 Profile"
+                    },
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-17T04:58:37.266Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e6771bc2a4279a53f9e-9dad471df7495f4215e3",
+          "file": "fr04-profile.spec.js",
+          "line": 22,
+          "column": 3
+        },
+        {
+          "title": "FR04-06: profile data rejected",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Feature",
+                  "description": "FR-04 Profile"
+                },
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-17T04:58:42.375Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4342,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T04:58:42.354Z",
+                  "annotations": [
+                    {
+                      "type": "Feature",
+                      "description": "FR-04 Profile"
+                    },
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-17T04:58:42.375Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e6771bc2a4279a53f9e-05edec1cd414fddf1aef",
+          "file": "fr04-profile.spec.js",
+          "line": 22,
+          "column": 3
+        },
+        {
+          "title": "FR04-07: profile data rejected",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Feature",
+                  "description": "FR-04 Profile"
+                },
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-17T04:58:46.760Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3602,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T04:58:46.739Z",
+                  "annotations": [
+                    {
+                      "type": "Feature",
+                      "description": "FR-04 Profile"
+                    },
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-17T04:58:46.760Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e6771bc2a4279a53f9e-2300dd4df9ed42d8d54b",
+          "file": "fr04-profile.spec.js",
+          "line": 22,
+          "column": 3
+        },
+        {
+          "title": "FR04-08: profile data rejected",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Feature",
+                  "description": "FR-04 Profile"
+                },
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-17T04:58:50.394Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2501,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T04:58:50.375Z",
+                  "annotations": [
+                    {
+                      "type": "Feature",
+                      "description": "FR-04 Profile"
+                    },
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-17T04:58:50.394Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e6771bc2a4279a53f9e-7f75a97986b0b64cddd0",
+          "file": "fr04-profile.spec.js",
+          "line": 22,
+          "column": 3
+        },
+        {
+          "title": "FR04-09: profile data rejected",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Feature",
+                  "description": "FR-04 Profile"
+                },
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-17T04:58:52.933Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1352,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T04:58:52.911Z",
+                  "annotations": [
+                    {
+                      "type": "Feature",
+                      "description": "FR-04 Profile"
+                    },
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-17T04:58:52.933Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e6771bc2a4279a53f9e-3d4941cd7d040ada74ba",
+          "file": "fr04-profile.spec.js",
+          "line": 22,
+          "column": 3
+        },
+        {
+          "title": "FR04-10: profile data rejected",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Feature",
+                  "description": "FR-04 Profile"
+                },
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-17T04:58:54.306Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1078,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T04:58:54.297Z",
+                  "annotations": [
+                    {
+                      "type": "Feature",
+                      "description": "FR-04 Profile"
+                    },
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-17T04:58:54.306Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e6771bc2a4279a53f9e-87334cc15a44c6db9644",
+          "file": "fr04-profile.spec.js",
+          "line": 22,
+          "column": 3
+        },
+        {
+          "title": "FR04-11: profile data accepted",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Feature",
+                  "description": "FR-04 Profile"
+                },
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-17T04:58:55.401Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2271,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n    at D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js:45:65",
+                    "location": {
+                      "file": "D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js",
+                      "column": 65,
+                      "line": 45
+                    },
+                    "snippet": " \u001b[90m 43 |\u001b[39m     \u001b[36mconst\u001b[39m validAccordingToSpec \u001b[33m=\u001b[39m row\u001b[33m.\u001b[39mvalid \u001b[33m&&\u001b[39m row\u001b[33m.\u001b[39mphone\u001b[33m.\u001b[39mstartsWith(\u001b[32m'0'\u001b[39m) \u001b[33m&&\u001b[39m \u001b[35m/^0\\d{9,10}$/\u001b[39m\u001b[33m.\u001b[39mtest(row\u001b[33m.\u001b[39mphone)\u001b[33m;\u001b[39m\n \u001b[90m 44 |\u001b[39m     \u001b[36mif\u001b[39m (validAccordingToSpec) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 45 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m submittedBody\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBeTruthy()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 46 |\u001b[39m       expect(submittedBody)\u001b[33m.\u001b[39mtoMatchObject({ name\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39mname\u001b[33m,\u001b[39m phone\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39mphone\u001b[33m,\u001b[39m shipping_address\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39maddress })\u001b[33m;\u001b[39m\n \u001b[90m 47 |\u001b[39m       expect(submittedBody)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoHaveProperty(\u001b[32m'email'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 48 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'heading'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Lịch sử đơn hàng'\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js",
+                        "column": 65,
+                        "line": 45
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n\n \u001b[90m 43 |\u001b[39m     \u001b[36mconst\u001b[39m validAccordingToSpec \u001b[33m=\u001b[39m row\u001b[33m.\u001b[39mvalid \u001b[33m&&\u001b[39m row\u001b[33m.\u001b[39mphone\u001b[33m.\u001b[39mstartsWith(\u001b[32m'0'\u001b[39m) \u001b[33m&&\u001b[39m \u001b[35m/^0\\d{9,10}$/\u001b[39m\u001b[33m.\u001b[39mtest(row\u001b[33m.\u001b[39mphone)\u001b[33m;\u001b[39m\n \u001b[90m 44 |\u001b[39m     \u001b[36mif\u001b[39m (validAccordingToSpec) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 45 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m submittedBody\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBeTruthy()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 46 |\u001b[39m       expect(submittedBody)\u001b[33m.\u001b[39mtoMatchObject({ name\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39mname\u001b[33m,\u001b[39m phone\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39mphone\u001b[33m,\u001b[39m shipping_address\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39maddress })\u001b[33m;\u001b[39m\n \u001b[90m 47 |\u001b[39m       expect(submittedBody)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoHaveProperty(\u001b[32m'email'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 48 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'heading'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Lịch sử đơn hàng'\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[2m    at D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js:45:65\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T04:58:55.394Z",
+                  "annotations": [
+                    {
+                      "type": "Feature",
+                      "description": "FR-04 Profile"
+                    },
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-17T04:58:55.401Z"
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr04-profile-FR04-11-profile-data-accepted-webkit\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr04-profile-FR04-11-profile-data-accepted-webkit\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr04-profile-FR04-11-profile-data-accepted-webkit\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js",
+                    "column": 65,
+                    "line": 45
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0e6771bc2a4279a53f9e-c907649e6e03ed4fb9e4",
+          "file": "fr04-profile.spec.js",
+          "line": 22,
+          "column": 3
+        },
+        {
+          "title": "FR04-12: profile data accepted",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Feature",
+                  "description": "FR-04 Profile"
+                },
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-17T04:58:58.669Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2977,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n    at D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js:45:65",
+                    "location": {
+                      "file": "D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js",
+                      "column": 65,
+                      "line": 45
+                    },
+                    "snippet": " \u001b[90m 43 |\u001b[39m     \u001b[36mconst\u001b[39m validAccordingToSpec \u001b[33m=\u001b[39m row\u001b[33m.\u001b[39mvalid \u001b[33m&&\u001b[39m row\u001b[33m.\u001b[39mphone\u001b[33m.\u001b[39mstartsWith(\u001b[32m'0'\u001b[39m) \u001b[33m&&\u001b[39m \u001b[35m/^0\\d{9,10}$/\u001b[39m\u001b[33m.\u001b[39mtest(row\u001b[33m.\u001b[39mphone)\u001b[33m;\u001b[39m\n \u001b[90m 44 |\u001b[39m     \u001b[36mif\u001b[39m (validAccordingToSpec) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 45 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m submittedBody\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBeTruthy()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 46 |\u001b[39m       expect(submittedBody)\u001b[33m.\u001b[39mtoMatchObject({ name\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39mname\u001b[33m,\u001b[39m phone\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39mphone\u001b[33m,\u001b[39m shipping_address\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39maddress })\u001b[33m;\u001b[39m\n \u001b[90m 47 |\u001b[39m       expect(submittedBody)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoHaveProperty(\u001b[32m'email'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 48 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'heading'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Lịch sử đơn hàng'\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js",
+                        "column": 65,
+                        "line": 45
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n\n \u001b[90m 43 |\u001b[39m     \u001b[36mconst\u001b[39m validAccordingToSpec \u001b[33m=\u001b[39m row\u001b[33m.\u001b[39mvalid \u001b[33m&&\u001b[39m row\u001b[33m.\u001b[39mphone\u001b[33m.\u001b[39mstartsWith(\u001b[32m'0'\u001b[39m) \u001b[33m&&\u001b[39m \u001b[35m/^0\\d{9,10}$/\u001b[39m\u001b[33m.\u001b[39mtest(row\u001b[33m.\u001b[39mphone)\u001b[33m;\u001b[39m\n \u001b[90m 44 |\u001b[39m     \u001b[36mif\u001b[39m (validAccordingToSpec) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 45 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m submittedBody\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBeTruthy()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 46 |\u001b[39m       expect(submittedBody)\u001b[33m.\u001b[39mtoMatchObject({ name\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39mname\u001b[33m,\u001b[39m phone\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39mphone\u001b[33m,\u001b[39m shipping_address\u001b[33m:\u001b[39m row\u001b[33m.\u001b[39maddress })\u001b[33m;\u001b[39m\n \u001b[90m 47 |\u001b[39m       expect(submittedBody)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoHaveProperty(\u001b[32m'email'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 48 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'heading'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Lịch sử đơn hàng'\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[2m    at D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js:45:65\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T04:58:58.574Z",
+                  "annotations": [
+                    {
+                      "type": "Feature",
+                      "description": "FR-04 Profile"
+                    },
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-17T04:58:58.669Z"
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr04-profile-FR04-12-profile-data-accepted-webkit\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr04-profile-FR04-12-profile-data-accepted-webkit\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\eshop-sut-homework\\automation\\test-results\\fr04-profile-FR04-12-profile-data-accepted-webkit\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\eshop-sut-homework\\automation\\tests\\fr04-profile.spec.js",
+                    "column": 65,
+                    "line": 45
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0e6771bc2a4279a53f9e-54f6fb009e6b5f711c32",
+          "file": "fr04-profile.spec.js",
+          "line": 22,
+          "column": 3
+        },
+        {
+          "title": "FR04-13: unauthenticated user is asked to sign in",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "Feature",
+                  "description": "FR-04 Profile"
+                },
+                {
+                  "type": "Run by: 23120102",
+                  "description": "2026-11-17T04:59:02.633Z"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 771,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T04:59:02.547Z",
+                  "annotations": [
+                    {
+                      "type": "Feature",
+                      "description": "FR-04 Profile"
+                    },
+                    {
+                      "type": "Run by: 23120102",
+                      "description": "2026-11-17T04:59:02.633Z"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e6771bc2a4279a53f9e-6e08e21ddeaba68829ec",
+          "file": "fr04-profile.spec.js",
+          "line": 58,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-17T04:57:49.601Z",
+    "duration": 74544.57999999999,
+    "expected": 7,
+    "skipped": 0,
+    "unexpected": 6,
+    "flaky": 0
+  }
+}

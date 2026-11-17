@@ -1,0 +1,14 @@
+[
+  {"id":"FR04-01","name":"Nguyen An","phone":"0912345678","address":"12 Nguyen Hue","valid":true},
+  {"id":"FR04-02","name":"Tran Binh","phone":"0123456789","address":"District 1","valid":true},
+  {"id":"FR04-03","name":"Le Chi","phone":"01234567890","address":"District 3","valid":true},
+  {"id":"FR04-04","name":"Pham Dung","phone":"1234567890","address":"Da Nang","valid":false},
+  {"id":"FR04-05","name":"Hoang Giang","phone":"091234567","address":"Can Tho","valid":false},
+  {"id":"FR04-06","name":"Vo Hanh","phone":"091234567890","address":"Hue","valid":false},
+  {"id":"FR04-07","name":"Dang Khoa","phone":"09A2345678","address":"Hai Phong","valid":false},
+  {"id":"FR04-08","name":"Bui Lan","phone":"09 12345678","address":"Ha Noi","valid":false},
+  {"id":"FR04-09","name":"Do Minh","phone":"","address":"Ho Chi Minh City","valid":false},
+  {"id":"FR04-10","name":"","phone":"0912345678","address":"12 Le Loi","valid":false},
+  {"id":"FR04-11","name":"Nguyen Oanh","phone":"0987654321","address":"","valid":true},
+  {"id":"FR04-12","name":"Test <b>name</b>","phone":"0900000000","address":"Address with #5","valid":true}
+]
