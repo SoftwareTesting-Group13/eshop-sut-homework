@@ -21,7 +21,7 @@
     "maxFailures": 0,
     "metadata": {
       "runBy": "Run by: 23120102",
-      "generatedAt": "2026-11-16T05:15:36.375Z",
+      "generatedAt": "2026-11-17T05:03:30.049Z",
       "actualWorkers": 1
     },
     "preserveOutput": "always",
@@ -32,7 +32,7 @@
         "retries": 0,
         "metadata": {
           "runBy": "Run by: 23120102",
-          "generatedAt": "2026-11-16T05:15:36.375Z",
+          "generatedAt": "2026-11-17T05:03:30.049Z",
           "actualWorkers": 1
         },
         "id": "chromium",
@@ -50,7 +50,7 @@
         "retries": 0,
         "metadata": {
           "runBy": "Run by: 23120102",
-          "generatedAt": "2026-11-16T05:15:36.375Z",
+          "generatedAt": "2026-11-17T05:03:30.049Z",
           "actualWorkers": 1
         },
         "id": "firefox",
@@ -68,7 +68,7 @@
         "retries": 0,
         "metadata": {
           "runBy": "Run by: 23120102",
-          "generatedAt": "2026-11-16T05:15:36.375Z",
+          "generatedAt": "2026-11-17T05:03:30.049Z",
           "actualWorkers": 1
         },
         "id": "webkit",
@@ -90,7 +90,7 @@
         "retries": 0,
         "metadata": {
           "runBy": "Run by: 23120102",
-          "generatedAt": "2026-11-16T05:15:36.375Z",
+          "generatedAt": "2026-11-17T05:03:30.049Z",
           "actualWorkers": 1
         },
         "name": "webkit",
@@ -154,8 +154,12 @@
               "timeout": 30000,
               "annotations": [
                 {
+                  "type": "Feature",
+                  "description": "FR-15 Product CRUD"
+                },
+                {
                   "type": "Run by: 23120102",
-                  "description": "2026-11-16T05:15:48.420Z"
+                  "description": "2026-11-17T05:03:35.638Z"
                 }
               ],
               "expectedStatus": "passed",
@@ -166,16 +170,20 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 6744,
+                  "duration": 1938,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T05:15:48.331Z",
+                  "startTime": "2026-11-17T05:03:35.590Z",
                   "annotations": [
                     {
+                      "type": "Feature",
+                      "description": "FR-15 Product CRUD"
+                    },
+                    {
                       "type": "Run by: 23120102",
-                      "description": "2026-11-16T05:15:48.420Z"
+                      "description": "2026-11-17T05:03:35.638Z"
                     }
                   ],
                   "attachments": []
@@ -186,7 +194,7 @@
           ],
           "id": "e51565c31903be008585-debc94283b47af455675",
           "file": "fr15-products.spec.js",
-          "line": 26,
+          "line": 29,
           "column": 3
         },
         {
@@ -198,8 +206,12 @@
               "timeout": 30000,
               "annotations": [
                 {
+                  "type": "Feature",
+                  "description": "FR-15 Product CRUD"
+                },
+                {
                   "type": "Run by: 23120102",
-                  "description": "2026-11-16T05:15:55.426Z"
+                  "description": "2026-11-17T05:03:37.704Z"
                 }
               ],
               "expectedStatus": "passed",
@@ -210,16 +222,20 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1708,
+                  "duration": 1578,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T05:15:55.400Z",
+                  "startTime": "2026-11-17T05:03:37.691Z",
                   "annotations": [
                     {
+                      "type": "Feature",
+                      "description": "FR-15 Product CRUD"
+                    },
+                    {
                       "type": "Run by: 23120102",
-                      "description": "2026-11-16T05:15:55.426Z"
+                      "description": "2026-11-17T05:03:37.704Z"
                     }
                   ],
                   "attachments": []
@@ -230,7 +246,7 @@
           ],
           "id": "e51565c31903be008585-ac63445f3a1ee2f6f479",
           "file": "fr15-products.spec.js",
-          "line": 26,
+          "line": 29,
           "column": 3
         },
         {
@@ -242,8 +258,12 @@
               "timeout": 30000,
               "annotations": [
                 {
+                  "type": "Feature",
+                  "description": "FR-15 Product CRUD"
+                },
+                {
                   "type": "Run by: 23120102",
-                  "description": "2026-11-16T05:15:57.170Z"
+                  "description": "2026-11-17T05:03:39.307Z"
                 }
               ],
               "expectedStatus": "passed",
@@ -254,16 +274,20 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1846,
+                  "duration": 1421,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T05:15:57.146Z",
+                  "startTime": "2026-11-17T05:03:39.294Z",
                   "annotations": [
                     {
+                      "type": "Feature",
+                      "description": "FR-15 Product CRUD"
+                    },
+                    {
                       "type": "Run by: 23120102",
-                      "description": "2026-11-16T05:15:57.170Z"
+                      "description": "2026-11-17T05:03:39.307Z"
                     }
                   ],
                   "attachments": []
@@ -274,7 +298,7 @@
           ],
           "id": "e51565c31903be008585-6a193e78473047e5c395",
           "file": "fr15-products.spec.js",
-          "line": 26,
+          "line": 29,
           "column": 3
         },
         {
@@ -286,8 +310,12 @@
               "timeout": 30000,
               "annotations": [
                 {
+                  "type": "Feature",
+                  "description": "FR-15 Product CRUD"
+                },
+                {
                   "type": "Run by: 23120102",
-                  "description": "2026-11-16T05:15:59.054Z"
+                  "description": "2026-11-17T05:03:40.757Z"
                 }
               ],
               "expectedStatus": "passed",
@@ -298,35 +326,39 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "failed",
-                  "duration": 4252,
+                  "duration": 2226,
                   "error": {
                     "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate",
-                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:42:59",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:52:59",
                     "location": {
                       "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
                       "column": 59,
-                      "line": 42
+                      "line": 52
                     },
-                    "snippet": " \u001b[90m 40 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 41 |\u001b[39m     } \u001b[36melse\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 42 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 43 |\u001b[39m     }\n \u001b[90m 44 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 45 |\u001b[39m }"
+                    "snippet": " \u001b[90m 50 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 51 |\u001b[39m     } \u001b[36melse\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 52 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 53 |\u001b[39m     }\n \u001b[90m 54 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 55 |\u001b[39m }"
                   },
                   "errors": [
                     {
                       "location": {
                         "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
                         "column": 59,
-                        "line": 42
+                        "line": 52
                       },
-                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n\n  40 |       await expect.poll(() => created, { timeout: 1000 }).toBe(false);\n  41 |     } else {\n> 42 |       await expect.poll(() => created, { timeout: 1000 }).toBe(false);\n     |                                                           ^\n  43 |     }\n  44 |   });\n  45 | }\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:42:59"
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n\n \u001b[90m 50 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 51 |\u001b[39m     } \u001b[36melse\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 52 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 53 |\u001b[39m     }\n \u001b[90m 54 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 55 |\u001b[39m }\n\u001b[2m    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:52:59\u001b[22m"
                     }
                   ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T05:15:59.037Z",
+                  "startTime": "2026-11-17T05:03:40.741Z",
                   "annotations": [
                     {
+                      "type": "Feature",
+                      "description": "FR-15 Product CRUD"
+                    },
+                    {
                       "type": "Run by: 23120102",
-                      "description": "2026-11-16T05:15:59.054Z"
+                      "description": "2026-11-17T05:03:40.757Z"
                     }
                   ],
                   "attachments": [
@@ -349,7 +381,7 @@
                   "errorLocation": {
                     "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
                     "column": 59,
-                    "line": 42
+                    "line": 52
                   }
                 }
               ],
@@ -358,7 +390,7 @@
           ],
           "id": "e51565c31903be008585-fb1e6e89b608fe3d24f4",
           "file": "fr15-products.spec.js",
-          "line": 26,
+          "line": 29,
           "column": 3
         },
         {
@@ -370,8 +402,12 @@
               "timeout": 30000,
               "annotations": [
                 {
+                  "type": "Feature",
+                  "description": "FR-15 Product CRUD"
+                },
+                {
                   "type": "Run by: 23120102",
-                  "description": "2026-11-16T05:16:05.248Z"
+                  "description": "2026-11-17T05:03:43.760Z"
                 }
               ],
               "expectedStatus": "passed",
@@ -382,16 +418,20 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3717,
+                  "duration": 1428,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T05:16:05.116Z",
+                  "startTime": "2026-11-17T05:03:43.725Z",
                   "annotations": [
                     {
+                      "type": "Feature",
+                      "description": "FR-15 Product CRUD"
+                    },
+                    {
                       "type": "Run by: 23120102",
-                      "description": "2026-11-16T05:16:05.248Z"
+                      "description": "2026-11-17T05:03:43.760Z"
                     }
                   ],
                   "attachments": []
@@ -402,7 +442,7 @@
           ],
           "id": "e51565c31903be008585-a22b765af9d68229dac4",
           "file": "fr15-products.spec.js",
-          "line": 26,
+          "line": 29,
           "column": 3
         },
         {
@@ -414,8 +454,12 @@
               "timeout": 30000,
               "annotations": [
                 {
+                  "type": "Feature",
+                  "description": "FR-15 Product CRUD"
+                },
+                {
                   "type": "Run by: 23120102",
-                  "description": "2026-11-16T05:16:09.236Z"
+                  "description": "2026-11-17T05:03:45.265Z"
                 }
               ],
               "expectedStatus": "passed",
@@ -426,35 +470,39 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "failed",
-                  "duration": 8245,
+                  "duration": 2117,
                   "error": {
                     "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate",
-                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:40:59",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:50:59",
                     "location": {
                       "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
                       "column": 59,
-                      "line": 40
+                      "line": 50
                     },
-                    "snippet": " \u001b[90m 38 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Tên sản phẩm'\u001b[39m))\u001b[33m.\u001b[39mtoBeFocused()\u001b[33m;\u001b[39m\n \u001b[90m 39 |\u001b[39m     } \u001b[36melse\u001b[39m \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mrow\u001b[33m.\u001b[39mprice \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m(row\u001b[33m.\u001b[39mprice) \u001b[33m<=\u001b[39m \u001b[35m0\u001b[39m \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m\u001b[33m.\u001b[39misNaN(\u001b[33mNumber\u001b[39m(row\u001b[33m.\u001b[39mprice))) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m     } \u001b[36melse\u001b[39m {\n \u001b[90m 42 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 43 |\u001b[39m     }"
+                    "snippet": " \u001b[90m 48 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Tên sản phẩm'\u001b[39m))\u001b[33m.\u001b[39mtoBeFocused()\u001b[33m;\u001b[39m\n \u001b[90m 49 |\u001b[39m     } \u001b[36melse\u001b[39m \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mrow\u001b[33m.\u001b[39mprice \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m(row\u001b[33m.\u001b[39mprice) \u001b[33m<=\u001b[39m \u001b[35m0\u001b[39m \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m\u001b[33m.\u001b[39misNaN(\u001b[33mNumber\u001b[39m(row\u001b[33m.\u001b[39mprice))) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 50 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 51 |\u001b[39m     } \u001b[36melse\u001b[39m {\n \u001b[90m 52 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 53 |\u001b[39m     }"
                   },
                   "errors": [
                     {
                       "location": {
                         "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
                         "column": 59,
-                        "line": 40
+                        "line": 50
                       },
-                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n\n  38 |       await expect(page.getByPlaceholder('Tên sản phẩm')).toBeFocused();\n  39 |     } else if (!row.price || Number(row.price) <= 0 || Number.isNaN(Number(row.price))) {\n> 40 |       await expect.poll(() => created, { timeout: 1000 }).toBe(false);\n     |                                                           ^\n  41 |     } else {\n  42 |       await expect.poll(() => created, { timeout: 1000 }).toBe(false);\n  43 |     }\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:40:59"
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n\n \u001b[90m 48 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Tên sản phẩm'\u001b[39m))\u001b[33m.\u001b[39mtoBeFocused()\u001b[33m;\u001b[39m\n \u001b[90m 49 |\u001b[39m     } \u001b[36melse\u001b[39m \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mrow\u001b[33m.\u001b[39mprice \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m(row\u001b[33m.\u001b[39mprice) \u001b[33m<=\u001b[39m \u001b[35m0\u001b[39m \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m\u001b[33m.\u001b[39misNaN(\u001b[33mNumber\u001b[39m(row\u001b[33m.\u001b[39mprice))) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 50 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 51 |\u001b[39m     } \u001b[36melse\u001b[39m {\n \u001b[90m 52 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 53 |\u001b[39m     }\n\u001b[2m    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:50:59\u001b[22m"
                     }
                   ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T05:16:09.204Z",
+                  "startTime": "2026-11-17T05:03:45.257Z",
                   "annotations": [
                     {
+                      "type": "Feature",
+                      "description": "FR-15 Product CRUD"
+                    },
+                    {
                       "type": "Run by: 23120102",
-                      "description": "2026-11-16T05:16:09.236Z"
+                      "description": "2026-11-17T05:03:45.265Z"
                     }
                   ],
                   "attachments": [
@@ -477,7 +525,7 @@
                   "errorLocation": {
                     "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
                     "column": 59,
-                    "line": 40
+                    "line": 50
                   }
                 }
               ],
@@ -486,7 +534,7 @@
           ],
           "id": "e51565c31903be008585-42619a097a6ff280a36d",
           "file": "fr15-products.spec.js",
-          "line": 26,
+          "line": 29,
           "column": 3
         },
         {
@@ -498,8 +546,12 @@
               "timeout": 30000,
               "annotations": [
                 {
+                  "type": "Feature",
+                  "description": "FR-15 Product CRUD"
+                },
+                {
                   "type": "Run by: 23120102",
-                  "description": "2026-11-16T05:16:19.371Z"
+                  "description": "2026-11-17T05:03:48.121Z"
                 }
               ],
               "expectedStatus": "passed",
@@ -510,35 +562,39 @@
                   "workerIndex": 2,
                   "parallelIndex": 0,
                   "status": "failed",
-                  "duration": 8179,
+                  "duration": 2297,
                   "error": {
                     "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate",
-                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:40:59",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:50:59",
                     "location": {
                       "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
                       "column": 59,
-                      "line": 40
+                      "line": 50
                     },
-                    "snippet": " \u001b[90m 38 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Tên sản phẩm'\u001b[39m))\u001b[33m.\u001b[39mtoBeFocused()\u001b[33m;\u001b[39m\n \u001b[90m 39 |\u001b[39m     } \u001b[36melse\u001b[39m \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mrow\u001b[33m.\u001b[39mprice \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m(row\u001b[33m.\u001b[39mprice) \u001b[33m<=\u001b[39m \u001b[35m0\u001b[39m \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m\u001b[33m.\u001b[39misNaN(\u001b[33mNumber\u001b[39m(row\u001b[33m.\u001b[39mprice))) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m     } \u001b[36melse\u001b[39m {\n \u001b[90m 42 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 43 |\u001b[39m     }"
+                    "snippet": " \u001b[90m 48 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Tên sản phẩm'\u001b[39m))\u001b[33m.\u001b[39mtoBeFocused()\u001b[33m;\u001b[39m\n \u001b[90m 49 |\u001b[39m     } \u001b[36melse\u001b[39m \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mrow\u001b[33m.\u001b[39mprice \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m(row\u001b[33m.\u001b[39mprice) \u001b[33m<=\u001b[39m \u001b[35m0\u001b[39m \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m\u001b[33m.\u001b[39misNaN(\u001b[33mNumber\u001b[39m(row\u001b[33m.\u001b[39mprice))) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 50 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 51 |\u001b[39m     } \u001b[36melse\u001b[39m {\n \u001b[90m 52 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 53 |\u001b[39m     }"
                   },
                   "errors": [
                     {
                       "location": {
                         "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
                         "column": 59,
-                        "line": 40
+                        "line": 50
                       },
-                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n\n  38 |       await expect(page.getByPlaceholder('Tên sản phẩm')).toBeFocused();\n  39 |     } else if (!row.price || Number(row.price) <= 0 || Number.isNaN(Number(row.price))) {\n> 40 |       await expect.poll(() => created, { timeout: 1000 }).toBe(false);\n     |                                                           ^\n  41 |     } else {\n  42 |       await expect.poll(() => created, { timeout: 1000 }).toBe(false);\n  43 |     }\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:40:59"
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n\n \u001b[90m 48 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Tên sản phẩm'\u001b[39m))\u001b[33m.\u001b[39mtoBeFocused()\u001b[33m;\u001b[39m\n \u001b[90m 49 |\u001b[39m     } \u001b[36melse\u001b[39m \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mrow\u001b[33m.\u001b[39mprice \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m(row\u001b[33m.\u001b[39mprice) \u001b[33m<=\u001b[39m \u001b[35m0\u001b[39m \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m\u001b[33m.\u001b[39misNaN(\u001b[33mNumber\u001b[39m(row\u001b[33m.\u001b[39mprice))) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 50 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 51 |\u001b[39m     } \u001b[36melse\u001b[39m {\n \u001b[90m 52 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 53 |\u001b[39m     }\n\u001b[2m    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:50:59\u001b[22m"
                     }
                   ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T05:16:19.312Z",
+                  "startTime": "2026-11-17T05:03:48.087Z",
                   "annotations": [
                     {
+                      "type": "Feature",
+                      "description": "FR-15 Product CRUD"
+                    },
+                    {
                       "type": "Run by: 23120102",
-                      "description": "2026-11-16T05:16:19.371Z"
+                      "description": "2026-11-17T05:03:48.121Z"
                     }
                   ],
                   "attachments": [
@@ -561,7 +617,7 @@
                   "errorLocation": {
                     "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
                     "column": 59,
-                    "line": 40
+                    "line": 50
                   }
                 }
               ],
@@ -570,7 +626,7 @@
           ],
           "id": "e51565c31903be008585-d6c70aec3b880eea0979",
           "file": "fr15-products.spec.js",
-          "line": 26,
+          "line": 29,
           "column": 3
         },
         {
@@ -582,8 +638,12 @@
               "timeout": 30000,
               "annotations": [
                 {
+                  "type": "Feature",
+                  "description": "FR-15 Product CRUD"
+                },
+                {
                   "type": "Run by: 23120102",
-                  "description": "2026-11-16T05:16:29.881Z"
+                  "description": "2026-11-17T05:03:51.342Z"
                 }
               ],
               "expectedStatus": "passed",
@@ -594,35 +654,39 @@
                   "workerIndex": 3,
                   "parallelIndex": 0,
                   "status": "failed",
-                  "duration": 7803,
+                  "duration": 2412,
                   "error": {
                     "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate",
-                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:40:59",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:50:59",
                     "location": {
                       "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
                       "column": 59,
-                      "line": 40
+                      "line": 50
                     },
-                    "snippet": " \u001b[90m 38 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Tên sản phẩm'\u001b[39m))\u001b[33m.\u001b[39mtoBeFocused()\u001b[33m;\u001b[39m\n \u001b[90m 39 |\u001b[39m     } \u001b[36melse\u001b[39m \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mrow\u001b[33m.\u001b[39mprice \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m(row\u001b[33m.\u001b[39mprice) \u001b[33m<=\u001b[39m \u001b[35m0\u001b[39m \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m\u001b[33m.\u001b[39misNaN(\u001b[33mNumber\u001b[39m(row\u001b[33m.\u001b[39mprice))) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m     } \u001b[36melse\u001b[39m {\n \u001b[90m 42 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 43 |\u001b[39m     }"
+                    "snippet": " \u001b[90m 48 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Tên sản phẩm'\u001b[39m))\u001b[33m.\u001b[39mtoBeFocused()\u001b[33m;\u001b[39m\n \u001b[90m 49 |\u001b[39m     } \u001b[36melse\u001b[39m \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mrow\u001b[33m.\u001b[39mprice \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m(row\u001b[33m.\u001b[39mprice) \u001b[33m<=\u001b[39m \u001b[35m0\u001b[39m \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m\u001b[33m.\u001b[39misNaN(\u001b[33mNumber\u001b[39m(row\u001b[33m.\u001b[39mprice))) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 50 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 51 |\u001b[39m     } \u001b[36melse\u001b[39m {\n \u001b[90m 52 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 53 |\u001b[39m     }"
                   },
                   "errors": [
                     {
                       "location": {
                         "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
                         "column": 59,
-                        "line": 40
+                        "line": 50
                       },
-                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n\n  38 |       await expect(page.getByPlaceholder('Tên sản phẩm')).toBeFocused();\n  39 |     } else if (!row.price || Number(row.price) <= 0 || Number.isNaN(Number(row.price))) {\n> 40 |       await expect.poll(() => created, { timeout: 1000 }).toBe(false);\n     |                                                           ^\n  41 |     } else {\n  42 |       await expect.poll(() => created, { timeout: 1000 }).toBe(false);\n  43 |     }\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:40:59"
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n\n \u001b[90m 48 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Tên sản phẩm'\u001b[39m))\u001b[33m.\u001b[39mtoBeFocused()\u001b[33m;\u001b[39m\n \u001b[90m 49 |\u001b[39m     } \u001b[36melse\u001b[39m \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mrow\u001b[33m.\u001b[39mprice \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m(row\u001b[33m.\u001b[39mprice) \u001b[33m<=\u001b[39m \u001b[35m0\u001b[39m \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m\u001b[33m.\u001b[39misNaN(\u001b[33mNumber\u001b[39m(row\u001b[33m.\u001b[39mprice))) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 50 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 51 |\u001b[39m     } \u001b[36melse\u001b[39m {\n \u001b[90m 52 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 53 |\u001b[39m     }\n\u001b[2m    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:50:59\u001b[22m"
                     }
                   ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T05:16:29.772Z",
+                  "startTime": "2026-11-17T05:03:51.285Z",
                   "annotations": [
                     {
+                      "type": "Feature",
+                      "description": "FR-15 Product CRUD"
+                    },
+                    {
                       "type": "Run by: 23120102",
-                      "description": "2026-11-16T05:16:29.881Z"
+                      "description": "2026-11-17T05:03:51.342Z"
                     }
                   ],
                   "attachments": [
@@ -645,7 +709,7 @@
                   "errorLocation": {
                     "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
                     "column": 59,
-                    "line": 40
+                    "line": 50
                   }
                 }
               ],
@@ -654,7 +718,7 @@
           ],
           "id": "e51565c31903be008585-3a09e96fb4bfcd25fb36",
           "file": "fr15-products.spec.js",
-          "line": 26,
+          "line": 29,
           "column": 3
         },
         {
@@ -666,8 +730,12 @@
               "timeout": 30000,
               "annotations": [
                 {
+                  "type": "Feature",
+                  "description": "FR-15 Product CRUD"
+                },
+                {
                   "type": "Run by: 23120102",
-                  "description": "2026-11-16T05:16:40.054Z"
+                  "description": "2026-11-17T05:03:54.652Z"
                 }
               ],
               "expectedStatus": "passed",
@@ -678,16 +746,20 @@
                   "workerIndex": 4,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3435,
+                  "duration": 1338,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T05:16:39.942Z",
+                  "startTime": "2026-11-17T05:03:54.605Z",
                   "annotations": [
                     {
+                      "type": "Feature",
+                      "description": "FR-15 Product CRUD"
+                    },
+                    {
                       "type": "Run by: 23120102",
-                      "description": "2026-11-16T05:16:40.054Z"
+                      "description": "2026-11-17T05:03:54.652Z"
                     }
                   ],
                   "attachments": []
@@ -698,7 +770,7 @@
           ],
           "id": "e51565c31903be008585-eef270f7444f7869c2e9",
           "file": "fr15-products.spec.js",
-          "line": 26,
+          "line": 29,
           "column": 3
         },
         {
@@ -710,8 +782,12 @@
               "timeout": 30000,
               "annotations": [
                 {
+                  "type": "Feature",
+                  "description": "FR-15 Product CRUD"
+                },
+                {
                   "type": "Run by: 23120102",
-                  "description": "2026-11-16T05:16:43.743Z"
+                  "description": "2026-11-17T05:03:56.072Z"
                 }
               ],
               "expectedStatus": "passed",
@@ -722,35 +798,39 @@
                   "workerIndex": 4,
                   "parallelIndex": 0,
                   "status": "failed",
-                  "duration": 4427,
+                  "duration": 2214,
                   "error": {
                     "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate",
-                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:42:59",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:52:59",
                     "location": {
                       "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
                       "column": 59,
-                      "line": 42
+                      "line": 52
                     },
-                    "snippet": " \u001b[90m 40 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 41 |\u001b[39m     } \u001b[36melse\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 42 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 43 |\u001b[39m     }\n \u001b[90m 44 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 45 |\u001b[39m }"
+                    "snippet": " \u001b[90m 50 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 51 |\u001b[39m     } \u001b[36melse\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 52 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 53 |\u001b[39m     }\n \u001b[90m 54 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 55 |\u001b[39m }"
                   },
                   "errors": [
                     {
                       "location": {
                         "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
                         "column": 59,
-                        "line": 42
+                        "line": 52
                       },
-                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n\n  40 |       await expect.poll(() => created, { timeout: 1000 }).toBe(false);\n  41 |     } else {\n> 42 |       await expect.poll(() => created, { timeout: 1000 }).toBe(false);\n     |                                                           ^\n  43 |     }\n  44 |   });\n  45 | }\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:42:59"
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\nCall Log:\n- Timeout 1000ms exceeded while waiting on the predicate\n\n \u001b[90m 50 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 51 |\u001b[39m     } \u001b[36melse\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 52 |\u001b[39m       \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m created\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 53 |\u001b[39m     }\n \u001b[90m 54 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 55 |\u001b[39m }\n\u001b[2m    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:52:59\u001b[22m"
                     }
                   ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T05:16:43.702Z",
+                  "startTime": "2026-11-17T05:03:56.063Z",
                   "annotations": [
                     {
+                      "type": "Feature",
+                      "description": "FR-15 Product CRUD"
+                    },
+                    {
                       "type": "Run by: 23120102",
-                      "description": "2026-11-16T05:16:43.743Z"
+                      "description": "2026-11-17T05:03:56.072Z"
                     }
                   ],
                   "attachments": [
@@ -773,7 +853,7 @@
                   "errorLocation": {
                     "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
                     "column": 59,
-                    "line": 42
+                    "line": 52
                   }
                 }
               ],
@@ -782,7 +862,7 @@
           ],
           "id": "e51565c31903be008585-62df2913ac2964860b4a",
           "file": "fr15-products.spec.js",
-          "line": 26,
+          "line": 29,
           "column": 3
         },
         {
@@ -794,8 +874,12 @@
               "timeout": 30000,
               "annotations": [
                 {
+                  "type": "Feature",
+                  "description": "FR-15 Product CRUD"
+                },
+                {
                   "type": "Run by: 23120102",
-                  "description": "2026-11-16T05:16:50.165Z"
+                  "description": "2026-11-17T05:03:59.019Z"
                 }
               ],
               "expectedStatus": "passed",
@@ -806,16 +890,20 @@
                   "workerIndex": 5,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3059,
+                  "duration": 1445,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T05:16:50.034Z",
+                  "startTime": "2026-11-17T05:03:58.982Z",
                   "annotations": [
                     {
+                      "type": "Feature",
+                      "description": "FR-15 Product CRUD"
+                    },
+                    {
                       "type": "Run by: 23120102",
-                      "description": "2026-11-16T05:16:50.165Z"
+                      "description": "2026-11-17T05:03:59.019Z"
                     }
                   ],
                   "attachments": []
@@ -826,7 +914,7 @@
           ],
           "id": "e51565c31903be008585-86919b014f5386cf0aca",
           "file": "fr15-products.spec.js",
-          "line": 26,
+          "line": 29,
           "column": 3
         },
         {
@@ -838,8 +926,12 @@
               "timeout": 30000,
               "annotations": [
                 {
+                  "type": "Feature",
+                  "description": "FR-15 Product CRUD"
+                },
+                {
                   "type": "Run by: 23120102",
-                  "description": "2026-11-16T05:16:53.396Z"
+                  "description": "2026-11-17T05:04:00.542Z"
                 }
               ],
               "expectedStatus": "passed",
@@ -850,16 +942,20 @@
                   "workerIndex": 5,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3161,
+                  "duration": 1120,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T05:16:53.367Z",
+                  "startTime": "2026-11-17T05:04:00.528Z",
                   "annotations": [
                     {
+                      "type": "Feature",
+                      "description": "FR-15 Product CRUD"
+                    },
+                    {
                       "type": "Run by: 23120102",
-                      "description": "2026-11-16T05:16:53.396Z"
+                      "description": "2026-11-17T05:04:00.542Z"
                     }
                   ],
                   "attachments": []
@@ -870,7 +966,7 @@
           ],
           "id": "e51565c31903be008585-8e5ea073964161cffcd4",
           "file": "fr15-products.spec.js",
-          "line": 26,
+          "line": 29,
           "column": 3
         },
         {
@@ -882,8 +978,12 @@
               "timeout": 30000,
               "annotations": [
                 {
+                  "type": "Feature",
+                  "description": "FR-15 Product CRUD"
+                },
+                {
                   "type": "Run by: 23120102",
-                  "description": "2026-11-16T05:16:56.613Z"
+                  "description": "2026-11-17T05:04:01.687Z"
                 }
               ],
               "expectedStatus": "passed",
@@ -894,35 +994,39 @@
                   "workerIndex": 5,
                   "parallelIndex": 0,
                   "status": "failed",
-                  "duration": 4969,
+                  "duration": 1558,
                   "error": {
-                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('row').filter({ hasText: 'Existing Beta' })\nExpected substring: \u001b[32m\"Existing Beta\"\u001b[39m\nTimeout: 1000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" getByRole('row').filter({ hasText: 'Existing Beta' }) with timeout 1000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('row').filter({ hasText: 'Existing Beta' })\u001b[22m\n",
-                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('row').filter({ hasText: 'Existing Beta' })\nExpected substring: \u001b[32m\"Existing Beta\"\u001b[39m\nTimeout: 1000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" getByRole('row').filter({ hasText: 'Existing Beta' }) with timeout 1000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('row').filter({ hasText: 'Existing Beta' })\u001b[22m\n\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:53:76",
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('row').filter({ hasText: 'Updated Alpha' })\nExpected substring: \u001b[32m\"Updated Alpha\"\u001b[39m\nError: strict mode violation: getByRole('row').filter({ hasText: 'Updated Alpha' }) resolved to 2 elements:\n    1) <tr class=\"border-b\">…</tr> aka getByRole('row', { name: 'Updated Alpha Updated Alpha 10000 ₫ Sửa Xóa' })\n    2) <tr class=\"border-b\">…</tr> aka getByRole('row', { name: 'Updated Alpha Updated Alpha 20000 ₫ Sửa Xóa' })\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" getByRole('row').filter({ hasText: 'Updated Alpha' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('row').filter({ hasText: 'Updated Alpha' })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('row').filter({ hasText: 'Updated Alpha' })\nExpected substring: \u001b[32m\"Updated Alpha\"\u001b[39m\nError: strict mode violation: getByRole('row').filter({ hasText: 'Updated Alpha' }) resolved to 2 elements:\n    1) <tr class=\"border-b\">…</tr> aka getByRole('row', { name: 'Updated Alpha Updated Alpha 10000 ₫ Sửa Xóa' })\n    2) <tr class=\"border-b\">…</tr> aka getByRole('row', { name: 'Updated Alpha Updated Alpha 20000 ₫ Sửa Xóa' })\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" getByRole('row').filter({ hasText: 'Updated Alpha' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('row').filter({ hasText: 'Updated Alpha' })\u001b[22m\n\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:63:76",
                     "location": {
                       "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
                       "column": 76,
-                      "line": 53
+                      "line": 63
                     },
-                    "snippet": " \u001b[90m 51 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Tên sản phẩm'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m'Updated Alpha'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 52 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Lưu sản phẩm'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 53 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'row'\u001b[39m)\u001b[33m.\u001b[39mfilter({ hasText\u001b[33m:\u001b[39m \u001b[32m'Existing Beta'\u001b[39m }))\u001b[33m.\u001b[39mtoContainText(\u001b[32m'Existing Beta'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 54 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 55 |\u001b[39m"
+                    "snippet": " \u001b[90m 61 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Tên sản phẩm'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m'Updated Alpha'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 62 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Lưu sản phẩm'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 63 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'row'\u001b[39m)\u001b[33m.\u001b[39mfilter({ hasText\u001b[33m:\u001b[39m \u001b[32m'Updated Alpha'\u001b[39m }))\u001b[33m.\u001b[39mtoContainText(\u001b[32m'Updated Alpha'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 64 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'row'\u001b[39m)\u001b[33m.\u001b[39mfilter({ hasText\u001b[33m:\u001b[39m \u001b[32m'Existing Beta'\u001b[39m }))\u001b[33m.\u001b[39mtoContainText(\u001b[32m'Existing Beta'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 65 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 66 |\u001b[39m"
                   },
                   "errors": [
                     {
                       "location": {
                         "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
                         "column": 76,
-                        "line": 53
+                        "line": 63
                       },
-                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('row').filter({ hasText: 'Existing Beta' })\nExpected substring: \u001b[32m\"Existing Beta\"\u001b[39m\nTimeout: 1000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" getByRole('row').filter({ hasText: 'Existing Beta' }) with timeout 1000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('row').filter({ hasText: 'Existing Beta' })\u001b[22m\n\n\n  51 |   await page.getByPlaceholder('Tên sản phẩm').fill('Updated Alpha');\n  52 |   await page.getByRole('button', { name: 'Lưu sản phẩm' }).click();\n> 53 |   await expect(page.getByRole('row').filter({ hasText: 'Existing Beta' })).toContainText('Existing Beta', { timeout: 1000 });\n     |                                                                            ^\n  54 | });\n  55 |\n    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:53:76"
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('row').filter({ hasText: 'Updated Alpha' })\nExpected substring: \u001b[32m\"Updated Alpha\"\u001b[39m\nError: strict mode violation: getByRole('row').filter({ hasText: 'Updated Alpha' }) resolved to 2 elements:\n    1) <tr class=\"border-b\">…</tr> aka getByRole('row', { name: 'Updated Alpha Updated Alpha 10000 ₫ Sửa Xóa' })\n    2) <tr class=\"border-b\">…</tr> aka getByRole('row', { name: 'Updated Alpha Updated Alpha 20000 ₫ Sửa Xóa' })\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" getByRole('row').filter({ hasText: 'Updated Alpha' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('row').filter({ hasText: 'Updated Alpha' })\u001b[22m\n\n\n \u001b[90m 61 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Tên sản phẩm'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m'Updated Alpha'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 62 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Lưu sản phẩm'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 63 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'row'\u001b[39m)\u001b[33m.\u001b[39mfilter({ hasText\u001b[33m:\u001b[39m \u001b[32m'Updated Alpha'\u001b[39m }))\u001b[33m.\u001b[39mtoContainText(\u001b[32m'Updated Alpha'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 64 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'row'\u001b[39m)\u001b[33m.\u001b[39mfilter({ hasText\u001b[33m:\u001b[39m \u001b[32m'Existing Beta'\u001b[39m }))\u001b[33m.\u001b[39mtoContainText(\u001b[32m'Existing Beta'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 65 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 66 |\u001b[39m\n\u001b[2m    at D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js:63:76\u001b[22m"
                     }
                   ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T05:16:56.586Z",
+                  "startTime": "2026-11-17T05:04:01.675Z",
                   "annotations": [
                     {
+                      "type": "Feature",
+                      "description": "FR-15 Product CRUD"
+                    },
+                    {
                       "type": "Run by: 23120102",
-                      "description": "2026-11-16T05:16:56.613Z"
+                      "description": "2026-11-17T05:04:01.687Z"
                     }
                   ],
                   "attachments": [
@@ -945,7 +1049,7 @@
                   "errorLocation": {
                     "file": "D:\\eshop-sut-homework\\automation\\tests\\fr15-products.spec.js",
                     "column": 76,
-                    "line": 53
+                    "line": 63
                   }
                 }
               ],
@@ -954,7 +1058,7 @@
           ],
           "id": "e51565c31903be008585-32b08e7a4516cf38511f",
           "file": "fr15-products.spec.js",
-          "line": 47,
+          "line": 57,
           "column": 1
         }
       ]
@@ -962,8 +1066,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-11-16T05:15:36.403Z",
-    "duration": 87105.671,
+    "startTime": "2026-11-17T05:03:30.054Z",
+    "duration": 33885.935,
     "expected": 7,
     "skipped": 0,
     "unexpected": 6,
