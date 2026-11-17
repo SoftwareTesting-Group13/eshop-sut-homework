@@ -1,3 +1,5 @@
 node_modules/
 test-results/
 reports/all/
+output/pdf/*-preview.png
+.pdf-tmp/
