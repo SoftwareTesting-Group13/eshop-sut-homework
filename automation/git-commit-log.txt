@@ -1,9 +1,0 @@
-HW04 commits that change Playwright test scripts (newest first)
-911e37e test(hw04): verify product create payloads
-490cb47 test(hw04): label feature-specific report annotations
-fd12d9c test(hw04): assert both sides of product edit isolation
-e8c80d9 test(hw04): add FR-15 product CRUD cases
-401bda1 test(hw04): check coupon normalization and arithmetic
-834868f test(hw04): add FR-09 coupon scenarios
-649fe7c test(hw04): verify profile update payload
-85dd2d4 test(hw04): add FR-04 profile suite
