@@ -8,11 +8,12 @@ I use AI tools for the following tasks,
 - Sinh khung project Playwright TS Bước 2 (skeleton + 1 ca mẫu A-FR02-01, data JSON).
 - Triển full FR02: data 16 ca + spec 16 ca, chạy 3 browser, fix A-FR02-10.
 - Triển full FR10: data 16 ca + spec 16 ca, chạy 3 browser, fix dialog race + false-pass/race ở A-FR10-06/08, 3 bug reports + issues #131-133.
+- Triển full FR17: data 18 ca + spec 18 ca (unique code/run + try/finally cleanup), chạy 3 browser, DB dọn NULL rows, 3 bug reports + issues #134-136.
 - Soạn AI Audit Report này.
 
 > **Phạm vi lập báo cáo (capture notes):**
 > - Bằng chứng khả dụng: conversation hiện tại (không có transcript export riêng).
-> - Số interaction đã ghi: 6
+> - Số interaction đã ghi: 7
 > - Công cụ AI đã dùng (theo bằng chứng): OpenCode agent — Muse Spark 1.3 Contributor
 > - Trường còn thiếu: không
 > - Công cụ/phiên được nhắc tới nhưng không kiểm tra được: không
@@ -189,6 +190,31 @@ OK, giờ qua FR10 nhé, làm tương tự như nãy giờ với FR02
 
 ---
 
+## Interaction AI-007
+
+- **AI tool:** OpenCode agent — Muse Spark 1.3 Contributor (provider `opencode-go`)
+- **Date and time:** 2026-11-17/18 (UTC+7) — thời điểm conversation
+- **Source:** Conversation hiện tại
+- **Task:** Triển full FR17 HW04: data JSON 18 ca + spec 18 ca, restart admin frontend, chạy 3 browser, fix leak NULL rows (thiếu try/finally ở A-FR17-16), dọn DB, 3 bug reports + screenshots + issues, commit tách nhỏ.
+
+### Your prompt
+
+```text
+Tiếp tục tương tự với FR17 nha
+```
+
+### The AI output
+
+- `homework/hw04/ncuong/data/fr17-coupons.json` — 18 rows (schema full coupon + `__OMITTED__` cho ca thiếu key).
+- `homework/hw04/ncuong/tests/fr17-coupons.spec.ts` — 18 test `@fr17`: 15 UI admin (fill theo placeholder, `selectOption`, `waitForResponse` POST/DELETE, dialog `waitForEvent` cho duplicate, assert row/count/seeds) + 3 API; `uniqueCode()` chống đụng 3 browser; `try/finally` + `deleteByCode` dọn dữ liệu (trừ A-FR17-16 thiếu finally — đã fix sau khi phát hiện 3 NULL rows sót trong DB).
+- SUT: admin frontend chết 2 lần (môi trường dọn process idle) — dựng lại bằng `nohup` + guard curl trước mỗi run; phát hiện `--reporter=line` ghi đè reporter config làm mất HTML report.
+- Kết quả cả 3 browser giống hệt: **18 ca, 10 pass / 8 fail** (chromium 11.1s, firefox 23.0s, webkit 15.9s). 8 fail đều là thiếu validation backend (`server.js:457-481` INSERT trực tiếp, `database.js` không CHECK): 04 blank, 05/06/08/12 biên số, 16 NULL code, 17 `save10`, 18 type/abc-date/max-0 (kèm quirk `|| 1`).
+- 3 report `reports/html/fr17-{chromium,firefox,webkit}/` verify metadata `Run by: 23120223` + ISO.
+- `features/FR17/bugs/`: 3 bug reports + 4 evidence screenshots + `issues/publish.sh` → issues #134, #135, #136.
+- Commit tách nhỏ, đã push: `4f11ea6` (spec+data), `b669ef1` (reports), `8cf823b` (bugs), `425b637` (link issues).
+
+---
+
 ## Optional audit table
 
 | (1) Prompt + Công cụ | (2) Output AI | (3) Verdict | (4) Lý do | (5) Bản SV sửa |
@@ -199,3 +225,4 @@ OK, giờ qua FR10 nhé, làm tương tự như nãy giờ với FR02
 | OpenCode Muse Spark 1.3 Contributor · 2026-11-17 · Bước 2 skeleton + 1 ca mẫu JSON | `playwright.config.ts`, `tests/fr02-login.spec.ts`, `tests/helpers/json-loader.ts`, `data/*.json` | (SV tự điền sau review) | (SV tự điền) | (SV tự điền) |
 | OpenCode Muse Spark 1.3 Contributor · 2026-11-17 · full FR02 16 ca + 3 browser | `data/fr02-login.json`, `tests/fr02-login.spec.ts`, `reports/html/fr02-{chromium,firefox,webkit}/` (11 pass / 5 fail mỗi browser) | (SV tự điền sau review) | (SV tự điền) | (SV tự điền) |
 | OpenCode Muse Spark 1.3 Contributor · 2026-11-17/18 · full FR10 16 ca + 3 browser | `data/fr10-orders.json`, `tests/fr10-orders.spec.ts`, `reports/html/fr10-{chromium,firefox,webkit}/` (13 pass / 3 fail mỗi browser) | (SV tự điền sau review) | (SV tự điền) | (SV tự điền) |
+| OpenCode Muse Spark 1.3 Contributor · 2026-11-17/18 · full FR17 18 ca + 3 browser | `data/fr17-coupons.json`, `tests/fr17-coupons.spec.ts`, `reports/html/fr17-{chromium,firefox,webkit}/` (10 pass / 8 fail mỗi browser) | (SV tự điền sau review) | (SV tự điền) | (SV tự điền) |
