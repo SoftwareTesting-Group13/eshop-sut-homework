@@ -12,4 +12,4 @@
 - **Evidence:** `screenshots/bug-fr02-input-types.png`
   ![inputs](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw04/ncuong/features/FR02/bugs/screenshots/bug-fr02-input-types.png)
 - **Playwright report:** `reports/html/fr02-{chromium,firefox,webkit}/` — A-FR02-05, A-FR02-14 FAIL.
-- **GitHub Issue:** <điền sau khi chạy `issues/publish.sh`>
+- **GitHub Issue:** https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/129

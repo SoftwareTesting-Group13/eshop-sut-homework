@@ -12,4 +12,4 @@
 - **Evidence:** `screenshots/bug-fr02-counter.png` (sau 2 lần sai: attempts=4, đã khóa)
   ![counter](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw04/ncuong/features/FR02/bugs/screenshots/bug-fr02-counter.png)
 - **Playwright report:** `reports/html/fr02-{chromium,firefox,webkit}/` — A-FR02-03, A-FR02-09 FAIL.
-- **GitHub Issue:** <điền sau khi chạy `issues/publish.sh`>
+- **GitHub Issue:** https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/128

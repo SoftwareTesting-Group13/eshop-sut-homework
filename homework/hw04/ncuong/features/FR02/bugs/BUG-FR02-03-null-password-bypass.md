@@ -12,4 +12,4 @@
 - **Evidence:** `screenshots/bug-fr02-null-bypass.png` (status 200, `token_issued: true`)
   ![null-bypass](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw04/ncuong/features/FR02/bugs/screenshots/bug-fr02-null-bypass.png)
 - **Playwright report:** `reports/html/fr02-{chromium,firefox,webkit}/` — A-FR02-16 FAIL.
-- **GitHub Issue:** <điền sau khi chạy `issues/publish.sh`>
+- **GitHub Issue:** https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/130
