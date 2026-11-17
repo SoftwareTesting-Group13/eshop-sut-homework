@@ -1,13 +1,20 @@
 [
-  {
-    "id": "A-FR17-01",
-    "type": "positive",
-    "code": "FR17-01",
-    "discountType": "percent",
-    "discountValue": 10,
-    "minOrderAmount": 100000,
-    "expiredAt": "2099-12-31",
-    "maxUsesPerUser": 1,
-    "expected": "created"
-  }
+  { "id": "A-FR17-01", "type": "positive", "code": "FR17-01", "discountType": "percent", "discountValue": 10, "minOrderAmount": 100000, "expiredAt": "2099-12-31", "maxUsesPerUser": 1, "expected": "created" },
+  { "id": "A-FR17-02", "type": "positive", "code": "FR17-02", "discountType": "fixed", "discountValue": 50000, "minOrderAmount": 200000, "expiredAt": "2099-12-31", "maxUsesPerUser": 1, "expected": "created" },
+  { "id": "A-FR17-03", "type": "negative", "code": "SAVE10", "discountType": "percent", "discountValue": 10, "minOrderAmount": 100000, "expiredAt": "2099-12-31", "maxUsesPerUser": 1, "expected": "rejected-duplicate" },
+  { "id": "A-FR17-04", "type": "edge", "code": "   ", "discountType": "percent", "discountValue": 10, "minOrderAmount": 100000, "expiredAt": "2099-12-31", "maxUsesPerUser": 1, "expected": "rejected-blank" },
+  { "id": "A-FR17-05", "type": "negative", "code": "FR17-05", "discountType": "percent", "discountValue": 0, "minOrderAmount": 100000, "expiredAt": "2099-12-31", "maxUsesPerUser": 1, "expected": "rejected" },
+  { "id": "A-FR17-06", "type": "negative", "code": "FR17-06", "discountType": "percent", "discountValue": -1, "minOrderAmount": 100000, "expiredAt": "2099-12-31", "maxUsesPerUser": 1, "expected": "rejected" },
+  { "id": "A-FR17-07", "type": "positive", "code": "FR17-07", "discountType": "percent", "discountValue": 1, "minOrderAmount": 100000, "expiredAt": "2099-12-31", "maxUsesPerUser": 1, "expected": "created" },
+  { "id": "A-FR17-08", "type": "negative", "code": "FR17-08", "discountType": "percent", "discountValue": 150, "minOrderAmount": 100000, "expiredAt": "2099-12-31", "maxUsesPerUser": 1, "expected": "rejected" },
+  { "id": "A-FR17-09", "type": "positive", "code": "FR17-09", "discountType": "percent", "discountValue": 10, "minOrderAmount": 100000, "expiredAt": "2020-01-01", "maxUsesPerUser": 1, "expected": "created-expired" },
+  { "id": "A-FR17-10", "type": "positive", "code": "FR17-10", "discountType": "percent", "discountValue": 10, "minOrderAmount": 0, "expiredAt": "2099-12-31", "maxUsesPerUser": 1, "expected": "created" },
+  { "id": "A-FR17-11", "type": "positive", "code": "FR17-11", "discountType": "percent", "discountValue": 10, "minOrderAmount": 1, "expiredAt": "2099-12-31", "maxUsesPerUser": 1, "expected": "created" },
+  { "id": "A-FR17-12", "type": "negative", "code": "FR17-12", "discountType": "percent", "discountValue": 10, "minOrderAmount": -1, "expiredAt": "2099-12-31", "maxUsesPerUser": 1, "expected": "rejected" },
+  { "id": "A-FR17-13", "type": "positive", "code": "FR17-13", "discountType": "percent", "discountValue": 10, "minOrderAmount": 100000, "expiredAt": "2099-12-31", "maxUsesPerUser": 2, "expected": "created" },
+  { "id": "A-FR17-14", "type": "positive", "code": "FR17-14", "discountType": "percent", "discountValue": 10, "minOrderAmount": 100000, "expiredAt": "2099-12-31", "maxUsesPerUser": 1, "expected": "listed" },
+  { "id": "A-FR17-15", "type": "positive", "code": "FR17-15", "discountType": "percent", "discountValue": 10, "minOrderAmount": 100000, "expiredAt": "2099-12-31", "maxUsesPerUser": 1, "expected": "deleted" },
+  { "id": "A-FR17-16", "type": "negative", "code": "__OMITTED__", "discountType": "percent", "discountValue": 10, "minOrderAmount": 100000, "expiredAt": "2099-12-31", "maxUsesPerUser": 1, "expected": "rejected" },
+  { "id": "A-FR17-17", "type": "negative", "code": "save10", "discountType": "percent", "discountValue": 10, "minOrderAmount": 100000, "expiredAt": "2099-12-31", "maxUsesPerUser": 1, "expected": "rejected" },
+  { "id": "A-FR17-18", "type": "negative", "code": "FR17-18", "discountType": "percentage", "discountValue": "abc", "minOrderAmount": 100000, "expiredAt": "not-a-date", "maxUsesPerUser": 0, "expected": "rejected" }
 ]
