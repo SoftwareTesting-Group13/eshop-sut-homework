@@ -14,4 +14,4 @@
   API tạo `save10` trả 200 + id:
   ![api](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw04/ncuong/features/FR17/bugs/screenshots/bug-fr17-code-case-api.png)
 - **Playwright report:** `reports/html/fr17-{chromium,firefox,webkit}/` — A-FR17-04/16/17 FAIL.
-- **GitHub Issue:** <điền sau khi chạy `issues/publish.sh`>
+- **GitHub Issue:** https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/135

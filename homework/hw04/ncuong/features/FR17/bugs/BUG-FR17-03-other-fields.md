@@ -12,4 +12,4 @@
 - **Evidence:** cả 4 đều 200 và giá trị rác được lưu:
   ![api](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw04/ncuong/features/FR17/bugs/screenshots/bug-fr17-other-fields-api.png)
 - **Playwright report:** `reports/html/fr17-{chromium,firefox,webkit}/` — A-FR17-18 FAIL (4/4 soft asserts).
-- **GitHub Issue:** <điền sau khi chạy `issues/publish.sh`>
+- **GitHub Issue:** https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/136

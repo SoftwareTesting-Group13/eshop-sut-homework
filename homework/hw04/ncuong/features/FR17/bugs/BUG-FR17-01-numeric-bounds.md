@@ -12,4 +12,4 @@
 - **Evidence:** bảng admin có row `-1%`:
   ![table](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw04/ncuong/features/FR17/bugs/screenshots/bug-fr17-numeric-bounds.png)
 - **Playwright report:** `reports/html/fr17-{chromium,firefox,webkit}/` — A-FR17-05/06/08/12 FAIL.
-- **GitHub Issue:** <điền sau khi chạy `issues/publish.sh`>
+- **GitHub Issue:** https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/134
