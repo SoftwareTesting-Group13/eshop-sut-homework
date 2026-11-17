@@ -21,7 +21,7 @@
     "maxFailures": 0,
     "metadata": {
       "runBy": "Run by: 23120102",
-      "generatedAt": "2026-11-16T05:06:54.084Z",
+      "generatedAt": "2026-11-17T04:59:05.578Z",
       "actualWorkers": 1
     },
     "preserveOutput": "always",
@@ -32,7 +32,7 @@
         "retries": 0,
         "metadata": {
           "runBy": "Run by: 23120102",
-          "generatedAt": "2026-11-16T05:06:54.084Z",
+          "generatedAt": "2026-11-17T04:59:05.578Z",
           "actualWorkers": 1
         },
         "id": "chromium",
@@ -50,7 +50,7 @@
         "retries": 0,
         "metadata": {
           "runBy": "Run by: 23120102",
-          "generatedAt": "2026-11-16T05:06:54.084Z",
+          "generatedAt": "2026-11-17T04:59:05.578Z",
           "actualWorkers": 1
         },
         "id": "firefox",
@@ -68,7 +68,7 @@
         "retries": 0,
         "metadata": {
           "runBy": "Run by: 23120102",
-          "generatedAt": "2026-11-16T05:06:54.084Z",
+          "generatedAt": "2026-11-17T04:59:05.578Z",
           "actualWorkers": 1
         },
         "id": "webkit",
@@ -90,7 +90,7 @@
         "retries": 0,
         "metadata": {
           "runBy": "Run by: 23120102",
-          "generatedAt": "2026-11-16T05:06:54.084Z",
+          "generatedAt": "2026-11-17T04:59:05.578Z",
           "actualWorkers": 1
         },
         "name": "chromium",
@@ -154,8 +154,12 @@
               "timeout": 30000,
               "annotations": [
                 {
+                  "type": "Feature",
+                  "description": "FR-09 Coupons"
+                },
+                {
                   "type": "Run by: 23120102",
-                  "description": "2026-11-16T05:07:06.985Z"
+                  "description": "2026-11-17T04:59:19.435Z"
                 }
               ],
               "expectedStatus": "passed",
@@ -166,16 +170,20 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2935,
+                  "duration": 2474,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T05:07:06.883Z",
+                  "startTime": "2026-11-17T04:59:19.257Z",
                   "annotations": [
                     {
+                      "type": "Feature",
+                      "description": "FR-09 Coupons"
+                    },
+                    {
                       "type": "Run by: 23120102",
-                      "description": "2026-11-16T05:07:06.985Z"
+                      "description": "2026-11-17T04:59:19.435Z"
                     }
                   ],
                   "attachments": []
@@ -186,7 +194,7 @@
           ],
           "id": "4763e1e72eb39689c491-3d59c01305b1e33c098e",
           "file": "fr09-coupon.spec.js",
-          "line": 21,
+          "line": 24,
           "column": 3
         },
         {
@@ -198,8 +206,12 @@
               "timeout": 30000,
               "annotations": [
                 {
+                  "type": "Feature",
+                  "description": "FR-09 Coupons"
+                },
+                {
                   "type": "Run by: 23120102",
-                  "description": "2026-11-16T05:07:10.406Z"
+                  "description": "2026-11-17T04:59:22.341Z"
                 }
               ],
               "expectedStatus": "passed",
@@ -210,16 +222,20 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2564,
+                  "duration": 1865,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T05:07:10.351Z",
+                  "startTime": "2026-11-17T04:59:22.293Z",
                   "annotations": [
                     {
+                      "type": "Feature",
+                      "description": "FR-09 Coupons"
+                    },
+                    {
                       "type": "Run by: 23120102",
-                      "description": "2026-11-16T05:07:10.406Z"
+                      "description": "2026-11-17T04:59:22.341Z"
                     }
                   ],
                   "attachments": []
@@ -230,7 +246,7 @@
           ],
           "id": "4763e1e72eb39689c491-4e1a9bcd58252e31befa",
           "file": "fr09-coupon.spec.js",
-          "line": 21,
+          "line": 24,
           "column": 3
         },
         {
@@ -242,8 +258,12 @@
               "timeout": 30000,
               "annotations": [
                 {
+                  "type": "Feature",
+                  "description": "FR-09 Coupons"
+                },
+                {
                   "type": "Run by: 23120102",
-                  "description": "2026-11-16T05:07:13.021Z"
+                  "description": "2026-11-17T04:59:24.242Z"
                 }
               ],
               "expectedStatus": "passed",
@@ -254,16 +274,20 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2479,
+                  "duration": 1876,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T05:07:12.997Z",
+                  "startTime": "2026-11-17T04:59:24.220Z",
                   "annotations": [
                     {
+                      "type": "Feature",
+                      "description": "FR-09 Coupons"
+                    },
+                    {
                       "type": "Run by: 23120102",
-                      "description": "2026-11-16T05:07:13.021Z"
+                      "description": "2026-11-17T04:59:24.242Z"
                     }
                   ],
                   "attachments": []
@@ -274,7 +298,7 @@
           ],
           "id": "4763e1e72eb39689c491-de97d248831116444f59",
           "file": "fr09-coupon.spec.js",
-          "line": 21,
+          "line": 24,
           "column": 3
         },
         {
@@ -286,8 +310,12 @@
               "timeout": 30000,
               "annotations": [
                 {
+                  "type": "Feature",
+                  "description": "FR-09 Coupons"
+                },
+                {
                   "type": "Run by: 23120102",
-                  "description": "2026-11-16T05:07:15.569Z"
+                  "description": "2026-11-17T04:59:26.167Z"
                 }
               ],
               "expectedStatus": "passed",
@@ -298,16 +326,20 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2140,
+                  "duration": 1751,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T05:07:15.538Z",
+                  "startTime": "2026-11-17T04:59:26.140Z",
                   "annotations": [
                     {
+                      "type": "Feature",
+                      "description": "FR-09 Coupons"
+                    },
+                    {
                       "type": "Run by: 23120102",
-                      "description": "2026-11-16T05:07:15.569Z"
+                      "description": "2026-11-17T04:59:26.167Z"
                     }
                   ],
                   "attachments": []
@@ -318,7 +350,7 @@
           ],
           "id": "4763e1e72eb39689c491-52bf2722a8b1abeddea8",
           "file": "fr09-coupon.spec.js",
-          "line": 21,
+          "line": 24,
           "column": 3
         },
         {
@@ -330,8 +362,12 @@
               "timeout": 30000,
               "annotations": [
                 {
+                  "type": "Feature",
+                  "description": "FR-09 Coupons"
+                },
+                {
                   "type": "Run by: 23120102",
-                  "description": "2026-11-16T05:07:17.766Z"
+                  "description": "2026-11-17T04:59:27.953Z"
                 }
               ],
               "expectedStatus": "passed",
@@ -342,16 +378,20 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1894,
+                  "duration": 1495,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T05:07:17.743Z",
+                  "startTime": "2026-11-17T04:59:27.936Z",
                   "annotations": [
                     {
+                      "type": "Feature",
+                      "description": "FR-09 Coupons"
+                    },
+                    {
                       "type": "Run by: 23120102",
-                      "description": "2026-11-16T05:07:17.766Z"
+                      "description": "2026-11-17T04:59:27.953Z"
                     }
                   ],
                   "attachments": []
@@ -362,7 +402,7 @@
           ],
           "id": "4763e1e72eb39689c491-d4849c0729b952775d55",
           "file": "fr09-coupon.spec.js",
-          "line": 21,
+          "line": 24,
           "column": 3
         },
         {
@@ -374,8 +414,12 @@
               "timeout": 30000,
               "annotations": [
                 {
+                  "type": "Feature",
+                  "description": "FR-09 Coupons"
+                },
+                {
                   "type": "Run by: 23120102",
-                  "description": "2026-11-16T05:07:19.730Z"
+                  "description": "2026-11-17T04:59:29.496Z"
                 }
               ],
               "expectedStatus": "passed",
@@ -386,16 +430,20 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2361,
+                  "duration": 2478,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T05:07:19.690Z",
+                  "startTime": "2026-11-17T04:59:29.474Z",
                   "annotations": [
                     {
+                      "type": "Feature",
+                      "description": "FR-09 Coupons"
+                    },
+                    {
                       "type": "Run by: 23120102",
-                      "description": "2026-11-16T05:07:19.730Z"
+                      "description": "2026-11-17T04:59:29.496Z"
                     }
                   ],
                   "attachments": []
@@ -406,7 +454,7 @@
           ],
           "id": "4763e1e72eb39689c491-e15c12ae4afdcd6967ed",
           "file": "fr09-coupon.spec.js",
-          "line": 21,
+          "line": 24,
           "column": 3
         },
         {
@@ -418,8 +466,12 @@
               "timeout": 30000,
               "annotations": [
                 {
+                  "type": "Feature",
+                  "description": "FR-09 Coupons"
+                },
+                {
                   "type": "Run by: 23120102",
-                  "description": "2026-11-16T05:07:22.146Z"
+                  "description": "2026-11-17T04:59:32.018Z"
                 }
               ],
               "expectedStatus": "passed",
@@ -430,16 +482,20 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2672,
+                  "duration": 2114,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T05:07:22.120Z",
+                  "startTime": "2026-11-17T04:59:31.998Z",
                   "annotations": [
                     {
+                      "type": "Feature",
+                      "description": "FR-09 Coupons"
+                    },
+                    {
                       "type": "Run by: 23120102",
-                      "description": "2026-11-16T05:07:22.146Z"
+                      "description": "2026-11-17T04:59:32.018Z"
                     }
                   ],
                   "attachments": []
@@ -450,7 +506,7 @@
           ],
           "id": "4763e1e72eb39689c491-d0146fddab639fa1eae9",
           "file": "fr09-coupon.spec.js",
-          "line": 21,
+          "line": 24,
           "column": 3
         },
         {
@@ -462,8 +518,12 @@
               "timeout": 30000,
               "annotations": [
                 {
+                  "type": "Feature",
+                  "description": "FR-09 Coupons"
+                },
+                {
                   "type": "Run by: 23120102",
-                  "description": "2026-11-16T05:07:24.863Z"
+                  "description": "2026-11-17T04:59:34.215Z"
                 }
               ],
               "expectedStatus": "passed",
@@ -474,16 +534,20 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2339,
+                  "duration": 1282,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T05:07:24.843Z",
+                  "startTime": "2026-11-17T04:59:34.170Z",
                   "annotations": [
                     {
+                      "type": "Feature",
+                      "description": "FR-09 Coupons"
+                    },
+                    {
                       "type": "Run by: 23120102",
-                      "description": "2026-11-16T05:07:24.863Z"
+                      "description": "2026-11-17T04:59:34.215Z"
                     }
                   ],
                   "attachments": []
@@ -494,7 +558,7 @@
           ],
           "id": "4763e1e72eb39689c491-13333fcf11895e03a7fc",
           "file": "fr09-coupon.spec.js",
-          "line": 21,
+          "line": 24,
           "column": 3
         },
         {
@@ -506,8 +570,12 @@
               "timeout": 30000,
               "annotations": [
                 {
+                  "type": "Feature",
+                  "description": "FR-09 Coupons"
+                },
+                {
                   "type": "Run by: 23120102",
-                  "description": "2026-11-16T05:07:27.254Z"
+                  "description": "2026-11-17T04:59:35.530Z"
                 }
               ],
               "expectedStatus": "passed",
@@ -518,16 +586,20 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3124,
+                  "duration": 1869,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T05:07:27.234Z",
+                  "startTime": "2026-11-17T04:59:35.511Z",
                   "annotations": [
                     {
+                      "type": "Feature",
+                      "description": "FR-09 Coupons"
+                    },
+                    {
                       "type": "Run by: 23120102",
-                      "description": "2026-11-16T05:07:27.254Z"
+                      "description": "2026-11-17T04:59:35.530Z"
                     }
                   ],
                   "attachments": []
@@ -538,7 +610,7 @@
           ],
           "id": "4763e1e72eb39689c491-8d40fc120676b4cd8998",
           "file": "fr09-coupon.spec.js",
-          "line": 21,
+          "line": 24,
           "column": 3
         },
         {
@@ -550,8 +622,12 @@
               "timeout": 30000,
               "annotations": [
                 {
+                  "type": "Feature",
+                  "description": "FR-09 Coupons"
+                },
+                {
                   "type": "Run by: 23120102",
-                  "description": "2026-11-16T05:07:30.463Z"
+                  "description": "2026-11-17T04:59:37.439Z"
                 }
               ],
               "expectedStatus": "passed",
@@ -562,16 +638,20 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2504,
+                  "duration": 1988,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T05:07:30.422Z",
+                  "startTime": "2026-11-17T04:59:37.417Z",
                   "annotations": [
                     {
+                      "type": "Feature",
+                      "description": "FR-09 Coupons"
+                    },
+                    {
                       "type": "Run by: 23120102",
-                      "description": "2026-11-16T05:07:30.463Z"
+                      "description": "2026-11-17T04:59:37.439Z"
                     }
                   ],
                   "attachments": []
@@ -582,7 +662,7 @@
           ],
           "id": "4763e1e72eb39689c491-7d6a7134baaaf7608d4c",
           "file": "fr09-coupon.spec.js",
-          "line": 21,
+          "line": 24,
           "column": 3
         },
         {
@@ -594,8 +674,12 @@
               "timeout": 30000,
               "annotations": [
                 {
+                  "type": "Feature",
+                  "description": "FR-09 Coupons"
+                },
+                {
                   "type": "Run by: 23120102",
-                  "description": "2026-11-16T05:07:33.057Z"
+                  "description": "2026-11-17T04:59:39.541Z"
                 }
               ],
               "expectedStatus": "passed",
@@ -606,16 +690,20 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2551,
+                  "duration": 1910,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T05:07:33.018Z",
+                  "startTime": "2026-11-17T04:59:39.467Z",
                   "annotations": [
                     {
+                      "type": "Feature",
+                      "description": "FR-09 Coupons"
+                    },
+                    {
                       "type": "Run by: 23120102",
-                      "description": "2026-11-16T05:07:33.057Z"
+                      "description": "2026-11-17T04:59:39.541Z"
                     }
                   ],
                   "attachments": []
@@ -626,7 +714,7 @@
           ],
           "id": "4763e1e72eb39689c491-af4bf139c585c9bfa1dc",
           "file": "fr09-coupon.spec.js",
-          "line": 21,
+          "line": 24,
           "column": 3
         },
         {
@@ -638,8 +726,12 @@
               "timeout": 30000,
               "annotations": [
                 {
+                  "type": "Feature",
+                  "description": "FR-09 Coupons"
+                },
+                {
                   "type": "Run by: 23120102",
-                  "description": "2026-11-16T05:07:35.747Z"
+                  "description": "2026-11-17T04:59:41.502Z"
                 }
               ],
               "expectedStatus": "passed",
@@ -650,16 +742,20 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2752,
+                  "duration": 1641,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T05:07:35.650Z",
+                  "startTime": "2026-11-17T04:59:41.471Z",
                   "annotations": [
                     {
+                      "type": "Feature",
+                      "description": "FR-09 Coupons"
+                    },
+                    {
                       "type": "Run by: 23120102",
-                      "description": "2026-11-16T05:07:35.747Z"
+                      "description": "2026-11-17T04:59:41.502Z"
                     }
                   ],
                   "attachments": []
@@ -670,7 +766,7 @@
           ],
           "id": "4763e1e72eb39689c491-ba63a94f607dd13ea2eb",
           "file": "fr09-coupon.spec.js",
-          "line": 21,
+          "line": 24,
           "column": 3
         }
       ]
@@ -678,8 +774,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-11-16T05:06:54.090Z",
-    "duration": 47702.299,
+    "startTime": "2026-11-17T04:59:05.585Z",
+    "duration": 39735.541000000005,
     "expected": 12,
     "skipped": 0,
     "unexpected": 0,
