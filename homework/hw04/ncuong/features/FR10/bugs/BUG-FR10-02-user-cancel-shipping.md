@@ -14,4 +14,4 @@
   API sau thao tác (`put_status 200`, `final_status canceled`):
   ![api](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw04/ncuong/features/FR10/bugs/screenshots/bug-fr10-shipping-cancel-api.png)
 - **Playwright report:** `reports/html/fr10-{chromium,firefox,webkit}/` — A-FR10-15 FAIL.
-- **GitHub Issue:** <điền sau khi chạy `issues/publish.sh`>
+- **GitHub Issue:** https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/132

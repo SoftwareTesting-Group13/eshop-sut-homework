@@ -12,4 +12,4 @@
 - **Evidence:** user JWT đổi trạng thái thành công (`put_status_by_user 200`, `final_status confirmed`):
   ![api](https://raw.githubusercontent.com/SoftwareTesting-Group13/eshop-sut-homework/ncuong/homework/hw04/ncuong/features/FR10/bugs/screenshots/bug-fr10-no-authz.png)
 - **Playwright report:** `reports/html/fr10-{chromium,firefox,webkit}/` — A-FR10-16 FAIL.
-- **GitHub Issue:** <điền sau khi chạy `issues/publish.sh`>
+- **GitHub Issue:** https://github.com/SoftwareTesting-Group13/eshop-sut-homework/issues/133
