@@ -7,11 +7,12 @@ I use AI tools for the following tasks,
 - Lập TEST PLAN tự động hóa FR-17 (HW04 Task 1, bước 1 — chỉ thiết kế, chưa viết code).
 - Sinh khung project Playwright TS Bước 2 (skeleton + 1 ca mẫu A-FR02-01, data JSON).
 - Triển full FR02: data 16 ca + spec 16 ca, chạy 3 browser, fix A-FR02-10.
+- Triển full FR10: data 16 ca + spec 16 ca, chạy 3 browser, fix dialog race + false-pass/race ở A-FR10-06/08, 3 bug reports + issues #131-133.
 - Soạn AI Audit Report này.
 
 > **Phạm vi lập báo cáo (capture notes):**
 > - Bằng chứng khả dụng: conversation hiện tại (không có transcript export riêng).
-> - Số interaction đã ghi: 5
+> - Số interaction đã ghi: 6
 > - Công cụ AI đã dùng (theo bằng chứng): OpenCode agent — Muse Spark 1.3 Contributor
 > - Trường còn thiếu: không
 > - Công cụ/phiên được nhắc tới nhưng không kiểm tra được: không
@@ -162,6 +163,32 @@ OK v giờ triển full cho FR02 của HW04 nha (3 trình duyệt), AI Audit Log
 
 ---
 
+## Interaction AI-006
+
+- **AI tool:** OpenCode agent — Muse Spark 1.3 Contributor (provider `opencode-go`)
+- **Date and time:** 2026-11-17/18 (UTC+7) — thời điểm conversation
+- **Source:** Conversation hiện tại
+- **Task:** Triển full FR10 HW04: data JSON 16 ca + spec 16 ca, start admin frontend, chạy 3 browser, fix 3 lỗi test (dialog race, false-pass, cross-browser race), verify report, 3 bug reports + screenshots + issues, commit tách nhỏ.
+
+### Your prompt
+
+```text
+OK, giờ qua FR10 nhé, làm tương tự như nãy giờ với FR02
+```
+
+### The AI output
+
+- `homework/hw04/ncuong/data/fr10-orders.json` — 16 rows (schema id/type/sourceStatus/action/expectedStatus/actor/total/address).
+- `homework/hw04/ncuong/tests/fr10-orders.spec.ts` — 16 test `@fr10`: 10 UI admin (`Xác nhận/Giao hàng/Hoàn thành/Hủy`, absence asserts, placeholder, `0 ₫`), 2 UI user `/profile` (dialog `waitForEvent`), 4 API (invalid transitions, actor gates); locator row theo cell `exact text` (tránh `#1` khớp `#10`); token admin inject `localStorage`.
+- Phát hiện khi verify: backend **không check `role` ở bất kỳ API admin nào** (`grep req.user.role` = 0) — user thường gọi `PUT /api/admin/orders/:id/status` vẫn 200 (đã chứng minh bằng curl trước khi viết test).
+- 3 lỗi test do AI viết, đã fix với bằng chứng: (1) A-FR10-06 `dialogMsg` rỗng do race alert — chuyển sang `waitForEvent('dialog')`; (2) A-FR10-08 false-pass (assert chạy trước khi PUT về) — thêm `waitForResponse` + assert PUT 200; (3) A-FR10-08 pass chromium/fail firefox — race re-render — chốt pattern assert actual (`Đã giao`) rồi mới assert spec (`canceled`) để FAIL deterministic.
+- Kết quả cả 3 browser giống hệt: **16 ca, 13 pass / 3 fail** (chromium 13.2s, firefox 14.4s, webkit 10.5s). 3 fail đều bug SUT: 08 canceled→delivered (`server.js:550-551` + `App.jsx:862-868`), 15 user cancel shipping (`server.js:329` + `Profile.jsx:200`), 16 thiếu role-check (Blocker).
+- 3 report `reports/html/fr10-{chromium,firefox,webkit}/` verify metadata `Run by: 23120223` + ISO.
+- `features/FR10/bugs/`: 3 bug reports + 5 evidence screenshots (`capture-evidence.mjs`) + `issues/publish.sh` → issues #131, #132, #133.
+- Commit tách nhỏ, đã push: `4159932` (spec+data), `47af84c` (reports), `cba66f0` (bugs), `4da6b5d` (link issues).
+
+---
+
 ## Optional audit table
 
 | (1) Prompt + Công cụ | (2) Output AI | (3) Verdict | (4) Lý do | (5) Bản SV sửa |
@@ -171,3 +198,4 @@ OK v giờ triển full cho FR02 của HW04 nha (3 trình duyệt), AI Audit Log
 | OpenCode Muse Spark 1.3 Contributor · 2026-11-17 · lập test plan FR-17 >=12 ca | `homework/hw04/ncuong/features/FR17/test-plan-automation.md` (18 ca) | (SV tự điền sau review) | (SV tự điền) | (SV tự điền) |
 | OpenCode Muse Spark 1.3 Contributor · 2026-11-17 · Bước 2 skeleton + 1 ca mẫu JSON | `playwright.config.ts`, `tests/fr02-login.spec.ts`, `tests/helpers/json-loader.ts`, `data/*.json` | (SV tự điền sau review) | (SV tự điền) | (SV tự điền) |
 | OpenCode Muse Spark 1.3 Contributor · 2026-11-17 · full FR02 16 ca + 3 browser | `data/fr02-login.json`, `tests/fr02-login.spec.ts`, `reports/html/fr02-{chromium,firefox,webkit}/` (11 pass / 5 fail mỗi browser) | (SV tự điền sau review) | (SV tự điền) | (SV tự điền) |
+| OpenCode Muse Spark 1.3 Contributor · 2026-11-17/18 · full FR10 16 ca + 3 browser | `data/fr10-orders.json`, `tests/fr10-orders.spec.ts`, `reports/html/fr10-{chromium,firefox,webkit}/` (13 pass / 3 fail mỗi browser) | (SV tự điền sau review) | (SV tự điền) | (SV tự điền) |
