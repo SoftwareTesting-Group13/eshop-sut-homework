@@ -1,0 +1,10 @@
+[
+  {
+    "id": "A-FR10-01",
+    "type": "positive",
+    "sourceStatus": "pending",
+    "action": "Xác nhận",
+    "expectedStatus": "Đã xác nhận",
+    "actor": "admin"
+  }
+]

@@ -1,0 +1,18 @@
+[
+  { "id": "A-FR02-01", "type": "positive", "email": "fr02.auto01@eshop.com", "password": "Passw0rd!", "altPassword": "", "expected": "success", "message": "" },
+  { "id": "A-FR02-02", "type": "positive", "email": "", "password": "", "altPassword": "", "expected": "/forgot-password", "message": "" },
+  { "id": "A-FR02-03", "type": "negative", "email": "fr02.auto03@eshop.com", "password": "WrongPass1!", "altPassword": "Passw0rd!", "expected": "error", "message": "Đăng nhập thất bại. Vui lòng kiểm tra lại." },
+  { "id": "A-FR02-04", "type": "negative", "email": "nobody.TS@eshop.com", "password": "Passw0rd!", "altPassword": "", "expected": "error", "message": "Đăng nhập thất bại. Vui lòng kiểm tra lại." },
+  { "id": "A-FR02-05", "type": "negative", "email": "not-an-email", "password": "Passw0rd!", "altPassword": "", "expected": "blocked", "message": "" },
+  { "id": "A-FR02-06", "type": "negative", "email": "", "password": "Passw0rd!", "altPassword": "", "expected": "blocked", "message": "" },
+  { "id": "A-FR02-07", "type": "negative", "email": "fr02.auto07@eshop.com", "password": "", "altPassword": "Passw0rd!", "expected": "blocked", "message": "" },
+  { "id": "A-FR02-08", "type": "edge", "email": "fr02.auto08@eshop.com", "password": "Passw0rd!", "altPassword": "WrongPass1!", "expected": "success-after-fail", "message": "" },
+  { "id": "A-FR02-09", "type": "edge", "email": "fr02.auto09@eshop.com", "password": "WrongPass1!", "altPassword": "Passw0rd!", "expected": "error-not-locked", "message": "" },
+  { "id": "A-FR02-10", "type": "edge", "email": "fr02.auto10@eshop.com", "password": "WrongPass1!", "altPassword": "Passw0rd!", "expected": "locked", "message": "" },
+  { "id": "A-FR02-11", "type": "edge", "email": "fr02.auto11@eshop.com", "password": "Passw0rd!", "altPassword": "WrongPass1!", "expected": "locked", "message": "" },
+  { "id": "A-FR02-12", "type": "edge", "email": "fr02.auto12@eshop.com", "password": "WrongPass1!", "altPassword": "Passw0rd!", "expected": "locked-counter-frozen", "message": "" },
+  { "id": "A-FR02-13", "type": "edge", "email": "fr02.auto13@eshop.com", "password": "Passw0rd!", "altPassword": "WrongPass1!", "expected": "success-expired-lock", "message": "" },
+  { "id": "A-FR02-14", "type": "edge", "email": "", "password": "", "altPassword": "", "expected": "dom-types", "message": "" },
+  { "id": "A-FR02-15", "type": "negative", "email": "fr02.auto15@eshop.com", "password": "Passw0rd!", "altPassword": "", "expected": "no-jwt", "message": "" },
+  { "id": "A-FR02-16", "type": "negative", "email": "fr02.auto16@eshop.com", "password": null, "altPassword": "", "expected": "no-jwt", "message": "" }
+]

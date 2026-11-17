@@ -1,0 +1,7 @@
+# Deps + artefacts không commit
+node_modules/
+test-results/
+*.log
+.DS_Store
+# Playwright caches (máy nào tự tải khi chạy)
+/tmp/

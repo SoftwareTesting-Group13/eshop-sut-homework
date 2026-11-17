@@ -1,0 +1,13 @@
+[
+  {
+    "id": "A-FR17-01",
+    "type": "positive",
+    "code": "FR17-01",
+    "discountType": "percent",
+    "discountValue": 10,
+    "minOrderAmount": 100000,
+    "expiredAt": "2099-12-31",
+    "maxUsesPerUser": 1,
+    "expected": "created"
+  }
+]

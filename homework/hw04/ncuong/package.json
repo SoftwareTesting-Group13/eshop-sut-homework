@@ -1,0 +1,14 @@
+{
+  "name": "hw04-ncuong",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "playwright test",
+    "test:fr02": "FEATURE=fr02 BROWSER=chromium playwright test --project=chromium --grep @fr02"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  }
+}
