@@ -1,10 +1,18 @@
 [
-  {
-    "id": "A-FR10-01",
-    "type": "positive",
-    "sourceStatus": "pending",
-    "action": "Xác nhận",
-    "expectedStatus": "Đã xác nhận",
-    "actor": "admin"
-  }
+  { "id": "A-FR10-01", "type": "positive", "sourceStatus": "pending", "action": "Xác nhận", "expectedStatus": "Đã xác nhận", "actor": "admin", "total": 100000, "address": "HW04 FR10" },
+  { "id": "A-FR10-02", "type": "positive", "sourceStatus": "confirmed", "action": "Giao hàng", "expectedStatus": "Đang giao", "actor": "admin", "total": 100000, "address": "HW04 FR10" },
+  { "id": "A-FR10-03", "type": "positive", "sourceStatus": "shipping", "action": "Hoàn thành", "expectedStatus": "Đã giao", "actor": "admin", "total": 100000, "address": "HW04 FR10" },
+  { "id": "A-FR10-04", "type": "positive", "sourceStatus": "pending", "action": "Hủy", "expectedStatus": "Đã hủy", "actor": "admin", "total": 100000, "address": "HW04 FR10" },
+  { "id": "A-FR10-05", "type": "positive", "sourceStatus": "confirmed", "action": "Hủy", "expectedStatus": "Đã hủy", "actor": "admin", "total": 100000, "address": "HW04 FR10" },
+  { "id": "A-FR10-06", "type": "positive", "sourceStatus": "pending", "action": "Hủy đơn", "expectedStatus": "Đã hủy", "actor": "user", "total": 100000, "address": "HW04 FR10" },
+  { "id": "A-FR10-07", "type": "positive", "sourceStatus": "confirmed", "action": "Hủy đơn", "expectedStatus": "Đã hủy", "actor": "user", "total": 100000, "address": "HW04 FR10" },
+  { "id": "A-FR10-08", "type": "negative", "sourceStatus": "canceled", "action": "Đánh dấu Đã giao", "expectedStatus": "Đã hủy", "actor": "admin", "total": 100000, "address": "HW04 FR10" },
+  { "id": "A-FR10-09", "type": "negative", "sourceStatus": "shipping", "action": "(không có nút Hủy)", "expectedStatus": "Đang giao", "actor": "admin", "total": 100000, "address": "HW04 FR10" },
+  { "id": "A-FR10-10", "type": "negative", "sourceStatus": "delivered", "action": "(không có nút)", "expectedStatus": "Đã giao", "actor": "admin", "total": 100000, "address": "HW04 FR10" },
+  { "id": "A-FR10-11", "type": "edge", "sourceStatus": "pending", "action": "(xem)", "expectedStatus": "Chờ xác nhận", "actor": "admin", "total": 100000, "address": "" },
+  { "id": "A-FR10-12", "type": "edge", "sourceStatus": "pending", "action": "(xem)", "expectedStatus": "Chờ xác nhận", "actor": "admin", "total": 0, "address": "HW04 FR10" },
+  { "id": "A-FR10-13", "type": "negative", "sourceStatus": "pending", "action": "pending->shipping (API)", "expectedStatus": "pending", "actor": "admin", "total": 100000, "address": "HW04 FR10" },
+  { "id": "A-FR10-14", "type": "negative", "sourceStatus": "mixed", "action": "invalid jumps (API)", "expectedStatus": "giữ nguyên", "actor": "admin", "total": 100000, "address": "HW04 FR10" },
+  { "id": "A-FR10-15", "type": "negative", "sourceStatus": "shipping/delivered/canceled", "action": "user cancel (API)", "expectedStatus": "giữ nguyên", "actor": "user", "total": 100000, "address": "HW04 FR10" },
+  { "id": "A-FR10-16", "type": "negative", "sourceStatus": "pending", "action": "actor gates (API)", "expectedStatus": "pending", "actor": "mixed", "total": 100000, "address": "HW04 FR10" }
 ]
