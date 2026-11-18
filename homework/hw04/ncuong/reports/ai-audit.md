@@ -9,11 +9,12 @@ I use AI tools for the following tasks,
 - Triển full FR02: data 16 ca + spec 16 ca, chạy 3 browser, fix A-FR02-10.
 - Triển full FR10: data 16 ca + spec 16 ca, chạy 3 browser, fix dialog race + false-pass/race ở A-FR10-06/08, 3 bug reports + issues #131-133.
 - Triển full FR17: data 18 ca + spec 18 ca (unique code/run + try/finally cleanup), chạy 3 browser, DB dọn NULL rows, 3 bug reports + issues #134-136.
+- Viết main report + AI critique (299 từ) + README + git-commit-log.txt, xuất 3 PDF bằng Chromium sẵn có.
 - Soạn AI Audit Report này.
 
 > **Phạm vi lập báo cáo (capture notes):**
 > - Bằng chứng khả dụng: conversation hiện tại (không có transcript export riêng).
-> - Số interaction đã ghi: 7
+> - Số interaction đã ghi: 8
 > - Công cụ AI đã dùng (theo bằng chứng): OpenCode agent — Muse Spark 1.3 Contributor
 > - Trường còn thiếu: không
 > - Công cụ/phiên được nhắc tới nhưng không kiểm tra được: không
@@ -215,6 +216,30 @@ Tiếp tục tương tự với FR17 nha
 
 ---
 
+## Interaction AI-008
+
+- **AI tool:** OpenCode agent — Muse Spark 1.3 Contributor (provider `opencode-go`)
+- **Date and time:** 2026-11-18 (UTC+7) — thời điểm conversation
+- **Source:** Conversation hiện tại
+- **Task:** Viết main report + AI critique + README + git-commit-log.txt; xuất 3 PDF.
+
+### Your prompt
+
+```text
+OK Triển 1 trước nhé
+```
+(ngữ cảnh: check thiếu theo đề HW04 → triển mục 1 = main report trước)
+
+### The AI output
+
+- `reports/main-report.md` — 10 mục: feature/môi trường/AI-first ladder/automation report 3 feature/gap analysis 10 dòng/bug tổng hợp 9 dòng/TC không bỏ sót/skill placeholder/test summary + tự đánh giá/tài liệu tham khảo.
+- `reports/ai-critique.md` — đúng 299 từ (đếm bằng script, cắt từ 328 xuống).
+- `README.md` — test summary thật (50 ca, 150 lượt, pass 102/fail 48, 9 runs, 9 bugs) + bảng tự đánh giá để trống.
+- `git-commit-log.txt` — `git log --oneline --stat`.
+- 3 PDF (`main-report.pdf`, `ai-audit.pdf`, `ai-critique.pdf`) xuất bằng pipeline `markdown` + Chromium sẵn có (`/tmp/md2pdf.py`) vì máy không có pandoc.
+
+---
+
 ## Optional audit table
 
 | (1) Prompt + Công cụ | (2) Output AI | (3) Verdict | (4) Lý do | (5) Bản SV sửa |
@@ -226,3 +251,4 @@ Tiếp tục tương tự với FR17 nha
 | OpenCode Muse Spark 1.3 Contributor · 2026-11-17 · full FR02 16 ca + 3 browser | `data/fr02-login.json`, `tests/fr02-login.spec.ts`, `reports/html/fr02-{chromium,firefox,webkit}/` (11 pass / 5 fail mỗi browser) | (SV tự điền sau review) | (SV tự điền) | (SV tự điền) |
 | OpenCode Muse Spark 1.3 Contributor · 2026-11-17/18 · full FR10 16 ca + 3 browser | `data/fr10-orders.json`, `tests/fr10-orders.spec.ts`, `reports/html/fr10-{chromium,firefox,webkit}/` (13 pass / 3 fail mỗi browser) | (SV tự điền sau review) | (SV tự điền) | (SV tự điền) |
 | OpenCode Muse Spark 1.3 Contributor · 2026-11-17/18 · full FR17 18 ca + 3 browser | `data/fr17-coupons.json`, `tests/fr17-coupons.spec.ts`, `reports/html/fr17-{chromium,firefox,webkit}/` (10 pass / 8 fail mỗi browser) | (SV tự điền sau review) | (SV tự điền) | (SV tự điền) |
+| OpenCode Muse Spark 1.3 Contributor · 2026-11-18 · main report + critique + README + PDFs | `reports/main-report.md(.pdf)`, `reports/ai-critique.md(.pdf)`, `README.md`, `git-commit-log.txt` | (SV tự điền sau review) | (SV tự điền) | (SV tự điền) |
