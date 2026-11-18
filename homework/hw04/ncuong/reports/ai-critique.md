@@ -1,0 +1,7 @@
+# AI Critique (HW04)
+
+AI giúp tôi đi nhanh ở bước khởi tạo: từ test plan HW02 nó dựng khung Playwright, chia data JSON và sinh 16–18 test mỗi feature chỉ trong vài phút. Nhưng chính tốc độ đó che đi bốn điểm yếu. Thứ nhất, AI đoán locator mà không đọc DOM thật: nó dùng `getByLabel` trong khi label của SUT không gắn với input. Thứ hai, assert của AI dừng ở bề mặt — thấy lỗi là coi như đúng, không chờ phản hồi mạng nên có ca pass giả trên state cũ trước khi PUT hoàn tất. Thứ ba, AI không mô phỏng tương tác giữa các bug: backend cộng bộ đếm sai `+2` khiến tài khoản khóa sớm, làm oracle "lần sai thứ ba" của nó sai theo. Thứ tư, AI viết cleanup sau expect nên khi assert đỏ, dữ liệu rác như row `NULL` rò rỉ vào DB mà nó không hề hay biết.
+
+Nguyên nhân chung là AI chỉ thấy prompt chứ không thấy hệ thống đang chạy. Tôi không đưa bảng BVA, nó bỏ sót ca biên; tôi không mô tả DOM thật, nó bịa locator; nó không chạy code nên không bao giờ gặp race hay database bẩn. Những lỗi này chỉ lộ ra khi tôi chạy suite thật trên ba browser và đọc log thất bại từng dòng.
+
+Bài học là AI-first không có nghĩa hỏi một lần rồi sao chép, mà là vòng lặp kỷ luật: prompt nhỏ theo từng bước, chạy thật rồi bắt AI sửa đúng chỗ sai. Người học phải nắm kỹ thuật mới biết hỏi gì và chấm gì; khó phát hiện nhất không phải lỗi AI viết ra, mà là test xanh giả khiến ta tưởng hệ thống đúng. Trách nhiệm cuối cùng luôn thuộc về con người.

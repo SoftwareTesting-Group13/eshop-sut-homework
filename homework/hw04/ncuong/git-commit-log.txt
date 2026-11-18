@@ -1,0 +1,1577 @@
+999c471 docs(reports): refresh all 9 HTML reports with final specs
+ ...> 009a48ceaa019b547e056f52f686693972c38c45.zip} |  Bin 83395 -> 83327 bytes
+ .../1ab03db1f4ffe73ad8870821dd71bfddf1336503.md    |  127 --
+ ...> 29afdd3acff035b7188d7bd41d24cca52a157533.zip} |  Bin 83718 -> 83201 bytes
+ .../32fa6f0e60817512dd871f05053c3ae8dfece4be.zip   |  Bin 204990 -> 0 bytes
+ .../35bc9c3a64bbe44d3c23e376fbb908a755096aca.png   |  Bin 0 -> 41725 bytes
+ .../4ffe8b63cfa18a49d320a9e843ee7b115875052a.png   |  Bin 42256 -> 0 bytes
+ .../53d66490022f521de3710f674a6380e0c4652298.zip   |  Bin 0 -> 10870 bytes
+ .../5724362e6587ec2b1b8538556a129f94eb45278a.md    |  261 +++
+ .../5e3efe3b175e817ce32937b7f1fb467646057447.md    |  261 +++
+ .../62aa64ad8198c5767c1819fbcff4fe8fd087e208.zip   |  Bin 10912 -> 0 bytes
+ .../678cac33653ec3eb179856128f5037c3aef1da18.zip   |  Bin 0 -> 172098 bytes
+ .../75631dd7ebb69a50ad5aa8a83f798c12a8c2d1d5.md    |  127 ++
+ .../9a20e9db1c2451fbe285252c815309c3cfb938a5.md    |  178 --
+ .../a61ebfd8ada1dbe76c84b280868c3fa926befd24.png   |  Bin 0 -> 41544 bytes
+ .../c3cae371ecf9efd863ed174e2214d38243bd66a0.md    |  261 ---
+ .../c5e7762419f5c1cc80094db583bb4b4a48fe4a99.png   |  Bin 41576 -> 0 bytes
+ .../c7d57e8a13bac97982c1ce0ffc134da3f4af6be1.zip   |  Bin 157351 -> 0 bytes
+ .../cf1b7dda8392055375e88d54269227d52840de64.md    |  239 ---
+ .../d8026751c470630b632edaeab6dd406301e195ca.zip   |  Bin 0 -> 206880 bytes
+ .../e05189d9158a424e7ee7d8a01e7b3e6d16513782.md    |  239 +++
+ .../e69b1ec0c5873e177697581a3c21850984ad996c.md    |  261 ---
+ .../f0231b4a6d648dd9d38226e5e554ee1316aadfc1.md    |  178 ++
+ .../ncuong/reports/html/fr02-chromium/index.html   |    2 +-
+ .../reports/html/fr02-chromium/report-meta.txt     |    2 +-
+ .../268a3d317a31603a1f8626943c7e4699a4b13019.md    |  127 ++
+ .../36025074eee369ff46492b886352332a660f2bb1.zip   |  Bin 10854 -> 0 bytes
+ .../39e62f9b389ba16c21a725a236c69cb04726bf21.md    |  261 +++
+ .../3e248d1a154121d09e51a5b2559fb3b3944bc20d.png   |  Bin 0 -> 49706 bytes
+ .../7e12a9d4774160101fd77412d25716974f2ee715.md    |  256 ---
+ .../836a1a61760c03e2180e0c2fd10a3fe5b70076e7.md    |  239 ---
+ .../8483c72b0d6f36c62a4aaead1889b7ed37d1bb3e.png   |  Bin 0 -> 49527 bytes
+ ...> 8dca70870b11da3ddc4b6dd87d36d26f5df7810d.zip} |  Bin 815942 -> 828295 bytes
+ .../929f69b48fefb905a0a8344ef4ca69f3050239dc.md    |  261 +++
+ ...> 96feef74be5ba6b4fe6d4e872da82925223cc37e.zip} |  Bin 448199 -> 448559 bytes
+ .../98d51d287c11f74621d398154c51f0c4406899fd.md    |  127 --
+ .../9ab83624371b160da9c03d7fe132111dbb4d56a4.md    |  261 ---
+ .../b08f2db88d172e34cd515a11990feb89103ac430.png   |  Bin 49449 -> 0 bytes
+ .../bc7ad7d1ee62802800db9e9f838c2329633926bb.zip   |  Bin 177486 -> 0 bytes
+ .../c49c38ff1150337fdaf42c975c226ee3e0dcd06c.png   |  Bin 49771 -> 0 bytes
+ .../c93c732b2c5e8164ade6a9838d02e7a047e15022.zip   |  Bin 0 -> 177129 bytes
+ .../e05189d9158a424e7ee7d8a01e7b3e6d16513782.md    |  239 +++
+ .../e57c995bc85e1a1bb412ae0234085e32e8fa8340.zip   |  Bin 138098 -> 0 bytes
+ .../e6e536880058baf34f95357dc61976010e8dfb63.zip   |  Bin 0 -> 10818 bytes
+ .../f0231b4a6d648dd9d38226e5e554ee1316aadfc1.md    |  178 ++
+ .../fc7890a4be95cc8116c8a8e6831371f4587814cf.md    |  176 --
+ .../fec66dd945ddbe38b61edfbc9ada4f0f1c19f3d4.zip   |  Bin 0 -> 137789 bytes
+ .../ncuong/reports/html/fr02-firefox/index.html    |    2 +-
+ .../reports/html/fr02-firefox/report-meta.txt      |    2 +-
+ .../05ab3eaa68a3eb247b1c6234b8aba568074feb49.md    |  256 ---
+ .../0a04db40b57882980709f0413cc29863be17f24f.md    |  261 ---
+ .../1284a64839e3726d7528aa090c8b6d627bd3fa5a.zip   |  Bin 0 -> 249740 bytes
+ .../3ca885f7f156c2aae664469b27f47a0375bb7a11.png   |  Bin 0 -> 166432 bytes
+ .../4da93ab0c9f9c4c7b8af66460517688bc7de7985.md    |  261 +++
+ ...> 620aef1f173b99cb3a042354af5d15331493abd9.zip} |  Bin 110387 -> 110296 bytes
+ .../629bf7d5fc84c25f98f8eb53da5bde17fe020c45.zip   |  Bin 198552 -> 0 bytes
+ .../6c9d792c8f8557ca3b82797049b75e4e51ecfe3b.zip   |  Bin 0 -> 10846 bytes
+ .../706ef5ebf6e8ae82235b0c76c7a93d78eba8dd85.png   |  Bin 166042 -> 0 bytes
+ .../758b88b702a026339a92847d63205d92c965db5f.zip   |  Bin 0 -> 183275 bytes
+ .../75fa8846694499d6a758172b453ed47f4369fa2f.zip   |  Bin 10900 -> 0 bytes
+ .../836a1a61760c03e2180e0c2fd10a3fe5b70076e7.md    |  239 ---
+ .../8f6a4a11ac449fec84f3391c6a5802881316e572.png   |  Bin 0 -> 165911 bytes
+ .../97b86b0876ca83d7e273ad82f4c234d8a2bec5b4.zip   |  Bin 270283 -> 0 bytes
+ .../9fadb63659ffd9c532a365215d6bab8a36746ad5.png   |  Bin 166547 -> 0 bytes
+ ...> b9149e55ec0c651cf46c0cdcabc93cb3466b995e.zip} |  Bin 110733 -> 110706 bytes
+ .../ceb6a13ddb0e4c54348d161e018e81bc04b2912d.md    |  127 --
+ .../e05189d9158a424e7ee7d8a01e7b3e6d16513782.md    |  239 +++
+ .../f0231b4a6d648dd9d38226e5e554ee1316aadfc1.md    |  178 ++
+ .../f7311fc1f58b95e1ace36a22a2d3ec9784256776.md    |  127 ++
+ .../f9937e9d6e7733009c2547fb8f94f1a4003a9962.md    |  261 +++
+ .../fc7890a4be95cc8116c8a8e6831371f4587814cf.md    |  176 --
+ .../ncuong/reports/html/fr02-webkit/index.html     |    2 +-
+ .../reports/html/fr02-webkit/report-meta.txt       |    2 +-
+ .../0d63a6bf83cadbf18f750ff4fc5f16f71c1ffc8c.zip   |  Bin 483543 -> 0 bytes
+ .../18e91dfdc000cf6fb674cbdf6c26b39e120061fa.zip   |  Bin 0 -> 16406 bytes
+ .../3629c097ab3cf99122ffce98d506a82327a7cd6c.md    | 1169 -----------
+ .../4ed5d2736145e157d44cadd206946327161a6f36.zip   |  Bin 15531 -> 0 bytes
+ .../650a0ad0ef2f89d50442616b9308bb97acbb7d03.md    |  700 +++++++
+ .../70422eab359c2a293a1c6fcee7b48c65a1a734cb.zip   |  Bin 19337 -> 0 bytes
+ .../7497d1ac2768cb9e5d9af56bb77cc09d84150772.md    |  143 --
+ .../876f402ccc9c8cd42fde91214828260cd67649ef.zip   |  Bin 0 -> 390848 bytes
+ .../92b763e95ec2b15a03981b3e9691995ce956d4a5.md    |  163 --
+ .../9bd5fe5328ec9917b444efe8bbc8dec6e4c73c0b.md    |  143 ++
+ .../a11873b83dc3d3a21241216ef46e4005a094ca65.md    |  163 ++
+ .../c8182dba6479fae8b561b0cd521f6bd1458ae445.zip   |  Bin 0 -> 20132 bytes
+ .../d17efc9a24221ecb84972fe87ab79bdf9ecd9b40.png   |  Bin 0 -> 104454 bytes
+ .../f4995d9473c56fbddd0a91770c08923a39bb34bf.png   |  Bin 102265 -> 0 bytes
+ .../ncuong/reports/html/fr10-chromium/index.html   |    2 +-
+ .../reports/html/fr10-chromium/report-meta.txt     |    2 +-
+ .../01328c89962d48d991abb1815d797d7d547dfe75.md    |  163 --
+ .../0a459c4fb88c3b58aecf2c86636a95c8d0ea0601.md    | 1896 ------------------
+ .../1e35686ffba722869cf4c60a1818cfd3facb615d.zip   |  Bin 0 -> 20116 bytes
+ .../47ede64306eb457b2c44ec909e8bd4d6276be23e.md    |  872 +++++++++
+ .../6387f58cf8f65687470b3e4218f0d9b3fdc0e982.png   |  Bin 122185 -> 0 bytes
+ .../7989a75a60a7d86c83a22ba77faad4e92f9fca58.md    |  143 --
+ .../79bd34e317f3f594d3fa2c83ba24f7296b7b971b.zip   |  Bin 19372 -> 0 bytes
+ .../9bd5fe5328ec9917b444efe8bbc8dec6e4c73c0b.md    |  143 ++
+ .../a11873b83dc3d3a21241216ef46e4005a094ca65.md    |  163 ++
+ .../b20f410bccf7a9a6d5c7c65ec6c38b7786901f20.zip   |  Bin 0 -> 433630 bytes
+ .../c5d2d13397fb5340b8f796ac5db5dd328becded1.png   |  Bin 0 -> 120061 bytes
+ .../d8eaa034bd019ba36cd1e6ef6bd0a28e3670a2ba.zip   |  Bin 638272 -> 0 bytes
+ .../e0b3d9c43c915ce3d0e56cbf223561c725037f81.zip   |  Bin 0 -> 16390 bytes
+ .../f88190dab940b2ab584bd99739f95d8b9045eee1.zip   |  Bin 15522 -> 0 bytes
+ .../ncuong/reports/html/fr10-firefox/index.html    |    2 +-
+ .../reports/html/fr10-firefox/report-meta.txt      |    2 +-
+ .../01328c89962d48d991abb1815d797d7d547dfe75.md    |  163 --
+ .../14e1061de95031eb062fee4170b699e137d99842.zip   |  Bin 0 -> 509240 bytes
+ .../36e65fb0680a3401e0953ca151e7b652f0a91951.zip   |  Bin 19335 -> 0 bytes
+ .../384f3b0b8d3636153c1945f3e084c361a37a1301.md    | 2068 --------------------
+ .../4b42864f6436e2dfa783e5fa8bc294e81c7351d4.zip   |  Bin 0 -> 20122 bytes
+ .../50b4581bac5a66544f92225184380d2c7449a2b8.zip   |  Bin 15614 -> 0 bytes
+ .../54caace967d0cd404bd4843dc4ccaefa0c79cde3.zip   |  Bin 532110 -> 0 bytes
+ .../7210eabfdff2c32ce5807e3f59051052d45073a3.png   |  Bin 0 -> 312300 bytes
+ .../77999168714d927b3b6f7fcb7c636d4ed99d29bd.md    | 1044 ++++++++++
+ .../7989a75a60a7d86c83a22ba77faad4e92f9fca58.md    |  143 --
+ .../9bd5fe5328ec9917b444efe8bbc8dec6e4c73c0b.md    |  143 ++
+ .../a11873b83dc3d3a21241216ef46e4005a094ca65.md    |  163 ++
+ .../c79870eed70a7117d8f234021dd117b55d1238fa.png   |  Bin 309271 -> 0 bytes
+ .../c900e40d50932b4475f9240b7a1bf806526cd718.zip   |  Bin 0 -> 16401 bytes
+ .../ncuong/reports/html/fr10-webkit/index.html     |    2 +-
+ .../reports/html/fr10-webkit/report-meta.txt       |    2 +-
+ .../0a2e0b6da3abb8b2740e010cf3a47c25e770bb3b.md    |  313 ---
+ ...> 1d916491ad7dd302a85a2a1795ef0f3c0189181f.zip} |  Bin 424393 -> 403735 bytes
+ .../2256fbf72b6410783527c0c1aed614cdfad66eca.zip   |  Bin 13643 -> 0 bytes
+ .../2d8a2024b57de5efc639de7b8450c984b028a13f.md    |  304 ---
+ .../381cbf45dd03dfa9338ef2139f9c079f0ecac37c.md    |  304 +++
+ .../3d7b1a785f0e7042a92c36fc479d2830c1e36439.zip   |  Bin 0 -> 404876 bytes
+ .../3d8c790161c1fe0f281b6da0ea1970ea8cc41f1d.zip   |  Bin 470606 -> 0 bytes
+ .../3f9938d551b2e3f6c43287fc03511b8119a450ab.zip   |  Bin 13713 -> 0 bytes
+ .../4ed33860ed8335df79aece833477714abc606908.md    |  304 ---
+ .../557054ff71b58901b44fb041dea873c5a78e65ac.zip   |  Bin 0 -> 14174 bytes
+ .../5a468f07810c1e68a1f4acf5f0dab711804e247a.zip   |  Bin 0 -> 404392 bytes
+ .../625fcd7fb1f36e229aac9753db5cd7c062bd1d9b.zip   |  Bin 0 -> 403361 bytes
+ .../66e21ab44ae4fdfab6bc04b5c4b5049228823c30.zip   |  Bin 390188 -> 0 bytes
+ .../6a36af41f05c993827f7c6c6c5df8ec1828c3369.md    |  304 +++
+ .../8123efd3a837161ad45e790024dae526cdb067e4.zip   |  Bin 0 -> 21743 bytes
+ .../82945451d4e28b36182657e5f1f2e8d555ebcaef.md    |  152 --
+ .../885c5cc8e147bd417267ae6123cd08b9a9b25690.md    |  158 --
+ .../9308a9e932133eeff316426f9ceb17aae1924d08.zip   |  Bin 21341 -> 0 bytes
+ .../936a5a7baffcdd729bd5f738eef3569e842b89eb.md    |  304 ---
+ .../a308166e56befe24ccf5b99e6a4e5e7af9753aab.md    |  304 +++
+ ...> a325b5eca9d7d7ca865ba9ea4f60f0c33ca33b34.zip} |  Bin 415808 -> 430435 bytes
+ .../a77ebbd8c6aeff9937290ab90da4942a677a30ad.zip   |  Bin 0 -> 14279 bytes
+ .../a94ce13d1c143cff3366ad06a13b8e680fc750dd.md    |  152 ++
+ .../b42e6a1da0025540e72202f3f9e6a0913068241d.md    |  158 ++
+ .../c036255440602339d83e9da145602f9fd8555b50.md    |  304 +++
+ .../daa955a5a9456c357bf598dcae03a8612ba3cb87.md    |  304 ---
+ .../db0a9b20e465cd2a92bff85db791d20de92ed96c.md    |  172 ++
+ .../e84f9b672159aecb1c147944d17fd87282fcca79.zip   |  Bin 460118 -> 0 bytes
+ .../f0834f3161aabd3c2000c2fee05df5bf026f75a9.md    |  172 --
+ .../f91f1f7b599c7a319fab9996346360099fab3ca8.md    |  304 +++
+ .../fb03c0629d60ce19fedcd769c0ea7ec182ba695c.png   |  Bin 81903 -> 0 bytes
+ .../ncuong/reports/html/fr17-chromium/index.html   |    2 +-
+ .../reports/html/fr17-chromium/report-meta.txt     |    2 +-
+ .../01e73e6a3595cf00557f6359b2e0dc72d3d24b67.zip   |  Bin 0 -> 14127 bytes
+ .../1417e445ed85071ccaf08d8205a4498468bc6924.zip   |  Bin 350959 -> 0 bytes
+ .../158962c35b875d50badc6bd6da124e9ca6173cce.zip   |  Bin 0 -> 374848 bytes
+ .../2b577267ee4e8d22ad5ed74dbc83f5d31c9f3f92.zip   |  Bin 0 -> 394925 bytes
+ .../2d8a2024b57de5efc639de7b8450c984b028a13f.md    |  304 ---
+ .../2f61ae73e21a4dd62fd2fb107155140dcbba07a3.zip   |  Bin 21283 -> 0 bytes
+ ...> 331341859d87846d4c4445555b626835925b2fbd.zip} |  Bin 312536 -> 294955 bytes
+ .../381cbf45dd03dfa9338ef2139f9c079f0ecac37c.md    |  304 +++
+ .../47e2cee4eafe6f778f2ed7de32f35277b0a3bb4f.zip   |  Bin 0 -> 14210 bytes
+ .../49bbee7422f5a7804659ef246ca63a7b4c2d12bc.md    |  304 ---
+ .../4ed33860ed8335df79aece833477714abc606908.md    |  304 ---
+ .../50d92f3b1c45d0186653f0dcbf2cf61e2f9da6b3.zip   |  Bin 0 -> 321129 bytes
+ .../648ac1d81ed3b619c917c6c16398539227980901.zip   |  Bin 0 -> 21772 bytes
+ .../6a36af41f05c993827f7c6c6c5df8ec1828c3369.md    |  304 +++
+ ...> 6c5d53f9fb0322987033dd2dc732f50d625ac8ee.zip} |  Bin 292479 -> 285849 bytes
+ .../6ccc735a6105619472ffa0186adf8471285bc704.zip   |  Bin 13702 -> 0 bytes
+ .../82945451d4e28b36182657e5f1f2e8d555ebcaef.md    |  152 --
+ .../885c5cc8e147bd417267ae6123cd08b9a9b25690.md    |  158 --
+ .../936a5a7baffcdd729bd5f738eef3569e842b89eb.md    |  304 ---
+ .../97e791776ab0f441276f659975174c00a8f6b52c.zip   |  Bin 282271 -> 0 bytes
+ .../a308166e56befe24ccf5b99e6a4e5e7af9753aab.md    |  304 +++
+ .../a94ce13d1c143cff3366ad06a13b8e680fc750dd.md    |  152 ++
+ .../b42e6a1da0025540e72202f3f9e6a0913068241d.md    |  158 ++
+ .../c036255440602339d83e9da145602f9fd8555b50.md    |  304 +++
+ .../daa955a5a9456c357bf598dcae03a8612ba3cb87.md    |  304 ---
+ .../db0a9b20e465cd2a92bff85db791d20de92ed96c.md    |  172 ++
+ .../e57fc56cfca594b15e4e71d6d933c42958c76e41.zip   |  Bin 351544 -> 0 bytes
+ .../f0834f3161aabd3c2000c2fee05df5bf026f75a9.md    |  172 --
+ .../f0aa55188f0cebe6e63249c58b58c2ad45712e87.zip   |  Bin 13553 -> 0 bytes
+ .../f91f1f7b599c7a319fab9996346360099fab3ca8.md    |  304 +++
+ .../ncuong/reports/html/fr17-firefox/index.html    |    2 +-
+ .../reports/html/fr17-firefox/report-meta.txt      |    2 +-
+ .../05e04bca8025705ab3415873fea67d6819c10bb3.md    |  304 ---
+ .../1031cfe685fe3e59781d457afae14d3aa67e3149.zip   |  Bin 13603 -> 0 bytes
+ .../197d13ba4ea754fe5004b68f16ffb0f2dcf77b86.md    |  313 ---
+ ...> 2e4628bea34991c8b57726ba3b42011a327206b3.zip} |  Bin 379563 -> 399069 bytes
+ .../43375c3eb68019e585a8f7c70a8b26675741cc63.png   |  Bin 263394 -> 0 bytes
+ ...> 4802e434eb548593389a7433ec106c39eea2eefb.zip} |  Bin 450920 -> 457984 bytes
+ .../5113e53546d01d053ff80e358823ff1df91b2e50.md    |  304 +++
+ .../53732e57871e7ba32323d5315f3c26bf4b466690.zip   |  Bin 21272 -> 0 bytes
+ .../551e6a4d9f6dbe1c1693a0f2832ff17a13ad36a7.md    |  313 +++
+ .../82945451d4e28b36182657e5f1f2e8d555ebcaef.md    |  152 --
+ .../842aab3ba1d34fc987bf98d5b6478e12b39b0045.md    |  304 ---
+ .../885c5cc8e147bd417267ae6123cd08b9a9b25690.md    |  158 --
+ .../89e2cf095bf8d57a04ea0ca6ddc468a5daaf9638.zip   |  Bin 13724 -> 0 bytes
+ .../95389eda325b65aa884d70cba5ff920923b1f97d.md    |  313 ---
+ .../a30e5a25ed169cf6f8f944de230bf989d9052527.md    |  304 +++
+ .../a39d8eeb7162697376164d2e7317fbdcac36ac1c.zip   |  Bin 0 -> 14155 bytes
+ .../a94ce13d1c143cff3366ad06a13b8e680fc750dd.md    |  152 ++
+ .../ade945b2240f0b12f2ee23f3c51f5f13d77343bd.zip   |  Bin 402630 -> 0 bytes
+ .../b3098075d8c3deb766dffb8399b8469cbbaeeab1.zip   |  Bin 0 -> 14290 bytes
+ .../b42e6a1da0025540e72202f3f9e6a0913068241d.md    |  158 ++
+ .../c78f889ca54decb755ead989ac899f4956c856a9.md    |  313 +++
+ .../c946534c39075b54ab40f6cb5b970df0bf284108.png   |  Bin 0 -> 251688 bytes
+ .../c9c68626f6c88e7089bcf7b3f3339aed2098a620.zip   |  Bin 0 -> 398755 bytes
+ .../d30cc6bb0609baa0c81c63d650811f8225050d3f.md    |  304 +++
+ .../db0a9b20e465cd2a92bff85db791d20de92ed96c.md    |  172 ++
+ .../e038b2c8a738a7ea3921b5d58c71f5d11766f411.zip   |  Bin 0 -> 21705 bytes
+ ...> e6081d4cadfd259a05dbe13814e31fdac8c7f3f9.png} |  Bin 262794 -> 262870 bytes
+ .../f0834f3161aabd3c2000c2fee05df5bf026f75a9.md    |  172 --
+ ...> f579f928e4cf2dba106f016889e0ba7b4c6bc147.zip} |  Bin 426625 -> 381436 bytes
+ .../f791e8522e3161db51f10ad42b7012caa913bc43.md    |  304 ---
+ ...> fc803a833fa3a3455961328e5b0dff0e5f900767.zip} |  Bin 422216 -> 444993 bytes
+ .../ncuong/reports/html/fr17-webkit/index.html     |    2 +-
+ .../reports/html/fr17-webkit/report-meta.txt       |    2 +-
+ 218 files changed, 12774 insertions(+), 15286 deletions(-)
+3dbf6cb test(fr10): assert pre-state badge in adminDo (avoid stale-state false pass)
+ homework/hw04/ncuong/tests/fr10-orders.spec.ts | 25 +++++++++++++++++++------
+ 1 file changed, 19 insertions(+), 6 deletions(-)
+ca0b2bf test(fr17): reuse shared eshop-api login helpers
+ homework/hw04/ncuong/tests/fr17-coupons.spec.ts | 16 +---------------
+ 1 file changed, 1 insertion(+), 15 deletions(-)
+c682007 test(fr10): reuse shared eshop-api login helpers
+ homework/hw04/ncuong/tests/fr10-orders.spec.ts | 22 +---------------------
+ 1 file changed, 1 insertion(+), 21 deletions(-)
+a41fa26 test(fr02): reuse shared eshop-api login helpers
+ homework/hw04/ncuong/tests/fr02-login.spec.ts   | 13 +----------
+ homework/hw04/ncuong/tests/helpers/eshop-api.ts | 30 +++++++++++++++++++++++++
+ 2 files changed, 31 insertions(+), 12 deletions(-)
+ed36549 test(fr02): extract expectNoLoginRequest helper for required-block cases
+ homework/hw04/ncuong/tests/fr02-login.spec.ts | 31 +++++++++++----------------
+ 1 file changed, 13 insertions(+), 18 deletions(-)
+5578bd8 test(fr17): re-validate final spec on 3 browsers (try/finally cleanup), refresh reports
+ .../0a14204420e03b902bfa11d229d9f166b923cbbc.zip   | Bin 21325 -> 0 bytes
+ .../0a2e0b6da3abb8b2740e010cf3a47c25e770bb3b.md}   |   4 +-
+ .../2256fbf72b6410783527c0c1aed614cdfad66eca.zip   | Bin 0 -> 13643 bytes
+ .../3d8c790161c1fe0f281b6da0ea1970ea8cc41f1d.zip   | Bin 0 -> 470606 bytes
+ .../3f9938d551b2e3f6c43287fc03511b8119a450ab.zip   | Bin 0 -> 13713 bytes
+ ...=> 4ed33860ed8335df79aece833477714abc606908.md} |  72 ++++++-------
+ .../5161d8aa60bb69a47d46e105cc2785d5dfa085fd.zip   | Bin 11807 -> 0 bytes
+ .../6236a6383035822903ed8b10f838011b4fc84ab2.zip   | Bin 13655 -> 0 bytes
+ .../639ab580fbe45d1b146b328ce90fcac3c902fd3b.zip   | Bin 423678 -> 0 bytes
+ .../66e21ab44ae4fdfab6bc04b5c4b5049228823c30.zip   | Bin 0 -> 390188 bytes
+ .../79f3af331d765af0f8734ffd34a380c20cd064d5.zip   | Bin 424278 -> 0 bytes
+ ...> 7e9745cc546b75a35f06b5fd36a44921e417d6d7.zip} | Bin 424865 -> 424393 bytes
+ .../82945451d4e28b36182657e5f1f2e8d555ebcaef.md}   | 114 ++++++++++-----------
+ .../885c5cc8e147bd417267ae6123cd08b9a9b25690.md}   | 114 ++++++++++-----------
+ .../9308a9e932133eeff316426f9ceb17aae1924d08.zip   | Bin 0 -> 21341 bytes
+ ...> 9937e4ad3625cd013d73b02c6b460dd649cb5681.zip} | Bin 416812 -> 415808 bytes
+ .../997f36cb6f3ce8268948335f0aa906e348298062.zip   | Bin 425883 -> 0 bytes
+ .../e84f9b672159aecb1c147944d17fd87282fcca79.zip   | Bin 0 -> 460118 bytes
+ .../f0834f3161aabd3c2000c2fee05df5bf026f75a9.md}   | 112 ++++++++++----------
+ .../fb03c0629d60ce19fedcd769c0ea7ec182ba695c.png   | Bin 0 -> 81903 bytes
+ .../ncuong/reports/html/fr17-chromium/index.html   |   2 +-
+ .../reports/html/fr17-chromium/report-meta.txt     |   2 +-
+ .../1417e445ed85071ccaf08d8205a4498468bc6924.zip   | Bin 0 -> 350959 bytes
+ .../1c18d1e8c97f484cb50cb3e3d0e2a4a4a00519f7.zip   | Bin 0 -> 312536 bytes
+ .../2449b09e5bca4eea3c24db8ad0dfc686c5b48405.zip   | Bin 308928 -> 0 bytes
+ .../28d1aff9216d74a5adccb45c58d6377b4e00c000.zip   | Bin 374084 -> 0 bytes
+ ...=> 2d8a2024b57de5efc639de7b8450c984b028a13f.md} |   9 --
+ .../2f61ae73e21a4dd62fd2fb107155140dcbba07a3.zip   | Bin 0 -> 21283 bytes
+ .../3a40366da2fafd74b79b7c1e4604872278081f56.zip   | Bin 375290 -> 0 bytes
+ .../49bbee7422f5a7804659ef246ca63a7b4c2d12bc.md    |   0
+ .../4ed33860ed8335df79aece833477714abc606908.md}   |  92 +++++++----------
+ .../60e605cd20a113040342580313f366c051f0ddd6.zip   | Bin 11739 -> 0 bytes
+ .../6ccc735a6105619472ffa0186adf8471285bc704.zip   | Bin 0 -> 13702 bytes
+ ...> 735e592a606305e2cad799be19ac7d3de9ede5a4.png} | Bin 93570 -> 87551 bytes
+ .../7e9563d65d54f30276a8b76917024acd1f7c125f.zip   | Bin 0 -> 292479 bytes
+ .../82945451d4e28b36182657e5f1f2e8d555ebcaef.md}   | 114 ++++++++++-----------
+ .../885c5cc8e147bd417267ae6123cd08b9a9b25690.md}   | 114 ++++++++++-----------
+ .../8a2ff08480aa7717aac502bb04548a225310adb2.zip   | Bin 311671 -> 0 bytes
+ .../936a5a7baffcdd729bd5f738eef3569e842b89eb.md}   |  20 +---
+ .../97e791776ab0f441276f659975174c00a8f6b52c.zip   | Bin 0 -> 282271 bytes
+ .../da02577775efa9e4ecae7542a9847efbc3b78c70.zip   | Bin 374563 -> 0 bytes
+ ...=> daa955a5a9456c357bf598dcae03a8612ba3cb87.md} |   9 --
+ .../e57fc56cfca594b15e4e71d6d933c42958c76e41.zip   | Bin 0 -> 351544 bytes
+ .../e9111fcd9c30679d9dd1dec0168ea5defa0e7b04.zip   | Bin 13597 -> 0 bytes
+ .../eb0f68d7ffed93c4cf353800a9c17725bd2a336f.zip   | Bin 21324 -> 0 bytes
+ .../f0834f3161aabd3c2000c2fee05df5bf026f75a9.md}   | 112 ++++++++++----------
+ .../f0aa55188f0cebe6e63249c58b58c2ad45712e87.zip   | Bin 0 -> 13553 bytes
+ .../ncuong/reports/html/fr17-firefox/index.html    |   2 +-
+ .../reports/html/fr17-firefox/report-meta.txt      |   2 +-
+ ...=> 05e04bca8025705ab3415873fea67d6819c10bb3.md} |  27 -----
+ .../0ac4205bb544a3c0810b477f13a6d95d206416b1.zip   | Bin 21337 -> 0 bytes
+ .../0e64afbc9de0df2db9304550468c8e27412bc5b2.zip   | Bin 485769 -> 0 bytes
+ .../0f1a09395101d21918e2b8064c1f2c47068eb40d.zip   | Bin 0 -> 426625 bytes
+ .../1031cfe685fe3e59781d457afae14d3aa67e3149.zip   | Bin 0 -> 13603 bytes
+ .../19222984e2d25cbb09de3ba1a6eea4369da90d9f.zip   | Bin 487159 -> 0 bytes
+ .../197d13ba4ea754fe5004b68f16ffb0f2dcf77b86.md}   |  78 +++++++-------
+ .../43375c3eb68019e585a8f7c70a8b26675741cc63.png   | Bin 0 -> 263394 bytes
+ .../53732e57871e7ba32323d5315f3c26bf4b466690.zip   | Bin 0 -> 21272 bytes
+ .../5998f4e441fdd8250eaafdb2a728492854daf0fb.png   | Bin 265879 -> 0 bytes
+ .../66439b99e58b60211f60a910af41859d23f77912.zip   | Bin 427483 -> 0 bytes
+ ...> 7644390213221191a897c655fdca159c5bbe3db2.png} | Bin 258673 -> 262794 bytes
+ .../82945451d4e28b36182657e5f1f2e8d555ebcaef.md}   | 114 ++++++++++-----------
+ ...=> 842aab3ba1d34fc987bf98d5b6478e12b39b0045.md} |  18 ----
+ ...=> 885c5cc8e147bd417267ae6123cd08b9a9b25690.md} | 114 ++++++++++-----------
+ .../89e2cf095bf8d57a04ea0ca6ddc468a5daaf9638.zip   | Bin 0 -> 13724 bytes
+ .../95389eda325b65aa884d70cba5ff920923b1f97d.md}   |   6 +-
+ .../966261805a95dc8e44d05b5b98327ae368d0e0cd.zip   | Bin 11781 -> 0 bytes
+ .../a0f6ad973aad03e0a3c9b0eac3b106f500f27943.zip   | Bin 0 -> 422216 bytes
+ .../a4190cb4089b5f902a060bdc366a610346084bde.zip   | Bin 0 -> 379563 bytes
+ .../a5128509b85f649956fdc4c6134493359749f5b8.zip   | Bin 13639 -> 0 bytes
+ .../ade945b2240f0b12f2ee23f3c51f5f13d77343bd.zip   | Bin 0 -> 402630 bytes
+ .../c87098f5cbb8b94b2114e8fd59b76d55db29351b.zip   | Bin 468928 -> 0 bytes
+ .../d0b92647fbee1af9b7c71692b09361c48787e2e7.zip   | Bin 429857 -> 0 bytes
+ ...> dfefabee03d00bb93d9830e7df5c0fc934402bfc.png} | Bin 263969 -> 238657 bytes
+ .../e3b8098635668721a88dde658837c454c346c05a.zip   | Bin 0 -> 450920 bytes
+ ...=> f0834f3161aabd3c2000c2fee05df5bf026f75a9.md} | 112 ++++++++++----------
+ ...=> f791e8522e3161db51f10ad42b7012caa913bc43.md} |  27 -----
+ .../ncuong/reports/html/fr17-webkit/index.html     |   2 +-
+ .../reports/html/fr17-webkit/report-meta.txt       |   2 +-
+ 79 files changed, 637 insertions(+), 757 deletions(-)
+e82b471 docs(hw04): AI audit log AI-007 (full FR17)
+ homework/hw04/ncuong/reports/ai-audit.md | 29 ++++++++++++++++++++++++++++-
+ 1 file changed, 28 insertions(+), 1 deletion(-)
+425b637 docs(fr17): link GitHub issues #134-136 in bug reports
+ homework/hw04/ncuong/features/FR17/bugs/BUG-FR17-01-numeric-bounds.md  | 2 +-
+ homework/hw04/ncuong/features/FR17/bugs/BUG-FR17-02-code-validation.md | 2 +-
+ homework/hw04/ncuong/features/FR17/bugs/BUG-FR17-03-other-fields.md    | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+8cf823b docs(fr17): test plan, 3 bug reports + evidence + publish script
+ .../FR17/bugs/BUG-FR17-01-numeric-bounds.md        |  15 ++++
+ .../FR17/bugs/BUG-FR17-02-code-validation.md       |  17 ++++
+ .../features/FR17/bugs/BUG-FR17-03-other-fields.md |  15 ++++
+ .../ncuong/features/FR17/bugs/capture-evidence.mjs |  93 +++++++++++++++++++++
+ .../bugs/screenshots/bug-fr17-code-case-api.png    | Bin 0 -> 13782 bytes
+ .../FR17/bugs/screenshots/bug-fr17-code-case.png   | Bin 0 -> 66300 bytes
+ .../bugs/screenshots/bug-fr17-numeric-bounds.png   | Bin 0 -> 59663 bytes
+ .../bugs/screenshots/bug-fr17-other-fields-api.png | Bin 0 -> 35119 bytes
+ .../hw04/ncuong/features/FR17/issues/publish.sh    |  10 +++
+ 9 files changed, 150 insertions(+)
+b669ef1 docs(fr17): 3-browser HTML reports with Run by + ISO timestamp
+ .../0a14204420e03b902bfa11d229d9f166b923cbbc.zip   | Bin 0 -> 21325 bytes
+ .../1fb3ebaf0e9eed7eaa2b3d17194ea69073426260.zip   | Bin 0 -> 424865 bytes
+ .../2d8a2024b57de5efc639de7b8450c984b028a13f.md    | 304 +++++++++++++++++++
+ .../331d7815af1b89fc4cb45a6adc3a7a9852576237.png   | Bin 0 -> 73036 bytes
+ .../439dd4ed94659bec9a8ed8055f43ebc82f92feee.md    | 152 ++++++++++
+ .../49bbee7422f5a7804659ef246ca63a7b4c2d12bc.md    | 304 +++++++++++++++++++
+ .../5161d8aa60bb69a47d46e105cc2785d5dfa085fd.zip   | Bin 0 -> 11807 bytes
+ .../6236a6383035822903ed8b10f838011b4fc84ab2.zip   | Bin 0 -> 13655 bytes
+ .../639ab580fbe45d1b146b328ce90fcac3c902fd3b.zip   | Bin 0 -> 423678 bytes
+ .../68a7b5153834364eac14212c3726a05d61181aee.zip   | Bin 0 -> 416812 bytes
+ .../79f3af331d765af0f8734ffd34a380c20cd064d5.zip   | Bin 0 -> 424278 bytes
+ .../815cdeda76d0d40e5c8049be8fb94445dee87cff.md    | 170 +++++++++++
+ .../936a5a7baffcdd729bd5f738eef3569e842b89eb.md    | 304 +++++++++++++++++++
+ .../997f36cb6f3ce8268948335f0aa906e348298062.zip   | Bin 0 -> 425883 bytes
+ .../b3977fc9db2dca4ea8246c19c35831668b20897d.md    | 304 +++++++++++++++++++
+ .../cc4a0c2516fe0e189be1c7e9f0b7f11647b51f00.md    | 158 ++++++++++
+ .../daa955a5a9456c357bf598dcae03a8612ba3cb87.md    | 304 +++++++++++++++++++
+ .../ncuong/reports/html/fr17-chromium/index.html   |  49 +++
+ .../reports/html/fr17-chromium/report-meta.txt     |   4 +
+ .../trace/assets/codeMirrorModule-DNqxPF-E.js      |  32 ++
+ .../trace/assets/defaultSettingsView-BQT9Z6FV.js   | 184 ++++++++++++
+ .../trace/assets/rolldown-runtime-QTnfLwEv.js      |   1 +
+ .../trace/assets/urlMatch-Cgl6axSs.js              |   1 +
+ .../trace/codeMirrorModule.-QdMvsKi.css            |   1 +
+ .../html/fr17-chromium/trace/codicon.DCmgc-ay.ttf  | Bin 0 -> 80340 bytes
+ .../trace/defaultSettingsView.C8BeHuxd.css         |   1 +
+ .../html/fr17-chromium/trace/index.BY2vkw8A.js     |   1 +
+ .../html/fr17-chromium/trace/index.B_TqY17P.css    |   1 +
+ .../reports/html/fr17-chromium/trace/index.html    |  45 +++
+ .../html/fr17-chromium/trace/manifest.webmanifest  |  16 +
+ .../html/fr17-chromium/trace/playwright-logo.svg   |   9 +
+ .../html/fr17-chromium/trace/snapshot.-ChLTbql.js  |   1 +
+ .../reports/html/fr17-chromium/trace/snapshot.html |  10 +
+ .../reports/html/fr17-chromium/trace/sw.bundle.js  |   4 +
+ .../html/fr17-chromium/trace/uiMode.CyMfwkXJ.css   |   1 +
+ .../html/fr17-chromium/trace/uiMode.DuLwZHRf.js    |   5 +
+ .../reports/html/fr17-chromium/trace/uiMode.html   |  19 ++
+ .../fr17-chromium/trace/xtermModule.kHJ-D0s7.css   |   1 +
+ .../2449b09e5bca4eea3c24db8ad0dfc686c5b48405.zip   | Bin 0 -> 308928 bytes
+ .../28d1aff9216d74a5adccb45c58d6377b4e00c000.zip   | Bin 0 -> 374084 bytes
+ .../3a40366da2fafd74b79b7c1e4604872278081f56.zip   | Bin 0 -> 375290 bytes
+ .../3b7d3bc6295fb2a41f190dd9b2b7e91cbf88fb33.md    | 313 +++++++++++++++++++
+ .../439dd4ed94659bec9a8ed8055f43ebc82f92feee.md    | 152 ++++++++++
+ .../48748d7c552f7c77ff71258b0dba4961cd7c1398.md    | 313 +++++++++++++++++++
+ .../60e605cd20a113040342580313f366c051f0ddd6.zip   | Bin 0 -> 11739 bytes
+ .../815cdeda76d0d40e5c8049be8fb94445dee87cff.md    | 170 +++++++++++
+ .../889fd59ab8c2204321b51fea79c3e859be9c88ec.md    | 313 +++++++++++++++++++
+ .../8a2ff08480aa7717aac502bb04548a225310adb2.zip   | Bin 0 -> 311671 bytes
+ .../b38b512440796f443fb88807d0a1f32173e0f690.png   | Bin 0 -> 93570 bytes
+ .../cc4a0c2516fe0e189be1c7e9f0b7f11647b51f00.md    | 158 ++++++++++
+ .../cef9740acfb3f486c3689a7d259e33108ac30c9e.md    | 313 +++++++++++++++++++
+ .../da02577775efa9e4ecae7542a9847efbc3b78c70.zip   | Bin 0 -> 374563 bytes
+ .../e9111fcd9c30679d9dd1dec0168ea5defa0e7b04.zip   | Bin 0 -> 13597 bytes
+ .../eb0f68d7ffed93c4cf353800a9c17725bd2a336f.zip   | Bin 0 -> 21324 bytes
+ .../ec44cea96a2d2b1b3433c478974298b90561ac57.md    | 313 +++++++++++++++++++
+ .../ncuong/reports/html/fr17-firefox/index.html    |  49 +++
+ .../reports/html/fr17-firefox/report-meta.txt      |   4 +
+ .../trace/assets/codeMirrorModule-DNqxPF-E.js      |  32 ++
+ .../trace/assets/defaultSettingsView-BQT9Z6FV.js   | 184 ++++++++++++
+ .../trace/assets/rolldown-runtime-QTnfLwEv.js      |   1 +
+ .../fr17-firefox/trace/assets/urlMatch-Cgl6axSs.js |   1 +
+ .../trace/codeMirrorModule.-QdMvsKi.css            |   1 +
+ .../html/fr17-firefox/trace/codicon.DCmgc-ay.ttf   | Bin 0 -> 80340 bytes
+ .../trace/defaultSettingsView.C8BeHuxd.css         |   1 +
+ .../html/fr17-firefox/trace/index.BY2vkw8A.js      |   1 +
+ .../html/fr17-firefox/trace/index.B_TqY17P.css     |   1 +
+ .../reports/html/fr17-firefox/trace/index.html     |  45 +++
+ .../html/fr17-firefox/trace/manifest.webmanifest   |  16 +
+ .../html/fr17-firefox/trace/playwright-logo.svg    |   9 +
+ .../html/fr17-firefox/trace/snapshot.-ChLTbql.js   |   1 +
+ .../reports/html/fr17-firefox/trace/snapshot.html  |  10 +
+ .../reports/html/fr17-firefox/trace/sw.bundle.js   |   4 +
+ .../html/fr17-firefox/trace/uiMode.CyMfwkXJ.css    |   1 +
+ .../html/fr17-firefox/trace/uiMode.DuLwZHRf.js     |   5 +
+ .../reports/html/fr17-firefox/trace/uiMode.html    |  19 ++
+ .../fr17-firefox/trace/xtermModule.kHJ-D0s7.css    |   1 +
+ .../0ac4205bb544a3c0810b477f13a6d95d206416b1.zip   | Bin 0 -> 21337 bytes
+ .../0e64afbc9de0df2db9304550468c8e27412bc5b2.zip   | Bin 0 -> 485769 bytes
+ .../19222984e2d25cbb09de3ba1a6eea4369da90d9f.zip   | Bin 0 -> 487159 bytes
+ .../24e1218a807c5d6105bbac1c6d36aa95f88e256c.md    | 322 ++++++++++++++++++++
+ .../3942dc1e4f2ac9debfbe90a9f9ccfb5a6962ecb2.md    | 331 +++++++++++++++++++++
+ .../439dd4ed94659bec9a8ed8055f43ebc82f92feee.md    | 152 ++++++++++
+ .../5998f4e441fdd8250eaafdb2a728492854daf0fb.png   | Bin 0 -> 265879 bytes
+ .../66439b99e58b60211f60a910af41859d23f77912.zip   | Bin 0 -> 427483 bytes
+ .../7d42383f1aeb15e09b039614ccf965ebe1d0989c.md    | 322 ++++++++++++++++++++
+ .../815cdeda76d0d40e5c8049be8fb94445dee87cff.md    | 170 +++++++++++
+ .../966261805a95dc8e44d05b5b98327ae368d0e0cd.zip   | Bin 0 -> 11781 bytes
+ .../a5128509b85f649956fdc4c6134493359749f5b8.zip   | Bin 0 -> 13639 bytes
+ .../b053fab6fdc5ce14fd7d777f65cf8fb067d03c76.md    | 331 +++++++++++++++++++++
+ .../b60878e9fcea98039adf5ffcb941ceb59ff4893d.png   | Bin 0 -> 263969 bytes
+ .../c87098f5cbb8b94b2114e8fd59b76d55db29351b.zip   | Bin 0 -> 468928 bytes
+ .../c9ffd32b5ed28cd6891d131d6fb15b9128f3cac4.md    | 322 ++++++++++++++++++++
+ .../cc4a0c2516fe0e189be1c7e9f0b7f11647b51f00.md    | 158 ++++++++++
+ .../d0b92647fbee1af9b7c71692b09361c48787e2e7.zip   | Bin 0 -> 429857 bytes
+ .../d3566801d994180626224ea533b081ed8885ad11.png   | Bin 0 -> 258673 bytes
+ .../ncuong/reports/html/fr17-webkit/index.html     |  49 +++
+ .../reports/html/fr17-webkit/report-meta.txt       |   4 +
+ .../trace/assets/codeMirrorModule-DNqxPF-E.js      |  32 ++
+ .../trace/assets/defaultSettingsView-BQT9Z6FV.js   | 184 ++++++++++++
+ .../trace/assets/rolldown-runtime-QTnfLwEv.js      |   1 +
+ .../fr17-webkit/trace/assets/urlMatch-Cgl6axSs.js  |   1 +
+ .../trace/codeMirrorModule.-QdMvsKi.css            |   1 +
+ .../html/fr17-webkit/trace/codicon.DCmgc-ay.ttf    | Bin 0 -> 80340 bytes
+ .../trace/defaultSettingsView.C8BeHuxd.css         |   1 +
+ .../html/fr17-webkit/trace/index.BY2vkw8A.js       |   1 +
+ .../html/fr17-webkit/trace/index.B_TqY17P.css      |   1 +
+ .../reports/html/fr17-webkit/trace/index.html      |  45 +++
+ .../html/fr17-webkit/trace/manifest.webmanifest    |  16 +
+ .../html/fr17-webkit/trace/playwright-logo.svg     |   9 +
+ .../html/fr17-webkit/trace/snapshot.-ChLTbql.js    |   1 +
+ .../reports/html/fr17-webkit/trace/snapshot.html   |  10 +
+ .../reports/html/fr17-webkit/trace/sw.bundle.js    |   4 +
+ .../html/fr17-webkit/trace/uiMode.CyMfwkXJ.css     |   1 +
+ .../html/fr17-webkit/trace/uiMode.DuLwZHRf.js      |   5 +
+ .../reports/html/fr17-webkit/trace/uiMode.html     |  19 ++
+ .../fr17-webkit/trace/xtermModule.kHJ-D0s7.css     |   1 +
+ 116 files changed, 7311 insertions(+)
+4f11ea6 test(fr17): 18-case coupon CRUD suite, data-driven from JSON
+ homework/hw04/ncuong/data/fr17-coupons.json     |  29 +-
+ homework/hw04/ncuong/tests/fr17-coupons.spec.ts | 421 ++++++++++++++++++++++++
+ 2 files changed, 439 insertions(+), 11 deletions(-)
+cb6704d docs(hw04): AI audit log AI-006 (full FR10)
+ homework/hw04/ncuong/reports/ai-audit.md | 30 +++++++++++++++++++++++++++++-
+ 1 file changed, 29 insertions(+), 1 deletion(-)
+4da6b5d docs(fr10): link GitHub issues #131-133 in bug reports
+ .../ncuong/features/FR10/bugs/BUG-FR10-01-cancelled-to-delivered.md     | 2 +-
+ .../hw04/ncuong/features/FR10/bugs/BUG-FR10-02-user-cancel-shipping.md  | 2 +-
+ homework/hw04/ncuong/features/FR10/bugs/BUG-FR10-03-no-role-check.md    | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+cba66f0 docs(fr10): test plan, 3 bug reports + evidence + publish script
+ .../bugs/BUG-FR10-01-cancelled-to-delivered.md     |  17 ++++
+ .../FR10/bugs/BUG-FR10-02-user-cancel-shipping.md  |  17 ++++
+ .../FR10/bugs/BUG-FR10-03-no-role-check.md         |  15 ++++
+ .../ncuong/features/FR10/bugs/capture-evidence.mjs |  92 +++++++++++++++++++++
+ .../bug-fr10-cancelled-delivered-api.png           | Bin 0 -> 14970 bytes
+ .../screenshots/bug-fr10-cancelled-delivered.png   | Bin 0 -> 8941 bytes
+ .../FR10/bugs/screenshots/bug-fr10-no-authz.png    | Bin 0 -> 15579 bytes
+ .../screenshots/bug-fr10-shipping-cancel-api.png   | Bin 0 -> 14510 bytes
+ .../bugs/screenshots/bug-fr10-shipping-cancel.png  | Bin 0 -> 6028 bytes
+ .../hw04/ncuong/features/FR10/issues/publish.sh    |  10 +++
+ 10 files changed, 151 insertions(+)
+47af84c docs(fr10): 3-browser HTML reports with Run by + ISO timestamp
+ .../0d63a6bf83cadbf18f750ff4fc5f16f71c1ffc8c.zip   |  Bin 0 -> 483543 bytes
+ .../3629c097ab3cf99122ffce98d506a82327a7cd6c.md    | 1169 +++++++++++
+ .../4ed5d2736145e157d44cadd206946327161a6f36.zip   |  Bin 0 -> 15531 bytes
+ .../70422eab359c2a293a1c6fcee7b48c65a1a734cb.zip   |  Bin 0 -> 19337 bytes
+ .../7497d1ac2768cb9e5d9af56bb77cc09d84150772.md    |  143 ++
+ .../92b763e95ec2b15a03981b3e9691995ce956d4a5.md    |  163 ++
+ .../f4995d9473c56fbddd0a91770c08923a39bb34bf.png   |  Bin 0 -> 102265 bytes
+ .../ncuong/reports/html/fr10-chromium/index.html   |   49 +
+ .../reports/html/fr10-chromium/report-meta.txt     |    4 +
+ .../trace/assets/codeMirrorModule-DNqxPF-E.js      |   32 +
+ .../trace/assets/defaultSettingsView-BQT9Z6FV.js   |  184 ++
+ .../trace/assets/rolldown-runtime-QTnfLwEv.js      |    1 +
+ .../trace/assets/urlMatch-Cgl6axSs.js              |    1 +
+ .../trace/codeMirrorModule.-QdMvsKi.css            |    1 +
+ .../html/fr10-chromium/trace/codicon.DCmgc-ay.ttf  |  Bin 0 -> 80340 bytes
+ .../trace/defaultSettingsView.C8BeHuxd.css         |    1 +
+ .../html/fr10-chromium/trace/index.BY2vkw8A.js     |    1 +
+ .../html/fr10-chromium/trace/index.B_TqY17P.css    |    1 +
+ .../reports/html/fr10-chromium/trace/index.html    |   45 +
+ .../html/fr10-chromium/trace/manifest.webmanifest  |   16 +
+ .../html/fr10-chromium/trace/playwright-logo.svg   |    9 +
+ .../html/fr10-chromium/trace/snapshot.-ChLTbql.js  |    1 +
+ .../reports/html/fr10-chromium/trace/snapshot.html |   10 +
+ .../reports/html/fr10-chromium/trace/sw.bundle.js  |    4 +
+ .../html/fr10-chromium/trace/uiMode.CyMfwkXJ.css   |    1 +
+ .../html/fr10-chromium/trace/uiMode.DuLwZHRf.js    |    5 +
+ .../reports/html/fr10-chromium/trace/uiMode.html   |   19 +
+ .../fr10-chromium/trace/xtermModule.kHJ-D0s7.css   |    1 +
+ .../01328c89962d48d991abb1815d797d7d547dfe75.md    |  163 ++
+ .../0a459c4fb88c3b58aecf2c86636a95c8d0ea0601.md    | 1896 ++++++++++++++++++
+ .../6387f58cf8f65687470b3e4218f0d9b3fdc0e982.png   |  Bin 0 -> 122185 bytes
+ .../7989a75a60a7d86c83a22ba77faad4e92f9fca58.md    |  143 ++
+ .../79bd34e317f3f594d3fa2c83ba24f7296b7b971b.zip   |  Bin 0 -> 19372 bytes
+ .../d8eaa034bd019ba36cd1e6ef6bd0a28e3670a2ba.zip   |  Bin 0 -> 638272 bytes
+ .../f88190dab940b2ab584bd99739f95d8b9045eee1.zip   |  Bin 0 -> 15522 bytes
+ .../ncuong/reports/html/fr10-firefox/index.html    |   49 +
+ .../reports/html/fr10-firefox/report-meta.txt      |    4 +
+ .../trace/assets/codeMirrorModule-DNqxPF-E.js      |   32 +
+ .../trace/assets/defaultSettingsView-BQT9Z6FV.js   |  184 ++
+ .../trace/assets/rolldown-runtime-QTnfLwEv.js      |    1 +
+ .../fr10-firefox/trace/assets/urlMatch-Cgl6axSs.js |    1 +
+ .../trace/codeMirrorModule.-QdMvsKi.css            |    1 +
+ .../html/fr10-firefox/trace/codicon.DCmgc-ay.ttf   |  Bin 0 -> 80340 bytes
+ .../trace/defaultSettingsView.C8BeHuxd.css         |    1 +
+ .../html/fr10-firefox/trace/index.BY2vkw8A.js      |    1 +
+ .../html/fr10-firefox/trace/index.B_TqY17P.css     |    1 +
+ .../reports/html/fr10-firefox/trace/index.html     |   45 +
+ .../html/fr10-firefox/trace/manifest.webmanifest   |   16 +
+ .../html/fr10-firefox/trace/playwright-logo.svg    |    9 +
+ .../html/fr10-firefox/trace/snapshot.-ChLTbql.js   |    1 +
+ .../reports/html/fr10-firefox/trace/snapshot.html  |   10 +
+ .../reports/html/fr10-firefox/trace/sw.bundle.js   |    4 +
+ .../html/fr10-firefox/trace/uiMode.CyMfwkXJ.css    |    1 +
+ .../html/fr10-firefox/trace/uiMode.DuLwZHRf.js     |    5 +
+ .../reports/html/fr10-firefox/trace/uiMode.html    |   19 +
+ .../fr10-firefox/trace/xtermModule.kHJ-D0s7.css    |    1 +
+ .../01328c89962d48d991abb1815d797d7d547dfe75.md    |  163 ++
+ .../36e65fb0680a3401e0953ca151e7b652f0a91951.zip   |  Bin 0 -> 19335 bytes
+ .../384f3b0b8d3636153c1945f3e084c361a37a1301.md    | 2068 ++++++++++++++++++++
+ .../50b4581bac5a66544f92225184380d2c7449a2b8.zip   |  Bin 0 -> 15614 bytes
+ .../54caace967d0cd404bd4843dc4ccaefa0c79cde3.zip   |  Bin 0 -> 532110 bytes
+ .../7989a75a60a7d86c83a22ba77faad4e92f9fca58.md    |  143 ++
+ .../c79870eed70a7117d8f234021dd117b55d1238fa.png   |  Bin 0 -> 309271 bytes
+ .../ncuong/reports/html/fr10-webkit/index.html     |   49 +
+ .../reports/html/fr10-webkit/report-meta.txt       |    4 +
+ .../trace/assets/codeMirrorModule-DNqxPF-E.js      |   32 +
+ .../trace/assets/defaultSettingsView-BQT9Z6FV.js   |  184 ++
+ .../trace/assets/rolldown-runtime-QTnfLwEv.js      |    1 +
+ .../fr10-webkit/trace/assets/urlMatch-Cgl6axSs.js  |    1 +
+ .../trace/codeMirrorModule.-QdMvsKi.css            |    1 +
+ .../html/fr10-webkit/trace/codicon.DCmgc-ay.ttf    |  Bin 0 -> 80340 bytes
+ .../trace/defaultSettingsView.C8BeHuxd.css         |    1 +
+ .../html/fr10-webkit/trace/index.BY2vkw8A.js       |    1 +
+ .../html/fr10-webkit/trace/index.B_TqY17P.css      |    1 +
+ .../reports/html/fr10-webkit/trace/index.html      |   45 +
+ .../html/fr10-webkit/trace/manifest.webmanifest    |   16 +
+ .../html/fr10-webkit/trace/playwright-logo.svg     |    9 +
+ .../html/fr10-webkit/trace/snapshot.-ChLTbql.js    |    1 +
+ .../reports/html/fr10-webkit/trace/snapshot.html   |   10 +
+ .../reports/html/fr10-webkit/trace/sw.bundle.js    |    4 +
+ .../html/fr10-webkit/trace/uiMode.CyMfwkXJ.css     |    1 +
+ .../html/fr10-webkit/trace/uiMode.DuLwZHRf.js      |    5 +
+ .../reports/html/fr10-webkit/trace/uiMode.html     |   19 +
+ .../fr10-webkit/trace/xtermModule.kHJ-D0s7.css     |    1 +
+ 84 files changed, 7209 insertions(+)
+4159932 test(fr10): 16-case order state machine suite, data-driven from JSON
+ homework/hw04/ncuong/data/fr10-orders.json     |  24 +-
+ homework/hw04/ncuong/tests/fr10-orders.spec.ts | 357 +++++++++++++++++++++++++
+ 2 files changed, 373 insertions(+), 8 deletions(-)
+16a4d43 docs(fr02): link GitHub issues #128-130 in bug reports
+ homework/hw04/ncuong/features/FR02/bugs/BUG-FR02-01-counter-plus2.md    | 2 +-
+ homework/hw04/ncuong/features/FR02/bugs/BUG-FR02-02-input-types.md      | 2 +-
+ .../hw04/ncuong/features/FR02/bugs/BUG-FR02-03-null-password-bypass.md  | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+757fb80 test(fr02): full 16-case data-driven suite, 3-browser reports, 3 bug reports
+ .../hw04/docs/2026.HW04.Automation Testing_En.md   | 186 +++++++
+ .../hw04/docs/2026.HW04.Automation Testing_En.pdf  | Bin 0 -> 463412 bytes
+ homework/hw04/docs/HW04_TASK_CHECKLIST.md          | 605 +++++++++++++++++++++
+ homework/hw04/ncuong/.gitignore                    |   7 +
+ homework/hw04/ncuong/data/fr02-login.json          |  18 +
+ homework/hw04/ncuong/data/fr10-orders.json         |  10 +
+ homework/hw04/ncuong/data/fr17-coupons.json        |  13 +
+ .../FR02/bugs/BUG-FR02-01-counter-plus2.md         |  15 +
+ .../features/FR02/bugs/BUG-FR02-02-input-types.md  |  15 +
+ .../FR02/bugs/BUG-FR02-03-null-password-bypass.md  |  15 +
+ .../ncuong/features/FR02/bugs/capture-evidence.mjs |  63 +++
+ .../FR02/bugs/screenshots/bug-fr02-counter.png     | Bin 0 -> 21813 bytes
+ .../FR02/bugs/screenshots/bug-fr02-input-types.png | Bin 0 -> 34672 bytes
+ .../FR02/bugs/screenshots/bug-fr02-null-bypass.png | Bin 0 -> 25392 bytes
+ .../hw04/ncuong/features/FR02/issues/publish.sh    |  10 +
+ .../ncuong/features/FR02/test-plan-automation.md   |  43 ++
+ .../ncuong/features/FR10/test-plan-automation.md   |  37 ++
+ .../ncuong/features/FR17/test-plan-automation.md   |  37 ++
+ homework/hw04/ncuong/package-lock.json             |  91 ++++
+ homework/hw04/ncuong/package.json                  |  14 +
+ homework/hw04/ncuong/playwright.config.ts          |  41 ++
+ homework/hw04/ncuong/reports/ai-audit.md           | 173 ++++++
+ .../02492b5e8f9fa166a44c9f7372daf05458c7d4c3.zip   | Bin 0 -> 83718 bytes
+ .../1ab03db1f4ffe73ad8870821dd71bfddf1336503.md    | 127 +++++
+ .../32fa6f0e60817512dd871f05053c3ae8dfece4be.zip   | Bin 0 -> 204990 bytes
+ .../4ffe8b63cfa18a49d320a9e843ee7b115875052a.png   | Bin 0 -> 42256 bytes
+ .../62aa64ad8198c5767c1819fbcff4fe8fd087e208.zip   | Bin 0 -> 10912 bytes
+ .../9a20e9db1c2451fbe285252c815309c3cfb938a5.md    | 178 ++++++
+ .../9a8bf4006c3bed49ba64bbe5e98683e7ef9f7035.png   | Bin 0 -> 29401 bytes
+ .../c3cae371ecf9efd863ed174e2214d38243bd66a0.md    | 261 +++++++++
+ .../c5e7762419f5c1cc80094db583bb4b4a48fe4a99.png   | Bin 0 -> 41576 bytes
+ .../c7d57e8a13bac97982c1ce0ffc134da3f4af6be1.zip   | Bin 0 -> 157351 bytes
+ .../cf1b7dda8392055375e88d54269227d52840de64.md    | 239 ++++++++
+ .../e69b1ec0c5873e177697581a3c21850984ad996c.md    | 261 +++++++++
+ .../e85a9e60cd5c073d1b899645658920cc409c898e.zip   | Bin 0 -> 83395 bytes
+ .../ncuong/reports/html/fr02-chromium/index.html   |  49 ++
+ .../reports/html/fr02-chromium/report-meta.txt     |   4 +
+ .../trace/assets/codeMirrorModule-DNqxPF-E.js      |  32 ++
+ .../trace/assets/defaultSettingsView-BQT9Z6FV.js   | 184 +++++++
+ .../trace/assets/rolldown-runtime-QTnfLwEv.js      |   1 +
+ .../trace/assets/urlMatch-Cgl6axSs.js              |   1 +
+ .../trace/codeMirrorModule.-QdMvsKi.css            |   1 +
+ .../html/fr02-chromium/trace/codicon.DCmgc-ay.ttf  | Bin 0 -> 80340 bytes
+ .../trace/defaultSettingsView.C8BeHuxd.css         |   1 +
+ .../html/fr02-chromium/trace/index.BY2vkw8A.js     |   1 +
+ .../html/fr02-chromium/trace/index.B_TqY17P.css    |   1 +
+ .../reports/html/fr02-chromium/trace/index.html    |  45 ++
+ .../html/fr02-chromium/trace/manifest.webmanifest  |  16 +
+ .../html/fr02-chromium/trace/playwright-logo.svg   |   9 +
+ .../html/fr02-chromium/trace/snapshot.-ChLTbql.js  |   1 +
+ .../reports/html/fr02-chromium/trace/snapshot.html |  10 +
+ .../reports/html/fr02-chromium/trace/sw.bundle.js  |   4 +
+ .../html/fr02-chromium/trace/uiMode.CyMfwkXJ.css   |   1 +
+ .../html/fr02-chromium/trace/uiMode.DuLwZHRf.js    |   5 +
+ .../reports/html/fr02-chromium/trace/uiMode.html   |  19 +
+ .../fr02-chromium/trace/xtermModule.kHJ-D0s7.css   |   1 +
+ .../36025074eee369ff46492b886352332a660f2bb1.zip   | Bin 0 -> 10854 bytes
+ .../7e12a9d4774160101fd77412d25716974f2ee715.md    | 256 +++++++++
+ .../836a1a61760c03e2180e0c2fd10a3fe5b70076e7.md    | 239 ++++++++
+ .../87196bc4aae2916fc81f1b335c27abb1bfa2455d.png   | Bin 0 -> 35681 bytes
+ .../98d51d287c11f74621d398154c51f0c4406899fd.md    | 127 +++++
+ .../9ab83624371b160da9c03d7fe132111dbb4d56a4.md    | 261 +++++++++
+ .../b08f2db88d172e34cd515a11990feb89103ac430.png   | Bin 0 -> 49449 bytes
+ .../b1336d97ff26e7d3196a445f8677a0e85db6d756.zip   | Bin 0 -> 448199 bytes
+ .../bc7ad7d1ee62802800db9e9f838c2329633926bb.zip   | Bin 0 -> 177486 bytes
+ .../c49c38ff1150337fdaf42c975c226ee3e0dcd06c.png   | Bin 0 -> 49771 bytes
+ .../caab353455d0cc85ee339e3a1a4a23e819789a26.zip   | Bin 0 -> 815942 bytes
+ .../e57c995bc85e1a1bb412ae0234085e32e8fa8340.zip   | Bin 0 -> 138098 bytes
+ .../fc7890a4be95cc8116c8a8e6831371f4587814cf.md    | 176 ++++++
+ .../ncuong/reports/html/fr02-firefox/index.html    |  49 ++
+ .../reports/html/fr02-firefox/report-meta.txt      |   4 +
+ .../trace/assets/codeMirrorModule-DNqxPF-E.js      |  32 ++
+ .../trace/assets/defaultSettingsView-BQT9Z6FV.js   | 184 +++++++
+ .../trace/assets/rolldown-runtime-QTnfLwEv.js      |   1 +
+ .../fr02-firefox/trace/assets/urlMatch-Cgl6axSs.js |   1 +
+ .../trace/codeMirrorModule.-QdMvsKi.css            |   1 +
+ .../html/fr02-firefox/trace/codicon.DCmgc-ay.ttf   | Bin 0 -> 80340 bytes
+ .../trace/defaultSettingsView.C8BeHuxd.css         |   1 +
+ .../html/fr02-firefox/trace/index.BY2vkw8A.js      |   1 +
+ .../html/fr02-firefox/trace/index.B_TqY17P.css     |   1 +
+ .../reports/html/fr02-firefox/trace/index.html     |  45 ++
+ .../html/fr02-firefox/trace/manifest.webmanifest   |  16 +
+ .../html/fr02-firefox/trace/playwright-logo.svg    |   9 +
+ .../html/fr02-firefox/trace/snapshot.-ChLTbql.js   |   1 +
+ .../reports/html/fr02-firefox/trace/snapshot.html  |  10 +
+ .../reports/html/fr02-firefox/trace/sw.bundle.js   |   4 +
+ .../html/fr02-firefox/trace/uiMode.CyMfwkXJ.css    |   1 +
+ .../html/fr02-firefox/trace/uiMode.DuLwZHRf.js     |   5 +
+ .../reports/html/fr02-firefox/trace/uiMode.html    |  19 +
+ .../fr02-firefox/trace/xtermModule.kHJ-D0s7.css    |   1 +
+ .../05ab3eaa68a3eb247b1c6234b8aba568074feb49.md    | 256 +++++++++
+ .../0a04db40b57882980709f0413cc29863be17f24f.md    | 261 +++++++++
+ .../629bf7d5fc84c25f98f8eb53da5bde17fe020c45.zip   | Bin 0 -> 198552 bytes
+ .../706ef5ebf6e8ae82235b0c76c7a93d78eba8dd85.png   | Bin 0 -> 166042 bytes
+ .../754d21435e19a2189e432031c096867a69a971da.zip   | Bin 0 -> 110733 bytes
+ .../75fa8846694499d6a758172b453ed47f4369fa2f.zip   | Bin 0 -> 10900 bytes
+ .../8123d0668252c6010349ce235c5ad386899e3a0b.zip   | Bin 0 -> 110387 bytes
+ .../836a1a61760c03e2180e0c2fd10a3fe5b70076e7.md    | 239 ++++++++
+ .../97b86b0876ca83d7e273ad82f4c234d8a2bec5b4.zip   | Bin 0 -> 270283 bytes
+ .../9fadb63659ffd9c532a365215d6bab8a36746ad5.png   | Bin 0 -> 166547 bytes
+ .../a5707957899d87d78cad55b7db9bc60cae9612f1.png   | Bin 0 -> 133970 bytes
+ .../ceb6a13ddb0e4c54348d161e018e81bc04b2912d.md    | 127 +++++
+ .../fc7890a4be95cc8116c8a8e6831371f4587814cf.md    | 176 ++++++
+ .../ncuong/reports/html/fr02-webkit/index.html     |  49 ++
+ .../reports/html/fr02-webkit/report-meta.txt       |   4 +
+ .../trace/assets/codeMirrorModule-DNqxPF-E.js      |  32 ++
+ .../trace/assets/defaultSettingsView-BQT9Z6FV.js   | 184 +++++++
+ .../trace/assets/rolldown-runtime-QTnfLwEv.js      |   1 +
+ .../fr02-webkit/trace/assets/urlMatch-Cgl6axSs.js  |   1 +
+ .../trace/codeMirrorModule.-QdMvsKi.css            |   1 +
+ .../html/fr02-webkit/trace/codicon.DCmgc-ay.ttf    | Bin 0 -> 80340 bytes
+ .../trace/defaultSettingsView.C8BeHuxd.css         |   1 +
+ .../html/fr02-webkit/trace/index.BY2vkw8A.js       |   1 +
+ .../html/fr02-webkit/trace/index.B_TqY17P.css      |   1 +
+ .../reports/html/fr02-webkit/trace/index.html      |  45 ++
+ .../html/fr02-webkit/trace/manifest.webmanifest    |  16 +
+ .../html/fr02-webkit/trace/playwright-logo.svg     |   9 +
+ .../html/fr02-webkit/trace/snapshot.-ChLTbql.js    |   1 +
+ .../reports/html/fr02-webkit/trace/snapshot.html   |  10 +
+ .../reports/html/fr02-webkit/trace/sw.bundle.js    |   4 +
+ .../html/fr02-webkit/trace/uiMode.CyMfwkXJ.css     |   1 +
+ .../html/fr02-webkit/trace/uiMode.DuLwZHRf.js      |   5 +
+ .../reports/html/fr02-webkit/trace/uiMode.html     |  19 +
+ .../fr02-webkit/trace/xtermModule.kHJ-D0s7.css     |   1 +
+ homework/hw04/ncuong/tests/fr02-login.spec.ts      | 313 +++++++++++
+ homework/hw04/ncuong/tests/helpers/json-loader.ts  |  16 +
+ 126 files changed, 6064 insertions(+)
+e31eb04 docs(hw03): record the issue publication commit in the log
+ homework/hw03/ncuong/git-commit-log.txt | 1 +
+ 1 file changed, 1 insertion(+)
+c95b29e docs(hw03): publish 26 GitHub issues and link them from bug reports
+ homework/hw03/ncuong/README.md                     |   8 +-
+ homework/hw03/ncuong/features/GUI/bug-report.md    |   2 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-01.md    |   2 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-03.md    |   2 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-04.md    |   2 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-05.md    |   2 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-06.md    |   2 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-07.md    |   2 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-08.md    |   2 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-09.md    |   2 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-10.md    |   2 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-11.md    |   2 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-12.md    |   2 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-13.md    |   2 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-14.md    |   2 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-16.md    |   2 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-17.md    |   2 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-19.md    |   2 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-20.md    |   2 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-21.md    |   2 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-23.md    |   2 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-25.md    |   2 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-27.md    |   2 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-28.md    |   2 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-29.md    |   2 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-30.md    |   2 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-31.md    |   2 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-32.md    |   2 +-
+ .../hw03/ncuong/features/GUI/issues/issues.json    |   6 +-
+ .../hw03/ncuong/features/GUI/issues/publish.sh     |   4 +-
+ .../hw03/ncuong/features/GUI/issues/published.json | 158 +++++++++++++++++++++
+ homework/hw03/ncuong/features/GUI/test-summary.md  |   4 +-
+ homework/hw03/ncuong/reports/ai-audit.md           |   4 +-
+ homework/hw03/ncuong/reports/ai-audit.pdf          | Bin 366007 -> 372031 bytes
+ homework/hw03/ncuong/reports/ai-critique.pdf       | Bin 126430 -> 126430 bytes
+ homework/hw03/ncuong/reports/main-report.md        |   4 +-
+ homework/hw03/ncuong/reports/main-report.pdf       | Bin 490745 -> 496813 bytes
+ 37 files changed, 201 insertions(+), 41 deletions(-)
+ffd291c docs(hw03): record the checklist merge commit in the log
+ homework/hw03/ncuong/git-commit-log.txt | 1 +
+ 1 file changed, 1 insertion(+)
+fe4f1b1 docs(hw03): merge AI initial checklist and review additions into one file
+ homework/hw03/ncuong/README.md                     |   5 +-
+ ...iew-additions.md => ai-checklist-and-review.md} |  65 +++++++++++++++++++--
+ .../ncuong/features/GUI/ai-initial-checklist.md    |  60 -------------------
+ homework/hw03/ncuong/features/GUI/checklist.xlsx   | Bin 15267 -> 15267 bytes
+ homework/hw03/ncuong/features/GUI/test-summary.md  |   8 +--
+ .../ncuong/features/GUI/tools/build_checklist.py   |  23 ++++----
+ homework/hw03/ncuong/reports/ai-audit.md           |   3 +-
+ homework/hw03/ncuong/reports/ai-audit.pdf          | Bin 367075 -> 366007 bytes
+ homework/hw03/ncuong/reports/ai-critique.pdf       | Bin 126430 -> 126430 bytes
+ homework/hw03/ncuong/reports/main-report.md        |   9 ++-
+ homework/hw03/ncuong/reports/main-report.pdf       | Bin 490837 -> 490745 bytes
+ 11 files changed, 83 insertions(+), 90 deletions(-)
+158adc2 docs(hw03): record the AI audit refresh in the log
+ homework/hw03/ncuong/git-commit-log.txt | 1 +
+ 1 file changed, 1 insertion(+)
+78e11b9 docs(hw03): tighten AI audit artifact inventory and refresh PDFs
+ homework/hw03/ncuong/reports/ai-audit.md     |   8 +++++---
+ homework/hw03/ncuong/reports/ai-audit.pdf    | Bin 367192 -> 367075 bytes
+ homework/hw03/ncuong/reports/ai-critique.pdf | Bin 126430 -> 126430 bytes
+ homework/hw03/ncuong/reports/main-report.pdf | Bin 490837 -> 490837 bytes
+ 4 files changed, 5 insertions(+), 3 deletions(-)
+11e43a2 docs(hw03): record the test summary commit in the log
+ homework/hw03/ncuong/git-commit-log.txt | 1 +
+ 1 file changed, 1 insertion(+)
+3258ff9 docs(hw03): update GUI test summary after the review revision
+ homework/hw03/ncuong/features/GUI/test-summary.md | 77 ++++++++++++-----------
+ 1 file changed, 39 insertions(+), 38 deletions(-)
+1db3b82 docs(hw03): update git commit log for the review revision
+ homework/hw03/ncuong/git-commit-log.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+7567792 docs(hw03): rewrite Task 1 reports in Vietnamese and regenerate PDFs
+ homework/hw03/ncuong/README.md               |  59 +++---
+ homework/hw03/ncuong/reports/ai-audit.md     | 173 ++++++++++--------
+ homework/hw03/ncuong/reports/ai-audit.pdf    | Bin 251911 -> 367192 bytes
+ homework/hw03/ncuong/reports/ai-critique.md  |  10 +-
+ homework/hw03/ncuong/reports/ai-critique.pdf | Bin 93213 -> 126430 bytes
+ homework/hw03/ncuong/reports/main-report.md  | 259 ++++++++++++++-------------
+ homework/hw03/ncuong/reports/main-report.pdf | Bin 379458 -> 490837 bytes
+ 7 files changed, 269 insertions(+), 232 deletions(-)
+c292ba1 test(hw03): recapture Vietnamese evidence for failed checklist items
+ .../GUI/screenshots/CHK-01-login-heading.png       | Bin 41927 -> 40138 bytes
+ .../GUI/screenshots/CHK-02-login-title.png         | Bin 41458 -> 0 bytes
+ .../GUI/screenshots/CHK-05-register-h1.png         | Bin 0 -> 45620 bytes
+ .../GUI/screenshots/CHK-06-register-title.png      | Bin 47716 -> 0 bytes
+ .../GUI/screenshots/CHK-07-register-contrast.png   | Bin 52000 -> 48257 bytes
+ .../features/GUI/screenshots/CHK-09-forgot-h1.png  | Bin 0 -> 35601 bytes
+ .../GUI/screenshots/CHK-10-forgot-title.png        | Bin 37874 -> 0 bytes
+ .../GUI/screenshots/CHK-11-forgot-buttons.png      | Bin 48935 -> 47237 bytes
+ .../CHK-13-14-profile-headings-title.png           | Bin 64313 -> 0 bytes
+ .../features/GUI/screenshots/CHK-13-profile-h1.png | Bin 0 -> 58824 bytes
+ .../screenshots/CHK-15-profile-mobile-table.png    | Bin 71119 -> 67992 bytes
+ .../GUI/screenshots/CHK-16-profile-contrast.png    | Bin 66036 -> 62873 bytes
+ .../GUI/screenshots/CHK-17-18-19-login-fields.png  | Bin 51738 -> 53545 bytes
+ .../screenshots/CHK-21-register-invalid-email.png  | Bin 42568 -> 43425 bytes
+ .../screenshots/CHK-23-register-password-rule.png  | Bin 71249 -> 69855 bytes
+ .../GUI/screenshots/CHK-24-register-no-confirm.png | Bin 47483 -> 48098 bytes
+ .../GUI/screenshots/CHK-25-forgot-email-type.png   | Bin 36093 -> 37556 bytes
+ .../GUI/screenshots/CHK-26-forgot-otp-input.png    | Bin 49623 -> 50519 bytes
+ .../GUI/screenshots/CHK-28-forgot-no-confirm.png   | Bin 44846 -> 44981 bytes
+ .../screenshots/CHK-30-profile-phone-inputmode.png | Bin 64344 -> 0 bytes
+ .../GUI/screenshots/CHK-31-profile-phone-alert.png | Bin 73318 -> 70700 bytes
+ .../GUI/screenshots/CHK-32-profile-labels.png      | Bin 62980 -> 61857 bytes
+ .../GUI/screenshots/CHK-34-forgot-link-reload.png  | Bin 40140 -> 0 bytes
+ .../GUI/screenshots/CHK-36-login-tab-order.png     | Bin 38936 -> 42310 bytes
+ .../GUI/screenshots/CHK-43-forgot-focus.png        | Bin 49805 -> 48575 bytes
+ .../screenshots/CHK-44-forgot-step-indicator.png   | Bin 48810 -> 44078 bytes
+ .../GUI/screenshots/CHK-45-profile-unauth.png      | Bin 30820 -> 0 bytes
+ .../GUI/screenshots/CHK-47-logout-label.png        | Bin 0 -> 58324 bytes
+ .../GUI/screenshots/CHK-47-profile-logout.png      | Bin 30106 -> 0 bytes
+ .../GUI/screenshots/CHK-48-profile-active-nav.png  | Bin 61322 -> 60175 bytes
+ .../GUI/screenshots/CHK-49-login-loading.png       | Bin 47435 -> 45676 bytes
+ .../GUI/screenshots/CHK-50-51-login-error.png      | Bin 55464 -> 0 bytes
+ .../GUI/screenshots/CHK-50-login-error.png         | Bin 0 -> 53393 bytes
+ .../screenshots/CHK-53-register-silent-success.png | Bin 41415 -> 0 bytes
+ .../CHK-54-register-duplicate-email.png            | Bin 43793 -> 44126 bytes
+ .../GUI/screenshots/CHK-55-register-raw-error.png  | Bin 59162 -> 60817 bytes
+ .../GUI/screenshots/CHK-56-register-loading.png    | Bin 57230 -> 54230 bytes
+ .../GUI/screenshots/CHK-58-forgot-otp-exposed.png  | Bin 47244 -> 0 bytes
+ .../GUI/screenshots/CHK-59-forgot-alert.png        | Bin 44529 -> 42235 bytes
+ .../screenshots/CHK-61-profile-update-alert.png    | Bin 64591 -> 0 bytes
+ .../screenshots/CHK-62-profile-orders-loading.png  | Bin 63700 -> 61864 bytes
+ .../screenshots/CHK-63-profile-orders-error.png    | Bin 64870 -> 62675 bytes
+ .../GUI/screenshots/CHK-64-profile-cancel.png      | Bin 76343 -> 0 bytes
+ .../features/GUI/screenshots/CHK-65-login-rtl.png  | Bin 43750 -> 40416 bytes
+ .../CHK-69-login-while-authenticated.png           | Bin 41520 -> 0 bytes
+ .../GUI/screenshots/CHK-70-required-asterisk.png   | Bin 0 -> 46282 bytes
+ .../GUI/screenshots/CHK-71-login-language.png      | Bin 0 -> 40426 bytes
+ .../GUI/screenshots/CHK-73-empty-state.png         | Bin 0 -> 59952 bytes
+ .../GUI/screenshots/CHK-74-button-color.png        | Bin 0 -> 49190 bytes
+ .../GUI/screenshots/CHK-74-forgot-button-color.png | Bin 0 -> 45244 bytes
+ .../GUI/screenshots/CHK-75-error-position.png      | Bin 0 -> 50921 bytes
+ .../features/GUI/screenshots/CHK-80-cart-badge.png | Bin 0 -> 62169 bytes
+ .../ncuong/features/GUI/screenshots/manifest.json  | 320 ++++++++++-----------
+ 53 files changed, 158 insertions(+), 162 deletions(-)
+2e71b50 feat(hw03): rebuild Task 1 checklist and bug reports after spec review
+ .../ncuong/features/GUI/ai-initial-checklist.md    | 104 +--
+ homework/hw03/ncuong/features/GUI/bug-report.md    |  70 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-01.md    |  59 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-02.md    |  48 --
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-03.md    |  84 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-04.md    |  65 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-05.md    |  82 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-06.md    |  67 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-07.md    |  77 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-08.md    |  76 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-09.md    | 233 ++++-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-10.md    | 120 ++-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-11.md    |  71 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-12.md    |  88 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-13.md    | 126 ++-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-14.md    |  65 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-15.md    |  42 -
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-16.md    |  65 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-17.md    |  68 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-18.md    |  47 --
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-19.md    |  77 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-20.md    |  91 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-21.md    |  87 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-22.md    |  42 -
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-23.md    |  61 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-24.md    |  42 -
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-25.md    |  83 +-
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-26.md    |  42 -
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-27.md    |  85 ++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-28.md    |  55 ++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-29.md    |  47 ++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-30.md    |  48 ++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-31.md    |  67 ++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-32.md    |  48 ++
+ homework/hw03/ncuong/features/GUI/checklist.json   | 497 +++++------
+ homework/hw03/ncuong/features/GUI/checklist.md     | 226 ++---
+ homework/hw03/ncuong/features/GUI/checklist.xlsx   | Bin 15095 -> 15267 bytes
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-01.md  |  48 +-
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-02.md  |  43 -
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-03.md  |  75 +-
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-04.md  |  54 +-
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-05.md  |  73 +-
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-06.md  |  56 +-
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-07.md  |  68 +-
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-08.md  |  65 +-
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-09.md  | 200 ++++-
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-10.md  | 109 ++-
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-11.md  |  62 +-
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-12.md  |  79 +-
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-13.md  |  93 +-
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-14.md  |  54 +-
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-15.md  |  37 -
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-16.md  |  54 +-
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-17.md  |  57 +-
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-18.md  |  42 -
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-19.md  |  66 +-
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-20.md  |  82 +-
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-21.md  |  78 +-
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-22.md  |  37 -
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-23.md  |  50 +-
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-24.md  |  37 -
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-25.md  |  74 +-
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-26.md  |  37 -
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-27.md  |  83 ++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-28.md  |  53 ++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-29.md  |  45 +
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-30.md  |  46 +
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-31.md  |  65 ++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-32.md  |  46 +
+ .../hw03/ncuong/features/GUI/issues/issues.json    | 509 ++++++-----
+ .../hw03/ncuong/features/GUI/issues/publish.sh     |  57 +-
+ .../hw03/ncuong/features/GUI/review-additions.md   |  82 +-
+ .../hw03/ncuong/features/GUI/tools/build_bugs.py   | 940 ++++++++++++++-------
+ .../ncuong/features/GUI/tools/build_checklist.py   | 548 ++++++------
+ 74 files changed, 4672 insertions(+), 2787 deletions(-)
+dd16a6a chore(hw03): refresh rendered report PDFs
+ homework/hw03/ncuong/reports/ai-critique.pdf | Bin 93213 -> 93213 bytes
+ homework/hw03/ncuong/reports/main-report.pdf | Bin 379458 -> 379458 bytes
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+927283e docs(hw03): record finalization steps in the AI audit
+ homework/hw03/ncuong/git-commit-log.txt   |   4 +++-
+ homework/hw03/ncuong/reports/ai-audit.md  |   7 +++++++
+ homework/hw03/ncuong/reports/ai-audit.pdf | Bin 248263 -> 251911 bytes
+ 3 files changed, 10 insertions(+), 1 deletion(-)
+53c8caf docs(hw03): add the HW03 assignment specification
+ homework/hw03/docs/2026.HW03.GUI Usability_En.pdf | Bin 0 -> 231854 bytes
+ homework/hw03/docs/2026.HW03.GUI_Usability_En.md  | 327 ++++++++++++++++++++++
+ 2 files changed, 327 insertions(+)
+5a5e530 docs(hw03): add git commit log for Task 1
+ homework/hw03/ncuong/git-commit-log.txt | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+3b544be docs(hw03): add Task 1 report, AI audit, critique and PDFs
+ homework/hw03/ncuong/README.md               |  93 +++++++++++++
+ homework/hw03/ncuong/reports/ai-audit.md     | 152 +++++++++++++++++++++
+ homework/hw03/ncuong/reports/ai-audit.pdf    | Bin 0 -> 248263 bytes
+ homework/hw03/ncuong/reports/ai-critique.md  |  11 ++
+ homework/hw03/ncuong/reports/ai-critique.pdf | Bin 0 -> 93213 bytes
+ homework/hw03/ncuong/reports/main-report.md  | 189 +++++++++++++++++++++++++++
+ homework/hw03/ncuong/reports/main-report.pdf | Bin 0 -> 379458 bytes
+ homework/hw03/ncuong/tools/render_pdf.py     |  43 ++++++
+ 8 files changed, 488 insertions(+)
+b3ee557 feat(hw03): add 26 GUI bug reports and GitHub issue drafts
+ homework/hw03/ncuong/features/GUI/bug-report.md    |  42 +++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-01.md    |  42 +++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-02.md    |  48 +++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-03.md    |  44 +++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-04.md    |  42 +++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-05.md    |  42 +++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-06.md    |  42 +++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-07.md    |  42 +++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-08.md    |  42 +++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-09.md    |  44 +++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-10.md    |  47 +++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-11.md    |  42 +++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-12.md    |  44 +++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-13.md    |  44 +++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-14.md    |  44 +++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-15.md    |  42 +++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-16.md    |  42 +++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-17.md    |  42 +++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-18.md    |  47 +++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-19.md    |  42 +++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-20.md    |  44 +++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-21.md    |  47 +++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-22.md    |  42 +++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-23.md    |  42 +++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-24.md    |  42 +++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-25.md    |  44 +++
+ .../hw03/ncuong/features/GUI/bugs/BUG-GUI-26.md    |  42 +++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-01.md  |  37 +++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-02.md  |  43 +++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-03.md  |  39 +++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-04.md  |  37 +++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-05.md  |  37 +++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-06.md  |  37 +++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-07.md  |  37 +++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-08.md  |  37 +++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-09.md  |  39 +++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-10.md  |  42 +++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-11.md  |  37 +++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-12.md  |  39 +++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-13.md  |  39 +++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-14.md  |  39 +++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-15.md  |  37 +++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-16.md  |  37 +++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-17.md  |  37 +++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-18.md  |  42 +++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-19.md  |  37 +++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-20.md  |  39 +++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-21.md  |  42 +++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-22.md  |  37 +++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-23.md  |  37 +++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-24.md  |  37 +++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-25.md  |  39 +++
+ .../hw03/ncuong/features/GUI/issues/BUG-GUI-26.md  |  37 +++
+ .../hw03/ncuong/features/GUI/issues/issues.json    | 356 +++++++++++++++++++++
+ .../hw03/ncuong/features/GUI/issues/publish.sh     |  28 ++
+ .../hw03/ncuong/features/GUI/tools/build_bugs.py   | 353 ++++++++++++++++++++
+ 56 files changed, 2903 insertions(+)
+3db3030 feat(hw03): add 69-item GUI checklist and execution evidence
+ .../ncuong/features/GUI/ai-initial-checklist.md    |  52 ++
+ homework/hw03/ncuong/features/GUI/checklist.json   | 915 +++++++++++++++++++++
+ homework/hw03/ncuong/features/GUI/checklist.md     | 162 ++++
+ homework/hw03/ncuong/features/GUI/checklist.xlsx   | Bin 0 -> 15095 bytes
+ .../hw03/ncuong/features/GUI/review-additions.md   |  31 +
+ .../GUI/screenshots/CHK-01-login-heading.png       | Bin 0 -> 41927 bytes
+ .../GUI/screenshots/CHK-02-login-title.png         | Bin 0 -> 41458 bytes
+ .../GUI/screenshots/CHK-06-register-title.png      | Bin 0 -> 47716 bytes
+ .../GUI/screenshots/CHK-07-register-contrast.png   | Bin 0 -> 52000 bytes
+ .../GUI/screenshots/CHK-10-forgot-title.png        | Bin 0 -> 37874 bytes
+ .../GUI/screenshots/CHK-11-forgot-buttons.png      | Bin 0 -> 48935 bytes
+ .../CHK-13-14-profile-headings-title.png           | Bin 0 -> 64313 bytes
+ .../screenshots/CHK-15-profile-mobile-table.png    | Bin 0 -> 71119 bytes
+ .../GUI/screenshots/CHK-16-profile-contrast.png    | Bin 0 -> 66036 bytes
+ .../GUI/screenshots/CHK-17-18-19-login-fields.png  | Bin 0 -> 51738 bytes
+ .../screenshots/CHK-21-register-invalid-email.png  | Bin 0 -> 42568 bytes
+ .../screenshots/CHK-23-register-password-rule.png  | Bin 0 -> 71249 bytes
+ .../GUI/screenshots/CHK-24-register-no-confirm.png | Bin 0 -> 47483 bytes
+ .../GUI/screenshots/CHK-25-forgot-email-type.png   | Bin 0 -> 36093 bytes
+ .../GUI/screenshots/CHK-26-forgot-otp-input.png    | Bin 0 -> 49623 bytes
+ .../GUI/screenshots/CHK-28-forgot-no-confirm.png   | Bin 0 -> 44846 bytes
+ .../screenshots/CHK-30-profile-phone-inputmode.png | Bin 0 -> 64344 bytes
+ .../GUI/screenshots/CHK-31-profile-phone-alert.png | Bin 0 -> 73318 bytes
+ .../GUI/screenshots/CHK-32-profile-labels.png      | Bin 0 -> 62980 bytes
+ .../GUI/screenshots/CHK-34-forgot-link-reload.png  | Bin 0 -> 40140 bytes
+ .../GUI/screenshots/CHK-36-login-tab-order.png     | Bin 0 -> 38936 bytes
+ .../GUI/screenshots/CHK-43-forgot-focus.png        | Bin 0 -> 49805 bytes
+ .../screenshots/CHK-44-forgot-step-indicator.png   | Bin 0 -> 48810 bytes
+ .../GUI/screenshots/CHK-45-profile-unauth.png      | Bin 0 -> 30820 bytes
+ .../GUI/screenshots/CHK-47-profile-logout.png      | Bin 0 -> 30106 bytes
+ .../GUI/screenshots/CHK-48-profile-active-nav.png  | Bin 0 -> 61322 bytes
+ .../GUI/screenshots/CHK-49-login-loading.png       | Bin 0 -> 47435 bytes
+ .../GUI/screenshots/CHK-50-51-login-error.png      | Bin 0 -> 55464 bytes
+ .../screenshots/CHK-53-register-silent-success.png | Bin 0 -> 41415 bytes
+ .../CHK-54-register-duplicate-email.png            | Bin 0 -> 43793 bytes
+ .../GUI/screenshots/CHK-55-register-raw-error.png  | Bin 0 -> 59162 bytes
+ .../GUI/screenshots/CHK-56-register-loading.png    | Bin 0 -> 57230 bytes
+ .../GUI/screenshots/CHK-58-forgot-otp-exposed.png  | Bin 0 -> 47244 bytes
+ .../GUI/screenshots/CHK-59-forgot-alert.png        | Bin 0 -> 44529 bytes
+ .../screenshots/CHK-61-profile-update-alert.png    | Bin 0 -> 64591 bytes
+ .../screenshots/CHK-62-profile-orders-loading.png  | Bin 0 -> 63700 bytes
+ .../screenshots/CHK-63-profile-orders-error.png    | Bin 0 -> 64870 bytes
+ .../GUI/screenshots/CHK-64-profile-cancel.png      | Bin 0 -> 76343 bytes
+ .../features/GUI/screenshots/CHK-65-login-rtl.png  | Bin 0 -> 43750 bytes
+ .../CHK-69-login-while-authenticated.png           | Bin 0 -> 41520 bytes
+ .../ncuong/features/GUI/screenshots/manifest.json  | 326 ++++++++
+ homework/hw03/ncuong/features/GUI/test-summary.md  |  80 ++
+ .../ncuong/features/GUI/tools/build_checklist.py   | 577 +++++++++++++
+ 48 files changed, 2143 insertions(+)
+f82b1ff feat(hw03): add agent skills and fix skill frontmatter
+ .../ncuong/skills/accessibility-audit/SKILL.md     |  91 ++++++
+ .../hw03/ncuong/skills/ai-audit-logger/SKILL.md    |  62 ++++
+ .../assets/ai-audit-report-template.md             |  59 ++++
+ .../ncuong/skills/cross-browser-testing/SKILL.md   |  74 +++++
+ .../prompts/cross-browser-testing.md               |  36 +++
+ .../ncuong/skills/gui-usability-workflow/SKILL.md  | 244 ++++++++++++++++
+ .../references/task-script-patterns.md             | 315 +++++++++++++++++++++
+ .../ncuong/skills/heuristic-evaluation/SKILL.md    |  41 +++
+ .../ncuong/skills/ui-checklist-generator/SKILL.md  |  28 ++
+ .../ncuong/skills/usability-report-writer/SKILL.md |  40 +++
+ .../ncuong/skills/usability-test-plan/SKILL.md     |  32 +++
+ 11 files changed, 1022 insertions(+)
+e3c7f64 docs(hw02): update AI audit report with new findings and screenshots for FR02 and FR10
+ homework/hw02/ncuong/reports/ai-audit.md | 46 +++++++++++++++-----------------
+ 1 file changed, 22 insertions(+), 24 deletions(-)
+c4e4389 docs(hw02): export student git commit log
+ homework/hw02/ncuong/README.md          |  1 +
+ homework/hw02/ncuong/git-commit-log.txt | 34 +++++++++++++++++++++++++++++++++
+ 2 files changed, 35 insertions(+)
+43c626c docs(hw02): finalize testing reports critique and demo link
+ homework/hw02/ncuong/README.md                     |  76 ++++++++------
+ homework/hw02/ncuong/features/FR06/test-results.md |  10 +-
+ homework/hw02/ncuong/features/FR17/test-results.md |   8 +-
+ homework/hw02/ncuong/reports/ai-audit.md           |  30 +++++-
+ homework/hw02/ncuong/reports/ai-critique.md        |  10 +-
+ homework/hw02/ncuong/reports/main-report.md        | 110 +++++++++++++++++++--
+ 6 files changed, 197 insertions(+), 47 deletions(-)
+c6fb1b9 docs(FR10): link authorization bug issue and audit screenshot
+ homework/hw02/ncuong/README.md                     |  6 ++---
+ .../ncuong/features/FR10/evidence/FR10-evidence.md |  6 ++++-
+ .../ncuong/features/FR10/issues/BUG-FR10-03.md     |  2 ++
+ homework/hw02/ncuong/features/FR10/test-results.md |  8 +++----
+ homework/hw02/ncuong/reports/ai-audit.md           | 27 ++++++++++++++++++++--
+ homework/hw02/ncuong/reports/main-report.md        |  6 ++---
+ .../supporting-materials/fr10-observations.md      |  2 +-
+ 7 files changed, 43 insertions(+), 14 deletions(-)
+1ae0488 test(FR10): attach API evidence screenshot for access bug
+ .../ncuong/features/FR10/evidence/FR10-evidence.md     |   2 ++
+ .../hw02/ncuong/features/FR10/issues/BUG-FR10-03.md    |   4 ++--
+ .../FR10/screenshots/BUG-FR10-03-api-evidence.png      | Bin 0 -> 111004 bytes
+ homework/hw02/ncuong/features/FR10/test-results.md     |   6 +++---
+ 4 files changed, 7 insertions(+), 5 deletions(-)
+67499ef test(FR10): exercise admin order authorization gap
+ homework/hw02/ncuong/README.md                     | 10 +--
+ .../hw02/ncuong/features/FR10/boundary-analysis.md |  2 +
+ .../hw02/ncuong/features/FR10/domain-analysis.md   | 17 ++++-
+ .../ncuong/features/FR10/evidence/FR10-evidence.md | 55 ++++++++++++--
+ .../FR10/evidence/ev-gap-access-cross.json         | 34 +++++++++
+ .../features/FR10/evidence/ev-gap-access-run1.json | 86 ++++++++++++++++++++++
+ .../features/FR10/evidence/ev-gap-access-run2.json | 86 ++++++++++++++++++++++
+ .../ncuong/features/FR10/issues/BUG-FR10-03.md     | 62 ++++++++++++++++
+ homework/hw02/ncuong/features/FR10/test-cases.md   | 16 +++-
+ homework/hw02/ncuong/features/FR10/test-results.md | 51 +++++++++----
+ homework/hw02/ncuong/reports/ai-audit.md           | 29 +++++++-
+ homework/hw02/ncuong/reports/main-report.md        | 22 ++++--
+ .../supporting-materials/fr10-observations.md      |  6 +-
+ 13 files changed, 435 insertions(+), 41 deletions(-)
+9955eba docs(FR02): link verified gap issues and audit run
+ homework/hw02/ncuong/README.md                     |  6 ++--
+ .../ncuong/features/FR02/evidence/FR02-evidence.md |  9 ++++++
+ .../ncuong/features/FR02/issues/BUG-FR02-03.md     |  2 ++
+ .../ncuong/features/FR02/issues/BUG-FR02-04.md     |  2 ++
+ homework/hw02/ncuong/features/FR02/test-results.md | 16 +++++-----
+ homework/hw02/ncuong/reports/ai-audit.md           | 34 ++++++++++++++++++++--
+ homework/hw02/ncuong/reports/main-report.md        |  8 ++---
+ .../supporting-materials/fr02-observations.md      | 10 +++----
+ 8 files changed, 66 insertions(+), 21 deletions(-)
+933d77e test(FR02): verify AI gap cases and add evidence for two defects
+ homework/hw02/ncuong/README.md                     |  10 +-
+ .../hw02/ncuong/features/FR02/boundary-analysis.md |   2 +
+ .../hw02/ncuong/features/FR02/domain-analysis.md   |  18 +-
+ .../ncuong/features/FR02/evidence/FR02-evidence.md | 133 ++++++++-
+ .../ncuong/features/FR02/evidence/ev-gap-api.json  | 323 +++++++++++++++++++++
+ .../ncuong/features/FR02/evidence/ev-gap-ui.json   | 146 ++++++++++
+ .../ncuong/features/FR02/issues/BUG-FR02-03.md     |  51 ++++
+ .../ncuong/features/FR02/issues/BUG-FR02-04.md     |  56 ++++
+ .../FR02/screenshots/BUG-FR02-03-after.png         | Bin 0 -> 78436 bytes
+ .../FR02/screenshots/BUG-FR02-03-before.png        | Bin 0 -> 39135 bytes
+ .../FR02/screenshots/BUG-FR02-04-api-evidence.png  | Bin 0 -> 155914 bytes
+ homework/hw02/ncuong/features/FR02/test-cases.md   |  24 +-
+ homework/hw02/ncuong/features/FR02/test-results.md |  75 ++++-
+ homework/hw02/ncuong/reports/main-report.md        |  32 +-
+ 14 files changed, 829 insertions(+), 41 deletions(-)
+2010a50 docs(hw02): streamline master testing report
+ homework/hw02/ncuong/reports/ai-audit.md    |  25 ++-
+ homework/hw02/ncuong/reports/main-report.md | 258 ++++++++++++++++++----------
+ 2 files changed, 193 insertions(+), 90 deletions(-)
+956216f docs(fr06): link published bug issues and audit
+ homework/hw02/ncuong/README.md                     |  8 +++----
+ .../ncuong/features/FR06/evidence/FR06-evidence.md |  2 ++
+ .../ncuong/features/FR06/issues/BUG-FR06-01.md     |  2 +-
+ .../ncuong/features/FR06/issues/BUG-FR06-02.md     |  2 +-
+ homework/hw02/ncuong/features/FR06/test-results.md |  4 ++--
+ homework/hw02/ncuong/reports/ai-audit.md           | 25 ++++++++++++++++++++--
+ homework/hw02/ncuong/reports/main-report.md        | 10 +++++----
+ 7 files changed, 39 insertions(+), 14 deletions(-)
+4e4f0ee test(fr06): execute mobile domain cases with screenshots
+ frontend-mobile/App.js                             |  11 +-
+ homework/hw02/ncuong/README.md                     |   9 +-
+ .../hw02/ncuong/features/FR06/boundary-analysis.md |  27 ++++
+ .../hw02/ncuong/features/FR06/domain-analysis.md   |  42 ++++++
+ .../ncuong/features/FR06/evidence/FR06-evidence.md | 163 +++++++++++++++++++++
+ .../ncuong/features/FR06/issues/BUG-FR06-01.md     |  70 +++++++++
+ .../ncuong/features/FR06/issues/BUG-FR06-02.md     |  79 ++++++++++
+ .../features/FR06/screenshots/T01-detail-ID1.png   | Bin 0 -> 110571 bytes
+ .../features/FR06/screenshots/T02-detail-ID2.png   | Bin 0 -> 122109 bytes
+ .../features/FR06/screenshots/T03-detail-ID5.png   | Bin 0 -> 117452 bytes
+ .../features/FR06/screenshots/T08-cart-1.png       | Bin 0 -> 112358 bytes
+ .../features/FR06/screenshots/T08-input-1.png      | Bin 0 -> 110751 bytes
+ .../features/FR06/screenshots/T09-cart-2.png       | Bin 0 -> 113612 bytes
+ .../features/FR06/screenshots/T09-input-2.png      | Bin 0 -> 111971 bytes
+ .../features/FR06/screenshots/T10-cart-1.png       | Bin 0 -> 112358 bytes
+ .../features/FR06/screenshots/T10-input-empty.png  | Bin 0 -> 110564 bytes
+ .../FR06/screenshots/T10-success-empty.png         | Bin 0 -> 101699 bytes
+ .../features/FR06/screenshots/T11-cart-1.png       | Bin 0 -> 112958 bytes
+ .../features/FR06/screenshots/T11-input-0.png      | Bin 0 -> 111873 bytes
+ .../features/FR06/screenshots/T11-success-0.png    | Bin 0 -> 102035 bytes
+ .../features/FR06/screenshots/T12-cart-1.png       | Bin 0 -> 113180 bytes
+ .../features/FR06/screenshots/T12-input-minus1.png | Bin 0 -> 111554 bytes
+ .../features/FR06/screenshots/T13-cart-1.png       | Bin 0 -> 113203 bytes
+ .../FR06/screenshots/T13-input-1point5.png         | Bin 0 -> 111840 bytes
+ .../features/FR06/screenshots/T14-cart-1.png       | Bin 0 -> 113260 bytes
+ .../features/FR06/screenshots/T14-input-abc.png    | Bin 0 -> 113384 bytes
+ .../features/FR06/screenshots/T15-cart-2.png       | Bin 0 -> 113065 bytes
+ .../FR06/screenshots/T15-success-first.png         | Bin 0 -> 102237 bytes
+ .../FR06/screenshots/T15-success-second.png        | Bin 0 -> 101764 bytes
+ .../features/FR06/screenshots/T16-cart-2.png       | Bin 0 -> 112377 bytes
+ .../features/FR06/screenshots/T16-input-2abc.png   | Bin 0 -> 112775 bytes
+ homework/hw02/ncuong/features/FR06/test-cases.md   |  34 +++++
+ homework/hw02/ncuong/features/FR06/test-results.md |  47 ++++++
+ homework/hw02/ncuong/reports/ai-audit.md           |  73 ++++++++-
+ homework/hw02/ncuong/reports/main-report.md        |  11 +-
+ .../supporting-materials/fr06-observations.md      |   3 +
+ setup_guide.md                                     |  13 +-
+ 37 files changed, 567 insertions(+), 15 deletions(-)
+46a2d87 feat(docs): update skills
+ homework/hw02/ncuong/prompt.txt                         | 17 ++++++++++-------
+ homework/hw02/ncuong/skills/README.md                   |  4 +++-
+ .../hw02/ncuong/skills/coverage-goal-planner/SKILL.md   |  2 ++
+ .../hw02/ncuong/skills/domain-testing-workflow/SKILL.md | 12 ++++++++++--
+ .../skills/feature-testing-report-writer/SKILL.md       | 12 ++++++------
+ .../assets/evidence-log-template.md                     |  3 +++
+ .../assets/test-cases-template.md                       | 15 +++++++++++++++
+ .../assets/test-results-template.md                     | 10 +++++++---
+ homework/hw02/ncuong/skills/test-case-catalog/SKILL.md  |  1 +
+ .../ncuong/skills/test-findings-report-writer/SKILL.md  |  3 ++-
+ .../assets/github-issue-template.md                     | 10 ++++++++++
+ .../ncuong/skills/testing-report-assembler/SKILL.md     |  2 +-
+ 12 files changed, 70 insertions(+), 21 deletions(-)
+541796a docs(FR17): log applied coupon UI evidence in AI audit
+ homework/hw02/ncuong/reports/ai-audit.md | 40 ++++++++++++++++++++++++++++++--
+ 1 file changed, 38 insertions(+), 2 deletions(-)
+2a8c77c docs(FR17): add applied coupon 150% UI evidence for BUG-FR17-08
+ homework/hw02/ncuong/README.md                     |   6 +++---
+ .../ncuong/features/FR17/evidence/FR17-evidence.md |   8 +++++---
+ .../ncuong/features/FR17/issues/BUG-FR17-08.md     |  18 +++++++++--------
+ .../screenshots/BUG-FR17-08-AppliedDiscount150.png | Bin 0 -> 126994 bytes
+ homework/hw02/ncuong/features/FR17/test-results.md |  22 ++++++++++-----------
+ homework/hw02/ncuong/reports/main-report.md        |  16 +++++++--------
+ .../supporting-materials/fr17-observations.md      |   4 ++--
+ 7 files changed, 39 insertions(+), 35 deletions(-)
+7ac343d docs(FR17): publish issues 53-54 and finalize screenshot coverage
+ homework/hw02/ncuong/README.md                     |  6 +--
+ .../ncuong/features/FR17/evidence/FR17-evidence.md |  2 +-
+ .../ncuong/features/FR17/issues/BUG-FR17-07.md     |  6 +--
+ .../ncuong/features/FR17/issues/BUG-FR17-08.md     |  6 +--
+ homework/hw02/ncuong/features/FR17/test-results.md | 20 +++++-----
+ homework/hw02/ncuong/reports/ai-audit.md           | 46 +++++++++++++++++++++-
+ homework/hw02/ncuong/reports/main-report.md        | 14 +++----
+ .../supporting-materials/fr17-observations.md      |  4 +-
+ 8 files changed, 73 insertions(+), 31 deletions(-)
+80abf1a docs(FR17): add Postman evidence for BUG-FR17-07/08
+ homework/hw02/ncuong/README.md                     |  10 +-
+ .../hw02/ncuong/features/FR17/boundary-analysis.md |   8 +-
+ .../hw02/ncuong/features/FR17/domain-analysis.md   |  19 ++--
+ .../hw02/ncuong/features/FR17/evidence/DT-07.log   |   8 +-
+ .../hw02/ncuong/features/FR17/evidence/DT-32.log   |   8 +-
+ .../ncuong/features/FR17/evidence/FR17-evidence.md |  31 +++---
+ .../ncuong/features/FR17/evidence/run-fr17.mjs     |  16 ++--
+ .../ncuong/features/FR17/evidence/run-summary.json |  34 +++++--
+ .../ncuong/features/FR17/issues/BUG-FR17-07.md     |  98 +++++++++++++++++++
+ .../ncuong/features/FR17/issues/BUG-FR17-08.md     | 102 ++++++++++++++++++++
+ .../screenshots/BUG-FR17-07-CouponUppercase.png    | Bin 0 -> 224695 bytes
+ .../BUG-FR17-07-CreateCouponLowercase.png          | Bin 0 -> 195054 bytes
+ .../screenshots/BUG-FR17-07-GetCouponLowercase.png | Bin 0 -> 204461 bytes
+ .../FR17/screenshots/BUG-FR17-08-Discount150.png   | Bin 0 -> 203787 bytes
+ .../screenshots/BUG-FR17-08-GetDiscount150.png     | Bin 0 -> 202706 bytes
+ homework/hw02/ncuong/features/FR17/test-cases.md   |   8 +-
+ homework/hw02/ncuong/features/FR17/test-results.md | 105 ++++++++++++++++++---
+ homework/hw02/ncuong/reports/ai-audit.md           |  48 +++++++++-
+ homework/hw02/ncuong/reports/main-report.md        |  30 ++++--
+ .../supporting-materials/fr17-observations.md      |  16 ++--
+ 20 files changed, 448 insertions(+), 93 deletions(-)
+c08a966 docs(FR17): record published issue links in AI audit
+ homework/hw02/ncuong/reports/ai-audit.md | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+0b32a5a docs(FR17): publish coupon bug issues with Postman evidence
+ homework/hw02/ncuong/README.md                     |  6 +--
+ .../ncuong/features/FR17/evidence/FR17-evidence.md |  7 ++--
+ .../ncuong/features/FR17/issues/BUG-FR17-01.md     | 20 +++++-----
+ .../ncuong/features/FR17/issues/BUG-FR17-02.md     | 18 ++++-----
+ .../ncuong/features/FR17/issues/BUG-FR17-03.md     | 28 ++++++-------
+ .../ncuong/features/FR17/issues/BUG-FR17-04.md     | 22 +++++------
+ .../ncuong/features/FR17/issues/BUG-FR17-05.md     | 24 +++++------
+ .../ncuong/features/FR17/issues/BUG-FR17-06.md     | 22 +++++------
+ homework/hw02/ncuong/features/FR17/test-results.md | 46 +++++++++++-----------
+ homework/hw02/ncuong/reports/ai-audit.md           | 40 ++++++++++++++++++-
+ homework/hw02/ncuong/reports/main-report.md        | 24 +++++------
+ 11 files changed, 148 insertions(+), 109 deletions(-)
+4dae771 test(FR17): add coupon testing artifacts and Postman evidence
+ homework/hw02/ncuong/README.md                     |   18 +-
+ .../hw02/ncuong/features/FR17/boundary-analysis.md |   70 +
+ .../hw02/ncuong/features/FR17/domain-analysis.md   |  121 +
+ .../hw02/ncuong/features/FR17/evidence/DT-01.log   |  117 +
+ .../hw02/ncuong/features/FR17/evidence/DT-02.log   |  117 +
+ .../hw02/ncuong/features/FR17/evidence/DT-03.log   |   59 +
+ .../hw02/ncuong/features/FR17/evidence/DT-04.log   |   71 +
+ .../hw02/ncuong/features/FR17/evidence/DT-05.log   |   70 +
+ .../hw02/ncuong/features/FR17/evidence/DT-06.log   |   80 +
+ .../hw02/ncuong/features/FR17/evidence/DT-07.log   |   80 +
+ .../hw02/ncuong/features/FR17/evidence/DT-08.log   |   80 +
+ .../hw02/ncuong/features/FR17/evidence/DT-09.log   |   79 +
+ .../hw02/ncuong/features/FR17/evidence/DT-10.log   |   80 +
+ .../hw02/ncuong/features/FR17/evidence/DT-11.log   |   80 +
+ .../hw02/ncuong/features/FR17/evidence/DT-12.log   |   79 +
+ .../hw02/ncuong/features/FR17/evidence/DT-13.log   |   80 +
+ .../hw02/ncuong/features/FR17/evidence/DT-14.log   |  117 +
+ .../hw02/ncuong/features/FR17/evidence/DT-15.log   |   79 +
+ .../hw02/ncuong/features/FR17/evidence/DT-16.log   |   80 +
+ .../hw02/ncuong/features/FR17/evidence/DT-17.log   |   80 +
+ .../hw02/ncuong/features/FR17/evidence/DT-18.log   |  117 +
+ .../hw02/ncuong/features/FR17/evidence/DT-19.log   |  117 +
+ .../hw02/ncuong/features/FR17/evidence/DT-20.log   |  117 +
+ .../hw02/ncuong/features/FR17/evidence/DT-21.log   |   80 +
+ .../hw02/ncuong/features/FR17/evidence/DT-22.log   |   79 +
+ .../hw02/ncuong/features/FR17/evidence/DT-23.log   |   80 +
+ .../hw02/ncuong/features/FR17/evidence/DT-24.log   |  117 +
+ .../hw02/ncuong/features/FR17/evidence/DT-25.log   |  117 +
+ .../hw02/ncuong/features/FR17/evidence/DT-26.log   |   80 +
+ .../hw02/ncuong/features/FR17/evidence/DT-27.log   |   80 +
+ .../hw02/ncuong/features/FR17/evidence/DT-28.log   |   79 +
+ .../hw02/ncuong/features/FR17/evidence/DT-29.log   |  120 +
+ .../hw02/ncuong/features/FR17/evidence/DT-30.log   |   72 +
+ .../hw02/ncuong/features/FR17/evidence/DT-31.log   |   52 +
+ .../hw02/ncuong/features/FR17/evidence/DT-32.log   |   80 +
+ .../ncuong/features/FR17/evidence/FR17-evidence.md | 2907 ++++++++++++++++++++
+ .../FR17/evidence/OBS-fr09-apply-coupon.log        |   86 +
+ .../features/FR17/evidence/OBS-fr17-user-token.log |   27 +
+ .../hw02/ncuong/features/FR17/evidence/cleanup.log |   11 +
+ .../ncuong/features/FR17/evidence/run-fr17.mjs     | 1333 +++++++++
+ .../ncuong/features/FR17/evidence/run-summary.json | 2526 +++++++++++++++++
+ .../features/FR17/evidence/session-header.log      |   23 +
+ .../ncuong/features/FR17/issues/BUG-FR17-01.md     |  131 +
+ .../ncuong/features/FR17/issues/BUG-FR17-02.md     |  128 +
+ .../ncuong/features/FR17/issues/BUG-FR17-03.md     |  141 +
+ .../ncuong/features/FR17/issues/BUG-FR17-04.md     |  128 +
+ .../ncuong/features/FR17/issues/BUG-FR17-05.md     |  132 +
+ .../ncuong/features/FR17/issues/BUG-FR17-06.md     |  117 +
+ .../FR17/screenshots/BUG-FR17-01-CodeEmpty.png     |  Bin 0 -> 196674 bytes
+ .../FR17/screenshots/BUG-FR17-01-CodeNull.png      |  Bin 0 -> 199272 bytes
+ .../FR17/screenshots/BUG-FR17-01-GetCodeEmpty.png  |  Bin 0 -> 209881 bytes
+ .../FR17/screenshots/BUG-FR17-01-MissingCode.png   |  Bin 0 -> 190816 bytes
+ .../BUG-FR17-02-GetCodeHasTypeInvalid.png          |  Bin 0 -> 199356 bytes
+ .../FR17/screenshots/BUG-FR17-02-GetNullType.png   |  Bin 0 -> 197721 bytes
+ .../FR17/screenshots/BUG-FR17-02-MissingType.png   |  Bin 0 -> 192140 bytes
+ .../FR17/screenshots/BUG-FR17-02-TypeInvalid.png   |  Bin 0 -> 199692 bytes
+ .../screenshots/BUG-FR17-03-DiscountValue0.png     |  Bin 0 -> 201280 bytes
+ .../BUG-FR17-03-DiscountValueInvalid.png           |  Bin 0 -> 199109 bytes
+ .../BUG-FR17-03-DiscountValueNegative.png          |  Bin 0 -> 203899 bytes
+ .../BUG-FR17-03-GetDiscountNegative.png            |  Bin 0 -> 204592 bytes
+ .../screenshots/BUG-FR17-03-GetDiscountValue0.png  |  Bin 0 -> 204258 bytes
+ .../BUG-FR17-03-GetDiscountValueInvalid.png        |  Bin 0 -> 203484 bytes
+ .../BUG-FR17-03-GetMissingDiscountValue.png        |  Bin 0 -> 200121 bytes
+ .../BUG-FR17-03-MissingDiscountValue.png           |  Bin 0 -> 192931 bytes
+ .../screenshots/BUG-FR17-04-EmptyExpiredAt.png     |  Bin 0 -> 195957 bytes
+ .../screenshots/BUG-FR17-04-GetEmptyExpiredAt.png  |  Bin 0 -> 199765 bytes
+ .../BUG-FR17-04-GetInvalidExpiredAt.png            |  Bin 0 -> 201742 bytes
+ .../BUG-FR17-04-GetMissingExpiredAt.png            |  Bin 0 -> 197617 bytes
+ .../screenshots/BUG-FR17-04-InvalidExpiredAt.png   |  Bin 0 -> 201502 bytes
+ .../screenshots/BUG-FR17-04-MissingExpiredAt.png   |  Bin 0 -> 187901 bytes
+ .../screenshots/BUG-FR17-05-GetInvalidMinOrder.png |  Bin 0 -> 198501 bytes
+ .../BUG-FR17-05-GetMinOrderNegative.png            |  Bin 0 -> 204249 bytes
+ .../BUG-FR17-05-GetMissingMinOrderAmount.png       |  Bin 0 -> 199575 bytes
+ .../screenshots/BUG-FR17-05-InvalidMinOrder.png    |  Bin 0 -> 198139 bytes
+ .../screenshots/BUG-FR17-05-MinOrderNegative.png   |  Bin 0 -> 200617 bytes
+ .../BUG-FR17-05-MissingMinOrderAmount.png          |  Bin 0 -> 189266 bytes
+ .../BUG-FR17-06-GetMaxUsesPerUserNegative.png      |  Bin 0 -> 201340 bytes
+ .../screenshots/BUG-FR17-06-GetMissingMaxUses.png  |  Bin 0 -> 201334 bytes
+ .../screenshots/BUG-FR17-06-MaxUsesPerUser0.png    |  Bin 0 -> 199890 bytes
+ .../screenshots/BUG-FR17-06-MaxUsesPerUser0Up1.png |  Bin 0 -> 202526 bytes
+ .../BUG-FR17-06-MaxUsesPerUserNegative.png         |  Bin 0 -> 197931 bytes
+ .../screenshots/BUG-FR17-06-MissingMaxUses.png     |  Bin 0 -> 190044 bytes
+ homework/hw02/ncuong/features/FR17/test-cases.md   |  282 ++
+ homework/hw02/ncuong/features/FR17/test-results.md |  365 +++
+ homework/hw02/ncuong/reports/ai-audit.md           |  125 +-
+ homework/hw02/ncuong/reports/main-report.md        |   38 +-
+ .../supporting-materials/fr17-observations.md      |  113 +
+ 87 files changed, 11621 insertions(+), 16 deletions(-)
+f389502 feat(docs): update skills and templates
+ homework/hw02/ncuong/README.md                     |  28 +++++-
+ homework/hw02/ncuong/prompt.txt                    |  19 +++-
+ homework/hw02/ncuong/reports/ai-audit.md           | 112 ++++++++++++++++++++-
+ homework/hw02/ncuong/reports/main-report.md        |  44 ++++++--
+ homework/hw02/ncuong/skills/README.md              |   4 +-
+ .../ncuong/skills/domain-testing-workflow/SKILL.md |  12 +++
+ .../skills/feature-testing-report-writer/SKILL.md  |   7 +-
+ .../assets/test-results-template.md                |  11 +-
+ .../skills/test-findings-report-writer/SKILL.md    |   4 +-
+ .../assets/github-issue-template.md                |  27 ++---
+ 10 files changed, 220 insertions(+), 48 deletions(-)
+e61f740 docs(FR10): avoid auto-linking order numbers in bug issues
+ homework/hw02/ncuong/features/FR10/evidence/FR10-evidence.md | 12 ++++++------
+ homework/hw02/ncuong/features/FR10/issues/BUG-FR10-01.md     |  6 +++---
+ homework/hw02/ncuong/features/FR10/issues/BUG-FR10-02.md     |  6 +++---
+ homework/hw02/ncuong/features/FR10/test-results.md           |  4 ++--
+ 4 files changed, 14 insertions(+), 14 deletions(-)
+41df52b docs(FR10): record UI-confirmed bugs and link issues #33 #34
+ .../hw02/ncuong/features/FR10/boundary-analysis.md |  62 ++
+ .../hw02/ncuong/features/FR10/domain-analysis.md   |  90 ++
+ .../hw02/ncuong/features/FR10/evidence/DT-01.log   |  29 +
+ .../hw02/ncuong/features/FR10/evidence/DT-02.log   |  29 +
+ .../hw02/ncuong/features/FR10/evidence/DT-03.log   |  29 +
+ .../hw02/ncuong/features/FR10/evidence/DT-04.log   |  29 +
+ .../hw02/ncuong/features/FR10/evidence/DT-05.log   |  29 +
+ .../hw02/ncuong/features/FR10/evidence/DT-06.log   |  28 +
+ .../hw02/ncuong/features/FR10/evidence/DT-07.log   |  28 +
+ .../hw02/ncuong/features/FR10/evidence/DT-08.log   |  29 +
+ .../hw02/ncuong/features/FR10/evidence/DT-09.log   |  29 +
+ .../hw02/ncuong/features/FR10/evidence/DT-10.log   |  29 +
+ .../hw02/ncuong/features/FR10/evidence/DT-11.log   |  29 +
+ .../hw02/ncuong/features/FR10/evidence/DT-12.log   |  29 +
+ .../hw02/ncuong/features/FR10/evidence/DT-13.log   |  29 +
+ .../ncuong/features/FR10/evidence/DT-14-rerun.log  |  30 +
+ .../hw02/ncuong/features/FR10/evidence/DT-14.log   |  30 +
+ .../hw02/ncuong/features/FR10/evidence/DT-15.log   |  29 +
+ .../ncuong/features/FR10/evidence/DT-16-rerun.log  |  29 +
+ .../hw02/ncuong/features/FR10/evidence/DT-16.log   |  29 +
+ .../hw02/ncuong/features/FR10/evidence/DT-17.log   |  28 +
+ .../hw02/ncuong/features/FR10/evidence/DT-18.log   |  28 +
+ .../features/FR10/evidence/DT-19-variants.log      |  19 +
+ .../hw02/ncuong/features/FR10/evidence/DT-19.log   |  30 +
+ .../hw02/ncuong/features/FR10/evidence/DT-20.log   |  30 +
+ .../ncuong/features/FR10/evidence/FR10-evidence.md | 947 +++++++++++++++++++++
+ .../ncuong/features/FR10/evidence/run-fr10.mjs     | 288 +++++++
+ .../ncuong/features/FR10/evidence/run-summary.json | 443 ++++++++++
+ .../features/FR10/evidence/session-header.log      |   6 +
+ .../ncuong/features/FR10/issues/BUG-FR10-01.md     |  72 ++
+ .../ncuong/features/FR10/issues/BUG-FR10-02.md     |  75 ++
+ homework/hw02/ncuong/features/FR10/test-cases.md   |  30 +
+ homework/hw02/ncuong/features/FR10/test-results.md | 183 ++++
+ .../supporting-materials/fr10-observations.md      |  16 +
+ 34 files changed, 2869 insertions(+)
+f49ac90 test(FR10): add UI screenshots confirming BUG-FR10-01/02
+ .../FR10/screenshots/BUG-FR10-01-Cancelled-Admin.png   | Bin 0 -> 65420 bytes
+ .../FR10/screenshots/BUG-FR10-01-Delivered-Admin.png   | Bin 0 -> 61503 bytes
+ .../FR10/screenshots/BUG-FR10-01-Delivered-User.png    | Bin 0 -> 48448 bytes
+ .../FR10/screenshots/BUG-FR10-02-Delivering-Admin.png  | Bin 0 -> 47660 bytes
+ .../FR10/screenshots/BUG-FR10-02-Delivering-User.png   | Bin 0 -> 40086 bytes
+ .../screenshots/BUG-FR10-02-Noti-Cancelled-User.png    | Bin 0 -> 193142 bytes
+ .../screenshots/BUG-FR10-02-Status-Cancelled-User.png  | Bin 0 -> 37089 bytes
+ 7 files changed, 0 insertions(+), 0 deletions(-)
+09a950c feat: add github issue template
+ homework/hw02/ncuong/prompt.txt                    |  2 +-
+ homework/hw02/ncuong/skills/README.md              |  3 ++
+ .../skills/test-findings-report-writer/SKILL.md    |  8 ++-
+ .../assets/github-issue-template.md                | 61 ++++++++++++++++++++++
+ 4 files changed, 72 insertions(+), 2 deletions(-)
+2787a05 docs(FR02): recreate bug issues #25 #26 from test-findings-report-writer template
+ homework/hw02/ncuong/README.md                     |   2 +-
+ .../ncuong/features/FR02/evidence/FR02-evidence.md |   8 +-
+ .../ncuong/features/FR02/issues/BUG-FR02-01.md     | 103 +++++++++++++------
+ .../ncuong/features/FR02/issues/BUG-FR02-02.md     | 110 +++++++++++++++------
+ homework/hw02/ncuong/features/FR02/test-results.md |  16 +--
+ homework/hw02/ncuong/reports/ai-audit.md           |  32 +++++-
+ homework/hw02/ncuong/reports/main-report.md        |   6 +-
+ 7 files changed, 199 insertions(+), 78 deletions(-)
+1c8e5b0 docs(FR02): record confirmed bugs with screenshots and GitHub issues #23 #24
+ homework/hw02/ncuong/README.md                     |  4 +-
+ .../ncuong/features/FR02/evidence/FR02-evidence.md | 10 ++---
+ .../ncuong/features/FR02/issues/BUG-FR02-01.md     | 45 ++++++++++++++++++++++
+ .../ncuong/features/FR02/issues/BUG-FR02-02.md     | 45 ++++++++++++++++++++++
+ homework/hw02/ncuong/features/FR02/test-results.md | 24 +++++++-----
+ homework/hw02/ncuong/reports/ai-audit.md           | 34 ++++++++++++++--
+ homework/hw02/ncuong/reports/main-report.md        |  9 +++--
+ 7 files changed, 148 insertions(+), 23 deletions(-)
+c6d9622 test(FR02): add bug confirmation screenshots for BUG-FR02-01/02
+ .../ncuong/features/FR02/screenshots/BUG-FR02-01.png   | Bin 0 -> 209069 bytes
+ .../ncuong/features/FR02/screenshots/BUG-FR02-02.png   | Bin 0 -> 135547 bytes
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+365073a feat: add test and reports for FR02 (no issue, no review, no screenshot)
+ homework/hw02/ncuong/README.md                     |   6 +-
+ .../hw02/ncuong/features/FR02/boundary-analysis.md |  69 ++
+ .../hw02/ncuong/features/FR02/domain-analysis.md   |  60 ++
+ .../ncuong/features/FR02/evidence/FR02-evidence.md | 711 +++++++++++++++++++++
+ .../ncuong/features/FR02/evidence/ev-BVA-02.log    |  13 +
+ .../ncuong/features/FR02/evidence/ev-BVA-03-04.log |  17 +
+ .../ncuong/features/FR02/evidence/ev-BVA-05-06.log |  15 +
+ .../ncuong/features/FR02/evidence/ev-BVA-07.log    |  11 +
+ .../ncuong/features/FR02/evidence/ev-BVA-08.log    |   9 +
+ .../FR02/evidence/ev-DT-01-token-check.log         |   4 +
+ .../ncuong/features/FR02/evidence/ev-DT-01.log     |   5 +
+ .../features/FR02/evidence/ev-DT-02-rerun.log      |   7 +
+ .../ncuong/features/FR02/evidence/ev-DT-02.log     |   8 +
+ .../ncuong/features/FR02/evidence/ev-DT-03.log     |   5 +
+ .../ncuong/features/FR02/evidence/ev-DT-04-05.log  |  13 +
+ .../ncuong/features/FR02/evidence/ev-DT-06.log     |   3 +
+ .../ncuong/features/FR02/evidence/ev-DT-07-08.log  |  15 +
+ .../features/FR02/evidence/final-db-state.log      |  12 +
+ .../features/FR02/evidence/fixture-register.log    |  11 +
+ homework/hw02/ncuong/features/FR02/test-cases.md   |  25 +
+ homework/hw02/ncuong/features/FR02/test-results.md | 174 +++++
+ homework/hw02/ncuong/reports/ai-audit.md           |  69 ++
+ homework/hw02/ncuong/reports/main-report.md        |  35 +-
+ .../supporting-materials/fr02-observations.md      |  18 +
+ 24 files changed, 1307 insertions(+), 8 deletions(-)
+f316266 create SKILL.md for domain testing and templates
+ backend/.gitignore                                 |   1 +
+ docs/[AI-01] - FIT@HCMUS - AI Agreement_Vn.md      | 144 ++++++++
+ docs/[AI-02] - FIT@HCMUS - AI Audit Report_Vn.md   | 114 +++++++
+ .../[AI-03] - FIT@HCMUS - AI Disclosure Form_Vn.md | 125 +++++++
+ ...04] - FIT@HCMUS - AI Reflective Statement_Vn.md | 139 ++++++++
+ ...AI-05] - FIT@HCMUS - AI Privacy Checklist_Vn.md |  78 +++++
+ ... - FIT@HCMUS - AI Student Acknowledgement_Vn.md |  59 ++++
+ docs/___2026.Homework.Policies.md                  |  57 ++++
+ homework/hw02/docs/2026.HW02.Domain Testing_En.md  | 160 +++++++++
+ homework/hw02/docs/2026.HW02.Domain Testing_En.pdf | Bin 0 -> 403870 bytes
+ homework/hw02/ncuong/README.md                     |  24 ++
+ homework/hw02/ncuong/prompt.txt                    |  75 +++++
+ homework/hw02/ncuong/reports/ai-critique.md        |   7 +
+ homework/hw02/ncuong/reports/main-report.md        |  35 ++
+ homework/hw02/ncuong/skills/README.md              | 149 +++++++++
+ .../hw02/ncuong/skills/ai-audit-logger/SKILL.md    |  62 ++++
+ .../assets/ai-audit-report-template.md             |  59 ++++
+ .../skills/boundary-value-generator/SKILL.md       | 163 +++++++++
+ .../skills/boundary-value-report-writer/SKILL.md   | 264 +++++++++++++++
+ .../ncuong/skills/coverage-goal-planner/SKILL.md   | 238 +++++++++++++
+ .../ncuong/skills/decision-table-builder/SKILL.md  | 190 +++++++++++
+ .../skills/domain-testing-report-writer/SKILL.md   | 346 +++++++++++++++++++
+ .../ncuong/skills/domain-testing-workflow/SKILL.md | 367 +++++++++++++++++++++
+ .../equivalence-partitioning-generator/SKILL.md    | 233 +++++++++++++
+ .../skills/feature-testing-report-writer/SKILL.md  | 131 ++++++++
+ .../assets/boundary-analysis-template.md           |  26 ++
+ .../assets/domain-analysis-template.md             |  35 ++
+ .../assets/evidence-log-template.md                | 128 +++++++
+ .../assets/test-cases-template.md                  |   9 +
+ .../assets/test-results-template.md                | 111 +++++++
+ .../skills/input-domain-partitioner/SKILL.md       | 313 ++++++++++++++++++
+ .../skills/state-transition-test-designer/SKILL.md | 329 ++++++++++++++++++
+ .../hw02/ncuong/skills/test-case-catalog/SKILL.md  |  47 +++
+ .../skills/test-findings-report-writer/SKILL.md    |  38 +++
+ .../hw02/ncuong/skills/test-oracle-writer/SKILL.md | 324 ++++++++++++++++++
+ .../skills/testing-report-assembler/SKILL.md       |  41 +++
+ .../assets/master-report-template.md               |  84 +++++
+ 37 files changed, 4705 insertions(+)
+85af3ba first upload
+ README.md                                 |  290 +-
+ api_specification.md                      |  214 +
+ backend/database.js                       |  119 +
+ backend/database.sqlite                   |  Bin 0 -> 36864 bytes
+ backend/package-lock.json                 | 1663 ++++++
+ backend/package.json                      |   20 +
+ backend/server.js                         |  572 ++
+ backend/test_profile.js                   |    8 +
+ frontend-admin/.gitignore                 |   24 +
+ frontend-admin/README.md                  |   16 +
+ frontend-admin/eslint.config.js           |   21 +
+ frontend-admin/index.html                 |   13 +
+ frontend-admin/package-lock.json          | 3681 ++++++++++++
+ frontend-admin/package.json               |   32 +
+ frontend-admin/postcss.config.js          |    6 +
+ frontend-admin/public/favicon.svg         |    1 +
+ frontend-admin/public/icons.svg           |   24 +
+ frontend-admin/src/App.css                |  184 +
+ frontend-admin/src/App.jsx                |  922 +++
+ frontend-admin/src/assets/hero.png        |  Bin 0 -> 13057 bytes
+ frontend-admin/src/assets/react.svg       |    1 +
+ frontend-admin/src/assets/vite.svg        |    1 +
+ frontend-admin/src/index.css              |    8 +
+ frontend-admin/src/main.jsx               |   10 +
+ frontend-admin/tailwind.config.js         |   11 +
+ frontend-admin/vite.config.js             |   11 +
+ frontend-mobile/.gitignore                |   41 +
+ frontend-mobile/App.js                    | 1300 +++++
+ frontend-mobile/app.json                  |   29 +
+ frontend-mobile/assets/adaptive-icon.png  |  Bin 0 -> 17547 bytes
+ frontend-mobile/assets/favicon.png        |  Bin 0 -> 1466 bytes
+ frontend-mobile/assets/icon.png           |  Bin 0 -> 22380 bytes
+ frontend-mobile/assets/splash-icon.png    |  Bin 0 -> 17547 bytes
+ frontend-mobile/index.js                  |    8 +
+ frontend-mobile/package-lock.json         | 8773 +++++++++++++++++++++++++++++
+ frontend-mobile/package.json              |   18 +
+ frontend-web/.gitignore                   |   24 +
+ frontend-web/README.md                    |   16 +
+ frontend-web/eslint.config.js             |   21 +
+ frontend-web/index.html                   |   13 +
+ frontend-web/package-lock.json            | 3681 ++++++++++++
+ frontend-web/package.json                 |   32 +
+ frontend-web/postcss.config.js            |    6 +
+ frontend-web/public/favicon.svg           |    1 +
+ frontend-web/public/icons.svg             |   24 +
+ frontend-web/src/App.css                  |  184 +
+ frontend-web/src/App.jsx                  |   71 +
+ frontend-web/src/assets/hero.png          |  Bin 0 -> 13057 bytes
+ frontend-web/src/assets/react.svg         |    1 +
+ frontend-web/src/assets/vite.svg          |    1 +
+ frontend-web/src/context/AuthContext.jsx  |   50 +
+ frontend-web/src/context/CartContext.jsx  |   36 +
+ frontend-web/src/index.css                |   14 +
+ frontend-web/src/main.jsx                 |   10 +
+ frontend-web/src/pages/Cart.jsx           |   79 +
+ frontend-web/src/pages/Checkout.jsx       |  151 +
+ frontend-web/src/pages/ForgotPassword.jsx |  100 +
+ frontend-web/src/pages/Home.jsx           |  116 +
+ frontend-web/src/pages/Login.jsx          |   69 +
+ frontend-web/src/pages/ProductDetail.jsx  |   73 +
+ frontend-web/src/pages/Profile.jsx        |  217 +
+ frontend-web/src/pages/Register.jsx       |   83 +
+ frontend-web/tailwind.config.js           |   11 +
+ frontend-web/vite.config.js               |    7 +
+ run_servers.sh                            |    5 +
+ setup_guide.md                            |  117 +
+ 66 files changed, 23232 insertions(+), 2 deletions(-)
+2f9bf2b Initial commit
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)
