@@ -89,6 +89,17 @@ async function expectLoginSuccess(page: Page, request: APIRequestContext) {
   expect(me.status()).toBe(200);
 }
 
+// required/blocked submit must not fire any /api/login request.
+async function expectNoLoginRequest(page: Page, trigger: () => Promise<void>) {
+  const p = page.waitForResponse((r) => r.url().includes('/api/login'), { timeout: 1500 });
+  await trigger();
+  const fired = await p.then(
+    () => true,
+    () => false,
+  );
+  expect(fired).toBeFalsy();
+}
+
 test('A-FR02-01 @fr02 login success', async ({ page, request }, testInfo) => {
   const row = byId('A-FR02-01');
   const email = uniqueEmail(row.email, testInfo.project.name);
@@ -148,15 +159,7 @@ test('A-FR02-06 @fr02 empty email blocked by required', async ({ page }) => {
   await page.goto('/login');
   const boxes = page.getByRole('textbox');
   await boxes.nth(1).fill(row.password!);
-  const noReq = await (async () => {
-    const p = page.waitForResponse((r) => r.url().includes('/api/login'), { timeout: 1500 });
-    await page.getByRole('button', { name: 'Sign In' }).click();
-    return p.then(
-      () => false,
-      () => true,
-    );
-  })();
-  expect(noReq).toBeTruthy();
+  await expectNoLoginRequest(page, () => page.getByRole('button', { name: 'Sign In' }).click());
   await expect(page).toHaveURL(/\/login/);
   expect(
     await page.evaluate(() => (document.querySelectorAll('input')[0] as HTMLInputElement).validity.valueMissing),
@@ -170,15 +173,7 @@ test('A-FR02-07 @fr02 empty password blocked by required', async ({ page, reques
   await page.goto('/login');
   const boxes = page.getByRole('textbox');
   await boxes.first().fill(email);
-  const noReq = await (async () => {
-    const p = page.waitForResponse((r) => r.url().includes('/api/login'), { timeout: 1500 });
-    await page.getByRole('button', { name: 'Sign In' }).click();
-    return p.then(
-      () => false,
-      () => true,
-    );
-  })();
-  expect(noReq).toBeTruthy();
+  await expectNoLoginRequest(page, () => page.getByRole('button', { name: 'Sign In' }).click());
   await expect(page).toHaveURL(/\/login/);
   expect(await page.evaluate(() => localStorage.getItem('token'))).toBeFalsy();
 });
