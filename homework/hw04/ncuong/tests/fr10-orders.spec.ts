@@ -1,5 +1,6 @@
 import { test, expect, type APIRequestContext, type Page } from '@playwright/test';
 import { loadJson, uniqueSuffix } from './helpers/json-loader';
+import { API, adminToken as adminLogin, userToken } from './helpers/eshop-api';
 
 type OrderRow = {
   id: string;
@@ -15,28 +16,7 @@ type OrderRow = {
 const rows = loadJson<OrderRow[]>('fr10-orders.json');
 const byId = (id: string): OrderRow => rows.find((r) => r.id === id)!;
 
-const API = process.env.API_URL ?? 'http://localhost:3000';
 const ADMIN_URL = process.env.ADMIN_URL ?? 'http://localhost:5174';
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL ?? 'admin@eshop.com';
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD ?? 'Admin123!';
-const USER_EMAIL = process.env.USER_EMAIL ?? 'test@eshop.com';
-const USER_PASSWORD = process.env.USER_PASSWORD ?? 'Test1234!';
-
-async function userToken(request: APIRequestContext): Promise<string> {
-  const res = await request.post(`${API}/api/login`, {
-    data: { email: USER_EMAIL, password: USER_PASSWORD },
-  });
-  expect(res.ok()).toBeTruthy();
-  return (await res.json()).token as string;
-}
-
-async function adminLogin(request: APIRequestContext): Promise<string> {
-  const res = await request.post(`${API}/api/login`, {
-    data: { email: ADMIN_EMAIL, password: ADMIN_PASSWORD },
-  });
-  expect(res.ok()).toBeTruthy();
-  return (await res.json()).token as string;
-}
 
 async function createOrder(
   request: APIRequestContext,
