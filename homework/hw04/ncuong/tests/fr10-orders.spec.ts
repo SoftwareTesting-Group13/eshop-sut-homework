@@ -73,7 +73,20 @@ function profileRow(page: Page, id: number) {
   return page.locator('table tbody tr', { has: page.getByText(`#${id}`, { exact: true }) });
 }
 
-async function adminDo(page: Page, id: number, action: string, expectedBadge: string) {
+// UI badge labels per status (presentational vocabulary for oracles).
+const STATUS_LABEL: Record<string, string> = {
+  pending: 'Chờ xác nhận',
+  confirmed: 'Đã xác nhận',
+  shipping: 'Đang giao',
+  delivered: 'Đã giao',
+  canceled: 'Đã hủy',
+};
+
+async function adminDo(page: Page, id: number, action: string, expectedBadge: string, sourceStatus: string) {
+  // Pre-state guard (lesson from A-FR10-08 false-pass): prove the row is in
+  // the expected source state BEFORE clicking, so the post-click assert can't
+  // pass on stale content.
+  await expect(adminRow(page, id).getByText(STATUS_LABEL[sourceStatus])).toBeVisible();
   const respPromise = page.waitForResponse(
     (r) => r.url().includes('/api/admin/orders') && r.request().method() === 'PUT',
   );
@@ -95,7 +108,7 @@ test('A-FR10-01 @fr10 pending -> Xac nhan', async ({ page, request }) => {
   const at = await adminLogin(request);
   const id = await createOrder(request, ut, row.total, `${row.address} ${uniqueSuffix('c')}`);
   await openAdminOrders(page, request);
-  await adminDo(page, id, row.action, row.expectedStatus);
+  await adminDo(page, id, row.action, row.expectedStatus, row.sourceStatus);
   expect((await getOrder(request, id)).status).toBe('confirmed');
 });
 
@@ -106,7 +119,7 @@ test('A-FR10-02 @fr10 confirmed -> Giao hang', async ({ page, request }) => {
   const id = await createOrder(request, ut, row.total, row.address);
   await setStatus(request, at, id, 'confirmed');
   await openAdminOrders(page, request);
-  await adminDo(page, id, row.action, row.expectedStatus);
+  await adminDo(page, id, row.action, row.expectedStatus, row.sourceStatus);
   expect((await getOrder(request, id)).status).toBe('shipping');
 });
 
@@ -118,7 +131,7 @@ test('A-FR10-03 @fr10 shipping -> Hoan thanh', async ({ page, request }) => {
   await setStatus(request, at, id, 'confirmed');
   await setStatus(request, at, id, 'shipping');
   await openAdminOrders(page, request);
-  await adminDo(page, id, row.action, row.expectedStatus);
+  await adminDo(page, id, row.action, row.expectedStatus, row.sourceStatus);
   expect((await getOrder(request, id)).status).toBe('delivered');
 });
 
@@ -127,7 +140,7 @@ test('A-FR10-04 @fr10 pending -> Huy (admin)', async ({ page, request }) => {
   const ut = await userToken(request);
   const id = await createOrder(request, ut, row.total, row.address);
   await openAdminOrders(page, request);
-  await adminDo(page, id, row.action, row.expectedStatus);
+  await adminDo(page, id, row.action, row.expectedStatus, row.sourceStatus);
   expect((await getOrder(request, id)).status).toBe('canceled');
 });
 
@@ -138,7 +151,7 @@ test('A-FR10-05 @fr10 confirmed -> Huy (admin)', async ({ page, request }) => {
   const id = await createOrder(request, ut, row.total, row.address);
   await setStatus(request, at, id, 'confirmed');
   await openAdminOrders(page, request);
-  await adminDo(page, id, row.action, row.expectedStatus);
+  await adminDo(page, id, row.action, row.expectedStatus, row.sourceStatus);
   expect((await getOrder(request, id)).status).toBe('canceled');
 });
 
