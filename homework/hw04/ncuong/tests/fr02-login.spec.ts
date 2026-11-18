@@ -3,6 +3,7 @@ import { execFileSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadJson, uniqueSuffix } from './helpers/json-loader';
+import { API, adminToken } from './helpers/eshop-api';
 
 type LoginRow = {
   id: string;
@@ -17,9 +18,6 @@ type LoginRow = {
 const rows = loadJson<LoginRow[]>('fr02-login.json');
 const byId = (id: string): LoginRow => rows.find((r) => r.id === id)!;
 
-const API = process.env.API_URL ?? 'http://localhost:3000';
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL ?? 'admin@eshop.com';
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD ?? 'Admin123!';
 const GENERIC_ERROR = 'Đăng nhập thất bại. Vui lòng kiểm tra lại.';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -38,15 +36,6 @@ async function register(request: APIRequestContext, email: string, password: str
   });
   expect(res.ok()).toBeTruthy();
   return res;
-}
-
-async function adminToken(request: APIRequestContext): Promise<string> {
-  const res = await request.post(`${API}/api/login`, {
-    data: { email: ADMIN_EMAIL, password: ADMIN_PASSWORD },
-  });
-  expect(res.ok()).toBeTruthy();
-  const body = await res.json();
-  return body.token as string;
 }
 
 async function findUser(request: APIRequestContext, token: string, email: string) {
