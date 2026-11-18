@@ -1,5 +1,6 @@
 import { test, expect, type APIRequestContext, type Page } from '@playwright/test';
 import { loadJson, uniqueSuffix } from './helpers/json-loader';
+import { API, adminToken, authHeaders } from './helpers/eshop-api';
 
 type CouponRow = {
   id: string;
@@ -16,22 +17,7 @@ type CouponRow = {
 const rows = loadJson<CouponRow[]>('fr17-coupons.json');
 const byId = (id: string): CouponRow => rows.find((r) => r.id === id)!;
 
-const API = process.env.API_URL ?? 'http://localhost:3000';
 const ADMIN_URL = process.env.ADMIN_URL ?? 'http://localhost:5174';
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL ?? 'admin@eshop.com';
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD ?? 'Admin123!';
-
-async function adminToken(request: APIRequestContext): Promise<string> {
-  const res = await request.post(`${API}/api/login`, {
-    data: { email: ADMIN_EMAIL, password: ADMIN_PASSWORD },
-  });
-  expect(res.ok()).toBeTruthy();
-  return (await res.json()).token as string;
-}
-
-async function authHeaders(request: APIRequestContext) {
-  return { Authorization: `Bearer ${await adminToken(request)}` };
-}
 
 function uniqueCode(base: string, projectName: string): string {
   if (!base || !base.trim() || base === '__OMITTED__') return base;
