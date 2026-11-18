@@ -1,0 +1,3 @@
+[
+  { "id": "__TAG_UPPER__-01", "type": "positive", "note": "replace fields with the feature schema (login/order/coupon), one row per planned T-ID" }
+]

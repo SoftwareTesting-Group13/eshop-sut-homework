@@ -1,0 +1,17 @@
+import { test, expect } from '@playwright/test';
+import { loadJson, uniqueSuffix } from '../tests/helpers/json-loader';
+
+// Data-driven API sample for __FR__ (covers input-states no form can produce).
+type Row = { id: string; type: string; [k: string]: unknown };
+const rows = loadJson<Row[]>('__DATA_FILE__');
+const API = process.env.API_URL ?? 'http://localhost:3000';
+
+for (const row of rows) {
+  test(`${row.id} @__TAG__ api sample`, async ({ request }, testInfo) => {
+    const unique = `${String(row.id)}-${uniqueSuffix(testInfo.project.name)}`;
+    // TODO: replace with real request(s) + status/body asserts per oracle;
+    // wrap state-changing calls in try/finally cleanup to keep re-runs deterministic.
+    expect(unique).toBeTruthy();
+    expect(API).toContain('http');
+  });
+}

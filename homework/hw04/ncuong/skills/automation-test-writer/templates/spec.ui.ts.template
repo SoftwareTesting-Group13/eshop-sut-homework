@@ -1,0 +1,18 @@
+import { test, expect } from '@playwright/test';
+import { loadJson, uniqueSuffix } from '../tests/helpers/json-loader';
+
+// Data-driven UI sample for __FR__: read every row from JSON, never hardcode datasets.
+type Row = { id: string; type: string; [k: string]: unknown };
+const rows = loadJson<Row[]>('__DATA_FILE__');
+
+for (const row of rows) {
+  test(`${row.id} @__TAG__ ui sample`, async ({ page, request }, testInfo) => {
+    const unique = `${String(row.id)}-${uniqueSuffix(testInfo.project.name)}`;
+    await page.goto('__START_URL__');
+    // TODO: replace with real locators (getByRole/getByLabel/getByPlaceholder),
+    // real action, waitForResponse on the API call, then ≥3 assertion patterns
+    // (URL, content/attribute, API status, storage, dialog, count).
+    await expect(page).toHaveURL(/.*/);
+    expect(unique).toBeTruthy();
+  });
+}
