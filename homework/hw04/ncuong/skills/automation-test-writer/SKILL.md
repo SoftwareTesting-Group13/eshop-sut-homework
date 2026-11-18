@@ -5,7 +5,7 @@ description: Turn a feature test-case catalog into a data-driven Playwright suit
 
 # Automation test writer
 
-Convert a per-feature test-case catalog into a Playwright suite that is data-driven, multi-browser, and reproducible. The workflow was proven end to end on three features (16, 16, and 18 cases; identical pass/fail signatures on Chromium/Firefox/WebKit); see `examples/` for that instantiation.
+Convert a per-feature test-case catalog into a Playwright suite that is data-driven, multi-browser, and reproducible. Proven end to end on three features (16, 16, and 18 cases with identical pass/fail signatures on Chromium/Firefox/WebKit); see `examples/` for that instantiation.
 
 ## When to use
 
@@ -29,7 +29,7 @@ Do not use it to invent oracles, skip the test plan, write all cases in a single
 3. **Data file.** Expand `data/<id>.json` to all planned rows. Test data lives only in this file — never as inline datasets in specs (environment-overridable URLs/credentials are config, not data).
 4. **Specs in batches (1–2 cases per prompt).** Data-driven loop over rows. Use `getByRole`/`getByLabel`/`getByPlaceholder`/`getByText(exact)`; no XPath, no positional selectors, no hard sleeps. Run the feature tag on chromium after every batch and fix immediately.
 5. **Three browsers + stabilization.** Run each browser in its own process and report directory (never pass `--reporter=...` on the CLI — it overrides the configured HTML reporter). Re-run until the pass/fail signature is stable across two consecutive runs; investigate every flake instead of tolerating it.
-6. **Review + evidence.** Gap table (AI got wrong / missed / why), bug report per root cause with screenshots, one tracker issue per bug, per-report `Run by:` + timestamp metadata.
+6. **Review + evidence.** Gap table (AI got wrong / missed / why), bug report per root cause with screenshots, one tracker issue per bug, per-report run-attribution metadata.
 
 Details, prompt templates, and the per-step checklist: `references/workflow.md`.
 
@@ -38,11 +38,11 @@ Details, prompt templates, and the per-step checklist: `references/workflow.md`.
 - ≥3 distinct assertion patterns per feature (URL/navigation, content/attribute, absence via zero-count, API response status, client storage, dialog events, row counts).
 - Unique data per run (timestamp + browser name); per-test isolation; state-changing API cases wrapped in `try/finally` cleanup so re-runs are deterministic and the database returns to seed state.
 - Locators must survive re-renders: re-query rows after each mutation; assert pre-state before acting (an assert that passes on stale content is a false pass — see pitfalls).
-- Every HTML report must visibly attribute the run (`Run by:` + ISO timestamp in report metadata) plus a sidecar metadata file next to it.
+- Every HTML report must carry run-attribution metadata (e.g. owner ID + ISO timestamp in the report metadata, plus a sidecar metadata file next to it).
 
 ## Output contract
 
-- `tests/<id>.spec.ts` (tagged, e.g. `@fr10`), `data/<id>.json`, shared `tests/helpers/`.
+- `tests/<id>.spec.ts` (tagged, e.g. `@checkout`), `data/<id>.json`, shared `tests/helpers/`.
 - One HTML report per browser with matching pass/fail signatures (or documented, explained differences).
 - Test plan, per-root-cause bug reports + evidence screenshots, issue-tracker publish script.
 

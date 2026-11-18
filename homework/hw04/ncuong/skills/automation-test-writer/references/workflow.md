@@ -24,7 +24,7 @@ After each batch: run the feature tag on chromium; keep the pass/fail signature;
 
 ## Step 4 — Three browsers
 
-> Run all three browsers, one report per run, each showing "Run by: {StudentID}" + ISO timestamp.
+> Run all three browsers, one report per run, each carrying run-attribution metadata (owner ID + ISO timestamp).
 
 Commands (never add `--reporter=` — it overrides the configured reporters):
 `FEATURE=<id> BROWSER=<b> npx playwright test --project=<b> --grep "@<tag>"` for b in chromium firefox webkit. Write a sidecar metadata file next to each report and verify the metadata inside the report bundle.

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Scaffold a new HW04 feature automation: data JSON + sample UI/API specs.
+# Scaffold a new feature automation: data JSON + sample UI/API specs.
 # Usage: bash new-feature.sh <FR-ID> <tag> [target-dir]
 # Example: bash new-feature.sh FR01 fr01   (writes tests/ + data/ under target-dir)
 set -euo pipefail
