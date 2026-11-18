@@ -1,19 +1,19 @@
-# Skill demo video — outline (5–7 phút, tiếng Việt, unlisted)
+# Skill demo video — outline (5–7 minutes, English narration, unlisted)
 
-Mục tiêu: chứng minh skill `automation-test-writer` dùng được end-to-end trên 1 feature hoàn chỉnh (đề §7 — video này khác video Task 2).
+Goal: prove the `automation-test-writer` skill works end to end on one complete feature (this video is separate from the Task 2 run video).
 
-## Kịch bản (dùng FR-01 Registration làm ví dụ mới, hoặc FR-02 có sẵn)
+## Script (pick one unseen feature, e.g. account registration)
 
-| Thời gian | Nội dung | Lệnh / thao tác |
+| Time | Content | Action |
 | --- | --- | --- |
-| 0:00–0:30 | Giới thiệu: tên, MSSV, skill gì, input/output của skill | face-cam + `whoami` + `hostname` |
-| 0:30–1:00 | Mở `skills/automation-test-writer/SKILL.md` — đọc lướt 6 bước + hard rules | editor |
-| 1:00–2:00 | Chạy `bash skills/automation-test-writer/scripts/new-feature.sh FR01 fr01` — show 2 file sinh ra | terminal |
-| 2:00–3:30 | Điền test plan HW02 FR-01 (2–3 ca) vào `data/fr01.json`, mở rộng spec mẫu từ `templates/` | editor |
-| 3:30–5:00 | Chạy `FEATURE=fr01 BROWSER=chromium npx playwright test --project=chromium --grep "@fr01"` | terminal, log xanh |
-| 5:00–6:00 | Mở HTML report có `Run by: 23120223` + ISO timestamp | browser |
-| 6:00–6:30 | Kết: skill tái dùng được, link repo | terminal |
+| 0:00–0:30 | Intro: name, student ID, what the skill does, its inputs/outputs | face-cam + `whoami` + `hostname` |
+| 0:30–1:00 | Walk through `skills/automation-test-writer/SKILL.md` — 6 steps + hard rules | editor |
+| 1:00–2:00 | Run `bash skills/automation-test-writer/scripts/new-feature.sh <ID> <tag>` — show the 2 generated files | terminal |
+| 2:00–3:30 | Fill the test plan (2–3 cases) into the JSON file, expand the sample spec from `templates/` | editor |
+| 3:30–5:00 | Run the suite on chromium and show the pass log | terminal |
+| 5:00–6:00 | Open the HTML report showing `Run by:` + ISO timestamp | browser |
+| 6:00–6:30 | Wrap-up: skill is reusable, repo link | terminal |
 
-## Checklist video
+## Video checklist
 
-unlisted · giọng Việt thật · face-cam hoặc `whoami`+`hostname` · thấy rõ SKILL.md → script chạy → spec chạy → report.
+Unlisted · real voice narration · face-cam or `whoami`+`hostname` · visibly: SKILL.md → scaffold script → spec run → report.
